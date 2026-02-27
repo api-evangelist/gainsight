@@ -1,0 +1,54 @@
+name: Gainsight
+description: Gainsight is a customer success platform that helps companies retain and grow their customer base through data-driven insights, automation, and engagement tools.
+url: https://www.gainsight.com
+created: '2024'
+modified: '2024'
+apis:
+- name: Gainsight REST API
+  description: The Gainsight REST API allows developers to integrate customer success data, automate workflows, and build custom applications on top of the Gainsight platform.
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.gainsight.com
+  tags:
+  - Customer Success
+  - Analytics
+  - CRM
+  - SaaS
+  properties:
+  - type: documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: swagger
+    url: https://api.gainsight.com/swagger
+  contact:
+  - name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+- name: Gainsight PX API
+  description: Product Experience (PX) API for tracking product usage, user behavior, and in-app engagement analytics.
+  humanURL: https://support.gainsight.com/PX/API_for_Developers
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Product Analytics
+  - User Engagement
+  - Product Experience
+  properties:
+  - type: documentation
+    url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
+  - type: api-key
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+common:
+- type: portal
+  url: https://support.gainsight.com
+- type: login
+  url: https://app.gainsight.com
+- type: terms-of-service
+  url: https://www.gainsight.com/terms-of-service/
+- type: privacy-policy
+  url: https://www.gainsight.com/privacy-policy/
+- type: status
+  url: https://trust.gainsight.com/
+maintainers:
+- name: Gainsight
+  email: support@gainsight.com
+  url: https://www.gainsight.com
