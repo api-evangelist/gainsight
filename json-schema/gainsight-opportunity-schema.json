@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.gainsight.com/schemas/gainsight/opportunity.json",
+  "title": "Gainsight Opportunity",
+  "description": "Represents an opportunity record in the Gainsight Renewal Center, tracking renewals, upsells, downsells, and new business within the Matrix Data Architecture.",
+  "type": "object",
+  "required": ["Name", "CompanyId", "BookingType"],
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Opportunity unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Opportunity name"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "BookingType": {
+      "type": "string",
+      "enum": ["New Business", "Renewal", "Upsell", "Downsell", "Churn"],
+      "description": "Type of booking"
+    },
+    "Amount": {
+      "type": "number",
+      "description": "Opportunity amount",
+      "minimum": 0
+    },
+    "Currency": {
+      "type": "string",
+      "description": "Currency code (e.g., USD, EUR)"
+    },
+    "CloseDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Expected or actual close date"
+    },
+    "Stage": {
+      "type": "string",
+      "description": "Opportunity stage"
+    },
+    "Probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Win probability percentage"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Opportunity owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Owner display name"
+    },
+    "ARR": {
+      "type": "number",
+      "description": "Annual recurring revenue",
+      "minimum": 0
+    },
+    "Term": {
+      "type": "integer",
+      "description": "Contract term in months",
+      "minimum": 1
+    },
+    "RenewalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Renewal date"
+    },
+    "IsClosed": {
+      "type": "boolean",
+      "description": "Whether the opportunity is closed"
+    },
+    "IsWon": {
+      "type": "boolean",
+      "description": "Whether the opportunity was won"
+    },
+    "SfdcOpportunityId": {
+      "type": "string",
+      "description": "Linked Salesforce opportunity ID"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record last modification timestamp"
+    }
+  }
+}

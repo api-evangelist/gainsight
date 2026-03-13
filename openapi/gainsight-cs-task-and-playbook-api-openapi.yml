@@ -1,0 +1,383 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Task and Playbook API
+  description: >-
+    The Task and Playbook API manages task creation and updates, and retrieves
+    task and playbook details for orchestrating customer success workflows
+    within the Cockpit.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Task API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Tasks
+    description: Manage tasks
+  - name: Playbooks
+    description: Retrieve playbook configurations
+security:
+  - apiKey: []
+paths:
+  /tasks:
+    post:
+      operationId: createTask
+      summary: Create a task
+      description: Create a new task associated with a CTA.
+      tags:
+        - Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskInput'
+      responses:
+        '200':
+          description: Task created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Task'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /tasks/{taskId}:
+    get:
+      operationId: getTask
+      summary: Get a task
+      description: Retrieve a specific task by ID.
+      tags:
+        - Tasks
+      parameters:
+        - $ref: '#/components/parameters/taskId'
+      responses:
+        '200':
+          description: Task returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Task'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateTask
+      summary: Update a task
+      description: Update an existing task.
+      tags:
+        - Tasks
+      parameters:
+        - $ref: '#/components/parameters/taskId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskInput'
+      responses:
+        '200':
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Task'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /tasks/search:
+    post:
+      operationId: searchTasks
+      summary: Search tasks
+      description: Search for tasks using filter criteria.
+      tags:
+        - Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Tasks returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Task'
+                      totalCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /playbooks:
+    get:
+      operationId: listPlaybooks
+      summary: List playbooks
+      description: Retrieve a list of configured playbooks.
+      tags:
+        - Playbooks
+      responses:
+        '200':
+          description: Playbooks returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Playbook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /playbooks/{playbookId}:
+    get:
+      operationId: getPlaybook
+      summary: Get a playbook
+      description: Retrieve a specific playbook with its task templates.
+      tags:
+        - Playbooks
+      parameters:
+        - $ref: '#/components/parameters/playbookId'
+      responses:
+        '200':
+          description: Playbook returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Playbook'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    taskId:
+      name: taskId
+      in: path
+      required: true
+      description: Task unique identifier
+      schema:
+        type: string
+    playbookId:
+      name: playbookId
+      in: path
+      required: true
+      description: Playbook unique identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+    Task:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Task unique identifier
+        Name:
+          type: string
+          description: Task name
+        Description:
+          type: string
+          description: Task description
+        CTAId:
+          type: string
+          description: Associated CTA Gsid
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        OwnerId:
+          type: string
+          description: Task owner user ID
+        OwnerName:
+          type: string
+          description: Task owner name
+        Status:
+          type: string
+          enum:
+            - Not Started
+            - In Progress
+            - Completed
+            - Skipped
+          description: Task status
+        Priority:
+          type: string
+          description: Task priority
+        DueDate:
+          type: string
+          format: date
+          description: Task due date
+        CompletedDate:
+          type: string
+          format: date
+          description: Completion date
+        PlaybookId:
+          type: string
+          description: Associated playbook ID
+        Order:
+          type: integer
+          description: Task order within the playbook
+        CreatedDate:
+          type: string
+          format: date-time
+        ModifiedDate:
+          type: string
+          format: date-time
+    TaskInput:
+      type: object
+      required:
+        - Name
+        - CTAId
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        CTAId:
+          type: string
+        OwnerId:
+          type: string
+        Status:
+          type: string
+          enum:
+            - Not Started
+            - In Progress
+            - Completed
+            - Skipped
+        Priority:
+          type: string
+        DueDate:
+          type: string
+          format: date
+    Playbook:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Playbook unique identifier
+        Name:
+          type: string
+          description: Playbook name
+        Description:
+          type: string
+          description: Playbook description
+        CTATypeId:
+          type: string
+          description: Associated CTA type
+        IsActive:
+          type: boolean
+          description: Whether the playbook is active
+        TaskTemplates:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Task template name
+              description:
+                type: string
+                description: Task template description
+              order:
+                type: integer
+                description: Task order
+              daysFromCreation:
+                type: integer
+                description: Days offset from CTA creation for due date
+          description: Ordered list of task templates
+        CreatedDate:
+          type: string
+          format: date-time
+        ModifiedDate:
+          type: string
+          format: date-time

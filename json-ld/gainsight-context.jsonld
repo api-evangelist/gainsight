@@ -1,0 +1,251 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "gainsight": "https://www.gainsight.com/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Company": {
+      "@id": "gainsight:Company",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "industry": "gainsight:industry",
+        "arr": {
+          "@id": "gainsight:annualRecurringRevenue",
+          "@type": "xsd:decimal"
+        },
+        "mrr": {
+          "@id": "gainsight:monthlyRecurringRevenue",
+          "@type": "xsd:decimal"
+        },
+        "lifecycleStage": "gainsight:lifecycleStage",
+        "status": "gainsight:status",
+        "csmName": "gainsight:customerSuccessManager",
+        "employees": {
+          "@id": "schema:numberOfEmployees",
+          "@type": "xsd:integer"
+        },
+        "renewalDate": {
+          "@id": "gainsight:renewalDate",
+          "@type": "xsd:date"
+        },
+        "overallScore": {
+          "@id": "gainsight:healthScore",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "Person": {
+      "@id": "gainsight:Person",
+      "@context": {
+        "firstName": "schema:givenName",
+        "lastName": "schema:familyName",
+        "email": "schema:email",
+        "title": "schema:jobTitle",
+        "role": "gainsight:contactRole",
+        "phone": "schema:telephone",
+        "location": "schema:location",
+        "nps": {
+          "@id": "gainsight:netPromoterScore",
+          "@type": "xsd:decimal"
+        },
+        "isPrimary": {
+          "@id": "gainsight:isPrimaryContact",
+          "@type": "xsd:boolean"
+        },
+        "isActive": {
+          "@id": "gainsight:isActive",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "CTA": {
+      "@id": "gainsight:CallToAction",
+      "@context": {
+        "name": "schema:name",
+        "companyName": "gainsight:companyName",
+        "typeName": "gainsight:ctaType",
+        "reasonName": "gainsight:ctaReason",
+        "statusName": "gainsight:ctaStatus",
+        "ownerName": "gainsight:owner",
+        "dueDate": {
+          "@id": "gainsight:dueDate",
+          "@type": "xsd:date"
+        },
+        "closedDate": {
+          "@id": "gainsight:closedDate",
+          "@type": "xsd:date"
+        },
+        "comments": "schema:comment",
+        "source": "gainsight:source"
+      }
+    },
+
+    "TimelineActivity": {
+      "@id": "gainsight:TimelineActivity",
+      "@context": {
+        "subject": "schema:name",
+        "notes": "schema:text",
+        "activityTypeName": "gainsight:activityType",
+        "companyName": "gainsight:companyName",
+        "activityDate": {
+          "@id": "dcterms:date",
+          "@type": "xsd:dateTime"
+        },
+        "ownerName": "gainsight:owner",
+        "sentiment": "gainsight:sentiment"
+      }
+    },
+
+    "SuccessPlan": {
+      "@id": "gainsight:SuccessPlan",
+      "@context": {
+        "name": "schema:name",
+        "companyName": "gainsight:companyName",
+        "typeName": "gainsight:planType",
+        "status": "gainsight:planStatus",
+        "ownerName": "gainsight:owner",
+        "startDate": {
+          "@id": "schema:startDate",
+          "@type": "xsd:date"
+        },
+        "endDate": {
+          "@id": "schema:endDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "Opportunity": {
+      "@id": "gainsight:Opportunity",
+      "@context": {
+        "name": "schema:name",
+        "companyName": "gainsight:companyName",
+        "bookingType": "gainsight:bookingType",
+        "amount": {
+          "@id": "schema:price",
+          "@type": "xsd:decimal"
+        },
+        "currency": "schema:priceCurrency",
+        "closeDate": {
+          "@id": "gainsight:closeDate",
+          "@type": "xsd:date"
+        },
+        "stage": "gainsight:opportunityStage",
+        "probability": {
+          "@id": "gainsight:winProbability",
+          "@type": "xsd:decimal"
+        },
+        "isClosed": {
+          "@id": "gainsight:isClosed",
+          "@type": "xsd:boolean"
+        },
+        "isWon": {
+          "@id": "gainsight:isWon",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "Goal": {
+      "@id": "gainsight:CustomerGoal",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "companyName": "gainsight:companyName",
+        "status": "gainsight:goalStatus",
+        "ownerName": "gainsight:owner",
+        "targetDate": {
+          "@id": "gainsight:targetDate",
+          "@type": "xsd:date"
+        },
+        "completionPercentage": {
+          "@id": "gainsight:completionPercentage",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "Task": {
+      "@id": "gainsight:Task",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "status": "gainsight:taskStatus",
+        "ownerName": "gainsight:owner",
+        "dueDate": {
+          "@id": "gainsight:dueDate",
+          "@type": "xsd:date"
+        },
+        "completedDate": {
+          "@id": "gainsight:completedDate",
+          "@type": "xsd:date"
+        },
+        "priority": "gainsight:priority"
+      }
+    },
+
+    "GainsightUser": {
+      "@id": "gainsight:GainsightUser",
+      "@context": {
+        "firstName": "schema:givenName",
+        "lastName": "schema:familyName",
+        "email": "schema:email",
+        "userType": "gainsight:userType",
+        "licenseType": "gainsight:licenseType",
+        "role": "gainsight:userRole",
+        "isActive": {
+          "@id": "gainsight:isActive",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "PXUser": {
+      "@id": "gainsight:PXUser",
+      "@context": {
+        "email": "schema:email",
+        "firstName": "schema:givenName",
+        "lastName": "schema:familyName",
+        "title": "schema:jobTitle",
+        "role": "gainsight:userRole",
+        "score": {
+          "@id": "gainsight:engagementScore",
+          "@type": "xsd:integer"
+        },
+        "numberOfVisits": {
+          "@id": "gainsight:numberOfVisits",
+          "@type": "xsd:integer"
+        },
+        "lastSeenDate": {
+          "@id": "gainsight:lastSeenDate",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "PXAccount": {
+      "@id": "gainsight:PXAccount",
+      "@context": {
+        "name": "schema:name",
+        "plan": "gainsight:plan",
+        "numberOfUsers": {
+          "@id": "gainsight:numberOfUsers",
+          "@type": "xsd:integer"
+        },
+        "numberOfVisits": {
+          "@id": "gainsight:numberOfVisits",
+          "@type": "xsd:integer"
+        },
+        "lastSeenDate": {
+          "@id": "gainsight:lastSeenDate",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}

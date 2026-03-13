@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.gainsight.com/schemas/gainsight/timeline-activity.json",
+  "title": "Gainsight Timeline Activity",
+  "description": "Represents a timeline activity record in Gainsight CS, capturing customer interactions such as calls, meetings, emails, and notes for a chronological view of the customer relationship.",
+  "type": "object",
+  "required": ["Subject", "ActivityTypeId", "CompanyId", "ActivityDate"],
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Activity unique identifier"
+    },
+    "Subject": {
+      "type": "string",
+      "description": "Activity subject line"
+    },
+    "Notes": {
+      "type": "string",
+      "description": "Activity notes or body content"
+    },
+    "ActivityTypeId": {
+      "type": "string",
+      "description": "Activity type identifier"
+    },
+    "ActivityTypeName": {
+      "type": "string",
+      "description": "Activity type display name (e.g., Call, Meeting, Email)"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "ActivityDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of the activity"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Activity owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Activity owner display name"
+    },
+    "ExternalId": {
+      "type": "string",
+      "description": "External system identifier for deduplication"
+    },
+    "Attendees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string",
+            "description": "Gainsight person Gsid"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Attendee email address"
+          },
+          "name": {
+            "type": "string",
+            "description": "Attendee name"
+          }
+        }
+      },
+      "description": "List of attendees for the activity"
+    },
+    "Sentiment": {
+      "type": "string",
+      "enum": ["Positive", "Neutral", "Negative"],
+      "description": "Sentiment captured during the activity"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record last modification timestamp"
+    }
+  }
+}

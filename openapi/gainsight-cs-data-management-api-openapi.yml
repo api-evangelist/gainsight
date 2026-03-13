@@ -1,0 +1,247 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Data Management API
+  description: >-
+    The Data Management API provides access to Gainsight object and field
+    metadata, enabling retrieval of schema information for integration and
+    data mapping purposes.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Data Management API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Data_Management_APIs/Data_Management_APIs
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Objects
+    description: Retrieve object metadata
+  - name: Fields
+    description: Retrieve field metadata
+security:
+  - apiKey: []
+paths:
+  /meta/objects:
+    get:
+      operationId: listObjects
+      summary: List objects
+      description: >-
+        Retrieve metadata for all Gainsight objects including standard and
+        custom objects.
+      tags:
+        - Objects
+      responses:
+        '200':
+          description: Object metadata returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ObjectMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /meta/objects/{objectName}:
+    get:
+      operationId: getObject
+      summary: Get object metadata
+      description: Retrieve metadata for a specific Gainsight object.
+      tags:
+        - Objects
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+      responses:
+        '200':
+          description: Object metadata returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/ObjectMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meta/objects/{objectName}/fields:
+    get:
+      operationId: listFields
+      summary: List fields for an object
+      description: Retrieve field metadata for a specific Gainsight object.
+      tags:
+        - Fields
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+      responses:
+        '200':
+          description: Field metadata returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FieldMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /meta/objects/{objectName}/fields/{fieldName}:
+    get:
+      operationId: getField
+      summary: Get field metadata
+      description: Retrieve metadata for a specific field on a Gainsight object.
+      tags:
+        - Fields
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+        - $ref: '#/components/parameters/fieldName'
+      responses:
+        '200':
+          description: Field metadata returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/FieldMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    objectName:
+      name: objectName
+      in: path
+      required: true
+      description: Name of the Gainsight object
+      schema:
+        type: string
+    fieldName:
+      name: fieldName
+      in: path
+      required: true
+      description: Name of the field
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    ObjectMetadata:
+      type: object
+      properties:
+        objectName:
+          type: string
+          description: Object API name
+        label:
+          type: string
+          description: Object display label
+        description:
+          type: string
+          description: Object description
+        isCustom:
+          type: boolean
+          description: Whether this is a custom object
+        isStandard:
+          type: boolean
+          description: Whether this is a standard object
+        category:
+          type: string
+          description: Object category
+        fieldCount:
+          type: integer
+          description: Number of fields on the object
+        createdDate:
+          type: string
+          format: date-time
+        modifiedDate:
+          type: string
+          format: date-time
+    FieldMetadata:
+      type: object
+      properties:
+        fieldName:
+          type: string
+          description: Field API name
+        label:
+          type: string
+          description: Field display label
+        description:
+          type: string
+          description: Field description
+        dataType:
+          type: string
+          enum:
+            - STRING
+            - NUMBER
+            - BOOLEAN
+            - DATE
+            - DATETIME
+            - CURRENCY
+            - PERCENTAGE
+            - EMAIL
+            - URL
+            - PHONE
+            - PICKLIST
+            - MULTI_PICKLIST
+            - LOOKUP
+            - RICH_TEXT
+          description: Field data type
+        isRequired:
+          type: boolean
+          description: Whether the field is required
+        isReadOnly:
+          type: boolean
+          description: Whether the field is read-only
+        isCustom:
+          type: boolean
+          description: Whether this is a custom field
+        maxLength:
+          type: integer
+          description: Maximum length for string fields
+        picklistValues:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              label:
+                type: string
+          description: Picklist options for picklist fields
+        lookupObjectName:
+          type: string
+          description: Referenced object name for lookup fields

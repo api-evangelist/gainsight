@@ -1,0 +1,271 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk API
+  description: >-
+    The Gainsight Bulk API is an asynchronous connector that automates insert or
+    update of large data volumes from CSV files into Gainsight standard and
+    custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Jobs
+    description: Manage bulk import jobs
+security:
+  - apiKey: []
+paths:
+  /bulk/jobs:
+    post:
+      operationId: createBulkJob
+      summary: Create a bulk job
+      description: >-
+        Create a new bulk import job to insert or update records from a CSV
+        file into a Gainsight object. Rate limited to 10 calls per hour and
+        100 per day.
+      tags:
+        - Jobs
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - objectName
+                - operation
+                - file
+              properties:
+                objectName:
+                  type: string
+                  description: Target Gainsight object name
+                operation:
+                  type: string
+                  enum:
+                    - INSERT
+                    - UPDATE
+                    - UPSERT
+                  description: Bulk operation type
+                keyFields:
+                  type: string
+                  description: >-
+                    Comma-separated key fields for matching (required for
+                    UPDATE and UPSERT)
+                file:
+                  type: string
+                  format: binary
+                  description: CSV file containing records to import
+      responses:
+        '200':
+          description: Bulk job created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/BulkJob'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          description: Rate limit exceeded
+    get:
+      operationId: listBulkJobs
+      summary: List bulk jobs
+      description: Retrieve a list of bulk import jobs.
+      tags:
+        - Jobs
+      parameters:
+        - name: status
+          in: query
+          description: Filter by job status
+          schema:
+            type: string
+            enum:
+              - PENDING
+              - IN_PROGRESS
+              - COMPLETED
+              - FAILED
+        - name: limit
+          in: query
+          description: Maximum number of jobs to return
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          description: Offset for pagination
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Jobs returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/BulkJob'
+                      totalCount:
+                        type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /bulk/jobs/{jobId}:
+    get:
+      operationId: getBulkJob
+      summary: Get bulk job status
+      description: Retrieve the status and details of a specific bulk job.
+      tags:
+        - Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Job details returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/BulkJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /bulk/jobs/{jobId}/errors:
+    get:
+      operationId: getBulkJobErrors
+      summary: Get bulk job errors
+      description: Retrieve error details for a completed bulk job.
+      tags:
+        - Jobs
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Job errors returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BulkJobError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: Bulk job unique identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    BulkJob:
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: Bulk job unique identifier
+        objectName:
+          type: string
+          description: Target object name
+        operation:
+          type: string
+          enum:
+            - INSERT
+            - UPDATE
+            - UPSERT
+          description: Operation type
+        status:
+          type: string
+          enum:
+            - PENDING
+            - IN_PROGRESS
+            - COMPLETED
+            - FAILED
+          description: Job status
+        totalRecords:
+          type: integer
+          description: Total records in the file
+        processedRecords:
+          type: integer
+          description: Number of records processed
+        successCount:
+          type: integer
+          description: Number of successful records
+        failureCount:
+          type: integer
+          description: Number of failed records
+        fileName:
+          type: string
+          description: Original CSV file name
+        createdDate:
+          type: string
+          format: date-time
+          description: Job creation timestamp
+        completedDate:
+          type: string
+          format: date-time
+          description: Job completion timestamp
+    BulkJobError:
+      type: object
+      properties:
+        rowNumber:
+          type: integer
+          description: Row number in the CSV file
+        errorMessage:
+          type: string
+          description: Error message
+        fieldName:
+          type: string
+          description: Field that caused the error

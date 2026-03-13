@@ -1,0 +1,193 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Events API
+  description: >-
+    The Events API enables external systems to publish events into Gainsight,
+    supporting system asset events for cross-system communication with
+    operations including insert, update, upsert, and delete.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Events API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Events_API/Events_API
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Events
+    description: Publish and manage events
+security:
+  - apiKey: []
+paths:
+  /events:
+    post:
+      operationId: publishEvent
+      summary: Publish an event
+      description: >-
+        Publish an event from an external system into Gainsight. Supports system
+        asset events for triggering rules and workflows.
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventInput'
+      responses:
+        '200':
+          description: Event published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /events/bulk:
+    post:
+      operationId: publishEventsBulk
+      summary: Bulk publish events
+      description: Publish multiple events in a single request.
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EventInput'
+      responses:
+        '200':
+          description: Events published
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      successCount:
+                        type: integer
+                      failureCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /events/types:
+    get:
+      operationId: listEventTypes
+      summary: List event types
+      description: Retrieve configured event types.
+      tags:
+        - Events
+      responses:
+        '200':
+          description: Event types returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EventType'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    EventInput:
+      type: object
+      required:
+        - eventType
+        - objectType
+        - operation
+        - payload
+      properties:
+        eventType:
+          type: string
+          description: Event type identifier
+        objectType:
+          type: string
+          description: Object type associated with the event
+        operation:
+          type: string
+          enum:
+            - INSERT
+            - UPDATE
+            - UPSERT
+            - DELETE
+          description: Operation type
+        companyId:
+          type: string
+          description: Associated company Gsid
+        payload:
+          type: object
+          description: Event payload data
+        timestamp:
+          type: string
+          format: date-time
+          description: Event timestamp
+        sourceSystem:
+          type: string
+          description: Source system identifier
+    EventType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Event type identifier
+        name:
+          type: string
+          description: Event type name
+        description:
+          type: string
+          description: Event type description
+        isActive:
+          type: boolean
+          description: Whether the event type is active

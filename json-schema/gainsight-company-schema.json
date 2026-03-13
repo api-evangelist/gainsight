@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.gainsight.com/schemas/gainsight/company.json",
+  "title": "Gainsight Company",
+  "description": "Represents a company record in Gainsight CS, the primary account object for tracking customer success relationships, health scores, and revenue metrics.",
+  "type": "object",
+  "required": ["Name"],
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Gainsight unique identifier for the company record"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Company name",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "Industry": {
+      "type": "string",
+      "description": "Industry classification"
+    },
+    "ARR": {
+      "type": "number",
+      "description": "Annual recurring revenue",
+      "minimum": 0
+    },
+    "MRR": {
+      "type": "number",
+      "description": "Monthly recurring revenue",
+      "minimum": 0
+    },
+    "LifecycleStage": {
+      "type": "string",
+      "description": "Current customer lifecycle stage"
+    },
+    "Stage": {
+      "type": "string",
+      "description": "Company stage"
+    },
+    "Status": {
+      "type": "string",
+      "description": "Company status (e.g., Active, Churned)"
+    },
+    "CSMName": {
+      "type": "string",
+      "description": "Name of the assigned Customer Success Manager"
+    },
+    "Employees": {
+      "type": "integer",
+      "description": "Number of employees",
+      "minimum": 0
+    },
+    "OriginalContractDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Original contract start date"
+    },
+    "RenewalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Next renewal date"
+    },
+    "OverallScore": {
+      "type": "number",
+      "description": "Overall health score value"
+    },
+    "CurrScoreId": {
+      "type": "string",
+      "description": "Current health score identifier"
+    },
+    "SfdcAccountId": {
+      "type": "string",
+      "description": "Linked Salesforce account ID"
+    },
+    "ParentCompanyId": {
+      "type": "string",
+      "description": "Parent company Gsid for hierarchical relationships"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record last modification timestamp"
+    }
+  }
+}

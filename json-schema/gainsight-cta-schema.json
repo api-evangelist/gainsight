@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.gainsight.com/schemas/gainsight/cta.json",
+  "title": "Gainsight Call to Action (CTA)",
+  "description": "Represents a Call to Action record in Gainsight CS Cockpit, used to drive proactive customer success actions based on risk, opportunity, or lifecycle events.",
+  "type": "object",
+  "required": ["CompanyId", "TypeId", "ReasonId", "PriorityId", "StatusId"],
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "CTA unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "CTA name or subject"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "TypeId": {
+      "type": "string",
+      "description": "CTA type identifier (e.g., Risk, Opportunity, Lifecycle)"
+    },
+    "TypeName": {
+      "type": "string",
+      "description": "CTA type display name"
+    },
+    "ReasonId": {
+      "type": "string",
+      "description": "CTA reason identifier"
+    },
+    "ReasonName": {
+      "type": "string",
+      "description": "CTA reason display name"
+    },
+    "PriorityId": {
+      "type": "string",
+      "description": "Priority level identifier"
+    },
+    "StatusId": {
+      "type": "string",
+      "description": "CTA status identifier"
+    },
+    "StatusName": {
+      "type": "string",
+      "description": "Status display name"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Assigned owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Assigned owner name"
+    },
+    "DueDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date for the CTA"
+    },
+    "ClosedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the CTA was closed"
+    },
+    "Comments": {
+      "type": "string",
+      "description": "CTA comments or notes"
+    },
+    "Source": {
+      "type": "string",
+      "description": "Source that triggered the CTA (e.g., Rule, Manual, API)"
+    },
+    "PlaybookId": {
+      "type": "string",
+      "description": "Associated playbook identifier"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record last modification timestamp"
+    }
+  }
+}

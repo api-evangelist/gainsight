@@ -1,0 +1,429 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Success Plan API
+  description: >-
+    The Success Plan API enables creating, updating, and fetching Success Plans
+    and their configurations, supporting structured goal tracking for customer
+    engagements.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Success Plan API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Success_Plan_APIs/Success_Plan_APIs
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Success Plans
+    description: Manage success plans
+  - name: Objectives
+    description: Manage success plan objectives
+  - name: Configuration
+    description: Success plan configuration
+security:
+  - apiKey: []
+paths:
+  /successplans:
+    post:
+      operationId: createSuccessPlan
+      summary: Create a success plan
+      description: Create a new success plan for a company.
+      tags:
+        - Success Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SuccessPlanInput'
+      responses:
+        '200':
+          description: Success plan created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/SuccessPlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /successplans/{planId}:
+    get:
+      operationId: getSuccessPlan
+      summary: Get a success plan
+      description: Retrieve a specific success plan by ID.
+      tags:
+        - Success Plans
+      parameters:
+        - $ref: '#/components/parameters/planId'
+      responses:
+        '200':
+          description: Success plan returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/SuccessPlan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateSuccessPlan
+      summary: Update a success plan
+      description: Update an existing success plan.
+      tags:
+        - Success Plans
+      parameters:
+        - $ref: '#/components/parameters/planId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SuccessPlanInput'
+      responses:
+        '200':
+          description: Success plan updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/SuccessPlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /successplans/search:
+    post:
+      operationId: searchSuccessPlans
+      summary: Search success plans
+      description: Search for success plans using filter criteria.
+      tags:
+        - Success Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Success plans returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/SuccessPlan'
+                      totalCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /successplans/{planId}/objectives:
+    get:
+      operationId: listObjectives
+      summary: List objectives
+      description: Retrieve objectives for a specific success plan.
+      tags:
+        - Objectives
+      parameters:
+        - $ref: '#/components/parameters/planId'
+      responses:
+        '200':
+          description: Objectives returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Objective'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createObjective
+      summary: Create an objective
+      description: Add a new objective to a success plan.
+      tags:
+        - Objectives
+      parameters:
+        - $ref: '#/components/parameters/planId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectiveInput'
+      responses:
+        '200':
+          description: Objective created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Objective'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /successplans/config/types:
+    get:
+      operationId: getSuccessPlanTypes
+      summary: Get success plan types
+      description: Retrieve configured success plan types.
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: Success plan types returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Success plan unique identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+    SuccessPlan:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Success plan unique identifier
+        Name:
+          type: string
+          description: Plan name
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        TypeId:
+          type: string
+          description: Success plan type identifier
+        TypeName:
+          type: string
+          description: Type name
+        Status:
+          type: string
+          enum:
+            - Active
+            - Completed
+            - Archived
+          description: Plan status
+        OwnerId:
+          type: string
+          description: Plan owner user ID
+        OwnerName:
+          type: string
+          description: Plan owner name
+        StartDate:
+          type: string
+          format: date
+          description: Plan start date
+        EndDate:
+          type: string
+          format: date
+          description: Plan end date
+        Comments:
+          type: string
+          description: Plan comments
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+    SuccessPlanInput:
+      type: object
+      required:
+        - Name
+        - CompanyId
+        - TypeId
+      properties:
+        Name:
+          type: string
+        CompanyId:
+          type: string
+        TypeId:
+          type: string
+        Status:
+          type: string
+          enum:
+            - Active
+            - Completed
+            - Archived
+        OwnerId:
+          type: string
+        StartDate:
+          type: string
+          format: date
+        EndDate:
+          type: string
+          format: date
+        Comments:
+          type: string
+    Objective:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Objective unique identifier
+        Name:
+          type: string
+          description: Objective name
+        Description:
+          type: string
+          description: Objective description
+        SuccessPlanId:
+          type: string
+          description: Parent success plan Gsid
+        Status:
+          type: string
+          enum:
+            - Not Started
+            - In Progress
+            - Completed
+          description: Objective status
+        Priority:
+          type: string
+          description: Objective priority
+        DueDate:
+          type: string
+          format: date
+          description: Objective due date
+        CompletionPercentage:
+          type: number
+          description: Completion percentage
+        CreatedDate:
+          type: string
+          format: date-time
+        ModifiedDate:
+          type: string
+          format: date-time
+    ObjectiveInput:
+      type: object
+      required:
+        - Name
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        Status:
+          type: string
+          enum:
+            - Not Started
+            - In Progress
+            - Completed
+        Priority:
+          type: string
+        DueDate:
+          type: string
+          format: date

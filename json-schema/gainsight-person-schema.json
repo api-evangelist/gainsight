@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.gainsight.com/schemas/gainsight/person.json",
+  "title": "Gainsight Person",
+  "description": "Represents a person (contact) record in Gainsight CS, tracking customer stakeholders, their roles, and engagement data.",
+  "type": "object",
+  "required": ["Email"],
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Gainsight unique identifier for the person record"
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "First name",
+      "maxLength": 128
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Last name",
+      "maxLength": 128
+    },
+    "Email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "Title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "Role": {
+      "type": "string",
+      "description": "Contact role (e.g., Decision Maker, Champion, End User)"
+    },
+    "Phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "Location": {
+      "type": "string",
+      "description": "Location"
+    },
+    "LinkedinUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "LinkedIn profile URL"
+    },
+    "Timezone": {
+      "type": "string",
+      "description": "Timezone"
+    },
+    "SfdcContactId": {
+      "type": "string",
+      "description": "Linked Salesforce contact ID"
+    },
+    "NPS": {
+      "type": "number",
+      "description": "Net Promoter Score",
+      "minimum": -100,
+      "maximum": 100
+    },
+    "IsPrimary": {
+      "type": "boolean",
+      "description": "Whether this is the primary contact for the company"
+    },
+    "IsActive": {
+      "type": "boolean",
+      "description": "Whether the person record is active"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record last modification timestamp"
+    }
+  }
+}

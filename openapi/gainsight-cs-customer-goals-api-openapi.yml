@@ -1,0 +1,414 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Customer Goals API
+  description: >-
+    The Customer Goals API enables external systems to create, update, and
+    fetch customer goals programmatically, including template and metrics
+    management for structured goal tracking.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Customer Goals API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Customer_Goals_API/Customer_Goals_APIs
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Goals
+    description: Manage customer goals
+  - name: Templates
+    description: Manage goal templates
+  - name: Metrics
+    description: Manage goal metrics
+security:
+  - apiKey: []
+paths:
+  /goals:
+    post:
+      operationId: createGoal
+      summary: Create a customer goal
+      description: Create a new customer goal record.
+      tags:
+        - Goals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalInput'
+      responses:
+        '200':
+          description: Goal created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Goal'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /goals/{goalId}:
+    get:
+      operationId: getGoal
+      summary: Get a customer goal
+      description: Retrieve a specific customer goal by ID.
+      tags:
+        - Goals
+      parameters:
+        - $ref: '#/components/parameters/goalId'
+      responses:
+        '200':
+          description: Goal returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Goal'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateGoal
+      summary: Update a customer goal
+      description: Update an existing customer goal.
+      tags:
+        - Goals
+      parameters:
+        - $ref: '#/components/parameters/goalId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalInput'
+      responses:
+        '200':
+          description: Goal updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Goal'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /goals/search:
+    post:
+      operationId: searchGoals
+      summary: Search customer goals
+      description: Search for customer goals using filter criteria.
+      tags:
+        - Goals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Goals returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Goal'
+                      totalCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /goals/templates:
+    get:
+      operationId: listGoalTemplates
+      summary: List goal templates
+      description: Retrieve configured goal templates.
+      tags:
+        - Templates
+      responses:
+        '200':
+          description: Templates returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GoalTemplate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /goals/{goalId}/metrics:
+    get:
+      operationId: listGoalMetrics
+      summary: List goal metrics
+      description: Retrieve metrics associated with a customer goal.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/goalId'
+      responses:
+        '200':
+          description: Metrics returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GoalMetric'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: addGoalMetric
+      summary: Add a goal metric
+      description: Add a metric to a customer goal.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/goalId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalMetricInput'
+      responses:
+        '200':
+          description: Metric added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/GoalMetric'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    goalId:
+      name: goalId
+      in: path
+      required: true
+      description: Customer goal unique identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+    Goal:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Goal unique identifier
+        Name:
+          type: string
+          description: Goal name
+        Description:
+          type: string
+          description: Goal description
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        TemplateId:
+          type: string
+          description: Goal template identifier
+        Status:
+          type: string
+          enum:
+            - Not Started
+            - In Progress
+            - Achieved
+            - Missed
+          description: Goal status
+        OwnerId:
+          type: string
+          description: Goal owner user ID
+        OwnerName:
+          type: string
+          description: Goal owner name
+        TargetDate:
+          type: string
+          format: date
+          description: Target completion date
+        CompletionPercentage:
+          type: number
+          description: Progress percentage
+        CreatedDate:
+          type: string
+          format: date-time
+        ModifiedDate:
+          type: string
+          format: date-time
+    GoalInput:
+      type: object
+      required:
+        - Name
+        - CompanyId
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        CompanyId:
+          type: string
+        TemplateId:
+          type: string
+        Status:
+          type: string
+          enum:
+            - Not Started
+            - In Progress
+            - Achieved
+            - Missed
+        OwnerId:
+          type: string
+        TargetDate:
+          type: string
+          format: date
+    GoalTemplate:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Template identifier
+        name:
+          type: string
+          description: Template name
+        description:
+          type: string
+          description: Template description
+        category:
+          type: string
+          description: Template category
+        isActive:
+          type: boolean
+          description: Whether the template is active
+    GoalMetric:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Metric identifier
+        Name:
+          type: string
+          description: Metric name
+        GoalId:
+          type: string
+          description: Parent goal identifier
+        CurrentValue:
+          type: number
+          description: Current metric value
+        TargetValue:
+          type: number
+          description: Target metric value
+        Unit:
+          type: string
+          description: Measurement unit
+        LastUpdatedDate:
+          type: string
+          format: date-time
+    GoalMetricInput:
+      type: object
+      required:
+        - Name
+        - TargetValue
+      properties:
+        Name:
+          type: string
+        CurrentValue:
+          type: number
+        TargetValue:
+          type: number
+        Unit:
+          type: string
