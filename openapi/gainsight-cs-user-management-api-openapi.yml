@@ -22,12 +22,12 @@ servers:
         default: customer
         description: Customer-specific domain prefix
 tags:
-  - name: Users
-    description: Manage Gainsight users
   - name: Company Team
     description: Manage company team records
   - name: SCIM
     description: SCIM provisioning endpoints
+  - name: Users
+    description: Manage Gainsight users
 security:
   - apiKey: []
 paths:

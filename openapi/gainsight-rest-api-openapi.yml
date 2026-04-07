@@ -22,8 +22,6 @@ tags:
     description: Manage company records
   - name: People
     description: Manage person records
-  - name: Custom Objects
-    description: Manage custom object records
   - name: Reports
     description: Run reports and retrieve analytics data
 security:

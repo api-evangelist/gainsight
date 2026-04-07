@@ -22,10 +22,10 @@ servers:
         default: customer
         description: Customer-specific domain prefix
 tags:
-  - name: Objects
-    description: Retrieve object metadata
   - name: Fields
     description: Retrieve field metadata
+  - name: Objects
+    description: Retrieve object metadata
 security:
   - apiKey: []
 paths:

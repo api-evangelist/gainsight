@@ -22,12 +22,12 @@ servers:
         default: customer
         description: Customer-specific domain prefix
 tags:
-  - name: Success Plans
-    description: Manage success plans
-  - name: Objectives
-    description: Manage success plan objectives
   - name: Configuration
     description: Success plan configuration
+  - name: Objectives
+    description: Manage success plan objectives
+  - name: Success Plans
+    description: Manage success plans
 security:
   - apiKey: []
 paths:

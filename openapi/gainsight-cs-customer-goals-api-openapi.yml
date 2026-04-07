@@ -24,10 +24,10 @@ servers:
 tags:
   - name: Goals
     description: Manage customer goals
-  - name: Templates
-    description: Manage goal templates
   - name: Metrics
     description: Manage goal metrics
+  - name: Templates
+    description: Manage goal templates
 security:
   - apiKey: []
 paths:

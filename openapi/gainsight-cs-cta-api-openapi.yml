@@ -22,10 +22,10 @@ servers:
         default: customer
         description: Customer-specific domain prefix
 tags:
-  - name: CTAs
-    description: Create and manage Calls to Action
   - name: CTA Configuration
     description: Retrieve CTA type and reason configurations
+  - name: CTAs
+    description: Create and manage Calls to Action
 security:
   - apiKey: []
 paths:

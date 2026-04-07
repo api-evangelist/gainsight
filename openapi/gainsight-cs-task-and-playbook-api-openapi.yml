@@ -22,10 +22,10 @@ servers:
         default: customer
         description: Customer-specific domain prefix
 tags:
-  - name: Tasks
-    description: Manage tasks
   - name: Playbooks
     description: Retrieve playbook configurations
+  - name: Tasks
+    description: Manage tasks
 security:
   - apiKey: []
 paths:
