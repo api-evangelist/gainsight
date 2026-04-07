@@ -32,7 +32,7 @@ paths:
   /timeline/activities:
     post:
       operationId: createActivity
-      summary: Create a timeline activity
+      summary: Gainsight Create a timeline activity
       description: Create a new activity on the timeline for a company or relationship.
       tags:
         - Activities
@@ -61,7 +61,7 @@ paths:
   /timeline/activities/bulk:
     post:
       operationId: bulkCreateActivities
-      summary: Bulk create timeline activities
+      summary: Gainsight Bulk create timeline activities
       description: >-
         Create multiple activities in a single request. Supports payloads up to
         80MB.
@@ -104,7 +104,7 @@ paths:
   /timeline/activities/{activityId}:
     get:
       operationId: getActivity
-      summary: Get a timeline activity
+      summary: Gainsight Get a timeline activity
       description: Retrieve a specific timeline activity by ID.
       tags:
         - Activities
@@ -128,7 +128,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateActivity
-      summary: Update a timeline activity
+      summary: Gainsight Update a timeline activity
       description: Update an existing timeline activity.
       tags:
         - Activities
@@ -160,7 +160,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteActivity
-      summary: Delete a timeline activity
+      summary: Gainsight Delete a timeline activity
       description: Delete a timeline activity by ID.
       tags:
         - Activities
@@ -180,7 +180,7 @@ paths:
   /timeline/activities/search:
     post:
       operationId: searchActivities
-      summary: Search timeline activities
+      summary: Gainsight Search timeline activities
       description: Search for timeline activities using filter criteria.
       tags:
         - Activities
@@ -216,7 +216,7 @@ paths:
   /timeline/activityTypes:
     get:
       operationId: getActivityTypes
-      summary: Get activity types
+      summary: Gainsight Get activity types
       description: Retrieve the list of configured timeline activity types.
       tags:
         - Activity Types

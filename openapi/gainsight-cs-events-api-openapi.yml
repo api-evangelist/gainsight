@@ -30,7 +30,7 @@ paths:
   /events:
     post:
       operationId: publishEvent
-      summary: Publish an event
+      summary: Gainsight Publish an event
       description: >-
         Publish an event from an external system into Gainsight. Supports system
         asset events for triggering rules and workflows.
@@ -56,7 +56,7 @@ paths:
   /events/bulk:
     post:
       operationId: publishEventsBulk
-      summary: Bulk publish events
+      summary: Gainsight Bulk publish events
       description: Publish multiple events in a single request.
       tags:
         - Events
@@ -97,7 +97,7 @@ paths:
   /events/types:
     get:
       operationId: listEventTypes
-      summary: List event types
+      summary: Gainsight List event types
       description: Retrieve configured event types.
       tags:
         - Events

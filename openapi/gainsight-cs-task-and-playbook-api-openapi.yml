@@ -32,7 +32,7 @@ paths:
   /tasks:
     post:
       operationId: createTask
-      summary: Create a task
+      summary: Gainsight Create a task
       description: Create a new task associated with a CTA.
       tags:
         - Tasks
@@ -61,7 +61,7 @@ paths:
   /tasks/{taskId}:
     get:
       operationId: getTask
-      summary: Get a task
+      summary: Gainsight Get a task
       description: Retrieve a specific task by ID.
       tags:
         - Tasks
@@ -85,7 +85,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateTask
-      summary: Update a task
+      summary: Gainsight Update a task
       description: Update an existing task.
       tags:
         - Tasks
@@ -118,7 +118,7 @@ paths:
   /tasks/search:
     post:
       operationId: searchTasks
-      summary: Search tasks
+      summary: Gainsight Search tasks
       description: Search for tasks using filter criteria.
       tags:
         - Tasks
@@ -154,7 +154,7 @@ paths:
   /playbooks:
     get:
       operationId: listPlaybooks
-      summary: List playbooks
+      summary: Gainsight List playbooks
       description: Retrieve a list of configured playbooks.
       tags:
         - Playbooks
@@ -177,7 +177,7 @@ paths:
   /playbooks/{playbookId}:
     get:
       operationId: getPlaybook
-      summary: Get a playbook
+      summary: Gainsight Get a playbook
       description: Retrieve a specific playbook with its task templates.
       tags:
         - Playbooks

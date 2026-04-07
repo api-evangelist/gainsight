@@ -30,7 +30,7 @@ paths:
   /data/objects/Company:
     post:
       operationId: insertCompanies
-      summary: Insert company records
+      summary: Gainsight Insert company records
       description: >-
         Insert one or more company records into Gainsight. Supports up to 50
         records per call.
@@ -63,7 +63,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     put:
       operationId: updateCompanies
-      summary: Update company records
+      summary: Gainsight Update company records
       description: >-
         Update one or more company records. Requires a key field for matching.
         Supports up to 50 records per call.
@@ -104,7 +104,7 @@ paths:
   /data/objects/Company/search:
     post:
       operationId: searchCompanies
-      summary: Search company records
+      summary: Gainsight Search company records
       description: >-
         Search for company records using filter criteria. Returns up to 5000
         records per call.
@@ -130,7 +130,7 @@ paths:
   /data/objects/Company/{recordId}:
     get:
       operationId: getCompany
-      summary: Get a company record
+      summary: Gainsight Get a company record
       description: Retrieve a specific company record by its Gainsight ID.
       tags:
         - Companies
@@ -154,7 +154,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteCompany
-      summary: Delete a company record
+      summary: Gainsight Delete a company record
       description: Delete a company record by its Gainsight ID.
       tags:
         - Companies

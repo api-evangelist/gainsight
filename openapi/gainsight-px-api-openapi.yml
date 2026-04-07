@@ -35,7 +35,7 @@ paths:
   /users:
     get:
       operationId: listUsers
-      summary: List users
+      summary: Gainsight List users
       description: Retrieve a paginated list of users tracked in Gainsight PX.
       tags:
         - Users
@@ -65,7 +65,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createUser
-      summary: Create or update a user
+      summary: Gainsight Create or update a user
       description: Create a new user or update an existing user in Gainsight PX.
       tags:
         - Users
@@ -89,7 +89,7 @@ paths:
   /users/{userId}:
     get:
       operationId: getUser
-      summary: Get a user
+      summary: Gainsight Get a user
       description: Retrieve a specific user by their identifier.
       tags:
         - Users
@@ -108,7 +108,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateUser
-      summary: Update a user
+      summary: Gainsight Update a user
       description: Update specific attributes of a user.
       tags:
         - Users
@@ -133,7 +133,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteUser
-      summary: Delete a user
+      summary: Gainsight Delete a user
       description: Delete a user from Gainsight PX.
       tags:
         - Users
@@ -149,7 +149,7 @@ paths:
   /accounts:
     get:
       operationId: listAccounts
-      summary: List accounts
+      summary: Gainsight List accounts
       description: Retrieve a paginated list of accounts in Gainsight PX.
       tags:
         - Accounts
@@ -178,7 +178,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createAccount
-      summary: Create or update an account
+      summary: Gainsight Create or update an account
       description: Create a new account or update an existing account.
       tags:
         - Accounts
@@ -202,7 +202,7 @@ paths:
   /accounts/{accountId}:
     get:
       operationId: getAccount
-      summary: Get an account
+      summary: Gainsight Get an account
       description: Retrieve a specific account by ID.
       tags:
         - Accounts
@@ -221,7 +221,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateAccount
-      summary: Update an account
+      summary: Gainsight Update an account
       description: Update specific attributes of an account.
       tags:
         - Accounts
@@ -246,7 +246,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteAccount
-      summary: Delete an account
+      summary: Gainsight Delete an account
       description: Delete an account from Gainsight PX.
       tags:
         - Accounts
@@ -262,7 +262,7 @@ paths:
   /feature_match:
     get:
       operationId: listFeatures
-      summary: List features
+      summary: Gainsight List features
       description: Retrieve tracked features and their adoption metrics.
       tags:
         - Feature Match
@@ -290,7 +290,7 @@ paths:
   /custom_events:
     post:
       operationId: sendCustomEvent
-      summary: Send a custom event
+      summary: Gainsight Send a custom event
       description: Send a custom event for a user to track specific interactions.
       tags:
         - Custom Events
@@ -310,7 +310,7 @@ paths:
   /engagements:
     get:
       operationId: listEngagements
-      summary: List engagements
+      summary: Gainsight List engagements
       description: Retrieve a list of in-app engagements.
       tags:
         - Engagements
@@ -338,7 +338,7 @@ paths:
   /subscriptions:
     get:
       operationId: listSubscriptions
-      summary: List event subscriptions
+      summary: Gainsight List event subscriptions
       description: Retrieve a list of configured event subscriptions.
       tags:
         - Subscription
@@ -358,7 +358,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createSubscription
-      summary: Create an event subscription
+      summary: Gainsight Create an event subscription
       description: Create a new webhook subscription for events.
       tags:
         - Subscription

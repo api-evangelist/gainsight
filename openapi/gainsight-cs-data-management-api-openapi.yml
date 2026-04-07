@@ -32,7 +32,7 @@ paths:
   /meta/objects:
     get:
       operationId: listObjects
-      summary: List objects
+      summary: Gainsight List objects
       description: >-
         Retrieve metadata for all Gainsight objects including standard and
         custom objects.
@@ -57,7 +57,7 @@ paths:
   /meta/objects/{objectName}:
     get:
       operationId: getObject
-      summary: Get object metadata
+      summary: Gainsight Get object metadata
       description: Retrieve metadata for a specific Gainsight object.
       tags:
         - Objects
@@ -82,7 +82,7 @@ paths:
   /meta/objects/{objectName}/fields:
     get:
       operationId: listFields
-      summary: List fields for an object
+      summary: Gainsight List fields for an object
       description: Retrieve field metadata for a specific Gainsight object.
       tags:
         - Fields
@@ -109,7 +109,7 @@ paths:
   /meta/objects/{objectName}/fields/{fieldName}:
     get:
       operationId: getField
-      summary: Get field metadata
+      summary: Gainsight Get field metadata
       description: Retrieve metadata for a specific field on a Gainsight object.
       tags:
         - Fields

@@ -34,7 +34,7 @@ paths:
   /successplans:
     post:
       operationId: createSuccessPlan
-      summary: Create a success plan
+      summary: Gainsight Create a success plan
       description: Create a new success plan for a company.
       tags:
         - Success Plans
@@ -63,7 +63,7 @@ paths:
   /successplans/{planId}:
     get:
       operationId: getSuccessPlan
-      summary: Get a success plan
+      summary: Gainsight Get a success plan
       description: Retrieve a specific success plan by ID.
       tags:
         - Success Plans
@@ -87,7 +87,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateSuccessPlan
-      summary: Update a success plan
+      summary: Gainsight Update a success plan
       description: Update an existing success plan.
       tags:
         - Success Plans
@@ -120,7 +120,7 @@ paths:
   /successplans/search:
     post:
       operationId: searchSuccessPlans
-      summary: Search success plans
+      summary: Gainsight Search success plans
       description: Search for success plans using filter criteria.
       tags:
         - Success Plans
@@ -156,7 +156,7 @@ paths:
   /successplans/{planId}/objectives:
     get:
       operationId: listObjectives
-      summary: List objectives
+      summary: Gainsight List objectives
       description: Retrieve objectives for a specific success plan.
       tags:
         - Objectives
@@ -182,7 +182,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createObjective
-      summary: Create an objective
+      summary: Gainsight Create an objective
       description: Add a new objective to a success plan.
       tags:
         - Objectives
@@ -213,7 +213,7 @@ paths:
   /successplans/config/types:
     get:
       operationId: getSuccessPlanTypes
-      summary: Get success plan types
+      summary: Gainsight Get success plan types
       description: Retrieve configured success plan types.
       tags:
         - Configuration

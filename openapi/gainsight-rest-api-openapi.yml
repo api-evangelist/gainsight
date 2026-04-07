@@ -32,7 +32,7 @@ paths:
   /v1/companies:
     get:
       operationId: listCompanies
-      summary: List companies
+      summary: Gainsight List companies
       description: Retrieve a list of company records from Gainsight.
       tags:
         - Companies
@@ -62,7 +62,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createCompany
-      summary: Create a company
+      summary: Gainsight Create a company
       description: Create a new company record in Gainsight.
       tags:
         - Companies
@@ -86,7 +86,7 @@ paths:
   /v1/companies/{companyId}:
     get:
       operationId: getCompany
-      summary: Get a company
+      summary: Gainsight Get a company
       description: Retrieve a specific company record by ID.
       tags:
         - Companies
@@ -110,7 +110,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateCompany
-      summary: Update a company
+      summary: Gainsight Update a company
       description: Update an existing company record.
       tags:
         - Companies
@@ -137,7 +137,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteCompany
-      summary: Delete a company
+      summary: Gainsight Delete a company
       description: Delete a company record by ID.
       tags:
         - Companies
@@ -157,7 +157,7 @@ paths:
   /v1/people:
     get:
       operationId: listPeople
-      summary: List people
+      summary: Gainsight List people
       description: Retrieve a list of person records from Gainsight.
       tags:
         - People
@@ -188,7 +188,7 @@ paths:
   /v1/reports:
     post:
       operationId: runReport
-      summary: Run a report
+      summary: Gainsight Run a report
       description: Execute a report query against Gainsight data.
       tags:
         - Reports

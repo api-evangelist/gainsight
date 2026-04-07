@@ -34,7 +34,7 @@ paths:
   /goals:
     post:
       operationId: createGoal
-      summary: Create a customer goal
+      summary: Gainsight Create a customer goal
       description: Create a new customer goal record.
       tags:
         - Goals
@@ -63,7 +63,7 @@ paths:
   /goals/{goalId}:
     get:
       operationId: getGoal
-      summary: Get a customer goal
+      summary: Gainsight Get a customer goal
       description: Retrieve a specific customer goal by ID.
       tags:
         - Goals
@@ -87,7 +87,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateGoal
-      summary: Update a customer goal
+      summary: Gainsight Update a customer goal
       description: Update an existing customer goal.
       tags:
         - Goals
@@ -120,7 +120,7 @@ paths:
   /goals/search:
     post:
       operationId: searchGoals
-      summary: Search customer goals
+      summary: Gainsight Search customer goals
       description: Search for customer goals using filter criteria.
       tags:
         - Goals
@@ -156,7 +156,7 @@ paths:
   /goals/templates:
     get:
       operationId: listGoalTemplates
-      summary: List goal templates
+      summary: Gainsight List goal templates
       description: Retrieve configured goal templates.
       tags:
         - Templates
@@ -179,7 +179,7 @@ paths:
   /goals/{goalId}/metrics:
     get:
       operationId: listGoalMetrics
-      summary: List goal metrics
+      summary: Gainsight List goal metrics
       description: Retrieve metrics associated with a customer goal.
       tags:
         - Metrics
@@ -205,7 +205,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: addGoalMetric
-      summary: Add a goal metric
+      summary: Gainsight Add a goal metric
       description: Add a metric to a customer goal.
       tags:
         - Metrics

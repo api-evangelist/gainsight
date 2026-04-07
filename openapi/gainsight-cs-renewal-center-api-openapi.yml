@@ -30,7 +30,7 @@ paths:
   /data/objects/Opportunity:
     post:
       operationId: createOpportunity
-      summary: Create an opportunity
+      summary: Gainsight Create an opportunity
       description: >-
         Create a new opportunity record in the Gainsight Opportunity object.
         Supports renewal, upsell, and downsell booking types.
@@ -63,7 +63,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     put:
       operationId: updateOpportunity
-      summary: Update opportunities
+      summary: Gainsight Update opportunities
       description: Update one or more opportunity records.
       tags:
         - Opportunities
@@ -102,7 +102,7 @@ paths:
   /data/objects/Opportunity/search:
     post:
       operationId: searchOpportunities
-      summary: Search opportunities
+      summary: Gainsight Search opportunities
       description: Search for opportunity records using filter criteria.
       tags:
         - Opportunities
@@ -138,7 +138,7 @@ paths:
   /data/objects/Opportunity/{recordId}:
     get:
       operationId: getOpportunity
-      summary: Get an opportunity
+      summary: Gainsight Get an opportunity
       description: Retrieve a specific opportunity by ID.
       tags:
         - Opportunities

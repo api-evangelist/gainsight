@@ -30,7 +30,7 @@ paths:
   /data/objects/{objectName}:
     post:
       operationId: insertCustomObjectRecords
-      summary: Insert custom object records
+      summary: Gainsight Insert custom object records
       description: >-
         Insert one or more records into a custom object. Supports up to 50
         records per call.
@@ -66,7 +66,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     put:
       operationId: updateCustomObjectRecords
-      summary: Update custom object records
+      summary: Gainsight Update custom object records
       description: >-
         Update one or more records in a custom object. Requires key fields for
         matching. Supports up to 50 records per call.
@@ -108,7 +108,7 @@ paths:
   /data/objects/{objectName}/search:
     post:
       operationId: searchCustomObjectRecords
-      summary: Search custom object records
+      summary: Gainsight Search custom object records
       description: >-
         Search for records in a custom object using filter criteria. Returns up
         to 5000 records per call.
@@ -136,7 +136,7 @@ paths:
   /data/objects/{objectName}/{recordId}:
     get:
       operationId: getCustomObjectRecord
-      summary: Get a custom object record
+      summary: Gainsight Get a custom object record
       description: Retrieve a specific custom object record by ID.
       tags:
         - Custom Objects
@@ -161,7 +161,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteCustomObjectRecord
-      summary: Delete a custom object record
+      summary: Gainsight Delete a custom object record
       description: Delete a custom object record by ID.
       tags:
         - Custom Objects

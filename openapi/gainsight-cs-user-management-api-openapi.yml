@@ -34,7 +34,7 @@ paths:
   /users:
     get:
       operationId: listUsers
-      summary: List users
+      summary: Gainsight List users
       description: Retrieve a list of Gainsight users.
       tags:
         - Users
@@ -75,7 +75,7 @@ paths:
   /users/{userId}:
     get:
       operationId: getUser
-      summary: Get a user
+      summary: Gainsight Get a user
       description: Retrieve a specific Gainsight user by ID.
       tags:
         - Users
@@ -99,7 +99,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateUser
-      summary: Update a user
+      summary: Gainsight Update a user
       description: Update a Gainsight user record.
       tags:
         - Users
@@ -127,7 +127,7 @@ paths:
   /users/{userId}/deactivate:
     post:
       operationId: deactivateUser
-      summary: Deactivate a user
+      summary: Gainsight Deactivate a user
       description: Deactivate a Gainsight user account.
       tags:
         - Users
@@ -147,7 +147,7 @@ paths:
   /companyteam:
     post:
       operationId: upsertCompanyTeam
-      summary: Upsert company team records
+      summary: Gainsight Upsert company team records
       description: >-
         Insert or update company team records that associate Gainsight users
         with company accounts.
@@ -180,7 +180,7 @@ paths:
   /companyteam/search:
     post:
       operationId: searchCompanyTeam
-      summary: Search company team records
+      summary: Gainsight Search company team records
       description: Search for company team records using filter criteria.
       tags:
         - Company Team
@@ -216,7 +216,7 @@ paths:
   /scim/v2/Users:
     get:
       operationId: scimListUsers
-      summary: SCIM list users
+      summary: Gainsight SCIM list users
       description: List users via SCIM 2.0 protocol for identity provider integration.
       tags:
         - SCIM
@@ -264,7 +264,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: scimCreateUser
-      summary: SCIM create user
+      summary: Gainsight SCIM create user
       description: Provision a new user via SCIM 2.0.
       tags:
         - SCIM
@@ -290,7 +290,7 @@ paths:
   /scim/v2/Users/{scimUserId}:
     get:
       operationId: scimGetUser
-      summary: SCIM get user
+      summary: Gainsight SCIM get user
       description: Retrieve a user via SCIM 2.0.
       tags:
         - SCIM
@@ -309,7 +309,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: scimUpdateUser
-      summary: SCIM update user
+      summary: Gainsight SCIM update user
       description: Update a user via SCIM 2.0.
       tags:
         - SCIM
@@ -334,7 +334,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: scimDeleteUser
-      summary: SCIM delete user
+      summary: Gainsight SCIM delete user
       description: De-provision a user via SCIM 2.0.
       tags:
         - SCIM

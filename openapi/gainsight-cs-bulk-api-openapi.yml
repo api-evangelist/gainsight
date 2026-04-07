@@ -30,7 +30,7 @@ paths:
   /bulk/jobs:
     post:
       operationId: createBulkJob
-      summary: Create a bulk job
+      summary: Gainsight Create a bulk job
       description: >-
         Create a new bulk import job to insert or update records from a CSV
         file into a Gainsight object. Rate limited to 10 calls per hour and
@@ -87,7 +87,7 @@ paths:
           description: Rate limit exceeded
     get:
       operationId: listBulkJobs
-      summary: List bulk jobs
+      summary: Gainsight List bulk jobs
       description: Retrieve a list of bulk import jobs.
       tags:
         - Jobs
@@ -138,7 +138,7 @@ paths:
   /bulk/jobs/{jobId}:
     get:
       operationId: getBulkJob
-      summary: Get bulk job status
+      summary: Gainsight Get bulk job status
       description: Retrieve the status and details of a specific bulk job.
       tags:
         - Jobs
@@ -163,7 +163,7 @@ paths:
   /bulk/jobs/{jobId}/errors:
     get:
       operationId: getBulkJobErrors
-      summary: Get bulk job errors
+      summary: Gainsight Get bulk job errors
       description: Retrieve error details for a completed bulk job.
       tags:
         - Jobs
