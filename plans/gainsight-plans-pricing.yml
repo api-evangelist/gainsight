@@ -1,0 +1,80 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Gainsight
+providerId: gainsight
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Customer Success
+  - Customer Health
+description: Gainsight CSM Essentials / Enterprise editions with custom per-user pricing.
+sources:
+  - https://www.gainsight.com/pricing/
+plans:
+  - id: gainsight-essentials
+    name: Essentials
+    type: enterprise
+    description: Custom pricing. 10 full users; 100 customers per user.
+    entries:
+      - label: Full users
+        name: full_users
+        type: quota
+        metric: user
+        limit: 10
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Customers per user
+        name: customers_per_user
+        type: quota
+        metric: customer
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: AI Insights and Automations
+      - name: Customer 360
+      - name: Playbooks + Success Plans
+      - name: Dashboards
+      - name: Health Scorecards
+      - name: Surveys
+      - name: Digital Journeys
+      - name: Unlimited Viewer Licenses
+  - id: gainsight-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom pricing. 20 full users; 200 customers per user.
+    entries:
+      - label: Full users
+        name: full_users
+        type: quota
+        metric: user
+        limit: 20
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Customers per user
+        name: customers_per_user
+        type: quota
+        metric: customer
+        limit: 200
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: All Essentials features
+      - name: Company News
+      - name: Renewal/Expansion Forecasting
+      - name: Org Mapping + Sponsor Tracking
+      - name: Unlimited Viewer Licenses

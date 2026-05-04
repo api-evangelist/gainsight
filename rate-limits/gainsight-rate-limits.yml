@@ -1,0 +1,29 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Gainsight
+providerId: gainsight
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Customer Success
+description: Gainsight API rate limits per tenant (Salesforce or NXT).
+sources:
+  - https://www.gainsight.com/pricing/
+  - https://support.gainsight.com/CC/API_Documentation
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+limits:
+  - name: REST API (default)
+    scope: tenant
+    metric: requests_per_minute
+    limit: 100
+    timeFrame: minute
+  - name: Bulk Data Load
+    scope: tenant
+    metric: concurrent_jobs
+    limit: 5
