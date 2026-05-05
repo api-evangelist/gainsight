@@ -1,0 +1,47 @@
+---
+title: "Why Scaling Customer Success With AI Doesn’t Mean Scaling Down Human Contact"
+url: "https://www.gainsight.com/blog/why-scaling-customer-success-with-ai-doesnt-mean-scaling-down-human-contact/"
+date: "Fri, 27 Mar 2026 18:52:59 +0000"
+author: "Riana Upton"
+feed_url: "https://www.gainsight.com/feed/"
+---
+<p>The conventional wisdom around AI and Customer Success (CS) goes something like this: automation handles the repetitive work, and CSMs get to focus on higher-value activities. Fewer manual tasks, more strategic conversations. Efficiency scales up, but headcount doesn&#8217;t have to.</p>
+<p>The most forward-thinking CS leaders are taking it a step further by asking a harder question. If agents free up your team&#8217;s time, what are you actually doing with it?</p>
+<p><a href="https://www.linkedin.com/in/cassiebrown/" target="_blank">Cassie Vaughn</a>, RVP of Customer Success at <a href="https://monday.com/" target="_blank">monday.com</a>, has a clear answer. Having grown from Enterprise CSM to leading a team of 100+ in just under six years, Cassie joined <a href="https://www.linkedin.com/in/jschachter/" target="_blank">Josh Schachter</a> on the <a href="https://www.gainsight.com/presents/series/unchurned/" target="_blank">[Un]Churned podcast</a> to explain why she made a deliberate choice this year to double the amount of time her high-touch CSMs spend with customers. Not despite the AI investments her team is making, but because of them.</p>
+<p>Retention can’t be automated, and if you treat AI as a way to do more with less human contact, you may be solving the wrong problem entirely.</p>
+<p><center></center></p>
+<h2>The Automation Trap</h2>
+<p>There&#8217;s a version of the AI-in-CS story that&#8217;s mostly about efficiency. Agents handle discovery, synthesize call notes, trigger playbooks, and surface risk signals. CSMs cover more accounts, and ultimately, the cost-per-customer goes down.</p>
+<p>While this is a real and meaningful improvement, Cassie&#8217;s team at monday.com is building toward something different. She’s building a model where automation handles what&#8217;s repeatable, specifically so CSMs can go deeper on what isn&#8217;t.</p>
+<p>&#8220;If it&#8217;s a playbook, if it&#8217;s a framework, if it&#8217;s something that&#8217;s repeatable, it can be done by an agent,&#8221; Cassie says. What agents can&#8217;t do is build a value narrative. They can&#8217;t walk into a customer&#8217;s office, map out a full workflow end-to-end, and identify which parts of that workflow AI will make obsolete in the next two years. An agent can’t build the trust required for an executive to stake their roadmap on your product.</p>
+<p>That&#8217;s the work Cassie wants her CSMs doing, and the only way to make room for it is to give them the tools that take the transactional work off their plates entirely.</p>
+<h2>Why Value Measurement Is Still a Human Problem</h2>
+<p>There’s a bigger challenge behind all this that no CS team has fully figured out: how do you really measure the value your product provides?</p>
+<p>Cassie says, &#8220;I was at a SaaS conference a few years ago, and there was a panel of CS leaders from some of the biggest names in the space. I asked how they were making the connection to customer outcomes. There were no good answers.&#8221;</p>
+<p>Monday.com is a horizontal platform used across industries for everything from project management to CRM workflows, so this challenge is particularly top-of-mind. With such a wide range of use cases, there&#8217;s no single universal metric that captures value across every customer. So rather than chasing one, Cassie&#8217;s team co-builds <a href="https://www.gainsight.com/event/the-new-rules-of-cs-treating-onboarding-as-a-revenue-predictor/" target="_blank">custom value narratives</a> with customers on-site: whiteboarding their full process from start to finish, understanding the outcomes they&#8217;re trying to drive, and then mapping how monday.com fits in.</p>
+<p>&#8220;The attachment doesn&#8217;t exist without a human being able to do that,&#8221; she says.</p>
+<p>Taking it a step deeper, they ask which parts of a customer’s workflow will be automated or replaced by AI in the next year or two, and then help customers prepare for that future now. For CS leaders, this is what separates a reactive support team from a true strategic partner.</p>
+<h2>The Agent Manager: A New Kind of CSM</h2>
+<p>More time is only half of it. The real question is what the CSM role is actually supposed to look like when agents are doing the rest.</p>
+<p>Cassie&#8217;s team is actively deploying agents to handle tasks that used to consume hours: basic discovery, optimization recommendations, and building workflows from scratch. The level to which an agent augments the team differs by segment:</p>
+<h4>Medium-Touch Segment</h4>
+<p>A dedicated tech team runs a more agent-led motion. They handle discovery, optimization recommendations, and workflow builds that used to consume hours of a CSM&#8217;s time. </p>
+<h4>High-Touch Segment</h4>
+<p>CSMs are on-site, building executive relationships, and making the judgment calls that no agent can replicate. Agents support that work, but they don&#8217;t define it.</p>
+<p>As Customer Success continues to adopt more AI- and agentic-based ways of operating, CS leaders have a new responsibility. &#8220;The role of the CSM is shifting to being an agent manager,&#8221; Cassie says. &#8220;How do you call the right agents at the right time? How do you make it so that you don&#8217;t even have to be the one to deploy the agent?&#8221;</p>
+<p>Monday.com is currently running this model, and it’s shaping the way they hire. The playbook CSM, who’s skilled at following risk through a success plan, is increasingly doing work that agents can replicate. What agents can&#8217;t replicate is domain expertise, commercial judgment, and the kind of curiosity that leads a CSM to ask a harder question than the one on the agenda.</p>
+<h2>Humans Should Own the Revenue Conversation</h2>
+<p>Freeing up CSM time only matters if that time is pointed at the right things. For Cassie, one of those things is revenue accountability, including variable compensation tied to retention and growth outcomes.</p>
+<p>In the past, monday.com operated without variable comp, even for its sales team. It was part of the culture, and CS was no exception. But as the company crossed the billion-dollar threshold and existing-customer revenue became a primary growth driver, the logic shifted. Retention became a true north metric. </p>
+<p>&#8220;If you want to say that you influence revenue, you have to put your money where your mouth is,&#8221; Cassie says. &#8220;Be willing to take on a stake in the game.&#8221;</p>
+<p>The change also strengthened the coaching dynamic. When Cassie coaches her team on a risk signal, she can add: &#8220;I care about this because I&#8217;m getting paid on it too.&#8221; That shared accountability creates a different quality of ownership and changes how CSMs think about every conversation they have with a customer.</p>
+<p>Cassie puts it this way: “<a href="https://www.gainsight.com/resource/a-playbook-for-customer-success-leaders-building-the-modern-cs-team/" target="_blank">The CSM is actually more commercial</a> than a lot of the sales functions because consumption and the way that you&#8217;re generating revenue is adoption at the end of the day. And the people who know how to best drive stronger usage or better understanding of how to consume your product are customer success managers.”</p>
+<h2>What CS Leaders Should Take From This</h2>
+<p>The CS orgs that win in the next few years (or months, at this rate) won’t be the ones that scale down human contact. They’ll be the ones who become ruthlessly intentional about where human time actually creates value and by <a href="https://www.gainsight.com/resource/the-future-of-retention-is-agentic/" target="_blank">building the systems that protect it</a>.</p>
+<p>That means deploying agents to handle what&#8217;s repeatable, training CSMs to manage those agents, and focusing their energy on judgment, relationships, and strategic guidance. It means building value narratives with customers, not for them. It also means making CS accountable for the revenue outcomes it&#8217;s already influencing.</p>
+<p>AI gives CS teams the capacity to do all of this. The question is whether CS leaders are building toward it or just using it to get leaner.</p>
+<h2>Join the [Un]Churned Community</h2>
+<p>Every week on the <a href="https://open.spotify.com/show/7trN4hMpLdFrQDBzDKs7w2?si=33fd2978ea144705" target="_blank">[Un]Churned podcast</a>, host Josh Schachter sits down with CS and revenue leaders on the front lines of retention, expansion, and the agentic era. </p>
+<p><a href="https://www.gainsight.com/episode/how-monday-com-turned-csms-into-revenue-owners-ft-cassie-vaughn-monday-com/" target="_blank">Listen to Cassie’s full episode here.</a></p>
+<p>For more actionable insights, subscribe to our <a href="https://unchurned.gainsight.com/" target="_blank">[Un]Churned Substack</a>, where you’ll receive weekly content delivered straight to your inbox.</p>
+<p>The post <a href="https://www.gainsight.com/blog/why-scaling-customer-success-with-ai-doesnt-mean-scaling-down-human-contact/">Why Scaling Customer Success With AI Doesn&#8217;t Mean Scaling Down Human Contact</a> appeared first on <a href="https://www.gainsight.com">Gainsight Software</a>.</p>

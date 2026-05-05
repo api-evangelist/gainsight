@@ -1,0 +1,13 @@
+{
+  "repo": "gainsight",
+  "feeds": [
+    {
+      "source": "https://www.gainsight.com/blog/",
+      "feed_url": "https://www.gainsight.com/feed/",
+      "saved": 10,
+      "title": "Gainsight Software"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:28:03Z"
+}
