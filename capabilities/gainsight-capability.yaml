@@ -1,0 +1,186 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS Bulk API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from
+    CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  tags:
+  - Gainsight
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: gainsight
+    baseUri: https://customer.gainsightcloud.com/v1
+    description: Gainsight CS Bulk API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: accessKey
+      value: '{{GAINSIGHT_TOKEN}}'
+    resources:
+    - name: bulk-jobs
+      path: /bulk/jobs
+      operations:
+      - name: createbulkjob
+        method: POST
+        description: Gainsight Create a bulk job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listbulkjobs
+        method: GET
+        description: Gainsight List bulk jobs
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter by job status
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of jobs to return
+        - name: offset
+          in: query
+          type: integer
+          description: Offset for pagination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: bulk-jobs-jobid
+      path: /bulk/jobs/{jobId}
+      operations:
+      - name: getbulkjob
+        method: GET
+        description: Gainsight Get bulk job status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: bulk-jobs-jobid-errors
+      path: /bulk/jobs/{jobId}/errors
+      operations:
+      - name: getbulkjoberrors
+        method: GET
+        description: Gainsight Get bulk job errors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: gainsight-rest
+    description: REST adapter for Gainsight CS Bulk API.
+    resources:
+    - path: /bulk/jobs
+      name: createbulkjob
+      operations:
+      - method: POST
+        name: createbulkjob
+        description: Gainsight Create a bulk job
+        call: gainsight.createbulkjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /bulk/jobs
+      name: listbulkjobs
+      operations:
+      - method: GET
+        name: listbulkjobs
+        description: Gainsight List bulk jobs
+        call: gainsight.listbulkjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /bulk/jobs/{jobId}
+      name: getbulkjob
+      operations:
+      - method: GET
+        name: getbulkjob
+        description: Gainsight Get bulk job status
+        call: gainsight.getbulkjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /bulk/jobs/{jobId}/errors
+      name: getbulkjoberrors
+      operations:
+      - method: GET
+        name: getbulkjoberrors
+        description: Gainsight Get bulk job errors
+        call: gainsight.getbulkjoberrors
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: gainsight-mcp
+    transport: http
+    description: MCP adapter for Gainsight CS Bulk API for AI agent use.
+    tools:
+    - name: createbulkjob
+      description: Gainsight Create a bulk job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: gainsight.createbulkjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listbulkjobs
+      description: Gainsight List bulk jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gainsight.listbulkjobs
+      with:
+        status: tools.status
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: status
+        type: string
+        description: Filter by job status
+      - name: limit
+        type: integer
+        description: Maximum number of jobs to return
+      - name: offset
+        type: integer
+        description: Offset for pagination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getbulkjob
+      description: Gainsight Get bulk job status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gainsight.getbulkjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getbulkjoberrors
+      description: Gainsight Get bulk job errors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gainsight.getbulkjoberrors
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_TOKEN: GAINSIGHT_TOKEN
