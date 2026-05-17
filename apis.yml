@@ -16,7 +16,7 @@ apis:
       - Customer Success
       - SaaS
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/PX/API_for_Developers
       - type: authentication
         url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
@@ -38,11 +38,11 @@ apis:
       - Product Experience
       - User Engagement
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
       - type: api-key
         url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
-      - type: documentation
+      - type: Documentation
         url: https://gainsightpx.docs.apiary.io/
       - type: OpenAPI
         url: openapi/gainsight-px-api-openapi.yml
@@ -57,7 +57,7 @@ apis:
       - Companies
       - Customer Success
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Company_and_Relationship_API/Company_API_Documentation
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -73,7 +73,7 @@ apis:
       - Customer Success
       - People
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Person_API/People_API_Documentation
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -89,7 +89,7 @@ apis:
       - Customer Success
       - Data Management
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Custom_Object_API/Gainsight_Custom_Object_API_Documentation
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -105,7 +105,7 @@ apis:
       - Cockpit
       - Customer Success
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Call_To_Action_(CTA)_API_Documentation
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -121,7 +121,7 @@ apis:
       - Customer Success
       - Timeline
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Timeline_API/Timeline_APIs
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -137,7 +137,7 @@ apis:
       - Goal Tracking
       - Success Plans
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Success_Plan_APIs/Success_Plan_APIs
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -153,7 +153,7 @@ apis:
       - Data Management
       - Metadata
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Data_Management_APIs/Data_Management_APIs
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -170,9 +170,9 @@ apis:
       - Customer Success
       - Data Import
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_API
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -189,7 +189,7 @@ apis:
       - Events
       - Webhooks
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Events_API/Events_API
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -207,11 +207,11 @@ apis:
       - SCIM
       - User Management
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/User_Management_APIs
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/SCIM_API
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/API_for_Company_Team_Record
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -227,7 +227,7 @@ apis:
       - Goals
       - Outcomes
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Customer_Goals_API/Customer_Goals_APIs
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -244,7 +244,7 @@ apis:
       - Opportunities
       - Renewals
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Renewal_Center_API/Renewal_Center_API
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -261,7 +261,7 @@ apis:
       - Playbooks
       - Tasks
     properties:
-      - type: documentation
+      - type: Documentation
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
       - type: authentication
         url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
@@ -276,7 +276,7 @@ common:
     url: https://www.gainsight.com/terms-of-service/
   - type: privacy-policy
     url: https://www.gainsight.com/privacy-policy/
-  - type: status
+  - type: StatusPage
     url: https://trust.gainsight.com/
   - type: developer-docs
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs
@@ -292,7 +292,7 @@ common:
     url: https://www.gainsight.com/blog/
   - type: education
     url: https://education.gainsight.com
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/gainsight-context.jsonld
   - type: JSONSchema
     url: json-schema/gainsight-company-schema.json
