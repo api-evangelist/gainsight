@@ -1,0 +1,107 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS Success Plan API — Objectives
+  description: 'Gainsight CS Success Plan API — Objectives. 2 operations. Lead operation: Gainsight List objectives. Self-contained
+    Naftiko capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Objectives
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-success-plan-objectives
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Success Plan API — Objectives business capability. Self-contained, no shared references.
+    resources:
+    - name: successplans-planId-objectives
+      path: /successplans/{planId}/objectives
+      operations:
+      - name: listobjectives
+        method: GET
+        description: Gainsight List objectives
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createobjective
+        method: POST
+        description: Gainsight Create an objective
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-success-plan-objectives-rest
+    port: 8080
+    description: REST adapter for Gainsight CS Success Plan API — Objectives. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/successplans/{planid}/objectives
+      name: successplans-planid-objectives
+      description: REST surface for successplans-planId-objectives.
+      operations:
+      - method: GET
+        name: listobjectives
+        description: Gainsight List objectives
+        call: cs-success-plan-objectives.listobjectives
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createobjective
+        description: Gainsight Create an objective
+        call: cs-success-plan-objectives.createobjective
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-success-plan-objectives-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS Success Plan API — Objectives. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: gainsight-list-objectives
+      description: Gainsight List objectives
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cs-success-plan-objectives.listobjectives
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-create-objective
+      description: Gainsight Create an objective
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cs-success-plan-objectives.createobjective
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

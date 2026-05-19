@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS Customer Goals API — Templates
+  description: 'Gainsight CS Customer Goals API — Templates. 1 operations. Lead operation: Gainsight List goal templates.
+    Self-contained Naftiko capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Templates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-customer-goals-templates
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Customer Goals API — Templates business capability. Self-contained, no shared references.
+    resources:
+    - name: goals-templates
+      path: /goals/templates
+      operations:
+      - name: listgoaltemplates
+        method: GET
+        description: Gainsight List goal templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-customer-goals-templates-rest
+    port: 8080
+    description: REST adapter for Gainsight CS Customer Goals API — Templates. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/goals/templates
+      name: goals-templates
+      description: REST surface for goals-templates.
+      operations:
+      - method: GET
+        name: listgoaltemplates
+        description: Gainsight List goal templates
+        call: cs-customer-goals-templates.listgoaltemplates
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-customer-goals-templates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS Customer Goals API — Templates. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: gainsight-list-goal-templates
+      description: Gainsight List goal templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cs-customer-goals-templates.listgoaltemplates
+      outputParameters:
+      - type: object
+        mapping: $.

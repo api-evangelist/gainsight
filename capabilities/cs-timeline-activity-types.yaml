@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS Timeline API — Activity Types
+  description: 'Gainsight CS Timeline API — Activity Types. 1 operations. Lead operation: Gainsight Get activity types. Self-contained
+    Naftiko capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Activity Types
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-timeline-activity-types
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Timeline API — Activity Types business capability. Self-contained, no shared references.
+    resources:
+    - name: timeline-activityTypes
+      path: /timeline/activityTypes
+      operations:
+      - name: getactivitytypes
+        method: GET
+        description: Gainsight Get activity types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-timeline-activity-types-rest
+    port: 8080
+    description: REST adapter for Gainsight CS Timeline API — Activity Types. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/timeline/activitytypes
+      name: timeline-activitytypes
+      description: REST surface for timeline-activityTypes.
+      operations:
+      - method: GET
+        name: getactivitytypes
+        description: Gainsight Get activity types
+        call: cs-timeline-activity-types.getactivitytypes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-timeline-activity-types-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS Timeline API — Activity Types. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: gainsight-get-activity-types
+      description: Gainsight Get activity types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cs-timeline-activity-types.getactivitytypes
+      outputParameters:
+      - type: object
+        mapping: $.

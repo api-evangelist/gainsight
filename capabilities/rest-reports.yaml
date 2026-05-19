@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight REST API — Reports
+  description: 'Gainsight REST API — Reports. 1 operations. Lead operation: Gainsight Run a report. Self-contained Naftiko
+    capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-reports
+    baseUri: https://api.gainsight.com
+    description: Gainsight REST API — Reports business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-reports
+      path: /v1/reports
+      operations:
+      - name: runreport
+        method: POST
+        description: Gainsight Run a report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: rest-reports-rest
+    port: 8080
+    description: REST adapter for Gainsight REST API — Reports. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/reports
+      name: v1-reports
+      description: REST surface for v1-reports.
+      operations:
+      - method: POST
+        name: runreport
+        description: Gainsight Run a report
+        call: rest-reports.runreport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight REST API — Reports. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: gainsight-run-report
+      description: Gainsight Run a report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-reports.runreport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

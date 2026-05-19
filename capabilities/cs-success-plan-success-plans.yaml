@@ -1,0 +1,191 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS Success Plan API — Success Plans
+  description: 'Gainsight CS Success Plan API — Success Plans. 4 operations. Lead operation: Gainsight Create a success plan.
+    Self-contained Naftiko capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Success Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-success-plan-success-plans
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Success Plan API — Success Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: successplans
+      path: /successplans
+      operations:
+      - name: createsuccessplan
+        method: POST
+        description: Gainsight Create a success plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: successplans-search
+      path: /successplans/search
+      operations:
+      - name: searchsuccessplans
+        method: POST
+        description: Gainsight Search success plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: successplans-planId
+      path: /successplans/{planId}
+      operations:
+      - name: getsuccessplan
+        method: GET
+        description: Gainsight Get a success plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesuccessplan
+        method: PUT
+        description: Gainsight Update a success plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-success-plan-success-plans-rest
+    port: 8080
+    description: REST adapter for Gainsight CS Success Plan API — Success Plans. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/successplans
+      name: successplans
+      description: REST surface for successplans.
+      operations:
+      - method: POST
+        name: createsuccessplan
+        description: Gainsight Create a success plan
+        call: cs-success-plan-success-plans.createsuccessplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/successplans/search
+      name: successplans-search
+      description: REST surface for successplans-search.
+      operations:
+      - method: POST
+        name: searchsuccessplans
+        description: Gainsight Search success plans
+        call: cs-success-plan-success-plans.searchsuccessplans
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/successplans/{planid}
+      name: successplans-planid
+      description: REST surface for successplans-planId.
+      operations:
+      - method: GET
+        name: getsuccessplan
+        description: Gainsight Get a success plan
+        call: cs-success-plan-success-plans.getsuccessplan
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesuccessplan
+        description: Gainsight Update a success plan
+        call: cs-success-plan-success-plans.updatesuccessplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-success-plan-success-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS Success Plan API — Success Plans. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: gainsight-create-success-plan
+      description: Gainsight Create a success plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cs-success-plan-success-plans.createsuccessplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-search-success-plans
+      description: Gainsight Search success plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cs-success-plan-success-plans.searchsuccessplans
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-get-success-plan
+      description: Gainsight Get a success plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cs-success-plan-success-plans.getsuccessplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-update-success-plan
+      description: Gainsight Update a success plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cs-success-plan-success-plans.updatesuccessplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,191 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS Task and Playbook API — Tasks
+  description: 'Gainsight CS Task and Playbook API — Tasks. 4 operations. Lead operation: Gainsight Create a task. Self-contained
+    Naftiko capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Tasks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-task-and-playbook-tasks
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Task and Playbook API — Tasks business capability. Self-contained, no shared references.
+    resources:
+    - name: tasks
+      path: /tasks
+      operations:
+      - name: createtask
+        method: POST
+        description: Gainsight Create a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: tasks-search
+      path: /tasks/search
+      operations:
+      - name: searchtasks
+        method: POST
+        description: Gainsight Search tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: tasks-taskId
+      path: /tasks/{taskId}
+      operations:
+      - name: gettask
+        method: GET
+        description: Gainsight Get a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetask
+        method: PUT
+        description: Gainsight Update a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-task-and-playbook-tasks-rest
+    port: 8080
+    description: REST adapter for Gainsight CS Task and Playbook API — Tasks. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/tasks
+      name: tasks
+      description: REST surface for tasks.
+      operations:
+      - method: POST
+        name: createtask
+        description: Gainsight Create a task
+        call: cs-task-and-playbook-tasks.createtask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks/search
+      name: tasks-search
+      description: REST surface for tasks-search.
+      operations:
+      - method: POST
+        name: searchtasks
+        description: Gainsight Search tasks
+        call: cs-task-and-playbook-tasks.searchtasks
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks/{taskid}
+      name: tasks-taskid
+      description: REST surface for tasks-taskId.
+      operations:
+      - method: GET
+        name: gettask
+        description: Gainsight Get a task
+        call: cs-task-and-playbook-tasks.gettask
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetask
+        description: Gainsight Update a task
+        call: cs-task-and-playbook-tasks.updatetask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-task-and-playbook-tasks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS Task and Playbook API — Tasks. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: gainsight-create-task
+      description: Gainsight Create a task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cs-task-and-playbook-tasks.createtask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-search-tasks
+      description: Gainsight Search tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cs-task-and-playbook-tasks.searchtasks
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-get-task
+      description: Gainsight Get a task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cs-task-and-playbook-tasks.gettask
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-update-task
+      description: Gainsight Update a task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cs-task-and-playbook-tasks.updatetask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

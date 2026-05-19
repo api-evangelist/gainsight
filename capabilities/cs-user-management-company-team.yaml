@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS User Management API — Company Team
+  description: 'Gainsight CS User Management API — Company Team. 2 operations. Lead operation: Gainsight Upsert company team
+    records. Self-contained Naftiko capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Company Team
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-user-management-company-team
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS User Management API — Company Team business capability. Self-contained, no shared references.
+    resources:
+    - name: companyteam
+      path: /companyteam
+      operations:
+      - name: upsertcompanyteam
+        method: POST
+        description: Gainsight Upsert company team records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: companyteam-search
+      path: /companyteam/search
+      operations:
+      - name: searchcompanyteam
+        method: POST
+        description: Gainsight Search company team records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-user-management-company-team-rest
+    port: 8080
+    description: REST adapter for Gainsight CS User Management API — Company Team. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/companyteam
+      name: companyteam
+      description: REST surface for companyteam.
+      operations:
+      - method: POST
+        name: upsertcompanyteam
+        description: Gainsight Upsert company team records
+        call: cs-user-management-company-team.upsertcompanyteam
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/companyteam/search
+      name: companyteam-search
+      description: REST surface for companyteam-search.
+      operations:
+      - method: POST
+        name: searchcompanyteam
+        description: Gainsight Search company team records
+        call: cs-user-management-company-team.searchcompanyteam
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-user-management-company-team-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS User Management API — Company Team. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: gainsight-upsert-company-team-records
+      description: Gainsight Upsert company team records
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cs-user-management-company-team.upsertcompanyteam
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-search-company-team-records
+      description: Gainsight Search company team records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cs-user-management-company-team.searchcompanyteam
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

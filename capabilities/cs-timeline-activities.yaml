@@ -1,0 +1,258 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS Timeline API — Activities
+  description: 'Gainsight CS Timeline API — Activities. 6 operations. Lead operation: Gainsight Create a timeline activity.
+    Self-contained Naftiko capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - Activities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-timeline-activities
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Timeline API — Activities business capability. Self-contained, no shared references.
+    resources:
+    - name: timeline-activities
+      path: /timeline/activities
+      operations:
+      - name: createactivity
+        method: POST
+        description: Gainsight Create a timeline activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: timeline-activities-bulk
+      path: /timeline/activities/bulk
+      operations:
+      - name: bulkcreateactivities
+        method: POST
+        description: Gainsight Bulk create timeline activities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: timeline-activities-search
+      path: /timeline/activities/search
+      operations:
+      - name: searchactivities
+        method: POST
+        description: Gainsight Search timeline activities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: timeline-activities-activityId
+      path: /timeline/activities/{activityId}
+      operations:
+      - name: getactivity
+        method: GET
+        description: Gainsight Get a timeline activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateactivity
+        method: PUT
+        description: Gainsight Update a timeline activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteactivity
+        method: DELETE
+        description: Gainsight Delete a timeline activity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-timeline-activities-rest
+    port: 8080
+    description: REST adapter for Gainsight CS Timeline API — Activities. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/timeline/activities
+      name: timeline-activities
+      description: REST surface for timeline-activities.
+      operations:
+      - method: POST
+        name: createactivity
+        description: Gainsight Create a timeline activity
+        call: cs-timeline-activities.createactivity
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timeline/activities/bulk
+      name: timeline-activities-bulk
+      description: REST surface for timeline-activities-bulk.
+      operations:
+      - method: POST
+        name: bulkcreateactivities
+        description: Gainsight Bulk create timeline activities
+        call: cs-timeline-activities.bulkcreateactivities
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timeline/activities/search
+      name: timeline-activities-search
+      description: REST surface for timeline-activities-search.
+      operations:
+      - method: POST
+        name: searchactivities
+        description: Gainsight Search timeline activities
+        call: cs-timeline-activities.searchactivities
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timeline/activities/{activityid}
+      name: timeline-activities-activityid
+      description: REST surface for timeline-activities-activityId.
+      operations:
+      - method: GET
+        name: getactivity
+        description: Gainsight Get a timeline activity
+        call: cs-timeline-activities.getactivity
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateactivity
+        description: Gainsight Update a timeline activity
+        call: cs-timeline-activities.updateactivity
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteactivity
+        description: Gainsight Delete a timeline activity
+        call: cs-timeline-activities.deleteactivity
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-timeline-activities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS Timeline API — Activities. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: gainsight-create-timeline-activity
+      description: Gainsight Create a timeline activity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cs-timeline-activities.createactivity
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-bulk-create-timeline-activities
+      description: Gainsight Bulk create timeline activities
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cs-timeline-activities.bulkcreateactivities
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-search-timeline-activities
+      description: Gainsight Search timeline activities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cs-timeline-activities.searchactivities
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-get-timeline-activity
+      description: Gainsight Get a timeline activity
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cs-timeline-activities.getactivity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-update-timeline-activity
+      description: Gainsight Update a timeline activity
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cs-timeline-activities.updateactivity
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-delete-timeline-activity
+      description: Gainsight Delete a timeline activity
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cs-timeline-activities.deleteactivity
+      outputParameters:
+      - type: object
+        mapping: $.

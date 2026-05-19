@@ -1,0 +1,191 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gainsight CS CTA API — CTAs
+  description: 'Gainsight CS CTA API — CTAs. 4 operations. Lead operation: Gainsight Create a CTA. Self-contained Naftiko
+    capability covering one Gainsight business surface.'
+  tags:
+  - Gainsight
+  - CTAs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GAINSIGHT_API_KEY: GAINSIGHT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cs-cta-ctas
+    baseUri: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS CTA API — CTAs business capability. Self-contained, no shared references.
+    resources:
+    - name: ctas
+      path: /ctas
+      operations:
+      - name: createcta
+        method: POST
+        description: Gainsight Create a CTA
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ctas-search
+      path: /ctas/search
+      operations:
+      - name: searchctas
+        method: POST
+        description: Gainsight Search CTAs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ctas-ctaId
+      path: /ctas/{ctaId}
+      operations:
+      - name: getcta
+        method: GET
+        description: Gainsight Get a CTA
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecta
+        method: PUT
+        description: Gainsight Update a CTA
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: accessKey
+      value: '{{env.GAINSIGHT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cs-cta-ctas-rest
+    port: 8080
+    description: REST adapter for Gainsight CS CTA API — CTAs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/ctas
+      name: ctas
+      description: REST surface for ctas.
+      operations:
+      - method: POST
+        name: createcta
+        description: Gainsight Create a CTA
+        call: cs-cta-ctas.createcta
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ctas/search
+      name: ctas-search
+      description: REST surface for ctas-search.
+      operations:
+      - method: POST
+        name: searchctas
+        description: Gainsight Search CTAs
+        call: cs-cta-ctas.searchctas
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ctas/{ctaid}
+      name: ctas-ctaid
+      description: REST surface for ctas-ctaId.
+      operations:
+      - method: GET
+        name: getcta
+        description: Gainsight Get a CTA
+        call: cs-cta-ctas.getcta
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecta
+        description: Gainsight Update a CTA
+        call: cs-cta-ctas.updatecta
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cs-cta-ctas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gainsight CS CTA API — CTAs. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: gainsight-create-cta
+      description: Gainsight Create a CTA
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cs-cta-ctas.createcta
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-search-ctas
+      description: Gainsight Search CTAs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cs-cta-ctas.searchctas
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-get-cta
+      description: Gainsight Get a CTA
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cs-cta-ctas.getcta
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gainsight-update-cta
+      description: Gainsight Update a CTA
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cs-cta-ctas.updatecta
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
