@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ObjectMetadata",
+  "title": "ObjectMetadata",
+  "type": "object",
+  "properties": {
+    "objectName": {
+      "type": "string",
+      "description": "Object API name"
+    },
+    "label": {
+      "type": "string",
+      "description": "Object display label"
+    },
+    "description": {
+      "type": "string",
+      "description": "Object description"
+    },
+    "isCustom": {
+      "type": "boolean",
+      "description": "Whether this is a custom object"
+    },
+    "isStandard": {
+      "type": "boolean",
+      "description": "Whether this is a standard object"
+    },
+    "category": {
+      "type": "string",
+      "description": "Object category"
+    },
+    "fieldCount": {
+      "type": "integer",
+      "description": "Number of fields on the object"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

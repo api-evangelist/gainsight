@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomEvent",
+  "title": "CustomEvent",
+  "type": "object",
+  "required": [
+    "identifyId",
+    "eventName"
+  ],
+  "properties": {
+    "identifyId": {
+      "type": "string",
+      "description": "User identification string"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Account identifier"
+    },
+    "eventName": {
+      "type": "string",
+      "description": "Name of the custom event"
+    },
+    "date": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Event timestamp in milliseconds"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Custom event attributes"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL where the event occurred"
+    },
+    "referrer": {
+      "type": "string",
+      "description": "Referrer URL"
+    }
+  }
+}

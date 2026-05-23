@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ObjectiveInput",
+  "title": "ObjectiveInput",
+  "type": "object",
+  "required": [
+    "Name"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed"
+      ]
+    },
+    "Priority": {
+      "type": "string"
+    },
+    "DueDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

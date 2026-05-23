@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoalInput",
+  "title": "GoalInput",
+  "type": "object",
+  "required": [
+    "Name",
+    "CompanyId"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "CompanyId": {
+      "type": "string"
+    },
+    "TemplateId": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Achieved",
+        "Missed"
+      ]
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "TargetDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompanyInput",
+  "title": "CompanyInput",
+  "type": "object",
+  "required": [
+    "Name"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "Industry": {
+      "type": "string",
+      "description": "Industry classification"
+    },
+    "ARR": {
+      "type": "number",
+      "description": "Annual recurring revenue"
+    },
+    "LifecycleStage": {
+      "type": "string",
+      "description": "Current lifecycle stage"
+    },
+    "Status": {
+      "type": "string",
+      "description": "Company status"
+    },
+    "Employees": {
+      "type": "integer",
+      "description": "Number of employees"
+    },
+    "RenewalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Next renewal date"
+    }
+  }
+}

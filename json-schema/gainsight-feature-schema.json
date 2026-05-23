@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Feature",
+  "title": "Feature",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Feature identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Feature name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Feature type"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL pattern for the feature"
+    },
+    "totalUserCount": {
+      "type": "integer",
+      "description": "Total users who used this feature"
+    },
+    "totalEventCount": {
+      "type": "integer",
+      "description": "Total usage events for this feature"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+name: Gainsight Domain Vocabulary
+provider: Gainsight
+providerId: gainsight
+description: Tag-derived vocabulary for the Gainsight API surface; sourced from openapi/ tags.
+terms:
+- term: Accounts
+  description: Manage account records and attributes
+- term: Custom Events
+  description: Send custom events for tracking
+- term: Engagements
+  description: Manage in-app engagements
+- term: Feature Match
+  description: Track feature usage and adoption
+- term: Subscription
+  description: Manage event subscriptions
+- term: Users
+  description: Manage user records and attributes

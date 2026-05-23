@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Activity",
+  "title": "Activity",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Activity unique identifier"
+    },
+    "Subject": {
+      "type": "string",
+      "description": "Activity subject line"
+    },
+    "Notes": {
+      "type": "string",
+      "description": "Activity notes or body content"
+    },
+    "ActivityTypeId": {
+      "type": "string",
+      "description": "Activity type identifier"
+    },
+    "ActivityTypeName": {
+      "type": "string",
+      "description": "Activity type name"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "ActivityDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of the activity"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Activity owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Activity owner name"
+    },
+    "ExternalId": {
+      "type": "string",
+      "description": "External system identifier"
+    },
+    "Attendees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of attendees"
+    },
+    "Sentiment": {
+      "type": "string",
+      "enum": [
+        "Positive",
+        "Neutral",
+        "Negative"
+      ],
+      "description": "Sentiment of the activity"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modification timestamp"
+    }
+  }
+}

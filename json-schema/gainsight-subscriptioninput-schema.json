@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SubscriptionInput",
+  "title": "SubscriptionInput",
+  "type": "object",
+  "required": [
+    "name",
+    "callbackUrl",
+    "eventType"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Subscription name"
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook callback URL"
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Event type to subscribe to"
+    }
+  }
+}

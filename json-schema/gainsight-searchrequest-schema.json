@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchRequest",
+  "title": "SearchRequest",
+  "type": "object",
+  "properties": {
+    "select": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Fields to return in results"
+    },
+    "where": {
+      "type": "object",
+      "description": "Filter conditions",
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Field name"
+              },
+              "alias": {
+                "type": "string",
+                "description": "Field alias"
+              },
+              "value": {
+                "description": "Filter value"
+              },
+              "operator": {
+                "type": "string",
+                "enum": [
+                  "EQ",
+                  "NE",
+                  "GT",
+                  "GTE",
+                  "LT",
+                  "LTE",
+                  "CONTAINS",
+                  "STARTS_WITH",
+                  "ENDS_WITH",
+                  "IN",
+                  "NOT_IN"
+                ],
+                "description": "Comparison operator"
+              }
+            }
+          }
+        },
+        "expression": {
+          "type": "string",
+          "description": "Logical expression combining conditions"
+        }
+      }
+    },
+    "orderBy": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      }
+    },
+    "limit": {
+      "type": "integer",
+      "maximum": 5000,
+      "description": "Maximum number of records to return"
+    },
+    "offset": {
+      "type": "integer",
+      "description": "Offset for pagination"
+    }
+  }
+}

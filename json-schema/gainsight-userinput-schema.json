@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserInput",
+  "title": "UserInput",
+  "type": "object",
+  "required": [
+    "identifyId"
+  ],
+  "properties": {
+    "identifyId": {
+      "type": "string",
+      "description": "Unique user identification string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User email address"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name"
+    },
+    "title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "role": {
+      "type": "string",
+      "description": "User role"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Associated account ID"
+    },
+    "signUpDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Sign-up timestamp in milliseconds"
+    },
+    "customAttributes": {
+      "type": "object",
+      "description": "Custom user attributes"
+    }
+  }
+}

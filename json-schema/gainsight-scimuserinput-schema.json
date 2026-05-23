@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScimUserInput",
+  "title": "ScimUserInput",
+  "type": "object",
+  "required": [
+    "schemas",
+    "userName",
+    "name",
+    "emails"
+  ],
+  "properties": {
+    "schemas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "userName": {
+      "type": "string"
+    },
+    "name": {
+      "type": "object",
+      "required": [
+        "givenName",
+        "familyName"
+      ],
+      "properties": {
+        "givenName": {
+          "type": "string"
+        },
+        "familyName": {
+          "type": "string"
+        }
+      }
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "email"
+          },
+          "type": {
+            "type": "string"
+          },
+          "primary": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}

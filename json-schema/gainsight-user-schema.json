@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "properties": {
+    "aptrinsicId": {
+      "type": "string",
+      "description": "Gainsight PX internal identifier"
+    },
+    "identifyId": {
+      "type": "string",
+      "description": "User identification string"
+    },
+    "type": {
+      "type": "string",
+      "description": "User type"
+    },
+    "gender": {
+      "type": "string",
+      "description": "User gender"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User email address"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name"
+    },
+    "title": {
+      "type": "string",
+      "description": "Job title"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "score": {
+      "type": "integer",
+      "description": "User engagement score"
+    },
+    "role": {
+      "type": "string",
+      "description": "User role"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Associated account ID"
+    },
+    "numberOfVisits": {
+      "type": "integer",
+      "description": "Total number of visits"
+    },
+    "lastSeenDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Last seen timestamp in milliseconds"
+    },
+    "firstVisitDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "First visit timestamp in milliseconds"
+    },
+    "signUpDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Sign-up timestamp in milliseconds"
+    },
+    "customAttributes": {
+      "type": "object",
+      "description": "Custom user attributes"
+    }
+  }
+}

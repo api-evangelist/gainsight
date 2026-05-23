@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaskInput",
+  "title": "TaskInput",
+  "type": "object",
+  "required": [
+    "Name",
+    "CTAId"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "CTAId": {
+      "type": "string"
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "Skipped"
+      ]
+    },
+    "Priority": {
+      "type": "string"
+    },
+    "DueDate": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

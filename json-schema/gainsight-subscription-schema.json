@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Subscription",
+  "title": "Subscription",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Subscription identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Subscription name"
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook callback URL"
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Event type to subscribe to"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the subscription is active"
+    }
+  }
+}

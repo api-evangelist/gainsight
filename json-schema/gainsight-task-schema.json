@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Task",
+  "title": "Task",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Task unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Task name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Task description"
+    },
+    "CTAId": {
+      "type": "string",
+      "description": "Associated CTA Gsid"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Task owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Task owner name"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "Skipped"
+      ],
+      "description": "Task status"
+    },
+    "Priority": {
+      "type": "string",
+      "description": "Task priority"
+    },
+    "DueDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Task due date"
+    },
+    "CompletedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Completion date"
+    },
+    "PlaybookId": {
+      "type": "string",
+      "description": "Associated playbook ID"
+    },
+    "Order": {
+      "type": "integer",
+      "description": "Task order within the playbook"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

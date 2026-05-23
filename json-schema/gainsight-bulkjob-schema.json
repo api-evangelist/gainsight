@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BulkJob",
+  "title": "BulkJob",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string",
+      "description": "Bulk job unique identifier"
+    },
+    "objectName": {
+      "type": "string",
+      "description": "Target object name"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "INSERT",
+        "UPDATE",
+        "UPSERT"
+      ],
+      "description": "Operation type"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "FAILED"
+      ],
+      "description": "Job status"
+    },
+    "totalRecords": {
+      "type": "integer",
+      "description": "Total records in the file"
+    },
+    "processedRecords": {
+      "type": "integer",
+      "description": "Number of records processed"
+    },
+    "successCount": {
+      "type": "integer",
+      "description": "Number of successful records"
+    },
+    "failureCount": {
+      "type": "integer",
+      "description": "Number of failed records"
+    },
+    "fileName": {
+      "type": "string",
+      "description": "Original CSV file name"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Job creation timestamp"
+    },
+    "completedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Job completion timestamp"
+    }
+  }
+}

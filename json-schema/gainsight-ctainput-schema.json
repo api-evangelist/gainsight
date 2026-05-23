@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CTAInput",
+  "title": "CTAInput",
+  "type": "object",
+  "required": [
+    "CompanyId",
+    "TypeId",
+    "ReasonId",
+    "PriorityId",
+    "StatusId"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "CTA name"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "TypeId": {
+      "type": "string",
+      "description": "CTA type identifier"
+    },
+    "ReasonId": {
+      "type": "string",
+      "description": "CTA reason identifier"
+    },
+    "PriorityId": {
+      "type": "string",
+      "description": "Priority level identifier"
+    },
+    "StatusId": {
+      "type": "string",
+      "description": "Status identifier"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Assigned owner user ID"
+    },
+    "DueDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date"
+    },
+    "Comments": {
+      "type": "string",
+      "description": "Comments"
+    },
+    "PlaybookId": {
+      "type": "string",
+      "description": "Playbook to associate"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Goal",
+  "title": "Goal",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Goal unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Goal name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Goal description"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "TemplateId": {
+      "type": "string",
+      "description": "Goal template identifier"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Achieved",
+        "Missed"
+      ],
+      "description": "Goal status"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Goal owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Goal owner name"
+    },
+    "TargetDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Target completion date"
+    },
+    "CompletionPercentage": {
+      "type": "number",
+      "description": "Progress percentage"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BulkJobError",
+  "title": "BulkJobError",
+  "type": "object",
+  "properties": {
+    "rowNumber": {
+      "type": "integer",
+      "description": "Row number in the CSV file"
+    },
+    "errorMessage": {
+      "type": "string",
+      "description": "Error message"
+    },
+    "fieldName": {
+      "type": "string",
+      "description": "Field that caused the error"
+    }
+  }
+}

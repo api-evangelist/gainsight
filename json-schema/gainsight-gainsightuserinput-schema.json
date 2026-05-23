@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GainsightUserInput",
+  "title": "GainsightUserInput",
+  "type": "object",
+  "properties": {
+    "FirstName": {
+      "type": "string"
+    },
+    "LastName": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "string",
+      "format": "email"
+    },
+    "UserType": {
+      "type": "string"
+    },
+    "LicenseType": {
+      "type": "string"
+    },
+    "Role": {
+      "type": "string"
+    }
+  }
+}

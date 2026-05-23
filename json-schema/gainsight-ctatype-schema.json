@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CTAType",
+  "title": "CTAType",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Type identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Type name"
+    },
+    "isDefault": {
+      "type": "boolean",
+      "description": "Whether this is the default type"
+    }
+  }
+}

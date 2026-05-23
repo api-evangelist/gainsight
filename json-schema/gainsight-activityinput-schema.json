@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActivityInput",
+  "title": "ActivityInput",
+  "type": "object",
+  "required": [
+    "Subject",
+    "ActivityTypeId",
+    "CompanyId",
+    "ActivityDate"
+  ],
+  "properties": {
+    "Subject": {
+      "type": "string",
+      "description": "Activity subject"
+    },
+    "Notes": {
+      "type": "string",
+      "description": "Activity notes"
+    },
+    "ActivityTypeId": {
+      "type": "string",
+      "description": "Activity type identifier"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "ActivityDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of the activity"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Activity owner user ID"
+    },
+    "ExternalId": {
+      "type": "string",
+      "description": "External system identifier"
+    },
+    "Attendees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    },
+    "Sentiment": {
+      "type": "string",
+      "enum": [
+        "Positive",
+        "Neutral",
+        "Negative"
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoalTemplate",
+  "title": "GoalTemplate",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Template identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Template name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Template description"
+    },
+    "category": {
+      "type": "string",
+      "description": "Template category"
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Whether the template is active"
+    }
+  }
+}

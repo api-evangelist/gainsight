@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Account",
+  "title": "Account",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Account unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Account name"
+    },
+    "trackedSubscriptionId": {
+      "type": "string",
+      "description": "Tracked subscription ID"
+    },
+    "sfdcId": {
+      "type": "string",
+      "description": "Salesforce account ID"
+    },
+    "lastSeenDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Last seen timestamp"
+    },
+    "dupisBuyer": {
+      "type": "boolean",
+      "description": "Whether the account is a buyer"
+    },
+    "numberOfUsers": {
+      "type": "integer",
+      "description": "Number of users in the account"
+    },
+    "numberOfVisits": {
+      "type": "integer",
+      "description": "Total visits from the account"
+    },
+    "plan": {
+      "type": "string",
+      "description": "Account plan or tier"
+    },
+    "customAttributes": {
+      "type": "object",
+      "description": "Custom account attributes"
+    }
+  }
+}

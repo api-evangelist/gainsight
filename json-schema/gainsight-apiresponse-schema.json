@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApiResponse",
+  "title": "ApiResponse",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "boolean"
+    },
+    "errorCode": {
+      "type": "string"
+    },
+    "errorDesc": {
+      "type": "string"
+    },
+    "requestId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompanyTeamRecord",
+  "title": "CompanyTeamRecord",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Record identifier"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Company Gsid"
+    },
+    "UserId": {
+      "type": "string",
+      "description": "Gainsight user Gsid"
+    },
+    "TeamRole": {
+      "type": "string",
+      "description": "Team role (e.g., CSM, Executive Sponsor)"
+    },
+    "IsPrimary": {
+      "type": "boolean",
+      "description": "Whether this is the primary team member"
+    }
+  }
+}

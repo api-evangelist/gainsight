@@ -1,0 +1,213 @@
+{
+  "provider": "Gainsight",
+  "providerId": "gainsight",
+  "kind": "json-structure",
+  "description": "Structural overview of the Gainsight API surface; extracted from openapi/.",
+  "schemaCount": 9,
+  "operationCount": 15,
+  "schemas": [
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "UserInput",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "identifyId"
+      ]
+    },
+    {
+      "name": "Account",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "AccountInput",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    {
+      "name": "Feature",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "CustomEvent",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "identifyId",
+        "eventName"
+      ]
+    },
+    {
+      "name": "Engagement",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Subscription",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "SubscriptionInput",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "name",
+        "callbackUrl",
+        "eventType"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/users",
+      "operationId": "listUsers",
+      "summary": "Gainsight List users",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "operationId": "createUser",
+      "summary": "Gainsight Create or update a user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}",
+      "operationId": "getUser",
+      "summary": "Gainsight Get a user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}",
+      "operationId": "deleteUser",
+      "summary": "Gainsight Delete a user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/{userId}",
+      "operationId": "updateUser",
+      "summary": "Gainsight Update a user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts",
+      "operationId": "listAccounts",
+      "summary": "Gainsight List accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts",
+      "operationId": "createAccount",
+      "summary": "Gainsight Create or update an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}",
+      "operationId": "getAccount",
+      "summary": "Gainsight Get an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/accounts/{accountId}",
+      "operationId": "deleteAccount",
+      "summary": "Gainsight Delete an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/accounts/{accountId}",
+      "operationId": "updateAccount",
+      "summary": "Gainsight Update an account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/feature_match",
+      "operationId": "listFeatures",
+      "summary": "Gainsight List features",
+      "tags": [
+        "Feature Match"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/custom_events",
+      "operationId": "sendCustomEvent",
+      "summary": "Gainsight Send a custom event",
+      "tags": [
+        "Custom Events"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/engagements",
+      "operationId": "listEngagements",
+      "summary": "Gainsight List engagements",
+      "tags": [
+        "Engagements"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/subscriptions",
+      "operationId": "listSubscriptions",
+      "summary": "Gainsight List event subscriptions",
+      "tags": [
+        "Subscription"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/subscriptions",
+      "operationId": "createSubscription",
+      "summary": "Gainsight Create an event subscription",
+      "tags": [
+        "Subscription"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuccessPlan",
+  "title": "SuccessPlan",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Success plan unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Plan name"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "TypeId": {
+      "type": "string",
+      "description": "Success plan type identifier"
+    },
+    "TypeName": {
+      "type": "string",
+      "description": "Type name"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Completed",
+        "Archived"
+      ],
+      "description": "Plan status"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Plan owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Plan owner name"
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Plan start date"
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Plan end date"
+    },
+    "Comments": {
+      "type": "string",
+      "description": "Plan comments"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Record creation timestamp"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modification timestamp"
+    }
+  }
+}

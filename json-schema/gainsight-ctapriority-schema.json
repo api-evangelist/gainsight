@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CTAPriority",
+  "title": "CTAPriority",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Priority identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Priority name"
+    },
+    "order": {
+      "type": "integer",
+      "description": "Display order"
+    }
+  }
+}

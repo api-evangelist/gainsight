@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventInput",
+  "title": "EventInput",
+  "type": "object",
+  "required": [
+    "eventType",
+    "objectType",
+    "operation",
+    "payload"
+  ],
+  "properties": {
+    "eventType": {
+      "type": "string",
+      "description": "Event type identifier"
+    },
+    "objectType": {
+      "type": "string",
+      "description": "Object type associated with the event"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "INSERT",
+        "UPDATE",
+        "UPSERT",
+        "DELETE"
+      ],
+      "description": "Operation type"
+    },
+    "companyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event payload data"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Event timestamp"
+    },
+    "sourceSystem": {
+      "type": "string",
+      "description": "Source system identifier"
+    }
+  }
+}

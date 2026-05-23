@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpportunityRecord",
+  "title": "OpportunityRecord",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Opportunity unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Opportunity name"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "CompanyName": {
+      "type": "string",
+      "description": "Associated company name"
+    },
+    "BookingType": {
+      "type": "string",
+      "enum": [
+        "New Business",
+        "Renewal",
+        "Upsell",
+        "Downsell",
+        "Churn"
+      ],
+      "description": "Booking type"
+    },
+    "Amount": {
+      "type": "number",
+      "description": "Opportunity amount"
+    },
+    "Currency": {
+      "type": "string",
+      "description": "Currency code"
+    },
+    "CloseDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Expected close date"
+    },
+    "Stage": {
+      "type": "string",
+      "description": "Opportunity stage"
+    },
+    "Probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Win probability percentage"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Opportunity owner user ID"
+    },
+    "OwnerName": {
+      "type": "string",
+      "description": "Owner name"
+    },
+    "ARR": {
+      "type": "number",
+      "description": "Annual recurring revenue"
+    },
+    "Term": {
+      "type": "integer",
+      "description": "Contract term in months"
+    },
+    "RenewalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Renewal date"
+    },
+    "IsClosed": {
+      "type": "boolean",
+      "description": "Whether the opportunity is closed"
+    },
+    "IsWon": {
+      "type": "boolean",
+      "description": "Whether the opportunity was won"
+    },
+    "SfdcOpportunityId": {
+      "type": "string",
+      "description": "Salesforce opportunity ID"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Objective",
+  "title": "Objective",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Objective unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Objective name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Objective description"
+    },
+    "SuccessPlanId": {
+      "type": "string",
+      "description": "Parent success plan Gsid"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed"
+      ],
+      "description": "Objective status"
+    },
+    "Priority": {
+      "type": "string",
+      "description": "Objective priority"
+    },
+    "DueDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Objective due date"
+    },
+    "CompletionPercentage": {
+      "type": "number",
+      "description": "Completion percentage"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

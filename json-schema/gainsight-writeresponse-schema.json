@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WriteResponse",
+  "title": "WriteResponse",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "boolean"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "Number of records affected"
+        },
+        "insertedCount": {
+          "type": "integer",
+          "description": "Number of records inserted"
+        },
+        "updatedCount": {
+          "type": "integer",
+          "description": "Number of records updated"
+        },
+        "failedCount": {
+          "type": "integer",
+          "description": "Number of failed records"
+        },
+        "failures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "errorMessage": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

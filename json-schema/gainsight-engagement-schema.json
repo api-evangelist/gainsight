@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Engagement",
+  "title": "Engagement",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Engagement identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Engagement name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Dialog",
+        "Slider",
+        "Guide",
+        "Tooltip",
+        "Hotspot",
+        "Badge"
+      ],
+      "description": "Engagement type"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "LIVE",
+        "PAUSED",
+        "STAGED"
+      ],
+      "description": "Engagement state"
+    },
+    "createdDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Creation timestamp"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoalMetricInput",
+  "title": "GoalMetricInput",
+  "type": "object",
+  "required": [
+    "Name",
+    "TargetValue"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "CurrentValue": {
+      "type": "number"
+    },
+    "TargetValue": {
+      "type": "number"
+    },
+    "Unit": {
+      "type": "string"
+    }
+  }
+}

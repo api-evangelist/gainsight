@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Playbook",
+  "title": "Playbook",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Playbook unique identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Playbook name"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Playbook description"
+    },
+    "CTATypeId": {
+      "type": "string",
+      "description": "Associated CTA type"
+    },
+    "IsActive": {
+      "type": "boolean",
+      "description": "Whether the playbook is active"
+    },
+    "TaskTemplates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Task template name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Task template description"
+          },
+          "order": {
+            "type": "integer",
+            "description": "Task order"
+          },
+          "daysFromCreation": {
+            "type": "integer",
+            "description": "Days offset from CTA creation for due date"
+          }
+        }
+      },
+      "description": "Ordered list of task templates"
+    },
+    "CreatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

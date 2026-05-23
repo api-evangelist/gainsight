@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EventType",
+  "title": "EventType",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Event type identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Event type name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Event type description"
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Whether the event type is active"
+    }
+  }
+}

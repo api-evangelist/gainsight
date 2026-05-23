@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CTAStatus",
+  "title": "CTAStatus",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Status identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Status name"
+    },
+    "isClosed": {
+      "type": "boolean",
+      "description": "Whether this status represents a closed state"
+    }
+  }
+}

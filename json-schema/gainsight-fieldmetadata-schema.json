@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FieldMetadata",
+  "title": "FieldMetadata",
+  "type": "object",
+  "properties": {
+    "fieldName": {
+      "type": "string",
+      "description": "Field API name"
+    },
+    "label": {
+      "type": "string",
+      "description": "Field display label"
+    },
+    "description": {
+      "type": "string",
+      "description": "Field description"
+    },
+    "dataType": {
+      "type": "string",
+      "enum": [
+        "STRING",
+        "NUMBER",
+        "BOOLEAN",
+        "DATE",
+        "DATETIME",
+        "CURRENCY",
+        "PERCENTAGE",
+        "EMAIL",
+        "URL",
+        "PHONE",
+        "PICKLIST",
+        "MULTI_PICKLIST",
+        "LOOKUP",
+        "RICH_TEXT"
+      ],
+      "description": "Field data type"
+    },
+    "isRequired": {
+      "type": "boolean",
+      "description": "Whether the field is required"
+    },
+    "isReadOnly": {
+      "type": "boolean",
+      "description": "Whether the field is read-only"
+    },
+    "isCustom": {
+      "type": "boolean",
+      "description": "Whether this is a custom field"
+    },
+    "maxLength": {
+      "type": "integer",
+      "description": "Maximum length for string fields"
+    },
+    "picklistValues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Picklist options for picklist fields"
+    },
+    "lookupObjectName": {
+      "type": "string",
+      "description": "Referenced object name for lookup fields"
+    }
+  }
+}

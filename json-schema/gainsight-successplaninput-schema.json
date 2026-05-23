@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuccessPlanInput",
+  "title": "SuccessPlanInput",
+  "type": "object",
+  "required": [
+    "Name",
+    "CompanyId",
+    "TypeId"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "CompanyId": {
+      "type": "string"
+    },
+    "TypeId": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Completed",
+        "Archived"
+      ]
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "Comments": {
+      "type": "string"
+    }
+  }
+}

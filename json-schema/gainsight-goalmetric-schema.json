@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GoalMetric",
+  "title": "GoalMetric",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Metric identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Metric name"
+    },
+    "GoalId": {
+      "type": "string",
+      "description": "Parent goal identifier"
+    },
+    "CurrentValue": {
+      "type": "number",
+      "description": "Current metric value"
+    },
+    "TargetValue": {
+      "type": "number",
+      "description": "Target metric value"
+    },
+    "Unit": {
+      "type": "string",
+      "description": "Measurement unit"
+    },
+    "LastUpdatedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
