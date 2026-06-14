@@ -1,0 +1,1141 @@
+"""
+Gainsight GraphQL Schema
+Conceptual schema derived from the Gainsight Customer Success Platform REST APIs:
+- Gainsight CS NXT API (gainsightcloud.com)
+- Gainsight PX API (aptrinsic.com)
+- Gainsight Bulk API
+Reference: https://support.gainsight.com/SFDC_Edition/API_and_Developer_Docs/
+"""
+
+# ─── Scalars ────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+scalar Upload
+
+# ─── Enums ──────────────────────────────────────────────────────────────────
+
+enum RiskSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum RiskCategory {
+  ADOPTION
+  ENGAGEMENT
+  FINANCIAL
+  PRODUCT
+  RELATIONSHIP
+  SUPPORT
+}
+
+enum TaskStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+  SKIPPED
+  OVERDUE
+}
+
+enum AlertType {
+  HEALTH_SCORE_CHANGE
+  RENEWAL_UPCOMING
+  USAGE_DROP
+  SURVEY_RESPONSE
+  RISK_IDENTIFIED
+  MILESTONE_REACHED
+  CUSTOM
+}
+
+enum AlertSeverity {
+  INFO
+  WARNING
+  CRITICAL
+}
+
+enum ActivityType {
+  CALL
+  EMAIL
+  MEETING
+  NOTE
+  IN_PERSON
+  SCREEN_SHARE
+  QBR
+  OTHER
+}
+
+enum QuestionType {
+  TEXT
+  MULTIPLE_CHOICE
+  RATING
+  NPS
+  YES_NO
+  DROPDOWN
+  DATE
+  NUMBER
+}
+
+enum RenewalStatus {
+  OPEN
+  AT_RISK
+  COMMITTED
+  CLOSED_WON
+  CLOSED_LOST
+  CHURNED
+}
+
+enum ContactRole {
+  CHAMPION
+  ECONOMIC_BUYER
+  EXECUTIVE_SPONSOR
+  END_USER
+  TECHNICAL_CONTACT
+  DECISION_MAKER
+  INFLUENCER
+}
+
+# ─── Account & Company Types ─────────────────────────────────────────────────
+
+"""Core account record representing a customer company."""
+type Account {
+  id: ID!
+  name: String!
+  domain: String
+  industry: String
+  region: String
+  tier: String
+  arr: Float
+  mrr: Float
+  employees: Int
+  startDate: DateTime
+  renewalDate: DateTime
+  healthScore: HealthScore
+  details: AccountDetails
+  contacts: [Contact!]
+  csm: CSM
+  risks: [Risk!]
+  opportunities: [Opportunity!]
+  timelines: [Timeline!]
+  playbooks: [Playbook!]
+  surveys: [Survey!]
+  metrics: [Metric!]
+  licenses: [License!]
+  renewals: [Renewal!]
+  segments: [Segment!]
+  usageData: UsageData
+  features: [Feature!]
+  tags: [String!]
+  customFields: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Extended attributes and metadata for an account."""
+type AccountDetails {
+  accountId: ID!
+  website: String
+  phone: String
+  address: String
+  city: String
+  state: String
+  country: String
+  postalCode: String
+  parentAccountId: ID
+  accountType: String
+  contractStartDate: DateTime
+  contractEndDate: DateTime
+  gsid: String
+  crmId: String
+  npsScore: Float
+  lifetimeValue: Float
+  productVersion: String
+  supportTier: String
+  notes: String
+}
+
+"""Aggregated health information for an account."""
+type AccountHealth {
+  accountId: ID!
+  overallScore: Float!
+  trend: String
+  colorCode: String
+  previousScore: Float
+  scoreDate: DateTime!
+  factors: [HealthScoreFactor!]!
+  lastCalculated: DateTime!
+}
+
+"""Numerical scorecard value for an account's health."""
+type AccountScore {
+  id: ID!
+  accountId: ID!
+  scoreName: String!
+  value: Float!
+  weight: Float
+  calculatedAt: DateTime!
+  trend: String
+}
+
+# ─── Health Score Types ───────────────────────────────────────────────────────
+
+"""Overall health score record for a customer account."""
+type HealthScore {
+  id: ID!
+  accountId: ID!
+  score: Float!
+  colorCode: String!
+  label: String
+  trend: String
+  previousScore: Float
+  scoreDate: DateTime!
+  factors: [HealthScoreFactor!]!
+  updatedAt: DateTime!
+}
+
+"""An individual contributing factor to a health score."""
+type HealthScoreFactor {
+  id: ID!
+  healthScoreId: ID!
+  name: String!
+  category: String
+  weight: Float!
+  score: Float!
+  colorCode: String
+  trend: String
+  description: String
+  lastUpdated: DateTime!
+}
+
+# ─── Customer & Contact Types ─────────────────────────────────────────────────
+
+"""Detailed customer profile record."""
+type CustomerDetails {
+  id: ID!
+  accountId: ID!
+  customerSince: DateTime
+  lifetimeValue: Float
+  totalOpportunities: Int
+  openCTAs: Int
+  healthScore: Float
+  npsScore: Float
+  lastActivityDate: DateTime
+  engagementScore: Float
+  customAttributes: JSON
+}
+
+"""A person who is a contact at a customer account."""
+type Contact {
+  id: ID!
+  accountId: ID!
+  firstName: String!
+  lastName: String!
+  email: String
+  phone: String
+  title: String
+  department: String
+  role: ContactRole
+  isPrimary: Boolean
+  details: ContactDetails
+  activities: [ContactActivity!]
+  npsResponses: [NPSScore!]
+  surveyResponses: [SurveyResponse!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Extended attributes for a contact record."""
+type ContactDetails {
+  contactId: ID!
+  linkedInUrl: String
+  twitterHandle: String
+  timezone: String
+  preferredContactMethod: String
+  doNotContact: Boolean
+  optOutEmail: Boolean
+  lastContactDate: DateTime
+  crmContactId: String
+  gsid: String
+  notes: String
+  customFields: JSON
+}
+
+"""An activity or interaction associated with a contact."""
+type ContactActivity {
+  id: ID!
+  contactId: ID!
+  accountId: ID!
+  type: ActivityType!
+  subject: String
+  description: String
+  occurredAt: DateTime!
+  csmId: ID
+  duration: Int
+  outcome: String
+}
+
+# ─── CSM (Customer Success Manager) Types ────────────────────────────────────
+
+"""A Customer Success Manager user record."""
+type CSM {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  title: String
+  region: String
+  details: CSMDetails
+  team: CSMTeam
+  accounts: [Account!]
+  tasks: [Task!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Extended profile information for a CSM."""
+type CSMDetails {
+  csmId: ID!
+  phone: String
+  timezone: String
+  capacity: Int
+  currentAccountCount: Int
+  totalARR: Float
+  averageHealthScore: Float
+  openCTACount: Int
+  managerName: String
+  department: String
+}
+
+"""A team grouping of Customer Success Managers."""
+type CSMTeam {
+  id: ID!
+  name: String!
+  description: String
+  region: String
+  members: [CSM!]!
+  managerId: ID
+  createdAt: DateTime!
+}
+
+# ─── Risk Types ───────────────────────────────────────────────────────────────
+
+"""A risk record associated with a customer account."""
+type Risk {
+  id: ID!
+  accountId: ID!
+  name: String!
+  description: String
+  type: RiskType!
+  severity: RiskSeverity!
+  category: RiskCategory!
+  details: RiskDetails
+  status: String
+  ownerId: ID
+  dueDate: DateTime
+  resolvedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Detailed attributes of a risk record."""
+type RiskDetails {
+  riskId: ID!
+  impactDescription: String
+  mitigationPlan: String
+  likelihood: String
+  impact: String
+  riskScore: Float
+  escalated: Boolean
+  escalationDate: DateTime
+  comments: String
+  linkedCTAId: ID
+  customFields: JSON
+}
+
+"""Classification type for a risk."""
+type RiskType {
+  id: ID!
+  name: String!
+  description: String
+  category: RiskCategory
+  defaultSeverity: RiskSeverity
+  isActive: Boolean!
+}
+
+# ─── Timeline Types ───────────────────────────────────────────────────────────
+
+"""A timeline record grouping activities for an account."""
+type Timeline {
+  id: ID!
+  accountId: ID!
+  name: String
+  description: String
+  activities: [TimelineActivity!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""An individual activity entry on a customer timeline."""
+type TimelineActivity {
+  id: ID!
+  accountId: ID!
+  timelineId: ID
+  type: ActivityType!
+  subject: String!
+  description: String
+  occurredAt: DateTime!
+  authorId: ID!
+  attendees: [Contact!]
+  duration: Int
+  isExternal: Boolean
+  notes: [Note!]
+  meetingNotes: MeetingNote
+  tags: [String!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ─── Note Types ───────────────────────────────────────────────────────────────
+
+"""A freeform note attached to an account, contact, or activity."""
+type Note {
+  id: ID!
+  accountId: ID
+  contactId: ID
+  activityId: ID
+  content: String!
+  authorId: ID!
+  isPinned: Boolean
+  visibility: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Structured notes captured from a customer meeting."""
+type MeetingNote {
+  id: ID!
+  activityId: ID!
+  agenda: String
+  summary: String
+  actionItems: [String!]
+  decisions: [String!]
+  nextSteps: String
+  attendeeCount: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ─── Playbook & Task Types ────────────────────────────────────────────────────
+
+"""A Gainsight Playbook defining a structured success workflow."""
+type Playbook {
+  id: ID!
+  name: String!
+  description: String
+  details: PlaybookDetails
+  steps: [PlaybookStep!]!
+  tasks: [Task!]!
+  isActive: Boolean!
+  version: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Metadata and configuration for a Playbook."""
+type PlaybookDetails {
+  playbookId: ID!
+  category: String
+  objective: String
+  estimatedDuration: Int
+  applicableSegments: [String!]
+  triggerConditions: JSON
+  successCriteria: String
+  ownerRole: String
+  isTemplate: Boolean
+}
+
+"""A step within a Playbook, containing one or more tasks."""
+type PlaybookStep {
+  id: ID!
+  playbookId: ID!
+  name: String!
+  description: String
+  order: Int!
+  dueOffsetDays: Int
+  tasks: [Task!]!
+  isRequired: Boolean
+}
+
+"""A Task representing an actionable item for a CSM."""
+type Task {
+  id: ID!
+  accountId: ID!
+  playbookId: ID
+  stepId: ID
+  ctaId: ID
+  name: String!
+  description: String
+  status: TaskStatus!
+  details: TaskDetails
+  assigneeId: ID
+  dueDate: DateTime
+  completedAt: DateTime
+  priority: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Additional attributes of a Task record."""
+type TaskDetails {
+  taskId: ID!
+  type: String
+  comments: String
+  associatedContactId: ID
+  associatedOpportunityId: ID
+  estimatedEffortHours: Float
+  isRecurring: Boolean
+  recurrencePattern: String
+  completionNotes: String
+  customFields: JSON
+}
+
+# ─── Cockpit & Alert Types ────────────────────────────────────────────────────
+
+"""The Gainsight Cockpit — a prioritized view of CTAs and alerts for a CSM."""
+type Cockpit {
+  id: ID!
+  csmId: ID!
+  alerts: [Alert!]!
+  tasks: [Task!]!
+  totalOpenCTAs: Int!
+  overdueCount: Int!
+  highPriorityCount: Int!
+  lastRefreshed: DateTime!
+}
+
+"""A Call To Action (CTA) or system-generated alert."""
+type Alert {
+  id: ID!
+  accountId: ID!
+  name: String!
+  description: String
+  type: AlertType!
+  severity: AlertSeverity!
+  status: String!
+  details: AlertDetails
+  assigneeId: ID
+  dueDate: DateTime
+  triggeredAt: DateTime!
+  resolvedAt: DateTime
+  playbookId: ID
+  tasks: [Task!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Extended data for an Alert/CTA record."""
+type AlertDetails {
+  alertId: ID!
+  triggerCondition: String
+  triggerValue: Float
+  currentValue: Float
+  threshold: Float
+  reasonCode: String
+  priority: Int
+  snoozeUntil: DateTime
+  closureReason: String
+  comments: String
+  customFields: JSON
+}
+
+# ─── Survey Types ─────────────────────────────────────────────────────────────
+
+"""A survey sent to customer contacts."""
+type Survey {
+  id: ID!
+  accountId: ID
+  name: String!
+  description: String
+  details: SurveyDetails
+  questions: [Question!]!
+  responses: [SurveyResponse!]!
+  status: String!
+  sentAt: DateTime
+  closedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Metadata and configuration for a Survey."""
+type SurveyDetails {
+  surveyId: ID!
+  type: String
+  targetAudience: String
+  sendMethod: String
+  reminderSchedule: String
+  anonymousResponses: Boolean
+  responseRate: Float
+  averageScore: Float
+  totalSent: Int
+  totalResponded: Int
+}
+
+"""A single response to a survey from a contact."""
+type SurveyResponse {
+  id: ID!
+  surveyId: ID!
+  contactId: ID!
+  accountId: ID!
+  answers: [Answer!]!
+  submittedAt: DateTime!
+  npsScore: Int
+  comments: String
+  sentiment: String
+  createdAt: DateTime!
+}
+
+"""A question within a survey."""
+type Question {
+  id: ID!
+  surveyId: ID!
+  text: String!
+  type: QuestionType!
+  isRequired: Boolean!
+  order: Int!
+  options: [String!]
+  minRating: Int
+  maxRating: Int
+  placeholder: String
+}
+
+"""An answer to a specific survey question."""
+type Answer {
+  id: ID!
+  questionId: ID!
+  responseId: ID!
+  value: String
+  numericValue: Float
+  selectedOptions: [String!]
+  answeredAt: DateTime!
+}
+
+# ─── NPS Types ───────────────────────────────────────────────────────────────
+
+"""An NPS (Net Promoter Score) record for a contact."""
+type NPS {
+  id: ID!
+  accountId: ID!
+  contactId: ID!
+  score: Int!
+  comment: String
+  category: String
+  surveyId: ID
+  respondedAt: DateTime!
+  createdAt: DateTime!
+}
+
+"""An individual NPS score data point."""
+type NPSScore {
+  id: ID!
+  contactId: ID!
+  accountId: ID!
+  score: Int!
+  label: String
+  comment: String
+  detractorReason: String
+  promoterReason: String
+  submittedAt: DateTime!
+}
+
+"""An NPS survey instance and its aggregate results."""
+type NPSSurvey {
+  id: ID!
+  name: String!
+  accountId: ID
+  sentAt: DateTime!
+  closedAt: DateTime
+  totalSent: Int!
+  totalResponded: Int!
+  promoters: Int!
+  passives: Int!
+  detractors: Int!
+  npsScore: Float!
+  responses: [NPS!]!
+  createdAt: DateTime!
+}
+
+# ─── Renewal Types ────────────────────────────────────────────────────────────
+
+"""A renewal record tracking a contract renewal opportunity."""
+type Renewal {
+  id: ID!
+  accountId: ID!
+  name: String!
+  status: RenewalStatus!
+  details: RenewalDetails
+  amount: Float
+  renewalDate: DateTime!
+  ownerId: ID
+  forecastCategory: String
+  probability: Float
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Detailed attributes of a Renewal record."""
+type RenewalDetails {
+  renewalId: ID!
+  contractId: String
+  previousARR: Float
+  renewalARR: Float
+  expansionARR: Float
+  churnRisk: String
+  competitorThreat: String
+  decisionDate: DateTime
+  signingContact: ID
+  notes: String
+  customFields: JSON
+}
+
+# ─── Opportunity Types ────────────────────────────────────────────────────────
+
+"""An opportunity record for upsell, expansion, or renewal."""
+type Opportunity {
+  id: ID!
+  accountId: ID!
+  name: String!
+  type: String
+  stage: String
+  amount: Float
+  closeDate: DateTime
+  probability: Float
+  details: OpportunityDetails
+  ownerId: ID
+  crmOpportunityId: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Extended fields for an Opportunity record."""
+type OpportunityDetails {
+  opportunityId: ID!
+  bookingType: String
+  forecastCategory: String
+  competitorName: String
+  lossReason: String
+  winReason: String
+  nextStep: String
+  primaryContactId: ID
+  product: String
+  quantity: Int
+  unitPrice: Float
+  discount: Float
+  customFields: JSON
+}
+
+# ─── Feature & Usage Types ────────────────────────────────────────────────────
+
+"""A product feature tracked for adoption."""
+type Feature {
+  id: ID!
+  name: String!
+  description: String
+  category: String
+  releaseDate: DateTime
+  isActive: Boolean!
+  usageData: [FeatureUsage!]
+  adoptionData: FeatureAdoption
+}
+
+"""Usage statistics for a specific feature by an account."""
+type FeatureUsage {
+  id: ID!
+  featureId: ID!
+  accountId: ID!
+  usageCount: Int!
+  uniqueUsers: Int
+  lastUsedAt: DateTime
+  periodStart: DateTime!
+  periodEnd: DateTime!
+  trend: String
+}
+
+"""Aggregated adoption metrics for a feature."""
+type FeatureAdoption {
+  featureId: ID!
+  accountId: ID!
+  adoptionPercentage: Float!
+  activeUsers: Int!
+  totalUsers: Int!
+  firstAdoptedAt: DateTime
+  lastActivityAt: DateTime
+  adoptionTrend: String
+}
+
+# ─── Metric Types ─────────────────────────────────────────────────────────────
+
+"""A named metric tracked for a customer account."""
+type Metric {
+  id: ID!
+  accountId: ID!
+  name: String!
+  value: Float!
+  unit: String
+  details: MetricDetails
+  trend: MetricTrend
+  recordedAt: DateTime!
+  createdAt: DateTime!
+}
+
+"""Detailed configuration and context for a Metric."""
+type MetricDetails {
+  metricId: ID!
+  category: String
+  source: String
+  formula: String
+  target: Float
+  threshold: Float
+  description: String
+  isCustom: Boolean
+  frequency: String
+}
+
+"""Trend data for a metric over time."""
+type MetricTrend {
+  metricId: ID!
+  accountId: ID!
+  direction: String
+  percentageChange: Float
+  previousValue: Float
+  currentValue: Float
+  periodStart: DateTime!
+  periodEnd: DateTime!
+  dataPoints: [JSON!]
+}
+
+# ─── Usage & Activity Types ───────────────────────────────────────────────────
+
+"""Product usage event recorded from a user session."""
+type UserActivity {
+  id: ID!
+  accountId: ID!
+  userId: String!
+  sessionId: String
+  event: String!
+  feature: String
+  page: String
+  duration: Int
+  occurredAt: DateTime!
+  metadata: JSON
+}
+
+"""Aggregated usage data summary for an account."""
+type UsageData {
+  accountId: ID!
+  activeUsers: Int!
+  totalSessions: Int!
+  averageSessionDuration: Float
+  lastActiveDate: DateTime
+  usageTrend: String
+  adoptionScore: Float
+  topFeatures: [FeatureUsage!]
+  periodStart: DateTime!
+  periodEnd: DateTime!
+}
+
+# ─── License Types ────────────────────────────────────────────────────────────
+
+"""A software license assigned to a customer account."""
+type License {
+  id: ID!
+  accountId: ID!
+  name: String!
+  type: String
+  quantity: Int!
+  usedSeats: Int
+  details: LicenseDetails
+  startDate: DateTime!
+  endDate: DateTime
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Extended metadata for a License record."""
+type LicenseDetails {
+  licenseId: ID!
+  sku: String
+  productName: String
+  edition: String
+  tier: String
+  contractId: String
+  autoRenew: Boolean
+  renewalDate: DateTime
+  unitPrice: Float
+  totalValue: Float
+  customFields: JSON
+}
+
+# ─── API Auth Types ───────────────────────────────────────────────────────────
+
+"""An API key used to authenticate Gainsight REST API calls."""
+type APIKey {
+  id: ID!
+  name: String!
+  prefix: String!
+  scopes: [String!]
+  isActive: Boolean!
+  expiresAt: DateTime
+  createdAt: DateTime!
+  lastUsedAt: DateTime
+}
+
+"""An OAuth access token for Gainsight API authentication."""
+type Token {
+  accessToken: String!
+  tokenType: String!
+  expiresIn: Int!
+  scope: String
+  refreshToken: String
+  issuedAt: DateTime!
+}
+
+# ─── Webhook Types ────────────────────────────────────────────────────────────
+
+"""A registered webhook endpoint for Gainsight event notifications."""
+type Webhook {
+  id: ID!
+  name: String!
+  url: String!
+  events: [String!]!
+  isActive: Boolean!
+  secret: String
+  headers: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""An event payload delivered by a Gainsight webhook."""
+type WebhookEvent {
+  id: ID!
+  webhookId: ID!
+  eventType: String!
+  payload: JSON!
+  deliveredAt: DateTime
+  status: String!
+  retryCount: Int
+  responseCode: Int
+  errorMessage: String
+  createdAt: DateTime!
+}
+
+# ─── Journey & Segment Types ──────────────────────────────────────────────────
+
+"""A digital journey orchestrating in-app engagement for users."""
+type Journey {
+  id: ID!
+  name: String!
+  description: String
+  details: JourneyDetails
+  isActive: Boolean!
+  startDate: DateTime
+  endDate: DateTime
+  targetSegments: [Segment!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Configuration and metrics for a digital Journey."""
+type JourneyDetails {
+  journeyId: ID!
+  triggerEvent: String
+  goalEvent: String
+  steps: [JSON!]
+  totalEnrolled: Int
+  totalCompleted: Int
+  completionRate: Float
+  averageDuration: Float
+  status: String
+}
+
+"""A named segment of accounts or users for targeting."""
+type Segment {
+  id: ID!
+  name: String!
+  description: String
+  details: SegmentDetails
+  accountCount: Int
+  isActive: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Rules and metadata for a Segment definition."""
+type SegmentDetails {
+  segmentId: ID!
+  criteriaType: String
+  criteria: JSON
+  accountIds: [ID!]
+  lastRefreshedAt: DateTime
+  isDynamic: Boolean
+  tags: [String!]
+}
+
+# ─── Root Types ───────────────────────────────────────────────────────────────
+
+type Query {
+  # Account queries
+  account(id: ID!): Account
+  accounts(
+    limit: Int
+    offset: Int
+    filter: JSON
+    sort: String
+  ): [Account!]!
+  accountHealth(accountId: ID!): AccountHealth
+  accountScore(accountId: ID!): AccountScore
+
+  # Customer details
+  customerDetails(accountId: ID!): CustomerDetails
+
+  # Contact queries
+  contact(id: ID!): Contact
+  contacts(accountId: ID, limit: Int, offset: Int): [Contact!]!
+
+  # CSM queries
+  csm(id: ID!): CSM
+  csms(region: String, teamId: ID): [CSM!]!
+  csmTeam(id: ID!): CSMTeam
+  csmTeams: [CSMTeam!]!
+
+  # Risk queries
+  risk(id: ID!): Risk
+  risks(accountId: ID, severity: RiskSeverity, category: RiskCategory): [Risk!]!
+
+  # Timeline queries
+  timeline(id: ID!): Timeline
+  timelines(accountId: ID!): [Timeline!]!
+  timelineActivity(id: ID!): TimelineActivity
+
+  # Playbook & Task queries
+  playbook(id: ID!): Playbook
+  playbooks(isActive: Boolean): [Playbook!]!
+  task(id: ID!): Task
+  tasks(accountId: ID, status: TaskStatus, assigneeId: ID): [Task!]!
+
+  # Cockpit queries
+  cockpit(csmId: ID!): Cockpit
+  alert(id: ID!): Alert
+  alerts(accountId: ID, type: AlertType, severity: AlertSeverity): [Alert!]!
+
+  # Survey queries
+  survey(id: ID!): Survey
+  surveys(accountId: ID, status: String): [Survey!]!
+  surveyResponse(id: ID!): SurveyResponse
+  surveyResponses(surveyId: ID!): [SurveyResponse!]!
+
+  # NPS queries
+  nps(accountId: ID!, contactId: ID): [NPS!]!
+  npsSurvey(id: ID!): NPSSurvey
+  npsSurveys(accountId: ID): [NPSSurvey!]!
+
+  # Health score queries
+  healthScore(accountId: ID!): HealthScore
+  healthScoreFactors(healthScoreId: ID!): [HealthScoreFactor!]!
+
+  # Renewal queries
+  renewal(id: ID!): Renewal
+  renewals(accountId: ID, status: RenewalStatus): [Renewal!]!
+
+  # Opportunity queries
+  opportunity(id: ID!): Opportunity
+  opportunities(accountId: ID, stage: String): [Opportunity!]!
+
+  # Feature & Usage queries
+  feature(id: ID!): Feature
+  features(isActive: Boolean): [Feature!]!
+  featureUsage(featureId: ID!, accountId: ID!): FeatureUsage
+  usageData(accountId: ID!): UsageData
+  userActivities(accountId: ID!, limit: Int): [UserActivity!]!
+
+  # Metric queries
+  metric(id: ID!): Metric
+  metrics(accountId: ID!, category: String): [Metric!]!
+
+  # License queries
+  license(id: ID!): License
+  licenses(accountId: ID!): [License!]!
+
+  # Webhook queries
+  webhook(id: ID!): Webhook
+  webhooks: [Webhook!]!
+
+  # Journey & Segment queries
+  journey(id: ID!): Journey
+  journeys(isActive: Boolean): [Journey!]!
+  segment(id: ID!): Segment
+  segments(isActive: Boolean): [Segment!]!
+
+  # Auth queries
+  apiKeys: [APIKey!]!
+}
+
+type Mutation {
+  # Account mutations
+  upsertAccount(input: JSON!): Account
+  updateAccountHealth(accountId: ID!, input: JSON!): AccountHealth
+
+  # Contact mutations
+  upsertContact(input: JSON!): Contact
+  deleteContact(id: ID!): Boolean
+
+  # Risk mutations
+  createRisk(accountId: ID!, input: JSON!): Risk
+  updateRisk(id: ID!, input: JSON!): Risk
+  resolveRisk(id: ID!): Risk
+
+  # Timeline mutations
+  createTimelineActivity(accountId: ID!, input: JSON!): TimelineActivity
+  updateTimelineActivity(id: ID!, input: JSON!): TimelineActivity
+  deleteTimelineActivity(id: ID!): Boolean
+
+  # Task mutations
+  createTask(accountId: ID!, input: JSON!): Task
+  updateTask(id: ID!, input: JSON!): Task
+  completeTask(id: ID!, notes: String): Task
+
+  # Alert (CTA) mutations
+  createAlert(accountId: ID!, input: JSON!): Alert
+  updateAlert(id: ID!, input: JSON!): Alert
+  resolveAlert(id: ID!, reason: String): Alert
+
+  # Survey mutations
+  createSurvey(input: JSON!): Survey
+  sendSurvey(id: ID!, contactIds: [ID!]!): Survey
+  submitSurveyResponse(surveyId: ID!, input: JSON!): SurveyResponse
+
+  # Renewal mutations
+  upsertRenewal(accountId: ID!, input: JSON!): Renewal
+  updateRenewalStatus(id: ID!, status: RenewalStatus!): Renewal
+
+  # Opportunity mutations
+  upsertOpportunity(accountId: ID!, input: JSON!): Opportunity
+
+  # Webhook mutations
+  createWebhook(input: JSON!): Webhook
+  updateWebhook(id: ID!, input: JSON!): Webhook
+  deleteWebhook(id: ID!): Boolean
+
+  # Playbook mutations
+  createPlaybook(input: JSON!): Playbook
+  updatePlaybook(id: ID!, input: JSON!): Playbook
+
+  # Segment mutations
+  createSegment(input: JSON!): Segment
+  updateSegment(id: ID!, input: JSON!): Segment
+
+  # Journey mutations
+  createJourney(input: JSON!): Journey
+  enrollAccountsInJourney(journeyId: ID!, accountIds: [ID!]!): Journey
+}
