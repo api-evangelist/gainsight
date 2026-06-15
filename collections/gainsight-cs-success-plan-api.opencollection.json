@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Success Plan API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Success Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Create a success plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/successplans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new success plan for a company."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a success plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/successplans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Success plan unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific success plan by ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update a success plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/successplans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Success plan unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing success plan."
+        },
+        {
+          "info": {
+            "name": "Gainsight Search success plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/successplans/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for success plans using filter criteria."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Objectives",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List objectives",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/successplans/:planId/objectives",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Success plan unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve objectives for a specific success plan."
+        },
+        {
+          "info": {
+            "name": "Gainsight Create an objective",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/successplans/:planId/objectives",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Success plan unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new objective to a success plan."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Get success plan types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/successplans/config/types"
+          },
+          "docs": "Retrieve configured success plan types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

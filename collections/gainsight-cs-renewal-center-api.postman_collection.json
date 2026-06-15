@@ -1,0 +1,995 @@
+{
+  "item": [
+    {
+      "id": "fcbd4f05-31a0-4f61-99b2-599f6eac4663",
+      "name": "Opportunities",
+      "description": {
+        "content": "Manage opportunity records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad3c48d9-5ce9-42cc-a404-360d7e802627",
+          "name": "Gainsight Create an opportunity",
+          "request": {
+            "name": "Gainsight Create an opportunity",
+            "description": {
+              "content": "Create a new opportunity record in the Gainsight Opportunity object. Supports renewal, upsell, and downsell booking types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Opportunity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"CompanyId\": \"<string>\",\n      \"CompanyName\": \"<string>\",\n      \"BookingType\": \"<string>\",\n      \"Amount\": \"<number>\",\n      \"Currency\": \"<string>\",\n      \"CloseDate\": \"<date>\",\n      \"Stage\": \"<string>\",\n      \"Probability\": \"<number>\",\n      \"OwnerId\": \"<string>\",\n      \"OwnerName\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"Term\": \"<integer>\",\n      \"RenewalDate\": \"<date>\",\n      \"IsClosed\": \"<boolean>\",\n      \"IsWon\": \"<boolean>\",\n      \"SfdcOpportunityId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"CompanyId\": \"<string>\",\n      \"CompanyName\": \"<string>\",\n      \"BookingType\": \"<string>\",\n      \"Amount\": \"<number>\",\n      \"Currency\": \"<string>\",\n      \"CloseDate\": \"<date>\",\n      \"Stage\": \"<string>\",\n      \"Probability\": \"<number>\",\n      \"OwnerId\": \"<string>\",\n      \"OwnerName\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"Term\": \"<integer>\",\n      \"RenewalDate\": \"<date>\",\n      \"IsClosed\": \"<boolean>\",\n      \"IsWon\": \"<boolean>\",\n      \"SfdcOpportunityId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b53f122e-983e-4b31-8cc6-e460a351684d",
+              "name": "Opportunity created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Upsell\",\n      \"Amount\": 6180.267392497313,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"1971-12-10\",\n      \"Stage\": \"string\",\n      \"Probability\": 92.80381815528729,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 5598.832371945486,\n      \"Term\": 4503,\n      \"RenewalDate\": \"1960-03-20\",\n      \"IsClosed\": true,\n      \"IsWon\": false,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"1998-01-08T01:34:28.149Z\",\n      \"ModifiedDate\": \"1951-07-15T20:37:55.671Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Downsell\",\n      \"Amount\": 7069.142058920972,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"2015-08-03\",\n      \"Stage\": \"string\",\n      \"Probability\": 8.312976712643527,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 9702.081709058306,\n      \"Term\": 8021,\n      \"RenewalDate\": \"1965-07-02\",\n      \"IsClosed\": false,\n      \"IsWon\": true,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"2025-09-12T16:20:53.217Z\",\n      \"ModifiedDate\": \"1965-01-06T10:40:00.155Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"count\": 4435,\n    \"insertedCount\": 3675,\n    \"updatedCount\": 7239,\n    \"failedCount\": 5267\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "636af0dc-8b3c-4f96-b63d-f205c67176f4",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Upsell\",\n      \"Amount\": 6180.267392497313,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"1971-12-10\",\n      \"Stage\": \"string\",\n      \"Probability\": 92.80381815528729,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 5598.832371945486,\n      \"Term\": 4503,\n      \"RenewalDate\": \"1960-03-20\",\n      \"IsClosed\": true,\n      \"IsWon\": false,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"1998-01-08T01:34:28.149Z\",\n      \"ModifiedDate\": \"1951-07-15T20:37:55.671Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Downsell\",\n      \"Amount\": 7069.142058920972,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"2015-08-03\",\n      \"Stage\": \"string\",\n      \"Probability\": 8.312976712643527,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 9702.081709058306,\n      \"Term\": 8021,\n      \"RenewalDate\": \"1965-07-02\",\n      \"IsClosed\": false,\n      \"IsWon\": true,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"2025-09-12T16:20:53.217Z\",\n      \"ModifiedDate\": \"1965-01-06T10:40:00.155Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c50e27de-2a18-428c-8003-d6f8a7267a7a",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Upsell\",\n      \"Amount\": 6180.267392497313,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"1971-12-10\",\n      \"Stage\": \"string\",\n      \"Probability\": 92.80381815528729,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 5598.832371945486,\n      \"Term\": 4503,\n      \"RenewalDate\": \"1960-03-20\",\n      \"IsClosed\": true,\n      \"IsWon\": false,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"1998-01-08T01:34:28.149Z\",\n      \"ModifiedDate\": \"1951-07-15T20:37:55.671Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Downsell\",\n      \"Amount\": 7069.142058920972,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"2015-08-03\",\n      \"Stage\": \"string\",\n      \"Probability\": 8.312976712643527,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 9702.081709058306,\n      \"Term\": 8021,\n      \"RenewalDate\": \"1965-07-02\",\n      \"IsClosed\": false,\n      \"IsWon\": true,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"2025-09-12T16:20:53.217Z\",\n      \"ModifiedDate\": \"1965-01-06T10:40:00.155Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f25efe2-4d41-4554-86a2-287c356567b6",
+          "name": "Gainsight Update opportunities",
+          "request": {
+            "name": "Gainsight Update opportunities",
+            "description": {
+              "content": "Update one or more opportunity records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Opportunity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated key fields for matching"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"CompanyId\": \"<string>\",\n      \"CompanyName\": \"<string>\",\n      \"BookingType\": \"<string>\",\n      \"Amount\": \"<number>\",\n      \"Currency\": \"<string>\",\n      \"CloseDate\": \"<date>\",\n      \"Stage\": \"<string>\",\n      \"Probability\": \"<number>\",\n      \"OwnerId\": \"<string>\",\n      \"OwnerName\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"Term\": \"<integer>\",\n      \"RenewalDate\": \"<date>\",\n      \"IsClosed\": \"<boolean>\",\n      \"IsWon\": \"<boolean>\",\n      \"SfdcOpportunityId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"CompanyId\": \"<string>\",\n      \"CompanyName\": \"<string>\",\n      \"BookingType\": \"<string>\",\n      \"Amount\": \"<number>\",\n      \"Currency\": \"<string>\",\n      \"CloseDate\": \"<date>\",\n      \"Stage\": \"<string>\",\n      \"Probability\": \"<number>\",\n      \"OwnerId\": \"<string>\",\n      \"OwnerName\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"Term\": \"<integer>\",\n      \"RenewalDate\": \"<date>\",\n      \"IsClosed\": \"<boolean>\",\n      \"IsWon\": \"<boolean>\",\n      \"SfdcOpportunityId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "282c53e8-8d30-4cca-993f-061e7f545b7d",
+              "name": "Opportunity updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Upsell\",\n      \"Amount\": 6180.267392497313,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"1971-12-10\",\n      \"Stage\": \"string\",\n      \"Probability\": 92.80381815528729,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 5598.832371945486,\n      \"Term\": 4503,\n      \"RenewalDate\": \"1960-03-20\",\n      \"IsClosed\": true,\n      \"IsWon\": false,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"1998-01-08T01:34:28.149Z\",\n      \"ModifiedDate\": \"1951-07-15T20:37:55.671Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Downsell\",\n      \"Amount\": 7069.142058920972,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"2015-08-03\",\n      \"Stage\": \"string\",\n      \"Probability\": 8.312976712643527,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 9702.081709058306,\n      \"Term\": 8021,\n      \"RenewalDate\": \"1965-07-02\",\n      \"IsClosed\": false,\n      \"IsWon\": true,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"2025-09-12T16:20:53.217Z\",\n      \"ModifiedDate\": \"1965-01-06T10:40:00.155Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"count\": 4435,\n    \"insertedCount\": 3675,\n    \"updatedCount\": 7239,\n    \"failedCount\": 5267\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fe245ec-242f-4132-84f6-bc6bb10ce3ee",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Upsell\",\n      \"Amount\": 6180.267392497313,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"1971-12-10\",\n      \"Stage\": \"string\",\n      \"Probability\": 92.80381815528729,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 5598.832371945486,\n      \"Term\": 4503,\n      \"RenewalDate\": \"1960-03-20\",\n      \"IsClosed\": true,\n      \"IsWon\": false,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"1998-01-08T01:34:28.149Z\",\n      \"ModifiedDate\": \"1951-07-15T20:37:55.671Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Downsell\",\n      \"Amount\": 7069.142058920972,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"2015-08-03\",\n      \"Stage\": \"string\",\n      \"Probability\": 8.312976712643527,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 9702.081709058306,\n      \"Term\": 8021,\n      \"RenewalDate\": \"1965-07-02\",\n      \"IsClosed\": false,\n      \"IsWon\": true,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"2025-09-12T16:20:53.217Z\",\n      \"ModifiedDate\": \"1965-01-06T10:40:00.155Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f0c07c1-0e64-4d35-a00a-aec1dd36961a",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Upsell\",\n      \"Amount\": 6180.267392497313,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"1971-12-10\",\n      \"Stage\": \"string\",\n      \"Probability\": 92.80381815528729,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 5598.832371945486,\n      \"Term\": 4503,\n      \"RenewalDate\": \"1960-03-20\",\n      \"IsClosed\": true,\n      \"IsWon\": false,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"1998-01-08T01:34:28.149Z\",\n      \"ModifiedDate\": \"1951-07-15T20:37:55.671Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"BookingType\": \"Downsell\",\n      \"Amount\": 7069.142058920972,\n      \"Currency\": \"string\",\n      \"CloseDate\": \"2015-08-03\",\n      \"Stage\": \"string\",\n      \"Probability\": 8.312976712643527,\n      \"OwnerId\": \"string\",\n      \"OwnerName\": \"string\",\n      \"ARR\": 9702.081709058306,\n      \"Term\": 8021,\n      \"RenewalDate\": \"1965-07-02\",\n      \"IsClosed\": false,\n      \"IsWon\": true,\n      \"SfdcOpportunityId\": \"string\",\n      \"CreatedDate\": \"2025-09-12T16:20:53.217Z\",\n      \"ModifiedDate\": \"1965-01-06T10:40:00.155Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b514f1f5-c720-43ba-9c62-82817addf1a1",
+          "name": "Gainsight Search opportunities",
+          "request": {
+            "name": "Gainsight Search opportunities",
+            "description": {
+              "content": "Search for opportunity records using filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Opportunity",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdd4fe52-4c28-4cf2-afbd-3c3d95d8bc2c",
+              "name": "Opportunities returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"BookingType\": \"Downsell\",\n        \"Amount\": 8373.885626904439,\n        \"Currency\": \"string\",\n        \"CloseDate\": \"1991-04-12\",\n        \"Stage\": \"string\",\n        \"Probability\": 88.42204249218277,\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"ARR\": 8864.423591131215,\n        \"Term\": 7086,\n        \"RenewalDate\": \"2021-03-31\",\n        \"IsClosed\": false,\n        \"IsWon\": true,\n        \"SfdcOpportunityId\": \"string\",\n        \"CreatedDate\": \"2025-03-30T17:18:37.261Z\",\n        \"ModifiedDate\": \"1996-10-02T22:43:30.390Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"BookingType\": \"Downsell\",\n        \"Amount\": 9844.357474128457,\n        \"Currency\": \"string\",\n        \"CloseDate\": \"1958-05-12\",\n        \"Stage\": \"string\",\n        \"Probability\": 56.147764229907224,\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"ARR\": 3924.5647732573807,\n        \"Term\": 9804,\n        \"RenewalDate\": \"1996-08-17\",\n        \"IsClosed\": false,\n        \"IsWon\": true,\n        \"SfdcOpportunityId\": \"string\",\n        \"CreatedDate\": \"1955-07-31T10:58:40.369Z\",\n        \"ModifiedDate\": \"1978-10-08T03:22:04.295Z\"\n      }\n    ],\n    \"totalCount\": 7777\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "990c6a98-a8f7-4b9f-888f-9bdf9d2754f8",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eec09326-67d2-431f-b6be-298ae060d782",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a255d41-bf2a-4d11-8556-afc91fd20d3b",
+          "name": "Gainsight Get an opportunity",
+          "request": {
+            "name": "Gainsight Get an opportunity",
+            "description": {
+              "content": "Retrieve a specific opportunity by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Opportunity",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) Opportunity record Gsid"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e573a999-f6e4-47f9-86f6-d5b6d0451ad2",
+              "name": "Opportunity returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Opportunity record Gsid"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"BookingType\": \"Renewal\",\n    \"Amount\": 8296.321284372802,\n    \"Currency\": \"string\",\n    \"CloseDate\": \"2019-11-07\",\n    \"Stage\": \"string\",\n    \"Probability\": 7.1693285786978755,\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"ARR\": 2527.4536229405276,\n    \"Term\": 4741,\n    \"RenewalDate\": \"2015-10-01\",\n    \"IsClosed\": true,\n    \"IsWon\": true,\n    \"SfdcOpportunityId\": \"string\",\n    \"CreatedDate\": \"1949-08-21T10:10:53.479Z\",\n    \"ModifiedDate\": \"1960-06-08T13:25:39.195Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ba1ae4d-a0ef-4c55-8281-fb649f657196",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Opportunity record Gsid"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ae11715-6891-435e-a933-124f24a3cb66",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Opportunity",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Opportunity record Gsid"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Customer-specific domain prefix",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "customer",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.gainsightcloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accessKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "427ceb6e-f551-42ad-9bb9-064b95156029",
+    "name": "Gainsight CS Renewal Center API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Renewal Center API enables creating and updating opportunity records in the Gainsight Opportunity object, supporting renewal, upsell, and downsell booking types within the Matrix Data Architecture.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+      "type": "text/plain"
+    }
+  }
+}

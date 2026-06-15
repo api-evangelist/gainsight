@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Company API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Insert company records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Company",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert one or more company records into Gainsight. Supports up to 50 records per call."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update company records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Company",
+            "params": [
+              {
+                "name": "keys",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of key field names for matching"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update one or more company records. Requires a key field for matching. Supports up to 50 records per call."
+        },
+        {
+          "info": {
+            "name": "Gainsight Search company records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Company/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for company records using filter criteria. Returns up to 5000 records per call."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a company record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Company/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight record unique identifier (Gsid)"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific company record by its Gainsight ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Delete a company record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Company/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight record unique identifier (Gsid)"
+              }
+            ]
+          },
+          "docs": "Delete a company record by its Gainsight ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

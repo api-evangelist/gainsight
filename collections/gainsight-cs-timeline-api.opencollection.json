@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Timeline API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Create a timeline activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/timeline/activities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new activity on the timeline for a company or relationship."
+        },
+        {
+          "info": {
+            "name": "Gainsight Bulk create timeline activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/timeline/activities/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create multiple activities in a single request. Supports payloads up to 80MB."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a timeline activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/timeline/activities/:activityId",
+            "params": [
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "path",
+                "description": "Timeline activity unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific timeline activity by ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update a timeline activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/timeline/activities/:activityId",
+            "params": [
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "path",
+                "description": "Timeline activity unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing timeline activity."
+        },
+        {
+          "info": {
+            "name": "Gainsight Delete a timeline activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{domain}.gainsightcloud.com/v1/timeline/activities/:activityId",
+            "params": [
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "path",
+                "description": "Timeline activity unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a timeline activity by ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Search timeline activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/timeline/activities/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for timeline activities using filter criteria."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Activity Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Get activity types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/timeline/activityTypes"
+          },
+          "docs": "Retrieve the list of configured timeline activity types."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

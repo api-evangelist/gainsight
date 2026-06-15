@@ -1,0 +1,1359 @@
+{
+  "item": [
+    {
+      "id": "7306be9f-d53a-4c4e-9d67-df5d7493cd23",
+      "name": "Custom Objects",
+      "description": {
+        "content": "CRUD operations on custom object records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce162b89-a76e-4919-b100-013952fcd588",
+          "name": "Gainsight Insert custom object records",
+          "request": {
+            "name": "Gainsight Insert custom object records",
+            "description": {
+              "content": "Insert one or more records into a custom object. Supports up to 50 records per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                ":objectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) Name of the custom object"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0a40407-ae40-4fd4-9483-d3017d624172",
+              "name": "Records inserted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"count\": 4673,\n    \"insertedCount\": 347,\n    \"updatedCount\": 1351,\n    \"failedCount\": 3698,\n    \"failures\": [\n      {\n        \"index\": 7002,\n        \"errorMessage\": \"string\"\n      },\n      {\n        \"index\": 1519,\n        \"errorMessage\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5efdffd7-24c5-4599-bb92-c9115053efb5",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1eeb68e7-deeb-43d2-8012-b893f145bd42",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53038169-028e-4d7c-9429-03e6cf43a509",
+          "name": "Gainsight Update custom object records",
+          "request": {
+            "name": "Gainsight Update custom object records",
+            "description": {
+              "content": "Update one or more records in a custom object. Requires key fields for matching. Supports up to 50 records per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                ":objectName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated key fields for matching"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) Name of the custom object"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53345f7f-96dc-40f5-af13-ecf26cc66ece",
+              "name": "Records updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"count\": 4673,\n    \"insertedCount\": 347,\n    \"updatedCount\": 1351,\n    \"failedCount\": 3698,\n    \"failures\": [\n      {\n        \"index\": 7002,\n        \"errorMessage\": \"string\"\n      },\n      {\n        \"index\": 1519,\n        \"errorMessage\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b26ec4a0-51ec-49ec-9221-e3e1704fc953",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13e61ee2-ebe8-4546-860f-c15c0fd88558",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b8a8316-66d6-4048-a635-98316741f8f3",
+          "name": "Gainsight Search custom object records",
+          "request": {
+            "name": "Gainsight Search custom object records",
+            "description": {
+              "content": "Search for records in a custom object using filter criteria. Returns up to 5000 records per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                ":objectName",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) Name of the custom object"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "126f972a-f031-4eb2-83e1-717094ac67fc",
+              "name": "Search results returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"totalCount\": 706,\n    \"count\": 4062\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed51f0fa-ca78-4fac-9a05-98f3fb4e42bf",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1602bd32-627a-4176-b320-3e92b637e2c1",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84e5d4ff-a78c-4f47-9165-d2ceeca16ae4",
+          "name": "Gainsight Get a custom object record",
+          "request": {
+            "name": "Gainsight Get a custom object record",
+            "description": {
+              "content": "Retrieve a specific custom object record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                ":objectName",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) Name of the custom object"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) Gainsight record unique identifier (Gsid)"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a8f4214-ce6a-4e76-a123-6333db97d2fd",
+              "name": "Record returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c670b19d-4b88-4bdc-bb15-5899b4583f16",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7cd70727-9561-4002-ba33-416e2a8b192d",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65ba5779-c103-439e-8961-ee53b10ae962",
+          "name": "Gainsight Delete a custom object record",
+          "request": {
+            "name": "Gainsight Delete a custom object record",
+            "description": {
+              "content": "Delete a custom object record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                ":objectName",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectName",
+                  "description": "(Required) Name of the custom object"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) Gainsight record unique identifier (Gsid)"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d96a30c-f951-47db-b2c3-69aa8d8954d0",
+              "name": "Record deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"errorCode\": \"string\",\n  \"errorDesc\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a97df417-5001-49c2-b8d5-b1a117589ada",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6bcb7920-a465-4eb1-bfd2-c19f6b31c780",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    ":objectName",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectName",
+                      "description": "(Required) Name of the custom object"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Customer-specific domain prefix",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "customer",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.gainsightcloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accessKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5a20506c-a75c-49be-b9ec-075393f0efba",
+    "name": "Gainsight CS Custom Object API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Custom Object API allows inserting, updating, reading, and deleting records in Gainsight transactional custom objects, supporting flexible data models for customer success workflows.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+      "type": "text/plain"
+    }
+  }
+}

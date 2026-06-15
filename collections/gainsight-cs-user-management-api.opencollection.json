@@ -1,0 +1,265 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS User Management API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/users",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Records per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of Gainsight users."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight user ID"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific Gainsight user by ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight user ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Gainsight user record."
+        },
+        {
+          "info": {
+            "name": "Gainsight Deactivate a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/users/:userId/deactivate",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight user ID"
+              }
+            ]
+          },
+          "docs": "Deactivate a Gainsight user account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Company Team",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Upsert company team records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/companyteam",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert or update company team records that associate Gainsight users with company accounts."
+        },
+        {
+          "info": {
+            "name": "Gainsight Search company team records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/companyteam/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for company team records using filter criteria."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SCIM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight SCIM list users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SCIM filter expression"
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "Starting index"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records"
+              }
+            ]
+          },
+          "docs": "List users via SCIM 2.0 protocol for identity provider integration."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provision a new user via SCIM 2.0."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM get user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users/:scimUserId",
+            "params": [
+              {
+                "name": "scimUserId",
+                "value": "",
+                "type": "path",
+                "description": "SCIM user ID"
+              }
+            ]
+          },
+          "docs": "Retrieve a user via SCIM 2.0."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users/:scimUserId",
+            "params": [
+              {
+                "name": "scimUserId",
+                "value": "",
+                "type": "path",
+                "description": "SCIM user ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user via SCIM 2.0."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users/:scimUserId",
+            "params": [
+              {
+                "name": "scimUserId",
+                "value": "",
+                "type": "path",
+                "description": "SCIM user ID"
+              }
+            ]
+          },
+          "docs": "De-provision a user via SCIM 2.0."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

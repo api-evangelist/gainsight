@@ -1,0 +1,1400 @@
+{
+  "item": [
+    {
+      "id": "f1cc8ebd-cde5-462f-96a8-fde68a99f12e",
+      "name": "Playbooks",
+      "description": {
+        "content": "Retrieve playbook configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2da8151-0dca-4094-9bad-60807205af26",
+          "name": "Gainsight List playbooks",
+          "request": {
+            "name": "Gainsight List playbooks",
+            "description": {
+              "content": "Retrieve a list of configured playbooks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "playbooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "073da7fb-d9a2-4341-9ec3-a4448c5a985b",
+              "name": "Playbooks returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playbooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"CTATypeId\": \"string\",\n      \"IsActive\": true,\n      \"TaskTemplates\": [\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"order\": 8529,\n          \"daysFromCreation\": 9455\n        },\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"order\": 7403,\n          \"daysFromCreation\": 8647\n        }\n      ],\n      \"CreatedDate\": \"1961-08-28T17:36:08.661Z\",\n      \"ModifiedDate\": \"1982-05-11T13:10:27.882Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"CTATypeId\": \"string\",\n      \"IsActive\": true,\n      \"TaskTemplates\": [\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"order\": 8841,\n          \"daysFromCreation\": 5520\n        },\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"order\": 2220,\n          \"daysFromCreation\": 3120\n        }\n      ],\n      \"CreatedDate\": \"2010-02-06T17:21:16.128Z\",\n      \"ModifiedDate\": \"1968-10-03T05:29:27.442Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3560c86c-4ee5-4b00-964f-d2f8c227ed81",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playbooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1513b261-7685-44a1-b4f2-8765a3371bc0",
+          "name": "Gainsight Get a playbook",
+          "request": {
+            "name": "Gainsight Get a playbook",
+            "description": {
+              "content": "Retrieve a specific playbook with its task templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "playbooks",
+                ":playbookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "playbookId",
+                  "description": "(Required) Playbook unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4ebb99b-5316-496a-b65f-4bed742685f0",
+              "name": "Playbook returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playbooks",
+                    ":playbookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playbookId",
+                      "description": "(Required) Playbook unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"CTATypeId\": \"string\",\n    \"IsActive\": true,\n    \"TaskTemplates\": [\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"order\": 3239,\n        \"daysFromCreation\": 2611\n      },\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"order\": 6122,\n        \"daysFromCreation\": 5698\n      }\n    ],\n    \"CreatedDate\": \"2025-09-10T06:13:16.952Z\",\n    \"ModifiedDate\": \"1991-10-27T02:56:23.096Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4486267-2432-4a93-bbae-f25df1333f85",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playbooks",
+                    ":playbookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playbookId",
+                      "description": "(Required) Playbook unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "762281c7-a21b-45bf-9ca7-d607c131cb17",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playbooks",
+                    ":playbookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playbookId",
+                      "description": "(Required) Playbook unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "62a2b445-14a3-47cb-b81f-c4ced6d121b2",
+      "name": "Tasks",
+      "description": {
+        "content": "Manage tasks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71223e50-ae1d-4899-8bfc-50e9877b68f4",
+          "name": "Gainsight Create a task",
+          "request": {
+            "name": "Gainsight Create a task",
+            "description": {
+              "content": "Create a new task associated with a CTA.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0cd60a46-07d8-4183-ad7a-dcbed22b1399",
+              "name": "Task created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"CTAId\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"Status\": \"Completed\",\n    \"Priority\": \"string\",\n    \"DueDate\": \"1984-04-19\",\n    \"CompletedDate\": \"2007-09-28\",\n    \"PlaybookId\": \"string\",\n    \"Order\": 7750,\n    \"CreatedDate\": \"2016-11-10T14:23:42.775Z\",\n    \"ModifiedDate\": \"2017-02-20T17:51:30.799Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7836736f-800f-415c-90ce-8322f07755f2",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b660611-e3ef-47ed-9311-06f73e1bfa9d",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "431aef04-0f1e-4a75-9011-bb2c0566979e",
+          "name": "Gainsight Get a task",
+          "request": {
+            "name": "Gainsight Get a task",
+            "description": {
+              "content": "Retrieve a specific task by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) Task unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bbacdf7-2c7c-4579-bfae-c176ae80ba56",
+              "name": "Task returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Task unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"CTAId\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"Status\": \"Completed\",\n    \"Priority\": \"string\",\n    \"DueDate\": \"1984-04-19\",\n    \"CompletedDate\": \"2007-09-28\",\n    \"PlaybookId\": \"string\",\n    \"Order\": 7750,\n    \"CreatedDate\": \"2016-11-10T14:23:42.775Z\",\n    \"ModifiedDate\": \"2017-02-20T17:51:30.799Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98d3efb7-b453-424a-a74c-529f06fe73d4",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Task unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db9dc772-da84-4c6b-a93e-d520a75512ff",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Task unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "682322c7-3c83-4fb5-99b8-61c0f8268c90",
+          "name": "Gainsight Update a task",
+          "request": {
+            "name": "Gainsight Update a task",
+            "description": {
+              "content": "Update an existing task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) Task unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6788a85f-11e5-4482-87a7-9eec6ac86f52",
+              "name": "Task updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Task unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"CTAId\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"Status\": \"Completed\",\n    \"Priority\": \"string\",\n    \"DueDate\": \"1984-04-19\",\n    \"CompletedDate\": \"2007-09-28\",\n    \"PlaybookId\": \"string\",\n    \"Order\": 7750,\n    \"CreatedDate\": \"2016-11-10T14:23:42.775Z\",\n    \"ModifiedDate\": \"2017-02-20T17:51:30.799Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc008f89-ac5f-4d01-b561-ad9e7d128913",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Task unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e87d9492-7b91-49fb-9b47-ec4a366f0371",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Task unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90e204c7-a230-4c7d-8928-74eb7f9656a9",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Task unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CTAId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31aac0ef-3a56-4933-b1eb-5fbc7eda73fd",
+          "name": "Gainsight Search tasks",
+          "request": {
+            "name": "Gainsight Search tasks",
+            "description": {
+              "content": "Search for tasks using filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tasks",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4093be9-a4c9-42ee-9d4e-e216f4e8d7c3",
+              "name": "Tasks returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"CTAId\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"Status\": \"Skipped\",\n        \"Priority\": \"string\",\n        \"DueDate\": \"2004-01-22\",\n        \"CompletedDate\": \"1977-12-31\",\n        \"PlaybookId\": \"string\",\n        \"Order\": 7279,\n        \"CreatedDate\": \"2003-02-14T09:24:39.349Z\",\n        \"ModifiedDate\": \"1974-06-03T06:29:25.229Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"CTAId\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"Status\": \"Not Started\",\n        \"Priority\": \"string\",\n        \"DueDate\": \"1953-04-22\",\n        \"CompletedDate\": \"1977-09-15\",\n        \"PlaybookId\": \"string\",\n        \"Order\": 2603,\n        \"CreatedDate\": \"1965-01-01T13:13:37.871Z\",\n        \"ModifiedDate\": \"1963-05-07T10:34:15.755Z\"\n      }\n    ],\n    \"totalCount\": 9535\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1508bb78-933d-42ab-9459-9a3a6bf70701",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62ce9c04-acc7-411d-9925-76e0bd7e3a66",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tasks",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Customer-specific domain prefix",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "customer",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.gainsightcloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accessKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c773ab20-99f4-4327-9bad-ca43ba603da3",
+    "name": "Gainsight CS Task and Playbook API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Task and Playbook API manages task creation and updates, and retrieves task and playbook details for orchestrating customer success workflows within the Cockpit.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+      "type": "text/plain"
+    }
+  }
+}

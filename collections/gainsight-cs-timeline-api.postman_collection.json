@@ -1,0 +1,1653 @@
+{
+  "item": [
+    {
+      "id": "8e229a9c-ca91-404c-92ad-b591ecd2a7c4",
+      "name": "Activities",
+      "description": {
+        "content": "Manage timeline activities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1153de2-2357-4e87-9dea-88c2158e7ead",
+          "name": "Gainsight Create a timeline activity",
+          "request": {
+            "name": "Gainsight Create a timeline activity",
+            "description": {
+              "content": "Create a new activity on the timeline for a company or relationship.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeline",
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af25e81a-f0fd-42a6-ba01-6c0f4e39ad32",
+              "name": "Activity created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Subject\": \"string\",\n    \"Notes\": \"string\",\n    \"ActivityTypeId\": \"string\",\n    \"ActivityTypeName\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"ActivityDate\": \"1965-08-16T12:27:52.912Z\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"ExternalId\": \"string\",\n    \"Attendees\": [\n      {\n        \"personId\": \"string\",\n        \"email\": \"zD9ZDf3Q@htLAkwKcRYTrEmvVhVuuhbxpwOyPf.kyl\",\n        \"name\": \"string\"\n      },\n      {\n        \"personId\": \"string\",\n        \"email\": \"GUUupnjdificSqh@yvMIuGDIagwIQSZZ.ik\",\n        \"name\": \"string\"\n      }\n    ],\n    \"Sentiment\": \"Positive\",\n    \"CreatedDate\": \"1980-12-07T21:48:08.219Z\",\n    \"ModifiedDate\": \"1978-01-08T06:23:51.988Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ef71b86-aa72-40a6-93e3-3fe58f2a498b",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66a31ee7-8f87-48d6-a86e-dd961bbc905e",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b080a3a-6f93-4ce0-b1ee-22da505afec7",
+          "name": "Gainsight Bulk create timeline activities",
+          "request": {
+            "name": "Gainsight Bulk create timeline activities",
+            "description": {
+              "content": "Create multiple activities in a single request. Supports payloads up to 80MB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeline",
+                "activities",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"Subject\": \"<string>\",\n      \"ActivityTypeId\": \"<string>\",\n      \"CompanyId\": \"<string>\",\n      \"ActivityDate\": \"<dateTime>\",\n      \"Notes\": \"<string>\",\n      \"OwnerId\": \"<string>\",\n      \"ExternalId\": \"<string>\",\n      \"Attendees\": [\n        {\n          \"personId\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        {\n          \"personId\": \"<string>\",\n          \"email\": \"<email>\"\n        }\n      ],\n      \"Sentiment\": \"<string>\"\n    },\n    {\n      \"Subject\": \"<string>\",\n      \"ActivityTypeId\": \"<string>\",\n      \"CompanyId\": \"<string>\",\n      \"ActivityDate\": \"<dateTime>\",\n      \"Notes\": \"<string>\",\n      \"OwnerId\": \"<string>\",\n      \"ExternalId\": \"<string>\",\n      \"Attendees\": [\n        {\n          \"personId\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        {\n          \"personId\": \"<string>\",\n          \"email\": \"<email>\"\n        }\n      ],\n      \"Sentiment\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29f21ab1-e970-4c68-a7f1-a686585a5468",
+              "name": "Activities created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Subject\": \"string\",\n      \"ActivityTypeId\": \"string\",\n      \"CompanyId\": \"string\",\n      \"ActivityDate\": \"1965-04-11T16:12:55.492Z\",\n      \"Notes\": \"string\",\n      \"OwnerId\": \"string\",\n      \"ExternalId\": \"string\",\n      \"Attendees\": [\n        {\n          \"personId\": \"string\",\n          \"email\": \"p0E-S6@JDNf.gyh\"\n        },\n        {\n          \"personId\": \"string\",\n          \"email\": \"qHVn0yawe9@yWgKklcvtVvyovzXgH.kwis\"\n        }\n      ],\n      \"Sentiment\": \"Negative\"\n    },\n    {\n      \"Subject\": \"string\",\n      \"ActivityTypeId\": \"string\",\n      \"CompanyId\": \"string\",\n      \"ActivityDate\": \"1991-07-15T01:38:20.101Z\",\n      \"Notes\": \"string\",\n      \"OwnerId\": \"string\",\n      \"ExternalId\": \"string\",\n      \"Attendees\": [\n        {\n          \"personId\": \"string\",\n          \"email\": \"N2yJ3sm9QYo@xS.ixz\"\n        },\n        {\n          \"personId\": \"string\",\n          \"email\": \"koN40MjlXLx6T6W@orehsdeLkSJMZ.zfcy\"\n        }\n      ],\n      \"Sentiment\": \"Negative\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"insertedCount\": 496,\n    \"failedCount\": 1576\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3e783e8-82d1-41f8-a3dd-625add67bbe1",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Subject\": \"string\",\n      \"ActivityTypeId\": \"string\",\n      \"CompanyId\": \"string\",\n      \"ActivityDate\": \"1965-04-11T16:12:55.492Z\",\n      \"Notes\": \"string\",\n      \"OwnerId\": \"string\",\n      \"ExternalId\": \"string\",\n      \"Attendees\": [\n        {\n          \"personId\": \"string\",\n          \"email\": \"p0E-S6@JDNf.gyh\"\n        },\n        {\n          \"personId\": \"string\",\n          \"email\": \"qHVn0yawe9@yWgKklcvtVvyovzXgH.kwis\"\n        }\n      ],\n      \"Sentiment\": \"Negative\"\n    },\n    {\n      \"Subject\": \"string\",\n      \"ActivityTypeId\": \"string\",\n      \"CompanyId\": \"string\",\n      \"ActivityDate\": \"1991-07-15T01:38:20.101Z\",\n      \"Notes\": \"string\",\n      \"OwnerId\": \"string\",\n      \"ExternalId\": \"string\",\n      \"Attendees\": [\n        {\n          \"personId\": \"string\",\n          \"email\": \"N2yJ3sm9QYo@xS.ixz\"\n        },\n        {\n          \"personId\": \"string\",\n          \"email\": \"koN40MjlXLx6T6W@orehsdeLkSJMZ.zfcy\"\n        }\n      ],\n      \"Sentiment\": \"Negative\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ca7a229-1f0f-48e5-aca8-5febb9e086dc",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Subject\": \"string\",\n      \"ActivityTypeId\": \"string\",\n      \"CompanyId\": \"string\",\n      \"ActivityDate\": \"1965-04-11T16:12:55.492Z\",\n      \"Notes\": \"string\",\n      \"OwnerId\": \"string\",\n      \"ExternalId\": \"string\",\n      \"Attendees\": [\n        {\n          \"personId\": \"string\",\n          \"email\": \"p0E-S6@JDNf.gyh\"\n        },\n        {\n          \"personId\": \"string\",\n          \"email\": \"qHVn0yawe9@yWgKklcvtVvyovzXgH.kwis\"\n        }\n      ],\n      \"Sentiment\": \"Negative\"\n    },\n    {\n      \"Subject\": \"string\",\n      \"ActivityTypeId\": \"string\",\n      \"CompanyId\": \"string\",\n      \"ActivityDate\": \"1991-07-15T01:38:20.101Z\",\n      \"Notes\": \"string\",\n      \"OwnerId\": \"string\",\n      \"ExternalId\": \"string\",\n      \"Attendees\": [\n        {\n          \"personId\": \"string\",\n          \"email\": \"N2yJ3sm9QYo@xS.ixz\"\n        },\n        {\n          \"personId\": \"string\",\n          \"email\": \"koN40MjlXLx6T6W@orehsdeLkSJMZ.zfcy\"\n        }\n      ],\n      \"Sentiment\": \"Negative\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b59cd07b-c3eb-49b7-8275-ba9a4c94c5c9",
+          "name": "Gainsight Get a timeline activity",
+          "request": {
+            "name": "Gainsight Get a timeline activity",
+            "description": {
+              "content": "Retrieve a specific timeline activity by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeline",
+                "activities",
+                ":activityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "activityId",
+                  "description": "(Required) Timeline activity unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b374fb07-f12b-4e37-a270-99a4e27c3312",
+              "name": "Activity returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Subject\": \"string\",\n    \"Notes\": \"string\",\n    \"ActivityTypeId\": \"string\",\n    \"ActivityTypeName\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"ActivityDate\": \"1965-08-16T12:27:52.912Z\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"ExternalId\": \"string\",\n    \"Attendees\": [\n      {\n        \"personId\": \"string\",\n        \"email\": \"zD9ZDf3Q@htLAkwKcRYTrEmvVhVuuhbxpwOyPf.kyl\",\n        \"name\": \"string\"\n      },\n      {\n        \"personId\": \"string\",\n        \"email\": \"GUUupnjdificSqh@yvMIuGDIagwIQSZZ.ik\",\n        \"name\": \"string\"\n      }\n    ],\n    \"Sentiment\": \"Positive\",\n    \"CreatedDate\": \"1980-12-07T21:48:08.219Z\",\n    \"ModifiedDate\": \"1978-01-08T06:23:51.988Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "926de88d-6db2-4df9-8e74-72c5454ab12f",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d13e8c9f-43be-459d-a50d-ab609c99171a",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e689a6f3-1795-498b-be50-3b863c8a2e36",
+          "name": "Gainsight Update a timeline activity",
+          "request": {
+            "name": "Gainsight Update a timeline activity",
+            "description": {
+              "content": "Update an existing timeline activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeline",
+                "activities",
+                ":activityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "activityId",
+                  "description": "(Required) Timeline activity unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb944021-845f-48d1-9fc7-def0832e4d19",
+              "name": "Activity updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Subject\": \"string\",\n    \"Notes\": \"string\",\n    \"ActivityTypeId\": \"string\",\n    \"ActivityTypeName\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"ActivityDate\": \"1965-08-16T12:27:52.912Z\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"ExternalId\": \"string\",\n    \"Attendees\": [\n      {\n        \"personId\": \"string\",\n        \"email\": \"zD9ZDf3Q@htLAkwKcRYTrEmvVhVuuhbxpwOyPf.kyl\",\n        \"name\": \"string\"\n      },\n      {\n        \"personId\": \"string\",\n        \"email\": \"GUUupnjdificSqh@yvMIuGDIagwIQSZZ.ik\",\n        \"name\": \"string\"\n      }\n    ],\n    \"Sentiment\": \"Positive\",\n    \"CreatedDate\": \"1980-12-07T21:48:08.219Z\",\n    \"ModifiedDate\": \"1978-01-08T06:23:51.988Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "197bf888-cf89-4c90-b948-b4d8f9e94467",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18c405da-6e22-414c-8ce8-f4aec3929847",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2492b9d-f97a-42f9-a347-75de99ce582f",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Subject\": \"<string>\",\n  \"ActivityTypeId\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"ActivityDate\": \"<dateTime>\",\n  \"Notes\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"ExternalId\": \"<string>\",\n  \"Attendees\": [\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"personId\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"Sentiment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a7a554c-2832-4490-9675-fba3481298e0",
+          "name": "Gainsight Delete a timeline activity",
+          "request": {
+            "name": "Gainsight Delete a timeline activity",
+            "description": {
+              "content": "Delete a timeline activity by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeline",
+                "activities",
+                ":activityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "activityId",
+                  "description": "(Required) Timeline activity unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7020c8f9-25be-421b-bd50-1f275b8b2115",
+              "name": "Activity deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"errorCode\": \"string\",\n  \"errorDesc\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82574c3d-ad1a-4467-812c-1e2fafdb0dd2",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92add63a-83e8-45f4-a2aa-de18734fd686",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    ":activityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "activityId",
+                      "description": "(Required) Timeline activity unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5d3ae89-669c-4d3e-a94f-ae8696303df1",
+          "name": "Gainsight Search timeline activities",
+          "request": {
+            "name": "Gainsight Search timeline activities",
+            "description": {
+              "content": "Search for timeline activities using filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeline",
+                "activities",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd55fe7b-2c97-4c81-bcc3-8e2072219371",
+              "name": "Activities returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"Subject\": \"string\",\n        \"Notes\": \"string\",\n        \"ActivityTypeId\": \"string\",\n        \"ActivityTypeName\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"ActivityDate\": \"1954-05-04T13:29:42.728Z\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"ExternalId\": \"string\",\n        \"Attendees\": [\n          {\n            \"personId\": \"string\",\n            \"email\": \"Q5wDk@KyZMcsaMNAWjdzCeFPujnkAsh.rhbb\",\n            \"name\": \"string\"\n          },\n          {\n            \"personId\": \"string\",\n            \"email\": \"DHoicRlpZD@IxXlbnqpJsAhEjWHEFnxXqbiK.jbk\",\n            \"name\": \"string\"\n          }\n        ],\n        \"Sentiment\": \"Negative\",\n        \"CreatedDate\": \"1993-07-21T16:03:56.162Z\",\n        \"ModifiedDate\": \"1963-11-14T15:03:16.323Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"Subject\": \"string\",\n        \"Notes\": \"string\",\n        \"ActivityTypeId\": \"string\",\n        \"ActivityTypeName\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"ActivityDate\": \"1956-11-29T19:46:48.826Z\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"ExternalId\": \"string\",\n        \"Attendees\": [\n          {\n            \"personId\": \"string\",\n            \"email\": \"2ANKUO@we.jvch\",\n            \"name\": \"string\"\n          },\n          {\n            \"personId\": \"string\",\n            \"email\": \"68e5gMsSN@UmfSUpPxTdCnRyPmRKZ.khhg\",\n            \"name\": \"string\"\n          }\n        ],\n        \"Sentiment\": \"Neutral\",\n        \"CreatedDate\": \"1965-12-20T06:48:15.953Z\",\n        \"ModifiedDate\": \"2017-08-17T19:03:43.992Z\"\n      }\n    ],\n    \"totalCount\": 7496\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60cb6d2f-efe0-49ae-92fb-201d9f045b9b",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4540b293-9db1-4797-8e76-d7fc522a4aa0",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "899378d6-0ac9-4225-83e2-0269187be63e",
+      "name": "Activity Types",
+      "description": {
+        "content": "Retrieve activity type configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0c40474a-e7c1-4196-a909-20970f08a113",
+          "name": "Gainsight Get activity types",
+          "request": {
+            "name": "Gainsight Get activity types",
+            "description": {
+              "content": "Retrieve the list of configured timeline activity types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "timeline",
+                "activityTypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0197141f-a24a-42c5-913a-006d68aea547",
+              "name": "Activity types returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activityTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isSystem\": false,\n      \"isActive\": false\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isSystem\": true,\n      \"isActive\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dd66848-1873-4f7a-978b-32005200e626",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "timeline",
+                    "activityTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Customer-specific domain prefix",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "customer",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.gainsightcloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accessKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3caed2df-17c3-435b-987b-a492a8cbb0b3",
+    "name": "Gainsight CS Timeline API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Timeline API enables creating, updating, reading, and deleting Timeline activities, supporting both single and bulk operations with up to 80MB payloads for bulk requests.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+      "type": "text/plain"
+    }
+  }
+}

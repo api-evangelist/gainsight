@@ -1,0 +1,383 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight PX API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-APTRINSIC-API-KEY",
+      "value": "{{X-APTRINSIC-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aptrinsic.com/v1/users",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "scrollId",
+                "value": "",
+                "type": "query",
+                "description": "Scroll ID for cursor-based pagination"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field and direction (e.g., lastSeenDate:desc)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression for results"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of users tracked in Gainsight PX."
+        },
+        {
+          "info": {
+            "name": "Gainsight Create or update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aptrinsic.com/v1/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user or update an existing user in Gainsight PX."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aptrinsic.com/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Unique user identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific user by their identifier."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.aptrinsic.com/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Unique user identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update specific attributes of a user."
+        },
+        {
+          "info": {
+            "name": "Gainsight Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aptrinsic.com/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Unique user identifier"
+              }
+            ]
+          },
+          "docs": "Delete a user from Gainsight PX."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aptrinsic.com/v1/accounts",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "scrollId",
+                "value": "",
+                "type": "query",
+                "description": "Scroll ID for cursor-based pagination"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field and direction (e.g., lastSeenDate:desc)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression for results"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of accounts in Gainsight PX."
+        },
+        {
+          "info": {
+            "name": "Gainsight Create or update an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aptrinsic.com/v1/accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new account or update an existing account."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aptrinsic.com/v1/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "Unique account identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific account by ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.aptrinsic.com/v1/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "Unique account identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update specific attributes of an account."
+        },
+        {
+          "info": {
+            "name": "Gainsight Delete an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.aptrinsic.com/v1/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "Unique account identifier"
+              }
+            ]
+          },
+          "docs": "Delete an account from Gainsight PX."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Feature Match",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List features",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aptrinsic.com/v1/feature_match",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "scrollId",
+                "value": "",
+                "type": "query",
+                "description": "Scroll ID for cursor-based pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve tracked features and their adoption metrics."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Custom Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Send a custom event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aptrinsic.com/v1/custom_events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a custom event for a user to track specific interactions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Engagements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List engagements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aptrinsic.com/v1/engagements",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "scrollId",
+                "value": "",
+                "type": "query",
+                "description": "Scroll ID for cursor-based pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of in-app engagements."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List event subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.aptrinsic.com/v1/subscriptions"
+          },
+          "docs": "Retrieve a list of configured event subscriptions."
+        },
+        {
+          "info": {
+            "name": "Gainsight Create an event subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.aptrinsic.com/v1/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook subscription for events."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

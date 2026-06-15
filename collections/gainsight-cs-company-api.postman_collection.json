@@ -1,0 +1,1219 @@
+{
+  "item": [
+    {
+      "id": "f3f698c1-0595-4b82-a355-5d00520496cd",
+      "name": "Companies",
+      "description": {
+        "content": "CRUD operations on company records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b94ab0d-f7b0-4b31-a2fc-b5f157456cc4",
+          "name": "Gainsight Insert company records",
+          "request": {
+            "name": "Gainsight Insert company records",
+            "description": {
+              "content": "Insert one or more company records into Gainsight. Supports up to 50 records per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Industry\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"MRR\": \"<number>\",\n      \"LifecycleStage\": \"<string>\",\n      \"Stage\": \"<string>\",\n      \"Status\": \"<string>\",\n      \"CSMName\": \"<string>\",\n      \"Employees\": \"<integer>\",\n      \"OriginalContractDate\": \"<date>\",\n      \"RenewalDate\": \"<date>\",\n      \"CurrScoreId\": \"<string>\",\n      \"OverallScore\": \"<number>\",\n      \"SfdcAccountId\": \"<string>\",\n      \"ParentCompanyId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Industry\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"MRR\": \"<number>\",\n      \"LifecycleStage\": \"<string>\",\n      \"Stage\": \"<string>\",\n      \"Status\": \"<string>\",\n      \"CSMName\": \"<string>\",\n      \"Employees\": \"<integer>\",\n      \"OriginalContractDate\": \"<date>\",\n      \"RenewalDate\": \"<date>\",\n      \"CurrScoreId\": \"<string>\",\n      \"OverallScore\": \"<number>\",\n      \"SfdcAccountId\": \"<string>\",\n      \"ParentCompanyId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3042d1ba-8691-4e8a-87bf-48159dc1b142",
+              "name": "Records inserted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 6858.297900905659,\n      \"MRR\": 5903.039303914385,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 483,\n      \"OriginalContractDate\": \"1994-08-03\",\n      \"RenewalDate\": \"2005-07-23\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 8965.62997415982,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1954-10-27T17:14:55.117Z\",\n      \"ModifiedDate\": \"2016-02-13T23:51:16.455Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 4688.839457924621,\n      \"MRR\": 637.7715332180156,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 3208,\n      \"OriginalContractDate\": \"2013-09-25\",\n      \"RenewalDate\": \"2015-08-11\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 6998.98730682408,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1995-08-19T10:54:06.936Z\",\n      \"ModifiedDate\": \"1970-05-10T23:19:54.731Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"count\": 7962,\n    \"insertedCount\": 4701,\n    \"updatedCount\": 6785,\n    \"failedCount\": 4711,\n    \"failures\": [\n      {\n        \"index\": 2281,\n        \"errorMessage\": \"string\"\n      },\n      {\n        \"index\": 9963,\n        \"errorMessage\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30832828-c262-4f53-a29c-5b0afab90c7a",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 6858.297900905659,\n      \"MRR\": 5903.039303914385,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 483,\n      \"OriginalContractDate\": \"1994-08-03\",\n      \"RenewalDate\": \"2005-07-23\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 8965.62997415982,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1954-10-27T17:14:55.117Z\",\n      \"ModifiedDate\": \"2016-02-13T23:51:16.455Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 4688.839457924621,\n      \"MRR\": 637.7715332180156,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 3208,\n      \"OriginalContractDate\": \"2013-09-25\",\n      \"RenewalDate\": \"2015-08-11\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 6998.98730682408,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1995-08-19T10:54:06.936Z\",\n      \"ModifiedDate\": \"1970-05-10T23:19:54.731Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be635543-b970-4ed2-86d5-aa1e3d85eb6d",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 6858.297900905659,\n      \"MRR\": 5903.039303914385,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 483,\n      \"OriginalContractDate\": \"1994-08-03\",\n      \"RenewalDate\": \"2005-07-23\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 8965.62997415982,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1954-10-27T17:14:55.117Z\",\n      \"ModifiedDate\": \"2016-02-13T23:51:16.455Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 4688.839457924621,\n      \"MRR\": 637.7715332180156,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 3208,\n      \"OriginalContractDate\": \"2013-09-25\",\n      \"RenewalDate\": \"2015-08-11\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 6998.98730682408,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1995-08-19T10:54:06.936Z\",\n      \"ModifiedDate\": \"1970-05-10T23:19:54.731Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe137fbf-75af-4059-9993-7f8c7a881607",
+          "name": "Gainsight Update company records",
+          "request": {
+            "name": "Gainsight Update company records",
+            "description": {
+              "content": "Update one or more company records. Requires a key field for matching. Supports up to 50 records per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of key field names for matching"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Industry\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"MRR\": \"<number>\",\n      \"LifecycleStage\": \"<string>\",\n      \"Stage\": \"<string>\",\n      \"Status\": \"<string>\",\n      \"CSMName\": \"<string>\",\n      \"Employees\": \"<integer>\",\n      \"OriginalContractDate\": \"<date>\",\n      \"RenewalDate\": \"<date>\",\n      \"CurrScoreId\": \"<string>\",\n      \"OverallScore\": \"<number>\",\n      \"SfdcAccountId\": \"<string>\",\n      \"ParentCompanyId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Industry\": \"<string>\",\n      \"ARR\": \"<number>\",\n      \"MRR\": \"<number>\",\n      \"LifecycleStage\": \"<string>\",\n      \"Stage\": \"<string>\",\n      \"Status\": \"<string>\",\n      \"CSMName\": \"<string>\",\n      \"Employees\": \"<integer>\",\n      \"OriginalContractDate\": \"<date>\",\n      \"RenewalDate\": \"<date>\",\n      \"CurrScoreId\": \"<string>\",\n      \"OverallScore\": \"<number>\",\n      \"SfdcAccountId\": \"<string>\",\n      \"ParentCompanyId\": \"<string>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0ae4f25-8b3d-4158-ae2a-036ed60df35d",
+              "name": "Records updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 6858.297900905659,\n      \"MRR\": 5903.039303914385,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 483,\n      \"OriginalContractDate\": \"1994-08-03\",\n      \"RenewalDate\": \"2005-07-23\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 8965.62997415982,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1954-10-27T17:14:55.117Z\",\n      \"ModifiedDate\": \"2016-02-13T23:51:16.455Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 4688.839457924621,\n      \"MRR\": 637.7715332180156,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 3208,\n      \"OriginalContractDate\": \"2013-09-25\",\n      \"RenewalDate\": \"2015-08-11\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 6998.98730682408,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1995-08-19T10:54:06.936Z\",\n      \"ModifiedDate\": \"1970-05-10T23:19:54.731Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"count\": 7962,\n    \"insertedCount\": 4701,\n    \"updatedCount\": 6785,\n    \"failedCount\": 4711,\n    \"failures\": [\n      {\n        \"index\": 2281,\n        \"errorMessage\": \"string\"\n      },\n      {\n        \"index\": 9963,\n        \"errorMessage\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "377e199d-8ecf-4cd3-936c-772a39e18d6d",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 6858.297900905659,\n      \"MRR\": 5903.039303914385,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 483,\n      \"OriginalContractDate\": \"1994-08-03\",\n      \"RenewalDate\": \"2005-07-23\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 8965.62997415982,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1954-10-27T17:14:55.117Z\",\n      \"ModifiedDate\": \"2016-02-13T23:51:16.455Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 4688.839457924621,\n      \"MRR\": 637.7715332180156,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 3208,\n      \"OriginalContractDate\": \"2013-09-25\",\n      \"RenewalDate\": \"2015-08-11\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 6998.98730682408,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1995-08-19T10:54:06.936Z\",\n      \"ModifiedDate\": \"1970-05-10T23:19:54.731Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c93d0f19-7660-4f5c-b928-7aaa6bd508f4",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 6858.297900905659,\n      \"MRR\": 5903.039303914385,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 483,\n      \"OriginalContractDate\": \"1994-08-03\",\n      \"RenewalDate\": \"2005-07-23\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 8965.62997415982,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1954-10-27T17:14:55.117Z\",\n      \"ModifiedDate\": \"2016-02-13T23:51:16.455Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Industry\": \"string\",\n      \"ARR\": 4688.839457924621,\n      \"MRR\": 637.7715332180156,\n      \"LifecycleStage\": \"string\",\n      \"Stage\": \"string\",\n      \"Status\": \"string\",\n      \"CSMName\": \"string\",\n      \"Employees\": 3208,\n      \"OriginalContractDate\": \"2013-09-25\",\n      \"RenewalDate\": \"2015-08-11\",\n      \"CurrScoreId\": \"string\",\n      \"OverallScore\": 6998.98730682408,\n      \"SfdcAccountId\": \"string\",\n      \"ParentCompanyId\": \"string\",\n      \"CreatedDate\": \"1995-08-19T10:54:06.936Z\",\n      \"ModifiedDate\": \"1970-05-10T23:19:54.731Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70811bcc-f8fa-4c33-a0be-1291a3bb5005",
+          "name": "Gainsight Search company records",
+          "request": {
+            "name": "Gainsight Search company records",
+            "description": {
+              "content": "Search for company records using filter criteria. Returns up to 5000 records per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Company",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ad2b209-796f-4abc-a450-c9c60c80ea52",
+              "name": "Search results returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"Industry\": \"string\",\n        \"ARR\": 2934.9908405710066,\n        \"MRR\": 6879.734685362932,\n        \"LifecycleStage\": \"string\",\n        \"Stage\": \"string\",\n        \"Status\": \"string\",\n        \"CSMName\": \"string\",\n        \"Employees\": 9644,\n        \"OriginalContractDate\": \"1992-12-18\",\n        \"RenewalDate\": \"1990-03-08\",\n        \"CurrScoreId\": \"string\",\n        \"OverallScore\": 3065.766901565056,\n        \"SfdcAccountId\": \"string\",\n        \"ParentCompanyId\": \"string\",\n        \"CreatedDate\": \"2009-06-01T21:38:21.795Z\",\n        \"ModifiedDate\": \"1965-11-18T03:30:24.363Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"Industry\": \"string\",\n        \"ARR\": 2902.6341076414806,\n        \"MRR\": 5004.171931206946,\n        \"LifecycleStage\": \"string\",\n        \"Stage\": \"string\",\n        \"Status\": \"string\",\n        \"CSMName\": \"string\",\n        \"Employees\": 3189,\n        \"OriginalContractDate\": \"1949-01-13\",\n        \"RenewalDate\": \"2000-07-14\",\n        \"CurrScoreId\": \"string\",\n        \"OverallScore\": 2062.312504084873,\n        \"SfdcAccountId\": \"string\",\n        \"ParentCompanyId\": \"string\",\n        \"CreatedDate\": \"2019-04-18T21:34:32.477Z\",\n        \"ModifiedDate\": \"1998-06-26T23:39:49.613Z\"\n      }\n    ],\n    \"totalCount\": 3332,\n    \"count\": 1844\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e56652e8-324e-4cb6-8695-65e96e63b7b2",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2340b67-da99-4828-a8b7-f50a57ed5469",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4876cd0-a875-4072-b5e4-32b45d001255",
+          "name": "Gainsight Get a company record",
+          "request": {
+            "name": "Gainsight Get a company record",
+            "description": {
+              "content": "Retrieve a specific company record by its Gainsight ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Company",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) Gainsight record unique identifier (Gsid)"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23c04cd1-122e-4740-a0ec-f5f21c97279f",
+              "name": "Company record returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Industry\": \"string\",\n    \"ARR\": 2212.35452727368,\n    \"MRR\": 6967.690259464536,\n    \"LifecycleStage\": \"string\",\n    \"Stage\": \"string\",\n    \"Status\": \"string\",\n    \"CSMName\": \"string\",\n    \"Employees\": 8676,\n    \"OriginalContractDate\": \"1978-01-05\",\n    \"RenewalDate\": \"1956-02-28\",\n    \"CurrScoreId\": \"string\",\n    \"OverallScore\": 1637.3923852650819,\n    \"SfdcAccountId\": \"string\",\n    \"ParentCompanyId\": \"string\",\n    \"CreatedDate\": \"2013-02-22T00:23:16.240Z\",\n    \"ModifiedDate\": \"2000-03-05T08:23:18.215Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcd4db5e-03b1-4465-9e7d-8c356f3bc48e",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f834f530-6e96-4095-b3bd-58bb2d6aa449",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8a0e58b-81ff-4923-bf52-1787c712dcc3",
+          "name": "Gainsight Delete a company record",
+          "request": {
+            "name": "Gainsight Delete a company record",
+            "description": {
+              "content": "Delete a company record by its Gainsight ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Company",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) Gainsight record unique identifier (Gsid)"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49f4d08f-34c0-4243-a978-d5ce37d60326",
+              "name": "Record deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"errorCode\": \"string\",\n  \"errorDesc\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c357fa09-fe3e-4518-9359-1dc53886aa88",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7df7ee50-0acd-490f-8492-e037ca0e256c",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Company",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Customer-specific domain prefix",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "customer",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.gainsightcloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accessKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "32d8ce9e-9a8d-4d39-a87d-890b04fc2e26",
+    "name": "Gainsight CS Company API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Company API enables inserting, updating, reading, and deleting records in the Gainsight Company object, supporting up to 50 records per call for write operations and 5000 records per read call.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+      "type": "text/plain"
+    }
+  }
+}

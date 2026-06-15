@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gainsight.com/v1/companies",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of company records from Gainsight."
+        },
+        {
+          "info": {
+            "name": "Gainsight Create a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gainsight.com/v1/companies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new company record in Gainsight."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gainsight.com/v1/companies/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the company"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific company record by ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gainsight.com/v1/companies/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the company"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing company record."
+        },
+        {
+          "info": {
+            "name": "Gainsight Delete a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gainsight.com/v1/companies/:companyId",
+            "params": [
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the company"
+              }
+            ]
+          },
+          "docs": "Delete a company record by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "People",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List people",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gainsight.com/v1/people",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of person records from Gainsight."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Run a report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gainsight.com/v1/reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a report query against Gainsight data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

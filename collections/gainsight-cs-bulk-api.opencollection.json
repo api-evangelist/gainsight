@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List bulk jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/bulk/jobs",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job status"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of jobs to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of bulk import jobs."
+        },
+        {
+          "info": {
+            "name": "Gainsight Create a bulk job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/bulk/jobs",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "objectName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "operation",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "keyFields",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a new bulk import job to insert or update records from a CSV file into a Gainsight object. Rate limited to 10 calls per hour and 100 per day."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get bulk job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/bulk/jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "Bulk job unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve the status and details of a specific bulk job."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get bulk job errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/bulk/jobs/:jobId/errors",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "Bulk job unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve error details for a completed bulk job."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
