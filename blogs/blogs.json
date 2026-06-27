@@ -2,12 +2,20 @@
   "repo": "gainsight",
   "feeds": [
     {
-      "source": "https://www.gainsight.com/blog/",
+      "source": "https://www.gainsight.com/feed/",
       "feed_url": "https://www.gainsight.com/feed/",
-      "title": "Gainsight Software",
-      "saved": 2
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://communities.gainsight.com",
+      "feed_url": "https://communities.gainsight.com",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 27,
-  "fetched": "2026-06-01T23:00:37Z"
+  "post_count": 28,
+  "fetched": "2026-06-27T12:03:07Z"
 }

@@ -20,9 +20,9 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
-  - type: swagger
+  - type: Swagger
     url: https://api.gainsight.com/swagger
   - type: OpenAPI
     url: openapi/gainsight-rest-api-openapi.yml
@@ -63,7 +63,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Company_and_Relationship_API/Company_API_Documentation
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-company-api-openapi.yml
@@ -79,7 +79,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Person_API/People_API_Documentation
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-person-api-openapi.yml
@@ -96,7 +96,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Custom_Object_API/Gainsight_Custom_Object_API_Documentation
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-custom-object-api-openapi.yml
@@ -113,7 +113,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Call_To_Action_(CTA)_API_Documentation
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-cta-api-openapi.yml
@@ -130,7 +130,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Timeline_API/Timeline_APIs
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-timeline-api-openapi.yml
@@ -147,7 +147,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Success_Plan_APIs/Success_Plan_APIs
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-success-plan-api-openapi.yml
@@ -164,7 +164,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Data_Management_APIs/Data_Management_APIs
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-data-management-api-openapi.yml
@@ -183,7 +183,7 @@ apis:
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_API
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-bulk-api-openapi.yml
@@ -200,7 +200,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Events_API/Events_API
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-events-api-openapi.yml
@@ -222,7 +222,7 @@ apis:
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/SCIM_API
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/API_for_Company_Team_Record
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-user-management-api-openapi.yml
@@ -239,7 +239,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Customer_Goals_API/Customer_Goals_APIs
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-customer-goals-api-openapi.yml
@@ -256,7 +256,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Renewal_Center_API/Renewal_Center_API
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-renewal-center-api-openapi.yml
@@ -274,7 +274,7 @@ apis:
   properties:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
-  - type: authentication
+  - type: Authentication
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
   - type: OpenAPI
     url: openapi/gainsight-cs-task-and-playbook-api-openapi.yml
@@ -283,27 +283,27 @@ common:
   url: https://github.com/gainsight
 - type: LinkedIn
   url: https://www.linkedin.com/company/gainsight
-- type: portal
+- type: Portal
   url: https://support.gainsight.com
-- type: login
+- type: Login
   url: https://app.gainsight.com
-- type: terms-of-service
+- type: TermsOfService
   url: https://www.gainsight.com/terms-of-service/
-- type: privacy-policy
+- type: PrivacyPolicy
   url: https://www.gainsight.com/privacy-policy/
 - type: StatusPage
   url: https://trust.gainsight.com/
 - type: developer-docs
   url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs
-- type: authentication
+- type: Authentication
   url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Generate_REST_API/Generate_REST_API_Key
 - type: oauth
   url: https://support.gainsight.com/gainsight_nxt/01Onboarding_and_Implementation/Onboarding_for_Gainsight_NXT/Login_and_Permissions/OAuth_for_Gainsight_APIs
-- type: release-notes
+- type: ReleaseNotes
   url: https://support.gainsight.com/gainsight_nxt/Release_Notes
-- type: community
+- type: Community
   url: https://communities.gainsight.com
-- type: blog
+- type: Blog
   url: https://www.gainsight.com/blog/
 - type: education
   url: https://education.gainsight.com
