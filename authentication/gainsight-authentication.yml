@@ -1,0 +1,42 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gainsight-cs-bulk-api-openapi.yml, openapi/gainsight-cs-company-api-openapi.yml,
+  openapi/gainsight-cs-cta-api-openapi.yml, openapi/gainsight-cs-custom-object-api-openapi.yml,
+  openapi/gainsight-cs-customer-goals-api-openapi.yml, openapi/gainsight-cs-data-management-api-openapi.yml,
+  openapi/gainsight-cs-events-api-openapi.yml, openapi/gainsight-cs-person-api-openapi.yml,
+  openapi/gainsight-cs-renewal-center-api-openapi.yml, openapi/gainsight-cs-success-plan-api-openapi.yml,
+  openapi/gainsight-cs-task-and-playbook-api-openapi.yml, openapi/gainsight-cs-timeline-api-openapi.yml
+  ...
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: accessKey
+  description: Gainsight CS REST API access key
+  sources:
+  - openapi/gainsight-cs-bulk-api-openapi.yml
+  - openapi/gainsight-cs-company-api-openapi.yml
+  - openapi/gainsight-cs-cta-api-openapi.yml
+  - openapi/gainsight-cs-custom-object-api-openapi.yml
+  - openapi/gainsight-cs-customer-goals-api-openapi.yml
+  - openapi/gainsight-cs-data-management-api-openapi.yml
+  - openapi/gainsight-cs-events-api-openapi.yml
+  - openapi/gainsight-cs-person-api-openapi.yml
+  - openapi/gainsight-cs-renewal-center-api-openapi.yml
+  - openapi/gainsight-cs-success-plan-api-openapi.yml
+  - openapi/gainsight-cs-task-and-playbook-api-openapi.yml
+  - openapi/gainsight-cs-timeline-api-openapi.yml
+  - openapi/gainsight-cs-user-management-api-openapi.yml
+  - openapi/gainsight-rest-api-openapi.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: X-APTRINSIC-API-KEY
+  description: Gainsight PX API key
+  sources:
+  - openapi/gainsight-px-api-openapi.yml
