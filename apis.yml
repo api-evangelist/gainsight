@@ -279,6 +279,8 @@ apis:
   - type: OpenAPI
     url: openapi/gainsight-cs-task-and-playbook-api-openapi.yml
 common:
+- type: AgenticAccess
+  url: agentic-access/gainsight-agentic-access.yml
 - type: TrustCenter
   url: security/gainsight-trust-center.yml
 - type: VulnerabilityDisclosure
