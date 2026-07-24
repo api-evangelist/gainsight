@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Reports API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Reports
+  description: Run reports and retrieve analytics data
+paths:
+  /v1/reports:
+    post:
+      operationId: runReport
+      summary: Gainsight Run a report
+      description: Execute a report query against Gainsight data.
+      tags:
+      - Reports
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reportId:
+                  type: string
+                  description: ID of the report to execute
+                filters:
+                  type: object
+                  description: Optional filters to apply
+      responses:
+        '200':
+          description: Report data returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Subscription API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Subscription
+  description: Manage event subscriptions
+paths:
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: Gainsight List event subscriptions
+      description: Retrieve a list of configured event subscriptions.
+      tags:
+      - Subscription
+      responses:
+        '200':
+          description: Subscriptions retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSubscription
+      summary: Gainsight Create an event subscription
+      description: Create a new webhook subscription for events.
+      tags:
+      - Subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionInput'
+      responses:
+        '201':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+  schemas:
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Subscription identifier
+        name:
+          type: string
+          description: Subscription name
+        callbackUrl:
+          type: string
+          format: uri
+          description: Webhook callback URL
+        eventType:
+          type: string
+          description: Event type to subscribe to
+        active:
+          type: boolean
+          description: Whether the subscription is active
+    SubscriptionInput:
+      type: object
+      required:
+      - name
+      - callbackUrl
+      - eventType
+      properties:
+        name:
+          type: string
+          description: Subscription name
+        callbackUrl:
+          type: string
+          format: uri
+          description: Webhook callback URL
+        eventType:
+          type: string
+          description: Event type to subscribe to
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

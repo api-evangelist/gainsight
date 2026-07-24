@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Engagements API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Engagements
+  description: Manage in-app engagements
+paths:
+  /engagements:
+    get:
+      operationId: listEngagements
+      summary: Gainsight List engagements
+      description: Retrieve a list of in-app engagements.
+      tags:
+      - Engagements
+      parameters:
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/scrollId'
+      responses:
+        '200':
+          description: Engagements retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Engagement'
+                  scrollId:
+                    type: string
+                  totalHits:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+        maximum: 500
+  schemas:
+    Engagement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Engagement identifier
+        name:
+          type: string
+          description: Engagement name
+        type:
+          type: string
+          enum:
+          - Dialog
+          - Slider
+          - Guide
+          - Tooltip
+          - Hotspot
+          - Badge
+          description: Engagement type
+        state:
+          type: string
+          enum:
+          - DRAFT
+          - LIVE
+          - PAUSED
+          - STAGED
+          description: Engagement state
+        createdDate:
+          type: integer
+          format: int64
+          description: Creation timestamp
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

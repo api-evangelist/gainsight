@@ -1,48 +1,40 @@
 openapi: 3.1.0
 info:
-  title: Gainsight CS Person API
-  description: >-
-    The Person API facilitates upserting person records into the Gainsight
-    Person object model, enabling management of customer contacts and
-    stakeholders.
+  title: Gainsight CS Bulk Accounts People API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
   version: '1.0'
   contact:
     name: Gainsight Support
     url: https://support.gainsight.com
     email: support@gainsight.com
   termsOfService: https://www.gainsight.com/terms-of-service/
-externalDocs:
-  description: People API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Person_API/People_API_Documentation
 servers:
-  - url: https://{domain}.gainsightcloud.com/v1
-    description: Gainsight CS Production
-    variables:
-      domain:
-        default: customer
-        description: Customer-specific domain prefix
-tags:
-  - name: People
-    description: Manage person records
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
 security:
-  - apiKey: []
+- apiKey: []
+tags:
+- name: People
+  description: Manage person records
 paths:
   /data/objects/Person:
     post:
       operationId: upsertPeople
       summary: Gainsight Upsert person records
-      description: >-
-        Insert or update person records in Gainsight. Supports up to 50
-        records per call with upsert behavior based on key fields.
+      description: Insert or update person records in Gainsight. Supports up to 50 records per call with upsert behavior based on key fields.
       tags:
-        - People
+      - People
       parameters:
-        - name: keys
-          in: query
-          required: true
-          description: Comma-separated key fields for matching (e.g., Email)
-          schema:
-            type: string
+      - name: keys
+        in: query
+        required: true
+        description: Comma-separated key fields for matching (e.g., Email)
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -50,7 +42,7 @@ paths:
             schema:
               type: object
               required:
-                - records
+              - records
               properties:
                 records:
                   type: array
@@ -72,11 +64,9 @@ paths:
     post:
       operationId: searchPeople
       summary: Gainsight Search person records
-      description: >-
-        Search for person records using filter criteria. Returns up to 5000
-        records per call.
+      description: Search for person records using filter criteria. Returns up to 5000 records per call.
       tags:
-        - People
+      - People
       requestBody:
         required: true
         content:
@@ -114,9 +104,9 @@ paths:
       summary: Gainsight Get a person record
       description: Retrieve a specific person record by Gainsight ID.
       tags:
-        - People
+      - People
       parameters:
-        - $ref: '#/components/parameters/recordId'
+      - $ref: '#/components/parameters/recordId'
       responses:
         '200':
           description: Person record returned
@@ -138,9 +128,9 @@ paths:
       summary: Gainsight Delete a person record
       description: Delete a person record by Gainsight ID.
       tags:
-        - People
+      - People
       parameters:
-        - $ref: '#/components/parameters/recordId'
+      - $ref: '#/components/parameters/recordId'
       responses:
         '200':
           description: Record deleted successfully
@@ -152,40 +142,39 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+  /v1/people:
+    get:
+      operationId: listPeople
+      summary: Gainsight List people
+      description: Retrieve a list of person records from Gainsight.
+      tags:
+      - People
+      parameters:
+      - $ref: '#/components/parameters/pageNumber'
+      - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: List of people returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Person'
+                      totalCount:
+                        type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: accessKey
-      in: header
-      description: Gainsight CS REST API access key
-  parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      description: Gainsight record unique identifier (Gsid)
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
     WriteResponse:
       type: object
       properties:
@@ -211,6 +200,50 @@ components:
                     type: integer
                   errorMessage:
                     type: string
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    Person:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Gainsight unique identifier
+        FirstName:
+          type: string
+          description: First name
+        LastName:
+          type: string
+          description: Last name
+        Email:
+          type: string
+          format: email
+          description: Email address
+        CompanyId:
+          type: string
+          description: Associated company ID
+        Role:
+          type: string
+          description: Role or title
+        Location:
+          type: string
+          description: Location
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Record last modified timestamp
     SearchRequest:
       type: object
       properties:
@@ -234,17 +267,17 @@ components:
                   operator:
                     type: string
                     enum:
-                      - EQ
-                      - NE
-                      - GT
-                      - GTE
-                      - LT
-                      - LTE
-                      - CONTAINS
-                      - STARTS_WITH
-                      - ENDS_WITH
-                      - IN
-                      - NOT_IN
+                    - EQ
+                    - NE
+                    - GT
+                    - GTE
+                    - LT
+                    - LTE
+                    - CONTAINS
+                    - STARTS_WITH
+                    - ENDS_WITH
+                    - IN
+                    - NOT_IN
             expression:
               type: string
         orderBy:
@@ -255,8 +288,8 @@ components:
             order:
               type: string
               enum:
-                - ASC
-                - DESC
+              - ASC
+              - DESC
         limit:
           type: integer
           maximum: 5000
@@ -326,3 +359,42 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    pageNumber:
+      name: pageNumber
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 0
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Gainsight record unique identifier (Gsid)
+      schema:
+        type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

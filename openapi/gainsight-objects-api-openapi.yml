@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Objects API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Objects
+  description: Retrieve object metadata
+paths:
+  /meta/objects:
+    get:
+      operationId: listObjects
+      summary: Gainsight List objects
+      description: Retrieve metadata for all Gainsight objects including standard and custom objects.
+      tags:
+      - Objects
+      responses:
+        '200':
+          description: Object metadata returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ObjectMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /meta/objects/{objectName}:
+    get:
+      operationId: getObject
+      summary: Gainsight Get object metadata
+      description: Retrieve metadata for a specific Gainsight object.
+      tags:
+      - Objects
+      parameters:
+      - $ref: '#/components/parameters/objectName'
+      responses:
+        '200':
+          description: Object metadata returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/ObjectMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    objectName:
+      name: objectName
+      in: path
+      required: true
+      description: Name of the Gainsight object
+      schema:
+        type: string
+  schemas:
+    ObjectMetadata:
+      type: object
+      properties:
+        objectName:
+          type: string
+          description: Object API name
+        label:
+          type: string
+          description: Object display label
+        description:
+          type: string
+          description: Object description
+        isCustom:
+          type: boolean
+          description: Whether this is a custom object
+        isStandard:
+          type: boolean
+          description: Whether this is a standard object
+        category:
+          type: string
+          description: Object category
+        fieldCount:
+          type: integer
+          description: Number of fields on the object
+        createdDate:
+          type: string
+          format: date-time
+        modifiedDate:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

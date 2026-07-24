@@ -1,0 +1,164 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Objectives API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Objectives
+  description: Manage success plan objectives
+paths:
+  /successplans/{planId}/objectives:
+    get:
+      operationId: listObjectives
+      summary: Gainsight List objectives
+      description: Retrieve objectives for a specific success plan.
+      tags:
+      - Objectives
+      parameters:
+      - $ref: '#/components/parameters/planId'
+      responses:
+        '200':
+          description: Objectives returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Objective'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createObjective
+      summary: Gainsight Create an objective
+      description: Add a new objective to a success plan.
+      tags:
+      - Objectives
+      parameters:
+      - $ref: '#/components/parameters/planId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectiveInput'
+      responses:
+        '200':
+          description: Objective created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Objective'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Success plan unique identifier
+      schema:
+        type: string
+  schemas:
+    ObjectiveInput:
+      type: object
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Completed
+        Priority:
+          type: string
+        DueDate:
+          type: string
+          format: date
+    Objective:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Objective unique identifier
+        Name:
+          type: string
+          description: Objective name
+        Description:
+          type: string
+          description: Objective description
+        SuccessPlanId:
+          type: string
+          description: Parent success plan Gsid
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Completed
+          description: Objective status
+        Priority:
+          type: string
+          description: Objective priority
+        DueDate:
+          type: string
+          format: date
+          description: Objective due date
+        CompletionPercentage:
+          type: number
+          description: Completion percentage
+        CreatedDate:
+          type: string
+          format: date-time
+        ModifiedDate:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

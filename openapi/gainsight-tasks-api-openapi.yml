@@ -1,33 +1,25 @@
 openapi: 3.1.0
 info:
-  title: Gainsight CS Task and Playbook API
-  description: >-
-    The Task and Playbook API manages task creation and updates, and retrieves
-    task and playbook details for orchestrating customer success workflows
-    within the Cockpit.
+  title: Gainsight CS Bulk Accounts Tasks API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
   version: '1.0'
   contact:
     name: Gainsight Support
     url: https://support.gainsight.com
     email: support@gainsight.com
   termsOfService: https://www.gainsight.com/terms-of-service/
-externalDocs:
-  description: Task API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
 servers:
-  - url: https://{domain}.gainsightcloud.com/v1
-    description: Gainsight CS Production
-    variables:
-      domain:
-        default: customer
-        description: Customer-specific domain prefix
-tags:
-  - name: Playbooks
-    description: Retrieve playbook configurations
-  - name: Tasks
-    description: Manage tasks
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
 security:
-  - apiKey: []
+- apiKey: []
+tags:
+- name: Tasks
+  description: Manage tasks
 paths:
   /tasks:
     post:
@@ -35,7 +27,7 @@ paths:
       summary: Gainsight Create a task
       description: Create a new task associated with a CTA.
       tags:
-        - Tasks
+      - Tasks
       requestBody:
         required: true
         content:
@@ -64,9 +56,9 @@ paths:
       summary: Gainsight Get a task
       description: Retrieve a specific task by ID.
       tags:
-        - Tasks
+      - Tasks
       parameters:
-        - $ref: '#/components/parameters/taskId'
+      - $ref: '#/components/parameters/taskId'
       responses:
         '200':
           description: Task returned
@@ -88,9 +80,9 @@ paths:
       summary: Gainsight Update a task
       description: Update an existing task.
       tags:
-        - Tasks
+      - Tasks
       parameters:
-        - $ref: '#/components/parameters/taskId'
+      - $ref: '#/components/parameters/taskId'
       requestBody:
         required: true
         content:
@@ -121,7 +113,7 @@ paths:
       summary: Gainsight Search tasks
       description: Search for tasks using filter criteria.
       tags:
-        - Tasks
+      - Tasks
       requestBody:
         required: true
         content:
@@ -151,61 +143,14 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-  /playbooks:
-    get:
-      operationId: listPlaybooks
-      summary: Gainsight List playbooks
-      description: Retrieve a list of configured playbooks.
-      tags:
-        - Playbooks
-      responses:
-        '200':
-          description: Playbooks returned
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Playbook'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-  /playbooks/{playbookId}:
-    get:
-      operationId: getPlaybook
-      summary: Gainsight Get a playbook
-      description: Retrieve a specific playbook with its task templates.
-      tags:
-        - Playbooks
-      parameters:
-        - $ref: '#/components/parameters/playbookId'
-      responses:
-        '200':
-          description: Playbook returned
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: boolean
-                  data:
-                    $ref: '#/components/schemas/Playbook'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
 components:
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: accessKey
-      in: header
-      description: Gainsight CS REST API access key
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   parameters:
     taskId:
       name: taskId
@@ -214,47 +159,33 @@ components:
       description: Task unique identifier
       schema:
         type: string
-    playbookId:
-      name: playbookId
-      in: path
-      required: true
-      description: Playbook unique identifier
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    SearchRequest:
+    TaskInput:
       type: object
+      required:
+      - Name
+      - CTAId
       properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
+        Name:
+          type: string
+        Description:
+          type: string
+        CTAId:
+          type: string
+        OwnerId:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Completed
+          - Skipped
+        Priority:
+          type: string
+        DueDate:
+          type: string
+          format: date
     Task:
       type: object
       properties:
@@ -285,10 +216,10 @@ components:
         Status:
           type: string
           enum:
-            - Not Started
-            - In Progress
-            - Completed
-            - Skipped
+          - Not Started
+          - In Progress
+          - Completed
+          - Skipped
           description: Task status
         Priority:
           type: string
@@ -313,71 +244,38 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-    TaskInput:
-      type: object
-      required:
-        - Name
-        - CTAId
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-        CTAId:
-          type: string
-        OwnerId:
-          type: string
-        Status:
-          type: string
-          enum:
-            - Not Started
-            - In Progress
-            - Completed
-            - Skipped
-        Priority:
-          type: string
-        DueDate:
-          type: string
-          format: date
-    Playbook:
+    SearchRequest:
       type: object
       properties:
-        Gsid:
-          type: string
-          description: Playbook unique identifier
-        Name:
-          type: string
-          description: Playbook name
-        Description:
-          type: string
-          description: Playbook description
-        CTATypeId:
-          type: string
-          description: Associated CTA type
-        IsActive:
-          type: boolean
-          description: Whether the playbook is active
-        TaskTemplates:
+        select:
           type: array
           items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: Task template name
-              description:
-                type: string
-                description: Task template description
-              order:
-                type: integer
-                description: Task order
-              daysFromCreation:
-                type: integer
-                description: Days offset from CTA creation for due date
-          description: Ordered list of task templates
-        CreatedDate:
-          type: string
-          format: date-time
-        ModifiedDate:
-          type: string
-          format: date-time
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

@@ -1,0 +1,393 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Users API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Users
+  description: Manage Gainsight users
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: Gainsight List users
+      description: Retrieve a list of Gainsight users.
+      tags:
+      - Users
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page number
+        schema:
+          type: integer
+          default: 0
+      - name: pageSize
+        in: query
+        description: Records per page
+        schema:
+          type: integer
+          default: 25
+      responses:
+        '200':
+          description: Users returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/GainsightUser'
+                      totalCount:
+                        type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createUser
+      summary: Gainsight Create or update a user
+      description: Create a new user or update an existing user in Gainsight PX.
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: User created or updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized_2'
+  /users/{userId}:
+    get:
+      operationId: getUser
+      summary: Gainsight Get a user
+      description: Retrieve a specific Gainsight user by ID.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: User returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/GainsightUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateUser
+      summary: Gainsight Update a user
+      description: Update a Gainsight user record.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GainsightUserInput'
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateUser
+      summary: Gainsight Update a user
+      description: Update specific attributes of a user.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized_2'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteUser
+      summary: Gainsight Delete a user
+      description: Delete a user from Gainsight PX.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId_2'
+      responses:
+        '204':
+          description: User deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized_2'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users/{userId}/deactivate:
+    post:
+      operationId: deactivateUser
+      summary: Gainsight Deactivate a user
+      description: Deactivate a Gainsight user account.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: User deactivated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: Gainsight user ID
+      schema:
+        type: string
+    userId_2:
+      name: userId
+      in: path
+      required: true
+      description: Unique user identifier
+      schema:
+        type: string
+  schemas:
+    GainsightUserInput:
+      type: object
+      properties:
+        FirstName:
+          type: string
+        LastName:
+          type: string
+        Email:
+          type: string
+          format: email
+        UserType:
+          type: string
+        LicenseType:
+          type: string
+        Role:
+          type: string
+    User:
+      type: object
+      properties:
+        aptrinsicId:
+          type: string
+          description: Gainsight PX internal identifier
+        identifyId:
+          type: string
+          description: User identification string
+        type:
+          type: string
+          description: User type
+        gender:
+          type: string
+          description: User gender
+        email:
+          type: string
+          format: email
+          description: User email address
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        title:
+          type: string
+          description: Job title
+        phone:
+          type: string
+          description: Phone number
+        score:
+          type: integer
+          description: User engagement score
+        role:
+          type: string
+          description: User role
+        accountId:
+          type: string
+          description: Associated account ID
+        numberOfVisits:
+          type: integer
+          description: Total number of visits
+        lastSeenDate:
+          type: integer
+          format: int64
+          description: Last seen timestamp in milliseconds
+        firstVisitDate:
+          type: integer
+          format: int64
+          description: First visit timestamp in milliseconds
+        signUpDate:
+          type: integer
+          format: int64
+          description: Sign-up timestamp in milliseconds
+        customAttributes:
+          type: object
+          description: Custom user attributes
+    UserInput:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+          description: Unique user identification string
+        email:
+          type: string
+          format: email
+          description: User email address
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        title:
+          type: string
+          description: Job title
+        phone:
+          type: string
+          description: Phone number
+        role:
+          type: string
+          description: User role
+        accountId:
+          type: string
+          description: Associated account ID
+        signUpDate:
+          type: integer
+          format: int64
+          description: Sign-up timestamp in milliseconds
+        customAttributes:
+          type: object
+          description: Custom user attributes
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    GainsightUser:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: User unique identifier
+        FirstName:
+          type: string
+          description: First name
+        LastName:
+          type: string
+          description: Last name
+        Email:
+          type: string
+          format: email
+          description: Email address
+        UserType:
+          type: string
+          description: User type
+        IsActive:
+          type: boolean
+          description: Whether the user is active
+        LicenseType:
+          type: string
+          description: License type assigned
+        Role:
+          type: string
+          description: User role
+        SfdcUserId:
+          type: string
+          description: Salesforce user ID
+        CreatedDate:
+          type: string
+          format: date-time
+        ModifiedDate:
+          type: string
+          format: date-time
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized_2:
+      description: Authentication failed or API key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

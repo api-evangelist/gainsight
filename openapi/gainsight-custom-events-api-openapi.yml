@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Custom Events API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Custom Events
+  description: Send custom events for tracking
+paths:
+  /custom_events:
+    post:
+      operationId: sendCustomEvent
+      summary: Gainsight Send a custom event
+      description: Send a custom event for a user to track specific interactions.
+      tags:
+      - Custom Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomEvent'
+      responses:
+        '200':
+          description: Event sent successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or API key is missing
+  schemas:
+    CustomEvent:
+      type: object
+      required:
+      - identifyId
+      - eventName
+      properties:
+        identifyId:
+          type: string
+          description: User identification string
+        accountId:
+          type: string
+          description: Account identifier
+        eventName:
+          type: string
+          description: Name of the custom event
+        date:
+          type: integer
+          format: int64
+          description: Event timestamp in milliseconds
+        attributes:
+          type: object
+          description: Custom event attributes
+        url:
+          type: string
+          description: URL where the event occurred
+        referrer:
+          type: string
+          description: Referrer URL
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

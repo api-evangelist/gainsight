@@ -1,41 +1,33 @@
 openapi: 3.1.0
 info:
-  title: Gainsight CS Renewal Center API
-  description: >-
-    The Renewal Center API enables creating and updating opportunity records in
-    the Gainsight Opportunity object, supporting renewal, upsell, and downsell
-    booking types within the Matrix Data Architecture.
+  title: Gainsight CS Bulk Accounts Opportunities API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
   version: '1.0'
   contact:
     name: Gainsight Support
     url: https://support.gainsight.com
     email: support@gainsight.com
   termsOfService: https://www.gainsight.com/terms-of-service/
-externalDocs:
-  description: Renewal Center API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Renewal_Center_API/Renewal_Center_API
 servers:
-  - url: https://{domain}.gainsightcloud.com/v1
-    description: Gainsight CS Production
-    variables:
-      domain:
-        default: customer
-        description: Customer-specific domain prefix
-tags:
-  - name: Opportunities
-    description: Manage opportunity records
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
 security:
-  - apiKey: []
+- apiKey: []
+tags:
+- name: Opportunities
+  description: Manage opportunity records
 paths:
   /data/objects/Opportunity:
     post:
       operationId: createOpportunity
       summary: Gainsight Create an opportunity
-      description: >-
-        Create a new opportunity record in the Gainsight Opportunity object.
-        Supports renewal, upsell, and downsell booking types.
+      description: Create a new opportunity record in the Gainsight Opportunity object. Supports renewal, upsell, and downsell booking types.
       tags:
-        - Opportunities
+      - Opportunities
       requestBody:
         required: true
         content:
@@ -43,7 +35,7 @@ paths:
             schema:
               type: object
               required:
-                - records
+              - records
               properties:
                 records:
                   type: array
@@ -66,14 +58,14 @@ paths:
       summary: Gainsight Update opportunities
       description: Update one or more opportunity records.
       tags:
-        - Opportunities
+      - Opportunities
       parameters:
-        - name: keys
-          in: query
-          required: true
-          description: Comma-separated key fields for matching
-          schema:
-            type: string
+      - name: keys
+        in: query
+        required: true
+        description: Comma-separated key fields for matching
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -81,7 +73,7 @@ paths:
             schema:
               type: object
               required:
-                - records
+              - records
               properties:
                 records:
                   type: array
@@ -105,7 +97,7 @@ paths:
       summary: Gainsight Search opportunities
       description: Search for opportunity records using filter criteria.
       tags:
-        - Opportunities
+      - Opportunities
       requestBody:
         required: true
         content:
@@ -141,9 +133,9 @@ paths:
       summary: Gainsight Get an opportunity
       description: Retrieve a specific opportunity by ID.
       tags:
-        - Opportunities
+      - Opportunities
       parameters:
-        - $ref: '#/components/parameters/recordId'
+      - $ref: '#/components/parameters/recordId'
       responses:
         '200':
           description: Opportunity returned
@@ -161,28 +153,23 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: accessKey
-      in: header
-      description: Gainsight CS REST API access key
-  parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      description: Opportunity record Gsid
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
     SearchRequest:
       type: object
       properties:
@@ -209,22 +196,6 @@ components:
           type: integer
         offset:
           type: integer
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-            insertedCount:
-              type: integer
-            updatedCount:
-              type: integer
-            failedCount:
-              type: integer
     OpportunityRecord:
       type: object
       properties:
@@ -243,11 +214,11 @@ components:
         BookingType:
           type: string
           enum:
-            - New Business
-            - Renewal
-            - Upsell
-            - Downsell
-            - Churn
+          - New Business
+          - Renewal
+          - Upsell
+          - Downsell
+          - Churn
           description: Booking type
         Amount:
           type: number
@@ -298,3 +269,27 @@ components:
         ModifiedDate:
           type: string
           format: date-time
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Opportunity record Gsid
+      schema:
+        type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

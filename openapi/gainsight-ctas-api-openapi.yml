@@ -1,0 +1,314 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts CTAs API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: CTAs
+  description: Create and manage Calls to Action
+paths:
+  /ctas:
+    post:
+      operationId: createCTA
+      summary: Gainsight Create a CTA
+      description: Create a new Call to Action record in the Cockpit.
+      tags:
+      - CTAs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CTAInput'
+      responses:
+        '200':
+          description: CTA created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/CTA'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /ctas/{ctaId}:
+    get:
+      operationId: getCTA
+      summary: Gainsight Get a CTA
+      description: Retrieve a specific CTA by its identifier.
+      tags:
+      - CTAs
+      parameters:
+      - $ref: '#/components/parameters/ctaId'
+      responses:
+        '200':
+          description: CTA details returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/CTA'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateCTA
+      summary: Gainsight Update a CTA
+      description: Update an existing CTA record.
+      tags:
+      - CTAs
+      parameters:
+      - $ref: '#/components/parameters/ctaId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CTAInput'
+      responses:
+        '200':
+          description: CTA updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/CTA'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /ctas/search:
+    post:
+      operationId: searchCTAs
+      summary: Gainsight Search CTAs
+      description: Search for CTA records using filter criteria.
+      tags:
+      - CTAs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CTA'
+                      totalCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  schemas:
+    CTAInput:
+      type: object
+      required:
+      - CompanyId
+      - TypeId
+      - ReasonId
+      - PriorityId
+      - StatusId
+      properties:
+        Name:
+          type: string
+          description: CTA name
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        TypeId:
+          type: string
+          description: CTA type identifier
+        ReasonId:
+          type: string
+          description: CTA reason identifier
+        PriorityId:
+          type: string
+          description: Priority level identifier
+        StatusId:
+          type: string
+          description: Status identifier
+        OwnerId:
+          type: string
+          description: Assigned owner user ID
+        DueDate:
+          type: string
+          format: date
+          description: Due date
+        Comments:
+          type: string
+          description: Comments
+        PlaybookId:
+          type: string
+          description: Playbook to associate
+    CTA:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: CTA unique identifier
+        Name:
+          type: string
+          description: CTA name
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        TypeId:
+          type: string
+          description: CTA type identifier
+        TypeName:
+          type: string
+          description: CTA type name
+        ReasonId:
+          type: string
+          description: CTA reason identifier
+        ReasonName:
+          type: string
+          description: CTA reason name
+        PriorityId:
+          type: string
+          description: Priority level identifier
+        StatusId:
+          type: string
+          description: Status identifier
+        StatusName:
+          type: string
+          description: Status name
+        OwnerId:
+          type: string
+          description: Assigned owner user ID
+        OwnerName:
+          type: string
+          description: Assigned owner name
+        DueDate:
+          type: string
+          format: date
+          description: Due date for the CTA
+        ClosedDate:
+          type: string
+          format: date
+          description: Date the CTA was closed
+        Comments:
+          type: string
+          description: CTA comments
+        Source:
+          type: string
+          description: CTA source
+        PlaybookId:
+          type: string
+          description: Associated playbook ID
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+                    enum:
+                    - EQ
+                    - NE
+                    - GT
+                    - GTE
+                    - LT
+                    - LTE
+                    - CONTAINS
+                    - IN
+                    - NOT_IN
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+  parameters:
+    ctaId:
+      name: ctaId
+      in: path
+      required: true
+      description: CTA unique identifier
+      schema:
+        type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

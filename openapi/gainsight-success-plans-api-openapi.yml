@@ -1,35 +1,25 @@
 openapi: 3.1.0
 info:
-  title: Gainsight CS Success Plan API
-  description: >-
-    The Success Plan API enables creating, updating, and fetching Success Plans
-    and their configurations, supporting structured goal tracking for customer
-    engagements.
+  title: Gainsight CS Bulk Accounts Success Plans API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
   version: '1.0'
   contact:
     name: Gainsight Support
     url: https://support.gainsight.com
     email: support@gainsight.com
   termsOfService: https://www.gainsight.com/terms-of-service/
-externalDocs:
-  description: Success Plan API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Success_Plan_APIs/Success_Plan_APIs
 servers:
-  - url: https://{domain}.gainsightcloud.com/v1
-    description: Gainsight CS Production
-    variables:
-      domain:
-        default: customer
-        description: Customer-specific domain prefix
-tags:
-  - name: Configuration
-    description: Success plan configuration
-  - name: Objectives
-    description: Manage success plan objectives
-  - name: Success Plans
-    description: Manage success plans
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
 security:
-  - apiKey: []
+- apiKey: []
+tags:
+- name: Success Plans
+  description: Manage success plans
 paths:
   /successplans:
     post:
@@ -37,7 +27,7 @@ paths:
       summary: Gainsight Create a success plan
       description: Create a new success plan for a company.
       tags:
-        - Success Plans
+      - Success Plans
       requestBody:
         required: true
         content:
@@ -66,9 +56,9 @@ paths:
       summary: Gainsight Get a success plan
       description: Retrieve a specific success plan by ID.
       tags:
-        - Success Plans
+      - Success Plans
       parameters:
-        - $ref: '#/components/parameters/planId'
+      - $ref: '#/components/parameters/planId'
       responses:
         '200':
           description: Success plan returned
@@ -90,9 +80,9 @@ paths:
       summary: Gainsight Update a success plan
       description: Update an existing success plan.
       tags:
-        - Success Plans
+      - Success Plans
       parameters:
-        - $ref: '#/components/parameters/planId'
+      - $ref: '#/components/parameters/planId'
       requestBody:
         required: true
         content:
@@ -123,7 +113,7 @@ paths:
       summary: Gainsight Search success plans
       description: Search for success plans using filter criteria.
       tags:
-        - Success Plans
+      - Success Plans
       requestBody:
         required: true
         content:
@@ -153,113 +143,14 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-  /successplans/{planId}/objectives:
-    get:
-      operationId: listObjectives
-      summary: Gainsight List objectives
-      description: Retrieve objectives for a specific success plan.
-      tags:
-        - Objectives
-      parameters:
-        - $ref: '#/components/parameters/planId'
-      responses:
-        '200':
-          description: Objectives returned
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Objective'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-    post:
-      operationId: createObjective
-      summary: Gainsight Create an objective
-      description: Add a new objective to a success plan.
-      tags:
-        - Objectives
-      parameters:
-        - $ref: '#/components/parameters/planId'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ObjectiveInput'
-      responses:
-        '200':
-          description: Objective created
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: boolean
-                  data:
-                    $ref: '#/components/schemas/Objective'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-  /successplans/config/types:
-    get:
-      operationId: getSuccessPlanTypes
-      summary: Gainsight Get success plan types
-      description: Retrieve configured success plan types.
-      tags:
-        - Configuration
-      responses:
-        '200':
-          description: Success plan types returned
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        name:
-                          type: string
-        '401':
-          $ref: '#/components/responses/Unauthorized'
 components:
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: accessKey
-      in: header
-      description: Gainsight CS REST API access key
-  parameters:
-    planId:
-      name: planId
-      in: path
-      required: true
-      description: Success plan unique identifier
-      schema:
-        type: string
   responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
     NotFound:
       description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
     SearchRequest:
       type: object
@@ -311,9 +202,9 @@ components:
         Status:
           type: string
           enum:
-            - Active
-            - Completed
-            - Archived
+          - Active
+          - Completed
+          - Archived
           description: Plan status
         OwnerId:
           type: string
@@ -343,9 +234,9 @@ components:
     SuccessPlanInput:
       type: object
       required:
-        - Name
-        - CompanyId
-        - TypeId
+      - Name
+      - CompanyId
+      - TypeId
       properties:
         Name:
           type: string
@@ -356,9 +247,9 @@ components:
         Status:
           type: string
           enum:
-            - Active
-            - Completed
-            - Archived
+          - Active
+          - Completed
+          - Archived
         OwnerId:
           type: string
         StartDate:
@@ -369,61 +260,20 @@ components:
           format: date
         Comments:
           type: string
-    Objective:
-      type: object
-      properties:
-        Gsid:
-          type: string
-          description: Objective unique identifier
-        Name:
-          type: string
-          description: Objective name
-        Description:
-          type: string
-          description: Objective description
-        SuccessPlanId:
-          type: string
-          description: Parent success plan Gsid
-        Status:
-          type: string
-          enum:
-            - Not Started
-            - In Progress
-            - Completed
-          description: Objective status
-        Priority:
-          type: string
-          description: Objective priority
-        DueDate:
-          type: string
-          format: date
-          description: Objective due date
-        CompletionPercentage:
-          type: number
-          description: Completion percentage
-        CreatedDate:
-          type: string
-          format: date-time
-        ModifiedDate:
-          type: string
-          format: date-time
-    ObjectiveInput:
-      type: object
-      required:
-        - Name
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-        Status:
-          type: string
-          enum:
-            - Not Started
-            - In Progress
-            - Completed
-        Priority:
-          type: string
-        DueDate:
-          type: string
-          format: date
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Success plan unique identifier
+      schema:
+        type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

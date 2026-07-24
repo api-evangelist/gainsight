@@ -1,0 +1,144 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Metrics API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Metrics
+  description: Manage goal metrics
+paths:
+  /goals/{goalId}/metrics:
+    get:
+      operationId: listGoalMetrics
+      summary: Gainsight List goal metrics
+      description: Retrieve metrics associated with a customer goal.
+      tags:
+      - Metrics
+      parameters:
+      - $ref: '#/components/parameters/goalId'
+      responses:
+        '200':
+          description: Metrics returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GoalMetric'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: addGoalMetric
+      summary: Gainsight Add a goal metric
+      description: Add a metric to a customer goal.
+      tags:
+      - Metrics
+      parameters:
+      - $ref: '#/components/parameters/goalId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalMetricInput'
+      responses:
+        '200':
+          description: Metric added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/GoalMetric'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    GoalMetric:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Metric identifier
+        Name:
+          type: string
+          description: Metric name
+        GoalId:
+          type: string
+          description: Parent goal identifier
+        CurrentValue:
+          type: number
+          description: Current metric value
+        TargetValue:
+          type: number
+          description: Target metric value
+        Unit:
+          type: string
+          description: Measurement unit
+        LastUpdatedDate:
+          type: string
+          format: date-time
+    GoalMetricInput:
+      type: object
+      required:
+      - Name
+      - TargetValue
+      properties:
+        Name:
+          type: string
+        CurrentValue:
+          type: number
+        TargetValue:
+          type: number
+        Unit:
+          type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    goalId:
+      name: goalId
+      in: path
+      required: true
+      description: Customer goal unique identifier
+      schema:
+        type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

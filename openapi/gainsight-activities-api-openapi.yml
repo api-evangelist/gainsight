@@ -1,33 +1,25 @@
 openapi: 3.1.0
 info:
-  title: Gainsight CS Timeline API
-  description: >-
-    The Timeline API enables creating, updating, reading, and deleting Timeline
-    activities, supporting both single and bulk operations with up to 80MB
-    payloads for bulk requests.
+  title: Gainsight CS Bulk Accounts Activities API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
   version: '1.0'
   contact:
     name: Gainsight Support
     url: https://support.gainsight.com
     email: support@gainsight.com
   termsOfService: https://www.gainsight.com/terms-of-service/
-externalDocs:
-  description: Timeline API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Timeline_API/Timeline_APIs
 servers:
-  - url: https://{domain}.gainsightcloud.com/v1
-    description: Gainsight CS Production
-    variables:
-      domain:
-        default: customer
-        description: Customer-specific domain prefix
-tags:
-  - name: Activities
-    description: Manage timeline activities
-  - name: Activity Types
-    description: Retrieve activity type configurations
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
 security:
-  - apiKey: []
+- apiKey: []
+tags:
+- name: Activities
+  description: Manage timeline activities
 paths:
   /timeline/activities:
     post:
@@ -35,7 +27,7 @@ paths:
       summary: Gainsight Create a timeline activity
       description: Create a new activity on the timeline for a company or relationship.
       tags:
-        - Activities
+      - Activities
       requestBody:
         required: true
         content:
@@ -62,11 +54,9 @@ paths:
     post:
       operationId: bulkCreateActivities
       summary: Gainsight Bulk create timeline activities
-      description: >-
-        Create multiple activities in a single request. Supports payloads up to
-        80MB.
+      description: Create multiple activities in a single request. Supports payloads up to 80MB.
       tags:
-        - Activities
+      - Activities
       requestBody:
         required: true
         content:
@@ -74,7 +64,7 @@ paths:
             schema:
               type: object
               required:
-                - records
+              - records
               properties:
                 records:
                   type: array
@@ -107,9 +97,9 @@ paths:
       summary: Gainsight Get a timeline activity
       description: Retrieve a specific timeline activity by ID.
       tags:
-        - Activities
+      - Activities
       parameters:
-        - $ref: '#/components/parameters/activityId'
+      - $ref: '#/components/parameters/activityId'
       responses:
         '200':
           description: Activity returned
@@ -131,9 +121,9 @@ paths:
       summary: Gainsight Update a timeline activity
       description: Update an existing timeline activity.
       tags:
-        - Activities
+      - Activities
       parameters:
-        - $ref: '#/components/parameters/activityId'
+      - $ref: '#/components/parameters/activityId'
       requestBody:
         required: true
         content:
@@ -163,9 +153,9 @@ paths:
       summary: Gainsight Delete a timeline activity
       description: Delete a timeline activity by ID.
       tags:
-        - Activities
+      - Activities
       parameters:
-        - $ref: '#/components/parameters/activityId'
+      - $ref: '#/components/parameters/activityId'
       responses:
         '200':
           description: Activity deleted
@@ -183,7 +173,7 @@ paths:
       summary: Gainsight Search timeline activities
       description: Search for timeline activities using filter criteria.
       tags:
-        - Activities
+      - Activities
       requestBody:
         required: true
         content:
@@ -213,89 +203,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-  /timeline/activityTypes:
-    get:
-      operationId: getActivityTypes
-      summary: Gainsight Get activity types
-      description: Retrieve the list of configured timeline activity types.
-      tags:
-        - Activity Types
-      responses:
-        '200':
-          description: Activity types returned
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  result:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ActivityType'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
 components:
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: accessKey
-      in: header
-      description: Gainsight CS REST API access key
-  parameters:
-    activityId:
-      name: activityId
-      in: path
-      required: true
-      description: Timeline activity unique identifier
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
     Activity:
       type: object
       properties:
@@ -349,9 +258,9 @@ components:
         Sentiment:
           type: string
           enum:
-            - Positive
-            - Neutral
-            - Negative
+          - Positive
+          - Neutral
+          - Negative
           description: Sentiment of the activity
         CreatedDate:
           type: string
@@ -364,10 +273,10 @@ components:
     ActivityInput:
       type: object
       required:
-        - Subject
-        - ActivityTypeId
-        - CompanyId
-        - ActivityDate
+      - Subject
+      - ActivityTypeId
+      - CompanyId
+      - ActivityDate
       properties:
         Subject:
           type: string
@@ -404,21 +313,67 @@ components:
         Sentiment:
           type: string
           enum:
-            - Positive
-            - Neutral
-            - Negative
-    ActivityType:
+          - Positive
+          - Neutral
+          - Negative
+    ApiResponse:
       type: object
       properties:
-        id:
-          type: string
-          description: Activity type identifier
-        name:
-          type: string
-          description: Activity type name
-        isSystem:
+        result:
           type: boolean
-          description: Whether this is a system-defined type
-        isActive:
-          type: boolean
-          description: Whether the type is active
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+  parameters:
+    activityId:
+      name: activityId
+      in: path
+      required: true
+      description: Timeline activity unique identifier
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

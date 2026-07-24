@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts Feature Match API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: Feature Match
+  description: Track feature usage and adoption
+paths:
+  /feature_match:
+    get:
+      operationId: listFeatures
+      summary: Gainsight List features
+      description: Retrieve tracked features and their adoption metrics.
+      tags:
+      - Feature Match
+      parameters:
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/scrollId'
+      responses:
+        '200':
+          description: Features retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Feature'
+                  scrollId:
+                    type: string
+                  totalHits:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+        maximum: 500
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+  schemas:
+    Feature:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Feature identifier
+        name:
+          type: string
+          description: Feature name
+        type:
+          type: string
+          description: Feature type
+        url:
+          type: string
+          description: URL pattern for the feature
+        totalUserCount:
+          type: integer
+          description: Total users who used this feature
+        totalEventCount:
+          type: integer
+          description: Total usage events for this feature
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

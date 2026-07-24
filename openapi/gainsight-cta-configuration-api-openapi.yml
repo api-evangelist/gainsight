@@ -1,0 +1,183 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Bulk Accounts CTA Configuration API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+servers:
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
+security:
+- apiKey: []
+tags:
+- name: CTA Configuration
+  description: Retrieve CTA type and reason configurations
+paths:
+  /ctas/config/types:
+    get:
+      operationId: getCTATypes
+      summary: Gainsight Get CTA types
+      description: Retrieve the list of configured CTA types.
+      tags:
+      - CTA Configuration
+      responses:
+        '200':
+          description: CTA types returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CTAType'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /ctas/config/reasons:
+    get:
+      operationId: getCTAReasons
+      summary: Gainsight Get CTA reasons
+      description: Retrieve the list of configured CTA reasons.
+      tags:
+      - CTA Configuration
+      parameters:
+      - name: typeId
+        in: query
+        description: Filter reasons by CTA type ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: CTA reasons returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CTAReason'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /ctas/config/priorities:
+    get:
+      operationId: getCTAPriorities
+      summary: Gainsight Get CTA priorities
+      description: Retrieve the list of configured CTA priorities.
+      tags:
+      - CTA Configuration
+      responses:
+        '200':
+          description: CTA priorities returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CTAPriority'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /ctas/config/statuses:
+    get:
+      operationId: getCTAStatuses
+      summary: Gainsight Get CTA statuses
+      description: Retrieve the list of configured CTA statuses.
+      tags:
+      - CTA Configuration
+      responses:
+        '200':
+          description: CTA statuses returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CTAStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    CTAType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Type identifier
+        name:
+          type: string
+          description: Type name
+        isDefault:
+          type: boolean
+          description: Whether this is the default type
+    CTAReason:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Reason identifier
+        name:
+          type: string
+          description: Reason name
+        typeId:
+          type: string
+          description: Associated CTA type ID
+    CTAPriority:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Priority identifier
+        name:
+          type: string
+          description: Priority name
+        order:
+          type: integer
+          description: Display order
+    CTAStatus:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Status identifier
+        name:
+          type: string
+          description: Status name
+        isClosed:
+          type: boolean
+          description: Whether this status represents a closed state
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs

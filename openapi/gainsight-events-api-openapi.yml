@@ -1,41 +1,33 @@
 openapi: 3.1.0
 info:
-  title: Gainsight CS Events API
-  description: >-
-    The Events API enables external systems to publish events into Gainsight,
-    supporting system asset events for cross-system communication with
-    operations including insert, update, upsert, and delete.
+  title: Gainsight CS Bulk Accounts Events API
+  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
   version: '1.0'
   contact:
     name: Gainsight Support
     url: https://support.gainsight.com
     email: support@gainsight.com
   termsOfService: https://www.gainsight.com/terms-of-service/
-externalDocs:
-  description: Events API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Events_API/Events_API
 servers:
-  - url: https://{domain}.gainsightcloud.com/v1
-    description: Gainsight CS Production
-    variables:
-      domain:
-        default: customer
-        description: Customer-specific domain prefix
-tags:
-  - name: Events
-    description: Publish and manage events
+- url: https://{domain}.gainsightcloud.com/v1
+  description: Gainsight CS Production
+  variables:
+    domain:
+      default: customer
+      description: Customer-specific domain prefix
 security:
-  - apiKey: []
+- apiKey: []
+tags:
+- name: Events
+  description: Publish and manage events
 paths:
   /events:
     post:
       operationId: publishEvent
       summary: Gainsight Publish an event
-      description: >-
-        Publish an event from an external system into Gainsight. Supports system
-        asset events for triggering rules and workflows.
+      description: Publish an event from an external system into Gainsight. Supports system asset events for triggering rules and workflows.
       tags:
-        - Events
+      - Events
       requestBody:
         required: true
         content:
@@ -59,7 +51,7 @@ paths:
       summary: Gainsight Bulk publish events
       description: Publish multiple events in a single request.
       tags:
-        - Events
+      - Events
       requestBody:
         required: true
         content:
@@ -67,7 +59,7 @@ paths:
             schema:
               type: object
               required:
-                - records
+              - records
               properties:
                 records:
                   type: array
@@ -100,7 +92,7 @@ paths:
       summary: Gainsight List event types
       description: Retrieve configured event types.
       tags:
-        - Events
+      - Events
       responses:
         '200':
           description: Event types returned
@@ -118,64 +110,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: accessKey
-      in: header
-      description: Gainsight CS REST API access key
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
   schemas:
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
-    EventInput:
-      type: object
-      required:
-        - eventType
-        - objectType
-        - operation
-        - payload
-      properties:
-        eventType:
-          type: string
-          description: Event type identifier
-        objectType:
-          type: string
-          description: Object type associated with the event
-        operation:
-          type: string
-          enum:
-            - INSERT
-            - UPDATE
-            - UPSERT
-            - DELETE
-          description: Operation type
-        companyId:
-          type: string
-          description: Associated company Gsid
-        payload:
-          type: object
-          description: Event payload data
-        timestamp:
-          type: string
-          format: date-time
-          description: Event timestamp
-        sourceSystem:
-          type: string
-          description: Source system identifier
     EventType:
       type: object
       properties:
@@ -191,3 +126,63 @@ components:
         isActive:
           type: boolean
           description: Whether the event type is active
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    EventInput:
+      type: object
+      required:
+      - eventType
+      - objectType
+      - operation
+      - payload
+      properties:
+        eventType:
+          type: string
+          description: Event type identifier
+        objectType:
+          type: string
+          description: Object type associated with the event
+        operation:
+          type: string
+          enum:
+          - INSERT
+          - UPDATE
+          - UPSERT
+          - DELETE
+          description: Operation type
+        companyId:
+          type: string
+          description: Associated company Gsid
+        payload:
+          type: object
+          description: Event payload data
+        timestamp:
+          type: string
+          format: date-time
+          description: Event timestamp
+        sourceSystem:
+          type: string
+          description: Source system identifier
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+externalDocs:
+  description: Bulk API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
