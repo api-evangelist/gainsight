@@ -1,0 +1,424 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Timeline API
+  description: >-
+    The Timeline API enables creating, updating, reading, and deleting Timeline
+    activities, supporting both single and bulk operations with up to 80MB
+    payloads for bulk requests.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Timeline API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Timeline_API/Timeline_APIs
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Activities
+    description: Manage timeline activities
+  - name: Activity Types
+    description: Retrieve activity type configurations
+security:
+  - apiKey: []
+paths:
+  /timeline/activities:
+    post:
+      operationId: createActivity
+      summary: Gainsight Create a timeline activity
+      description: Create a new activity on the timeline for a company or relationship.
+      tags:
+        - Activities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityInput'
+      responses:
+        '200':
+          description: Activity created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Activity'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /timeline/activities/bulk:
+    post:
+      operationId: bulkCreateActivities
+      summary: Gainsight Bulk create timeline activities
+      description: >-
+        Create multiple activities in a single request. Supports payloads up to
+        80MB.
+      tags:
+        - Activities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/ActivityInput'
+      responses:
+        '200':
+          description: Activities created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      insertedCount:
+                        type: integer
+                      failedCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /timeline/activities/{activityId}:
+    get:
+      operationId: getActivity
+      summary: Gainsight Get a timeline activity
+      description: Retrieve a specific timeline activity by ID.
+      tags:
+        - Activities
+      parameters:
+        - $ref: '#/components/parameters/activityId'
+      responses:
+        '200':
+          description: Activity returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Activity'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateActivity
+      summary: Gainsight Update a timeline activity
+      description: Update an existing timeline activity.
+      tags:
+        - Activities
+      parameters:
+        - $ref: '#/components/parameters/activityId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityInput'
+      responses:
+        '200':
+          description: Activity updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Activity'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteActivity
+      summary: Gainsight Delete a timeline activity
+      description: Delete a timeline activity by ID.
+      tags:
+        - Activities
+      parameters:
+        - $ref: '#/components/parameters/activityId'
+      responses:
+        '200':
+          description: Activity deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /timeline/activities/search:
+    post:
+      operationId: searchActivities
+      summary: Gainsight Search timeline activities
+      description: Search for timeline activities using filter criteria.
+      tags:
+        - Activities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Activities returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Activity'
+                      totalCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /timeline/activityTypes:
+    get:
+      operationId: getActivityTypes
+      summary: Gainsight Get activity types
+      description: Retrieve the list of configured timeline activity types.
+      tags:
+        - Activity Types
+      responses:
+        '200':
+          description: Activity types returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ActivityType'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    activityId:
+      name: activityId
+      in: path
+      required: true
+      description: Timeline activity unique identifier
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+    Activity:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Activity unique identifier
+        Subject:
+          type: string
+          description: Activity subject line
+        Notes:
+          type: string
+          description: Activity notes or body content
+        ActivityTypeId:
+          type: string
+          description: Activity type identifier
+        ActivityTypeName:
+          type: string
+          description: Activity type name
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        ActivityDate:
+          type: string
+          format: date-time
+          description: Date and time of the activity
+        OwnerId:
+          type: string
+          description: Activity owner user ID
+        OwnerName:
+          type: string
+          description: Activity owner name
+        ExternalId:
+          type: string
+          description: External system identifier
+        Attendees:
+          type: array
+          items:
+            type: object
+            properties:
+              personId:
+                type: string
+              email:
+                type: string
+                format: email
+              name:
+                type: string
+          description: List of attendees
+        Sentiment:
+          type: string
+          enum:
+            - Positive
+            - Neutral
+            - Negative
+          description: Sentiment of the activity
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+    ActivityInput:
+      type: object
+      required:
+        - Subject
+        - ActivityTypeId
+        - CompanyId
+        - ActivityDate
+      properties:
+        Subject:
+          type: string
+          description: Activity subject
+        Notes:
+          type: string
+          description: Activity notes
+        ActivityTypeId:
+          type: string
+          description: Activity type identifier
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        ActivityDate:
+          type: string
+          format: date-time
+          description: Date and time of the activity
+        OwnerId:
+          type: string
+          description: Activity owner user ID
+        ExternalId:
+          type: string
+          description: External system identifier
+        Attendees:
+          type: array
+          items:
+            type: object
+            properties:
+              personId:
+                type: string
+              email:
+                type: string
+                format: email
+        Sentiment:
+          type: string
+          enum:
+            - Positive
+            - Neutral
+            - Negative
+    ActivityType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Activity type identifier
+        name:
+          type: string
+          description: Activity type name
+        isSystem:
+          type: boolean
+          description: Whether this is a system-defined type
+        isActive:
+          type: boolean
+          description: Whether the type is active

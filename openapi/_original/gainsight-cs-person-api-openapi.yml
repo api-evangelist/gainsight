@@ -1,0 +1,328 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Person API
+  description: >-
+    The Person API facilitates upserting person records into the Gainsight
+    Person object model, enabling management of customer contacts and
+    stakeholders.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: People API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Person_API/People_API_Documentation
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: People
+    description: Manage person records
+security:
+  - apiKey: []
+paths:
+  /data/objects/Person:
+    post:
+      operationId: upsertPeople
+      summary: Gainsight Upsert person records
+      description: >-
+        Insert or update person records in Gainsight. Supports up to 50
+        records per call with upsert behavior based on key fields.
+      tags:
+        - People
+      parameters:
+        - name: keys
+          in: query
+          required: true
+          description: Comma-separated key fields for matching (e.g., Email)
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  maxItems: 50
+                  items:
+                    $ref: '#/components/schemas/PersonRecord'
+      responses:
+        '200':
+          description: Records upserted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WriteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/Person/search:
+    post:
+      operationId: searchPeople
+      summary: Gainsight Search person records
+      description: >-
+        Search for person records using filter criteria. Returns up to 5000
+        records per call.
+      tags:
+        - People
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PersonRecord'
+                      totalCount:
+                        type: integer
+                      count:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/Person/{recordId}:
+    get:
+      operationId: getPerson
+      summary: Gainsight Get a person record
+      description: Retrieve a specific person record by Gainsight ID.
+      tags:
+        - People
+      parameters:
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Person record returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/PersonRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deletePerson
+      summary: Gainsight Delete a person record
+      description: Delete a person record by Gainsight ID.
+      tags:
+        - People
+      parameters:
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Record deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Gainsight record unique identifier (Gsid)
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  alias:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+                    enum:
+                      - EQ
+                      - NE
+                      - GT
+                      - GTE
+                      - LT
+                      - LTE
+                      - CONTAINS
+                      - STARTS_WITH
+                      - ENDS_WITH
+                      - IN
+                      - NOT_IN
+            expression:
+              type: string
+        orderBy:
+          type: object
+          properties:
+            field:
+              type: string
+            order:
+              type: string
+              enum:
+                - ASC
+                - DESC
+        limit:
+          type: integer
+          maximum: 5000
+        offset:
+          type: integer
+    PersonRecord:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Gainsight unique identifier
+        FirstName:
+          type: string
+          description: First name
+        LastName:
+          type: string
+          description: Last name
+        Email:
+          type: string
+          format: email
+          description: Email address
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        Title:
+          type: string
+          description: Job title
+        Role:
+          type: string
+          description: Contact role
+        Phone:
+          type: string
+          description: Phone number
+        Location:
+          type: string
+          description: Location
+        LinkedinUrl:
+          type: string
+          format: uri
+          description: LinkedIn profile URL
+        MasterAvatarTypeCode:
+          type: string
+          description: Avatar type code
+        Timezone:
+          type: string
+          description: Timezone
+        SfdcContactId:
+          type: string
+          description: Salesforce contact ID
+        NPS:
+          type: number
+          description: Net promoter score
+        IsPrimary:
+          type: boolean
+          description: Whether this is the primary contact
+        IsActive:
+          type: boolean
+          description: Whether the person is active
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Last modification timestamp

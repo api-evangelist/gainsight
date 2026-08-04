@@ -1,0 +1,300 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Renewal Center API
+  description: >-
+    The Renewal Center API enables creating and updating opportunity records in
+    the Gainsight Opportunity object, supporting renewal, upsell, and downsell
+    booking types within the Matrix Data Architecture.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Renewal Center API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Renewal_Center_API/Renewal_Center_API
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Opportunities
+    description: Manage opportunity records
+security:
+  - apiKey: []
+paths:
+  /data/objects/Opportunity:
+    post:
+      operationId: createOpportunity
+      summary: Gainsight Create an opportunity
+      description: >-
+        Create a new opportunity record in the Gainsight Opportunity object.
+        Supports renewal, upsell, and downsell booking types.
+      tags:
+        - Opportunities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  maxItems: 50
+                  items:
+                    $ref: '#/components/schemas/OpportunityRecord'
+      responses:
+        '200':
+          description: Opportunity created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WriteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      operationId: updateOpportunity
+      summary: Gainsight Update opportunities
+      description: Update one or more opportunity records.
+      tags:
+        - Opportunities
+      parameters:
+        - name: keys
+          in: query
+          required: true
+          description: Comma-separated key fields for matching
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  maxItems: 50
+                  items:
+                    $ref: '#/components/schemas/OpportunityRecord'
+      responses:
+        '200':
+          description: Opportunity updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WriteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/Opportunity/search:
+    post:
+      operationId: searchOpportunities
+      summary: Gainsight Search opportunities
+      description: Search for opportunity records using filter criteria.
+      tags:
+        - Opportunities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Opportunities returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      records:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/OpportunityRecord'
+                      totalCount:
+                        type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/Opportunity/{recordId}:
+    get:
+      operationId: getOpportunity
+      summary: Gainsight Get an opportunity
+      description: Retrieve a specific opportunity by ID.
+      tags:
+        - Opportunities
+      parameters:
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Opportunity returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/OpportunityRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Opportunity record Gsid
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
+    OpportunityRecord:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Opportunity unique identifier
+        Name:
+          type: string
+          description: Opportunity name
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        BookingType:
+          type: string
+          enum:
+            - New Business
+            - Renewal
+            - Upsell
+            - Downsell
+            - Churn
+          description: Booking type
+        Amount:
+          type: number
+          description: Opportunity amount
+        Currency:
+          type: string
+          description: Currency code
+        CloseDate:
+          type: string
+          format: date
+          description: Expected close date
+        Stage:
+          type: string
+          description: Opportunity stage
+        Probability:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: Win probability percentage
+        OwnerId:
+          type: string
+          description: Opportunity owner user ID
+        OwnerName:
+          type: string
+          description: Owner name
+        ARR:
+          type: number
+          description: Annual recurring revenue
+        Term:
+          type: integer
+          description: Contract term in months
+        RenewalDate:
+          type: string
+          format: date
+          description: Renewal date
+        IsClosed:
+          type: boolean
+          description: Whether the opportunity is closed
+        IsWon:
+          type: boolean
+          description: Whether the opportunity was won
+        SfdcOpportunityId:
+          type: string
+          description: Salesforce opportunity ID
+        CreatedDate:
+          type: string
+          format: date-time
+        ModifiedDate:
+          type: string
+          format: date-time

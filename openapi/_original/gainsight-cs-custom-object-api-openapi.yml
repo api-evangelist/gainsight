@@ -1,0 +1,314 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Custom Object API
+  description: >-
+    The Custom Object API allows inserting, updating, reading, and deleting
+    records in Gainsight transactional custom objects, supporting flexible data
+    models for customer success workflows.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Custom Object API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Custom_Object_API/Gainsight_Custom_Object_API_Documentation
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Custom Objects
+    description: CRUD operations on custom object records
+security:
+  - apiKey: []
+paths:
+  /data/objects/{objectName}:
+    post:
+      operationId: insertCustomObjectRecords
+      summary: Gainsight Insert custom object records
+      description: >-
+        Insert one or more records into a custom object. Supports up to 50
+        records per call.
+      tags:
+        - Custom Objects
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  maxItems: 50
+                  items:
+                    type: object
+                    description: Record fields matching the custom object schema
+      responses:
+        '200':
+          description: Records inserted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WriteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      operationId: updateCustomObjectRecords
+      summary: Gainsight Update custom object records
+      description: >-
+        Update one or more records in a custom object. Requires key fields for
+        matching. Supports up to 50 records per call.
+      tags:
+        - Custom Objects
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+        - name: keys
+          in: query
+          required: true
+          description: Comma-separated key fields for matching
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  maxItems: 50
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: Records updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WriteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/{objectName}/search:
+    post:
+      operationId: searchCustomObjectRecords
+      summary: Gainsight Search custom object records
+      description: >-
+        Search for records in a custom object using filter criteria. Returns up
+        to 5000 records per call.
+      tags:
+        - Custom Objects
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/{objectName}/{recordId}:
+    get:
+      operationId: getCustomObjectRecord
+      summary: Gainsight Get a custom object record
+      description: Retrieve a specific custom object record by ID.
+      tags:
+        - Custom Objects
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Record returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteCustomObjectRecord
+      summary: Gainsight Delete a custom object record
+      description: Delete a custom object record by ID.
+      tags:
+        - Custom Objects
+      parameters:
+        - $ref: '#/components/parameters/objectName'
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Record deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    objectName:
+      name: objectName
+      in: path
+      required: true
+      description: Name of the custom object
+      schema:
+        type: string
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Gainsight record unique identifier (Gsid)
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  alias:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+                    enum:
+                      - EQ
+                      - NE
+                      - GT
+                      - GTE
+                      - LT
+                      - LTE
+                      - CONTAINS
+                      - STARTS_WITH
+                      - ENDS_WITH
+                      - IN
+                      - NOT_IN
+            expression:
+              type: string
+        orderBy:
+          type: object
+          properties:
+            field:
+              type: string
+            order:
+              type: string
+              enum:
+                - ASC
+                - DESC
+        limit:
+          type: integer
+          maximum: 5000
+        offset:
+          type: integer
+    SearchResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            records:
+              type: array
+              items:
+                type: object
+            totalCount:
+              type: integer
+            count:
+              type: integer

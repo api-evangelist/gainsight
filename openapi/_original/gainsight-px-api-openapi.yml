@@ -1,0 +1,706 @@
+openapi: 3.1.0
+info:
+  title: Gainsight PX API
+  description: >-
+    Product Experience (PX) API for tracking product usage, user behavior, and
+    in-app engagement analytics. Powered by the Aptrinsic platform.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Gainsight PX API Documentation
+  url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
+servers:
+  - url: https://api.aptrinsic.com/v1
+    description: Gainsight PX Production API
+tags:
+  - name: Accounts
+    description: Manage account records and attributes
+  - name: Custom Events
+    description: Send custom events for tracking
+  - name: Engagements
+    description: Manage in-app engagements
+  - name: Feature Match
+    description: Track feature usage and adoption
+  - name: Subscription
+    description: Manage event subscriptions
+  - name: Users
+    description: Manage user records and attributes
+security:
+  - apiKey: []
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: Gainsight List users
+      description: Retrieve a paginated list of users tracked in Gainsight PX.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/scrollId'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          description: Users retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  scrollId:
+                    type: string
+                    description: Scroll ID for next page
+                  totalHits:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createUser
+      summary: Gainsight Create or update a user
+      description: Create a new user or update an existing user in Gainsight PX.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: User created or updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /users/{userId}:
+    get:
+      operationId: getUser
+      summary: Gainsight Get a user
+      description: Retrieve a specific user by their identifier.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: User details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateUser
+      summary: Gainsight Update a user
+      description: Update specific attributes of a user.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteUser
+      summary: Gainsight Delete a user
+      description: Delete a user from Gainsight PX.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      responses:
+        '204':
+          description: User deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /accounts:
+    get:
+      operationId: listAccounts
+      summary: Gainsight List accounts
+      description: Retrieve a paginated list of accounts in Gainsight PX.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/scrollId'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/filter'
+      responses:
+        '200':
+          description: Accounts retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Account'
+                  scrollId:
+                    type: string
+                  totalHits:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createAccount
+      summary: Gainsight Create or update an account
+      description: Create a new account or update an existing account.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountInput'
+      responses:
+        '200':
+          description: Account created or updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /accounts/{accountId}:
+    get:
+      operationId: getAccount
+      summary: Gainsight Get an account
+      description: Retrieve a specific account by ID.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+      responses:
+        '200':
+          description: Account details returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateAccount
+      summary: Gainsight Update an account
+      description: Update specific attributes of an account.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountInput'
+      responses:
+        '200':
+          description: Account updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteAccount
+      summary: Gainsight Delete an account
+      description: Delete an account from Gainsight PX.
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/accountId'
+      responses:
+        '204':
+          description: Account deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /feature_match:
+    get:
+      operationId: listFeatures
+      summary: Gainsight List features
+      description: Retrieve tracked features and their adoption metrics.
+      tags:
+        - Feature Match
+      parameters:
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/scrollId'
+      responses:
+        '200':
+          description: Features retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Feature'
+                  scrollId:
+                    type: string
+                  totalHits:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /custom_events:
+    post:
+      operationId: sendCustomEvent
+      summary: Gainsight Send a custom event
+      description: Send a custom event for a user to track specific interactions.
+      tags:
+        - Custom Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomEvent'
+      responses:
+        '200':
+          description: Event sent successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /engagements:
+    get:
+      operationId: listEngagements
+      summary: Gainsight List engagements
+      description: Retrieve a list of in-app engagements.
+      tags:
+        - Engagements
+      parameters:
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/scrollId'
+      responses:
+        '200':
+          description: Engagements retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Engagement'
+                  scrollId:
+                    type: string
+                  totalHits:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: Gainsight List event subscriptions
+      description: Retrieve a list of configured event subscriptions.
+      tags:
+        - Subscription
+      responses:
+        '200':
+          description: Subscriptions retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSubscription
+      summary: Gainsight Create an event subscription
+      description: Create a new webhook subscription for events.
+      tags:
+        - Subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionInput'
+      responses:
+        '201':
+          description: Subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: X-APTRINSIC-API-KEY
+      in: header
+      description: Gainsight PX API key
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: Unique user identifier
+      schema:
+        type: string
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      description: Unique account identifier
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+        maximum: 500
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort field and direction (e.g., lastSeenDate:desc)
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: Filter expression for results
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    User:
+      type: object
+      properties:
+        aptrinsicId:
+          type: string
+          description: Gainsight PX internal identifier
+        identifyId:
+          type: string
+          description: User identification string
+        type:
+          type: string
+          description: User type
+        gender:
+          type: string
+          description: User gender
+        email:
+          type: string
+          format: email
+          description: User email address
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        title:
+          type: string
+          description: Job title
+        phone:
+          type: string
+          description: Phone number
+        score:
+          type: integer
+          description: User engagement score
+        role:
+          type: string
+          description: User role
+        accountId:
+          type: string
+          description: Associated account ID
+        numberOfVisits:
+          type: integer
+          description: Total number of visits
+        lastSeenDate:
+          type: integer
+          format: int64
+          description: Last seen timestamp in milliseconds
+        firstVisitDate:
+          type: integer
+          format: int64
+          description: First visit timestamp in milliseconds
+        signUpDate:
+          type: integer
+          format: int64
+          description: Sign-up timestamp in milliseconds
+        customAttributes:
+          type: object
+          description: Custom user attributes
+    UserInput:
+      type: object
+      required:
+        - identifyId
+      properties:
+        identifyId:
+          type: string
+          description: Unique user identification string
+        email:
+          type: string
+          format: email
+          description: User email address
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        title:
+          type: string
+          description: Job title
+        phone:
+          type: string
+          description: Phone number
+        role:
+          type: string
+          description: User role
+        accountId:
+          type: string
+          description: Associated account ID
+        signUpDate:
+          type: integer
+          format: int64
+          description: Sign-up timestamp in milliseconds
+        customAttributes:
+          type: object
+          description: Custom user attributes
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Account unique identifier
+        name:
+          type: string
+          description: Account name
+        trackedSubscriptionId:
+          type: string
+          description: Tracked subscription ID
+        sfdcId:
+          type: string
+          description: Salesforce account ID
+        lastSeenDate:
+          type: integer
+          format: int64
+          description: Last seen timestamp
+        dupisBuyer:
+          type: boolean
+          description: Whether the account is a buyer
+        numberOfUsers:
+          type: integer
+          description: Number of users in the account
+        numberOfVisits:
+          type: integer
+          description: Total visits from the account
+        plan:
+          type: string
+          description: Account plan or tier
+        customAttributes:
+          type: object
+          description: Custom account attributes
+    AccountInput:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          description: Unique account identifier
+        name:
+          type: string
+          description: Account name
+        trackedSubscriptionId:
+          type: string
+          description: Tracked subscription ID
+        sfdcId:
+          type: string
+          description: Salesforce account ID
+        plan:
+          type: string
+          description: Account plan or tier
+        customAttributes:
+          type: object
+          description: Custom account attributes
+    Feature:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Feature identifier
+        name:
+          type: string
+          description: Feature name
+        type:
+          type: string
+          description: Feature type
+        url:
+          type: string
+          description: URL pattern for the feature
+        totalUserCount:
+          type: integer
+          description: Total users who used this feature
+        totalEventCount:
+          type: integer
+          description: Total usage events for this feature
+    CustomEvent:
+      type: object
+      required:
+        - identifyId
+        - eventName
+      properties:
+        identifyId:
+          type: string
+          description: User identification string
+        accountId:
+          type: string
+          description: Account identifier
+        eventName:
+          type: string
+          description: Name of the custom event
+        date:
+          type: integer
+          format: int64
+          description: Event timestamp in milliseconds
+        attributes:
+          type: object
+          description: Custom event attributes
+        url:
+          type: string
+          description: URL where the event occurred
+        referrer:
+          type: string
+          description: Referrer URL
+    Engagement:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Engagement identifier
+        name:
+          type: string
+          description: Engagement name
+        type:
+          type: string
+          enum:
+            - Dialog
+            - Slider
+            - Guide
+            - Tooltip
+            - Hotspot
+            - Badge
+          description: Engagement type
+        state:
+          type: string
+          enum:
+            - DRAFT
+            - LIVE
+            - PAUSED
+            - STAGED
+          description: Engagement state
+        createdDate:
+          type: integer
+          format: int64
+          description: Creation timestamp
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Subscription identifier
+        name:
+          type: string
+          description: Subscription name
+        callbackUrl:
+          type: string
+          format: uri
+          description: Webhook callback URL
+        eventType:
+          type: string
+          description: Event type to subscribe to
+        active:
+          type: boolean
+          description: Whether the subscription is active
+    SubscriptionInput:
+      type: object
+      required:
+        - name
+        - callbackUrl
+        - eventType
+      properties:
+        name:
+          type: string
+          description: Subscription name
+        callbackUrl:
+          type: string
+          format: uri
+          description: Webhook callback URL
+        eventType:
+          type: string
+          description: Event type to subscribe to

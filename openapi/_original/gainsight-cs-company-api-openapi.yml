@@ -1,0 +1,373 @@
+openapi: 3.1.0
+info:
+  title: Gainsight CS Company API
+  description: >-
+    The Company API enables inserting, updating, reading, and deleting records
+    in the Gainsight Company object, supporting up to 50 records per call for
+    write operations and 5000 records per read call.
+  version: '1.0'
+  contact:
+    name: Gainsight Support
+    url: https://support.gainsight.com
+    email: support@gainsight.com
+  termsOfService: https://www.gainsight.com/terms-of-service/
+externalDocs:
+  description: Company API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Company_and_Relationship_API/Company_API_Documentation
+servers:
+  - url: https://{domain}.gainsightcloud.com/v1
+    description: Gainsight CS Production
+    variables:
+      domain:
+        default: customer
+        description: Customer-specific domain prefix
+tags:
+  - name: Companies
+    description: CRUD operations on company records
+security:
+  - apiKey: []
+paths:
+  /data/objects/Company:
+    post:
+      operationId: insertCompanies
+      summary: Gainsight Insert company records
+      description: >-
+        Insert one or more company records into Gainsight. Supports up to 50
+        records per call.
+      tags:
+        - Companies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  maxItems: 50
+                  items:
+                    $ref: '#/components/schemas/CompanyRecord'
+      responses:
+        '200':
+          description: Records inserted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WriteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    put:
+      operationId: updateCompanies
+      summary: Gainsight Update company records
+      description: >-
+        Update one or more company records. Requires a key field for matching.
+        Supports up to 50 records per call.
+      tags:
+        - Companies
+      parameters:
+        - name: keys
+          in: query
+          required: true
+          description: Comma-separated list of key field names for matching
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - records
+              properties:
+                records:
+                  type: array
+                  maxItems: 50
+                  items:
+                    $ref: '#/components/schemas/CompanyRecord'
+      responses:
+        '200':
+          description: Records updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WriteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/Company/search:
+    post:
+      operationId: searchCompanies
+      summary: Gainsight Search company records
+      description: >-
+        Search for company records using filter criteria. Returns up to 5000
+        records per call.
+      tags:
+        - Companies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /data/objects/Company/{recordId}:
+    get:
+      operationId: getCompany
+      summary: Gainsight Get a company record
+      description: Retrieve a specific company record by its Gainsight ID.
+      tags:
+        - Companies
+      parameters:
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Company record returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/CompanyRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteCompany
+      summary: Gainsight Delete a company record
+      description: Delete a company record by its Gainsight ID.
+      tags:
+        - Companies
+      parameters:
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: Record deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: accessKey
+      in: header
+      description: Gainsight CS REST API access key
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Gainsight record unique identifier (Gsid)
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Number of records affected
+            insertedCount:
+              type: integer
+              description: Number of records inserted
+            updatedCount:
+              type: integer
+              description: Number of records updated
+            failedCount:
+              type: integer
+              description: Number of failed records
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+          description: Fields to return in results
+        where:
+          type: object
+          description: Filter conditions
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Field name
+                  alias:
+                    type: string
+                    description: Field alias
+                  value:
+                    description: Filter value
+                  operator:
+                    type: string
+                    enum:
+                      - EQ
+                      - NE
+                      - GT
+                      - GTE
+                      - LT
+                      - LTE
+                      - CONTAINS
+                      - STARTS_WITH
+                      - ENDS_WITH
+                      - IN
+                      - NOT_IN
+                    description: Comparison operator
+            expression:
+              type: string
+              description: Logical expression combining conditions
+        orderBy:
+          type: object
+          properties:
+            field:
+              type: string
+            order:
+              type: string
+              enum:
+                - ASC
+                - DESC
+        limit:
+          type: integer
+          maximum: 5000
+          description: Maximum number of records to return
+        offset:
+          type: integer
+          description: Offset for pagination
+    SearchResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            records:
+              type: array
+              items:
+                $ref: '#/components/schemas/CompanyRecord'
+            totalCount:
+              type: integer
+            count:
+              type: integer
+    CompanyRecord:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Gainsight unique identifier
+        Name:
+          type: string
+          description: Company name
+        Industry:
+          type: string
+          description: Industry classification
+        ARR:
+          type: number
+          description: Annual recurring revenue
+        MRR:
+          type: number
+          description: Monthly recurring revenue
+        LifecycleStage:
+          type: string
+          description: Current customer lifecycle stage
+        Stage:
+          type: string
+          description: Company stage
+        Status:
+          type: string
+          description: Company status
+        CSMName:
+          type: string
+          description: Assigned CSM name
+        Employees:
+          type: integer
+          description: Number of employees
+        OriginalContractDate:
+          type: string
+          format: date
+          description: Original contract date
+        RenewalDate:
+          type: string
+          format: date
+          description: Next renewal date
+        CurrScoreId:
+          type: string
+          description: Current health score ID
+        OverallScore:
+          type: number
+          description: Overall health score value
+        SfdcAccountId:
+          type: string
+          description: Salesforce account ID
+        ParentCompanyId:
+          type: string
+          description: Parent company Gsid
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Last modification timestamp
