@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts CTA Configuration API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CTA Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Get CTA types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas/config/types"
+          },
+          "docs": "Retrieve the list of configured CTA types."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get CTA reasons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas/config/reasons",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "query",
+                "description": "Filter reasons by CTA type ID"
+              }
+            ]
+          },
+          "docs": "Retrieve the list of configured CTA reasons."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get CTA priorities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas/config/priorities"
+          },
+          "docs": "Retrieve the list of configured CTA priorities."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get CTA statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas/config/statuses"
+          },
+          "docs": "Retrieve the list of configured CTA statuses."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

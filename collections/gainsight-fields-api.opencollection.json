@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts Fields API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List fields for an object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/meta/objects/:objectName/fields",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the Gainsight object"
+              }
+            ]
+          },
+          "docs": "Retrieve field metadata for a specific Gainsight object."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get field metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/meta/objects/:objectName/fields/:fieldName",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the Gainsight object"
+              },
+              {
+                "name": "fieldName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the field"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a specific field on a Gainsight object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

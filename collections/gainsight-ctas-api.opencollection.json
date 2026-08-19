@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts CTAs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CTAs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Create a CTA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Call to Action record in the Cockpit."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a CTA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas/:ctaId",
+            "params": [
+              {
+                "name": "ctaId",
+                "value": "",
+                "type": "path",
+                "description": "CTA unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific CTA by its identifier."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update a CTA",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas/:ctaId",
+            "params": [
+              {
+                "name": "ctaId",
+                "value": "",
+                "type": "path",
+                "description": "CTA unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing CTA record."
+        },
+        {
+          "info": {
+            "name": "Gainsight Search CTAs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/ctas/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for CTA records using filter criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

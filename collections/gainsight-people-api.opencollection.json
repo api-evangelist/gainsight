@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts People API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "People",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Upsert person records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Person",
+            "params": [
+              {
+                "name": "keys",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated key fields for matching (e.g., Email)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert or update person records in Gainsight. Supports up to 50 records per call with upsert behavior based on key fields."
+        },
+        {
+          "info": {
+            "name": "Gainsight Search person records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Person/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for person records using filter criteria. Returns up to 5000 records per call."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a person record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Person/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight record unique identifier (Gsid)"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific person record by Gainsight ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Delete a person record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/Person/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight record unique identifier (Gsid)"
+              }
+            ]
+          },
+          "docs": "Delete a person record by Gainsight ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight List people",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/v1/people",
+            "params": [
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of person records from Gainsight."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

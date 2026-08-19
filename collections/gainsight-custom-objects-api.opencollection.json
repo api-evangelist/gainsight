@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts Custom Objects API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight Insert custom object records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/:objectName",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the custom object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert one or more records into a custom object. Supports up to 50 records per call."
+        },
+        {
+          "info": {
+            "name": "Gainsight Update custom object records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/:objectName",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the custom object"
+              },
+              {
+                "name": "keys",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated key fields for matching"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update one or more records in a custom object. Requires key fields for matching. Supports up to 50 records per call."
+        },
+        {
+          "info": {
+            "name": "Gainsight Search custom object records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/:objectName/search",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the custom object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for records in a custom object using filter criteria. Returns up to 5000 records per call."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a custom object record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/:objectName/:recordId",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the custom object"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight record unique identifier (Gsid)"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific custom object record by ID."
+        },
+        {
+          "info": {
+            "name": "Gainsight Delete a custom object record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{domain}.gainsightcloud.com/v1/data/objects/:objectName/:recordId",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the custom object"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Gainsight record unique identifier (Gsid)"
+              }
+            ]
+          },
+          "docs": "Delete a custom object record by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

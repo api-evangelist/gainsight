@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts SCIM API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SCIM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight SCIM list users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "SCIM filter expression"
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "Starting index"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records"
+              }
+            ]
+          },
+          "docs": "List users via SCIM 2.0 protocol for identity provider integration."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM create user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provision a new user via SCIM 2.0."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM get user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users/:scimUserId",
+            "params": [
+              {
+                "name": "scimUserId",
+                "value": "",
+                "type": "path",
+                "description": "SCIM user ID"
+              }
+            ]
+          },
+          "docs": "Retrieve a user via SCIM 2.0."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users/:scimUserId",
+            "params": [
+              {
+                "name": "scimUserId",
+                "value": "",
+                "type": "path",
+                "description": "SCIM user ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user via SCIM 2.0."
+        },
+        {
+          "info": {
+            "name": "Gainsight SCIM delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{domain}.gainsightcloud.com/v1/scim/v2/Users/:scimUserId",
+            "params": [
+              {
+                "name": "scimUserId",
+                "value": "",
+                "type": "path",
+                "description": "SCIM user ID"
+              }
+            ]
+          },
+          "docs": "De-provision a user via SCIM 2.0."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts Objects API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/meta/objects"
+          },
+          "docs": "Retrieve metadata for all Gainsight objects including standard and custom objects."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get object metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/meta/objects/:objectName",
+            "params": [
+              {
+                "name": "objectName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the Gainsight object"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata for a specific Gainsight object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

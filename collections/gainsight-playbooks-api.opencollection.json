@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gainsight CS Bulk Accounts Playbooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accessKey",
+      "value": "{{accessKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Playbooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gainsight List playbooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/playbooks"
+          },
+          "docs": "Retrieve a list of configured playbooks."
+        },
+        {
+          "info": {
+            "name": "Gainsight Get a playbook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{domain}.gainsightcloud.com/v1/playbooks/:playbookId",
+            "params": [
+              {
+                "name": "playbookId",
+                "value": "",
+                "type": "path",
+                "description": "Playbook unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific playbook with its task templates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1162 @@
+{
+  "item": [
+    {
+      "id": "4ad64cd4-eab3-4e33-93c9-64ca465f1812",
+      "name": "People",
+      "description": {
+        "content": "Manage person records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "51c55868-d82c-4ff9-a695-e844f60f687d",
+          "name": "Gainsight Upsert person records",
+          "request": {
+            "name": "Gainsight Upsert person records",
+            "description": {
+              "content": "Insert or update person records in Gainsight. Supports up to 50 records per call with upsert behavior based on key fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Person"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "keys",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated key fields for matching (e.g., Email)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"<string>\",\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Email\": \"<email>\",\n      \"CompanyId\": \"<string>\",\n      \"CompanyName\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"Role\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Location\": \"<string>\",\n      \"LinkedinUrl\": \"<uri>\",\n      \"MasterAvatarTypeCode\": \"<string>\",\n      \"Timezone\": \"<string>\",\n      \"SfdcContactId\": \"<string>\",\n      \"NPS\": \"<number>\",\n      \"IsPrimary\": \"<boolean>\",\n      \"IsActive\": \"<boolean>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Gsid\": \"<string>\",\n      \"FirstName\": \"<string>\",\n      \"LastName\": \"<string>\",\n      \"Email\": \"<email>\",\n      \"CompanyId\": \"<string>\",\n      \"CompanyName\": \"<string>\",\n      \"Title\": \"<string>\",\n      \"Role\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Location\": \"<string>\",\n      \"LinkedinUrl\": \"<uri>\",\n      \"MasterAvatarTypeCode\": \"<string>\",\n      \"Timezone\": \"<string>\",\n      \"SfdcContactId\": \"<string>\",\n      \"NPS\": \"<number>\",\n      \"IsPrimary\": \"<boolean>\",\n      \"IsActive\": \"<boolean>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f14ede3c-12bc-4cb3-b3d3-291d446b33fc",
+              "name": "Records upserted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Email\": \"uvhlQ-JL@CnhgqcjkIoOOdfnASmoQpWKOIKBSikv.hwc\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"Title\": \"string\",\n      \"Role\": \"string\",\n      \"Phone\": \"string\",\n      \"Location\": \"string\",\n      \"LinkedinUrl\": \"http://UNujQ.mlvjAQZmq1CFC4qGrHzpKHd-LmgTiW0dC2ECZ17Cncl9Tab,v.JgyEb-CRAt9e20SHIJ\",\n      \"MasterAvatarTypeCode\": \"string\",\n      \"Timezone\": \"string\",\n      \"SfdcContactId\": \"string\",\n      \"NPS\": 8567.154769784114,\n      \"IsPrimary\": true,\n      \"IsActive\": false,\n      \"CreatedDate\": \"1960-12-10T18:14:02.954Z\",\n      \"ModifiedDate\": \"1997-07-10T04:43:43.880Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Email\": \"QKJOfW0es9Sg@UcosHmByUhdaNUqFtvlDspRbMofNSC.glo\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"Title\": \"string\",\n      \"Role\": \"string\",\n      \"Phone\": \"string\",\n      \"Location\": \"string\",\n      \"LinkedinUrl\": \"https://BDKlL.ftspBKCadBMe0omJt,Wyc5AxBnPig,PU.USJUykQztQbgpApDc65EKpLZV9DHNNtWZUOMnE\",\n      \"MasterAvatarTypeCode\": \"string\",\n      \"Timezone\": \"string\",\n      \"SfdcContactId\": \"string\",\n      \"NPS\": 4514.882838723133,\n      \"IsPrimary\": true,\n      \"IsActive\": true,\n      \"CreatedDate\": \"1967-08-21T05:41:22.651Z\",\n      \"ModifiedDate\": \"2026-03-03T11:10:17.379Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"count\": 1806,\n    \"insertedCount\": 1575,\n    \"updatedCount\": 9152,\n    \"failedCount\": 7932,\n    \"failures\": [\n      {\n        \"index\": 9888,\n        \"errorMessage\": \"string\"\n      },\n      {\n        \"index\": 2734,\n        \"errorMessage\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89b5fcaa-2f8e-4c0e-8db1-005f9618b0e6",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Email\": \"uvhlQ-JL@CnhgqcjkIoOOdfnASmoQpWKOIKBSikv.hwc\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"Title\": \"string\",\n      \"Role\": \"string\",\n      \"Phone\": \"string\",\n      \"Location\": \"string\",\n      \"LinkedinUrl\": \"http://UNujQ.mlvjAQZmq1CFC4qGrHzpKHd-LmgTiW0dC2ECZ17Cncl9Tab,v.JgyEb-CRAt9e20SHIJ\",\n      \"MasterAvatarTypeCode\": \"string\",\n      \"Timezone\": \"string\",\n      \"SfdcContactId\": \"string\",\n      \"NPS\": 8567.154769784114,\n      \"IsPrimary\": true,\n      \"IsActive\": false,\n      \"CreatedDate\": \"1960-12-10T18:14:02.954Z\",\n      \"ModifiedDate\": \"1997-07-10T04:43:43.880Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Email\": \"QKJOfW0es9Sg@UcosHmByUhdaNUqFtvlDspRbMofNSC.glo\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"Title\": \"string\",\n      \"Role\": \"string\",\n      \"Phone\": \"string\",\n      \"Location\": \"string\",\n      \"LinkedinUrl\": \"https://BDKlL.ftspBKCadBMe0omJt,Wyc5AxBnPig,PU.USJUykQztQbgpApDc65EKpLZV9DHNNtWZUOMnE\",\n      \"MasterAvatarTypeCode\": \"string\",\n      \"Timezone\": \"string\",\n      \"SfdcContactId\": \"string\",\n      \"NPS\": 4514.882838723133,\n      \"IsPrimary\": true,\n      \"IsActive\": true,\n      \"CreatedDate\": \"1967-08-21T05:41:22.651Z\",\n      \"ModifiedDate\": \"2026-03-03T11:10:17.379Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1467e41e-7ea6-4d76-acfb-0e641ad0321b",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keys",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"Gsid\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Email\": \"uvhlQ-JL@CnhgqcjkIoOOdfnASmoQpWKOIKBSikv.hwc\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"Title\": \"string\",\n      \"Role\": \"string\",\n      \"Phone\": \"string\",\n      \"Location\": \"string\",\n      \"LinkedinUrl\": \"http://UNujQ.mlvjAQZmq1CFC4qGrHzpKHd-LmgTiW0dC2ECZ17Cncl9Tab,v.JgyEb-CRAt9e20SHIJ\",\n      \"MasterAvatarTypeCode\": \"string\",\n      \"Timezone\": \"string\",\n      \"SfdcContactId\": \"string\",\n      \"NPS\": 8567.154769784114,\n      \"IsPrimary\": true,\n      \"IsActive\": false,\n      \"CreatedDate\": \"1960-12-10T18:14:02.954Z\",\n      \"ModifiedDate\": \"1997-07-10T04:43:43.880Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"FirstName\": \"string\",\n      \"LastName\": \"string\",\n      \"Email\": \"QKJOfW0es9Sg@UcosHmByUhdaNUqFtvlDspRbMofNSC.glo\",\n      \"CompanyId\": \"string\",\n      \"CompanyName\": \"string\",\n      \"Title\": \"string\",\n      \"Role\": \"string\",\n      \"Phone\": \"string\",\n      \"Location\": \"string\",\n      \"LinkedinUrl\": \"https://BDKlL.ftspBKCadBMe0omJt,Wyc5AxBnPig,PU.USJUykQztQbgpApDc65EKpLZV9DHNNtWZUOMnE\",\n      \"MasterAvatarTypeCode\": \"string\",\n      \"Timezone\": \"string\",\n      \"SfdcContactId\": \"string\",\n      \"NPS\": 4514.882838723133,\n      \"IsPrimary\": true,\n      \"IsActive\": true,\n      \"CreatedDate\": \"1967-08-21T05:41:22.651Z\",\n      \"ModifiedDate\": \"2026-03-03T11:10:17.379Z\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35ab625b-69b7-48df-bc7f-789df656581b",
+          "name": "Gainsight Search person records",
+          "request": {
+            "name": "Gainsight Search person records",
+            "description": {
+              "content": "Search for person records using filter criteria. Returns up to 5000 records per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Person",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ca745e5-da1b-4b3b-a5e6-8243ecbf56c2",
+              "name": "Search results returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"FirstName\": \"string\",\n        \"LastName\": \"string\",\n        \"Email\": \"idytN@hkvwKhHbaAAgvTqgEgn.ai\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"Title\": \"string\",\n        \"Role\": \"string\",\n        \"Phone\": \"string\",\n        \"Location\": \"string\",\n        \"LinkedinUrl\": \"http://zRxDPBxijAT.joanjhQXBSWJvMsbkknzpnTeL8,lxHqrmdjHEDuqF16ZL90ibR\",\n        \"MasterAvatarTypeCode\": \"string\",\n        \"Timezone\": \"string\",\n        \"SfdcContactId\": \"string\",\n        \"NPS\": 2841.309542308388,\n        \"IsPrimary\": false,\n        \"IsActive\": false,\n        \"CreatedDate\": \"2009-09-18T21:50:16.848Z\",\n        \"ModifiedDate\": \"1958-06-08T01:06:19.910Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"FirstName\": \"string\",\n        \"LastName\": \"string\",\n        \"Email\": \"6V-OyMtJ@feAClRcsfpJXJvzFRoegBXMm.dp\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"Title\": \"string\",\n        \"Role\": \"string\",\n        \"Phone\": \"string\",\n        \"Location\": \"string\",\n        \"LinkedinUrl\": \"https://TLnpolptngEBgGzpDJRaboWZzytY.owiox0PJYR\",\n        \"MasterAvatarTypeCode\": \"string\",\n        \"Timezone\": \"string\",\n        \"SfdcContactId\": \"string\",\n        \"NPS\": 5666.201055664475,\n        \"IsPrimary\": false,\n        \"IsActive\": true,\n        \"CreatedDate\": \"1997-03-15T23:55:57.110Z\",\n        \"ModifiedDate\": \"1951-12-17T05:51:24.003Z\"\n      }\n    ],\n    \"totalCount\": 4065,\n    \"count\": 835\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "204306b9-e495-46cc-b703-94b7ed463860",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f55b642-2530-41e1-9a6f-d863838138c9",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"alias\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"orderBy\": {\n    \"field\": \"<string>\",\n    \"order\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1248111-e87d-41fd-8fdb-aa136173a774",
+          "name": "Gainsight Get a person record",
+          "request": {
+            "name": "Gainsight Get a person record",
+            "description": {
+              "content": "Retrieve a specific person record by Gainsight ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Person",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) Gainsight record unique identifier (Gsid)"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04f43e00-eb4a-4fb4-8eec-926715292d2c",
+              "name": "Person record returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"FirstName\": \"string\",\n    \"LastName\": \"string\",\n    \"Email\": \"eQy@pEAUNqFDDMFOshSiPGUnzphLhQWnUFs.re\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"Title\": \"string\",\n    \"Role\": \"string\",\n    \"Phone\": \"string\",\n    \"Location\": \"string\",\n    \"LinkedinUrl\": \"https://gkobxzHUEePmLTmVRQOCB.zimnz7rdNiey3J8JItYXi3vHQKrcX+Xj3.tBA+gll7mLWzrxAlecjx.XRAVcqHZG1++qG5irA9\",\n    \"MasterAvatarTypeCode\": \"string\",\n    \"Timezone\": \"string\",\n    \"SfdcContactId\": \"string\",\n    \"NPS\": 865.6911543811851,\n    \"IsPrimary\": false,\n    \"IsActive\": true,\n    \"CreatedDate\": \"2004-12-16T05:07:20.153Z\",\n    \"ModifiedDate\": \"2003-06-15T23:35:40.556Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "763dc36f-b5e9-47d5-bd28-a1432920f6f4",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8200d881-283b-41b7-95b2-226000e9c2e2",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afe07438-a4b9-4b51-877a-64978dba0d5a",
+          "name": "Gainsight Delete a person record",
+          "request": {
+            "name": "Gainsight Delete a person record",
+            "description": {
+              "content": "Delete a person record by Gainsight ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "objects",
+                "Person",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) Gainsight record unique identifier (Gsid)"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "febfda46-f7e0-4251-8a8b-a415be7104e2",
+              "name": "Record deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"errorCode\": \"string\",\n  \"errorDesc\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8869d690-2d16-48d6-96d5-fe1a1f05b641",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7cf0ece3-ecab-476b-ab09-07aeba795bd2",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "objects",
+                    "Person",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) Gainsight record unique identifier (Gsid)"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6b829d6-0755-4c3a-8695-4eefabec3289",
+          "name": "Gainsight List people",
+          "request": {
+            "name": "Gainsight List people",
+            "description": {
+              "content": "Retrieve a list of person records from Gainsight.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "people"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of records per page"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f573e47-13b6-4964-a1c8-42ba224a7560",
+              "name": "List of people returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"FirstName\": \"string\",\n        \"LastName\": \"string\",\n        \"Email\": \"3Re@rzXqjMHfwxnxobNOjdEXpqVIJOX.xoda\",\n        \"CompanyId\": \"string\",\n        \"Role\": \"string\",\n        \"Location\": \"string\",\n        \"CreatedDate\": \"1980-07-25T05:41:20.687Z\",\n        \"ModifiedDate\": \"1995-05-03T04:39:38.809Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"FirstName\": \"string\",\n        \"LastName\": \"string\",\n        \"Email\": \"SFSSj@OkfoLwcw.vjrq\",\n        \"CompanyId\": \"string\",\n        \"Role\": \"string\",\n        \"Location\": \"string\",\n        \"CreatedDate\": \"1978-08-27T03:57:40.774Z\",\n        \"ModifiedDate\": \"1984-12-09T05:07:16.319Z\"\n      }\n    ],\n    \"totalCount\": 3882\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea993fa5-318c-4376-ae9d-5342f0071ccf",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Customer-specific domain prefix",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "customer",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.gainsightcloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accessKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8ea589b4-9f07-4b43-8b4e-447617979532",
+    "name": "Gainsight CS Bulk Accounts People API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+      "type": "text/plain"
+    }
+  }
+}

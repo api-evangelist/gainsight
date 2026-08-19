@@ -1,0 +1,1035 @@
+{
+  "item": [
+    {
+      "id": "5b35fa0a-45b1-4cdf-837e-e0f8ed2ee315",
+      "name": "CTAs",
+      "description": {
+        "content": "Create and manage Calls to Action",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a46cc8b-8f91-4395-9ced-c86a50928576",
+          "name": "Gainsight Create a CTA",
+          "request": {
+            "name": "Gainsight Create a CTA",
+            "description": {
+              "content": "Create a new Call to Action record in the Cockpit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ctas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2dbaf3c-2290-476c-911f-ccb23c9a08b4",
+              "name": "CTA created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"TypeId\": \"string\",\n    \"TypeName\": \"string\",\n    \"ReasonId\": \"string\",\n    \"ReasonName\": \"string\",\n    \"PriorityId\": \"string\",\n    \"StatusId\": \"string\",\n    \"StatusName\": \"string\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"DueDate\": \"1998-07-27\",\n    \"ClosedDate\": \"2016-05-24\",\n    \"Comments\": \"string\",\n    \"Source\": \"string\",\n    \"PlaybookId\": \"string\",\n    \"CreatedDate\": \"2021-03-29T13:58:29.516Z\",\n    \"ModifiedDate\": \"1992-06-23T03:27:41.316Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f128cde-0626-4c07-bf77-18221a1b0163",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2599450-21c7-4822-9d97-9d12b0ad6376",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f662e79-8586-4760-a980-eb68a326fa0f",
+          "name": "Gainsight Get a CTA",
+          "request": {
+            "name": "Gainsight Get a CTA",
+            "description": {
+              "content": "Retrieve a specific CTA by its identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ctas",
+                ":ctaId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ctaId",
+                  "description": "(Required) CTA unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a264de1-d551-4a07-b732-d608f85382df",
+              "name": "CTA details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    ":ctaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ctaId",
+                      "description": "(Required) CTA unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"TypeId\": \"string\",\n    \"TypeName\": \"string\",\n    \"ReasonId\": \"string\",\n    \"ReasonName\": \"string\",\n    \"PriorityId\": \"string\",\n    \"StatusId\": \"string\",\n    \"StatusName\": \"string\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"DueDate\": \"1998-07-27\",\n    \"ClosedDate\": \"2016-05-24\",\n    \"Comments\": \"string\",\n    \"Source\": \"string\",\n    \"PlaybookId\": \"string\",\n    \"CreatedDate\": \"2021-03-29T13:58:29.516Z\",\n    \"ModifiedDate\": \"1992-06-23T03:27:41.316Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66493905-b222-4b55-87ff-9c4bf987b06a",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    ":ctaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ctaId",
+                      "description": "(Required) CTA unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1945853-1804-4d50-9920-11e11a0db006",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    ":ctaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ctaId",
+                      "description": "(Required) CTA unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff9db33e-8512-4251-b6d2-7471100a16f8",
+          "name": "Gainsight Update a CTA",
+          "request": {
+            "name": "Gainsight Update a CTA",
+            "description": {
+              "content": "Update an existing CTA record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ctas",
+                ":ctaId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ctaId",
+                  "description": "(Required) CTA unique identifier"
+                },
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4877071e-cbd2-4195-9111-0352eb20ece8",
+              "name": "CTA updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    ":ctaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ctaId",
+                      "description": "(Required) CTA unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"TypeId\": \"string\",\n    \"TypeName\": \"string\",\n    \"ReasonId\": \"string\",\n    \"ReasonName\": \"string\",\n    \"PriorityId\": \"string\",\n    \"StatusId\": \"string\",\n    \"StatusName\": \"string\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"DueDate\": \"1998-07-27\",\n    \"ClosedDate\": \"2016-05-24\",\n    \"Comments\": \"string\",\n    \"Source\": \"string\",\n    \"PlaybookId\": \"string\",\n    \"CreatedDate\": \"2021-03-29T13:58:29.516Z\",\n    \"ModifiedDate\": \"1992-06-23T03:27:41.316Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9efaf0f3-9406-4b4f-9c03-84ecef642bb7",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    ":ctaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ctaId",
+                      "description": "(Required) CTA unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a60a03a7-89db-42fc-aa00-5b6468e877ae",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    ":ctaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ctaId",
+                      "description": "(Required) CTA unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93141a04-fd53-4c98-897a-f3df388499ca",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    ":ctaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ctaId",
+                      "description": "(Required) CTA unique identifier"
+                    },
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CompanyId\": \"<string>\",\n  \"TypeId\": \"<string>\",\n  \"ReasonId\": \"<string>\",\n  \"PriorityId\": \"<string>\",\n  \"StatusId\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"DueDate\": \"<date>\",\n  \"Comments\": \"<string>\",\n  \"PlaybookId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfe70909-08eb-4f33-9644-c24f75bf045e",
+          "name": "Gainsight Search CTAs",
+          "request": {
+            "name": "Gainsight Search CTAs",
+            "description": {
+              "content": "Search for CTA records using filter criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ctas",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Customer-specific domain prefix",
+                  "type": "any",
+                  "value": "{{domain}}",
+                  "key": "domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d159b941-00f8-4e11-811a-7fb2630a10bd",
+              "name": "Search results returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"TypeId\": \"string\",\n        \"TypeName\": \"string\",\n        \"ReasonId\": \"string\",\n        \"ReasonName\": \"string\",\n        \"PriorityId\": \"string\",\n        \"StatusId\": \"string\",\n        \"StatusName\": \"string\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"DueDate\": \"2015-07-20\",\n        \"ClosedDate\": \"1959-04-29\",\n        \"Comments\": \"string\",\n        \"Source\": \"string\",\n        \"PlaybookId\": \"string\",\n        \"CreatedDate\": \"1994-12-01T14:33:50.676Z\",\n        \"ModifiedDate\": \"1978-09-01T02:13:03.542Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"TypeId\": \"string\",\n        \"TypeName\": \"string\",\n        \"ReasonId\": \"string\",\n        \"ReasonName\": \"string\",\n        \"PriorityId\": \"string\",\n        \"StatusId\": \"string\",\n        \"StatusName\": \"string\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"DueDate\": \"2016-04-17\",\n        \"ClosedDate\": \"1964-10-29\",\n        \"Comments\": \"string\",\n        \"Source\": \"string\",\n        \"PlaybookId\": \"string\",\n        \"CreatedDate\": \"2001-05-14T19:40:13.720Z\",\n        \"ModifiedDate\": \"2014-02-07T14:16:46.580Z\"\n      }\n    ],\n    \"totalCount\": 9149\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d746a558-09a4-49b0-addd-bfd253d9181a",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2381b585-5512-40b1-84f1-5ba5c069166a",
+              "name": "Authentication failed or access key is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ctas",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Customer-specific domain prefix",
+                      "type": "any",
+                      "value": "{{domain}}",
+                      "key": "domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Customer-specific domain prefix",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "customer",
+      "key": "domain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{domain}}.gainsightcloud.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accessKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fb7da576-5307-47c5-acc6-db91ab46d177",
+    "name": "Gainsight CS Bulk Accounts CTAs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+      "type": "text/plain"
+    }
+  }
+}
