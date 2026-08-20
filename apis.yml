@@ -27,6 +27,8 @@ apis:
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
   baseURL: https://api.gainsight.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -830,6 +832,8 @@ apis:
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
   baseURL: https://api.gainsight.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -1122,6 +1126,8 @@ apis:
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
   baseURL: https://api.gainsight.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -1925,6 +1931,8 @@ apis:
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
   baseURL: https://api.gainsight.com
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -2071,6 +2079,8 @@ apis:
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
   baseURL: https://api.gainsight.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
