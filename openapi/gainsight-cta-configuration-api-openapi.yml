@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gainsight CS Bulk Accounts CTA Configuration API
-  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  title: Gainsight CS CTA CTA Configuration API
+  description: The Call To Action (CTA) API enables creating and updating CTAs, fetching CTA details, and retrieving CTA configurations through Cockpit REST APIs for managing customer success actions.
   version: '1.0'
   contact:
     name: Gainsight Support
@@ -145,18 +145,6 @@ components:
         typeId:
           type: string
           description: Associated CTA type ID
-    CTAPriority:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Priority identifier
-        name:
-          type: string
-          description: Priority name
-        order:
-          type: integer
-          description: Display order
     CTAStatus:
       type: object
       properties:
@@ -169,6 +157,18 @@ components:
         isClosed:
           type: boolean
           description: Whether this status represents a closed state
+    CTAPriority:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Priority identifier
+        name:
+          type: string
+          description: Priority name
+        order:
+          type: integer
+          description: Display order
   responses:
     Unauthorized:
       description: Authentication failed or access key is missing
@@ -179,5 +179,5 @@ components:
       in: header
       description: Gainsight CS REST API access key
 externalDocs:
-  description: Bulk API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
+  description: CTA API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Call_To_Action_(CTA)_API_Documentation

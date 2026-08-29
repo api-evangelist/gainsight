@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gainsight CS Bulk Accounts Events API
-  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  title: Gainsight CS Events API
+  description: The Events API enables external systems to publish events into Gainsight, supporting system asset events for cross-system communication with operations including insert, update, upsert, and delete.
   version: '1.0'
   contact:
     name: Gainsight Support
@@ -110,33 +110,12 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
-    EventType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Event type identifier
-        name:
-          type: string
-          description: Event type name
-        description:
-          type: string
-          description: Event type description
-        isActive:
-          type: boolean
-          description: Whether the event type is active
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
     EventInput:
       type: object
       required:
@@ -172,11 +151,32 @@ components:
         sourceSystem:
           type: string
           description: Source system identifier
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    Unauthorized:
-      description: Authentication failed or access key is missing
+    EventType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Event type identifier
+        name:
+          type: string
+          description: Event type name
+        description:
+          type: string
+          description: Event type description
+        isActive:
+          type: boolean
+          description: Whether the event type is active
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
   securitySchemes:
     apiKey:
       type: apiKey
@@ -184,5 +184,5 @@ components:
       in: header
       description: Gainsight CS REST API access key
 externalDocs:
-  description: Bulk API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
+  description: Events API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Events_API/Events_API

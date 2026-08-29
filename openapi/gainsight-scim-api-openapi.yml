@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gainsight CS Bulk Accounts SCIM API
-  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  title: Gainsight CS User Management SCIM API
+  description: The User Management API provides endpoints for managing Gainsight users, company team records, and includes SCIM support for automated user provisioning and de-provisioning through identity providers.
   version: '1.0'
   contact:
     name: Gainsight Support
@@ -157,10 +157,10 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: The requested resource was not found
     BadRequest:
       description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
   parameters:
@@ -260,5 +260,5 @@ components:
       in: header
       description: Gainsight CS REST API access key
 externalDocs:
-  description: Bulk API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
+  description: User Management API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/User_Management_APIs

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gainsight CS Bulk Accounts Activities API
-  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  title: Gainsight CS Timeline Activities API
+  description: The Timeline API enables creating, updating, reading, and deleting Timeline activities, supporting both single and bulk operations with up to 80MB payloads for bulk requests.
   version: '1.0'
   contact:
     name: Gainsight Support
@@ -204,7 +204,60 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
+    ActivityInput:
+      type: object
+      required:
+      - Subject
+      - ActivityTypeId
+      - CompanyId
+      - ActivityDate
+      properties:
+        Subject:
+          type: string
+          description: Activity subject
+        Notes:
+          type: string
+          description: Activity notes
+        ActivityTypeId:
+          type: string
+          description: Activity type identifier
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        ActivityDate:
+          type: string
+          format: date-time
+          description: Date and time of the activity
+        OwnerId:
+          type: string
+          description: Activity owner user ID
+        ExternalId:
+          type: string
+          description: External system identifier
+        Attendees:
+          type: array
+          items:
+            type: object
+            properties:
+              personId:
+                type: string
+              email:
+                type: string
+                format: email
+        Sentiment:
+          type: string
+          enum:
+          - Positive
+          - Neutral
+          - Negative
     Activity:
       type: object
       properties:
@@ -270,63 +323,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    ActivityInput:
-      type: object
-      required:
-      - Subject
-      - ActivityTypeId
-      - CompanyId
-      - ActivityDate
-      properties:
-        Subject:
-          type: string
-          description: Activity subject
-        Notes:
-          type: string
-          description: Activity notes
-        ActivityTypeId:
-          type: string
-          description: Activity type identifier
-        CompanyId:
-          type: string
-          description: Associated company Gsid
-        ActivityDate:
-          type: string
-          format: date-time
-          description: Date and time of the activity
-        OwnerId:
-          type: string
-          description: Activity owner user ID
-        ExternalId:
-          type: string
-          description: External system identifier
-        Attendees:
-          type: array
-          items:
-            type: object
-            properties:
-              personId:
-                type: string
-              email:
-                type: string
-                format: email
-        Sentiment:
-          type: string
-          enum:
-          - Positive
-          - Neutral
-          - Negative
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
     SearchRequest:
       type: object
       properties:
@@ -353,6 +349,17 @@ components:
           type: integer
         offset:
           type: integer
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
   parameters:
     activityId:
       name: activityId
@@ -361,13 +368,6 @@ components:
       description: Timeline activity unique identifier
       schema:
         type: string
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: Invalid request body or parameters
-    Unauthorized:
-      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey
@@ -375,5 +375,5 @@ components:
       in: header
       description: Gainsight CS REST API access key
 externalDocs:
-  description: Bulk API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
+  description: Timeline API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Timeline_API/Timeline_APIs

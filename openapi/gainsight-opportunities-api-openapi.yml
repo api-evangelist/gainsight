@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gainsight CS Bulk Accounts Opportunities API
-  description: The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.
+  title: Gainsight CS Renewal Center Opportunities API
+  description: The Renewal Center API enables creating and updating opportunity records in the Gainsight Opportunity object, supporting renewal, upsell, and downsell booking types within the Matrix Data Architecture.
   version: '1.0'
   contact:
     name: Gainsight Support
@@ -153,49 +153,22 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Opportunity record Gsid
+      schema:
+        type: string
   schemas:
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-            insertedCount:
-              type: integer
-            updatedCount:
-              type: integer
-            failedCount:
-              type: integer
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
     OpportunityRecord:
       type: object
       properties:
@@ -269,21 +242,48 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: Invalid request body or parameters
-    Unauthorized:
-      description: Authentication failed or access key is missing
-  parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      description: Opportunity record Gsid
-      schema:
-        type: string
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
   securitySchemes:
     apiKey:
       type: apiKey
@@ -291,5 +291,5 @@ components:
       in: header
       description: Gainsight CS REST API access key
 externalDocs:
-  description: Bulk API Documentation
-  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Bulk_API/Gainsight_Bulk_REST_APIs
+  description: Renewal Center API Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Renewal_Center_API/Renewal_Center_API
