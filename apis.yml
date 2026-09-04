@@ -13,16 +13,17 @@ deliveryModel:
 specificationVersion: '0.23'
 accessModel:
   pricing: enterprise
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Enterprise · Self-serve signup
-  confidence: high
+  label: Enterprise
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gainsight.png
 name: Gainsight
@@ -2161,6 +2162,9 @@ apis:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
 common:
+- type: CapabilityMap
+  url: capabilities/gainsight-capability-edges.yml
+  name: Gainsight Business Capability Map
 - type: AgenticAccess
   url: agentic-access/gainsight-agentic-access.yml
 - type: TrustCenter
