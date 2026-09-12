@@ -2162,6 +2162,8 @@ apis:
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
 common:
+- type: Website
+  url: https://www.gainsight.com/
 - type: CapabilityMap
   url: capabilities/gainsight-capability-edges.yml
   name: Gainsight Business Capability Map
