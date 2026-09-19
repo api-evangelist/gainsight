@@ -27,18 +27,16 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gainsight.png
 name: Gainsight
-description: Gainsight is a customer success platform that helps companies retain
-  and grow their customer base through data-driven insights, automation, and engagement
-  tools.
+description: 'Gainsight is a customer success platform that helps companies retain and grow their customer base through data-driven insights, automation and engagement. Four product lines ship developer surfaces: Gainsight CS (the customer success platform, with REST, Bulk, SCIM and a first-party remote MCP server), Gainsight PX (product experience and analytics, the one surface with a published Swagger contract), Gainsight CC / Customer Communities (348 documented REST operations plus a widget, connector and SDK extension platform), and Skilljar (customer education). Authentication is OAuth 2.1 with PKCE on Gainsight CS, OAuth 2.0 client credentials on CC, and an API-key header on PX.'
 url: https://www.gainsight.com
-created: '2024'
-modified: '2026-05-19'
+created: '2024-01-01'
+modified: '2026-09-17'
 apis:
 - aid: gainsight:gainsight-accounts-api
   name: Gainsight Accounts API
   description: Manage account records and attributes
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://api.aptrinsic.com/v1
   tags:
   - Account
   tags_raw:
@@ -113,7 +111,7 @@ apis:
   name: Gainsight Activities API
   description: Manage timeline activities
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Activities
   properties:
@@ -186,7 +184,7 @@ apis:
   name: Gainsight Activity Types API
   description: Retrieve activity type configurations
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Activity Types
   properties:
@@ -259,7 +257,7 @@ apis:
   name: Gainsight Companies API
   description: CRUD operations on company records
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Companies
   properties:
@@ -332,7 +330,7 @@ apis:
   name: Gainsight Company Team API
   description: Manage company team records
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Company Team
   properties:
@@ -405,7 +403,7 @@ apis:
   name: Gainsight Configuration API
   description: Success plan configuration
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Configuration
   properties:
@@ -478,7 +476,7 @@ apis:
   name: Gainsight CTA Configuration API
   description: Retrieve CTA type and reason configurations
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - CTA Configuration
   properties:
@@ -551,7 +549,7 @@ apis:
   name: Gainsight CTAs API
   description: Create and manage Calls to Action
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - CTAs
   properties:
@@ -624,7 +622,7 @@ apis:
   name: Gainsight Custom Events API
   description: Send custom events for tracking
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://api.aptrinsic.com/v1
   tags:
   - Custom Events
   properties:
@@ -697,7 +695,7 @@ apis:
   name: Gainsight Custom Objects API
   description: CRUD operations on custom object records
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Custom Objects
   properties:
@@ -770,7 +768,7 @@ apis:
   name: Gainsight Engagements API
   description: Manage in-app engagements
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://api.aptrinsic.com/v1
   tags:
   - Engagements
   properties:
@@ -843,7 +841,7 @@ apis:
   name: Gainsight Events API
   description: Publish and manage events
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Event
   tags_raw:
@@ -918,7 +916,7 @@ apis:
   name: Gainsight Feature Match API
   description: Track feature usage and adoption
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://api.aptrinsic.com/v1
   tags:
   - Feature Match
   properties:
@@ -991,7 +989,7 @@ apis:
   name: Gainsight Fields API
   description: Retrieve field metadata
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Fields
   properties:
@@ -1064,7 +1062,7 @@ apis:
   name: Gainsight Goals API
   description: Manage customer goals
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Goals
   properties:
@@ -1137,7 +1135,7 @@ apis:
   name: Gainsight Jobs API
   description: Manage bulk import jobs
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Job
   tags_raw:
@@ -1212,7 +1210,7 @@ apis:
   name: Gainsight Metrics API
   description: Manage goal metrics
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Metrics
   properties:
@@ -1285,7 +1283,7 @@ apis:
   name: Gainsight Objectives API
   description: Manage success plan objectives
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Objectives
   properties:
@@ -1358,7 +1356,7 @@ apis:
   name: Gainsight Objects API
   description: Retrieve object metadata
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Objects
   properties:
@@ -1431,7 +1429,7 @@ apis:
   name: Gainsight Opportunities API
   description: Manage opportunity records
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Opportunities
   properties:
@@ -1504,7 +1502,7 @@ apis:
   name: Gainsight People API
   description: Manage person records
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - People
   properties:
@@ -1577,7 +1575,7 @@ apis:
   name: Gainsight Playbooks API
   description: Retrieve playbook configurations
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Playbooks
   properties:
@@ -1650,7 +1648,7 @@ apis:
   name: Gainsight Reports API
   description: Run reports and retrieve analytics data
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com
   tags:
   - Reports
   properties:
@@ -1723,7 +1721,7 @@ apis:
   name: Gainsight SCIM API
   description: SCIM provisioning endpoints
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - SCIM
   properties:
@@ -1796,7 +1794,7 @@ apis:
   name: Gainsight Subscription API
   description: Manage event subscriptions
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://api.aptrinsic.com/v1
   tags:
   - Subscription
   properties:
@@ -1869,7 +1867,7 @@ apis:
   name: Gainsight Success Plans API
   description: Manage success plans
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Success Plans
   properties:
@@ -1942,7 +1940,7 @@ apis:
   name: Gainsight Tasks API
   description: Manage tasks
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Task
   tags_raw:
@@ -2017,7 +2015,7 @@ apis:
   name: Gainsight Templates API
   description: Manage goal templates
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - Templates
   properties:
@@ -2090,7 +2088,7 @@ apis:
   name: Gainsight Users API
   description: Manage Gainsight users
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
-  baseURL: https://api.gainsight.com
+  baseURL: https://{domain}.gainsightcloud.com/v1
   tags:
   - User
   tags_raw:
@@ -2161,12 +2159,125 @@ apis:
       https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Renewal_Center_API/Renewal_Center_API
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
+- aid: gainsight:gainsight-px-rest-api
+  name: Gainsight PX REST API
+  description: The Gainsight PX REST API — the one Gainsight surface with a published machine-readable contract. Swagger 2.0, 59 paths, 74 operations, 93 definitions, covering users, accounts, custom events, engagements, features, segments, survey responses and the product-analytics event streams (page view, session, identify, form submit, feature match, segment match, email, engagement view). Harvested verbatim from Gainsight's own documentation host on 2026-09-17.
+  humanURL: https://px-apidocs.gainsight.com/
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Product Experience
+  - Product Analytics
+  - User Engagement
+  - Customer Success
+  - Event
+  tags_raw:
+  - Product Experience
+  - Product Analytics
+  - User Engagement
+  - Customer Success
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-px-rest-api-openapi.yml
+    name: Gainsight PX REST API (harvested verbatim, Swagger 2.0 v0.1.6)
+  - type: OpenAPI
+    url: https://px-apidocs.gainsight.com/source.yaml
+    name: Provider-hosted source (HTTP 200, 2026-09-17)
+  - type: Overlay
+    url: overlays/gainsight-px-rest-api-overlay.yaml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+- aid: gainsight:gainsight-cc-api
+  name: Gainsight CC (Customer Communities) REST API
+  description: 'The Gainsight Customer Communities REST API — 348 documented operations across five groups: Community (articles, conversations, questions, ideas, product updates, tags, moderation, webhooks), Events, Gamification, Search and User. Documented operation-by-operation on the Gainsight CC Developer Portal, with an llms.txt index, but no machine-readable contract is published. Served from insided.com, the domain of inSided, which Gainsight acquired and rebranded as Customer Communities.'
+  humanURL: https://developer-portal.gainsight.com/docs/api
+  baseURL: https://api2-eu-west-1.insided.com
+  tags:
+  - Community
+  - Customer Communities
+  - Content Management
+  - Gamification
+  - Search
+  - Event
+  tags_raw:
+  - Community
+  - Customer Communities
+  - Content Management
+  - Gamification
+  - Search
+  - Events
+  properties:
+  - type: APIReference
+    url: https://developer-portal.gainsight.com/docs/api
+    name: 348 operations
+  - type: LLMsTxt
+    url: llms/gainsight-cc-llms.txt
+  - type: DeveloperPortal
+    url: https://developer-portal.gainsight.com/
+  - type: Authentication
+    url: https://developer-portal.gainsight.com/docs/api/api-authentication
+  - type: OAuthScopes
+    url: scopes/gainsight-scopes.yml
+  - type: Webhooks
+    url: asyncapi/gainsight-cc-webhooks.yml
+  - type: ChangeLog
+    url: changelog/gainsight-changelog.yml
+  - type: SDKs
+    url: packages/gainsight-packages.yml
+  - type: CLI
+    url: cli/gainsight-cli.yml
+  - type: Components
+    url: components/gainsight-components.yml
+- aid: gainsight:gainsight-cs-mcp
+  name: Gainsight CS MCP Server
+  description: Gainsight's first-party remote Model Context Protocol server for Gainsight CS, exposed per tenant at /v1/ds-mcp/mcp on the customer's own gainsightcloud.com host. Reads companies, relationships, CTAs, Success Plans, Timeline activities, scorecards and reports, and writes CTAs, tasks, Success Plans and Timeline entries — with no delete operations at all. OAuth 2.1 with mandatory PKCE at the end-user level, discoverable anonymously through RFC 8414 and RFC 9728 metadata on the same gateway.
+  humanURL: https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
+  baseURL: https://companyapi.gainsightcloud.com
+  tags:
+  - MCP
+  - AI Agents
+  - Customer Success
+  tags_raw:
+  - MCP
+  - AI Agents
+  - Customer Success
+  - Model Context Protocol
+  properties:
+  - type: MCPServer
+    url: mcp/gainsight-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/gainsight-tool-crosswalk.yml
+  - type: Documentation
+    url: https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
+  - type: Support
+    url: https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/FAQ/Gainsight_CS_MCP_FAQ
+  - type: OAuthScopes
+    url: scopes/gainsight-scopes.yml
+  - type: Authentication
+    url: authentication/gainsight-authentication.yml
+  - type: WellKnown
+    url: well-known/gainsight-well-known.yml
+  - type: AgentSkill
+    url: skills/_index.yml
 common:
 - type: Website
   url: https://www.gainsight.com/
-- type: CapabilityMap
-  url: capabilities/gainsight-capability-edges.yml
-  name: Gainsight Business Capability Map
 - type: AgenticAccess
   url: agentic-access/gainsight-agentic-access.yml
 - type: TrustCenter
@@ -2190,7 +2301,8 @@ common:
 - type: PrivacyPolicy
   url: https://www.gainsight.com/privacy-policy/
 - type: StatusPage
-  url: https://trust.gainsight.com/
+  url: https://status.gainsight.com/
+  name: Gainsight Status
 - type: developer-docs
   url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs
 - type: Authentication
@@ -2217,28 +2329,112 @@ common:
   url: json-schema/gainsight-opportunity-schema.json
 - type: JSONSchema
   url: json-schema/gainsight-timeline-activity-schema.json
-- type: Features
-  data:
-  - 'Essentials: 10 full users, 100 customers per user (custom price)'
-  - 'Enterprise: 20 full users, 200 customers per user (custom price)'
-  - AI Insights and Automations
-  - Customer 360 unified profile
-  - Playbooks and Success Plans
-  - Health Scorecards
-  - Surveys (CSAT, NPS)
-  - Digital Journeys for in-app onboarding
-  - Renewal and Expansion Forecasting (Enterprise)
-  - Org Mapping and Sponsor Tracking (Enterprise)
-  - REST API at api.gainsight.com
-  - Default 100 req/min/tenant
-  - OAuth 2.0 + access tokens
-  - Webhooks for customer health events
-  - Salesforce-native (Gainsight CS) or standalone (NXT)
-  - Unlimited Viewer Licenses on both tiers
-  sources:
-  - https://www.gainsight.com/pricing/
-  updated: '2026-05-04'
+- type: LLMsTxt
+  url: llms/gainsight-px-llms.txt
+  name: Gainsight PX REST API llms.txt (harvested verbatim)
+- type: LLMsTxt
+  url: llms/gainsight-cc-llms.txt
+  name: Gainsight CC Developer Portal llms.txt (harvested verbatim)
+- type: WellKnown
+  url: well-known/gainsight-well-known.yml
+  name: Well-known discovery probe
+- type: MCPServer
+  url: mcp/gainsight-mcp.yml
+  name: Gainsight CS MCP Server
+- type: ToolCrosswalk
+  url: mcp/gainsight-tool-crosswalk.yml
+- type: Packages
+  url: packages/gainsight-packages.yml
+- type: SDKs
+  url: packages/gainsight-packages.yml
+  name: First-party Gainsight SDKs
+- type: CLI
+  url: cli/gainsight-cli.yml
+  name: gs-admin, gsds and hubforge
+- type: Components
+  url: components/gainsight-components.yml
+- type: Conformance
+  url: conformance/gainsight-conformance.yml
+- type: Compliance
+  url: security/gainsight-trust-center.yml
+  name: SOC 2, ISO/IEC 27001, HIPAA, GDPR
+- type: ErrorCatalog
+  url: errors/gainsight-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/gainsight-lifecycle.yml
+- type: OAuthScopes
+  url: scopes/gainsight-scopes.yml
+- type: Conventions
+  url: conventions/gainsight-conventions.yml
+- type: ChangeLog
+  url: changelog/gainsight-changelog.yml
+  name: Gainsight CC Developer Studio changelog
+- type: DataModel
+  url: data-model/gainsight-data-model.yml
+- type: Webhooks
+  url: asyncapi/gainsight-cc-webhooks.yml
+  name: Gainsight CC webhook subscription API
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Sandbox
+  url: sandbox/gainsight-sandbox.yml
+- type: Overlay
+  url: overlays/gainsight-px-rest-api-overlay.yaml
+- type: Security
+  url: https://www.gainsight.com/security/vulnerability-disclosure-program/
+  name: Gainsight Vulnerability Disclosure Program
+- type: RateLimits
+  url: rate-limits/gainsight-rate-limits.yml
+- type: Plans
+  url: plans/gainsight-plans-pricing.yml
+- type: Vocabulary
+  url: vocabulary/gainsight-vocabulary.yml
+- type: Rules
+  url: rules/gainsight-jsonschema-spectral-rules.yml
+- type: FinOps
+  url: finops/gainsight-finops.yml
+- type: JSONStructure
+  url: json-structure/gainsight-structure.json
+- type: Pricing
+  url: https://www.gainsight.com/pricing/
+- type: Documentation
+  url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs
+- type: DeveloperPortal
+  url: https://developer-portal.gainsight.com/
+  name: Gainsight CC Developer Portal
+- type: APIReference
+  url: https://developer-portal.gainsight.com/docs/api
+  name: Gainsight CC REST API reference (348 operations)
+- type: GettingStarted
+  url: https://developer-portal.gainsight.com/docs/getting-started
+- type: Support
+  url: https://support.gainsight.com
 maintainers:
 - name: Kin Lane
   email: kin@apievangelist.com
   url: https://www.gainsight.com
+tags:
+- Customer Success
+- Customer Experience
+- Product Analytics
+- Customer Communities
+- Customer Health
+- Customer Education
+- Software-as-a-Service
+- MCP
+- Retention
+tags_raw:
+- Customer Success
+- Customer Experience
+- Product Analytics
+- Customer Communities
+- Customer Health
+- Customer Education
+- SaaS
+- MCP
+- Retention
+x-enrichment:
+  date: '2026-09-17'
+  status: enriched
+  artifacts_added: 28
+  pass: local-v3
