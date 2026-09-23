@@ -1,0 +1,99 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer-portal.gainsight.com/docs/changelog.md
+provider: Gainsight
+providerId: gainsight
+scheme: dated
+scope: >-
+  Gainsight CC Developer Studio — the only dated, developer-facing changelog in
+  the estate. Gainsight NXT product release notes live separately at
+  https://support.gainsight.com/gainsight_nxt/Release_Notes and are not
+  API-scoped. The PX REST API contract carries its own version (0.1.6, last
+  updated 2026-03-19) but publishes no per-release changelog.
+current_version: null
+current_version_note: Dated releases, no semantic version line.
+window: 2026-04-29 to 2026-09-10
+
+entries:
+  - date: '2026-09-10'
+    title: Design Tokens Reference documents the full token catalog
+    type: addition
+    breaking: false
+  - date: '2026-08-27'
+    title: 'Connectors: templated hosts in URLs'
+    type: addition
+    breaking: false
+    highlight: >-
+      A connector URL can now carry a Variable in the host, not only the path and
+      query — one definition targets a different host per community, with a
+      default() fallback filter.
+  - date: '2026-08-05'
+    title: 'Connectors: longer response window for external APIs'
+    type: change
+    breaking: false
+    highlight: External APIs now get up to 15 seconds to respond, per step and for OAuth token requests.
+  - date: '2026-07-29'
+    title: 'Connectors: Variables for reusable configuration'
+    type: addition
+    breaking: false
+    highlight: >-
+      Named plain-text configuration values referenced with get_variable('name');
+      unlike secrets they can be used directly in a connector URL, so the same
+      connector points at sandbox or production without editing.
+  - date: '2026-07-14'
+    title: 'Widget manifests: unknown or misplaced attributes are rejected'
+    type: change
+    breaking: true
+    highlight: >-
+      extensions_registry.json now errors with the offending attribute path
+      instead of silently dropping the key and reporting success. A manifest that
+      previously "worked" may now fail to sync.
+  - date: '2026-06-24'
+    title: 'Connectors: duplicate parameter keys are rejected'
+    type: change
+    breaking: true
+    highlight: >-
+      Header, query and path parameter keys must now be unique; duplicates were
+      previously accepted with only the last value kept.
+  - date: '2026-06-17'
+    title: '`api_key` is now the canonical connector authentication type'
+    type: change
+    breaking: false
+    highlight: >-
+      Replaces `apikey`, which is soft-deprecated — permanently retained as a
+      backward-compatible alias and never rejected. Existing connectors are
+      transparently migrated.
+  - date: '2026-06-15'
+    title: Connector sync from repositories is now all-or-nothing
+    type: change
+    breaking: true
+    highlight: >-
+      One invalid field rejects the entire connectors_registry.json sync; a
+      repository's connectors always go live as a consistent set.
+  - date: '2026-06-15'
+    title: Clearer connector build errors and documented field limits
+    type: fix
+    breaking: false
+  - date: '2026-06-12'
+    title: Connector URLs support up to 2048 characters
+    type: change
+    breaking: false
+  - date: '2026-05-27'
+    title: Dynamic URL path segments in connectors
+    type: addition
+    breaking: false
+    highlight: >-
+      Caller-supplied path segments, validated URL-safe (max 200 chars, no path
+      traversal), passed via a new pathParams field on the SDK execute() method;
+      the upstream host stays locked to the connector's configured prefix.
+  - date: '2026-05-14'
+    title: Composite connectors
+    type: addition
+    breaking: false
+    highlight: >-
+      Chain multiple API calls into one execution, each step feeding the next via
+      Jinja2 templates, with per-step authentication.
+  - date: '2026-04-29'
+    title: 'Scripts and stylesheets: `attributes` field now honored'
+    type: fix
+    breaking: false

@@ -1,0 +1,75 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer-portal.gainsight.com/docs and llms/gainsight-cc-llms.txt
+provider: Gainsight
+providerId: gainsight
+description: >-
+  Client-side and embeddable surfaces Gainsight publishes for Customer
+  Communities / Digital Customer Hub. These are browser-runtime extension points
+  — custom widgets that render inside Shadow DOM on a community page, global
+  scripts and stylesheets, a design-token theming system, and two distinct
+  browser SDKs. They are not REST client libraries; those are in packages/.
+
+families:
+  - name: Extensions
+    description: >-
+      Widgets, scripts and stylesheets declared in a single extensions_registry.json
+      and published straight from a connected GitHub repository.
+    members:
+      - name: Custom Widgets
+        docs: https://developer-portal.gainsight.com/docs/custom-widgets/v2.md
+        runtime: >-
+          Loaded into Shadow DOM with an init(sdk) contract; supports React;
+          configurable by community admins through a declared configuration form.
+        reference:
+          - https://developer-portal.gainsight.com/docs/custom-widgets/v2/core-concepts.md
+          - https://developer-portal.gainsight.com/docs/custom-widgets/v2/widget-schema.md
+          - https://developer-portal.gainsight.com/docs/custom-widgets/v2/sdk-api-reference.md
+      - name: Global Scripts
+        docs: https://developer-portal.gainsight.com/docs/custom-widgets/v2/scripts-overview.md
+        note: Page-targeted by condition rules (page, locale, user state).
+      - name: Global Stylesheets
+        docs: https://developer-portal.gainsight.com/docs/custom-widgets/v2/stylesheets-overview.md
+
+  - name: Design Tokens
+    description: >-
+      CSS custom properties exposing a community's branding — colors, fonts,
+      spacing — to widget CSS, so an extension inherits the host theme.
+    docs: https://developer-portal.gainsight.com/docs/custom-widgets/v2/design-tokens-reference.md
+    package: '@gainsight-hub/design-tokens'
+    version: 0.2.7
+    published: '2026-08-25'
+
+  - name: Connectors
+    description: >-
+      Declarative server-side proxy endpoints that let widget code call an
+      external API without the widget holding credentials. Supports api_key,
+      oauth_client_credentials and oauth_jwt_bearer auth types, templated hosts
+      and paths, and composite multi-step chains.
+    docs: https://developer-portal.gainsight.com/docs/connectors.md
+    limits:
+      response_window_seconds: 15
+      url_max_chars: 2048
+
+loaders:
+  - name: Widget SDK (window.WidgetServiceSDK)
+    description: >-
+      Browser JavaScript class for calling Connectors from widget code —
+      constructor, execute(), error handling.
+    docs: https://developer-portal.gainsight.com/docs/sdk/widget-sdk/overview.md
+  - name: Web SDK (ChWebSdk)
+    description: >-
+      Browser JavaScript API for community pages — search content, manage users,
+      subscribe to topics, DOM utilities.
+    docs: https://developer-portal.gainsight.com/docs/sdk/web-sdk/overview.md
+  - name: Unified SDK facade
+    package: '@gainsight-hub/sdk'
+    version: 1.6.0
+    published: '2026-09-17'
+    docs: https://github.com/Gainsight/dch-sdk
+
+note: >-
+  Gainsight PX also ships an in-app JavaScript tag and mobile SDKs that render
+  in-product engagements (guides, surveys, KC Bot). Those are delivery runtimes
+  for the PX product rather than composable UI components, and their
+  distribution is recorded in packages/gainsight-packages.yml.

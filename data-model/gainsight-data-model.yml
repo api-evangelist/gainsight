@@ -1,0 +1,676 @@
+# Derived entity-relationship graph for the Gainsight PX REST API.
+# Relationships marked inferred: true come from an id-suffixed string field
+# rather than a $ref, so the target entity name is a naming-convention read,
+# not something the contract states.
+generated: '2026-09-17'
+method: derived
+source: openapi/gainsight-px-rest-api-openapi.yml ($ref links and id-reference fields across 93 definitions)
+provider: Gainsight
+providerId: gainsight
+scope: Gainsight PX REST API only — the one Gainsight surface with a published machine-readable contract.
+  Gainsight CS and Gainsight CC objects are documented in prose only and are deliberately not modelled
+  here.
+entity_count: 58
+relationship_count: 102
+entities:
+- name: Account
+  field_count: 24
+  description: Account object
+- name: ArticleExternalView
+  field_count: 14
+  description: null
+- name: ArticleKC
+  field_count: 2
+  description: null
+- name: AttributeMetadata
+  field_count: 11
+  description: Attribute Metadata
+- name: ChannelMetric
+  field_count: 5
+  description: Channel  metric object
+- name: Coordinates
+  field_count: 2
+  description: Coordinates object
+- name: CustomEvent
+  field_count: 14
+  description: Custom Event object
+- name: CustomEventMetadata
+  field_count: 2
+  description: Custom event metadata
+- name: DeleteUser
+  field_count: 1
+  description: Delete User object
+- name: EmailEvent
+  field_count: 19
+  description: Email Event object
+- name: Engagement
+  field_count: 10
+  description: Engagement object
+- name: EngagementAllTypesViewEvent
+  field_count: 29
+  description: Engagement View Event object
+- name: EngagementCollision
+  field_count: 9
+  description: Engagement Error Summary
+- name: EngagementEnvChangeRequest
+  field_count: 2
+  description: Engagement state change request
+- name: EngagementEnvChangeResponse
+  field_count: 2
+  description: Engagement environment change response
+- name: EngagementEnvironmentsChangeRequest
+  field_count: 2
+  description: Engagement environments change request
+- name: EngagementEnvironmentsChangeResponse
+  field_count: 2
+  description: Engagement environments change response
+- name: EngagementErrorDetails
+  field_count: 7
+  description: Engagement Error Details
+- name: EngagementErrorSummary
+  field_count: 9
+  description: Engagement Error Summary
+- name: EngagementStateChangeRequest
+  field_count: 3
+  description: Engagement state change request
+- name: EngagementWithCustomEvents
+  field_count: 8
+  description: Engagement object
+- name: ExternalSegmentDto
+  field_count: 4
+  description: null
+- name: Feature
+  field_count: 7
+  description: Feature object
+- name: FeatureAdoption
+  field_count: 8
+  description: Feature Adoption
+- name: FeatureLabel
+  field_count: 3
+  description: Feature label object
+- name: FeatureMatchEvent
+  field_count: 10
+  description: Feature Match Event
+- name: FeatureWithDetails
+  field_count: 8
+  description: Detailed Feature object
+- name: FormSubmitEvent
+  field_count: 22
+  description: Form Submit Event object
+- name: GetUserDenylistFlagResponse
+  field_count: 2
+  description: User Denylist Flag Response
+- name: IdentifyEvent
+  field_count: 10
+  description: Identify Event object
+- name: IntegrationStatus
+  field_count: 5
+  description: Integration Status Summary
+- name: KCExternalStateChangeRequest
+  field_count: 3
+  description: Engagement state change request
+- name: KnowledgeCenterExternalView
+  field_count: 14
+  description: null
+- name: LeadEvent
+  field_count: 10
+  description: Lead Event object
+- name: LocalizationStatus
+  field_count: 2
+  description: null
+- name: Location
+  field_count: 11
+  description: Location object
+- name: MappedElement
+  field_count: 5
+  description: Mapped Element
+- name: PageViewEvent
+  field_count: 21
+  description: Page Event object
+- name: ProductDetail
+  field_count: 3
+  description: Product Detail
+- name: ProductKeyDetails
+  field_count: 3
+  description: Product Key Detail
+- name: ResponseEntity
+  field_count: 3
+  description: null
+- name: Segment
+  field_count: 2
+  description: Segment object
+- name: SegmentAction
+  field_count: 3
+  description: Segment action containing segment ID, qualification time, and identities
+- name: SegmentMatchEvent
+  field_count: 10
+  description: Segment Match Event
+- name: SegmentPayload
+  field_count: 3
+  description: Payload for adding or removing segment identities
+- name: SessionInitializedEvent
+  field_count: 11
+  description: Session Initialized Event object
+- name: SetDenylistRequestBody
+  field_count: 1
+  description: User Blacklist Flag
+- name: SubscriptionDetail
+  field_count: 7
+  description: Subscription Detail
+- name: SubscriptionUser
+  field_count: 5
+  description: Subscription Detail
+- name: UpdateUserPreferences
+  field_count: 6
+  description: Update user preferences
+- name: UpdateUserPreferencesV2
+  field_count: 7
+  description: Update user preferences V2
+- name: User
+  field_count: 29
+  description: User object
+- name: UserAgent
+  field_count: 6
+  description: User Agent object
+- name: UserAgentByProduct
+  field_count: 2
+  description: User Agent data by product
+- name: UserIdentifyId
+  field_count: 1
+  description: User object
+- name: UserPreferences
+  field_count: 5
+  description: User preferences
+- name: UserPreferencesV2
+  field_count: 6
+  description: User preferences V2
+- name: UserView
+  field_count: 2
+  description: null
+relationships:
+- from: Account
+  to: TrackedSubscription
+  type: belongs_to
+  via: trackedSubscriptionId
+  inferred: true
+- from: Account
+  to: Sfdc
+  type: belongs_to
+  via: sfdcId
+  inferred: true
+- from: Account
+  to: Location
+  type: has_one
+  via: location
+- from: Account
+  to: ParentGroup
+  type: belongs_to
+  via: parentGroupId
+  inferred: true
+- from: Account
+  to: Gs
+  type: belongs_to
+  via: gsId
+  inferred: true
+- from: ArticleExternalView
+  to: ArticleKC
+  type: has_many
+  via: articleKCs
+- from: ArticleExternalView
+  to: LocalizationStatus
+  type: has_many
+  via: languages
+- from: ArticleExternalView
+  to: UserView
+  type: has_one
+  via: modifiedBy
+- from: ArticleExternalView
+  to: Product
+  type: belongs_to
+  via: productId
+  inferred: true
+- from: ArticleKC
+  to: Kc
+  type: belongs_to
+  via: kcId
+  inferred: true
+- from: ChannelMetric
+  to: Group
+  type: belongs_to
+  via: groupId
+  inferred: true
+- from: CustomEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: CustomEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: CustomEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: CustomEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: DeleteUser
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: EmailEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: EmailEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: EmailEvent
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EmailEvent
+  to: Location
+  type: has_one
+  via: inferredLocation
+- from: Engagement
+  to: LocalizationStatus
+  type: has_many
+  via: languages
+- from: EngagementAllTypesViewEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Content
+  type: belongs_to
+  via: contentId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Execution
+  type: belongs_to
+  via: executionId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: ViewEvent
+  type: belongs_to
+  via: viewEventId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Slide
+  type: belongs_to
+  via: slideId
+  inferred: true
+- from: EngagementAllTypesViewEvent
+  to: Step
+  type: belongs_to
+  via: stepId
+  inferred: true
+- from: EngagementCollision
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EngagementEnvChangeRequest
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EngagementEnvironmentsChangeRequest
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EngagementErrorDetails
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EngagementErrorSummary
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EngagementStateChangeRequest
+  to: Engagement
+  type: belongs_to
+  via: engagementId
+  inferred: true
+- from: EngagementWithCustomEvents
+  to: CustomEventMetadata
+  type: has_many
+  via: customEvents
+- from: ExternalSegmentDto
+  to: External
+  type: belongs_to
+  via: externalId
+  inferred: true
+- from: Feature
+  to: ParentFeature
+  type: belongs_to
+  via: parentFeatureId
+  inferred: true
+- from: Feature
+  to: FeatureLabel
+  type: has_many
+  via: featureLabels
+- from: FeatureAdoption
+  to: Feature
+  type: belongs_to
+  via: featureId
+  inferred: true
+- from: FeatureMatchEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: FeatureMatchEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: FeatureMatchEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: FeatureMatchEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: FeatureMatchEvent
+  to: Feature
+  type: belongs_to
+  via: featureId
+  inferred: true
+- from: FeatureWithDetails
+  to: ParentFeature
+  type: belongs_to
+  via: parentFeatureId
+  inferred: true
+- from: FeatureWithDetails
+  to: MappedElement
+  type: has_many
+  via: mappedElements
+- from: FeatureWithDetails
+  to: FeatureLabel
+  type: has_many
+  via: featureLabels
+- from: FormSubmitEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: FormSubmitEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: FormSubmitEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: FormSubmitEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: GetUserDenylistFlagResponse
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: IdentifyEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: IdentifyEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: IdentifyEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: IdentifyEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: KCExternalStateChangeRequest
+  to: Kc
+  type: belongs_to
+  via: kcId
+  inferred: true
+- from: KnowledgeCenterExternalView
+  to: UserView
+  type: has_one
+  via: createdBy
+- from: KnowledgeCenterExternalView
+  to: LocalizationStatus
+  type: has_many
+  via: languages
+- from: KnowledgeCenterExternalView
+  to: UserView
+  type: has_one
+  via: modifiedBy
+- from: KnowledgeCenterExternalView
+  to: Product
+  type: belongs_to
+  via: productId
+  inferred: true
+- from: LeadEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: LeadEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: LeadEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: LeadEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: Location
+  to: Coordinates
+  type: has_one
+  via: coordinates
+- from: PageViewEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: PageViewEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: PageViewEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: PageViewEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: ProductDetail
+  to: ProductKeyDetails
+  type: has_many
+  via: productKeys
+- from: SegmentAction
+  to: Segment
+  type: belongs_to
+  via: segmentId
+  inferred: true
+- from: SegmentMatchEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: SegmentMatchEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: SegmentMatchEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: SegmentMatchEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: SegmentMatchEvent
+  to: Segment
+  type: belongs_to
+  via: segmentId
+  inferred: true
+- from: SegmentPayload
+  to: SegmentAction
+  type: has_many
+  via: add
+- from: SegmentPayload
+  to: SegmentAction
+  type: has_many
+  via: remove
+- from: SessionInitializedEvent
+  to: Event
+  type: belongs_to
+  via: eventId
+  inferred: true
+- from: SessionInitializedEvent
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: SessionInitializedEvent
+  to: Session
+  type: belongs_to
+  via: sessionId
+  inferred: true
+- from: SessionInitializedEvent
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: SessionInitializedEvent
+  to: Location
+  type: has_one
+  via: inferredLocation
+- from: SubscriptionDetail
+  to: ProductDetail
+  type: has_many
+  via: products
+- from: UpdateUserPreferences
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: UpdateUserPreferencesV2
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: User
+  to: Aptrinsic
+  type: belongs_to
+  via: aptrinsicId
+  inferred: true
+- from: User
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true
+- from: User
+  to: Subscription
+  type: belongs_to
+  via: subscriptionId
+  inferred: true
+- from: User
+  to: Account
+  type: belongs_to
+  via: accountId
+  inferred: true
+- from: User
+  to: Location
+  type: has_one
+  via: location
+- from: User
+  to: SfdcContact
+  type: belongs_to
+  via: sfdcContactId
+  inferred: true
+- from: User
+  to: ChannelMetric
+  type: has_many
+  via: channelMetricList
+- from: User
+  to: UserAgentByProduct
+  type: has_many
+  via: lastVisitedUserAgentData
+- from: User
+  to: Location
+  type: has_one
+  via: lastInferredLocation
+- from: User
+  to: Global
+  type: belongs_to
+  via: globalId
+  inferred: true
+- from: UserAgentByProduct
+  to: UserAgent
+  type: has_one
+  via: userAgent
+- from: UserIdentifyId
+  to: Identify
+  type: belongs_to
+  via: identifyId
+  inferred: true

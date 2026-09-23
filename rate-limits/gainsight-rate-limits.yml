@@ -4,29 +4,89 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Gainsight
 providerId: gainsight
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-reconciled: true
+modified: '2026-09-17'
+generated: '2026-09-17'
+method: searched
+source: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+sources:
+  - https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+  - https://support.gainsight.com/PX/Administration/General/Gainsight_PX_Package_Overview_and_System_Limits
+  - openapi/gainsight-px-rest-api-openapi.yml
+provenance_note: >-
+  Replaces a 2026-05-04 bulk-sweep artifact that carried method: generated and
+  cited only the pricing page. The numbers below were read from Gainsight's own
+  API documentation on 2026-09-17.
 tags:
   - Rate Limiting
   - Customer Success
-description: Gainsight API rate limits per tenant (Salesforce or NXT).
-sources:
-  - https://www.gainsight.com/pricing/
-  - https://support.gainsight.com/CC/API_Documentation
-headers:
-  retryAfter: Retry-After
+description: >-
+  Published Gainsight API rate limits. Two products publish different ceilings,
+  and neither returns a rate-limit response header — the 429 arrives with no
+  signal for when to retry.
+
+limit_count: 3
+
 responseCodes:
   throttled: 429
+
+headers:
+  observed: []
+  note: >-
+    NO rate-limit response headers are documented or observed on any Gainsight
+    surface. No Retry-After, no X-RateLimit-*, no RateLimit-*. This was checked
+    three ways: the CS API documentation names none, the Gainsight PX Swagger
+    contract declares a 429 "Rate limit exceeded" response on 62 of its 74
+    operations and attaches no headers to any of them, and live 429s could not be
+    provoked anonymously because every surface is auth-gated. A client therefore
+    has to carry its own backoff schedule.
+
 limits:
-  - name: REST API (default)
+  - name: Gainsight CS REST API — synchronous
     scope: tenant
-    metric: requests_per_minute
+    window: minute
     limit: 100
-    timeFrame: minute
-  - name: Bulk Data Load
+    unit: requests
+    window_type: fixed
+    source: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+    quote: '100 API calls per min / 100,000 API call per day'
+    note: MCP server queries count against this same tenant limit.
+  - name: Gainsight CS REST API — synchronous (daily)
     scope: tenant
-    metric: concurrent_jobs
-    limit: 5
+    window: day
+    limit: 100000
+    unit: requests
+    window_type: fixed
+    source: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+  - name: Gainsight CS Bulk API — asynchronous
+    scope: tenant
+    window: hour
+    limit: 10
+    unit: requests
+    burst: null
+    window_type: fixed
+    daily_limit: 100
+    source: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+    quote: '10 calls per hour / 100 per day'
+  - name: Gainsight PX REST API
+    scope: subscription
+    window: second
+    limit: 200
+    unit: requests
+    daily_limit: 1000000
+    source: https://support.gainsight.com/PX/Administration/General/Gainsight_PX_Package_Overview_and_System_Limits
+    quote: 'around 200 requests per second and 1 Million requests per day'
+    note: >-
+      Stated approximately ("around") in Gainsight's own docs — recorded as
+      published rather than as a contractual ceiling.
+
+window_type_note: >-
+  Gainsight describes its CS limits explicitly as "Fixed window rate limits",
+  which matters operationally: the quota resets on a wall-clock boundary rather
+  than rolling, so a burst spanning a boundary can pass where the same burst
+  inside one window would not.
+
+undocumented:
+  - surface: Gainsight CC (insided.com)
+    note: No rate limits published in the Customer Communities developer portal.
+  - surface: Gainsight SCIM
+    note: No SCIM-specific limits published; presumed to fall under the tenant limit.

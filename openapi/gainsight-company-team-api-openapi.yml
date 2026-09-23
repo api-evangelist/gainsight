@@ -89,12 +89,36 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    Unauthorized:
-      description: Authentication failed or access key is missing
   schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    CompanyTeamRecord:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Record identifier
+        CompanyId:
+          type: string
+          description: Company Gsid
+        UserId:
+          type: string
+          description: Gainsight user Gsid
+        TeamRole:
+          type: string
+          description: Team role (e.g., CSM, Executive Sponsor)
+        IsPrimary:
+          type: boolean
+          description: Whether this is the primary team member
     SearchRequest:
       type: object
       properties:
@@ -121,35 +145,11 @@ components:
           type: integer
         offset:
           type: integer
-    CompanyTeamRecord:
-      type: object
-      properties:
-        Gsid:
-          type: string
-          description: Record identifier
-        CompanyId:
-          type: string
-          description: Company Gsid
-        UserId:
-          type: string
-          description: Gainsight user Gsid
-        TeamRole:
-          type: string
-          description: Team role (e.g., CSM, Executive Sponsor)
-        IsPrimary:
-          type: boolean
-          description: Whether this is the primary team member
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

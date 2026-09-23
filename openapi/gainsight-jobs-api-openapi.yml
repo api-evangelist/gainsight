@@ -177,13 +177,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   schemas:
     BulkJob:
       type: object
@@ -244,6 +237,13 @@ components:
         fieldName:
           type: string
           description: Field that caused the error
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   parameters:
     jobId:
       name: jobId

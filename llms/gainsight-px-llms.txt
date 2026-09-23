@@ -1,0 +1,295 @@
+# Gainsight PX REST API
+
+OpenAPI file: https://px-apidocs.gainsight.com/source.yaml
+
+## Description
+
+This is version `0.1.6` of this API documentation. Last update on Mar 19, 2026.
+<p>Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.  The Gainsight PX REST APIs can be used to perform most standard CRUD (Create, Read, Update, Delete) operations on entity (e.g. User and Account) objects, create custom events and fetch historical event data.</p>
+<table> 
+<tr><th>Data Center</td><th>Base Endpoint</td></tr> 
+<tr><td>US</td><td>https://api.aptrinsic.com/v1</td></tr> 
+<tr><td>EU</td><td>https://api-eu.aptrinsic.com/v1</td></tr> 
+<tr><td>US2</td><td>https://api-us2.aptrinsic.com/v1</td></tr> 
+</table> 
+<h1 class="resourceGroupName">Data Payload</h1>
+<p>The API data (and
+responses) are JSON encoded with UTF-8 as either a single JSON object, or as
+a list of JSON objects.</p>
+<h1 class="resourceGroupName">Authorization</h1>
+<p>Authorization and access to the API is managed via API Keys. The API key value is passed on calls by adding a request header with the key <i>X-APTRINSIC-API-KEY</i>.</p>
+<h2>Generate API Keys</h2>
+<p>An API Key is required to access the Gainsight PX REST API.</p>
+<p>To generate an API key:</p>
+<p>&nbsp; 1. Navigate to Administration > REST API to access the API Keys page.</p>
+<p>&nbsp; 2. Click New API Key. The New API Key window appears. </p>
+<p>&nbsp; 3. Enter the following details:</p>
+   <p>&nbsp;&emsp; A. Name: Enter a name for API Key.</p>
+   <p>&nbsp;&emsp; B. Description: Enter a description.</p>
+   <p>&nbsp;&emsp; C. Permissions:  Configure the following permissions.</p>
+     <p>&nbsp;&emsp;&emsp; a. Read: This allows calls to read PX data via GET API calls. </p>
+     <p>&nbsp;&emsp;&emsp; b. Write: This allows calls to edit, update and delete PX data via PUT and DELETE API calls.</p>
+     <p>&nbsp;&emsp;&emsp; c. Production Launch: This access allows calls to launch engagements in production. </p>
+<p>&nbsp; 4. Click Generate.</li>
+<h1 class="resourceGroupName">Errors</h1>
+<p>Errors are returned with error code and JSON response.
+<h1 class="resourceGroupName">HTTP</h1>
+<ul>
+  <li>Requests are sent using HTTPS.</li>
+  <li>Methods exposed are based on HTTP Verbs (GET, POST and DELETE).</li>
+  <li>Resources are identified using URI’s.</li>
+</ul>
+<h1 class="resourceGroupName">Rate Limiting</h1>
+<p>The rate limit for public REST APIs is around 200 requests per second and 1 Million requests per day. </span>
+<h1 class="resourceGroupName">Page Handling</h1>
+<ul>
+  <li>The default pageSize on list calls (i.e. /users and /accounts) is 25.  The pageSize can be changed by adding a pageSize parameter to the URL (i.e. /users?pageSize=100) with a max pageSize=1000.</li>
+  <li>Use the returned scrollId to make a request for the next page of results (i.e. /users?pageSize=100&scrollId=XXXXXXX)</li>
+  <li>Scroll until the returned result list is less than the requested size. Do not depend on the scrollId becoming null, in some cases it does not be null even though the last page of results is returned.</li>
+</ul>
+<h1 class="resourceGroupName">Historical Date Range Restrictions</h1>
+<ul>
+  <li>For all calls that return historical event information, the maximum date range is 190 days (~ 6 months).</li>
+  <li>If no date range is specified, the last 1 day is the default date window.  For quicker response times, it is recommended to use your needed date range and not full 6 months.</li>
+  <li>If a date range larger than the maximum is specified, a 400 Bad Request error is thrown, with the message: “Exceeded date range190days”.</li>
+  <li>To fetch more than 190 days of data, multiple calls will need to be made for smaller date ranges that are no more than the max allowed.</li>
+</ul>
+<h1 class="resourceGroupName">Case Sensitivity</h1>
+<ul>
+  <li>Case sensitivity is enforced when making a call to get user/account by id.  Therefore, .../users/id=nora@example.com will not find a user whose id is Nora@example.com</li>
+  <li>Case sensitivity is not enforced when using filters. For example, .../users/filter=id==nora@example.com; will find a user whose id is Nora@example.com.</li>
+</ul>
+<h1 class="resourceGroupName">Getting Started with Postman</h1>
+<p>Click <a href='https://storage.googleapis.com/gainsight-px-cloud-public-assets/api/Gainsight_PX_REST_API_v1.2.postman_collection'>here</a> to download a Postman collection file containing sample calls that you can use to query and test the Gainsight PX REST API. The Postman tool is used to test the PX APIs. To use the sample API calls, you must define a Postman variable <i>apiKey</i>.  This variable must be set to the PX API key which you have generated. This API key is not the same as your Product API key.</p>
+
+
+## Servers
+
+- https://api.aptrinsic.com: https://api.aptrinsic.com ()
+
+
+## Topics
+
+
+## Endpoints
+
+### [Accounts](https://px-apidocs.gainsight.com/group/endpoint-accounts.md)
+
+- [Get accounts](https://px-apidocs.gainsight.com/operation/operation-getaccountsusingget.md)
+
+- [Create account](https://px-apidocs.gainsight.com/operation/operation-createaccountusingpost.md)
+
+- [Update account (accountId passed via request body)](https://px-apidocs.gainsight.com/operation/operation-updateaccountusingput.md)
+
+- [Get account](https://px-apidocs.gainsight.com/operation/operation-getaccountusingget.md)
+
+- [Update account](https://px-apidocs.gainsight.com/operation/operation-updateaccountusingput_1.md)
+
+- [Delete account](https://px-apidocs.gainsight.com/operation/operation-deleteaccountusingdelete.md)
+
+
+### [Admin](https://px-apidocs.gainsight.com/group/endpoint-admin.md)
+
+- [Get Attributes](https://px-apidocs.gainsight.com/operation/operation-getmodelattributesusingget.md)
+
+- [Get engagement collisions](https://px-apidocs.gainsight.com/operation/operation-getengagementcollisionsusingget.md)
+
+- [Get engagement error details](https://px-apidocs.gainsight.com/operation/operation-getengagementerrordetailsusingget.md)
+
+- [Get engagement errors summary](https://px-apidocs.gainsight.com/operation/operation-getengagementerrorsummariesusingget.md)
+
+- [Get integration statuses](https://px-apidocs.gainsight.com/operation/operation-getintegrationstatusesusingget.md)
+
+- [Get Subscription detail](https://px-apidocs.gainsight.com/operation/operation-getdetailusingget.md)
+
+- [Get Subscription users](https://px-apidocs.gainsight.com/operation/operation-getsubscriptionusersnotseenafterusingget.md)
+
+
+### [Article](https://px-apidocs.gainsight.com/group/endpoint-article.md)
+
+- [Get Articles](https://px-apidocs.gainsight.com/operation/operation-getarticlesusingget.md)
+
+- [Get Article](https://px-apidocs.gainsight.com/operation/operation-getarticleusingget.md)
+
+
+### [Custom events](https://px-apidocs.gainsight.com/group/endpoint-custom-events.md)
+
+- [Get Custom events](https://px-apidocs.gainsight.com/operation/operation-getcustomeventsusingget.md)
+
+- [Create custom event](https://px-apidocs.gainsight.com/operation/operation-createcustomeventusingpost.md)
+
+
+### [EmailEvent](https://px-apidocs.gainsight.com/group/endpoint-emailevent.md)
+
+- [Get Email events](https://px-apidocs.gainsight.com/operation/operation-getemaileventsusingget.md)
+
+
+### [Engagement](https://px-apidocs.gainsight.com/group/endpoint-engagement.md)
+
+- [Get engagements](https://px-apidocs.gainsight.com/operation/operation-getengagementsusingget.md)
+
+- [Set engagement environment](https://px-apidocs.gainsight.com/operation/operation-changeengagementenvusingput.md)
+
+- [Set engagement environments](https://px-apidocs.gainsight.com/operation/operation-changeengagementenvsusingput.md)
+
+- [Get engagements with list of custom events from rules](https://px-apidocs.gainsight.com/operation/operation-getengagementsextendedusingget.md)
+
+- [getEngagementViewEvents](https://px-apidocs.gainsight.com/operation/operation-getengagementvieweventsusingget.md)
+
+- [Set engagement state](https://px-apidocs.gainsight.com/operation/operation-changeengagementstateusingput.md)
+
+- [Get engagement](https://px-apidocs.gainsight.com/operation/operation-getengagementusingget.md)
+
+- [deleteEngagement](https://px-apidocs.gainsight.com/operation/operation-deleteengagementusingdelete.md)
+
+
+### [EngagementViewEvent](https://px-apidocs.gainsight.com/group/endpoint-engagementviewevent.md)
+
+- [Get Engagement View events](https://px-apidocs.gainsight.com/operation/operation-getengagementvieweventsusingget_1.md)
+
+
+### [ExternalSegments](https://px-apidocs.gainsight.com/group/endpoint-externalsegments.md)
+
+- [updateExternalSegment](https://px-apidocs.gainsight.com/operation/operation-updateexternalsegmentusingput.md)
+
+- [createExternalSegment](https://px-apidocs.gainsight.com/operation/operation-createexternalsegmentusingpost.md)
+
+- [Update External Segment membership](https://px-apidocs.gainsight.com/operation/operation-updatemembershipusingpost.md)
+
+
+### [Feature](https://px-apidocs.gainsight.com/group/endpoint-feature.md)
+
+- [Get features](https://px-apidocs.gainsight.com/operation/operation-getfeaturesusingget.md)
+
+- [Get feature adoption statistics](https://px-apidocs.gainsight.com/operation/operation-getfeatureadoptionusingget.md)
+
+- [Request backfill for feature](https://px-apidocs.gainsight.com/operation/operation-backfillfeatureusingpost.md)
+
+- [Get feature](https://px-apidocs.gainsight.com/operation/operation-getfeatureusingget.md)
+
+- [Update feature](https://px-apidocs.gainsight.com/operation/operation-updatefeatureusingput.md)
+
+- [getFeaturesExtended](https://px-apidocs.gainsight.com/operation/operation-getfeaturesextendedusingget.md)
+
+
+### [FeatureMatchEvent](https://px-apidocs.gainsight.com/group/endpoint-featurematchevent.md)
+
+- [Get feature match events](https://px-apidocs.gainsight.com/operation/operation-getfeaturematcheventsusingget.md)
+
+
+### [FormSubmitEvent](https://px-apidocs.gainsight.com/group/endpoint-formsubmitevent.md)
+
+- [Get formSubmit events](https://px-apidocs.gainsight.com/operation/operation-getformsubmiteventsusingget.md)
+
+
+### [IdentifyEvent](https://px-apidocs.gainsight.com/group/endpoint-identifyevent.md)
+
+- [Get Identify events](https://px-apidocs.gainsight.com/operation/operation-getidentifyeventsusingget.md)
+
+
+### [KCbot](https://px-apidocs.gainsight.com/group/endpoint-kcbot.md)
+
+- [Get KC Bots](https://px-apidocs.gainsight.com/operation/operation-getkcbotsusingget.md)
+
+- [Set KC state](https://px-apidocs.gainsight.com/operation/operation-changeengagementstateusingput_1.md)
+
+- [Get KC Bot](https://px-apidocs.gainsight.com/operation/operation-getkcbotwithidusingget.md)
+
+
+### [LeadEvent](https://px-apidocs.gainsight.com/group/endpoint-leadevent.md)
+
+- [Get Lead events](https://px-apidocs.gainsight.com/operation/operation-getleadeventsusingget.md)
+
+
+### [Localization](https://px-apidocs.gainsight.com/group/endpoint-localization.md)
+
+- [export XLIFF for articles](https://px-apidocs.gainsight.com/operation/operation-exportxliffforarticlesusingget.md)
+
+- [export XLIFF](https://px-apidocs.gainsight.com/operation/operation-exportcontentxliffusingget.md)
+
+- [export XLIFF](https://px-apidocs.gainsight.com/operation/operation-exportxliffforengagementusingget.md)
+
+- [export XLIFF](https://px-apidocs.gainsight.com/operation/operation-exportkcxliffusingget.md)
+
+- [import XLIFF](https://px-apidocs.gainsight.com/operation/operation-importxliffforarticlesusingpost.md)
+
+- [import XLIFF](https://px-apidocs.gainsight.com/operation/operation-importxliffforcontententryusingpost.md)
+
+- [import XLIFF](https://px-apidocs.gainsight.com/operation/operation-importxliffforengagementusingpost.md)
+
+- [import XLIFF](https://px-apidocs.gainsight.com/operation/operation-importxliffforkcusingpost.md)
+
+
+### [PageViewEvent](https://px-apidocs.gainsight.com/group/endpoint-pageviewevent.md)
+
+- [Get Page View events](https://px-apidocs.gainsight.com/operation/operation-getpagevieweventsusingget.md)
+
+
+### [Segment](https://px-apidocs.gainsight.com/group/endpoint-segment.md)
+
+- [Get segments](https://px-apidocs.gainsight.com/operation/operation-getsegmentsusingget.md)
+
+- [Get segment](https://px-apidocs.gainsight.com/operation/operation-getsegmentusingget.md)
+
+
+### [SegmentMatchEvent](https://px-apidocs.gainsight.com/group/endpoint-segmentmatchevent.md)
+
+- [Get segment match events](https://px-apidocs.gainsight.com/operation/operation-getsegmentmatcheventsusingget.md)
+
+
+### [SessionEvent](https://px-apidocs.gainsight.com/group/endpoint-sessionevent.md)
+
+- [Get Session events](https://px-apidocs.gainsight.com/operation/operation-getsessioninitializedeventsusingget.md)
+
+
+### [SurveyResponse](https://px-apidocs.gainsight.com/group/endpoint-surveyresponse.md)
+
+- [Get Survey responses](https://px-apidocs.gainsight.com/operation/operation-getengagementvieweventsusingget_2.md)
+
+
+### [UserPreferences](https://px-apidocs.gainsight.com/group/endpoint-userpreferences.md)
+
+- [Update user preferences (identifyId passed via request body)](https://px-apidocs.gainsight.com/operation/operation-updateuserpreferencesusingput_1.md)
+
+- [Get user preferences (identifyId passed via request body)](https://px-apidocs.gainsight.com/operation/operation-getuserpreferencesusingpost.md)
+
+- [Get user preferences](https://px-apidocs.gainsight.com/operation/operation-getuserpreferencesusingget.md)
+
+- [Update user preferences](https://px-apidocs.gainsight.com/operation/operation-updateuserpreferencesusingput.md)
+
+
+### [UserPreferences V2](https://px-apidocs.gainsight.com/group/endpoint-userpreferences-v2.md)
+
+- [Update user preferences, this version of API can take 'trackEmailAnalytics' and 'identifyId' property in the payload.](https://px-apidocs.gainsight.com/operation/operation-updateuserpreferencesusingput_3.md)
+
+- [Get user preferences. This version of API includes extra property 'trackEmailAnalytics' in the response. (identifyId passed via request body)](https://px-apidocs.gainsight.com/operation/operation-getuserpreferencesusingpost_1.md)
+
+- [Get user preferences. This version of API includes extra property 'trackEmailAnalytics' in the response.](https://px-apidocs.gainsight.com/operation/operation-getuserpreferencesusingget_1.md)
+
+- [Update user preferences, this version of API can take 'trackEmailAnalytics' property in the payload.](https://px-apidocs.gainsight.com/operation/operation-updateuserpreferencesusingput_2.md)
+
+
+### [Users](https://px-apidocs.gainsight.com/group/endpoint-users.md)
+
+- [Get users](https://px-apidocs.gainsight.com/operation/operation-getusersusingget.md)
+
+- [Create user](https://px-apidocs.gainsight.com/operation/operation-createuserusingpost.md)
+
+- [Delete user (identifyId passed via request body)](https://px-apidocs.gainsight.com/operation/operation-deleteuserusingdelete.md)
+
+- [Get user Denylist flag](https://px-apidocs.gainsight.com/operation/operation-getuserdenylistflagusingget.md)
+
+- [Update user Denylist flag](https://px-apidocs.gainsight.com/operation/operation-updateuserdenylistflagusingput.md)
+
+- [Update user (identifyId passed via request body)](https://px-apidocs.gainsight.com/operation/operation-updateuserusingput.md)
+
+- [Get user](https://px-apidocs.gainsight.com/operation/operation-getuserusingget.md)
+
+- [Update user](https://px-apidocs.gainsight.com/operation/operation-updateuserusingput_1.md)
+
+- [Delete user](https://px-apidocs.gainsight.com/operation/operation-deleteuserusingdelete_1.md)
+
+
+
+
+[Powered by Bump.sh](https://bump.sh)

@@ -1,0 +1,1 @@
+{"resource":"https://sb-genesysnx-3.gainsightcloud.com/v1/ds-mcp/mcp","authorization_servers":["https://sb-genesysnx-3.gainsightcloud.com"],"scopes_supported":["read","read_write"],"bearer_methods_supported":["header"]}

@@ -1,0 +1,34 @@
+generated: '2026-09-17'
+method: generated
+source: >-
+  openapi/gainsight-px-rest-api-openapi.yml (operationIds grepped from the
+  harvested contract) and mcp/gainsight-mcp.yml
+provider: Gainsight
+providerId: gainsight
+description: >-
+  Packaged agent skills for the Gainsight surfaces that can actually be called.
+  Three are grounded in real operationIds from Gainsight's published PX REST
+  contract; the fourth is the connection procedure for Gainsight's own MCP
+  server, grounded in the anonymous discovery documents and the probed 401/404
+  behaviour of the live endpoint.
+note: >-
+  No skills are written for the Gainsight CS or CC REST APIs. Both are
+  documented in prose only, with no machine-readable contract, so there are no
+  operationIds to ground steps in and a skill would have to invent them.
+skills:
+  - name: gainsight-px-sync-account
+    file: gainsight-px-sync-account.md
+    api: Gainsight PX REST API
+    operations: [getAccountsUsingGET, getAccountUsingGET, createAccountUsingPOST, updateAccountUsingPUT_1, deleteAccountUsingDELETE]
+  - name: gainsight-px-track-custom-event
+    file: gainsight-px-track-custom-event.md
+    api: Gainsight PX REST API
+    operations: [createCustomEventUsingPOST, getCustomEventsUsingGET, getUserUsingGET]
+  - name: gainsight-px-manage-engagement
+    file: gainsight-px-manage-engagement.md
+    api: Gainsight PX REST API
+    operations: [getEngagementsUsingGET, getEngagementUsingGET, getEngagementsExtendedUsingGET, changeEngagementStateUsingPUT, changeEngagementEnvUsingPUT, changeEngagementEnvsUsingPUT, deleteEngagementUsingDELETE]
+  - name: gainsight-cs-mcp-connect
+    file: gainsight-cs-mcp-connect.md
+    api: Gainsight CS MCP Server
+    operations: []

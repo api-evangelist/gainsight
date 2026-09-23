@@ -221,15 +221,6 @@ paths:
           default: customer
           description: Customer-specific domain prefix
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    Unauthorized_2:
-      description: Authentication failed or API key is missing
   schemas:
     GainsightUserInput:
       type: object
@@ -246,6 +237,17 @@ components:
         LicenseType:
           type: string
         Role:
+          type: string
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
           type: string
     GainsightUser:
       type: object
@@ -284,17 +286,6 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
     User:
       type: object
       properties:
@@ -390,6 +381,15 @@ components:
         customAttributes:
           type: object
           description: Custom user attributes
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    Unauthorized_2:
+      description: Authentication failed or API key is missing
   parameters:
     userId:
       name: userId
@@ -398,16 +398,10 @@ components:
       description: Gainsight user ID
       schema:
         type: string
-    filter:
-      name: filter
+    sort:
+      name: sort
       in: query
-      description: Filter expression for results
-      schema:
-        type: string
-    scrollId:
-      name: scrollId
-      in: query
-      description: Scroll ID for cursor-based pagination
+      description: Sort field and direction (e.g., lastSeenDate:desc)
       schema:
         type: string
     pageSize:
@@ -418,17 +412,23 @@ components:
         type: integer
         default: 20
         maximum: 500
-    sort:
-      name: sort
-      in: query
-      description: Sort field and direction (e.g., lastSeenDate:desc)
-      schema:
-        type: string
     userId_2:
       name: userId
       in: path
       required: true
       description: Unique user identifier
+      schema:
+        type: string
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: Filter expression for results
       schema:
         type: string
   securitySchemes:

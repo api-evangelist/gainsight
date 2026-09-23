@@ -46,21 +46,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    scrollId:
-      name: scrollId
-      in: query
-      description: Scroll ID for cursor-based pagination
-      schema:
-        type: string
-    pageSize:
-      name: pageSize
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 20
-        maximum: 500
   schemas:
     Engagement:
       type: object
@@ -93,6 +78,21 @@ components:
           type: integer
           format: int64
           description: Creation timestamp
+  parameters:
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+        maximum: 500
   responses:
     Unauthorized:
       description: Authentication failed or API key is missing

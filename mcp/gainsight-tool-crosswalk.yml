@@ -1,0 +1,174 @@
+generated: '2026-09-17'
+method: derived
+source: >-
+  mcp/gainsight-mcp.yml (tool capabilities from Gainsight's MCP admin guide and
+  FAQ) bound against openapi/gainsight-px-rest-api-openapi.yml and the Gainsight
+  CS REST API documentation
+provider: Gainsight
+providerId: gainsight
+
+surfaces:
+  mcp:
+    url: https://<tenant>.gainsightcloud.com/v1/ds-mcp/mcp
+    gated: true
+    gate: OAuth 2.1 + PKCE, per end user — tools/list returns 401 anonymously
+    schemas_available: false
+  openapi:
+    - file: openapi/gainsight-px-rest-api-openapi.yml
+      product: Gainsight PX
+      operations: 74
+      note: Real published contract. DIFFERENT PRODUCT from the MCP server.
+  rest_documented_only:
+    - product: Gainsight CS
+      docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+      note: >-
+        The MCP server's backing product. Company, Person, CTA, Task & Playbook,
+        Success Plan, Timeline, Custom Object, Data Management and Bulk APIs are
+        documented in prose; no machine-readable contract is published, so no
+        operationId exists to bind a tool to.
+  graphql: null
+
+crosswalk_note: >-
+  THE HONEST FINDING IS A MISS, AND IT IS THE POINT OF THIS FILE. Gainsight
+  publishes an MCP server and Gainsight publishes an OpenAPI — but not for the
+  same product. The MCP server exposes Gainsight CS (companies, CTAs, Success
+  Plans, Timeline), which has no machine-readable contract. The OpenAPI covers
+  Gainsight PX, which has no MCP server of its own from Gainsight (the PX MCP
+  packages on npm are third-party). So there is no operationId in this repo that
+  any Gainsight MCP tool can be bound to. Every row below is therefore mapped by
+  name and semantics against Gainsight's own CS documentation, at low confidence,
+  and rest[] is empty by fact rather than by omission.
+
+crosswalk:
+  - tool: get_company_summary
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Company_and_Relationship_API/Company_API_Documentation
+    note: Company API — GET company records. No operationId published.
+  - tool: query_relationships
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Company_and_Relationship_API/Company_API_Documentation
+  - tool: list_ctas
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
+  - tool: create_cta
+    category: write
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    reversible: false
+    note: MCP FAQ states delete operations are not supported — a created CTA cannot be removed through this surface.
+  - tool: update_cta
+    category: write
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+  - tool: create_cta_task
+    category: write
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
+  - tool: list_success_plans
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/Success_Plans/Success_Plan_API_Documentation/Success_Plan_APIs
+  - tool: create_success_plan
+    category: write
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    reversible: false
+  - tool: get_timeline_activities
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Timeline_API/Timeline_APIs
+  - tool: create_timeline_entry
+    category: write
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    reversible: false
+    note: >-
+      Supported at Company, Relationship, Success Plan and CTA level; NOT at
+      Scorecard level.
+  - tool: get_scorecards
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+  - tool: run_report
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+  - tool: search_contacts
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Person_API/People_API_Documentation
+  - tool: get_object_metadata
+    category: read
+    rest: []
+    binding: documented-api-no-contract
+    confidence: low
+    backing_docs: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Data_Management_APIs/Data_Management_APIs
+
+mcp_only:
+  - tool: cross_account_analysis
+    reason: >-
+      Composite — Gainsight describes portfolio-wide analysis across accounts,
+      which has no single REST equivalent.
+  - tool: get_account_summary
+    reason: >-
+      Composite read that Gainsight describes as assembling health, relationship
+      and adoption signal; no single documented endpoint returns it.
+
+rest_only:
+  scope: openapi/gainsight-px-rest-api-openapi.yml
+  count: 74
+  note: >-
+    Every Gainsight PX operation is rest_only — Gainsight ships no MCP server for
+    PX. The list is the full operation set of that contract; the agent-facing
+    gap is the whole product.
+  examples:
+    - getUsersUsingGET
+    - createUserUsingPOST
+    - updateUserUsingPUT
+    - deleteUserUsingDELETE
+    - getAccountsUsingGET
+    - createAccountUsingPOST
+    - deleteAccountUsingDELETE
+    - getCustomEventsUsingGET
+    - createCustomEventUsingPOST
+    - getEngagementsUsingGET
+    - changeEngagementStateUsingPUT
+    - getFeatureAdoptionUsingGET
+    - getSegmentsUsingGET
+    - getSurveyResponsesUsingGET
+
+coverage:
+  mcp_tools_listed: 16
+  mcp_tools_bound_to_operationid: 0
+  mcp_tools_bound_to_documented_endpoint: 14
+  mcp_only: 2
+  rest_operations_total: 74
+  rest_operations_with_a_tool: 0
+  binding_confidence: low
+  reason: >-
+    MCP covers Gainsight CS; the OpenAPI covers Gainsight PX. Two products, no
+    overlap. Raising confidence requires either a Gainsight CS OpenAPI or an
+    authenticated tools/list against a live tenant.

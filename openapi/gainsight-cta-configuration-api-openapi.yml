@@ -121,42 +121,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    CTAType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Type identifier
-        name:
-          type: string
-          description: Type name
-        isDefault:
-          type: boolean
-          description: Whether this is the default type
-    CTAReason:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Reason identifier
-        name:
-          type: string
-          description: Reason name
-        typeId:
-          type: string
-          description: Associated CTA type ID
-    CTAStatus:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Status identifier
-        name:
-          type: string
-          description: Status name
-        isClosed:
-          type: boolean
-          description: Whether this status represents a closed state
     CTAPriority:
       type: object
       properties:
@@ -169,6 +133,42 @@ components:
         order:
           type: integer
           description: Display order
+    CTAReason:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Reason identifier
+        name:
+          type: string
+          description: Reason name
+        typeId:
+          type: string
+          description: Associated CTA type ID
+    CTAType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Type identifier
+        name:
+          type: string
+          description: Type name
+        isDefault:
+          type: boolean
+          description: Whether this is the default type
+    CTAStatus:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Status identifier
+        name:
+          type: string
+          description: Status name
+        isClosed:
+          type: boolean
+          description: Whether this status represents a closed state
   responses:
     Unauthorized:
       description: Authentication failed or access key is missing

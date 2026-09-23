@@ -1,0 +1,183 @@
+generated: '2026-09-17'
+method: probed
+source: live anonymous GET of /.well-known/* across every host this record knows
+description: >-
+  Well-known discovery probe across the Gainsight estate. Two real documents were
+  found, both on the Gainsight API gateway (gainsightcloud.com): RFC 8414 OAuth
+  authorization-server metadata and RFC 9728 OAuth protected-resource metadata,
+  including a resource-scoped variant for the Gainsight CS MCP server path
+  (/v1/ds-mcp/mcp). The gateway answers these anonymously on every tenant host —
+  companyapi. and personapi. are the two published gateway hostnames.
+notes:
+  - >-
+    support.gainsight.com serves a 200 security.txt, but its Contact and Policy
+    both point at NICE (ExpertSecurity@nice.com, expert-help.nice.com) — that is
+    the disclosure programme of the documentation-platform vendor that hosts
+    support.gainsight.com, not Gainsight's own. It is recorded here as observed
+    and deliberately NOT credited to Gainsight as a security-disclosure surface.
+  - >-
+    developer-portal.gainsight.com answers 200 with the same 135 KB SPA shell for
+    every /.well-known/* path. Those are catch-all false positives and are
+    recorded as misses.
+  - >-
+    www.gainsight.com / gainsight.com sit behind a Cloudflare edge that returns
+    403 to non-browser clients on every path including /.well-known/*. Not a
+    measurement of absence — recorded as challenged.
+  - >-
+    The issuer in the gateway documents resolves to whichever tenant the gateway
+    default maps to (observed sb-genesysnx-3.gainsightcloud.com). The document
+    shape is tenant-templated by design; each customer tenant serves its own.
+hosts:
+  - host: companyapi.gainsightcloud.com
+    note: Gainsight CS API gateway (documented Company API host)
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        file: gainsight-oauth-authorization-server.json
+        content_type: application/json;charset=UTF-8
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        file: gainsight-oauth-protected-resource.json
+        content_type: application/json;charset=UTF-8
+      - path: /.well-known/oauth-protected-resource/v1/ds-mcp/mcp
+        status: 200
+        file: gainsight-oauth-protected-resource-mcp.json
+        content_type: application/json;charset=UTF-8
+        note: RFC 9728 metadata for the Gainsight CS MCP server resource
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: personapi.gainsightcloud.com
+    note: Gainsight CS API gateway (documented Person API host); same gateway as companyapi
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+  - host: support.gainsight.com
+    note: documentation platform (third-party hosted)
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: gainsight-support-security.txt
+        content_type: text/plain; charset=utf-8
+        note: vendor (NICE) disclosure programme, not Gainsight's own — see notes
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: app.gainsight.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 500
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 500
+  - host: api.aptrinsic.com
+    note: Gainsight PX API host; gateway answers 401 to every anonymous request
+    documents:
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/openid-configuration
+        status: 401
+      - path: /.well-known/oauth-authorization-server
+        status: 401
+      - path: /.well-known/api-catalog
+        status: 401
+      - path: /.well-known/agent-card.json
+        status: 401
+      - path: /.well-known/agent.json
+        status: 401
+  - host: esp.aptrinsic.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: developer-portal.gainsight.com
+    note: SPA catch-all returns 200 HTML shell for every path — all recorded as misses
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        result: miss
+        note: HTML SPA shell, not a document
+      - path: /.well-known/api-catalog
+        status: 200
+        result: miss
+        note: HTML SPA shell, not a document
+      - path: /.well-known/agent-card.json
+        status: 200
+        result: miss
+        note: HTML SPA shell, not a document
+  - host: px-apidocs.gainsight.com
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: www.gainsight.com
+    note: Cloudflare edge returns 403 to non-browser clients on every path
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /.well-known/agent.json
+        status: 403
+  - host: communities.gainsight.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: trust.gainsight.com
+    note: Cloudflare managed challenge on every path
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403

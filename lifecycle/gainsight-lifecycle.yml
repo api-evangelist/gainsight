@@ -1,0 +1,87 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://status.gainsight.com/, https://trust.gainsight.com/,
+  https://support.gainsight.com/gainsight_nxt/Release_Notes,
+  https://developer-portal.gainsight.com/docs/changelog.md
+provider: Gainsight
+providerId: gainsight
+
+status_page:
+  url: https://status.gainsight.com/
+  http_status: 200
+  title: Gainsight Status
+  checked: '2026-09-17'
+  note: >-
+    Corrects a prior record in this repo that pointed the StatusPage type at
+    https://trust.gainsight.com/ — that is the Trust Center (compliance
+    artefacts), a different surface, and it sits behind a Cloudflare managed
+    challenge.
+
+trust_center:
+  url: https://trust.gainsight.com/
+  http_status: 403
+  note: Live behind a Cloudflare managed challenge; see security/gainsight-trust-center.yml.
+
+release_notes:
+  - name: Gainsight NXT Release Notes
+    url: https://support.gainsight.com/gainsight_nxt/Release_Notes
+    http_status: 200
+  - name: Developer Studio Changelog
+    url: https://developer-portal.gainsight.com/docs/changelog.md
+    http_status: 200
+    note: Dated entries, newest first; see changelog/gainsight-changelog.yml.
+
+versioning:
+  scheme: path-prefix
+  observed:
+    - surface: Gainsight PX REST API
+      prefix: /v1
+      spec_version: 0.1.6
+      spec_updated: '2026-03-19'
+      source: https://px-apidocs.gainsight.com/llms.txt
+    - surface: Gainsight CC REST API
+      prefix: /v2
+      source: https://developer-portal.gainsight.com/docs/api.md
+    - surface: Gainsight CS REST API / SCIM / OAuth / MCP
+      prefix: /v1
+      source: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+  note: >-
+    Three products, three independently versioned API surfaces, no shared
+    version line and no published cross-product compatibility statement.
+
+deprecation_policy:
+  published: false
+  evidence: >-
+    No Sunset (RFC 8594) or Deprecation header is documented on any surface, no
+    deprecation-policy page exists, and the API Documentation Overview contains
+    no versioning or deprecation section.
+  observed_practice:
+    - date: '2026-06-17'
+      surface: Gainsight CC Connectors
+      statement: >-
+        "The previous spelling `apikey` is soft-deprecated — it is permanently
+        retained as a backward-compatible alias and is never rejected."
+      source: https://developer-portal.gainsight.com/docs/changelog.md
+      reading: >-
+        The one documented deprecation in the estate commits to permanent
+        backward compatibility rather than a removal date. Generous to
+        integrators, but it is a single changelog entry, not a policy.
+  deprecated_operations_in_spec: 0
+  deprecated_operations_note: >-
+    No operation in openapi/gainsight-px-rest-api-openapi.yml carries
+    deprecated: true.
+
+sla:
+  published: false
+  note: >-
+    No public API SLA. Support tiers are attached to commercial plans
+    (see plans/gainsight-plans-pricing.yml); uptime commitments are contractual.
+
+support:
+  - name: Gainsight Support / Knowledge Base
+    url: https://support.gainsight.com
+  - name: Gainsight Community
+    url: https://communities.gainsight.com
+  - name: Gainsight University
+    url: https://education.gainsight.com

@@ -1,0 +1,141 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
+provider: Gainsight
+providerId: gainsight
+name: Gainsight CS MCP Server
+description: >-
+  Gainsight ships a first-party remote MCP server for Gainsight CS, exposed per
+  tenant at /v1/ds-mcp/mcp on the customer's own gainsightcloud.com host, and a
+  separate local stdio MCP server bundled inside the @gainsight/gs-admin-cli npm
+  package. Both are published by Gainsight. The remote server is the agent
+  surface: an MCP client POSTs to the tenant URL and authenticates the end user
+  with OAuth 2.1 + PKCE, after which the server enforces that user's own
+  Gainsight permissions.
+status: published
+
+deployment:
+  mode: both
+  endpoint: https://<tenant>.gainsightcloud.com/v1/ds-mcp/mcp
+  endpoint_note: >-
+    Tenant-templated by design — every Gainsight CS customer has its own base
+    host and the path is fixed. Probed anonymously at
+    https://companyapi.gainsightcloud.com/v1/ds-mcp/mcp (POST tools/list) and
+    the gateway answered 401 GS_APIG_2401 "Unauthorized"; a control request to
+    /v1/ds-mcp-bogus/mcp on the same host answered 404 GS_APIG_1000 "Not Found",
+    which distinguishes a live auth-gated route from an absent one.
+  install: npx -y @gainsight/gs-admin-cli
+  package: https://www.npmjs.com/package/@gainsight/gs-admin-cli
+  auth: oauth
+  verified: probed
+
+probe:
+  url: https://companyapi.gainsightcloud.com/v1/ds-mcp/mcp
+  method: POST
+  body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+  http_status: 401
+  body_observed: >-
+    {"result":false,"errorCode":"GS_APIG_2401","errorDesc":"Unauthorized",...}
+  control_url: https://companyapi.gainsightcloud.com/v1/ds-mcp-bogus/mcp
+  control_status: 404
+  control_body_observed: >-
+    {"result":false,"errorCode":"GS_APIG_1000","errorDesc":"Not Found",...}
+  conclusion: >-
+    Route exists and is authentication-gated. The live tool schemas require an
+    authenticated OAuth session, so the tool list below is taken from Gainsight's
+    own admin guide and FAQ (names and capability groups, not inputSchemas).
+  checked: '2026-09-17'
+
+authentication:
+  protocol: OAuth 2.1 authorization code with PKCE (S256)
+  level: per end user — "MCP enforces the authenticated user's Gainsight permissions"
+  authorization_endpoint: https://<tenant>.gainsightcloud.com/v1/authorize
+  token_endpoint: https://<tenant>.gainsightcloud.com/v1/users/oauth/access/token
+  scopes: [read, read_write, offline_access]
+  discovery:
+    - path: /.well-known/oauth-authorization-server
+      status: 200
+      file: ../well-known/gainsight-oauth-authorization-server.json
+    - path: /.well-known/oauth-protected-resource/v1/ds-mcp/mcp
+      status: 200
+      file: ../well-known/gainsight-oauth-protected-resource-mcp.json
+      note: RFC 9728 resource metadata naming this exact MCP endpoint
+  note: >-
+    Gainsight publishes RFC 8414 and RFC 9728 discovery documents anonymously on
+    the same gateway, which is what lets an MCP client discover the auth server
+    from the 401 challenge without out-of-band configuration.
+
+clients_supported:
+  - Anthropic Claude
+  - ChatGPT
+  - Microsoft 365 Copilot / Copilot Studio
+  - Sigma
+  - any MCP-compatible client
+
+capabilities:
+  read:
+    - Account and company summaries
+    - Relationships
+    - CTAs and CTA tasks
+    - Success Plans
+    - Timeline activities
+    - Scorecards
+    - Cockpit
+    - Reports and portfolio data
+    - Object metadata, templates and picklist values
+    - End-user contact search
+    - Cross-account analysis
+  write:
+    - Create and update CTAs
+    - Create and update tasks within CTAs
+    - Create and update Success Plans
+    - Create Timeline entries at Company, Relationship, Success Plan and CTA level
+  not_supported:
+    - User Management
+    - Integration / Connector configuration
+    - Customer Goals
+    - Rules Engine modifications
+    - Custom field or schema creation
+    - C360 layout management
+    - Health Score configuration
+    - Bulk batch operations
+    - Notification management
+    - Delete operations
+    - Scorecard-level Timeline entries
+
+rate_limits:
+  note: MCP queries count toward the tenant API limit (100 calls/min, 100,000/day).
+  source: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview
+
+related_servers:
+  - name: Gainsight Admin CLI & MCP Server
+    package: '@gainsight/gs-admin-cli'
+    version: 1.0.10
+    published: '2026-09-17'
+    registry: npm
+    mode: local-stdio
+    repo: https://github.com/Gainsight/gs-admin-cli
+    scope: JO Programs, Data Management and admin surfaces
+    official: true
+  - name: Staircase AI MCP connector
+    surface: Anthropic Claude connector directory
+    url: https://claude.com/connectors/gainsight-staircase-ai
+    docs: https://support.gainsight.com/Staircase_AI/Staircase_AI_Features/Staircase_AI_MCP_Security_and_Compliance
+    mode: remote
+    note: >-
+      Gainsight's Staircase AI product, distributed as a Claude connector rather
+      than a directly addressable MCP URL. Endpoint not published, so no URL is
+      recorded here.
+    official: true
+
+third_party_note: >-
+  npm also carries gainsight-px-mcp-server, gainsight-px-mcp and several
+  @coretext-ai/* packages that wrap the Gainsight PX REST API. None are
+  published from the Gainsight org and none are recorded as official.
+
+references:
+  - https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
+  - https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/FAQ/Gainsight_CS_MCP_FAQ
+  - https://www.gainsight.com/solutions/gainsight-mcp/
+  - https://www.gainsight.com/press/gainsight-opens-its-platform-with-mcp-bringing-customer-retention-into-the-agentic-era/

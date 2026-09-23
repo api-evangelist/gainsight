@@ -1,0 +1,161 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  well-known/gainsight-oauth-authorization-server.json,
+  well-known/gainsight-oauth-protected-resource-mcp.json,
+  https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/SCIM_API,
+  https://developer-portal.gainsight.com/docs/api/api-authentication.md,
+  openapi/gainsight-px-rest-api-openapi.yml
+provider: Gainsight
+providerId: gainsight
+description: >-
+  Cross-cutting and domain standards the Gainsight contracts declare about
+  themselves, each with the exact document or spec location that proves it.
+
+conformance:
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: true
+    evidence: >-
+      Two independent surfaces. Gainsight CS: authorization-code grant with
+      refresh_token, advertised at
+      https://companyapi.gainsightcloud.com/.well-known/oauth-authorization-server
+      (grant_types_supported: authorization_code, refresh_token). Gainsight CC:
+      client-credentials grant documented at
+      https://developer-portal.gainsight.com/docs/api/api-authentication.md with
+      token endpoint https://api2-eu-west-1.insided.com/oauth2/token.
+
+  - id: oauth2-pkce
+    name: OAuth 2.0 PKCE (RFC 7636)
+    conforms: true
+    evidence: >-
+      code_challenge_methods_supported ["S256"] in
+      well-known/gainsight-oauth-authorization-server.json; the MCP admin guide
+      requires "PKCE must be enabled in Gainsight CS".
+
+  - id: rfc8414
+    name: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+    conforms: true
+    evidence: >-
+      HTTP 200 JSON at
+      https://companyapi.gainsightcloud.com/.well-known/oauth-authorization-server
+      carrying issuer, authorization_endpoint, token_endpoint,
+      grant_types_supported, response_types_supported,
+      token_endpoint_auth_methods_supported and scopes_supported. Probed
+      anonymously 2026-09-17.
+
+  - id: rfc9728
+    name: OAuth 2.0 Protected Resource Metadata (RFC 9728)
+    conforms: true
+    evidence: >-
+      HTTP 200 JSON at
+      https://companyapi.gainsightcloud.com/.well-known/oauth-protected-resource
+      and a resource-scoped variant at
+      /.well-known/oauth-protected-resource/v1/ds-mcp/mcp naming the MCP endpoint
+      itself, with authorization_servers[], scopes_supported[] and
+      bearer_methods_supported ["header"]. This is what lets an MCP client
+      discover the auth server from a bare 401.
+
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence: >-
+      First-party remote MCP server at
+      https://<tenant>.gainsightcloud.com/v1/ds-mcp/mcp (probed: 401 on a live
+      route, 404 on a control route) plus a local stdio server in
+      @gainsight/gs-admin-cli 1.0.10. See mcp/gainsight-mcp.yml.
+
+  - id: scim
+    name: SCIM 2.0 (RFC 7643 / RFC 7644)
+    conforms: true
+    domain_standard: true
+    market: identity and workforce provisioning
+    evidence: >-
+      The SCIM API declares SCIM schema URNs in its own payloads —
+      urn:ietf:params:scim:schemas:core:2.0:User,
+      urn:ietf:params:scim:schemas:core:2.0:Group,
+      urn:ietf:params:scim:schemas:extension:enterprise:2.0:User,
+      urn:ietf:params:scim:api:messages:2.0:PatchOp,
+      urn:ietf:params:scim:api:messages:2.0:ListResponse,
+      urn:ietf:params:scim:api:messages:2.0:Error — plus a vendor extension
+      urn:ietf:params:scim:schemas:extension:gainsight:2.0:User. Content type is
+      application/scim+json, base https://<tenant>/v1/users/services/scim, with
+      /Users and /Groups and a ServiceProviderConfig endpoint. Documented at
+      https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/SCIM_API
+    note: >-
+      This is the domain-standard signature for the provisioning half of the
+      platform: an identity team that already speaks SCIM integrates Gainsight
+      user lifecycle with no bespoke connector. Supported IdPs are Okta and
+      Microsoft Entra ID.
+
+  - id: bearer-token
+    name: OAuth 2.0 Bearer Token Usage (RFC 6750)
+    conforms: true
+    evidence: >-
+      bearer_methods_supported ["header"] in the protected-resource metadata;
+      "Authorization: Bearer <access_token>" documented at
+      https://developer-portal.gainsight.com/docs/api/api-authentication.md.
+
+  - id: rfc9457
+    name: RFC 9457 Problem Details for HTTP APIs
+    conforms: false
+    evidence: >-
+      No application/problem+json media type appears anywhere in
+      openapi/gainsight-px-rest-api-openapi.yml, and the Gainsight CS gateway
+      returns a proprietary envelope
+      {"result":false,"errorCode":"GS_APIG_2401","errorDesc":...,"requestId":...}.
+      See errors/gainsight-problem-types.yml.
+
+  - id: idempotency
+    name: Idempotency-Key header
+    conforms: false
+    evidence: >-
+      No idempotency mechanism appears in the PX contract (zero occurrences of
+      "idempoten" across 183 KB of spec) and none is documented for the CS or CC
+      APIs. See conventions/gainsight-conventions.yml.
+
+  - id: pagination
+    name: Paged collection responses
+    conforms: true
+    evidence: >-
+      The PX contract models paging as first-class response envelopes —
+      AccountsPage, CustomEventsPage, SegmentsPage, EmailEventsPage and 20 more
+      *Page definitions in openapi/gainsight-px-rest-api-openapi.yml.
+
+  - id: openapi
+    name: OpenAPI / Swagger
+    conforms: true
+    evidence: >-
+      Gainsight publishes a real Swagger 2.0 contract for the PX REST API at
+      https://px-apidocs.gainsight.com/source.yaml (59 paths, 74 operations,
+      93 definitions, version 0.1.6). Saved verbatim to
+      openapi/gainsight-px-rest-api-openapi.yml.
+    gap: >-
+      No machine-readable contract is published for the Gainsight CS REST API or
+      the Gainsight CC REST API; both are human documentation only.
+
+  - id: oidc
+    name: OpenID Connect
+    conforms: false
+    evidence: >-
+      /.well-known/openid-configuration returned 404 on every Gainsight host
+      probed. Gainsight documents SAML SSO rather than OIDC.
+
+  - id: odata
+    conforms: false
+    evidence: No $metadata surface on any probed host.
+
+  - id: fhir
+    conforms: false
+    evidence: Not a healthcare data surface.
+
+compliance_programs:
+  source: https://trust.gainsight.com/
+  certifications:
+    - SOC 2
+    - ISO/IEC 27001
+    - HIPAA
+    - GDPR
+  note: >-
+    Recorded from the Gainsight Trust Center; see
+    security/gainsight-trust-center.yml.

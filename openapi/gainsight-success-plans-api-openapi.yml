@@ -144,13 +144,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   parameters:
     planId:
       name: planId
@@ -160,6 +153,35 @@ components:
       schema:
         type: string
   schemas:
+    SuccessPlanInput:
+      type: object
+      required:
+      - Name
+      - CompanyId
+      - TypeId
+      properties:
+        Name:
+          type: string
+        CompanyId:
+          type: string
+        TypeId:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Completed
+          - Archived
+        OwnerId:
+          type: string
+        StartDate:
+          type: string
+          format: date
+        EndDate:
+          type: string
+          format: date
+        Comments:
+          type: string
     SuccessPlan:
       type: object
       properties:
@@ -213,35 +235,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    SuccessPlanInput:
-      type: object
-      required:
-      - Name
-      - CompanyId
-      - TypeId
-      properties:
-        Name:
-          type: string
-        CompanyId:
-          type: string
-        TypeId:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Active
-          - Completed
-          - Archived
-        OwnerId:
-          type: string
-        StartDate:
-          type: string
-          format: date
-        EndDate:
-          type: string
-          format: date
-        Comments:
-          type: string
     SearchRequest:
       type: object
       properties:
@@ -268,6 +261,13 @@ components:
           type: integer
         offset:
           type: integer
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

@@ -153,21 +153,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
-  parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      description: Opportunity record Gsid
-      schema:
-        type: string
   schemas:
     OpportunityRecord:
       type: object
@@ -242,22 +227,6 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-            insertedCount:
-              type: integer
-            updatedCount:
-              type: integer
-            failedCount:
-              type: integer
     SearchRequest:
       type: object
       properties:
@@ -284,6 +253,37 @@ components:
           type: integer
         offset:
           type: integer
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Opportunity record Gsid
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

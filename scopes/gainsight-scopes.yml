@@ -1,0 +1,99 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://companyapi.gainsightcloud.com/.well-known/oauth-authorization-server (probed 200),
+  https://developer-portal.gainsight.com/docs/api/api-authentication.md,
+  https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+docs:
+  - https://support.gainsight.com/gainsight_nxt/01Onboarding_and_Implementation/Onboarding_for_Gainsight_NXT/Login_and_Permissions/OAuth_for_Gainsight_APIs
+  - https://developer-portal.gainsight.com/docs/api/api-authentication.md
+provider: Gainsight
+providerId: gainsight
+description: >-
+  Three products, three different permission models. Gainsight CS uses OAuth 2.1
+  scopes advertised in RFC 8414 metadata; Gainsight CC uses OAuth 2.0
+  client-credentials with per-endpoint scopes listed in the reference; Gainsight
+  PX uses API-key permission flags, not scopes.
+
+surfaces:
+  - surface: Gainsight CS (gainsightcloud.com) — including the MCP server
+    style: oauth2
+    flow: authorization_code + refresh_token, PKCE S256 required
+    discovery: ../well-known/gainsight-oauth-authorization-server.json
+    scopes:
+      - name: read
+        description: Read access to Gainsight CS objects.
+        evidence: scopes_supported in the RFC 8414 document, and in the RFC 9728 resource metadata for /v1/ds-mcp/mcp.
+      - name: read_write
+        description: Read and write access to Gainsight CS objects.
+        evidence: scopes_supported in the RFC 8414 document, and in the RFC 9728 resource metadata for /v1/ds-mcp/mcp.
+      - name: offline_access
+        description: Issue a refresh token so the client can act without a fresh user login.
+        evidence: scopes_supported in the RFC 8414 document (not present in the resource metadata).
+    note: >-
+      The MCP resource metadata advertises only read and read_write —
+      offline_access is an authorization-server capability that the MCP resource
+      itself does not list. Gainsight also documents that Super Admins can bypass
+      a read-only OAuth scope, so the scope is not the last word on what a
+      session can do.
+    token_endpoint_auth_methods: [none, client_secret_post]
+
+  - surface: Gainsight CC (insided.com)
+    style: oauth2
+    flow: client_credentials
+    token_endpoint: https://api2-eu-west-1.insided.com/oauth2/token
+    scopes:
+      - name: read
+        description: Read access to community content and users.
+        evidence: >-
+          Quoted in the token request example at
+          https://developer-portal.gainsight.com/docs/api/api-authentication.md
+          (-d 'scope=read').
+      - name: write
+        description: Create and modify community content.
+        evidence: >-
+          "Required scope: `write`" stated on individual operation pages, e.g.
+          https://developer-portal.gainsight.com/docs/api/operations/community/createArticle.md
+    delimiter: space (URL-encoded)
+    completeness: partial
+    completeness_note: >-
+      Gainsight does not publish the full scope list on the public docs — "To see
+      all available scopes, refer to the Authentication section of your Control
+      environment." Each of the 348 operation reference pages names the scope it
+      requires, so the full set is derivable only by walking every page. Only the
+      two scopes evidenced above are recorded here.
+    additional_authorization:
+      parameter: moderatorId
+      in: query
+      description: >-
+        Moderation actions additionally require a moderatorId query parameter
+        carrying the user ID of a user in a Moderator-or-above role group. This
+        is an authorization dimension outside the OAuth scope system.
+      source: https://developer-portal.gainsight.com/docs/api/authorization.md
+
+  - surface: Gainsight PX (api.aptrinsic.com)
+    style: api-key-permissions
+    header: X-APTRINSIC-API-KEY
+    scopes: []
+    permissions:
+      - name: Read
+        description: Allows GET calls to read PX data.
+      - name: Write
+        description: Allows PUT and DELETE calls to edit, update and delete PX data.
+      - name: Production Launch
+        description: Allows calls to launch engagements in production.
+    note: >-
+      Not OAuth. The PX contract declares a single apiKey security scheme
+      (X-APTRINSIC-API-KEY, in header) with no per-operation scope declarations,
+      so the contract itself cannot tell a client which permission an operation
+      needs — that lives only in the key-administration docs.
+    evidence: openapi/gainsight-px-rest-api-openapi.yml securityDefinitions
+
+  - surface: Gainsight SCIM
+    style: oauth2 / basic
+    scopes: []
+    note: >-
+      M2M OAuth via Authorization: Basic base64(client_id:client_secret) against
+      https://<tenant>/v1/users/m2m/oauth/token, or a user-delegated bearer
+      token. No SCIM-specific scopes documented.
+    source: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/User_Management_APIs/SCIM_API

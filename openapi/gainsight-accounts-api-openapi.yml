@@ -131,13 +131,40 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or API key is missing
+  parameters:
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      description: Unique account identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort field and direction (e.g., lastSeenDate:desc)
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+        maximum: 500
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: Filter expression for results
+      schema:
+        type: string
   schemas:
     AccountInput:
       type: object
@@ -197,40 +224,13 @@ components:
         customAttributes:
           type: object
           description: Custom account attributes
-  parameters:
-    filter:
-      name: filter
-      in: query
-      description: Filter expression for results
-      schema:
-        type: string
-    scrollId:
-      name: scrollId
-      in: query
-      description: Scroll ID for cursor-based pagination
-      schema:
-        type: string
-    accountId:
-      name: accountId
-      in: path
-      required: true
-      description: Unique account identifier
-      schema:
-        type: string
-    pageSize:
-      name: pageSize
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 20
-        maximum: 500
-    sort:
-      name: sort
-      in: query
-      description: Sort field and direction (e.g., lastSeenDate:desc)
-      schema:
-        type: string
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or API key is missing
   securitySchemes:
     apiKey:
       type: apiKey

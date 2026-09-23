@@ -1,0 +1,75 @@
+generated: '2026-09-17'
+method: searched
+source: https://www.npmjs.com/package/@gainsight/gs-admin-cli and https://developer-portal.gainsight.com/docs
+provider: Gainsight
+providerId: gainsight
+description: >-
+  Gainsight publishes two first-party command-line tools on npm. They serve
+  different products: gs-admin drives Gainsight CS administration (and doubles
+  as a local stdio MCP server), while gsds/hubforge drive the Customer
+  Communities Developer Studio build-and-publish pipeline for widgets, scripts,
+  stylesheets and connectors.
+
+clis:
+  - name: gs-admin
+    package: '@gainsight/gs-admin-cli'
+    registry: npm
+    version: 1.0.10
+    published: '2026-09-17'
+    install:
+      - npx -y @gainsight/gs-admin-cli
+      - npm install -g @gainsight/gs-admin-cli
+    repo: https://github.com/Gainsight/gs-admin-cli
+    product: Gainsight CS
+    surface:
+      - Journey Orchestrator (JO) Programs
+      - Data Management
+      - administration operations
+    also: >-
+      Ships an MCP server over stdio in the same binary — see
+      mcp/gainsight-mcp.yml deployment.mode "both".
+    official: true
+
+  - name: gsds
+    package: '@gainsight-hub/developer-studio-cli'
+    registry: npm
+    version: 1.3.1
+    published: '2026-09-16'
+    install:
+      - npm install -g @gainsight-hub/developer-studio-cli
+    repo: https://github.com/Gainsight/dch-sdk
+    docs: https://developer-portal.gainsight.com/docs
+    product: Gainsight CC / Digital Customer Hub
+    surface:
+      - scaffold and build widgets
+      - scaffold and build scripts and stylesheets
+      - build and validate connectors
+      - publish pages to the Widget Catalog
+    official: true
+
+  - name: hubforge
+    package: '@gainsight-hub/hubforge'
+    registry: npm
+    version: 0.16.0
+    published: '2026-08-28'
+    bin: [hf, hubforge]
+    install:
+      - npm install -g @gainsight-hub/hubforge
+    product: Gainsight CC / Digital Customer Hub
+    surface:
+      - widget, connector and page development tooling
+    license: MIT
+    official: true
+
+flows:
+  - name: Publish a custom widget
+    docs: https://developer-portal.gainsight.com/docs/custom-widgets/v2/build-and-publish.md
+    note: >-
+      Builds are triggered by a push to the watched branch of a connected GitHub
+      repository, driven by extensions_registry.json. There is no separate
+      preview or promotion step.
+  - name: Sync connectors as code
+    docs: https://developer-portal.gainsight.com/docs/connectors/repository-registry.md
+    note: >-
+      connectors_registry.json syncs all-or-nothing — one invalid field rejects
+      the whole set (changelog 2026-06-15).

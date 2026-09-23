@@ -314,44 +314,18 @@ paths:
     - url: https://api.gainsight.com
       description: Gainsight Production API
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
-  parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      description: Gainsight record unique identifier (Gsid)
-      schema:
-        type: string
-    companyId:
-      name: companyId
-      in: path
-      required: true
-      description: Unique identifier of the company
-      schema:
-        type: string
-    pageNumber:
-      name: pageNumber
-      in: query
-      description: Page number for pagination
-      schema:
-        type: integer
-        default: 0
-    pageSize:
-      name: pageSize
-      in: query
-      description: Number of records per page
-      schema:
-        type: integer
-        default: 25
-        maximum: 100
   schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     CompanyRecord:
       type: object
       properties:
@@ -413,35 +387,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: Number of records affected
-            insertedCount:
-              type: integer
-              description: Number of records inserted
-            updatedCount:
-              type: integer
-              description: Number of records updated
-            failedCount:
-              type: integer
-              description: Number of failed records
-            failures:
-              type: array
-              items:
-                type: object
-                properties:
-                  index:
-                    type: integer
-                  errorMessage:
-                    type: string
     SearchResponse:
       type: object
       properties:
@@ -518,17 +463,35 @@ components:
         offset:
           type: integer
           description: Offset for pagination
-    ApiResponse:
+    WriteResponse:
       type: object
       properties:
         result:
           type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Number of records affected
+            insertedCount:
+              type: integer
+              description: Number of records inserted
+            updatedCount:
+              type: integer
+              description: Number of records updated
+            failedCount:
+              type: integer
+              description: Number of failed records
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
     CompanyInput:
       type: object
       required:
@@ -614,6 +577,43 @@ components:
         requestId:
           type: string
           description: Unique ID for the request
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Gainsight record unique identifier (Gsid)
+      schema:
+        type: string
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier of the company
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of records per page
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    pageNumber:
+      name: pageNumber
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 0
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

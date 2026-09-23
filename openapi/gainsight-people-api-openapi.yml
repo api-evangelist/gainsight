@@ -200,14 +200,69 @@ paths:
     - url: https://api.gainsight.com
       description: Gainsight Production API
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  alias:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+                    enum:
+                    - EQ
+                    - NE
+                    - GT
+                    - GTE
+                    - LT
+                    - LTE
+                    - CONTAINS
+                    - STARTS_WITH
+                    - ENDS_WITH
+                    - IN
+                    - NOT_IN
+            expression:
+              type: string
+        orderBy:
+          type: object
+          properties:
+            field:
+              type: string
+            order:
+              type: string
+              enum:
+              - ASC
+              - DESC
+        limit:
+          type: integer
+          maximum: 5000
+        offset:
+          type: integer
     PersonRecord:
       type: object
       properties:
@@ -297,68 +352,6 @@ components:
                     type: integer
                   errorMessage:
                     type: string
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  alias:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-                    enum:
-                    - EQ
-                    - NE
-                    - GT
-                    - GTE
-                    - LT
-                    - LTE
-                    - CONTAINS
-                    - STARTS_WITH
-                    - ENDS_WITH
-                    - IN
-                    - NOT_IN
-            expression:
-              type: string
-        orderBy:
-          type: object
-          properties:
-            field:
-              type: string
-            order:
-              type: string
-              enum:
-              - ASC
-              - DESC
-        limit:
-          type: integer
-          maximum: 5000
-        offset:
-          type: integer
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
     Person:
       type: object
       properties:
@@ -392,6 +385,13 @@ components:
           type: string
           format: date-time
           description: Record last modified timestamp
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   parameters:
     recordId:
       name: recordId

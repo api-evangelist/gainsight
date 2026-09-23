@@ -144,14 +144,55 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
+  parameters:
+    ctaId:
+      name: ctaId
+      in: path
+      required: true
+      description: CTA unique identifier
+      schema:
+        type: string
   schemas:
+    CTAInput:
+      type: object
+      required:
+      - CompanyId
+      - TypeId
+      - ReasonId
+      - PriorityId
+      - StatusId
+      properties:
+        Name:
+          type: string
+          description: CTA name
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        TypeId:
+          type: string
+          description: CTA type identifier
+        ReasonId:
+          type: string
+          description: CTA reason identifier
+        PriorityId:
+          type: string
+          description: Priority level identifier
+        StatusId:
+          type: string
+          description: Status identifier
+        OwnerId:
+          type: string
+          description: Assigned owner user ID
+        DueDate:
+          type: string
+          format: date
+          description: Due date
+        Comments:
+          type: string
+          description: Comments
+        PlaybookId:
+          type: string
+          description: Playbook to associate
     CTA:
       type: object
       properties:
@@ -219,46 +260,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    CTAInput:
-      type: object
-      required:
-      - CompanyId
-      - TypeId
-      - ReasonId
-      - PriorityId
-      - StatusId
-      properties:
-        Name:
-          type: string
-          description: CTA name
-        CompanyId:
-          type: string
-          description: Associated company Gsid
-        TypeId:
-          type: string
-          description: CTA type identifier
-        ReasonId:
-          type: string
-          description: CTA reason identifier
-        PriorityId:
-          type: string
-          description: Priority level identifier
-        StatusId:
-          type: string
-          description: Status identifier
-        OwnerId:
-          type: string
-          description: Assigned owner user ID
-        DueDate:
-          type: string
-          format: date
-          description: Due date
-        Comments:
-          type: string
-          description: Comments
-        PlaybookId:
-          type: string
-          description: Playbook to associate
     SearchRequest:
       type: object
       properties:
@@ -295,14 +296,13 @@ components:
           type: integer
         offset:
           type: integer
-  parameters:
-    ctaId:
-      name: ctaId
-      in: path
-      required: true
-      description: CTA unique identifier
-      schema:
-        type: string
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

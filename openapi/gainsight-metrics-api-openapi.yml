@@ -79,22 +79,21 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
-  parameters:
-    goalId:
-      name: goalId
-      in: path
-      required: true
-      description: Customer goal unique identifier
-      schema:
-        type: string
   schemas:
+    GoalMetricInput:
+      type: object
+      required:
+      - Name
+      - TargetValue
+      properties:
+        Name:
+          type: string
+        CurrentValue:
+          type: number
+        TargetValue:
+          type: number
+        Unit:
+          type: string
     GoalMetric:
       type: object
       properties:
@@ -119,20 +118,21 @@ components:
         LastUpdatedDate:
           type: string
           format: date-time
-    GoalMetricInput:
-      type: object
-      required:
-      - Name
-      - TargetValue
-      properties:
-        Name:
-          type: string
-        CurrentValue:
-          type: number
-        TargetValue:
-          type: number
-        Unit:
-          type: string
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    goalId:
+      name: goalId
+      in: path
+      required: true
+      description: Customer goal unique identifier
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

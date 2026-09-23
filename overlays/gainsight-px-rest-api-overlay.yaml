@@ -1,0 +1,120 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Gainsight PX REST API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-09-17'
+  method: generated
+  source: openapi/gainsight-px-rest-api-openapi.yml
+  note: >-
+    Non-destructive enhancements only. The underlying contract is Gainsight's own
+    Swagger 2.0 document, harvested verbatim from
+    https://px-apidocs.gainsight.com/source.yaml and never mutated. Every action
+    below adds a vendor extension or a link; none rewrites Gainsight's semantics.
+extends: ../openapi/gainsight-px-rest-api-openapi.yml
+actions:
+  - target: $.info
+    description: Record where this contract was harvested from and when.
+    update:
+      x-apievangelist-source: https://px-apidocs.gainsight.com/source.yaml
+      x-apievangelist-harvested: '2026-09-17'
+      x-apievangelist-http-status: 200
+      x-apievangelist-spec-version: 0.1.6
+      x-apievangelist-spec-updated: '2026-03-19'
+
+  - target: $.info
+    description: >-
+      Name the regional base endpoints the description states in prose, so a
+      client can read them as data. Swagger 2.0 carries only one host field, and
+      Gainsight's own description table names three data centers.
+    update:
+      x-apievangelist-regional-hosts:
+        - region: US
+          base: https://api.aptrinsic.com/v1
+        - region: EU
+          base: https://api-eu.aptrinsic.com/v1
+        - region: US2
+          base: https://api-us2.aptrinsic.com/v1
+
+  - target: $.info
+    description: Attach the published rate limits, which the contract declares 429 for but never quantifies.
+    update:
+      x-apievangelist-rate-limits:
+        requests_per_second: 200
+        requests_per_day: 1000000
+        status_on_exhaustion: 429
+        retry_after_header: null
+        source: https://support.gainsight.com/PX/Administration/General/Gainsight_PX_Package_Overview_and_System_Limits
+
+  - target: $.info
+    description: >-
+      Record the runtime semantics an agent needs before it calls a write
+      operation and cannot read from this contract.
+    update:
+      x-apievangelist-idempotency:
+        coverage: none
+        note: No Idempotency-Key or client request token on any operation.
+      x-apievangelist-reversibility:
+        grade: documented
+        note: >-
+          Delete operations exist for users, accounts and engagements, and
+          engagement state is settable in both directions, but no document states
+          a window inside which a reversal is valid.
+      x-apievangelist-dry-run: false
+
+  - target: $.info
+    description: Link the derived and probed artifacts built from this contract.
+    update:
+      x-apievangelist-artifacts:
+        errors: ../errors/gainsight-problem-types.yml
+        data_model: ../data-model/gainsight-data-model.yml
+        conventions: ../conventions/gainsight-conventions.yml
+        scopes: ../scopes/gainsight-scopes.yml
+        authentication: ../authentication/gainsight-authentication.yml
+        rate_limits: ../rate-limits/gainsight-rate-limits.yml
+        skills: ../skills/_index.yml
+
+  - target: $.securityDefinitions['X-APTRINSIC-API-KEY']
+    description: >-
+      Record the key permission flags that decide whether a call succeeds. The
+      contract declares one flat apiKey scheme, so nothing in it tells a client
+      that a PUT needs a Write key and an engagement launch needs Production
+      Launch.
+    update:
+      x-apievangelist-permissions:
+        - name: Read
+          applies_to: GET operations
+        - name: Write
+          applies_to: PUT and DELETE operations
+        - name: Production Launch
+          applies_to: launching engagements in production
+      x-apievangelist-permissions-source: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+
+  - target: $.paths['/v1/users/{identifyId}'].delete
+    description: Flag the irreversible write.
+    update:
+      x-apievangelist-consequence: destructive
+      x-apievangelist-reversal: none
+      x-apievangelist-note: >-
+        Hard delete of a PX user. No restore operation and no retention window is
+        published.
+
+  - target: $.paths['/v1/accounts/{accountId}'].delete
+    description: Flag the irreversible write.
+    update:
+      x-apievangelist-consequence: destructive
+      x-apievangelist-reversal: none
+
+  - target: $.paths['/v1/engagement/state'].put
+    description: Note the one genuinely two-way write in this contract.
+    update:
+      x-apievangelist-consequence: reversible
+      x-apievangelist-reversal: changeEngagementStateUsingPUT
+      x-apievangelist-note: Engagement state is a settable field, so it can be moved back.
+
+  - target: $.paths['/v1/events/custom'].post
+    description: Note that ingestion cannot be undone.
+    update:
+      x-apievangelist-consequence: append-only
+      x-apievangelist-reversal: none
+      x-apievangelist-note: The contract exposes no delete for a custom event once written.

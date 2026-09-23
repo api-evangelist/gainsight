@@ -70,7 +70,8 @@
     "gainsight-rest-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "tag 'Companies' spans 2 source specs (gainsight-cs-company-api-openapi.yml, gainsight-rest-api-openapi.yml): per-path servers applied",
     "tag 'People' spans 2 source specs (gainsight-cs-person-api-openapi.yml, gainsight-rest-api-openapi.yml): per-path servers applied",
-    "tag 'Users' spans 2 source specs (gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml): per-path servers applied"
+    "tag 'Users' spans 2 source specs (gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "gainsight-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",

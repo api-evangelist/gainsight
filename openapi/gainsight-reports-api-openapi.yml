@@ -9,8 +9,18 @@ info:
     email: support@gainsight.com
   termsOfService: https://www.gainsight.com/terms-of-service/
 servers:
-- url: https://api.gainsight.com
-  description: Gainsight Production API
+- url: https://{domain}.gainsightcloud.com
+  description: >-
+    Gainsight CS tenant base. Corrected 2026-09-17 — the previous value
+    https://api.gainsight.com is a dangling CNAME (it resolves only to
+    us1-gsapi-prod.gainsightapp.net, which has no address record) and answers
+    nothing. Gainsight documents per-tenant bases on gainsightcloud.com.
+  variables:
+    domain:
+      default: companyapi
+      description: >-
+        Tenant subdomain, or the customer's own custom domain. Gainsight names
+        companyapi and personapi as published gateway hosts.
 security:
 - apiKey: []
 tags:

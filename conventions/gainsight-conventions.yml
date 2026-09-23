@@ -1,0 +1,161 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  openapi/gainsight-px-rest-api-openapi.yml,
+  https://developer-portal.gainsight.com/docs/api/api-authentication.md,
+  https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/About/API_Documentation_Overview,
+  well-known/gainsight-oauth-authorization-server.json, and live gateway responses
+provider: Gainsight
+providerId: gainsight
+description: >-
+  Cross-cutting runtime semantics across the three Gainsight API surfaces (CS on
+  gainsightcloud.com, PX on aptrinsic.com, CC on insided.com). They do not share
+  conventions: auth style, error envelope and paging all differ by product.
+
+authentication:
+  cs: OAuth 2.1 authorization code + PKCE (S256); Authorization Bearer. Also an access-key header for the legacy REST surface.
+  cc: OAuth 2.0 client credentials; Authorization Bearer; token TTL 7200s.
+  px: API key in the X-APTRINSIC-API-KEY request header.
+  scim: Basic client_id:client_secret to an M2M token endpoint, then Bearer.
+  see: ../authentication/gainsight-authentication.yml, ../scopes/gainsight-scopes.yml
+
+idempotency:
+  coverage: none
+  scope: []
+  mechanism: null
+  evidence: >-
+    Zero occurrences of "idempoten" across the 183 KB Gainsight PX contract, no
+    Idempotency-Key header documented for the Gainsight CS REST API, the CC REST
+    API or the SCIM API, and no client-supplied request-token parameter on any
+    create operation. The one signal in the opposite direction is a 400 response
+    titled "Bad request, possible duplicate" on three PX create operations,
+    which is server-side duplicate detection, not caller-controlled replay
+    protection.
+  consequence: >-
+    A retried POST after a timeout can create a second record. An agent must
+    read-before-write and reconcile, because there is no way to make the retry
+    itself safe.
+
+reversibility:
+  grade: documented
+  grade_reason: >-
+    Reversal operations exist and are named in the contracts, but no document
+    states a window inside which a reversal is valid, so this is 'documented'
+    and not 'verified'. No window is asserted here because none is published.
+  surfaces:
+    - product: Gainsight PX
+      writes: create/update user, create/update account, create custom event, engagement state changes, feature backfill
+      reversals:
+        - operation: deleteUserUsingDelete
+          reverses: createUserUsingPost
+          window: null
+          note: Hard delete of a PX user. The contract states no retention or restore window.
+        - operation: deleteAccountUsingDelete
+          reverses: createAccountUsingPost
+          window: null
+        - operation: deleteEngagementUsingDelete
+          reverses: engagement creation
+          window: null
+        - operation: changeEngagementStateUsingPut
+          reverses: itself — an engagement can be moved back to a prior state
+          window: null
+          note: The closest thing to an undo in the PX surface; state is a settable field, not a one-way transition.
+      irreversible:
+        - Custom event ingestion — the contract exposes no delete for an event once written.
+    - product: Gainsight CS (including MCP)
+      writes: create/update CTA, create/update task, create/update Success Plan, create Timeline entry
+      reversals: []
+      window: null
+      note: >-
+        Gainsight's own MCP FAQ states delete operations are NOT supported over
+        MCP. An agent acting through MCP can create a CTA, a task, a Success Plan
+        or a Timeline entry and has no route to remove it — reversal requires a
+        human in the Gainsight UI or a different API surface.
+      consequence: high — the agent-facing surface is create-only
+    - product: Gainsight CC
+      writes: create/edit articles, conversations, questions, ideas, product updates, events, points
+      reversals:
+        - operation: toggleEventTrashed
+          reverses: event publication
+          window: null
+          note: Trash is a toggle, so it is reversible in both directions.
+        - operation: unsubscribeUrlFromWebhook
+          reverses: subscribeWebhook
+          window: null
+        - operation: unsubscribeAllUrlsFromWebhook
+          reverses: subscribeWebhook
+          window: null
+        - operation: cancelSignUpEvent
+          reverses: signupEvent
+          window: null
+        - operation: deleteConversationPoll / deleteQuestionPoll / articleDeletePoll
+          reverses: poll creation
+          window: null
+      note: >-
+        Content moderation in CC is largely toggle-shaped (trash, close, sticky,
+        approve), which makes most of it reversible in principle. No document
+        states a time limit on any of it.
+
+dry_run_mode:
+  supported: false
+  evidence: No preview, validate-only, simulate or dry-run parameter appears in any Gainsight contract or doc probed.
+
+pagination:
+  style: page-envelope
+  evidence: >-
+    The PX contract models paging as dedicated response definitions —
+    AccountsPage, CustomEventsPage, SegmentsPage, EmailEventsPage,
+    FeatureMatchEventsPage and 20 more *Page schemas.
+  cs_params: [pageNumber, pageSize]
+  cs_note: >-
+    The Gainsight CS REST API documents page-number/page-size query parameters.
+    No cursor or link-header paging exists on any surface.
+
+filtering:
+  scim: RFC 7644 filter expressions, e.g. GET /Users?filter=...
+  px: query parameters per operation; no shared filter grammar.
+  cc: per-operation query parameters.
+
+field_expansion:
+  supported: false
+
+metadata:
+  px: >-
+    Custom attributes are first-class — AttributeMetadata and CustomEventMetadata
+    definitions describe user-defined fields.
+  cs: Custom Objects and custom fields via the Data Management API.
+
+request_id_tracing:
+  supported: true
+  header: [x-gs-request-id, x-request-id]
+  surface: Gainsight CS gateway (gainsightcloud.com)
+  evidence: >-
+    Both headers observed on live 401 and 404 responses from
+    companyapi.gainsightcloud.com, carrying the same UUID that appears as
+    requestId in the error body.
+  gap: No request-id header observed on the PX or CC surfaces.
+
+versioning:
+  style: URI path prefix (/v1 on CS and PX, /v2 on CC)
+  see: ../lifecycle/gainsight-lifecycle.yml
+
+error_envelope:
+  format: proprietary, and different per product
+  see: ../errors/gainsight-problem-types.yml
+
+rate_limit_signaling:
+  status_on_exhaustion: 429
+  headers_returned: []
+  headers_note: >-
+    This is the sharpest runtime gap in the estate. 62 of the 74 PX operations
+    declare a 429 "Rate limit exceeded" response, and Gainsight publishes hard
+    numbers in prose (100/min and 100,000/day for CS sync calls; ~200/s and
+    1M/day for PX), but no surface documents a Retry-After, X-RateLimit-* or
+    RateLimit-* response header. An agent gets the refusal with no signal for
+    when to come back.
+  see: ../rate-limits/gainsight-rate-limits.yml
+
+webhooks:
+  supported: true
+  surface: Gainsight CC
+  see: ../asyncapi/gainsight-cc-webhooks.yml

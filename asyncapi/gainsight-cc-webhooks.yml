@@ -1,0 +1,78 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://developer-portal.gainsight.com/docs/api/operations/community/subscribeWebhook.md
+  and llms/gainsight-cc-llms.txt
+provider: Gainsight
+providerId: gainsight
+type: webhooks
+asyncapi_published: false
+asyncapi_note: >-
+  Gainsight publishes no AsyncAPI document on any host probed
+  (/asyncapi.yaml, /asyncapi.json and an event-catalog page were all absent).
+  The event surface below is a webhook subscription API documented in the
+  Gainsight CC REST reference, captured as a webhook catalog rather than
+  fabricated into an AsyncAPI.
+
+description: >-
+  Gainsight Customer Communities exposes webhook subscription management as four
+  REST operations on the community API. A consumer registers its own URL against
+  a named event; Gainsight then POSTs to it. The event names themselves are
+  configured in the Control environment and are not enumerated in the public
+  reference, so this catalog records the subscription mechanics that are
+  published and stops there.
+
+surface:
+  product: Gainsight CC (Customer Communities)
+  base_url: https://api2-eu-west-1.insided.com
+  base_url_regions:
+    - https://api2-eu-west-1.insided.com
+    - https://api2-us-west-2.insided.com
+  auth: OAuth 2.0 client credentials (see scopes/gainsight-scopes.yml)
+  docs: https://developer-portal.gainsight.com/docs/api.md
+
+operations:
+  - operationId: subscribeWebhook
+    summary: Subscribe a URL to a webhook event
+    docs: https://developer-portal.gainsight.com/docs/api/operations/community/subscribeWebhook.md
+  - operationId: unsubscribeUrlFromWebhook
+    summary: Unsubscribe a URL from a webhook event
+    docs: https://developer-portal.gainsight.com/docs/api/operations/community/unsubscribeUrlFromWebhook.md
+  - operationId: unsubscribeAllUrlsFromWebhook
+    summary: Unsubscribe all URLs from a webhook event
+    docs: https://developer-portal.gainsight.com/docs/api/operations/community/unsubscribeAllUrlsFromWebhook.md
+  - operationId: listEventWebhookSubscriptions
+    summary: List webhook subscriptions for a given event
+    docs: https://developer-portal.gainsight.com/docs/api/operations/community/listEventWebhookSubscriptions.md
+
+events:
+  enumerated: false
+  note: >-
+    The four operations take an event identifier, but the public reference does
+    not publish the list of valid event names — they are listed in the customer's
+    own Control environment. Not guessed here.
+
+delivery:
+  signing: undocumented
+  retry_policy: undocumented
+  note: >-
+    No payload signature scheme, replay window or retry schedule is published.
+    A consumer cannot verify a Gainsight CC webhook came from Gainsight using
+    anything in the public documentation.
+
+other_event_surfaces:
+  - product: Gainsight PX
+    kind: event ingestion (inbound), not delivery
+    note: >-
+      PX exposes event READ and WRITE endpoints — custom events, page-view,
+      session, identify, form-submit, feature-match, segment-match, email and
+      engagement-view events — in openapi/gainsight-px-rest-api-openapi.yml.
+      These are polled or pushed by the caller; PX publishes no outbound webhook
+      or streaming subscription in its contract.
+    spec: ../openapi/gainsight-px-rest-api-openapi.yml
+  - product: Gainsight CS
+    kind: outbound rules-engine actions
+    note: >-
+      Gainsight CS can call out from the Rules Engine and Journey Orchestrator,
+      but no developer-facing webhook subscription API or event catalog is
+      published for it.

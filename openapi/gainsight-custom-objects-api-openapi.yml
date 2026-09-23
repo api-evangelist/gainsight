@@ -168,21 +168,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      description: Gainsight record unique identifier (Gsid)
-      schema:
-        type: string
     objectName:
       name: objectName
       in: path
@@ -190,32 +176,25 @@ components:
       description: Name of the custom object
       schema:
         type: string
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Gainsight record unique identifier (Gsid)
+      schema:
+        type: string
   schemas:
-    WriteResponse:
+    ApiResponse:
       type: object
       properties:
         result:
           type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-            insertedCount:
-              type: integer
-            updatedCount:
-              type: integer
-            failedCount:
-              type: integer
-            failures:
-              type: array
-              items:
-                type: object
-                properties:
-                  index:
-                    type: integer
-                  errorMessage:
-                    type: string
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     SearchResponse:
       type: object
       properties:
@@ -283,17 +262,38 @@ components:
           maximum: 5000
         offset:
           type: integer
-    ApiResponse:
+    WriteResponse:
       type: object
       properties:
         result:
           type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

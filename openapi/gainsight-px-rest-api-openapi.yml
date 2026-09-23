@@ -1,0 +1,7265 @@
+swagger: '2.0'
+info:
+  description: >
+    <p>Gainsight PX API provides a programmatic (server-based) method to access
+    the users, accounts, and events that have been captured by the Gainsight PX
+    subscription.  The Gainsight PX REST APIs can be used to perform most
+    standard CRUD (Create, Read, Update, Delete) operations on entity (e.g. User
+    and Account) objects, create custom events and fetch historical event
+    data.</p>
+
+    <table> 
+
+    <tr><th>Data Center</td><th>Base Endpoint</td></tr> 
+
+    <tr><td>US</td><td>https://api.aptrinsic.com/v1</td></tr> 
+
+    <tr><td>EU</td><td>https://api-eu.aptrinsic.com/v1</td></tr> 
+
+    <tr><td>US2</td><td>https://api-us2.aptrinsic.com/v1</td></tr> 
+
+    </table> 
+
+    <h1 class="resourceGroupName">Data Payload</h1>
+
+    <p>The API data (and
+
+    responses) are JSON encoded with UTF-8 as either a single JSON object, or as
+
+    a list of JSON objects.</p>
+
+    <h1 class="resourceGroupName">Authorization</h1>
+
+    <p>Authorization and access to the API is managed via API Keys. The API key
+    value is passed on calls by adding a request header with the key
+    <i>X-APTRINSIC-API-KEY</i>.</p>
+
+    <h2>Generate API Keys</h2>
+
+    <p>An API Key is required to access the Gainsight PX REST API.</p>
+
+    <p>To generate an API key:</p>
+
+    <p>&nbsp; 1. Navigate to Administration > REST API to access the API Keys
+    page.</p>
+
+    <p>&nbsp; 2. Click New API Key. The New API Key window appears. </p>
+
+    <p>&nbsp; 3. Enter the following details:</p>
+       <p>&nbsp;&emsp; A. Name: Enter a name for API Key.</p>
+       <p>&nbsp;&emsp; B. Description: Enter a description.</p>
+       <p>&nbsp;&emsp; C. Permissions:  Configure the following permissions.</p>
+         <p>&nbsp;&emsp;&emsp; a. Read: This allows calls to read PX data via GET API calls. </p>
+         <p>&nbsp;&emsp;&emsp; b. Write: This allows calls to edit, update and delete PX data via PUT and DELETE API calls.</p>
+         <p>&nbsp;&emsp;&emsp; c. Production Launch: This access allows calls to launch engagements in production. </p>
+    <p>&nbsp; 4. Click Generate.</li>
+
+    <h1 class="resourceGroupName">Errors</h1>
+
+    <p>Errors are returned with error code and JSON response.
+
+    <h1 class="resourceGroupName">HTTP</h1>
+
+    <ul>
+      <li>Requests are sent using HTTPS.</li>
+      <li>Methods exposed are based on HTTP Verbs (GET, POST and DELETE).</li>
+      <li>Resources are identified using URI’s.</li>
+    </ul>
+
+    <h1 class="resourceGroupName">Rate Limiting</h1>
+
+    <p>The rate limit for public REST APIs is around 200 requests per second and
+    1 Million requests per day. </span>
+
+    <h1 class="resourceGroupName">Page Handling</h1>
+
+    <ul>
+      <li>The default pageSize on list calls (i.e. /users and /accounts) is 25.  The pageSize can be changed by adding a pageSize parameter to the URL (i.e. /users?pageSize=100) with a max pageSize=1000.</li>
+      <li>Use the returned scrollId to make a request for the next page of results (i.e. /users?pageSize=100&scrollId=XXXXXXX)</li>
+      <li>Scroll until the returned result list is less than the requested size. Do not depend on the scrollId becoming null, in some cases it does not be null even though the last page of results is returned.</li>
+    </ul>
+
+    <h1 class="resourceGroupName">Historical Date Range Restrictions</h1>
+
+    <ul>
+      <li>For all calls that return historical event information, the maximum date range is 190 days (~ 6 months).</li>
+      <li>If no date range is specified, the last 1 day is the default date window.  For quicker response times, it is recommended to use your needed date range and not full 6 months.</li>
+      <li>If a date range larger than the maximum is specified, a 400 Bad Request error is thrown, with the message: “Exceeded date range190days”.</li>
+      <li>To fetch more than 190 days of data, multiple calls will need to be made for smaller date ranges that are no more than the max allowed.</li>
+    </ul>
+
+    <h1 class="resourceGroupName">Case Sensitivity</h1>
+
+    <ul>
+      <li>Case sensitivity is enforced when making a call to get user/account by id.  Therefore, .../users/id=nora@example.com will not find a user whose id is Nora@example.com</li>
+      <li>Case sensitivity is not enforced when using filters. For example, .../users/filter=id==nora@example.com; will find a user whose id is Nora@example.com.</li>
+    </ul>
+
+    <h1 class="resourceGroupName">Getting Started with Postman</h1>
+
+    <p>Click <a
+    href='https://storage.googleapis.com/gainsight-px-cloud-public-assets/api/Gainsight_PX_REST_API_v1.2.postman_collection'>here</a>
+    to download a Postman collection file containing sample calls that you can
+    use to query and test the Gainsight PX REST API. The Postman tool is used to
+    test the PX APIs. To use the sample API calls, you must define a Postman
+    variable <i>apiKey</i>.  This variable must be set to the PX API key which
+    you have generated. This API key is not the same as your Product API
+    key.</p>
+  version: 0.1.6
+  title: Gainsight PX REST API
+  contact:
+    name: Gainsight PX
+    url: 'https://www.gainsight.com/product-experience/'
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+host: api.aptrinsic.com
+basePath: /
+tags:
+  - name: Accounts
+    description: Account Operations
+  - name: Admin
+    description: Admin Model
+  - name: Article
+    description: Article related endpoints
+  - name: Custom events
+    description: Custom events operations
+  - name: EmailEvent
+    description: Email Event Operations
+  - name: Engagement
+    description: Engagement Operations
+  - name: EngagementViewEvent
+    description: Engagement View Event Operations
+  - name: ExternalSegments
+    description: External Segment Operations
+  - name: Feature
+    description: Feature Operations
+  - name: FeatureMatchEvent
+    description: Feature Match Event Operations
+  - name: FormSubmitEvent
+    description: Form Submit Event Operations
+  - name: IdentifyEvent
+    description: Identify Event Operations
+  - name: KCbot
+    description: KC Bot related endpoints
+  - name: LeadEvent
+    description: Lead Event Operations
+  - name: Localization
+    description: localization
+  - name: PageViewEvent
+    description: Page View Event Operations
+  - name: Segment
+    description: Segment Operations
+  - name: SegmentMatchEvent
+    description: Segment Match Event Operations
+  - name: SessionEvent
+    description: Session Event Operations
+  - name: SurveyResponse
+    description: Survey Response Events
+  - name: UserPreferences
+    description: User Preferences
+  - name: UserPreferences V2
+    description: >-
+      User Preferences Version 2 API. Version 2 has support for new setting
+      called 'trackEmailAnalytics' which is to specify whether to track email
+      analytics or not for the given user.
+  - name: Users
+    description: User Operations
+schemes:
+  - https
+paths:
+  /v1/accounts:
+    get:
+      tags:
+        - Accounts
+      summary: Get accounts
+      description: >+
+        Retrieves accounts.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/accounts?filter=sicCode==64;numberOfEmployees>25 | Accounts
+        with sicCode of 64 and more than 25 employees. |
+
+        | GET
+        /v1/accounts?filter=sicCode==64;numberOfEmployees>25&filter=sicCode==63;numberOfEmployees>3000
+        | Accounts with: (sicCode of 64 AND more than 25 employees) OR (sicCode
+        of 63 AND more than 3000 employees). |
+
+        | GET /v1/accounts?filter=location.cityName==Portland | Accounts with a
+        city of 'Portland'. |
+
+        | GET /v1/accounts?filter=customAttributes.internalId==12345 | Accounts
+        with a custom attribute of internalId equal to 12345'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/accounts?sort=name;location.stateCode | Accounts sorted by
+        name and state code in ascending order. |
+
+        | GET /v1/accounts?sort=-createDate | Accounts sorted by createDate in
+        descending order. |
+
+      operationId: getAccountsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of accounts per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AccountsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    post:
+      tags:
+        - Accounts
+      summary: Create account
+      description: Creates a new account with the given data
+      operationId: createAccountUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: account
+          description: Account data
+          required: true
+          schema:
+            $ref: '#/definitions/Account'
+      responses:
+        '201':
+          description: Created Account
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '400':
+          description: 'Bad request, possible duplicate'
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/accounts/update:
+    put:
+      tags:
+        - Accounts
+      summary: Update account (accountId passed via request body)
+      description: >
+        Updates an account with accountId specified in the request body.
+
+        This update method is useful when the account ID contains special
+        characters that make it impossible to use the update method with the
+        accountId in the request path.
+      operationId: updateAccountUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: account
+          description: Account data
+          required: true
+          schema:
+            $ref: '#/definitions/Account'
+      responses:
+        '204':
+          description: Updated
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/accounts/{accountId}':
+    get:
+      tags:
+        - Accounts
+      summary: Get account
+      description: Retrieves the account with the given id
+      operationId: getAccountUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: accountId
+          in: path
+          description: Account id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Account'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - Accounts
+      summary: Update account
+      description: Updates an account with the given data
+      operationId: updateAccountUsingPUT_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: account
+          description: Account data
+          required: true
+          schema:
+            $ref: '#/definitions/Account'
+        - name: accountId
+          in: path
+          description: Account id
+          required: true
+          type: string
+      responses:
+        '204':
+          description: Updated
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    delete:
+      tags:
+        - Accounts
+      summary: Delete account
+      description: >
+        Deletes Account
+
+        Note: Performs a cascading delete of all users associated with the
+        account
+      operationId: deleteAccountUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: accountId
+          in: path
+          description: Account id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Deleted
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/admin/model/{type}/attributes':
+    get:
+      tags:
+        - Admin
+      summary: Get Attributes
+      description: Retrieves the model attributes for a given type
+      operationId: getModelAttributesUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: type
+          in: path
+          description: Type
+          required: true
+          type: string
+          enum:
+            - user
+            - account
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AttributeMetadata'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Type not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/monitoring/engagement_collisions:
+    get:
+      tags:
+        - Admin
+      summary: Get engagement collisions
+      description: >+
+        Retrieves engagement collision events. Will return one row for each
+        engagement collision in the given date range.  Supports filtering and
+        paging.
+
+        ### Filtering
+
+        The date range must be less than or equal to 180 days
+
+        Dates are specified as epoch milliseconds, GMT
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET
+        /v1/admin/monitoring/engagement_collisions?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2
+        | Fetches first page of results |
+
+        | GET
+        /v1/admin/monitoring/engagement_collisions?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2&pageNumber=1&scrollId=abcxyz
+        | Fetches second page of results |
+
+
+      operationId: getEngagementCollisionsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dateRangeEnd
+          in: query
+          description: Date range end (epoch milliseconds)
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeEnd=1672962222000
+        - name: dateRangeStart
+          in: query
+          description: Date range start (epoch milliseconds)
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeStart=1670283822000
+        - name: pageNumber
+          in: query
+          description: Page Number (zero based)
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of records per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int64
+          allowEmptyValue: false
+        - name: propertyKey
+          in: query
+          description: Product Key
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId. If null, no additional pages are available
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementCollisionPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/admin/monitoring/engagement_error_details/{engagementId}':
+    get:
+      tags:
+        - Admin
+      summary: Get engagement error details
+      description: >+
+        Retrieves engagement error details. Will return one row for each
+        engagement error.
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET
+        /v1/admin/monitoring/engagement_error_details/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&groupByBrowser=true
+        | Error details grouped by browser|
+
+        | GET
+        /v1/admin/monitoring/engagement_error_details/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&groupByBrowser=false
+        | Error details grouped by type|
+
+
+      operationId: getEngagementErrorDetailsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dateRangeEnd
+          in: query
+          description: Date range end (epoch milliseconds)
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeEnd=1672962222000
+        - name: dateRangeStart
+          in: query
+          description: Date range start (epoch milliseconds)
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeStart=1670283822000
+        - name: engagementId
+          in: path
+          description: Engagement id
+          required: true
+          type: string
+        - name: groupByBrowser
+          in: query
+          description: 'True to group by browser type, false to group by error'
+          required: false
+          type: boolean
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementErrorDetailsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/monitoring/engagement_errors:
+    get:
+      tags:
+        - Admin
+      summary: Get engagement errors summary
+      description: >+
+        Retrieves engagement error summary. Will return one row for each
+        engagement that has errors in the given date range.  Supports filtering
+        and paging.
+
+        ### Filtering
+
+        The date range must be less than or equal to 180 days
+
+        Dates are specified as epoch milliseconds, GMT
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET
+        /v1/admin/monitoring/engagement_errors?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2
+        | Fetches first page of results |
+
+        | GET
+        /v1/admin/monitoring/engagement_errors?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2&pageNumber=1&scrollId=abcxyz
+        | Fetches second page of results |
+
+
+      operationId: getEngagementErrorSummariesUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dateRangeEnd
+          in: query
+          description: Date range end (epoch milliseconds)
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeEnd=1672962222000
+        - name: dateRangeStart
+          in: query
+          description: Date range start (epoch milliseconds)
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeStart=1670283822000
+        - name: pageNumber
+          in: query
+          description: Page Number (zero based)
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of records per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: propertyKey
+          in: query
+          description: Product Key
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId. If null, no additional pages are available
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementErrorSummaryPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/monitoring/integrations:
+    get:
+      tags:
+        - Admin
+      summary: Get integration statuses
+      description: >+
+        Retrieves the current statuses for the configured integrations. Will
+        return one row for each integration.
+
+        Example: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/admin/monitoring/integrations | Fetches all integration
+        statuses |
+
+
+      operationId: getIntegrationStatusesUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/IntegrationStatusPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/subscription:
+    get:
+      tags:
+        - Admin
+      summary: Get Subscription detail
+      description: Retrieves Subscription detail for the current sub
+      operationId: getDetailUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SubscriptionDetail'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/subscription/users/notSeenAfter:
+    get:
+      tags:
+        - Admin
+      summary: Get Subscription users
+      description: Retrieves Subscription users
+      operationId: getSubscriptionUsersNotSeenAfterUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: notSeenAfterTimestamp
+          in: query
+          description: Not seen after datetime (epoch milliseconds)
+          required: true
+          type: integer
+          format: int64
+          allowEmptyValue: false
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of users per page
+          required: false
+          type: integer
+          default: 200
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SubscriptionDetail'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/articles:
+    get:
+      tags:
+        - Article
+      summary: Get Articles
+      description: >+
+        Fetch metadata for Articles from your PX Subscription. The API provides
+        you with the summary of basic information of each article that makes it
+        easy to work with specific data. 
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/articles?pageSize=100 | Get first 100 articles. |
+
+        | GET /v1/articles?pageSize=100&pageNumber=1 | Get next 100 articles. |
+
+        | GET /v1/articles?productId=1234LPSWUBFW | Get Articles of product
+        1234LPSWUBFW. |
+
+
+        <b>Important:</b> The default pageSize on list calls is 200. The
+        pageSize can be changed by adding a pageSize parameter to the URL (i.e.
+        /v1/articles?pageSize=100) with a max pageSize=500. 
+
+
+        To fetch a particular page, use the pageNumber parameter (zero based)
+
+      operationId: getArticlesUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: 'Number of events per page range[1,500]'
+          required: false
+          type: integer
+          default: 200
+          format: int32
+          allowEmptyValue: false
+        - name: productId
+          in: query
+          description: Property Group
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ArticleExternalViewPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/articles/{articleId}':
+    get:
+      tags:
+        - Article
+      summary: Get Article
+      description: |+
+        Retrieves article with the given article Id
+        Examples: 
+
+        | URI   | Results  |
+        | ----- | -------- |
+        | GET /v1/articles/{articleId} | Get article with id {articleId}. |
+
+      operationId: getArticleUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: articleId
+          in: path
+          description: Article id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ArticleExternalView'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/engagement:
+    get:
+      tags:
+        - Engagement
+      summary: Get engagements
+      description: >+
+        Retrieves engagements. Supports paging.
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/engagement?pageSize=100 | Get first 100 engagements. |
+
+        | GET /v1/engagement?pageSize=100&pageNumber=1 | Get next 100
+        engagements. |
+
+        | GET /v1/engagement?contentTypes=IN_APP_DIALOG,IN_APP_GUIDE | Get
+        dialog and guide engagements. |
+
+      operationId: getEngagementsUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: contentTypes
+          in: query
+          description: Content Types
+          required: false
+          type: array
+          items:
+            type: string
+            enum:
+              - IN_APP_DIALOG
+              - IN_APP_CAROUSEL
+              - IN_APP_GUIDE
+              - IN_APP_NOTIFICATION
+              - OUT_BOUND_EMAIL
+              - IN_APP_NPS_SURVEY
+              - IN_APP_CES_SURVEY
+              - IN_APP_RATING_SURVEY
+              - IN_APP_BOOLEAN_SURVEY
+              - IN_APP_MULTIPLE_QUESTION_SURVEY
+              - UNRECOGNIZE
+          collectionFormat: multi
+          allowEmptyValue: false
+          enum:
+            - IN_APP_DIALOG
+            - IN_APP_CAROUSEL
+            - IN_APP_GUIDE
+            - IN_APP_NOTIFICATION
+            - OUT_BOUND_EMAIL
+            - IN_APP_NPS_SURVEY
+            - IN_APP_CES_SURVEY
+            - IN_APP_RATING_SURVEY
+            - IN_APP_BOOLEAN_SURVEY
+            - IN_APP_MULTIPLE_QUESTION_SURVEY
+            - UNRECOGNIZE
+        - name: createdById
+          in: query
+          description: Created by ID
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 200
+          maximum: 500
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/engagement/env:
+    put:
+      tags:
+        - Engagement
+      summary: Set engagement environment
+      description: >+
+        Move engagement between environments.
+
+        ### Parameters
+
+        - engagementId: ID of engagement to be modified
+
+        - env:  Which environment to set the engagement to.  Valid values:
+        Production,Stage,QA,Integration (case insensitive)
+
+      operationId: changeEngagementEnvUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: envChangeRequest
+          description: Engagement Environment Change Request
+          required: true
+          schema:
+            $ref: '#/definitions/EngagementEnvChangeRequest'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementEnvChangeResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/engagement/envs:
+    put:
+      tags:
+        - Engagement
+      summary: Set engagement environments
+      description: >+
+        Move engagement between environments.
+
+        ### Parameters
+
+        - engagementId: ID of engagement to be modified
+
+        - envs:  Which environments to set the engagement to.  Valid values:
+        Production,Stage,QA,Integration (case insensitive)
+
+      operationId: changeEngagementEnvsUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: envsChangeRequest
+          description: Engagement Environments Change Request
+          required: true
+          schema:
+            $ref: '#/definitions/EngagementEnvironmentsChangeRequest'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementEnvironmentsChangeResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/engagement/extended:
+    get:
+      tags:
+        - Engagement
+      summary: Get engagements with list of custom events from rules
+      description: >+
+        Retrieves engagements with list of custom events that are used in the
+        audience rule, either directly or indirectly via a feature match.
+        Supports paging.
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/engagement/extended?pageSize=100 | Get first 100 engagements.
+        |
+
+        | GET /v1/engagement/extended?pageSize=100&pageNumber=1 | Get next 100
+        engagements. |
+
+        | GET /v1/engagement/extended?contentTypes=IN_APP_DIALOG,IN_APP_GUIDE |
+        Get dialog and guide engagements. |
+
+      operationId: getEngagementsExtendedUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: contentTypes
+          in: query
+          description: Content Types
+          required: false
+          type: array
+          items:
+            type: string
+            enum:
+              - IN_APP_DIALOG
+              - IN_APP_CAROUSEL
+              - IN_APP_GUIDE
+              - IN_APP_NOTIFICATION
+              - OUT_BOUND_EMAIL
+              - IN_APP_NPS_SURVEY
+              - IN_APP_CES_SURVEY
+              - IN_APP_RATING_SURVEY
+              - IN_APP_BOOLEAN_SURVEY
+              - IN_APP_MULTIPLE_QUESTION_SURVEY
+              - UNRECOGNIZE
+          collectionFormat: multi
+          allowEmptyValue: false
+          enum:
+            - IN_APP_DIALOG
+            - IN_APP_CAROUSEL
+            - IN_APP_GUIDE
+            - IN_APP_NOTIFICATION
+            - OUT_BOUND_EMAIL
+            - IN_APP_NPS_SURVEY
+            - IN_APP_CES_SURVEY
+            - IN_APP_RATING_SURVEY
+            - IN_APP_BOOLEAN_SURVEY
+            - IN_APP_MULTIPLE_QUESTION_SURVEY
+            - UNRECOGNIZE
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 200
+          maximum: 500
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementsWithCustomEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/engagement/metadata/survey:
+    get:
+      tags:
+        - Engagement
+      summary: getEngagementViewEvents
+      operationId: getEngagementViewEventsUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: engagementId
+          in: query
+          description: engagementId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+      deprecated: false
+  /v1/engagement/state:
+    put:
+      tags:
+        - Engagement
+      summary: Set engagement state
+      description: >+
+        Pauses or starts an engagement.
+
+        ### Parameters
+
+        - engagementId: ID of engagement to be modified
+
+        - state:  Desired state for engagement (START or PAUSE)
+
+        - envs:  If changing the state to START, list of environments to start
+        the engagement on, defaults to [PRODUCTION]
+
+      operationId: changeEngagementStateUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: stateChangeRequest
+          description: Engagement State Change Request
+          required: true
+          schema:
+            $ref: '#/definitions/EngagementStateChangeRequest'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/engagement/{engagementId}':
+    get:
+      tags:
+        - Engagement
+      summary: Get engagement
+      description: Retrieves the engagement with the given id
+      operationId: getEngagementUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: engagementId
+          in: path
+          description: Engagement id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Engagement'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    delete:
+      tags:
+        - Engagement
+      summary: deleteEngagement
+      operationId: deleteEngagementUsingDELETE
+      produces:
+        - application/json
+      parameters:
+        - name: engagementId
+          in: path
+          description: engagementId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/custom:
+    get:
+      tags:
+        - Custom events
+      summary: Get Custom events
+      description: >+
+        Retrieves custom events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | eventName |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/custom?filter=identifyId==ABC123 | Custom event matches
+        for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/custom?sort=-date | Matches sorted by date descending.
+        |
+
+      operationId: getCustomEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dateRangeEnd
+          in: query
+          description: Date range end
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: dateRangeEnd=12345678
+        - name: dateRangeStart
+          in: query
+          description: Date range start
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: dateRangeStart=12345678
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/CustomEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    post:
+      tags:
+        - Custom events
+      summary: Create custom event
+      description: Creates custom event with the given data
+      operationId: createCustomEventUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: customEvent
+          description: Custom event data
+          required: true
+          schema:
+            $ref: '#/definitions/CustomEvent'
+      responses:
+        '201':
+          description: Create custom events
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+        '500':
+          description: Internal error
+      deprecated: false
+  /v1/events/email:
+    get:
+      tags:
+        - EmailEvent
+      summary: Get Email events
+      description: >+
+        Retrieves Email events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | date |
+
+        | email |
+
+        | engagementId |
+
+        | emailTrackType |
+
+        | executionDate |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/email?filter=identifyId==ABC123 | Email event matches
+        for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/email?sort=-date | Matches sorted by date descending. |
+
+      operationId: getEmailEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EmailEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/engagementView:
+    get:
+      tags:
+        - EngagementViewEvent
+      summary: Get Engagement View events
+      description: >+
+        Retrieves Engagement View events.  Supports filtering, sorting and
+        paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | accountId |
+
+        | date |
+
+        | contentType |
+
+        | carouselState |
+
+        | guideState |
+
+        | surveyState |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/engagementView?filter=identifyId==ABC123 | Engagement
+        View event matches for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/engagementView?sort=-date | Matches sorted by date
+        descending. |
+
+      operationId: getEngagementViewEventsUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementAllTypesViewEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/feature_match:
+    get:
+      tags:
+        - FeatureMatchEvent
+      summary: Get feature match events
+      description: >+
+        Retrieves feature match events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | featureId  |
+
+        | identifyId (equality only) |
+
+        | accountId |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/feature_match?filter=identifyId==ABC123 | Feature
+        matches for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/feature_match?sort=-accountId | Matches sorted by
+        accountId descending. |
+
+      operationId: getFeatureMatchEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/FeatureMatchEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/formSubmit:
+    get:
+      tags:
+        - FormSubmitEvent
+      summary: Get formSubmit events
+      description: >+
+        Retrieves Form Submit events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | accountId |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/formSubmit?filter=identifyId==ABC123 | Form Submit
+        event matches for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/formSubmit?sort=-date | Matches sorted by date
+        descending. |
+
+      operationId: getFormSubmitEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/FormSubmitEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/identify:
+    get:
+      tags:
+        - IdentifyEvent
+      summary: Get Identify events
+      description: >+
+        Retrieves Identify events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | email |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/identify?filter=identifyId==ABC123 | Identify event
+        matches for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/identify?sort=-date | Matches sorted by date
+        descending. |
+
+      operationId: getIdentifyEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/IdentifyEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/lead:
+    get:
+      tags:
+        - LeadEvent
+      summary: Get Lead events
+      description: >+
+        Retrieves Lead events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | email |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/lead?filter=identifyId==ABC123 | Lead event matches for
+        user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/lead?sort=-date | Matches sorted by date descending. |
+
+      operationId: getLeadEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/LeadEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/pageView:
+    get:
+      tags:
+        - PageViewEvent
+      summary: Get Page View events
+      description: >+
+        Retrieves Page View events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | accountId |
+
+        | date |
+
+        | path |
+
+        | queryString |
+
+        | pageTitle |
+
+        | host |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/pageView?filter=identifyId==ABC123 | Identify event
+        matches for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/identify?sort=-date | Matches sorted by date
+        descending. |
+
+      operationId: getPageViewEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/PageViewEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/segment_match:
+    get:
+      tags:
+        - SegmentMatchEvent
+      summary: Get segment match events
+      description: >+
+        Retrieves segment match events.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | segmentId  |
+
+        | identifyId (equality only) |
+
+        | accountId |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/segment_match?filter=identifyId==ABC123 | Segment
+        matches for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/segment_match?sort=-accountId | Matches sorted by
+        accountId descending. |
+
+      operationId: getSegmentMatchEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SegmentMatchEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/events/session:
+    get:
+      tags:
+        - SessionEvent
+      summary: Get Session events
+      description: >+
+        Retrieves Session Initialized events.  Supports filtering, sorting and
+        paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | accountId |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/session?filter=identifyId==ABC123 | Session event
+        matches for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/events/session?sort=-date | Matches sorted by date descending.
+        |
+
+      operationId: getSessionInitializedEventsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date;accountId
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SessionInitializedEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/external_segment/metadata:
+    post:
+      tags:
+        - ExternalSegments
+      summary: createExternalSegment
+      operationId: createExternalSegmentUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: externalSegmentDto
+          description: externalSegmentDto
+          required: true
+          schema:
+            $ref: '#/definitions/ExternalSegmentDto'
+        - name: failIfExists
+          in: query
+          description: failIfExists
+          required: false
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ExternalSegmentDto'
+      deprecated: false
+    put:
+      tags:
+        - ExternalSegments
+      summary: updateExternalSegment
+      operationId: updateExternalSegmentUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: externalSegmentDto
+          description: externalSegmentDto
+          required: true
+          schema:
+            $ref: '#/definitions/ExternalSegmentDto'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ExternalSegmentDto'
+      deprecated: false
+  /v1/external_segment/update_membership:
+    post:
+      tags:
+        - ExternalSegments
+      summary: Update External Segment membership
+      description: Updates External Segment membership
+      operationId: updateMembershipUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: segmentPayload
+          description: Segment Payload
+          required: true
+          schema:
+            $ref: '#/definitions/SegmentPayload'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: 'Bad request, possible duplicate'
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/feature:
+    get:
+      tags:
+        - Feature
+      summary: Get features
+      description: >+
+        Retrieves features. Supports paging.
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/feature?pageSize=100 | Get first 100 features. |
+
+        | GET /v1/feature?pageSize=100&pageNumber=1 | Get next 100 features. |
+
+        | GET /v1/feature?propertyKey=AP-XXXXXXXX-2-1 | Get features for given
+        property key |
+
+      operationId: getFeaturesUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 200
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: propertyKey
+          in: query
+          description: Property Key
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/FeaturesPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/feature/adoption/{featureId}':
+    get:
+      tags:
+        - Feature
+      summary: Get feature adoption statistics
+      description: >-
+        Retrieves the feature adoption numbers for a specific feature and date
+        range. If dateRangeEnd is not specified, defaults to the current time. 
+        Max date range is 7 days.
+      operationId: getFeatureAdoptionUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: dateRangeEnd
+          in: query
+          description: Date range end
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeEnd=1674651841000
+        - name: dateRangeStart
+          in: query
+          description: Date range start
+          required: false
+          type: integer
+          format: int64
+          allowEmptyValue: false
+          x-example: dateRangeStart=1674651841000
+        - name: featureId
+          in: path
+          description: Feature id
+          required: true
+          type: string
+        - name: propertyKey
+          in: query
+          description: Property Key
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Feature'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/feature/backfill/{featureId}':
+    post:
+      tags:
+        - Feature
+      summary: Request backfill for feature
+      description: >
+        Requests that PX begin a backfill operation for the feature with the
+        given ID
+      operationId: backfillFeatureUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: featureId
+          in: path
+          description: Feature id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Forbidden
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/feature/{featureId}':
+    get:
+      tags:
+        - Feature
+      summary: Get feature
+      description: Retrieves the feature with the given id
+      operationId: getFeatureUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: featureId
+          in: path
+          description: Feature id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Feature'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - Feature
+      summary: Update feature
+      description: |+
+        Updates a feature with the given data
+         Does not support editing labels
+        Supported Fields:
+
+        | FieldName  |
+        | ----- |
+        | name |
+        | parentFeatureId (use "ROOT" to move to base of feature tree |
+
+      operationId: updateFeatureUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: feature
+          description: Feature data
+          required: true
+          schema:
+            $ref: '#/definitions/Feature'
+        - name: featureId
+          in: path
+          description: Feature id
+          required: true
+          type: string
+      responses:
+        '204':
+          description: Updated
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/kcbot:
+    get:
+      tags:
+        - KCbot
+      summary: Get KC Bots
+      description: >+
+        Fetch metadata for KC Bots from your PX Subscription. The API provides
+        you with the summary of basic information of each KC Bot that makes it
+        easy to work with specific data.
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/kcbot?pageSize=100 | Get first 100 KcBots. |
+
+        | GET /v1/kcbot?pageSize=100&pageNumber=1 | Get next 100 KcBots. |
+
+        | GET /v1/kcbot?productId=1234LPSWUBFW | Get KcBots of product
+        1234LPSWUBFW. |
+
+
+        <b>Important:</b> The default pageSize on list calls is 200. The
+        pageSize can be changed by adding a pageSize parameter to the URL (i.e.
+        /v1/kcbot?pageSize=100) with a max pageSize=500. 
+
+
+        To fetch a particular page, use the pageNumber parameter (zero based)
+
+      operationId: getKcBotsUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: 'Number of events per page range[1,500]'
+          required: false
+          type: integer
+          default: 200
+          format: int32
+          allowEmptyValue: false
+        - name: productId
+          in: query
+          description: Property Group
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/KnowledgeCenterExternalViewPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/kcbot/state:
+    put:
+      tags:
+        - KCbot
+      summary: Set KC state
+      description: >+
+        Pauses or starts a KC.
+
+        ### Parameters
+
+        - kcId: ID of kc to be modified
+
+        - state:  Desired state for kc (START or PAUSE)
+
+        - envs:  If changing the state to START, list of environments to start
+        the engagement on, defaults to [PRODUCTION]
+
+      operationId: changeEngagementStateUsingPUT_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: stateChangeRequest
+          description: KC State Change Request
+          required: true
+          schema:
+            $ref: '#/definitions/KCExternalStateChangeRequest'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/kcbot/{kcId}':
+    get:
+      tags:
+        - KCbot
+      summary: Get KC Bot
+      description: |+
+        Retrieves a KC Bot with the given Id
+
+        Examples: 
+
+        | URI   | Results  |
+        | ----- | -------- |
+        | GET /v1/kcbot/{kcId} | Get kc with id {kcId}. |
+
+      operationId: getKcBotWithIdUsingGET
+      produces:
+        - application/json
+      parameters:
+        - name: kcId
+          in: path
+          description: KC Bot id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/KnowledgeCenterExternalView'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/localization/export/articles:
+    get:
+      tags:
+        - Localization
+      summary: export XLIFF for articles
+      description: retrieve the xliff file by filters in zip
+      operationId: exportXLIFFForArticlesUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: query
+          description: id
+          required: true
+          type: string
+        - name: strategy
+          in: query
+          description: strategy
+          required: false
+          type: string
+        - name: translated
+          in: query
+          description: translated
+          required: false
+          type: boolean
+          default: true
+        - name: trgLang
+          in: query
+          description: trgLang
+          required: false
+          type: string
+        - name: version
+          in: query
+          description: version
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: article not found
+        '436':
+          description: article has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/export/content:
+    get:
+      tags:
+        - Localization
+      summary: export XLIFF
+      description: retrieve Content Library Entry xliff file by filters in zip
+      operationId: exportContentXLIFFUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: contentId
+          in: query
+          description: contentId
+          required: true
+          type: string
+        - name: strategy
+          in: query
+          description: strategy
+          required: false
+          type: string
+        - name: translated
+          in: query
+          description: translated
+          required: false
+          type: boolean
+          default: true
+        - name: trgLang
+          in: query
+          description: trgLang
+          required: false
+          type: string
+        - name: type
+          in: query
+          description: type
+          required: true
+          type: string
+          enum:
+            - GUIDE
+            - ANNOUNCEMENT
+            - SLIDER
+            - LINK
+            - BOOLEAN_SURVEY
+            - RATING_SURVEY
+            - NPS_SURVEY
+            - CES_SURVEY
+            - MULTIPLE_QUESTION_SURVEY
+            - ARTICLE
+            - KNOWLEDGE_BASE_ARTICLE
+            - CUSTOM_LINK
+            - FUNC_CALL
+            - COMMUNITY
+        - name: version
+          in: query
+          description: version
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: Entry not found
+        '436':
+          description: Entry has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/export/engagement:
+    get:
+      tags:
+        - Localization
+      summary: export XLIFF
+      description: retrieve the engagement xliff file by filters in zip
+      operationId: exportXLIFFForEngagementUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: draft
+          in: query
+          description: draft
+          required: false
+          type: boolean
+          default: false
+        - name: id
+          in: query
+          description: id
+          required: true
+          type: string
+        - name: strategy
+          in: query
+          description: strategy
+          required: false
+          type: string
+        - name: translated
+          in: query
+          description: translated
+          required: false
+          type: boolean
+          default: true
+        - name: trgLang
+          in: query
+          description: trgLang
+          required: false
+          type: string
+        - name: version
+          in: query
+          description: version
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: engagement not found
+        '436':
+          description: engagement has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/export/kcbot:
+    get:
+      tags:
+        - Localization
+      summary: export XLIFF
+      description: retrieve the kcbot xliff file by filters in zip
+      operationId: exportKCXLIFFUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: query
+          description: id
+          required: true
+          type: string
+        - name: kcVersion
+          in: query
+          description: kcVersion
+          required: false
+          type: string
+          default: v1
+        - name: strategy
+          in: query
+          description: strategy
+          required: false
+          type: string
+        - name: translated
+          in: query
+          description: translated
+          required: false
+          type: boolean
+          default: true
+        - name: trgLang
+          in: query
+          description: trgLang
+          required: false
+          type: string
+        - name: version
+          in: query
+          description: version
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: KCBot not found
+        '436':
+          description: KCBot has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/import/articles:
+    post:
+      tags:
+        - Localization
+      summary: import XLIFF
+      description: import XLIFF content into article translation
+      operationId: importXLIFFForArticlesUsingPOST
+      consumes:
+        - multipart/form-data
+      produces:
+        - '*/*'
+      parameters:
+        - name: file
+          in: formData
+          description: file
+          required: true
+          type: file
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang equals srcLang
+        '432':
+          description: xliff parser error
+        '433':
+          description: article id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/import/content:
+    post:
+      tags:
+        - Localization
+      summary: import XLIFF
+      description: import XLIFF content into Content Library Entry translation
+      operationId: importXLIFFForContentEntryUsingPOST
+      consumes:
+        - multipart/form-data
+      produces:
+        - '*/*'
+      parameters:
+        - name: contentId
+          in: query
+          description: contentId
+          required: true
+          type: string
+        - name: file
+          in: formData
+          description: file
+          required: true
+          type: file
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang equals srcLang
+        '432':
+          description: xliff parser error
+        '433':
+          description: content id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/import/engagement:
+    post:
+      tags:
+        - Localization
+      summary: import XLIFF
+      description: import XLIFF content into engagement translation
+      operationId: importXLIFFForEngagementUsingPOST
+      consumes:
+        - multipart/form-data
+      produces:
+        - '*/*'
+      parameters:
+        - name: file
+          in: formData
+          description: file
+          required: true
+          type: file
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang is empty
+        '432':
+          description: xliff parser error
+        '433':
+          description: engagement id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/import/kcbot:
+    post:
+      tags:
+        - Localization
+      summary: import XLIFF
+      description: import XLIFF content into kc translation
+      operationId: importXLIFFForKCUsingPOST
+      consumes:
+        - multipart/form-data
+      produces:
+        - '*/*'
+      parameters:
+        - name: file
+          in: formData
+          description: file
+          required: true
+          type: file
+        - name: kcVersion
+          in: query
+          description: kcVersion
+          required: false
+          type: string
+          default: v1
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang equals srcLang
+        '432':
+          description: xliff parser error
+        '433':
+          description: kc id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/segment:
+    get:
+      tags:
+        - Segment
+      summary: Get segments
+      description: |+
+        Retrieves segments. Supports paging.
+        Examples: 
+
+        | URI   | Results  |
+        | ----- | -------- |
+        | GET /v1/segment?pageSize=100 | Get first 100 segments. |
+        | GET /v1/segment?pageSize=100&pageNumber=1 | Get next 100 segments. |
+
+      operationId: getSegmentsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of segments per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 200
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SegmentsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/segment/{segmentId}':
+    get:
+      tags:
+        - Segment
+      summary: Get segment
+      description: Retrieves the segment with the given id
+      operationId: getSegmentUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: segmentId
+          in: path
+          description: Segment id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Segment'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/survey/responses:
+    get:
+      tags:
+        - SurveyResponse
+      summary: Get Survey responses
+      description: >+
+        Retrieves Survey responses.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field   |
+
+        | ----- |
+
+        | identifyId |
+
+        | accountId |
+
+        | date (as epoch milliseconds value)|
+
+        | contentType
+        (IN_APP_SURVEY_NPS,IN_APP_SURVEY_CES,IN_APP_SURVEY_BOOLEAN,IN_APP_SURVEY_RATING,
+        IN_APP_MULTIPLE_QUESTION_SURVEY)|
+
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/survey/responses?filter=identifyId==ABC123 | Survey responses
+        for user with identifyId of 'ABC123'. |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field   |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/survey/responses?sort=-date | Matches sorted by date
+        descending. |
+
+      operationId: getEngagementViewEventsUsingGET_2
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of responses per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=-date
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EngagementAllTypesViewEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/user/preferences:
+    post:
+      tags:
+        - UserPreferences
+      summary: Get user preferences (identifyId passed via request body)
+      description: |
+        If the field is not set - return null.
+      operationId: getUserPreferencesUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: userIdentifyId
+          description: User identify id
+          required: true
+          schema:
+            $ref: '#/definitions/UserIdentifyId'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserPreferences'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - UserPreferences
+      summary: Update user preferences (identifyId passed via request body)
+      description: >
+        The fields are optional so it’s possible to provide only those that need
+        to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.
+      operationId: updateUserPreferencesUsingPUT_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: updateUserPreferences
+          description: User preferences
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateUserPreferences'
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/user/preferences/{identifyId}':
+    get:
+      tags:
+        - UserPreferences
+      summary: Get user preferences
+      description: |
+        If the field is not set - return null.
+      operationId: getUserPreferencesUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: identifyId
+          in: path
+          description: User identify id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserPreferences'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - UserPreferences
+      summary: Update user preferences
+      description: >
+        The fields are optional so it’s possible to provide only those that need
+        to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.
+      operationId: updateUserPreferencesUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: identifyId
+          in: path
+          description: User identify id
+          required: true
+          type: string
+        - in: body
+          name: userPreferences
+          description: User preferences
+          required: true
+          schema:
+            $ref: '#/definitions/UserPreferences'
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/users:
+    get:
+      tags:
+        - Users
+      summary: Get users
+      description: >+
+        Retrieves users.  Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in
+        the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical
+        AND. 
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Operators
+
+        | Operator   | Meaning  |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | &lt;  | Less than |
+
+        | &lt;= | Less than or equal |
+
+        | &gt;  | Greater than |
+
+        | &gt;= | Greater than or equal |
+
+        | ~  | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/users?filter=lastName==Doe;firstName==John | Users with
+        firstName of 'John' AND lastName of 'Doe'. |
+
+        | GET
+        /v1/users?filter=firstName==John;lastName=Doe&filter=firstName==Bob |
+        Users with: (firstName of 'John' AND lastName of 'Doe') OR firstName of
+        'Bob'. |
+
+        | GET /v1/users?filter=location.cityName==Portland | Users with a city
+        of 'Portland'. |
+
+        | GET /v1/users?filter=customAttributes.internalId==12345 | Users with a
+        custom attribute of internalId equal to 12345'. |
+
+        | GET /v1/users?filter=lastInferredLocation.stateName==Georgia | Users
+        with a last inferred location.stateName value of Georgia'. |
+
+        | GET
+        /v1/users?filter=lastVisitedUserAgentData.userAgent.browserType==firefox
+        | Users with firefox as last visited browser across the products '. |
+
+        | GET
+        /v1/users?filter=lastVisitedUserAgentData.userAgent.browserType==firefox;lastVisitedUserAgentData.propertyKey==AP-8MF5LPSWUBFW-2
+        | Users with firefox as last visited browser for a particular
+        product(with property key AP-8MF5LPSWUBFW-2)'. |
+
+
+        #### Supported filter fields for last inferred location
+
+        | Field   |
+
+        | ----- |
+
+        | lastInferredLocation.countryCode |
+
+        | lastInferredLocation.countryName |
+
+        | lastInferredLocation.stateCode |
+
+        | lastInferredLocation.stateName |
+
+        | lastInferredLocation.city |
+
+        | lastInferredLocation.continent |
+
+        | lastInferredLocation.postalCode |
+
+        | lastInferredLocation.regionName |
+
+        | lastInferredLocation.timeZone |
+
+        | lastInferredLocation.street |
+
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names,
+        each with an optional dash to imply descending sort order.
+
+        Examples: 
+
+
+        | URI   | Results  |
+
+        | ----- | -------- |
+
+        | GET /v1/users?sort=lastName;firstName | Users sorted by firstName,
+        lastName, in ascending order. |
+
+        | GET /v1/users?sort=-createDate | Users sorted by createDate in
+        descending order. |
+
+      operationId: getUsersUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: filter
+          in: query
+          description: Filters
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of users per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 1000
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: scrollId
+          in: query
+          description: >-
+            Used for fetching subsequent pages after the first one.  Returned in
+            response.scrollId
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: sort
+          in: query
+          description: Sort fields
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: sort=+firstName;-createDate
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UsersPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    post:
+      tags:
+        - Users
+      summary: Create user
+      description: Creates a new user with the given data
+      operationId: createUserUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: user
+          description: User data
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '201':
+          description: Created User
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '400':
+          description: 'Bad request, possible duplicate'
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/users/delete:
+    delete:
+      tags:
+        - Users
+      summary: Delete user (identifyId passed via request body)
+      description: >+
+        Deletes a user with identifyId specified in delete body
+
+        This delete method is useful when the identify ID contains special
+        characters that make it impossible to use the delete method with the
+        identifyId in the request path.
+
+        ### HardDelete:
+
+        Default behavior is to mark the user as deleted, which will cause it to
+        be hidden in the application.
+
+        If a user with the same id is created or updated within the next 7
+        days, 
+
+        the previously deleted record will be revived with all of its associated
+        event history.
+
+        Conversely, if a user with the same ID is created after 7 days, a
+        totally new record with no event history will be created.
+
+        To disable the current record from being revived in the future, set the
+        hardDelete flag to true
+
+      operationId: deleteUserUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: deleteUser
+          description: deleteUser
+          required: true
+          schema:
+            $ref: '#/definitions/DeleteUser'
+        - name: hardDelete
+          in: query
+          description: 'Hard delete, do not revive if created/updated again in 7 day window'
+          required: false
+          type: boolean
+          default: false
+          allowEmptyValue: false
+          x-example: false
+      responses:
+        '200':
+          description: Deleted
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/users/denylist/{identifyId}':
+    get:
+      tags:
+        - Users
+      summary: Get user Denylist flag
+      description: Returns true if the user is marked as denied
+      operationId: getUserDenylistFlagUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: identifyId
+          in: path
+          description: User identify id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetUserDenylistFlagResponse'
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/GetUserDenylistFlagResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - Users
+      summary: Update user Denylist flag
+      description: >-
+        Setting the Denylist flag to true will make Gainsight PX to ignore all
+        of the user's events.
+      operationId: updateUserDenylistFlagUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: body
+          description: Denied flag value
+          required: true
+          schema:
+            $ref: '#/definitions/SetDenylistRequestBody'
+        - name: identifyId
+          in: path
+          description: User identify id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Updated
+        '204':
+          description: No Content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/users/update:
+    put:
+      tags:
+        - Users
+      summary: Update user (identifyId passed via request body)
+      description: >
+        Updates a user with identifyId specified in the request body.
+
+        This update method is useful when the identify ID contains special
+        characters that make it impossible to use the update method with the
+        identifyId in the request path.
+      operationId: updateUserUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: user
+          description: User data
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '204':
+          description: Updated
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v1/users/{identifyId}':
+    get:
+      tags:
+        - Users
+      summary: Get user
+      description: Retrieves the user with the given id
+      operationId: getUserUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: identifyId
+          in: path
+          description: User id (from identify call)
+          required: true
+          type: string
+          x-example: jdoe@example.com
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - Users
+      summary: Update user
+      description: Updates an user with the given data
+      operationId: updateUserUsingPUT_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: identifyId
+          in: path
+          description: User id (from identify call)
+          required: true
+          type: string
+        - in: body
+          name: user
+          description: User data
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '204':
+          description: Updated
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    delete:
+      tags:
+        - Users
+      summary: Delete user
+      description: >+
+        Deletes a user
+
+        ### HardDelete:
+
+        Default behavior is to mark the user as deleted, which will cause it to
+        be hidden in the application.
+
+        If a user with the same id is created or updated within the next 7
+        days, 
+
+        the previously deleted record will be revived with all of its associated
+        event history.
+
+        Conversely, if a user with the same ID is created after 7 days, a
+        totally new record with no event history will be created.
+
+        To disable the current record from being revived in the future, set the
+        hardDelete flag to true
+
+      operationId: deleteUserUsingDELETE_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: hardDelete
+          in: query
+          description: 'Hard delete, do not revive if created/updated again in 7 day window'
+          required: false
+          type: boolean
+          default: false
+          allowEmptyValue: false
+          x-example: false
+        - name: identifyId
+          in: path
+          description: User id (from identify call)
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Deleted
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v2/feature_ext:
+    get:
+      tags:
+        - Feature
+      summary: getFeaturesExtended
+      operationId: getFeaturesExtendedUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: pageNumber
+          in: query
+          description: Page number
+          required: false
+          type: integer
+          default: 0
+          format: int32
+          allowEmptyValue: false
+        - name: pageSize
+          in: query
+          description: Number of events per page
+          required: false
+          type: integer
+          default: 25
+          maximum: 200
+          exclusiveMaximum: false
+          minimum: 1
+          exclusiveMinimum: false
+          format: int32
+          allowEmptyValue: false
+        - name: propertyKey
+          in: query
+          description: Property Key
+          required: false
+          type: string
+          allowEmptyValue: false
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/FeatureWithDetailsPage'
+      deprecated: false
+  /v2/user/preferences:
+    post:
+      tags:
+        - UserPreferences V2
+      summary: >-
+        Get user preferences. This version of API includes extra property
+        'trackEmailAnalytics' in the response. (identifyId passed via request
+        body)
+      description: |
+        If the field is not set - return null.
+      operationId: getUserPreferencesUsingPOST_1
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: userIdentifyId
+          description: User identify id
+          required: true
+          schema:
+            $ref: '#/definitions/UserIdentifyId'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserPreferencesV2'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - UserPreferences V2
+      summary: >-
+        Update user preferences, this version of API can take
+        'trackEmailAnalytics' and 'identifyId' property in the payload.
+      description: >
+        The fields are optional so it’s possible to provide only those that need
+        to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.
+      operationId: updateUserPreferencesUsingPUT_3
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: updateUserPreferencesV2
+          description: User preferences
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateUserPreferencesV2'
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  '/v2/user/preferences/{identifyId}':
+    get:
+      tags:
+        - UserPreferences V2
+      summary: >-
+        Get user preferences. This version of API includes extra property
+        'trackEmailAnalytics' in the response.
+      description: |
+        If the field is not set - return null.
+      operationId: getUserPreferencesUsingGET_1
+      produces:
+        - '*/*'
+      parameters:
+        - name: identifyId
+          in: path
+          description: User identify id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserPreferencesV2'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+        - UserPreferences V2
+      summary: >-
+        Update user preferences, this version of API can take
+        'trackEmailAnalytics' property in the payload.
+      description: >
+        The fields are optional so it’s possible to provide only those that need
+        to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.
+      operationId: updateUserPreferencesUsingPUT_2
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: identifyId
+          in: path
+          description: User identify id
+          required: true
+          type: string
+        - in: body
+          name: userPreferences
+          description: User preferences
+          required: true
+          schema:
+            $ref: '#/definitions/UserPreferencesV2'
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+securityDefinitions:
+  X-APTRINSIC-API-KEY:
+    type: apiKey
+    name: Aptrinsic API Key
+    in: header
+definitions:
+  Account:
+    type: object
+    required:
+      - id
+      - name
+      - propertyKeys
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      trackedSubscriptionId:
+        type: string
+      sfdcId:
+        type: string
+      lastSeenDate:
+        type: integer
+        format: int64
+      dunsNumber:
+        type: string
+      industry:
+        type: string
+      numberOfEmployees:
+        type: integer
+        format: int32
+      sicCode:
+        type: string
+      website:
+        type: string
+      naicsCode:
+        type: string
+      plan:
+        type: string
+      location:
+        $ref: '#/definitions/Location'
+      numberOfUsers:
+        type: integer
+        format: int32
+        description: Number of users
+        readOnly: true
+      propertyKeys:
+        type: array
+        example:
+          - AP-XXXXXXXXXX-2
+        description: 'Aptrinsic Tag Key, at least one is required'
+        items:
+          type: string
+      createDate:
+        type: integer
+        format: int64
+        readOnly: true
+      lastModifiedDate:
+        type: integer
+        format: int64
+        readOnly: true
+      customAttributes:
+        type: object
+        description: Map of apiName to value
+      parentGroupId:
+        type: string
+        description: Id to group Accounts together
+      renewalDate:
+        type: integer
+        format: int64
+      healthScore:
+        type: integer
+        format: int32
+      gsId:
+        type: string
+      nps:
+        type: number
+        format: float
+      csm:
+        type: string
+    title: Account
+    description: Account object
+  AccountsPage:
+    type: object
+    properties:
+      accounts:
+        type: array
+        description: Array of accounts
+        readOnly: true
+        items:
+          $ref: '#/definitions/Account'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: AccountsPage
+  ArticleExternalView:
+    type: object
+    properties:
+      articleKCs:
+        type: array
+        items:
+          $ref: '#/definitions/ArticleKC'
+      articleName:
+        type: string
+      author:
+        type: string
+      createdDate:
+        type: integer
+        format: int64
+      defaultLanguage:
+        type: string
+      id:
+        type: string
+      languages:
+        type: array
+        items:
+          $ref: '#/definitions/LocalizationStatus'
+      modifiedBy:
+        $ref: '#/definitions/UserView'
+      modifiedDate:
+        type: integer
+        format: int64
+      productId:
+        type: string
+      productName:
+        type: string
+      releaseDate:
+        type: string
+        format: date-time
+      translationState:
+        type: string
+      viewType:
+        type: string
+    title: ArticleExternalView
+  ArticleExternalViewPage:
+    type: object
+    properties:
+      articleExternalViewList:
+        type: array
+        description: Array of Articles View
+        readOnly: true
+        items:
+          $ref: '#/definitions/ArticleExternalView'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: ArticleExternalViewPage
+  ArticleKC:
+    type: object
+    properties:
+      kcId:
+        type: string
+      kcName:
+        type: string
+    title: ArticleKC
+  AttributeMetadata:
+    type: object
+    required:
+      - apiName
+      - createdDate
+      - id
+      - internalName
+      - modifiedDate
+      - name
+      - origin
+      - state
+      - type
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      apiName:
+        type: string
+      internalName:
+        type: string
+      description:
+        type: string
+      type:
+        type: string
+        enum:
+          - STRING
+          - DATE_TIME
+          - BOOLEAN
+          - NUMBER
+      state:
+        type: string
+        enum:
+          - ENABLED
+          - DISABLED
+          - DELETED
+      origin:
+        type: string
+        enum:
+          - CUSTOM
+          - DEFAULT
+      createdDate:
+        type: integer
+        format: int64
+        readOnly: true
+      modifiedDate:
+        type: integer
+        format: int64
+        readOnly: true
+      defaultValue:
+        type: string
+    title: AttributeMetadata
+    description: Attribute Metadata
+  ChannelMetric:
+    type: object
+    properties:
+      groupId:
+        type: string
+      channel:
+        type: integer
+        format: int64
+      environment:
+        type: integer
+        format: int32
+      firstSeenDate:
+        type: integer
+        format: int64
+      lastSeenDate:
+        type: integer
+        format: int64
+    title: ChannelMetric
+    description: Channel  metric object
+  CompletableFuture«ResponseEntity«EngagementAllTypesViewEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«EngagementAllTypesViewEventsPage»»
+  CompletableFuture«ResponseEntity«FeatureMatchEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«FeatureMatchEventsPage»»
+  CompletableFuture«ResponseEntity«FormSubmitEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«FormSubmitEventsPage»»
+  CompletableFuture«ResponseEntity«IdentifyEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«IdentifyEventsPage»»
+  CompletableFuture«ResponseEntity«LeadEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«LeadEventsPage»»
+  CompletableFuture«ResponseEntity«PageViewEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«PageViewEventsPage»»
+  CompletableFuture«ResponseEntity«SegmentMatchEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«SegmentMatchEventsPage»»
+  CompletableFuture«ResponseEntity«SegmentsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«SegmentsPage»»
+  CompletableFuture«ResponseEntity«SessionInitializedEventsPage»»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity«SessionInitializedEventsPage»»
+  CompletableFuture«ResponseEntity»:
+    type: object
+    properties:
+      cancelled:
+        type: boolean
+      completedExceptionally:
+        type: boolean
+      done:
+        type: boolean
+      numberOfDependents:
+        type: integer
+        format: int32
+    title: CompletableFuture«ResponseEntity»
+  Coordinates:
+    type: object
+    properties:
+      latitude:
+        type: number
+        format: double
+        example: 37.567147
+      longitude:
+        type: number
+        format: double
+        example: -122.324211
+    title: Coordinates
+    description: Coordinates object
+  CustomEvent:
+    type: object
+    required:
+      - eventName
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      eventName:
+        type: string
+      attributes:
+        type: object
+      url:
+        type: string
+      referrer:
+        type: string
+      remoteHost:
+        type: string
+    title: CustomEvent
+    description: Custom Event object
+  CustomEventMetadata:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: Name of custom event
+      properties:
+        type: array
+        items:
+          type: string
+    title: CustomEventMetadata
+    description: Custom event metadata
+  CustomEventsBatchError:
+    type: object
+    properties:
+      index:
+        type: integer
+        format: int32
+      message:
+        type: string
+    title: CustomEventsBatchError
+  CustomEventsPage:
+    type: object
+    properties:
+      customEvents:
+        type: array
+        description: Array of custom events
+        readOnly: true
+        items:
+          $ref: '#/definitions/CustomEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: CustomEventsPage
+  DeleteUser:
+    type: object
+    required:
+      - identifyId
+    properties:
+      identifyId:
+        type: string
+    title: DeleteUser
+    description: Delete User object
+  EmailEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      globalContext:
+        type: object
+      engagementId:
+        type: string
+      email:
+        type: string
+      emailTrackType:
+        type: string
+        enum:
+          - EMPTY_EMAIL_TRACK_TYPE
+          - EMAIL_TRACK_BOUNCE
+          - EMAIL_TRACK_DEFERRED
+          - EMAIL_TRACK_DELIVERED
+          - EMAIL_TRACK_DROPPED
+          - EMAIL_TRACK_PROCESSED
+          - EMAIL_TRACK_OPEN
+          - EMAIL_TRACK_CLICK
+          - EMAIL_TRACK_UNSUBSCRIBE
+      status:
+        type: string
+      reason:
+        type: string
+      bounceType:
+        type: string
+        enum:
+          - EMPTY_BOUNCE_TYPE
+          - DELIVER_BOUNCE
+          - DELIVER_BLOCKED
+          - DELIVER_EXIPERED
+      mtaResponse:
+        type: string
+      attempt:
+        type: string
+      linkIndex:
+        type: integer
+        format: int32
+      linkType:
+        type: string
+        enum:
+          - EMPTY_LINK_TYPE
+          - HTML_LINK_TYPE
+          - HEADER_LINK_TYPE
+          - TEXT_LINK_TYPE
+      linkUrl:
+        type: string
+      inferredLocation:
+        $ref: '#/definitions/Location'
+    title: EmailEvent
+    description: Email Event object
+  EmailEventsPage:
+    type: object
+    properties:
+      results:
+        type: array
+        description: Array of result records
+        readOnly: true
+        items:
+          $ref: '#/definitions/EmailEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: EmailEventsPage
+  Engagement:
+    type: object
+    required:
+      - envs
+      - id
+      - name
+      - propertyKeys
+      - state
+      - type
+    properties:
+      defaultLanguage:
+        type: string
+      id:
+        type: string
+      languages:
+        type: array
+        items:
+          $ref: '#/definitions/LocalizationStatus'
+      translationState:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      type:
+        type: string
+        enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+      state:
+        type: string
+        enum:
+          - IN_PROGRESS
+          - STARTED
+          - PAUSED
+          - FAILED
+          - EDITING
+          - COMPLETED
+      propertyKeys:
+        type: array
+        example:
+          - AP-XXXXXXXXXX-2
+        description: 'Aptrinsic Tag Key, at least one is required'
+        items:
+          type: string
+      envs:
+        type: array
+        example:
+          - Production
+        description: A list of environments
+        items:
+          type: string
+    title: Engagement
+    description: Engagement object
+  EngagementAllTypesViewEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      engagementId:
+        type: string
+      engagementTrackType:
+        type: string
+        enum:
+          - ENGAGEMENT_VIEW
+          - ENGAGEMENT_CLICK
+      contentId:
+        type: string
+      contentType:
+        type: string
+        enum:
+          - IN_APP_DIALOG
+          - IN_APP_GUIDE
+          - IN_APP_CAROUSEL
+          - IN_APP_SURVEY_NPS
+          - IN_APP_SURVEY_CES
+          - IN_APP_SURVEY_BOOLEAN
+          - IN_APP_SURVEY_RATING
+      executionDate:
+        type: integer
+        format: int64
+        description: >-
+          Will be the same on all events related to a single engagement view,
+          e.g. separate answers for multi-question surveys
+      executionId:
+        type: string
+        description: >-
+          Will be the same on all events related to a single engagement view,
+          e.g. separate answers for multi-question surveys
+      viewEventId:
+        type: string
+      carouselState:
+        type: string
+        enum:
+          - VIEWED
+          - COMPLETED
+      slideId:
+        type: string
+      sequenceNumber:
+        type: integer
+        format: int64
+      linkUrl:
+        type: string
+      guideState:
+        type: string
+        enum:
+          - VIEWED
+          - COMPLETED
+      stepId:
+        type: string
+      surveyState:
+        type: string
+        enum:
+          - VIEWED
+          - COMPLETED
+      contactMeAllowed:
+        type: boolean
+      score:
+        type: integer
+        format: int32
+      comment:
+        type: string
+      questionType:
+        type: string
+      selectionIds:
+        type: array
+        items:
+          type: string
+      path:
+        type: string
+    title: EngagementAllTypesViewEvent
+    description: Engagement View Event object
+  EngagementAllTypesViewEventsPage:
+    type: object
+    properties:
+      results:
+        type: array
+        description: Array of result records
+        readOnly: true
+        items:
+          $ref: '#/definitions/EngagementAllTypesViewEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: EngagementAllTypesViewEventsPage
+  EngagementCollision:
+    type: object
+    properties:
+      engagementId:
+        type: string
+      engagementName:
+        type: string
+      propertyKey:
+        type: string
+        example:
+          - AP-XXXXXXXXXX-2
+        description: PX Product Tag Key
+      engagementType:
+        type: string
+        enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+      otherQualifiedEngagementNames:
+        type: array
+        description: Names of other qualified engagements
+        items:
+          type: string
+      views:
+        type: integer
+        format: int64
+        description: Number of views
+      priorityRule:
+        type: string
+        description: Priority rule
+      triggeredDate:
+        type: integer
+        format: int64
+        description: 'Timestamp of collision, in epoch milliseconds'
+      viewedByUser:
+        type: string
+        description: User id
+    title: EngagementCollision
+    description: Engagement Error Summary
+  EngagementCollisionPage:
+    type: object
+    properties:
+      engagementCollisions:
+        type: array
+        description: Array of engagement collisions
+        readOnly: true
+        items:
+          $ref: '#/definitions/EngagementCollision'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: EngagementCollisionPage
+  EngagementEnvChangeRequest:
+    type: object
+    required:
+      - engagementId
+      - env
+    properties:
+      engagementId:
+        type: string
+        description: ID of engagement to modify
+      env:
+        type: string
+        enum:
+          - Production
+          - Stage
+          - QA
+          - Integration
+    title: EngagementEnvChangeRequest
+    description: Engagement state change request
+  EngagementEnvChangeResponse:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: string
+      status:
+        type: integer
+        format: int32
+    title: EngagementEnvChangeResponse
+    description: Engagement environment change response
+  EngagementEnvironmentsChangeRequest:
+    type: object
+    required:
+      - engagementId
+      - envs
+    properties:
+      engagementId:
+        type: string
+        description: ID of engagement to modify
+      envs:
+        type: array
+        description: Collection of environments
+        items:
+          type: string
+          enum:
+            - PRODUCTION
+            - INTEGRATION
+            - QA
+            - STAGE
+    title: EngagementEnvironmentsChangeRequest
+    description: Engagement environments change request
+  EngagementEnvironmentsChangeResponse:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: string
+      status:
+        type: integer
+        format: int32
+    title: EngagementEnvironmentsChangeResponse
+    description: Engagement environments change response
+  EngagementErrorDetails:
+    type: object
+    properties:
+      engagementId:
+        type: string
+      stepName:
+        type: string
+      stepNumber:
+        type: integer
+        format: int32
+      errorCount:
+        type: integer
+        format: int64
+        description: Number of errors
+      errorType:
+        type: string
+        description: Error type
+      value:
+        type: string
+        description: Error details
+      browser:
+        type: string
+        description: Type of browser
+    title: EngagementErrorDetails
+    description: Engagement Error Details
+  EngagementErrorDetailsPage:
+    type: object
+    properties:
+      engagementErrorDetails:
+        type: array
+        description: Array of engagement error details
+        readOnly: true
+        items:
+          $ref: '#/definitions/EngagementErrorDetails'
+    title: EngagementErrorDetailsPage
+  EngagementErrorSummary:
+    type: object
+    properties:
+      engagementId:
+        type: string
+      engagementName:
+        type: string
+      propertyKey:
+        type: string
+        example:
+          - AP-XXXXXXXXXX-2
+        description: PX Product Tag Key
+      engagementType:
+        type: string
+        enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+      firstOccurrenceDate:
+        type: integer
+        format: int64
+        description: 'Timestamp of first error, in epoch milliseconds'
+      lastOccurrenceDate:
+        type: integer
+        format: int64
+        description: 'Timestamp of last error, in epoch milliseconds'
+      views:
+        type: integer
+        format: int64
+        description: Number of views of engagement
+      ratio:
+        type: number
+        format: double
+        description: Ratio of errors to views
+      errorCount:
+        type: integer
+        format: int64
+        description: Number of errors
+    title: EngagementErrorSummary
+    description: Engagement Error Summary
+  EngagementErrorSummaryPage:
+    type: object
+    properties:
+      engagementErrorSummaries:
+        type: array
+        description: Array of engagement error summaries
+        readOnly: true
+        items:
+          $ref: '#/definitions/EngagementErrorSummary'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: EngagementErrorSummaryPage
+  EngagementStateChangeRequest:
+    type: object
+    required:
+      - engagementId
+      - state
+    properties:
+      engagementId:
+        type: string
+        description: ID of engagement to modify
+      state:
+        type: string
+        description: New state for given engagement
+        enum:
+          - START
+          - PAUSE
+      envs:
+        type: array
+        description: >-
+          Collection of environments on which to change the state. Defaults to
+          [PRODUCTION]
+        items:
+          type: string
+          enum:
+            - PRODUCTION
+            - INTEGRATION
+            - QA
+            - STAGE
+    title: EngagementStateChangeRequest
+    description: Engagement state change request
+  EngagementWithCustomEvents:
+    type: object
+    required:
+      - customEvents
+      - envs
+      - id
+      - name
+      - propertyKeys
+      - state
+      - type
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      type:
+        type: string
+        enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+      state:
+        type: string
+        enum:
+          - IN_PROGRESS
+          - STARTED
+          - PAUSED
+          - FAILED
+          - EDITING
+          - COMPLETED
+      propertyKeys:
+        type: array
+        example:
+          - AP-XXXXXXXXXX-2
+        description: 'Aptrinsic Tag Key, at least one is required'
+        items:
+          type: string
+      envs:
+        type: array
+        example:
+          - Production
+        description: A list of environments
+        items:
+          type: string
+      customEvents:
+        type: array
+        description: >-
+          A list of custom events that are referenced in the audience rules,
+          also includes events indirectly referenced via a feature mapped to a
+          custom event.
+        items:
+          $ref: '#/definitions/CustomEventMetadata'
+    title: EngagementWithCustomEvents
+    description: Engagement object
+  EngagementsPage:
+    type: object
+    properties:
+      engagements:
+        type: array
+        description: Array of engagements
+        readOnly: true
+        items:
+          $ref: '#/definitions/Engagement'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: EngagementsPage
+  EngagementsWithCustomEventsPage:
+    type: object
+    properties:
+      engagements:
+        type: array
+        description: Array of engagements
+        readOnly: true
+        items:
+          $ref: '#/definitions/EngagementWithCustomEvents'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: EngagementsWithCustomEventsPage
+  ExternalSegmentDto:
+    type: object
+    properties:
+      id:
+        type: string
+      externalId:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+    title: ExternalSegmentDto
+  Feature:
+    type: object
+    required:
+      - id
+      - name
+      - propertyKey
+      - type
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+        enum:
+          - FEATURE
+          - MODULE
+      parentFeatureId:
+        type: string
+      propertyKey:
+        type: string
+      status:
+        type: string
+        enum:
+          - ACTIVATED
+          - DELETED
+      featureLabels:
+        type: array
+        description: Array of labels associated with the feature
+        items:
+          $ref: '#/definitions/FeatureLabel'
+    title: Feature
+    description: Feature object
+  FeatureAdoption:
+    type: object
+    required:
+      - dateRangeEnd
+      - dateRangeStart
+      - featureId
+      - featureName
+      - propertyKey
+      - totalEventCount
+      - uniqueAccountCount
+      - uniqueUserCount
+    properties:
+      featureId:
+        type: string
+      featureName:
+        type: string
+      dateRangeStart:
+        type: integer
+        format: int64
+      dateRangeEnd:
+        type: integer
+        format: int64
+      propertyKey:
+        type: string
+      totalEventCount:
+        type: integer
+        format: int64
+      uniqueUserCount:
+        type: integer
+        format: int64
+      uniqueAccountCount:
+        type: integer
+        format: int64
+    title: FeatureAdoption
+    description: Feature Adoption
+  FeatureLabel:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      color:
+        type: string
+    title: FeatureLabel
+    description: Feature label object
+  FeatureMatchEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      featureId:
+        type: string
+    title: FeatureMatchEvent
+    description: Feature Match Event
+  FeatureMatchEventsPage:
+    type: object
+    properties:
+      featureMatchEvents:
+        type: array
+        description: Array of feature matches
+        readOnly: true
+        items:
+          $ref: '#/definitions/FeatureMatchEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: FeatureMatchEventsPage
+  FeatureWithDetails:
+    type: object
+    required:
+      - id
+      - name
+      - propertyKey
+      - type
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+        enum:
+          - FEATURE
+          - MODULE
+      parentFeatureId:
+        type: string
+      propertyKey:
+        type: string
+      status:
+        type: string
+        enum:
+          - ACTIVATED
+          - DELETED
+      mappedElements:
+        type: array
+        items:
+          $ref: '#/definitions/MappedElement'
+      featureLabels:
+        type: array
+        description: Array of labels associated with the feature
+        items:
+          $ref: '#/definitions/FeatureLabel'
+    title: FeatureWithDetails
+    description: Detailed Feature object
+  FeatureWithDetailsPage:
+    type: object
+    properties:
+      features:
+        type: array
+        description: Array of features
+        readOnly: true
+        items:
+          $ref: '#/definitions/FeatureWithDetails'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: FeatureWithDetailsPage
+  FeaturesPage:
+    type: object
+    properties:
+      features:
+        type: array
+        description: Array of features
+        readOnly: true
+        items:
+          $ref: '#/definitions/Feature'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: FeaturesPage
+  FormSubmitEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      scheme:
+        type: string
+      host:
+        type: string
+      path:
+        type: string
+      queryString:
+        type: string
+      hash:
+        type: string
+      queryParams:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+      remoteHost:
+        type: string
+      referrer:
+        type: string
+      screenHeight:
+        type: integer
+        format: int32
+      screenWidth:
+        type: integer
+        format: int32
+      languages:
+        type: array
+        items:
+          type: string
+      pageTitle:
+        type: string
+      formData:
+        type: object
+        additionalProperties:
+          type: string
+    title: FormSubmitEvent
+    description: Form Submit Event object
+  FormSubmitEventsPage:
+    type: object
+    properties:
+      results:
+        type: array
+        description: Array of result records
+        readOnly: true
+        items:
+          $ref: '#/definitions/FormSubmitEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: FormSubmitEventsPage
+  GetUserDenylistFlagResponse:
+    type: object
+    properties:
+      denied:
+        type: boolean
+      identifyId:
+        type: string
+    title: GetUserDenylistFlagResponse
+    description: User Denylist Flag Response
+  IdentifyEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      email:
+        type: string
+    title: IdentifyEvent
+    description: Identify Event object
+  IdentifyEventsPage:
+    type: object
+    properties:
+      identifyEvents:
+        type: array
+        description: Array of identify events
+        readOnly: true
+        items:
+          $ref: '#/definitions/IdentifyEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: IdentifyEventsPage
+  IntegrationStatus:
+    type: object
+    properties:
+      integrationSyncName:
+        type: string
+      currentStatus:
+        type: string
+        enum:
+          - UP
+          - DOWN
+      lastSuccessfulDate:
+        type: integer
+        format: int64
+        description: 'Date of last successful run, in epoch milliseconds'
+      lastError:
+        type: string
+      numberOfRecordsProcessed:
+        type: integer
+        format: int64
+        description: Number of records processed during the last run
+    title: IntegrationStatus
+    description: Integration Status Summary
+  IntegrationStatusPage:
+    type: object
+    properties:
+      integrationStatuses:
+        type: array
+        description: Array of integration status records
+        readOnly: true
+        items:
+          $ref: '#/definitions/IntegrationStatus'
+    title: IntegrationStatusPage
+  KCExternalStateChangeRequest:
+    type: object
+    required:
+      - kcId
+      - state
+    properties:
+      kcId:
+        type: string
+        description: ID of kc to modify
+      state:
+        type: string
+        description: New state for given kc's
+        enum:
+          - START
+          - PAUSE
+      envs:
+        type: array
+        description: >-
+          Collection of environments on which to change the state. Defaults to
+          [PRODUCTION]
+        items:
+          type: string
+          enum:
+            - PRODUCTION
+            - INTEGRATION
+            - QA
+            - STAGE
+    title: KCExternalStateChangeRequest
+    description: Engagement state change request
+  KnowledgeCenterExternalView:
+    type: object
+    properties:
+      createdBy:
+        $ref: '#/definitions/UserView'
+      createdDate:
+        type: integer
+        format: int64
+      defaultLanguage:
+        type: string
+      description:
+        type: string
+      environments:
+        type: array
+        items:
+          type: string
+      id:
+        type: string
+      languages:
+        type: array
+        items:
+          $ref: '#/definitions/LocalizationStatus'
+      modifiedBy:
+        $ref: '#/definitions/UserView'
+      modifiedDate:
+        type: integer
+        format: int64
+      name:
+        type: string
+      priority:
+        type: integer
+        format: int32
+      productId:
+        type: string
+      productName:
+        type: string
+      status:
+        type: string
+    title: KnowledgeCenterExternalView
+  KnowledgeCenterExternalViewPage:
+    type: object
+    properties:
+      kcList:
+        type: array
+        description: Array of KC View
+        readOnly: true
+        items:
+          $ref: '#/definitions/KnowledgeCenterExternalView'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: KnowledgeCenterExternalViewPage
+  LeadEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      email:
+        type: string
+    title: LeadEvent
+    description: Lead Event object
+  LeadEventsPage:
+    type: object
+    properties:
+      results:
+        type: array
+        description: Array of result records
+        readOnly: true
+        items:
+          $ref: '#/definitions/LeadEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: LeadEventsPage
+  LocalizationStatus:
+    type: object
+    properties:
+      languageCode:
+        type: string
+      translated:
+        type: boolean
+    title: LocalizationStatus
+  Location:
+    type: object
+    properties:
+      countryName:
+        type: string
+        example: United States
+      countryCode:
+        type: string
+        example: USA
+        description: See ISO 3166
+      stateName:
+        type: string
+        example: California
+      stateCode:
+        type: string
+        example: CA
+        description: See ISO 3166
+      city:
+        type: string
+        example: San Mateo
+      street:
+        type: string
+        example: 101 Broadway
+      postalCode:
+        type: string
+        example: 94010
+      continent:
+        type: string
+        example: NA
+        description: See ISO 3166
+      regionName:
+        type: string
+        description: See ISO 3166-2
+      timeZone:
+        type: string
+      coordinates:
+        $ref: '#/definitions/Coordinates'
+    title: Location
+    description: Location object
+  MappedElement:
+    type: object
+    required:
+      - eventType
+      - id
+      - name
+      - state
+      - type
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      eventType:
+        type: string
+        enum:
+          - CLICK
+          - LINK
+          - FORM
+          - PAGE_VIEW
+          - CUSTOM_EVENT
+          - SCREEN
+      state:
+        type: string
+        enum:
+          - ENABLED
+          - DISABLED
+          - DELETED
+      type:
+        type: string
+        enum:
+          - EVENT
+          - TAG
+          - URL
+          - CUSTOM_EVENT
+          - TEXT_ELEMENT
+          - SCREEN
+    title: MappedElement
+    description: Mapped Element
+  PageViewEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      scheme:
+        type: string
+      host:
+        type: string
+      path:
+        type: string
+      queryString:
+        type: string
+      hash:
+        type: string
+      queryParams:
+        type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+      remoteHost:
+        type: string
+      referrer:
+        type: string
+      screenHeight:
+        type: integer
+        format: int32
+      screenWidth:
+        type: integer
+        format: int32
+      languages:
+        type: array
+        items:
+          type: string
+      pageTitle:
+        type: string
+    title: PageViewEvent
+    description: Page Event object
+  PageViewEventsPage:
+    type: object
+    properties:
+      results:
+        type: array
+        description: Array of result records
+        readOnly: true
+        items:
+          $ref: '#/definitions/PageViewEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: PageViewEventsPage
+  ProductDetail:
+    type: object
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      productKeys:
+        type: array
+        items:
+          $ref: '#/definitions/ProductKeyDetails'
+    title: ProductDetail
+    description: Product Detail
+  ProductKeyDetails:
+    type: object
+    properties:
+      channel:
+        type: string
+      productKey:
+        type: string
+      url:
+        type: string
+    title: ProductKeyDetails
+    description: Product Key Detail
+  ResponseEntity:
+    type: object
+    properties:
+      body:
+        type: object
+      statusCode:
+        type: string
+        enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+      statusCodeValue:
+        type: integer
+        format: int32
+    title: ResponseEntity
+  Segment:
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    title: Segment
+    description: Segment object
+  SegmentAction:
+    type: object
+    required:
+      - identities
+      - lastQualificationTime
+      - segmentId
+    properties:
+      identities:
+        type: array
+        description: List of user identity IDs
+        items:
+          type: string
+      lastQualificationTime:
+        type: string
+        example: '2023-01-12T00:25:15.269332Z'
+        description: Last qualification time in ISO 8601 format
+      segmentId:
+        type: string
+        example: 21d7ef5a-77ac-43d0-80c5-0ce1871a5ec7
+        description: Segment ID
+    title: SegmentAction
+    description: 'Segment action containing segment ID, qualification time, and identities'
+  SegmentMatchEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      segmentId:
+        type: string
+    title: SegmentMatchEvent
+    description: Segment Match Event
+  SegmentMatchEventsPage:
+    type: object
+    properties:
+      featureMatchEvents:
+        type: array
+        description: Array of segment matches
+        readOnly: true
+        items:
+          $ref: '#/definitions/SegmentMatchEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: SegmentMatchEventsPage
+  SegmentPayload:
+    type: object
+    required:
+      - add
+      - remove
+    properties:
+      add:
+        type: array
+        description: List of segments to add
+        items:
+          $ref: '#/definitions/SegmentAction'
+      identityType:
+        type: string
+        example: IDENTIFY_ID
+        description: Identity type for all identities
+        enum:
+          - IDENTIFY_ID
+          - GLOBAL_ID
+      remove:
+        type: array
+        description: List of segments to remove
+        items:
+          $ref: '#/definitions/SegmentAction'
+    title: SegmentPayload
+    description: Payload for adding or removing segment identities
+  SegmentsPage:
+    type: object
+    properties:
+      segments:
+        type: array
+        description: Array of segments
+        readOnly: true
+        items:
+          $ref: '#/definitions/Segment'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: SegmentsPage
+  SessionInitializedEvent:
+    type: object
+    required:
+      - identifyId
+      - propertyKey
+      - userType
+    properties:
+      eventId:
+        type: string
+      identifyId:
+        type: string
+      propertyKey:
+        type: string
+      date:
+        type: integer
+        format: int64
+      eventType:
+        type: string
+      sessionId:
+        type: string
+      userType:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      accountId:
+        type: string
+      globalContext:
+        type: object
+      remoteHost:
+        type: string
+      inferredLocation:
+        $ref: '#/definitions/Location'
+    title: SessionInitializedEvent
+    description: Session Initialized Event object
+  SessionInitializedEventsPage:
+    type: object
+    properties:
+      sessionInitializedEvents:
+        type: array
+        description: Array of events
+        readOnly: true
+        items:
+          $ref: '#/definitions/SessionInitializedEvent'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: SessionInitializedEventsPage
+  SetDenylistRequestBody:
+    type: object
+    properties:
+      denied:
+        type: boolean
+    title: SetDenylistRequestBody
+    description: User Blacklist Flag
+  SubscriptionDetail:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      iconUrl:
+        type: string
+      timeZone:
+        type: string
+      website:
+        type: string
+      description:
+        type: string
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/ProductDetail'
+    title: SubscriptionDetail
+    description: Subscription Detail
+  SubscriptionUser:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+      lastSuccessfulLoginTimestamp:
+        type: integer
+        format: int64
+    title: SubscriptionUser
+    description: Subscription Detail
+  SubscriptionUsersPage:
+    type: object
+    properties:
+      subscriptionUsers:
+        type: array
+        description: Array of subscription users
+        readOnly: true
+        items:
+          $ref: '#/definitions/SubscriptionUser'
+      pageNumber:
+        type: integer
+        format: int32
+        description: Page number
+        readOnly: true
+      isLastPage:
+        type: boolean
+        description: True if no more records available on next page
+        readOnly: true
+    title: SubscriptionUsersPage
+  UpdateUserPreferences:
+    type: object
+    required:
+      - identifyId
+    properties:
+      guidedTours:
+        type: boolean
+      identifyId:
+        type: string
+        readOnly: true
+      onboardingBot:
+        type: boolean
+      productUpdates:
+        type: boolean
+      surveys:
+        type: boolean
+      trackUsage:
+        type: boolean
+    title: UpdateUserPreferences
+    description: Update user preferences
+  UpdateUserPreferencesV2:
+    type: object
+    required:
+      - identifyId
+    properties:
+      guidedTours:
+        type: boolean
+      identifyId:
+        type: string
+        readOnly: true
+      onboardingBot:
+        type: boolean
+      productUpdates:
+        type: boolean
+      surveys:
+        type: boolean
+      trackEmailAnalytics:
+        type: boolean
+      trackUsage:
+        type: boolean
+    title: UpdateUserPreferencesV2
+    description: Update user preferences V2
+  User:
+    type: object
+    required:
+      - identifyId
+      - propertyKeys
+    properties:
+      aptrinsicId:
+        type: string
+        readOnly: true
+      identifyId:
+        type: string
+      type:
+        type: string
+        enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+      gender:
+        type: string
+        enum:
+          - MALE
+          - FEMALE
+          - OTHER
+          - EMPTY_GENDER
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      lastSeenDate:
+        type: integer
+        format: int64
+        readOnly: true
+      signUpDate:
+        type: integer
+        format: int64
+      firstVisitDate:
+        type: integer
+        format: int64
+      title:
+        type: string
+      phone:
+        type: string
+      score:
+        type: integer
+        format: int64
+      role:
+        type: string
+      subscriptionId:
+        type: string
+      accountId:
+        type: string
+      numberOfVisits:
+        type: integer
+        format: int32
+        readOnly: true
+      location:
+        $ref: '#/definitions/Location'
+      propertyKeys:
+        type: array
+        example:
+          - AP-XXXXXXXXXX-2
+        description: 'Aptrinsic Tag Key, at least one is required'
+        items:
+          type: string
+      createDate:
+        type: integer
+        format: int64
+        readOnly: true
+      lastModifiedDate:
+        type: integer
+        format: int64
+        readOnly: true
+      customAttributes:
+        type: object
+        description: Map of apiName to value
+      globalUnsubscribe:
+        type: boolean
+      sfdcContactId:
+        type: string
+      channelMetricList:
+        type: array
+        items:
+          $ref: '#/definitions/ChannelMetric'
+      lastVisitedUserAgentData:
+        type: array
+        items:
+          $ref: '#/definitions/UserAgentByProduct'
+      id:
+        type: string
+        description: 'Synonym for identifyId, output only, not filterable'
+        readOnly: true
+      lastInferredLocation:
+        description: Location inferred from IP address of last session
+        readOnly: true
+        $ref: '#/definitions/Location'
+      globalId:
+        type: string
+        description: 'Global user ID, only applicable for workspace-enabled subscriptions'
+        readOnly: true
+    title: User
+    description: User object
+  UserAgent:
+    type: object
+    properties:
+      rawUserAgent:
+        type: string
+      device:
+        type: string
+      platformType:
+        type: string
+      platformVersion:
+        type: string
+      browserType:
+        type: string
+      browserVersion:
+        type: string
+    title: UserAgent
+    description: User Agent object
+  UserAgentByProduct:
+    type: object
+    properties:
+      propertyKey:
+        type: string
+      userAgent:
+        $ref: '#/definitions/UserAgent'
+    title: UserAgentByProduct
+    description: User Agent data by product
+  UserIdentifyId:
+    type: object
+    required:
+      - identifyId
+    properties:
+      identifyId:
+        type: string
+    title: UserIdentifyId
+    description: User object
+  UserPreferences:
+    type: object
+    properties:
+      guidedTours:
+        type: boolean
+      onboardingBot:
+        type: boolean
+      productUpdates:
+        type: boolean
+      surveys:
+        type: boolean
+      trackUsage:
+        type: boolean
+    title: UserPreferences
+    description: User preferences
+  UserPreferencesV2:
+    type: object
+    properties:
+      guidedTours:
+        type: boolean
+      onboardingBot:
+        type: boolean
+      productUpdates:
+        type: boolean
+      surveys:
+        type: boolean
+      trackEmailAnalytics:
+        type: boolean
+      trackUsage:
+        type: boolean
+    title: UserPreferencesV2
+    description: User preferences V2
+  UserView:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    title: UserView
+  UsersPage:
+    type: object
+    properties:
+      users:
+        type: array
+        description: Array of users
+        readOnly: true
+        items:
+          $ref: '#/definitions/User'
+      totalHits:
+        type: integer
+        format: int64
+        description: Total number of records matching filters
+        readOnly: true
+      scrollId:
+        type: string
+        description: >-
+          If passed on subsequent requests as the scrollId parameter, will fetch
+          the next page
+        readOnly: true
+    title: UsersPage

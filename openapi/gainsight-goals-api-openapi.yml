@@ -144,21 +144,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
-  parameters:
-    goalId:
-      name: goalId
-      in: path
-      required: true
-      description: Customer goal unique identifier
-      schema:
-        type: string
   schemas:
     GoalInput:
       type: object
@@ -186,32 +171,6 @@ components:
         TargetDate:
           type: string
           format: date
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
     Goal:
       type: object
       properties:
@@ -260,6 +219,47 @@ components:
         ModifiedDate:
           type: string
           format: date-time
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    goalId:
+      name: goalId
+      in: path
+      required: true
+      description: Customer goal unique identifier
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

@@ -1,0 +1,567 @@
+# Gainsight CC
+
+> Developer Portal
+
+Everything you need to extend your community with custom extensions, built in the Gainsight CC Developer Studio.
+
+## Table of Contents
+
+### [Getting Started] Getting Started
+
+- [Getting Started](https://developer-portal.gainsight.com/docs/getting-started.md): Extend your community with Extensions (widgets, scripts, stylesheets), Connectors, and the SDK — or the No-Code Builder if you don't write code
+- [Key Concepts](https://developer-portal.gainsight.com/docs/getting-started/concepts.md): Plain-English definitions and mental model of Developer Studio — what Extensions (widgets, scripts, stylesheets), connectors, secrets, and the publishing pipeline are and how they relate, with runtime mechanics covered in Widget Runtime
+
+### [Extensions] Extensions
+
+- [Extensions](https://developer-portal.gainsight.com/docs/custom-widgets/v2.md): Extensions — widgets, scripts, and stylesheets declared in a single registry file and published from your Git repository
+
+### [Extensions] GitHub Connections
+
+- [Connect Your GitHub Account](https://developer-portal.gainsight.com/docs/custom-widgets/v2/connect-github.md): Connect your GitHub account or organization to enable widget, script, and stylesheet repository management
+- [Admin Approval](https://developer-portal.gainsight.com/docs/custom-widgets/v2/admin-approval.md): Request and complete GitHub connection when your organization requires administrator approval before installing external apps
+- [Approve GitHub Access](https://developer-portal.gainsight.com/docs/custom-widgets/v2/approve-github-access.md): Review and approve a pending GitHub app installation request as your organization's GitHub administrator
+- [Multiple Organizations](https://developer-portal.gainsight.com/docs/custom-widgets/v2/multiple-organizations.md): Connect, manage, and remove multiple GitHub organizations in a single community
+
+### [Extensions] Setup
+
+- [Repository & Branch Settings](https://developer-portal.gainsight.com/docs/custom-widgets/v2/repository-settings.md): Configure which GitHub repository and branch the platform tracks for widget, script, and stylesheet builds
+- [Repository Layout](https://developer-portal.gainsight.com/docs/custom-widgets/v2/project-setup.md): Required file and directory layout for a repository that publishes widgets, scripts, and stylesheets
+
+### [Extensions] Tutorials
+
+- [Your First Widget](https://developer-portal.gainsight.com/docs/custom-widgets/v2/build-first-widget.md): A hands-on tutorial that walks you through creating, configuring, and publishing a custom widget from scratch
+- [Your First Script](https://developer-portal.gainsight.com/docs/custom-widgets/v2/first-script.md): A hands-on tutorial that walks you through creating, registering, and publishing a global script from scratch
+- [Your First Stylesheet](https://developer-portal.gainsight.com/docs/custom-widgets/v2/first-stylesheet.md): A hands-on tutorial that walks you through creating, registering, and publishing a global stylesheet from scratch
+
+### [Extensions] Widgets
+
+- [Widget Runtime](https://developer-portal.gainsight.com/docs/custom-widgets/v2/core-concepts.md): How custom widgets are loaded, initialized, and managed at runtime — the init contract, lifecycle, props, design tokens, and best practices
+- [Use Design Tokens](https://developer-portal.gainsight.com/docs/custom-widgets/v2/design-tokens.md): Apply a community's branding — colors, fonts, and other theme values — to your widget's CSS using design tokens
+- [Hosting Widgets](https://developer-portal.gainsight.com/docs/custom-widgets/v2/hosting-widgets.md): Choose how to host your widget — externally at a URL or in your repository
+- [Configurable Widgets](https://developer-portal.gainsight.com/docs/custom-widgets/v2/configurable-widgets.md): Let community admins customize your widget in the No-Code Builder by defining a configuration form in extensions_registry.json
+- [Rendering & DOM](https://developer-portal.gainsight.com/docs/custom-widgets/v2/rendering-and-dom.md): How widget code runs inside Shadow DOM, how to query the DOM correctly, and how to handle multiple widget instances
+- [Using React](https://developer-portal.gainsight.com/docs/custom-widgets/v2/using-react.md): Build interactive widgets with React — from a minimal hello-world to advanced patterns like custom hooks, design-token integration, and error boundaries
+- [Widget Runtime Reference](https://developer-portal.gainsight.com/docs/custom-widgets/v2/sdk-api-reference.md): Properties, methods, and events on the sdk object passed to your widget's init(sdk) function — a different object from window.WidgetServiceSDK; see SDK Concepts for how the two relate
+- [Widget Definition Reference](https://developer-portal.gainsight.com/docs/custom-widgets/v2/widget-schema.md): Reference for widget entries in the widgets array of extensions_registry.json — fields, types, defaults, and validation rules
+- [Design Tokens Reference](https://developer-portal.gainsight.com/docs/custom-widgets/v2/design-tokens-reference.md): The full catalog of design-token CSS custom properties available to a widget, grouped by purpose, with default values
+
+### [Extensions] Scripts & Stylesheets
+
+- [Scripts Overview](https://developer-portal.gainsight.com/docs/custom-widgets/v2/scripts-overview.md): How global scripts work — where they run, how they're injected, and how they compare to widgets
+- [Script Definition Reference](https://developer-portal.gainsight.com/docs/custom-widgets/v2/scripts.md): Reference for script entries in the scripts array of extensions_registry.json — fields, placement, HTML attributes, and validation rules
+- [Stylesheets Overview](https://developer-portal.gainsight.com/docs/custom-widgets/v2/stylesheets-overview.md): How global stylesheets work — where they're injected, how they're scoped, and how they compare to widget styles
+- [Stylesheet Definition Reference](https://developer-portal.gainsight.com/docs/custom-widgets/v2/stylesheets.md): Reference for stylesheet entries in the stylesheets array of extensions_registry.json — fields, placement, HTML attributes, and validation rules
+- [Page Targeting](https://developer-portal.gainsight.com/docs/custom-widgets/v2/page-targeting.md): Control when global scripts and stylesheets load (not widgets) — target specific pages, locales, and user states via condition rules
+- [Writing Defensive Scripts and Includes](https://developer-portal.gainsight.com/docs/custom-widgets/v2/defensive-scripts-and-includes.md): Write custom scripts and header/footer includes that survive platform updates — load safely, fail gracefully, and avoid collisions with platform code
+
+### [Extensions] Publishing
+
+- [Build & Publish](https://developer-portal.gainsight.com/docs/custom-widgets/v2/build-and-publish.md): How widget, script, and stylesheet builds are triggered, processed, and published automatically when you push to your watched branch — no separate preview or promotion step
+- [Registry Reference](https://developer-portal.gainsight.com/docs/custom-widgets/v2/registry-reference.md): Reference for the root of extensions_registry.json — the widgets, scripts, and stylesheets arrays
+- [Content Security](https://developer-portal.gainsight.com/docs/custom-widgets/v2/content-security.md): Automated pre-publish security scanning the platform runs on every push, with no configuration needed; for guidance on which customization approach to choose, see Customization Guardrails
+- [Customization Guardrails](https://developer-portal.gainsight.com/docs/custom-widgets/v2/customization-guardrails.md): Decision guide for choosing a customization approach before you start — ranks no-code configuration, custom widgets, and other options by how safely they survive platform updates
+
+### [Extensions] Recipes
+
+- [Recipes](https://developer-portal.gainsight.com/docs/custom-widgets/recipes.md): Landing page linking to task-specific extension recipes — currently Preview and Promote, and Force Republish
+- [Preview and Promote](https://developer-portal.gainsight.com/docs/custom-widgets/recipes/preview-and-promote.md): Preview a widget, script, or stylesheet build on a test branch and promote it to production
+- [Force Republish](https://developer-portal.gainsight.com/docs/custom-widgets/recipes/force-republish.md): Manually trigger a rebuild and republish of a widget, script, or stylesheet without a code change
+
+### [Extensions] Troubleshooting
+
+- [Error Codes](https://developer-portal.gainsight.com/docs/custom-widgets/v2/error-codes.md): Look up a specific error code shown while building, validating, or publishing an extension (widget, script, or stylesheet) — causes and fixes indexed by code; for troubleshooting without a known error code, see Common Issues
+- [Common Issues](https://developer-portal.gainsight.com/docs/custom-widgets/v2/common-issues.md): Symptom-based troubleshooting when there's no specific error code — rate limiting, content safety rejections, Content Security Policy errors, content propagation delays, and installation suspension
+
+### [Connectors] Connectors
+
+- [Connectors](https://developer-portal.gainsight.com/docs/connectors.md): Overview of connectors — configure secure server-side proxies to call external APIs from widget code
+- [How Connectors Work](https://developer-portal.gainsight.com/docs/connectors/how-connectors-work.md): How the connector pipeline processes requests and responses — parameter merging, variable resolution, secret injection, authentication, and payload transformation
+
+### [Connectors] Setup
+
+- [Build Your First Connector](https://developer-portal.gainsight.com/docs/connectors/build-first-connector.md): A hands-on tutorial that walks you through creating a connector, storing credentials securely, and calling it from widget code
+- [Configuration](https://developer-portal.gainsight.com/docs/connectors/configuration.md): Connector fields — endpoint URL, HTTP method, and routing settings, including which are required
+- [Choose an Authentication Type](https://developer-portal.gainsight.com/docs/connectors/choose-authentication.md): Choose the right authentication type for your connector based on what your external API requires
+- [Authentication](https://developer-portal.gainsight.com/docs/connectors/authentication.md): Connector authentication types — None, API Key, OAuth Client Credentials, JWT, and OAuth JWT Bearer — and their configuration fields
+- [Secrets and Variables](https://developer-portal.gainsight.com/docs/connectors/secrets.md): Named key-value pairs — Secrets (masked credentials) and Variables (plain-text config) — referenced from connector configuration via get_secret()/get_variable()
+
+### [Connectors] Request & Response
+
+- [Headers & Query Parameters](https://developer-portal.gainsight.com/docs/connectors/headers-and-query-parameters.md): Add custom HTTP headers and query parameters to connector requests
+- [Dynamic URL Path Segments](https://developer-portal.gainsight.com/docs/connectors/dynamic-url-paths.md): Use caller-supplied values as path segments in connector URLs, with URL-safe validation
+- [Request Transformation](https://developer-portal.gainsight.com/docs/connectors/payload-template.md): Request transformation — the Jinja2 template for the outgoing request body, and the body_text and body_raw variables available to it
+- [Response Transformation](https://developer-portal.gainsight.com/docs/connectors/response-transformation.md): Response transformation reference — the Response Body and Response Content-Type fields, the response variables available to templates, and response template error handling
+- [Response Transformation Recipes](https://developer-portal.gainsight.com/docs/connectors/response-transformation-recipes.md): Worked Jinja2 examples and common gotchas for reshaping, filtering, and resolving data in an upstream API response before it reaches the widget
+- [Template Variables](https://developer-portal.gainsight.com/docs/connectors/template-variables.md): Reference of Jinja2 variables and functions available in connector request and response templates
+- [HTTP Caching](https://developer-portal.gainsight.com/docs/connectors/http-caching.md): How the platform automatically caches connector responses using standard HTTP caching headers — no configuration required
+
+### [Connectors] Using Connectors
+
+- [Calling from Widget Code](https://developer-portal.gainsight.com/docs/connectors/calling-from-widgets.md): How to use the SDK to call connectors from widget code
+- [Passing User Context](https://developer-portal.gainsight.com/docs/connectors/passing-user-context.md): How to securely pass user identity and context to connectors using server-side template variables instead of browser-supplied parameters
+- [Filtering Sensitive Data](https://developer-portal.gainsight.com/docs/connectors/filtering-sensitive-data.md): Prevent sensitive API data from reaching the browser by filtering responses in the connector definition instead of in widget code
+- [Testing & Debugging](https://developer-portal.gainsight.com/docs/connectors/testing-and-debugging.md): Test connector requests and diagnose failures using the built-in test tool
+
+### [Connectors] Composite Connectors
+
+- [Build a Composite Connector](https://developer-portal.gainsight.com/docs/connectors/composite-connectors.md): Chain multiple API calls into a single execution — define sequential steps in your repository registry
+- [Composite Connector Reference](https://developer-portal.gainsight.com/docs/connectors/composite-connector-reference.md): Composite connector step fields, template variables, and error types
+
+### [Connectors] Managing as Code
+
+- [Code Mode](https://developer-portal.gainsight.com/docs/connectors/code-mode.md): Code Mode — the JSON representation of a connector, its key-to-form-field mapping, and how the platform validates the JSON on save
+- [Repository Registry](https://developer-portal.gainsight.com/docs/connectors/repository-registry.md): The connectors_registry.json schema for defining connectors in a GitHub repository, its fields, and how repository-synced connectors are protected
+
+### [SDK] SDK
+
+- [SDK](https://developer-portal.gainsight.com/docs/sdk.md): SDK documentation — Widget SDK for connectors and Web SDK for community pages
+- [SDK Concepts](https://developer-portal.gainsight.com/docs/sdk/concepts.md): Why these docs use the word SDK for three different things — two constructed libraries (Widget SDK, Web SDK) and one runtime context object — and how they relate
+
+### [SDK] Widget SDK
+
+- [Widget SDK](https://developer-portal.gainsight.com/docs/sdk/widget-sdk/overview.md): JavaScript SDK for calling connectors from widgets — globally available as window.WidgetServiceSDK, distinct from the sdk parameter passed to init(sdk); see SDK Concepts for how they relate
+- [Methods and Constructors](https://developer-portal.gainsight.com/docs/sdk/widget-sdk/methods-constructors.md): Complete API reference for the WidgetServiceSDK JavaScript class — constructor, execute() method, and error handling
+- [Examples](https://developer-portal.gainsight.com/docs/sdk/widget-sdk/examples.md): Code examples for common WidgetServiceSDK usage patterns — GET, POST, PUT, and DELETE requests, custom headers, and request timeouts
+
+### [SDK] Web SDK
+
+- [Web SDK](https://developer-portal.gainsight.com/docs/sdk/web-sdk/overview.md): Overview of the Community Hub Web SDK (ChWebSdk) — the browser-side JavaScript API for searching content, managing users, and subscribing to topics from community pages.
+- [Methods and Constructors](https://developer-portal.gainsight.com/docs/sdk/web-sdk/methods-constructors.md): Complete API reference for the Community Hub Web SDK — DOM utilities, Content, User, Subscription methods, search options, and error handling.
+- [Examples](https://developer-portal.gainsight.com/docs/sdk/web-sdk/examples.md): Runnable code examples for the Web SDK — search, subscriptions, users, DOM observation, and script loading.
+
+### [API Reference] API Reference
+
+- [API Reference](https://developer-portal.gainsight.com/docs/api.md): REST API reference for Gainsight Customer Communities — endpoints for community content, users, events, gamification, and federated search
+- [Authentication](https://developer-portal.gainsight.com/docs/api/api-authentication.md): How to authenticate requests to the Gainsight CC REST API using OAuth 2.0 Client Credentials
+- [Authorization](https://developer-portal.gainsight.com/docs/api/authorization.md): How to authorize moderation actions in the Gainsight CC API using a moderator ID
+
+### [API Reference] Community API — Topics
+
+- [API Reference | List topics](https://developer-portal.gainsight.com/docs/api/operations/community/getTopicList.md)
+- [API Reference | List topics for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getTopicListForCategory.md)
+- [API Reference | Search by term across topics](https://developer-portal.gainsight.com/docs/api/operations/community/search.md)
+
+### [API Reference] Community API — Categories
+
+- [API Reference | List topics for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getTopicListForCategory.md)
+- [API Reference | List articles for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getArticleListForCategory.md)
+- [API Reference | List categories](https://developer-portal.gainsight.com/docs/api/operations/community/getCategoryList.md)
+- [API Reference | Find a category by ID](https://developer-portal.gainsight.com/docs/api/operations/community/getCategory.md)
+- [API Reference | Get visible topics count per category](https://developer-portal.gainsight.com/docs/api/operations/community/getVisibleTopicsCount.md)
+- [API Reference | List conversations for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getConversationListForCategory.md)
+- [API Reference | List questions for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getQuestionListForCategory.md)
+- [API Reference | Get categories tree](https://developer-portal.gainsight.com/docs/api/operations/community/getCategoryTree.md)
+
+### [API Reference] Community API — Articles
+
+- [API Reference | Create an article](https://developer-portal.gainsight.com/docs/api/operations/community/createArticle.md)
+- [API Reference | Publish an article](https://developer-portal.gainsight.com/docs/api/operations/community/publishArticle.md)
+- [API Reference | Reply to an article](https://developer-portal.gainsight.com/docs/api/operations/community/replyArticle.md)
+- [API Reference | Like an article](https://developer-portal.gainsight.com/docs/api/operations/community/likeArticle.md)
+- [API Reference | Unlike an article](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeArticle.md)
+- [API Reference | Edit the opening post content of an article](https://developer-portal.gainsight.com/docs/api/operations/community/editArticleContent.md)
+- [API Reference | Edit the title of an article](https://developer-portal.gainsight.com/docs/api/operations/community/editArticleTitle.md)
+- [API Reference | Like a reply](https://developer-portal.gainsight.com/docs/api/operations/community/likeArticleReply.md)
+- [API Reference | Unlike a reply](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeArticleReply.md)
+- [API Reference | Tag an article with moderator tags](https://developer-portal.gainsight.com/docs/api/operations/community/editArticleModeratorTags.md)
+- [API Reference | Tag an article with tags](https://developer-portal.gainsight.com/docs/api/operations/community/editArticleTags.md)
+- [API Reference | Add public tags to an article](https://developer-portal.gainsight.com/docs/api/operations/community/addArticleTags.md)
+- [API Reference | Remove public tags from an article](https://developer-portal.gainsight.com/docs/api/operations/community/removeArticleTags.md)
+- [API Reference | Add moderator tags to an article](https://developer-portal.gainsight.com/docs/api/operations/community/addArticleModeratorTags.md)
+- [API Reference | Remove moderator tags from an article](https://developer-portal.gainsight.com/docs/api/operations/community/removeArticleModeratorTags.md)
+- [API Reference | Edit the featured image of an article](https://developer-portal.gainsight.com/docs/api/operations/community/editArticleFeaturedImage.md)
+- [API Reference | Edit the featured image alt text of an article](https://developer-portal.gainsight.com/docs/api/operations/community/editArticleFeaturedImageAltText.md)
+- [API Reference | Edit the public label of an article](https://developer-portal.gainsight.com/docs/api/operations/community/editArticlePublicLabel.md)
+- [API Reference | Toggle the sticky state of an article](https://developer-portal.gainsight.com/docs/api/operations/community/toggleArticleStickyState.md)
+- [API Reference | Open/Close an article](https://developer-portal.gainsight.com/docs/api/operations/community/toggleArticleClosed.md)
+- [API Reference | Trash or restore an article](https://developer-portal.gainsight.com/docs/api/operations/community/toggleArticleTrashed.md)
+- [API Reference | Find article by ID](https://developer-portal.gainsight.com/docs/api/operations/community/getArticle.md)
+- [API Reference | Permanently delete a trashed article](https://developer-portal.gainsight.com/docs/api/operations/community/permanentlyDeleteArticle.md)
+- [API Reference | Trash/restore a reply](https://developer-portal.gainsight.com/docs/api/operations/community/toggleArticleReplyTrashed.md)
+- [API Reference | Mark replies as highlighted or remove the highlight](https://developer-portal.gainsight.com/docs/api/operations/community/toggleArticleReplyHighlight.md)
+- [API Reference | Promote an existing reply to a new conversation](https://developer-portal.gainsight.com/docs/api/operations/community/promoteArticleReply.md)
+- [API Reference | Move an article to a different category](https://developer-portal.gainsight.com/docs/api/operations/community/moveArticle.md)
+- [API Reference | Edit a reply](https://developer-portal.gainsight.com/docs/api/operations/community/editArticleReply.md)
+- [API Reference | Add a poll to an article](https://developer-portal.gainsight.com/docs/api/operations/community/addArticlePoll.md)
+- [API Reference | Edit the poll title](https://developer-portal.gainsight.com/docs/api/operations/community/editArticlePollTitle.md)
+- [API Reference | Edit the poll options](https://developer-portal.gainsight.com/docs/api/operations/community/editArticlePollOptions.md)
+- [API Reference | Show poll results](https://developer-portal.gainsight.com/docs/api/operations/community/getArticlePollResult.md)
+- [API Reference | Delete poll attached to an article](https://developer-portal.gainsight.com/docs/api/operations/community/articleDeletePoll.md)
+- [API Reference | Add a vote to a poll attached to the given article](https://developer-portal.gainsight.com/docs/api/operations/community/addArticlePollVote.md)
+- [API Reference | Move an existing reply to an existing topic](https://developer-portal.gainsight.com/docs/api/operations/community/moveArticleReply.md)
+- [API Reference | Convert an article to a product update](https://developer-portal.gainsight.com/docs/api/operations/community/convertToProductUpdate.md)
+- [API Reference | Convert an article to a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/convertArticleToConversation.md)
+- [API Reference | Change the author of an article](https://developer-portal.gainsight.com/docs/api/operations/community/changeArticleAuthor.md)
+- [API Reference | Approve a reply](https://developer-portal.gainsight.com/docs/api/operations/community/approveArticleReply.md)
+- [API Reference | Report an article reply](https://developer-portal.gainsight.com/docs/api/operations/community/reportArticleReply.md)
+- [API Reference | Resolve reported article reply](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedArticleReply.md)
+- [API Reference | Set moderation label to article](https://developer-portal.gainsight.com/docs/api/operations/community/setArticleModerationLabel.md)
+- [API Reference | Unset moderation label from article](https://developer-portal.gainsight.com/docs/api/operations/community/unsetArticleModerationLabel.md)
+- [API Reference | Assign a moderator to article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/assignModerator.md)
+- [API Reference | Unassign a article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/unassignModerator.md)
+- [API Reference | List articles](https://developer-portal.gainsight.com/docs/api/operations/community/getArticleList.md)
+- [API Reference | List articles for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getArticleListForCategory.md)
+- [API Reference | List replies for an article](https://developer-portal.gainsight.com/docs/api/operations/community/getRepliesForArticle.md)
+- [API Reference | Fetch a reply for an article](https://developer-portal.gainsight.com/docs/api/operations/community/getReplyForArticle.md)
+- [API Reference | List of trashed articles](https://developer-portal.gainsight.com/docs/api/operations/community/getTrashedArticleList.md)
+- [API Reference | List draft articles](https://developer-portal.gainsight.com/docs/api/operations/community/getDraftArticleList.md)
+- [API Reference | Mark article reply as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markArticleReplyAsSpam.md)
+- [API Reference | Mark article reply as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markArticleReplyAsNotSpam.md)
+
+### [API Reference] Community API — Conversations
+
+- [API Reference | Mark conversation as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markConversationsAsSpam.md)
+- [API Reference | Mark conversation as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markConversationAsNotSpam.md)
+- [API Reference | Mark conversation reply as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markConversationReplyAsSpam.md)
+- [API Reference | Mark conversation reply as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markConversationReplyAsNotSpam.md)
+- [API Reference | Start a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/startConversation.md)
+- [API Reference | Like a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/likeConversation.md)
+- [API Reference | Unlike a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeConversation.md)
+- [API Reference | Edit the opening post content of a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/editConversationContent.md)
+- [API Reference | Tag a conversation with public tags](https://developer-portal.gainsight.com/docs/api/operations/community/editConversationTags.md)
+- [API Reference | Add public tags to a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/addConversationTags.md)
+- [API Reference | Remove public tags from a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/removeConversationTags.md)
+- [API Reference | Add moderator tags to a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/addConversationModeratorTags.md)
+- [API Reference | Remove moderator tags from a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/removeConversationModeratorTags.md)
+- [API Reference | Reply to a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/replyConversation.md)
+- [API Reference | Add a vote to a poll contained in a given conversation](https://developer-portal.gainsight.com/docs/api/operations/community/addPollVote.md)
+- [API Reference | Trash or restore a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/toggleConversationTrashed.md)
+- [API Reference | Open/Close a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/toggleConversationClosed.md)
+- [API Reference | Move a conversation to a different category](https://developer-portal.gainsight.com/docs/api/operations/community/moveConversation.md)
+- [API Reference | Convert a conversation to a question](https://developer-portal.gainsight.com/docs/api/operations/community/convertConversation.md)
+- [API Reference | Convert a conversation to an article](https://developer-portal.gainsight.com/docs/api/operations/community/convertConversationToArticle.md)
+- [API Reference | Convert a conversation to an idea](https://developer-portal.gainsight.com/docs/api/operations/community/convertConversationToIdea.md)
+- [API Reference | Copy a conversation to a category](https://developer-portal.gainsight.com/docs/api/operations/community/copyConversation.md)
+- [API Reference | Edit the title of a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/editConversationTitle.md)
+- [API Reference | Tag a conversation with moderator tags](https://developer-portal.gainsight.com/docs/api/operations/community/editConversationModeratorTags.md)
+- [API Reference | Toggle the sticky state of a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/toggleConversationStickyState.md)
+- [API Reference | Find conversation by ID](https://developer-portal.gainsight.com/docs/api/operations/community/getConversation.md)
+- [API Reference | Permanently delete a trashed conversation](https://developer-portal.gainsight.com/docs/api/operations/community/permanentlyDeleteConversation.md)
+- [API Reference | Trash/restore a reply](https://developer-portal.gainsight.com/docs/api/operations/community/toggleConversationReplyTrashed.md)
+- [API Reference | Mark replies as highlighted or remove the highlight](https://developer-portal.gainsight.com/docs/api/operations/community/toggleConversationReplyHighlight.md)
+- [API Reference | Promote an existing reply to a new conversation](https://developer-portal.gainsight.com/docs/api/operations/community/promoteReply.md)
+- [API Reference | Move reply to another topic](https://developer-portal.gainsight.com/docs/api/operations/community/moveConversationReply.md)
+- [API Reference | Like a reply](https://developer-portal.gainsight.com/docs/api/operations/community/likeReply.md)
+- [API Reference | Unlike a reply](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeReply.md)
+- [API Reference | Edit a reply](https://developer-portal.gainsight.com/docs/api/operations/community/editConversationReply.md)
+- [API Reference | Edit the poll title](https://developer-portal.gainsight.com/docs/api/operations/community/editConversationPollTitle.md)
+- [API Reference | Edit the poll options](https://developer-portal.gainsight.com/docs/api/operations/community/editConversationPollOptions.md)
+- [API Reference | Show poll results](https://developer-portal.gainsight.com/docs/api/operations/community/getPollResult.md)
+- [API Reference | Delete poll](https://developer-portal.gainsight.com/docs/api/operations/community/deleteConversationPoll.md)
+- [API Reference | Convert a conversation to a reply](https://developer-portal.gainsight.com/docs/api/operations/community/moveConversationToTopic.md)
+- [API Reference | Pin a reply](https://developer-portal.gainsight.com/docs/api/operations/community/pinConversationReply.md)
+- [API Reference | Unpin a reply](https://developer-portal.gainsight.com/docs/api/operations/community/unpinConversationReply.md)
+- [API Reference | Approve a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/approveConversation.md)
+- [API Reference | Approve a reply](https://developer-portal.gainsight.com/docs/api/operations/community/approveConversationReply.md)
+- [API Reference | Report a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/reportConversation.md)
+- [API Reference | Report a conversation reply](https://developer-portal.gainsight.com/docs/api/operations/community/reportConversationReply.md)
+- [API Reference | Resolve reported conversation](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedConversation.md)
+- [API Reference | Resolve reported conversation reply](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedConversationReply.md)
+- [API Reference | Set moderation label to conversation](https://developer-portal.gainsight.com/docs/api/operations/community/setConversationModerationLabel.md)
+- [API Reference | Unset moderation label from conversation](https://developer-portal.gainsight.com/docs/api/operations/community/unsetConversationModerationLabel.md)
+- [API Reference | Assign a moderator to article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/assignModerator.md)
+- [API Reference | Unassign a article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/unassignModerator.md)
+- [API Reference | List conversations](https://developer-portal.gainsight.com/docs/api/operations/community/getConversationList.md)
+- [API Reference | List conversations for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getConversationListForCategory.md)
+- [API Reference | List trashed conversations](https://developer-portal.gainsight.com/docs/api/operations/community/getTrashedConversationList.md)
+- [API Reference | List replies for a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/getRepliesForConversation.md)
+- [API Reference | Fetch a single reply for a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/getReplyForConversation.md)
+
+### [API Reference] Community API — Ideas
+
+- [API Reference | Mark idea as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markIdeaAsSpam.md)
+- [API Reference | Mark idea as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markIdeaAsNotSpam.md)
+- [API Reference | Mark idea reply as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markIdeaReplyAsSpam.md)
+- [API Reference | Mark idea reply as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markIdeaReplyAsNotSpam.md)
+- [API Reference | Submit an idea](https://developer-portal.gainsight.com/docs/api/operations/community/submitIdea.md)
+- [API Reference | Vote an idea](https://developer-portal.gainsight.com/docs/api/operations/community/voteIdea.md)
+- [API Reference | Unvote an idea](https://developer-portal.gainsight.com/docs/api/operations/community/unvoteIdea.md)
+- [API Reference | Edit the opening post content of an idea](https://developer-portal.gainsight.com/docs/api/operations/community/editIdeaContent.md)
+- [API Reference | Tag an idea with public tags](https://developer-portal.gainsight.com/docs/api/operations/community/editIdeaTags.md)
+- [API Reference | Add public tags to an idea](https://developer-portal.gainsight.com/docs/api/operations/community/addIdeaTags.md)
+- [API Reference | Remove public tags from an idea](https://developer-portal.gainsight.com/docs/api/operations/community/removeIdeaTags.md)
+- [API Reference | Add moderator tags to an idea](https://developer-portal.gainsight.com/docs/api/operations/community/addIdeaModeratorTags.md)
+- [API Reference | Remove moderator tags from an idea](https://developer-portal.gainsight.com/docs/api/operations/community/removeIdeaModeratorTags.md)
+- [API Reference | Reply to an idea](https://developer-portal.gainsight.com/docs/api/operations/community/replyIdea.md)
+- [API Reference | Trash or restore an idea](https://developer-portal.gainsight.com/docs/api/operations/community/toggleIdeaTrashed.md)
+- [API Reference | Open/Close an idea](https://developer-portal.gainsight.com/docs/api/operations/community/toggleIdeaClosed.md)
+- [API Reference | Edit the title of an idea](https://developer-portal.gainsight.com/docs/api/operations/community/editIdeaTitle.md)
+- [API Reference | Tag an idea with moderator tags](https://developer-portal.gainsight.com/docs/api/operations/community/editIdeaModeratorTags.md)
+- [API Reference | Toggle the sticky state of an idea](https://developer-portal.gainsight.com/docs/api/operations/community/toggleIdeaStickyState.md)
+- [API Reference | Find idea by ID](https://developer-portal.gainsight.com/docs/api/operations/community/getIdea.md)
+- [API Reference | Permanently delete a trashed idea](https://developer-portal.gainsight.com/docs/api/operations/community/permanentlyDeleteIdea.md)
+- [API Reference | Trash/restore a reply](https://developer-portal.gainsight.com/docs/api/operations/community/toggleIdeaReplyTrashed.md)
+- [API Reference | Mark replies as highlighted or remove the highlight](https://developer-portal.gainsight.com/docs/api/operations/community/toggleIdeaReplyHighlight.md)
+- [API Reference | Promote an existing reply to a new conversation](https://developer-portal.gainsight.com/docs/api/operations/community/promoteIdeaReply.md)
+- [API Reference | Move reply to another topic](https://developer-portal.gainsight.com/docs/api/operations/community/moveIdeaReply.md)
+- [API Reference | like a reply](https://developer-portal.gainsight.com/docs/api/operations/community/likeIdeaReply.md)
+- [API Reference | Unlike a reply](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeIdeaReply.md)
+- [API Reference | Edit a reply](https://developer-portal.gainsight.com/docs/api/operations/community/editIdeaReply.md)
+- [API Reference | Merge votes into another idea](https://developer-portal.gainsight.com/docs/api/operations/community/mergeIdeaVotes.md)
+- [API Reference | Set moderation label to idea](https://developer-portal.gainsight.com/docs/api/operations/community/setIdeaModerationLabel.md)
+- [API Reference | Unset moderation label from idea](https://developer-portal.gainsight.com/docs/api/operations/community/unsetIdeaModerationLabel.md)
+- [API Reference | Assign a moderator to article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/assignModerator.md)
+- [API Reference | Unassign a article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/unassignModerator.md)
+- [API Reference | Create IdeaStatus](https://developer-portal.gainsight.com/docs/api/operations/community/createIdeaStatus.md)
+- [API Reference | Edit IdeaStatus](https://developer-portal.gainsight.com/docs/api/operations/community/editIdeaStatus.md)
+- [API Reference | Permanently delete an idea status](https://developer-portal.gainsight.com/docs/api/operations/community/deleteIdeaStatus.md)
+- [API Reference | Reorder idea statuses](https://developer-portal.gainsight.com/docs/api/operations/community/reorderIdeaStatuses.md)
+- [API Reference | Pin a reply](https://developer-portal.gainsight.com/docs/api/operations/community/pinIdeaReply.md)
+- [API Reference | Unpin a reply](https://developer-portal.gainsight.com/docs/api/operations/community/unpinIdeaReply.md)
+- [API Reference | Assign an idea status to an idea](https://developer-portal.gainsight.com/docs/api/operations/community/assign_idea_status.md)
+- [API Reference | Attach an idea with product areas](https://developer-portal.gainsight.com/docs/api/operations/community/editIdeaProductAreas.md)
+- [API Reference | Change an Idea Status type](https://developer-portal.gainsight.com/docs/api/operations/community/changeIdeaStatusType.md)
+- [API Reference | Convert an Idea to a Question](https://developer-portal.gainsight.com/docs/api/operations/community/convertIdeaToQuestion.md)
+- [API Reference | Convert an Idea to a Conversation](https://developer-portal.gainsight.com/docs/api/operations/community/convertIdeaToConversation.md)
+- [API Reference | Approve an idea](https://developer-portal.gainsight.com/docs/api/operations/community/approveIdea.md)
+- [API Reference | Approve a reply](https://developer-portal.gainsight.com/docs/api/operations/community/approveIdeaReply.md)
+- [API Reference | Report an idea](https://developer-portal.gainsight.com/docs/api/operations/community/reportIdea.md)
+- [API Reference | Report an idea reply](https://developer-portal.gainsight.com/docs/api/operations/community/reportIdeaReply.md)
+- [API Reference | Resolve reported idea](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedIdea.md)
+- [API Reference | Resolve reported idea reply](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedIdeaReply.md)
+- [API Reference | List ideas](https://developer-portal.gainsight.com/docs/api/operations/community/getIdeaList.md)
+- [API Reference | List trashed ideas](https://developer-portal.gainsight.com/docs/api/operations/community/getTrashedIdeaList.md)
+- [API Reference | List Idea Statuses](https://developer-portal.gainsight.com/docs/api/operations/community/getIdeaStatusList.md)
+- [API Reference | List replies for an idea](https://developer-portal.gainsight.com/docs/api/operations/community/getRepliesForIdea.md)
+- [API Reference | Fetch a single reply for an idea](https://developer-portal.gainsight.com/docs/api/operations/community/getReplyForIdea.md)
+
+### [API Reference] Community API — Moderator Tags
+
+- [API Reference | Delete moderator tags](https://developer-portal.gainsight.com/docs/api/operations/community/deleteModeratorTags.md)
+- [API Reference | List moderator tags](https://developer-portal.gainsight.com/docs/api/operations/community/getModeratorTagList.md)
+
+### [API Reference] Community API — ProductAreas
+
+- [API Reference | Create ProductArea](https://developer-portal.gainsight.com/docs/api/operations/community/createProductArea.md)
+- [API Reference | Rename ProductArea](https://developer-portal.gainsight.com/docs/api/operations/community/renameProductArea.md)
+- [API Reference | Delete ProductArea](https://developer-portal.gainsight.com/docs/api/operations/community/deleteProductArea.md)
+- [API Reference | Assign ProductAreas to Ideas](https://developer-portal.gainsight.com/docs/api/operations/community/assignProductAreas.md)
+- [API Reference | List productAreas](https://developer-portal.gainsight.com/docs/api/operations/community/getProductAreaList.md)
+
+### [API Reference] Community API — ProductUpdates
+
+- [API Reference | Mark productUpdate reply as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markProductUpdateReplyAsSpam.md)
+- [API Reference | Mark productUpdate reply as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markProductUpdateReplyAsNotSpam.md)
+- [API Reference | Create a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/createProductUpdate.md)
+- [API Reference | Publish a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/publishProductUpdate.md)
+- [API Reference | Reply to a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/replyProductUpdate.md)
+- [API Reference | Like a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/likeProductUpdate.md)
+- [API Reference | Unlike a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeProductUpdate.md)
+- [API Reference | Edit the opening post content of a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateContent.md)
+- [API Reference | Edit the title of a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateTitle.md)
+- [API Reference | Like a reply](https://developer-portal.gainsight.com/docs/api/operations/community/likeProductUpdateReply.md)
+- [API Reference | Unlike a reply](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeProductUpdateReply.md)
+- [API Reference | Tag a productUpdate with moderator tags](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateModeratorTags.md)
+- [API Reference | Tag a productUpdate with tags](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateTags.md)
+- [API Reference | Add public tags to a product update](https://developer-portal.gainsight.com/docs/api/operations/community/addProductUpdateTags.md)
+- [API Reference | Remove public tags from a product update](https://developer-portal.gainsight.com/docs/api/operations/community/removeProductUpdateTags.md)
+- [API Reference | Add moderator tags to a product update](https://developer-portal.gainsight.com/docs/api/operations/community/addProductUpdateModeratorTags.md)
+- [API Reference | Remove moderator tags from a product update](https://developer-portal.gainsight.com/docs/api/operations/community/removeProductUpdateModeratorTags.md)
+- [API Reference | Attach a productUpdate with product areas](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateProductAreas.md)
+- [API Reference | Edit the featured image of a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateFeaturedImage.md)
+- [API Reference | Edit the featured image alt text of a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateFeaturedImageAltText.md)
+- [API Reference | Edit the public label of a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdatePublicLabel.md)
+- [API Reference | Toggle the sticky state of a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/toggleProductUpdateStickyState.md)
+- [API Reference | Open/Close a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/toggleProductUpdateClosed.md)
+- [API Reference | Trash or restore a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/toggleProductUpdateTrashed.md)
+- [API Reference | Find productUpdate by ID](https://developer-portal.gainsight.com/docs/api/operations/community/getProductUpdate.md)
+- [API Reference | Permanently delete a trashed productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/permanentlyDeleteProductUpdate.md)
+- [API Reference | Trash/restore a reply](https://developer-portal.gainsight.com/docs/api/operations/community/toggleProductUpdateReplyTrashed.md)
+- [API Reference | Mark replies as highlighted or remove the highlight](https://developer-portal.gainsight.com/docs/api/operations/community/toggleProductUpdateReplyHighlight.md)
+- [API Reference | Promote an existing reply to a new conversation](https://developer-portal.gainsight.com/docs/api/operations/community/promoteProductUpdateReply.md)
+- [API Reference | Edit a reply](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdateReply.md)
+- [API Reference | Add a poll to a product update](https://developer-portal.gainsight.com/docs/api/operations/community/addProductUpdatePoll.md)
+- [API Reference | Edit the poll title](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdatePollTitle.md)
+- [API Reference | Edit the poll options](https://developer-portal.gainsight.com/docs/api/operations/community/editProductUpdatePollOptions.md)
+- [API Reference | Show poll results](https://developer-portal.gainsight.com/docs/api/operations/community/getProductUpdatePollResult.md)
+- [API Reference | Delete poll attached to a productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/productUpdateDeletePoll.md)
+- [API Reference | Add a vote to a poll attached to the given productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/addProductUpdatePollVote.md)
+- [API Reference | Move an existing reply to an existing topic](https://developer-portal.gainsight.com/docs/api/operations/community/moveProductUpdateReply.md)
+- [API Reference | Change the author of a product update](https://developer-portal.gainsight.com/docs/api/operations/community/changeProductUpdateAuthor.md)
+- [API Reference | Approve a reply](https://developer-portal.gainsight.com/docs/api/operations/community/approveProductUpdateReply.md)
+- [API Reference | Report a product update reply](https://developer-portal.gainsight.com/docs/api/operations/community/reportProductUpdateReply.md)
+- [API Reference | Resolve reported product update reply](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedProductUpdateReply.md)
+- [API Reference | Set moderation label to product update](https://developer-portal.gainsight.com/docs/api/operations/community/setProductUpdateModerationLabel.md)
+- [API Reference | Unset moderation label from product update](https://developer-portal.gainsight.com/docs/api/operations/community/unsetProductUpdateModerationLabel.md)
+- [API Reference | Assign a moderator to article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/assignModerator.md)
+- [API Reference | Unassign a article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/unassignModerator.md)
+- [API Reference | List productUpdates](https://developer-portal.gainsight.com/docs/api/operations/community/getProductUpdateList.md)
+- [API Reference | List replies for an productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/getRepliesForProductUpdate.md)
+- [API Reference | Fetch a reply for an productUpdate](https://developer-portal.gainsight.com/docs/api/operations/community/getReplyForProductUpdate.md)
+- [API Reference | List of trashed productUpdates](https://developer-portal.gainsight.com/docs/api/operations/community/getTrashedProductUpdateList.md)
+- [API Reference | List draft productUpdates](https://developer-portal.gainsight.com/docs/api/operations/community/getDraftProductUpdateList.md)
+
+### [API Reference] Community API — Questions
+
+- [API Reference | Mark question as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markQuestionAsSpam.md)
+- [API Reference | Mark question as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markQuestionAsNotSpam.md)
+- [API Reference | Mark question reply as spam](https://developer-portal.gainsight.com/docs/api/operations/community/markQuestionReplyAsSpam.md)
+- [API Reference | Mark question reply as not spam](https://developer-portal.gainsight.com/docs/api/operations/community/markQuestionReplyAsNotSpam.md)
+- [API Reference | Ask a question](https://developer-portal.gainsight.com/docs/api/operations/community/askQuestion.md)
+- [API Reference | Tag a question with public tags](https://developer-portal.gainsight.com/docs/api/operations/community/editQuestionTags.md)
+- [API Reference | Add public tags to a question](https://developer-portal.gainsight.com/docs/api/operations/community/addQuestionTags.md)
+- [API Reference | Remove public tags from a question](https://developer-portal.gainsight.com/docs/api/operations/community/removeQuestionTags.md)
+- [API Reference | Add moderator tags to a question](https://developer-portal.gainsight.com/docs/api/operations/community/addQuestionModeratorTags.md)
+- [API Reference | Remove moderator tags from a question](https://developer-portal.gainsight.com/docs/api/operations/community/removeQuestionModeratorTags.md)
+- [API Reference | Reply to a question](https://developer-portal.gainsight.com/docs/api/operations/community/replyQuestion.md)
+- [API Reference | Add a vote to a poll contained in a given question](https://developer-portal.gainsight.com/docs/api/operations/community/addQuestionPollVote.md)
+- [API Reference | Like a question](https://developer-portal.gainsight.com/docs/api/operations/community/likeQuestion.md)
+- [API Reference | Unlike a question](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeQuestion.md)
+- [API Reference | Mark a reply to a question as the answer](https://developer-portal.gainsight.com/docs/api/operations/community/answerQuestion.md)
+- [API Reference | Remove an answer from a question](https://developer-portal.gainsight.com/docs/api/operations/community/removeQuestionAnswer.md)
+- [API Reference | Mark replies as highlighted or remove the highlight](https://developer-portal.gainsight.com/docs/api/operations/community/toggleQuestionReplyHighlight.md)
+- [API Reference | Promote an existing reply to a new conversation](https://developer-portal.gainsight.com/docs/api/operations/community/promoteQuestionReply.md)
+- [API Reference | Trash or restore a question](https://developer-portal.gainsight.com/docs/api/operations/community/toggleQuestionTrashedAction.md)
+- [API Reference | Open/Close a question](https://developer-portal.gainsight.com/docs/api/operations/community/toggleQuestionClosed.md)
+- [API Reference | Convert a question to a conversation](https://developer-portal.gainsight.com/docs/api/operations/community/convertQuestion.md)
+- [API Reference | Convert a question to an idea](https://developer-portal.gainsight.com/docs/api/operations/community/convertQuestionToIdea.md)
+- [API Reference | Move a question to a different category](https://developer-portal.gainsight.com/docs/api/operations/community/moveQuestion.md)
+- [API Reference | Edit the title of a question](https://developer-portal.gainsight.com/docs/api/operations/community/editQuestionTitle.md)
+- [API Reference | Tag a question with moderator tags](https://developer-portal.gainsight.com/docs/api/operations/community/editQuestionModeratorTags.md)
+- [API Reference | Edit the opening post content of a question](https://developer-portal.gainsight.com/docs/api/operations/community/editQuestionContent.md)
+- [API Reference | Toggle the sticky state of a question](https://developer-portal.gainsight.com/docs/api/operations/community/toggleQuestionStickyState.md)
+- [API Reference | Move an existing reply to an existing topic](https://developer-portal.gainsight.com/docs/api/operations/community/moveQuestionReply.md)
+- [API Reference | Trash/restore a reply](https://developer-portal.gainsight.com/docs/api/operations/community/toggleQuestionReplyTrashed.md)
+- [API Reference | Find question by ID](https://developer-portal.gainsight.com/docs/api/operations/community/getQuestion.md)
+- [API Reference | Permanently delete a trashed question](https://developer-portal.gainsight.com/docs/api/operations/community/permanentlyDeleteQuestion.md)
+- [API Reference | Edit a reply](https://developer-portal.gainsight.com/docs/api/operations/community/editQuestionReply.md)
+- [API Reference | Like a reply](https://developer-portal.gainsight.com/docs/api/operations/community/likeQuestionReply.md)
+- [API Reference | Unlike a reply](https://developer-portal.gainsight.com/docs/api/operations/community/unlikeQuestionReply.md)
+- [API Reference | Edit the poll title](https://developer-portal.gainsight.com/docs/api/operations/community/editQuestionPollTitle.md)
+- [API Reference | Edit the poll options](https://developer-portal.gainsight.com/docs/api/operations/community/editQuestionPollOptions.md)
+- [API Reference | Show poll results](https://developer-portal.gainsight.com/docs/api/operations/community/getQuestionPollResult.md)
+- [API Reference | Delete poll attached to a question](https://developer-portal.gainsight.com/docs/api/operations/community/deleteQuestionPoll.md)
+- [API Reference | Convert a question to a reply](https://developer-portal.gainsight.com/docs/api/operations/community/moveQuestionToTopic.md)
+- [API Reference | Approve a question](https://developer-portal.gainsight.com/docs/api/operations/community/approveQuestion.md)
+- [API Reference | Approve a reply](https://developer-portal.gainsight.com/docs/api/operations/community/approveQuestionReply.md)
+- [API Reference | Report a question](https://developer-portal.gainsight.com/docs/api/operations/community/reportQuestion.md)
+- [API Reference | Report a question reply](https://developer-portal.gainsight.com/docs/api/operations/community/reportQuestionReply.md)
+- [API Reference | Resolve reported question](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedQuestion.md)
+- [API Reference | Resolve reported question reply](https://developer-portal.gainsight.com/docs/api/operations/community/resolveReportedQuestionReply.md)
+- [API Reference | Set moderation label to question](https://developer-portal.gainsight.com/docs/api/operations/community/setQuestionModerationLabel.md)
+- [API Reference | Unset moderation label from question](https://developer-portal.gainsight.com/docs/api/operations/community/unsetQuestionModerationLabel.md)
+- [API Reference | Assign a moderator to article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/assignModerator.md)
+- [API Reference | Unassign a article or articles](https://developer-portal.gainsight.com/docs/api/operations/community/unassignModerator.md)
+- [API Reference | List replies for a question](https://developer-portal.gainsight.com/docs/api/operations/community/getRepliesForQuestion.md)
+- [API Reference | Fetch a single reply for a question](https://developer-portal.gainsight.com/docs/api/operations/community/getQuestionReply.md)
+- [API Reference | List questions](https://developer-portal.gainsight.com/docs/api/operations/community/getQuestionList.md)
+- [API Reference | List questions for a category](https://developer-portal.gainsight.com/docs/api/operations/community/getQuestionListForCategory.md)
+- [API Reference | List trashed questions](https://developer-portal.gainsight.com/docs/api/operations/community/getTrashedQuestionList.md)
+
+### [API Reference] Community API — Public Tags
+
+- [API Reference | Create public tag](https://developer-portal.gainsight.com/docs/api/operations/community/createPublicTag.md)
+- [API Reference | Rename public tag](https://developer-portal.gainsight.com/docs/api/operations/community/renamePublicTag.md)
+- [API Reference | Delete public tag](https://developer-portal.gainsight.com/docs/api/operations/community/deletePublicTag.md)
+- [API Reference | Merge public tags](https://developer-portal.gainsight.com/docs/api/operations/community/mergePublicTags.md)
+- [API Reference | List public tags](https://developer-portal.gainsight.com/docs/api/operations/community/getPublicTagsList.md)
+
+### [API Reference] Community API — Webhooks
+
+- [API Reference | Subscribe URL to webhook event](https://developer-portal.gainsight.com/docs/api/operations/community/subscribeWebhook.md)
+- [API Reference | Unsubscribe url from webhook event](https://developer-portal.gainsight.com/docs/api/operations/community/unsubscribeUrlFromWebhook.md)
+- [API Reference | Unsubscribe All urls from webhook event](https://developer-portal.gainsight.com/docs/api/operations/community/unsubscribeAllUrlsFromWebhook.md)
+- [API Reference | List of Events Webhook subscriptions for a given event.](https://developer-portal.gainsight.com/docs/api/operations/community/listEventWebhookSubscriptions.md)
+
+### [API Reference] Events API — Events
+
+- [API Reference | Create an event](https://developer-portal.gainsight.com/docs/api/operations/events/createEvent.md)
+- [API Reference | Create an event as draft](https://developer-portal.gainsight.com/docs/api/operations/events/createEventAsDraft.md)
+- [API Reference | Publish an event](https://developer-portal.gainsight.com/docs/api/operations/events/publishEvent.md)
+- [API Reference | Trash an event](https://developer-portal.gainsight.com/docs/api/operations/events/toggleEventTrashed.md)
+- [API Reference | Reschedule an event](https://developer-portal.gainsight.com/docs/api/operations/events/rescheduleEvent.md)
+- [API Reference | Sign up to an event](https://developer-portal.gainsight.com/docs/api/operations/events/signupEvent.md)
+- [API Reference | Cancel sign up to an event](https://developer-portal.gainsight.com/docs/api/operations/events/cancelSignUpEvent.md)
+- [API Reference | Edit an event title](https://developer-portal.gainsight.com/docs/api/operations/events/editEventTitle.md)
+- [API Reference | Edit an event url](https://developer-portal.gainsight.com/docs/api/operations/events/editEventUrl.md)
+- [API Reference | Edit an event external registration url](https://developer-portal.gainsight.com/docs/api/operations/events/editExternalRegistrationUrl.md)
+- [API Reference | Edit an event content](https://developer-portal.gainsight.com/docs/api/operations/events/editEventContent.md)
+- [API Reference | Edit an event location](https://developer-portal.gainsight.com/docs/api/operations/events/editEventLocation.md)
+- [API Reference | Edit an event image](https://developer-portal.gainsight.com/docs/api/operations/events/editEventImage.md)
+- [API Reference | Change the confirmation message that gets displayed after a user signs up for the event](https://developer-portal.gainsight.com/docs/api/operations/events/changeSignUpConfirmationMessage.md)
+- [API Reference | Update the featured topics lists](https://developer-portal.gainsight.com/docs/api/operations/events/changeFeaturedTopics.md)
+- [API Reference | Change the eventType for a event.](https://developer-portal.gainsight.com/docs/api/operations/events/editEventType.md)
+- [API Reference | Changes visibility for an event, when provided with a user group id, it is only visible in the user group, else it is publicly visible.](https://developer-portal.gainsight.com/docs/api/operations/events/changeEventVisibility.md)
+- [API Reference | Find Event by ID](https://developer-portal.gainsight.com/docs/api/operations/events/getEvent.md)
+- [API Reference | List events](https://developer-portal.gainsight.com/docs/api/operations/events/getEventList.md)
+- [API Reference | Find event attendees by event ID](https://developer-portal.gainsight.com/docs/api/operations/events/getAttendeeList.md)
+
+### [API Reference] Events API — Event Types
+
+- [API Reference | Change the Name for a event Type](https://developer-portal.gainsight.com/docs/api/operations/events/editEventTypeName.md)
+- [API Reference | Delete and EventType](https://developer-portal.gainsight.com/docs/api/operations/events/deleteEventType.md)
+- [API Reference | List event types](https://developer-portal.gainsight.com/docs/api/operations/events/getEventTypesList.md)
+- [API Reference | Create an EventType](https://developer-portal.gainsight.com/docs/api/operations/events/createEventType.md)
+
+### [API Reference] Gamification API — Leaderboard
+
+- [API Reference | All time leaderboard](https://developer-portal.gainsight.com/docs/api/operations/gamification/allTimeLeaderboard.md)
+- [API Reference | This week's leaderboard.](https://developer-portal.gainsight.com/docs/api/operations/gamification/weeklyLeaderboard.md)
+- [API Reference | User's position on the leaderboard.](https://developer-portal.gainsight.com/docs/api/operations/gamification/userPosition.md)
+
+### [API Reference] Gamification API — Points
+
+- [API Reference | Assign points](https://developer-portal.gainsight.com/docs/api/operations/gamification/assignPoints.md)
+- [API Reference | Get assigned points](https://developer-portal.gainsight.com/docs/api/operations/gamification/getPointsPerUserBetweenDates.md)
+
+### [API Reference] Search API — Search
+
+- [API Reference | Search for content in the community](https://developer-portal.gainsight.com/docs/api/operations/search/search.md)
+- [API Reference | Search for tags in the community](https://developer-portal.gainsight.com/docs/api/operations/search/searchTags.md)
+
+### [API Reference] Search API — Federated Search
+
+- [API Reference | Index content for federated search](https://developer-portal.gainsight.com/docs/api/operations/search.md)
+- [API Reference | Delete federated search content for specified source](https://developer-portal.gainsight.com/docs/api/operations/search/clear.md)
+- [API Reference | Delete specific urls from federated search](https://developer-portal.gainsight.com/docs/api/operations/search/delete.md)
+
+### [API Reference] User API — User
+
+- [API Reference | Fetches all users](https://developer-portal.gainsight.com/docs/api/operations/user/fetchUsers.md)
+- [API Reference | Fetch a single user](https://developer-portal.gainsight.com/docs/api/operations/user/fetchSingleUser.md)
+- [API Reference | Register a new user](https://developer-portal.gainsight.com/docs/api/operations/user/register.md)
+- [API Reference | Deletes an existing user](https://developer-portal.gainsight.com/docs/api/operations/user/erase.md)
+- [API Reference | Add a role to a user](https://developer-portal.gainsight.com/docs/api/operations/user/addRole.md)
+- [API Reference | Bulk add roles to users](https://developer-portal.gainsight.com/docs/api/operations/user/bulkUserAddRole.md)
+- [API Reference | Bulk remove roles from users](https://developer-portal.gainsight.com/docs/api/operations/user/bulkUserRemoveRole.md)
+- [API Reference | Bulk Award Badges to users](https://developer-portal.gainsight.com/docs/api/operations/user/bulkUserAwardBadge.md)
+- [API Reference | Bulk revoke badges from users](https://developer-portal.gainsight.com/docs/api/operations/user/bulkUserRevokeBadge.md)
+- [API Reference | Revoke a custom role from a user](https://developer-portal.gainsight.com/docs/api/operations/user/revokeRole.md)
+- [API Reference | Find User by field / value](https://developer-portal.gainsight.com/docs/api/operations/user/findBy.md)
+- [API Reference | Update a field in user's profile](https://developer-portal.gainsight.com/docs/api/operations/user/UpdateBy.md)
+- [API Reference | Update a custom field in user's profile](https://developer-portal.gainsight.com/docs/api/operations/user/UpdateProfileField.md)
+- [API Reference | Delete a custom field in user's profile](https://developer-portal.gainsight.com/docs/api/operations/user/DeleteProfileField.md)
+- [API Reference | Find User by field / value and flag it for logout](https://developer-portal.gainsight.com/docs/api/operations/user/remoteLogout.md)
+
+### [API Reference] User API — Gamification: Badges
+
+- [API Reference | Fetch list of badges](https://developer-portal.gainsight.com/docs/api/operations/user/list.md)
+- [API Reference | Delete a badge](https://developer-portal.gainsight.com/docs/api/operations/user/deleteBadge.md)
+
+### [API Reference] User API — User: Badges
+
+- [API Reference | Award a badge to an user](https://developer-portal.gainsight.com/docs/api/operations/user/awardBadge.md)
+- [API Reference | Revoke badge from user](https://developer-portal.gainsight.com/docs/api/operations/user/revoke_badge.md)
+
+### [Webhooks] Webhooks
+
+- [Webhooks](https://developer-portal.gainsight.com/docs/webhooks.md)
+
+### [Webhooks] Event Types
+
+- [Article Events](https://developer-portal.gainsight.com/docs/webhooks/article-events.md)
+- [Content Moderation Events](https://developer-portal.gainsight.com/docs/webhooks/content-moderation-events.md)
+- [Conversation Events](https://developer-portal.gainsight.com/docs/webhooks/conversation-events.md)
+- [Event Events](https://developer-portal.gainsight.com/docs/webhooks/event-events.md)
+- [Gamification Events](https://developer-portal.gainsight.com/docs/webhooks/gamification-events.md)
+- [Group Events](https://developer-portal.gainsight.com/docs/webhooks/group-events.md)
+- [Idea Events](https://developer-portal.gainsight.com/docs/webhooks/idea-events.md)
+- [Ideation Events](https://developer-portal.gainsight.com/docs/webhooks/ideation-events.md)
+- [Product Update Events](https://developer-portal.gainsight.com/docs/webhooks/product-update-events.md)
+- [Public Tag Events](https://developer-portal.gainsight.com/docs/webhooks/public-tag-events.md)
+- [Question Events](https://developer-portal.gainsight.com/docs/webhooks/question-events.md)
+- [User Events](https://developer-portal.gainsight.com/docs/webhooks/user-events.md)
+
+### Other
+
+- [Changelog](https://developer-portal.gainsight.com/docs/changelog.md): Release history of Developer Studio — new features, changes, and fixes

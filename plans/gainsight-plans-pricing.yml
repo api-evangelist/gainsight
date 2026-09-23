@@ -4,80 +4,156 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Gainsight
 providerId: gainsight
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-reconciled: true
+modified: '2026-09-17'
+generated: '2026-09-17'
+method: searched
+source: https://www.gainsight.com/pricing/
+provenance_note: >-
+  Replaces a 2026-05-04 bulk-sweep artifact that carried method: generated and
+  covered only two CS editions. Read from the live pricing page on 2026-09-17.
 tags:
   - Customer Success
   - Customer Health
-description: Gainsight CSM Essentials / Enterprise editions with custom per-user pricing.
-sources:
-  - https://www.gainsight.com/pricing/
-plans:
-  - id: gainsight-essentials
-    name: Essentials
-    type: enterprise
-    description: Custom pricing. 10 full users; 100 customers per user.
-    entries:
-      - label: Full users
-        name: full_users
-        type: quota
-        metric: user
-        limit: 10
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Customers per user
-        name: customers_per_user
-        type: quota
-        metric: customer
-        limit: 100
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: AI Insights and Automations
-      - name: Customer 360
-      - name: Playbooks + Success Plans
-      - name: Dashboards
-      - name: Health Scorecards
-      - name: Surveys
-      - name: Digital Journeys
-      - name: Unlimited Viewer Licenses
-  - id: gainsight-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom pricing. 20 full users; 200 customers per user.
-    entries:
-      - label: Full users
-        name: full_users
-        type: quota
-        metric: user
-        limit: 20
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Customers per user
-        name: customers_per_user
-        type: quota
-        metric: customer
-        limit: 200
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: All Essentials features
-      - name: Company News
-      - name: Renewal/Expansion Forecasting
-      - name: Org Mapping + Sponsor Tracking
-      - name: Unlimited Viewer Licenses
+description: >-
+  Gainsight publishes a tiered plan structure across four product lines but no
+  price on any tier — every plan is "contact us". Quotas are published (full
+  users, customers per user, academy sites, admin seats), which makes the tiers
+  comparable even without a number. Nothing is metered on API calls; API access
+  is a platform capability governed by the tenant rate limit, not a billed line
+  item.
+
+plan_count: 11
+currency: null
+pricing_model: enterprise-quote
+
+products:
+  - product: Customer Success
+    plans:
+      - id: gainsight-cs-essentials
+        name: Essentials
+        type: enterprise
+        price: null
+        price_label: Contact for pricing
+        entries:
+          - label: Full users included
+            name: full_users
+            value: 10
+          - label: Customers per user
+            name: customers_per_user
+            value: 100
+          - label: Viewer licenses
+            name: viewer_licenses
+            value: unlimited
+        features:
+          - AI Insights
+          - Automations
+          - Customer 360
+          - Playbooks
+          - Dashboards
+          - Health Scorecards
+          - Surveys
+          - Digital Journeys
+      - id: gainsight-cs-enterprise
+        name: Enterprise
+        type: enterprise
+        price: null
+        price_label: Contact for pricing
+        entries:
+          - label: Full users included
+            name: full_users
+            value: 20
+          - label: Customers per user
+            name: customers_per_user
+            value: 200
+          - label: Viewer licenses
+            name: viewer_licenses
+            value: unlimited
+        features:
+          - Everything in Essentials
+          - Company News
+          - Renewal and Expansion Forecasting
+          - Organizational Mapping & Sponsor Tracking
+
+  - product: Skilljar by Gainsight
+    plans:
+      - id: skilljar-essentials
+        name: Essentials
+        type: enterprise
+        price: null
+        entries:
+          - label: Academy sites
+            name: academy_sites
+            value: 1
+          - label: Seats and courses
+            name: seats_courses
+            value: unlimited
+        features: [Standard Integrations]
+      - id: skilljar-professional
+        name: Professional
+        type: enterprise
+        price: null
+        entries:
+          - label: Academy sites
+            name: academy_sites
+            value: 2
+        features: [Premium Integrations, SSO for Admins]
+      - id: skilljar-enterprise
+        name: Enterprise
+        type: enterprise
+        price: null
+        entries:
+          - label: Academy sites
+            name: academy_sites
+            value: 3
+        features: [More Premium Integrations, Sandbox Organization]
+
+  - product: Product Experience (Gainsight PX)
+    plans:
+      - id: gainsight-px
+        name: Product Experience
+        type: enterprise
+        price: null
+        trial: true
+        features:
+          - Product Analytics
+          - In-App Guides
+          - User Surveys
+          - Multi-platform support
+        note: >-
+          The only Gainsight product offering a self-serve free trial. It is the
+          same product whose REST API has a published Swagger contract.
+
+  - product: Customer Communities
+    plans:
+      - id: cc-professional
+        name: Professional
+        type: enterprise
+        price: null
+        entries:
+          - label: Admin seats
+            name: admin_seats
+            value: 3
+      - id: cc-business
+        name: Business
+        type: enterprise
+        price: null
+        entries:
+          - label: Admin seats
+            name: admin_seats
+            value: 5
+      - id: cc-enterprise
+        name: Enterprise
+        type: enterprise
+        price: null
+        entries:
+          - label: Admin seats
+            name: admin_seats
+            value: 10
+
+api_billing:
+  metered: false
+  note: >-
+    No plan meters or prices API calls. API throughput is capped by the tenant
+    rate limit (see rate-limits/gainsight-rate-limits.yml), which is not
+    published as varying by tier. Sandbox environments are a separately purchased
+    license rather than a plan inclusion, except for Skilljar Enterprise.

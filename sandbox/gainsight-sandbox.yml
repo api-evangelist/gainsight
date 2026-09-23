@@ -1,0 +1,52 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://support.gainsight.com/gainsight_nxt/Administration_and_Permissions/General_Administration/Gainsight_Sandbox_Management
+  and https://www.gainsight.com/pricing/
+provider: Gainsight
+providerId: gainsight
+available: true
+self_serve: false
+description: >-
+  Gainsight publishes a sandbox product, but it is a licensed copy of a
+  customer's production org rather than a public developer test environment.
+  There is no anonymous sandbox, no test-mode key prefix, no published test
+  fixtures and no hosted test tokens — a developer cannot exercise any Gainsight
+  API without an existing commercial tenant.
+
+environments:
+  - name: Gainsight NXT Sandbox
+    product: Gainsight CS
+    kind: full copy of the production org
+    access: >-
+      Requires purchased Sandbox licenses; customers are directed to their
+      Customer Account Manager to procure them.
+    purpose: testing new releases and configuration changes before production
+    docs: https://support.gainsight.com/gainsight_nxt/Administration_and_Permissions/General_Administration/Gainsight_Sandbox_Management
+  - name: Skilljar Sandbox Organization
+    product: Skilljar by Gainsight
+    access: included in the Skilljar Enterprise tier only
+    docs: https://www.gainsight.com/pricing/
+  - name: Gainsight PX free trial
+    product: Gainsight PX
+    kind: time-limited trial of the real product
+    access: self-serve trial offered on the pricing page
+    docs: https://www.gainsight.com/pricing/
+    note: A trial tenant, not a sandbox — data written is real data in a real org.
+
+test_credentials:
+  test_mode_key_prefix: null
+  test_cards: null
+  test_tokens: null
+  note: >-
+    None published. Keys are per-tenant: Gainsight CS access keys and OAuth
+    clients are generated inside the tenant, and PX API keys inside
+    Administration > REST API. No key prefix distinguishes test from live.
+
+time_simulation: null
+fixtures: null
+
+consequence: >-
+  Every Gainsight API surface — CS, PX, CC, SCIM and the MCP server — is
+  reachable only from inside a provisioned tenant. Nothing in this profile could
+  be exercised anonymously beyond discovery documents and the published contract.

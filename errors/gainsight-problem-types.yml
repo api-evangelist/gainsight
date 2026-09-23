@@ -1,0 +1,128 @@
+generated: '2026-09-17'
+method: derived
+source: >-
+  openapi/gainsight-px-rest-api-openapi.yml (4xx/5xx responses across 74
+  operations), plus observed live gateway responses from
+  companyapi.gainsightcloud.com
+provider: Gainsight
+providerId: gainsight
+format: proprietary
+format_note: >-
+  Not RFC 9457. The PX contract declares no application/problem+json media type
+  anywhere, and the Gainsight CS gateway returns its own envelope. Two different
+  error shapes exist across the estate and an agent must handle both.
+
+envelopes:
+  - surface: Gainsight CS / MCP gateway (gainsightcloud.com)
+    shape:
+      result: boolean, false on error
+      errorCode: string, e.g. GS_APIG_2401
+      errorDesc: string, short human description
+      requestId: string, UUID — also returned as the x-gs-request-id and x-request-id headers
+      message: string
+    observed:
+      - status: 401
+        body: '{"result":false,"errorCode":"GS_APIG_2401","errorDesc":"Unauthorized","requestId":"...","message":"Unauthorized"}'
+      - status: 404
+        body: '{"result":false,"errorCode":"GS_APIG_1000","errorDesc":"Not Found","requestId":"...","message":"Not Found"}'
+      - status: 500
+        body: '{"result":false,"errorCode":"GU_1101","errorDesc":"Oops, something went wrong...","requestId":"..."}'
+    note: >-
+      errorCode is the field to branch on, not the HTTP status —
+      GS_APIG_1000 (route absent) and GS_APIG_2401 (route present, unauthorized)
+      are what distinguish a missing endpoint from a gated one.
+  - surface: Gainsight PX REST API (api.aptrinsic.com)
+    shape:
+      note: >-
+        The contract declares response descriptions but no error schema for most
+        4xx codes; CustomEventsBatchError is the one modelled error definition.
+    schemas: [CustomEventsBatchError]
+
+problem_types:
+  - status: 400
+    title: Bad request
+    occurrences: 50
+    remediation: Validate the request body against the operation schema before retrying.
+  - status: 400
+    title: Bad request, possible duplicate
+    occurrences: 3
+    remediation: >-
+      The resource may already exist. Read before write — there is no
+      idempotency key to make the retry safe.
+  - status: 401
+    title: Unauthorized or bad API Key
+    occurrences: 62
+    remediation: >-
+      Check the X-APTRINSIC-API-KEY header and that the key's permission
+      (Read / Write / Production Launch) covers this operation.
+  - status: 403
+    title: Access denied
+    occurrences: 10
+    remediation: The API key lacks the permission this operation requires.
+  - status: 403
+    title: Forbidden
+    occurrences: 1
+  - status: 404
+    title: Account not found
+    occurrences: 12
+  - status: 404
+    title: User not found by id
+    occurrences: 10
+  - status: 404
+    title: User not found
+    occurrences: 5
+  - status: 404
+    title: Feature not found
+    occurrences: 4
+  - status: 404
+    title: Type not found
+    occurrences: 1
+  - status: 429
+    title: Rate limit exceeded
+    occurrences: 62
+    remediation: >-
+      Back off and retry. Published PX ceiling is ~200 requests/second and
+      1,000,000/day; the contract declares no Retry-After or RateLimit-* header,
+      so an agent must use its own backoff schedule. See
+      rate-limits/gainsight-rate-limits.yml.
+  - status: 500
+    title: Internal error
+    occurrences: 1
+
+localization_error_range:
+  note: >-
+    The PX Localization tag defines a non-standard 432–438 status range. These
+    are real declared responses in the contract, not a transcription artefact,
+    and a generic HTTP client will not recognise them.
+  codes:
+    - status: 432
+      title: xliff parser error
+      occurrences: 4
+    - status: 433
+      title: content id not found in xliff file
+      occurrences: 4
+      variants: [article id not found in xliff file, engagement id not found in xliff file, kc id not found in xliff file]
+    - status: 434
+      title: target language is not supported by subscription
+      occurrences: 4
+    - status: 435
+      title: resource not found
+      occurrences: 4
+      variants: [article not found, Entry not found, engagement not found, KCBot not found]
+    - status: 436
+      title: resource has no content
+      occurrences: 4
+      variants: [article has no content, Entry has no content, engagement has no content, KCBot has no content]
+    - status: 437
+      title: strategy is not valid
+      occurrences: 8
+    - status: 438
+      title: xliff version is not supported
+      occurrences: 8
+
+gaps:
+  - No machine-readable error code registry is published for the CS or CC APIs.
+  - >-
+    The PX contract gives a description per status but no error body schema for
+    4xx, so an agent cannot know the field to read the message from without
+    calling the API.
