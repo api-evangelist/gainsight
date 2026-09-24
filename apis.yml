@@ -50,8 +50,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -123,8 +121,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -196,8 +192,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -269,8 +263,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -342,8 +334,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -415,8 +405,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -488,8 +476,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -561,8 +547,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -634,8 +618,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -707,8 +689,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -780,8 +760,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -855,8 +833,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -928,8 +904,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1001,8 +975,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1074,8 +1046,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1149,8 +1119,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1222,8 +1190,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1295,8 +1261,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1368,8 +1332,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1441,8 +1403,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1514,8 +1474,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1587,8 +1545,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1660,8 +1616,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1733,8 +1687,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1806,8 +1758,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1879,8 +1829,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -1954,8 +1902,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -2027,8 +1973,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -2102,8 +2046,6 @@ apis:
     url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
   - type: Swagger
     url: https://api.gainsight.com/swagger
-  - type: GraphQL
-    url: graphql/gainsight-graphql.md
   - type: Documentation
     url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
   - type: api-key
@@ -2423,6 +2365,7 @@ tags:
 - Software-as-a-Service
 - MCP
 - Retention
+- Community
 tags_raw:
 - Customer Success
 - Customer Experience
