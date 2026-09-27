@@ -204,7 +204,97 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+    ActivityInput:
+      type: object
+      required:
+      - Subject
+      - ActivityTypeId
+      - CompanyId
+      - ActivityDate
+      properties:
+        Subject:
+          type: string
+          description: Activity subject
+        Notes:
+          type: string
+          description: Activity notes
+        ActivityTypeId:
+          type: string
+          description: Activity type identifier
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        ActivityDate:
+          type: string
+          format: date-time
+          description: Date and time of the activity
+        OwnerId:
+          type: string
+          description: Activity owner user ID
+        ExternalId:
+          type: string
+          description: External system identifier
+        Attendees:
+          type: array
+          items:
+            type: object
+            properties:
+              personId:
+                type: string
+              email:
+                type: string
+                format: email
+        Sentiment:
+          type: string
+          enum:
+          - Positive
+          - Neutral
+          - Negative
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     Activity:
       type: object
       properties:
@@ -270,89 +360,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    ActivityInput:
-      type: object
-      required:
-      - Subject
-      - ActivityTypeId
-      - CompanyId
-      - ActivityDate
-      properties:
-        Subject:
-          type: string
-          description: Activity subject
-        Notes:
-          type: string
-          description: Activity notes
-        ActivityTypeId:
-          type: string
-          description: Activity type identifier
-        CompanyId:
-          type: string
-          description: Associated company Gsid
-        ActivityDate:
-          type: string
-          format: date-time
-          description: Date and time of the activity
-        OwnerId:
-          type: string
-          description: Activity owner user ID
-        ExternalId:
-          type: string
-          description: External system identifier
-        Attendees:
-          type: array
-          items:
-            type: object
-            properties:
-              personId:
-                type: string
-              email:
-                type: string
-                format: email
-        Sentiment:
-          type: string
-          enum:
-          - Positive
-          - Neutral
-          - Negative
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
   parameters:
     activityId:
       name: activityId
@@ -361,13 +368,6 @@ components:
       description: Timeline activity unique identifier
       schema:
         type: string
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

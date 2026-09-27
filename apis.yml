@@ -2101,53 +2101,14 @@ apis:
       https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Renewal_Center_API/Renewal_Center_API
   - type: Documentation
     url: https://support.gainsight.com/gainsight_nxt/API_and_Developer_Docs/Cockpit_API/Task_APIs
-- aid: gainsight:gainsight-px-rest-api
-  name: Gainsight PX REST API
-  description: The Gainsight PX REST API — the one Gainsight surface with a published machine-readable contract. Swagger 2.0, 59 paths, 74 operations, 93 definitions, covering users, accounts, custom events, engagements, features, segments, survey responses and the product-analytics event streams (page view, session, identify, form submit, feature match, segment match, email, engagement view). Harvested verbatim from Gainsight's own documentation host on 2026-09-17.
-  humanURL: https://px-apidocs.gainsight.com/
-  baseURL: https://api.aptrinsic.com/v1
-  tags:
-  - Product Experience
-  - Product Analytics
-  - User Engagement
-  - Customer Success
-  - Event
-  tags_raw:
-  - Product Experience
-  - Product Analytics
-  - User Engagement
-  - Customer Success
-  - Events
-  properties:
-  - type: OpenAPI
-    url: openapi/gainsight-px-rest-api-openapi.yml
-    name: Gainsight PX REST API (harvested verbatim, Swagger 2.0 v0.1.6)
-  - type: OpenAPI
-    url: https://px-apidocs.gainsight.com/source.yaml
-    name: Provider-hosted source (HTTP 200, 2026-09-17)
-  - type: Overlay
-    url: overlays/gainsight-px-rest-api-overlay.yaml
-  - type: LLMsTxt
-    url: llms/gainsight-px-llms.txt
-  - type: APIReference
-    url: https://px-apidocs.gainsight.com/
-  - type: Documentation
-    url: https://support.gainsight.com/PX/API_for_Developers
-  - type: Authentication
-    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
-  - type: API Keys
-    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
-  - type: DataModel
-    url: data-model/gainsight-data-model.yml
-  - type: ErrorCatalog
-    url: errors/gainsight-problem-types.yml
-  - type: RateLimits
-    url: rate-limits/gainsight-rate-limits.yml
-  - type: AgentSkill
-    url: skills/_index.yml
 - aid: gainsight:gainsight-cc-api
   name: Gainsight CC (Customer Communities) REST API
-  description: 'The Gainsight Customer Communities REST API — 348 documented operations across five groups: Community (articles, conversations, questions, ideas, product updates, tags, moderation, webhooks), Events, Gamification, Search and User. Documented operation-by-operation on the Gainsight CC Developer Portal, with an llms.txt index, but no machine-readable contract is published. Served from insided.com, the domain of inSided, which Gainsight acquired and rebranded as Customer Communities.'
+  description: >-
+    The Gainsight Customer Communities REST API — 348 documented operations across five groups: Community
+    (articles, conversations, questions, ideas, product updates, tags, moderation, webhooks), Events,
+    Gamification, Search and User. Documented operation-by-operation on the Gainsight CC Developer Portal,
+    with an llms.txt index, but no machine-readable contract is published. Served from insided.com, the
+    domain of inSided, which Gainsight acquired and rebranded as Customer Communities.
   humanURL: https://developer-portal.gainsight.com/docs/api
   baseURL: https://api2-eu-west-1.insided.com
   tags:
@@ -2188,8 +2149,14 @@ apis:
     url: components/gainsight-components.yml
 - aid: gainsight:gainsight-cs-mcp
   name: Gainsight CS MCP Server
-  description: Gainsight's first-party remote Model Context Protocol server for Gainsight CS, exposed per tenant at /v1/ds-mcp/mcp on the customer's own gainsightcloud.com host. Reads companies, relationships, CTAs, Success Plans, Timeline activities, scorecards and reports, and writes CTAs, tasks, Success Plans and Timeline entries — with no delete operations at all. OAuth 2.1 with mandatory PKCE at the end-user level, discoverable anonymously through RFC 8414 and RFC 9728 metadata on the same gateway.
-  humanURL: https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
+  description: >-
+    Gainsight's first-party remote Model Context Protocol server for Gainsight CS, exposed per tenant
+    at /v1/ds-mcp/mcp on the customer's own gainsightcloud.com host. Reads companies, relationships, CTAs,
+    Success Plans, Timeline activities, scorecards and reports, and writes CTAs, tasks, Success Plans
+    and Timeline entries — with no delete operations at all. OAuth 2.1 with mandatory PKCE at the end-user
+    level, discoverable anonymously through RFC 8414 and RFC 9728 metadata on the same gateway.
+  humanURL: >-
+    https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
   baseURL: https://companyapi.gainsightcloud.com
   tags:
   - MCP
@@ -2206,9 +2173,11 @@ apis:
   - type: ToolCrosswalk
     url: mcp/gainsight-tool-crosswalk.yml
   - type: Documentation
-    url: https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
+    url: >-
+      https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/Admin_Guide/Set_Up_Gainsight_CS_MCP_Server_Integration
   - type: Support
-    url: https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/FAQ/Gainsight_CS_MCP_FAQ
+    url: >-
+      https://support.gainsight.com/gainsight_nxt/AI_Assistants/MCP_Integration/FAQ/Gainsight_CS_MCP_FAQ
   - type: OAuthScopes
     url: scopes/gainsight-scopes.yml
   - type: Authentication
@@ -2217,6 +2186,528 @@ apis:
     url: well-known/gainsight-well-known.yml
   - type: AgentSkill
     url: skills/_index.yml
+- aid: gainsight:gainsight-admin-api
+  name: Gainsight Admin API
+  description: Admin Model
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-admin-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-article-api
+  name: Gainsight Article API
+  description: Article related endpoints
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Article
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-article-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-emailevent-api
+  name: Gainsight Email Event API
+  description: Email Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - EmailEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-emailevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-engagement-api
+  name: Gainsight Engagement API
+  description: Engagement Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Engagement
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-engagement-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-engagementviewevent-api
+  name: Gainsight Engagement View Event API
+  description: Engagement View Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - EngagementViewEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-engagementviewevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-externalsegments-api
+  name: Gainsight External Segments API
+  description: External Segment Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - ExternalSegments
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-externalsegments-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-feature-api
+  name: Gainsight Feature API
+  description: Feature Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Feature
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-feature-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-featurematchevent-api
+  name: Gainsight Feature Match Event API
+  description: Feature Match Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - FeatureMatchEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-featurematchevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-formsubmitevent-api
+  name: Gainsight Form Submit Event API
+  description: Form Submit Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - FormSubmitEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-formsubmitevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-identifyevent-api
+  name: Gainsight Identify Event API
+  description: Identify Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - IdentifyEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-identifyevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-kcbot-api
+  name: Gainsight K Cbot API
+  description: KC Bot related endpoints
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - KCbot
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-kcbot-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-leadevent-api
+  name: Gainsight Lead Event API
+  description: Lead Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - LeadEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-leadevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-localization-api
+  name: Gainsight Localization API
+  description: localization
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Localization
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-localization-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-pageviewevent-api
+  name: Gainsight Page View Event API
+  description: Page View Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - PageViewEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-pageviewevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-segment-api
+  name: Gainsight Segment API
+  description: Segment Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - Segment
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-segment-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-segmentmatchevent-api
+  name: Gainsight Segment Match Event API
+  description: Segment Match Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - SegmentMatchEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-segmentmatchevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-sessionevent-api
+  name: Gainsight Session Event API
+  description: Session Event Operations
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - SessionEvent
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-sessionevent-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-surveyresponse-api
+  name: Gainsight Survey Response API
+  description: Survey Response Events
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - SurveyResponse
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-surveyresponse-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-userpreferences-v2-api
+  name: Gainsight UserPreferences V2 API
+  description: >-
+    User Preferences Version 2 API. Version 2 has support for new setting called 'trackEmailAnalytics'
+    which is to specify whether to track email analytics or not for the given user.
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - UserPreferences V2
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-userpreferences-v2-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
+- aid: gainsight:gainsight-user-preferences-api
+  name: Gainsight User Preferences API
+  description: User Preferences
+  humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
+  baseURL: https://api.aptrinsic.com/v1
+  tags:
+  - User Preferences
+  properties:
+  - type: OpenAPI
+    url: openapi/gainsight-user-preferences-api-openapi.yml
+  - type: LLMsTxt
+    url: llms/gainsight-px-llms.txt
+  - type: APIReference
+    url: https://px-apidocs.gainsight.com/
+  - type: Documentation
+    url: https://support.gainsight.com/PX/API_for_Developers
+  - type: Authentication
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/Authentication
+  - type: API Keys
+    url: https://support.gainsight.com/PX/API_for_Developers/02About/API_Keys
+  - type: DataModel
+    url: data-model/gainsight-data-model.yml
+  - type: ErrorCatalog
+    url: errors/gainsight-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/gainsight-rate-limits.yml
 common:
 - type: Website
   url: https://www.gainsight.com/
@@ -2376,6 +2867,7 @@ tags_raw:
 - SaaS
 - MCP
 - Retention
+- Community
 x-enrichment:
   date: '2026-09-17'
   status: enriched

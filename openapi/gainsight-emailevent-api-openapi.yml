@@ -1,0 +1,310 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Email Event API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: EmailEvent
+  description: Email Event Operations
+paths:
+  /v1/events/email:
+    get:
+      tags:
+      - EmailEvent
+      summary: Get Email events
+      description: 'Retrieves Email events. Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical AND.
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field |
+
+        | ----- |
+
+        | identifyId |
+
+        | date |
+
+        | email |
+
+        | engagementId |
+
+        | emailTrackType |
+
+        | executionDate |
+
+
+        #### Operators
+
+        | Operator | Meaning |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | < | Less than |
+
+        | <= | Less than or equal |
+
+        | > | Greater than |
+
+        | >= | Greater than or equal |
+
+        | ~ | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/events/email?filter=identifyId==ABC123 | Email event matches for user with identifyId of ''ABC123''. |
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field |
+
+        | ----- |
+
+        | date |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/events/email?sort=-date | Matches sorted by date descending. |'
+      operationId: getEmailEventsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: Filters
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        in: query
+        description: Number of events per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 1000
+          minimum: 1
+      - name: scrollId
+        in: query
+        description: Used for fetching subsequent pages after the first one.  Returned in response.scrollId
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields
+        required: false
+        allowEmptyValue: false
+        x-example: sort=-date
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EmailEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+components:
+  schemas:
+    EmailEventsPage:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result records
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EmailEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: EmailEventsPage
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 37.567147
+        longitude:
+          type: number
+          format: double
+          example: -122.324211
+      title: Coordinates
+      description: Coordinates object
+    Location:
+      type: object
+      properties:
+        countryName:
+          type: string
+          example: United States
+        countryCode:
+          type: string
+          example: USA
+          description: See ISO 3166
+        stateName:
+          type: string
+          example: California
+        stateCode:
+          type: string
+          example: CA
+          description: See ISO 3166
+        city:
+          type: string
+          example: San Mateo
+        street:
+          type: string
+          example: 101 Broadway
+        postalCode:
+          type: string
+          example: 94010
+        continent:
+          type: string
+          example: NA
+          description: See ISO 3166
+        regionName:
+          type: string
+          description: See ISO 3166-2
+        timeZone:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+      title: Location
+      description: Location object
+    EmailEvent:
+      type: object
+      required:
+      - identifyId
+      - propertyKey
+      - userType
+      properties:
+        eventId:
+          type: string
+        identifyId:
+          type: string
+        propertyKey:
+          type: string
+        date:
+          type: integer
+          format: int64
+        eventType:
+          type: string
+        userType:
+          type: string
+          enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+        globalContext:
+          type: object
+        engagementId:
+          type: string
+        email:
+          type: string
+        emailTrackType:
+          type: string
+          enum:
+          - EMPTY_EMAIL_TRACK_TYPE
+          - EMAIL_TRACK_BOUNCE
+          - EMAIL_TRACK_DEFERRED
+          - EMAIL_TRACK_DELIVERED
+          - EMAIL_TRACK_DROPPED
+          - EMAIL_TRACK_PROCESSED
+          - EMAIL_TRACK_OPEN
+          - EMAIL_TRACK_CLICK
+          - EMAIL_TRACK_UNSUBSCRIBE
+        status:
+          type: string
+        reason:
+          type: string
+        bounceType:
+          type: string
+          enum:
+          - EMPTY_BOUNCE_TYPE
+          - DELIVER_BOUNCE
+          - DELIVER_BLOCKED
+          - DELIVER_EXIPERED
+        mtaResponse:
+          type: string
+        attempt:
+          type: string
+        linkIndex:
+          type: integer
+          format: int32
+        linkType:
+          type: string
+          enum:
+          - EMPTY_LINK_TYPE
+          - HTML_LINK_TYPE
+          - HEADER_LINK_TYPE
+          - TEXT_LINK_TYPE
+        linkUrl:
+          type: string
+        inferredLocation:
+          $ref: '#/components/schemas/Location'
+      title: EmailEvent
+      description: Email Event object
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

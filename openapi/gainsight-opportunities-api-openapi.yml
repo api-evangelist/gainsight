@@ -153,7 +153,40 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
     OpportunityRecord:
       type: object
       properties:
@@ -227,32 +260,6 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
     WriteResponse:
       type: object
       properties:
@@ -269,13 +276,6 @@ components:
               type: integer
             failedCount:
               type: integer
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   parameters:
     recordId:
       name: recordId

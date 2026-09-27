@@ -1,0 +1,156 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST External Segments API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: ExternalSegments
+  description: External Segment Operations
+paths:
+  /v1/external_segment/metadata:
+    post:
+      tags:
+      - ExternalSegments
+      summary: createExternalSegment
+      operationId: createExternalSegmentUsingPOST
+      parameters:
+      - name: failIfExists
+        in: query
+        description: failIfExists
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalSegmentDto'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalSegmentDto'
+        description: externalSegmentDto
+        required: true
+    put:
+      tags:
+      - ExternalSegments
+      summary: updateExternalSegment
+      operationId: updateExternalSegmentUsingPUT
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalSegmentDto'
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalSegmentDto'
+        description: externalSegmentDto
+        required: true
+  /v1/external_segment/update_membership:
+    post:
+      tags:
+      - ExternalSegments
+      summary: Update External Segment membership
+      description: Updates External Segment membership
+      operationId: updateMembershipUsingPOST
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request, possible duplicate
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SegmentPayload'
+        description: Segment Payload
+        required: true
+components:
+  schemas:
+    SegmentPayload:
+      type: object
+      required:
+      - add
+      - remove
+      properties:
+        add:
+          type: array
+          description: List of segments to add
+          items:
+            $ref: '#/components/schemas/SegmentAction'
+        identityType:
+          type: string
+          example: IDENTIFY_ID
+          description: Identity type for all identities
+          enum:
+          - IDENTIFY_ID
+          - GLOBAL_ID
+        remove:
+          type: array
+          description: List of segments to remove
+          items:
+            $ref: '#/components/schemas/SegmentAction'
+      title: SegmentPayload
+      description: Payload for adding or removing segment identities
+    SegmentAction:
+      type: object
+      required:
+      - identities
+      - lastQualificationTime
+      - segmentId
+      properties:
+        identities:
+          type: array
+          description: List of user identity IDs
+          items:
+            type: string
+        lastQualificationTime:
+          type: string
+          example: '2023-01-12T00:25:15.269332Z'
+          description: Last qualification time in ISO 8601 format
+        segmentId:
+          type: string
+          example: 21d7ef5a-77ac-43d0-80c5-0ce1871a5ec7
+          description: Segment ID
+      title: SegmentAction
+      description: Segment action containing segment ID, qualification time, and identities
+    ExternalSegmentDto:
+      type: object
+      properties:
+        id:
+          type: string
+        externalId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      title: ExternalSegmentDto
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

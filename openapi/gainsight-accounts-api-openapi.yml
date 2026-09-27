@@ -1,18 +1,12 @@
 openapi: 3.2.0
 info:
-  title: Gainsight PX Accounts API
-  description: Product Experience (PX) API for tracking product usage, user behavior, and in-app engagement analytics. Powered by the Aptrinsic platform.
+  title: Gainsight Accounts API
   version: '1.0'
-  contact:
-    name: Gainsight Support
-    url: https://support.gainsight.com
-    email: support@gainsight.com
-  termsOfService: https://www.gainsight.com/terms-of-service/
+  description: 'Operations tagged Accounts across 2 of this provider''s published API definitions: gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.aptrinsic.com/v1
   description: Gainsight PX Production API
-security:
-- apiKey: []
+- url: https://api.aptrinsic.com/
 tags:
 - name: Accounts
   description: Manage account records and attributes
@@ -47,6 +41,8 @@ paths:
                     type: integer
         '401':
           $ref: '#/components/responses/Unauthorized'
+      security:
+      - apiKey: []
     post:
       operationId: createAccount
       summary: Gainsight Create or update an account
@@ -70,6 +66,11 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.aptrinsic.com/v1
+      description: Gainsight PX Production API
   /accounts/{accountId}:
     get:
       operationId: getAccount
@@ -90,6 +91,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
     patch:
       operationId: updateAccount
       summary: Gainsight Update an account
@@ -115,6 +118,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
     delete:
       operationId: deleteAccount
       summary: Gainsight Delete an account
@@ -130,21 +135,295 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.aptrinsic.com/v1
+      description: Gainsight PX Production API
+  /v1/accounts:
+    get:
+      tags:
+      - Accounts
+      summary: Get accounts
+      description: 'Retrieves accounts. Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical AND.
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Operators
+
+        | Operator | Meaning |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | < | Less than |
+
+        | <= | Less than or equal |
+
+        | > | Greater than |
+
+        | >= | Greater than or equal |
+
+        | ~ | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/accounts?filter=sicCode==64;numberOfEmployees>25 | Accounts with sicCode of 64 and more than 25 employees. |
+
+        | GET /v1/accounts?filter=sicCode==64;numberOfEmployees>25&filter=sicCode==63;numberOfEmployees>3000 | Accounts with: (sicCode of 64 AND more than 25 employees) OR (sicCode of 63 AND more than 3000 employees). |
+
+        | GET /v1/accounts?filter=location.cityName==Portland | Accounts with a city of ''Portland''. |
+
+        | GET /v1/accounts?filter=customAttributes.internalId==12345 | Accounts with a custom attribute of internalId equal to 12345''. |
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/accounts?sort=name;location.stateCode | Accounts sorted by name and state code in ascending order. |
+
+        | GET /v1/accounts?sort=-createDate | Accounts sorted by createDate in descending order. |'
+      operationId: getAccountsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: Filters
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        in: query
+        description: Number of accounts per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 1000
+          minimum: 1
+      - name: scrollId
+        in: query
+        description: Used for fetching subsequent pages after the first one.  Returned in response.scrollId
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    post:
+      tags:
+      - Accounts
+      summary: Create account
+      description: Creates a new account with the given data
+      operationId: createAccountUsingPOST
+      responses:
+        '201':
+          description: Created Account
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '400':
+          description: Bad request, possible duplicate
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account_2'
+        description: Account data
+        required: true
+    servers:
+    - url: https://api.aptrinsic.com/
+  /v1/accounts/update:
+    put:
+      tags:
+      - Accounts
+      summary: Update account (accountId passed via request body)
+      description: 'Updates an account with accountId specified in the request body.
+
+        This update method is useful when the account ID contains special characters that make it impossible to use the update method with the accountId in the request path.'
+      operationId: updateAccountUsingPUT
+      responses:
+        '204':
+          description: Updated
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account_2'
+        description: Account data
+        required: true
+    servers:
+    - url: https://api.aptrinsic.com/
+  /v1/accounts/{accountId}:
+    get:
+      tags:
+      - Accounts
+      summary: Get account
+      description: Retrieves the account with the given id
+      operationId: getAccountUsingGET
+      parameters:
+      - name: accountId
+        in: path
+        description: Account id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Account_2'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+      - Accounts
+      summary: Update account
+      description: Updates an account with the given data
+      operationId: updateAccountUsingPUT_1
+      parameters:
+      - name: accountId
+        in: path
+        description: Account id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Updated
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account_2'
+        description: Account data
+        required: true
+    delete:
+      tags:
+      - Accounts
+      summary: Delete account
+      description: 'Deletes Account
+
+        Note: Performs a cascading delete of all users associated with the account'
+      operationId: deleteAccountUsingDELETE
+      parameters:
+      - name: accountId
+        in: path
+        description: Account id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    servers:
+    - url: https://api.aptrinsic.com/
 components:
   parameters:
-    accountId:
-      name: accountId
-      in: path
-      required: true
-      description: Unique account identifier
-      schema:
-        type: string
-    sort:
-      name: sort
-      in: query
-      description: Sort field and direction (e.g., lastSeenDate:desc)
-      schema:
-        type: string
     pageSize:
       name: pageSize
       in: query
@@ -159,12 +438,32 @@ components:
       description: Scroll ID for cursor-based pagination
       schema:
         type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort field and direction (e.g., lastSeenDate:desc)
+      schema:
+        type: string
+    accountId:
+      name: accountId
+      in: path
+      required: true
+      description: Unique account identifier
+      schema:
+        type: string
     filter:
       name: filter
       in: query
       description: Filter expression for results
       schema:
         type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
     AccountInput:
       type: object
@@ -224,19 +523,242 @@ components:
         customAttributes:
           type: object
           description: Custom account attributes
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or API key is missing
+    Location:
+      type: object
+      properties:
+        countryName:
+          type: string
+          example: United States
+        countryCode:
+          type: string
+          example: USA
+          description: See ISO 3166
+        stateName:
+          type: string
+          example: California
+        stateCode:
+          type: string
+          example: CA
+          description: See ISO 3166
+        city:
+          type: string
+          example: San Mateo
+        street:
+          type: string
+          example: 101 Broadway
+        postalCode:
+          type: string
+          example: 94010
+        continent:
+          type: string
+          example: NA
+          description: See ISO 3166
+        regionName:
+          type: string
+          description: See ISO 3166-2
+        timeZone:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+      title: Location
+      description: Location object
+    AccountsPage:
+      type: object
+      properties:
+        accounts:
+          type: array
+          description: Array of accounts
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Account_2'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: AccountsPage
+    Account_2:
+      type: object
+      required:
+      - id
+      - name
+      - propertyKeys
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        trackedSubscriptionId:
+          type: string
+        sfdcId:
+          type: string
+        lastSeenDate:
+          type: integer
+          format: int64
+        dunsNumber:
+          type: string
+        industry:
+          type: string
+        numberOfEmployees:
+          type: integer
+          format: int32
+        sicCode:
+          type: string
+        website:
+          type: string
+        naicsCode:
+          type: string
+        plan:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        numberOfUsers:
+          type: integer
+          format: int32
+          description: Number of users
+          readOnly: true
+        propertyKeys:
+          type: array
+          example:
+          - AP-XXXXXXXXXX-2
+          description: Aptrinsic Tag Key, at least one is required
+          items:
+            type: string
+        createDate:
+          type: integer
+          format: int64
+          readOnly: true
+        lastModifiedDate:
+          type: integer
+          format: int64
+          readOnly: true
+        customAttributes:
+          type: object
+          description: Map of apiName to value
+        parentGroupId:
+          type: string
+          description: Id to group Accounts together
+        renewalDate:
+          type: integer
+          format: int64
+        healthScore:
+          type: integer
+          format: int32
+        gsId:
+          type: string
+        nps:
+          type: number
+          format: float
+        csm:
+          type: string
+      title: Account
+      description: Account object
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
+          type: string
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 37.567147
+        longitude:
+          type: number
+          format: double
+          example: -122.324211
+      title: Coordinates
+      description: Coordinates object
   securitySchemes:
     apiKey:
       type: apiKey
       name: X-APTRINSIC-API-KEY
       in: header
       description: Gainsight PX API key
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header
 externalDocs:
   description: Gainsight PX API Documentation
   url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
+x-refined-from:
+- gainsight-px-api-openapi.yml
+- gainsight-px-rest-api-openapi.yml

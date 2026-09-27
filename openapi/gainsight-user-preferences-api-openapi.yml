@@ -1,0 +1,211 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST User Preferences API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: User Preferences
+  description: User Preferences
+paths:
+  /v1/user/preferences:
+    post:
+      tags:
+      - User Preferences
+      summary: Get user preferences (identifyId passed via request body)
+      description: If the field is not set - return null.
+      operationId: getUserPreferencesUsingPOST
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserPreferences'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIdentifyId'
+        description: User identify id
+        required: true
+    put:
+      tags:
+      - User Preferences
+      summary: Update user preferences (identifyId passed via request body)
+      description: 'The fields are optional so it’s possible to provide only those that need to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.'
+      operationId: updateUserPreferencesUsingPUT_1
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserPreferences'
+        description: User preferences
+        required: true
+  /v1/user/preferences/{identifyId}:
+    get:
+      tags:
+      - User Preferences
+      summary: Get user preferences
+      description: If the field is not set - return null.
+      operationId: getUserPreferencesUsingGET
+      parameters:
+      - name: identifyId
+        in: path
+        description: User identify id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserPreferences'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+      - User Preferences
+      summary: Update user preferences
+      description: 'The fields are optional so it’s possible to provide only those that need to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.'
+      operationId: updateUserPreferencesUsingPUT
+      parameters:
+      - name: identifyId
+        in: path
+        description: User identify id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPreferences'
+        description: User preferences
+        required: true
+components:
+  schemas:
+    UpdateUserPreferences:
+      type: object
+      required:
+      - identifyId
+      properties:
+        guidedTours:
+          type: boolean
+        identifyId:
+          type: string
+          readOnly: true
+        onboardingBot:
+          type: boolean
+        productUpdates:
+          type: boolean
+        surveys:
+          type: boolean
+        trackUsage:
+          type: boolean
+      title: UpdateUserPreferences
+      description: Update user preferences
+    UserIdentifyId:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+      title: UserIdentifyId
+      description: User object
+    UserPreferences:
+      type: object
+      properties:
+        guidedTours:
+          type: boolean
+        onboardingBot:
+          type: boolean
+        productUpdates:
+          type: boolean
+        surveys:
+          type: boolean
+        trackUsage:
+          type: boolean
+      title: UserPreferences
+      description: User preferences
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

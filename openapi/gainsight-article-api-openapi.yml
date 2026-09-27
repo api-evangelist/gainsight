@@ -1,0 +1,210 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Article API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: Article
+  description: Article related endpoints
+paths:
+  /v1/articles:
+    get:
+      tags:
+      - Article
+      summary: Get Articles
+      description: 'Fetch metadata for Articles from your PX Subscription. The API provides you with the summary of basic information of each article that makes it easy to work with specific data.
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/articles?pageSize=100 | Get first 100 articles. |
+
+        | GET /v1/articles?pageSize=100&pageNumber=1 | Get next 100 articles. |
+
+        | GET /v1/articles?productId=1234LPSWUBFW | Get Articles of product 1234LPSWUBFW. |
+
+
+        Important: The default pageSize on list calls is 200. The pageSize can be changed by adding a pageSize parameter to the URL (i.e. /v1/articles?pageSize=100) with a max pageSize=500.
+
+
+        To fetch a particular page, use the pageNumber parameter (zero based)'
+      operationId: getArticlesUsingGET
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of events per page range[1,500]
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 200
+      - name: productId
+        in: query
+        description: Property Group
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleExternalViewPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/articles/{articleId}:
+    get:
+      tags:
+      - Article
+      summary: Get Article
+      description: 'Retrieves article with the given article Id
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/articles/{articleId} | Get article with id {articleId}. |'
+      operationId: getArticleUsingGET
+      parameters:
+      - name: articleId
+        in: path
+        description: Article id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArticleExternalView'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+components:
+  schemas:
+    LocalizationStatus:
+      type: object
+      properties:
+        languageCode:
+          type: string
+        translated:
+          type: boolean
+      title: LocalizationStatus
+    UserView:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: UserView
+    ArticleExternalViewPage:
+      type: object
+      properties:
+        articleExternalViewList:
+          type: array
+          description: Array of Articles View
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ArticleExternalView'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: ArticleExternalViewPage
+    ArticleKC:
+      type: object
+      properties:
+        kcId:
+          type: string
+        kcName:
+          type: string
+      title: ArticleKC
+    ArticleExternalView:
+      type: object
+      properties:
+        articleKCs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArticleKC'
+        articleName:
+          type: string
+        author:
+          type: string
+        createdDate:
+          type: integer
+          format: int64
+        defaultLanguage:
+          type: string
+        id:
+          type: string
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizationStatus'
+        modifiedBy:
+          $ref: '#/components/schemas/UserView'
+        modifiedDate:
+          type: integer
+          format: int64
+        productId:
+          type: string
+        productName:
+          type: string
+        releaseDate:
+          type: string
+          format: date-time
+        translationState:
+          type: string
+        viewType:
+          type: string
+      title: ArticleExternalView
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

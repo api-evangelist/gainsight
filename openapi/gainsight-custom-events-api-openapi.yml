@@ -1,18 +1,12 @@
 openapi: 3.2.0
 info:
-  title: Gainsight PX Custom Events API
-  description: Product Experience (PX) API for tracking product usage, user behavior, and in-app engagement analytics. Powered by the Aptrinsic platform.
+  title: Gainsight Custom Events API
   version: '1.0'
-  contact:
-    name: Gainsight Support
-    url: https://support.gainsight.com
-    email: support@gainsight.com
-  termsOfService: https://www.gainsight.com/terms-of-service/
+  description: 'Operations tagged Custom Events across 2 of this provider''s published API definitions: gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.aptrinsic.com/v1
   description: Gainsight PX Production API
-security:
-- apiKey: []
+- url: https://api.aptrinsic.com/
 tags:
 - name: Custom Events
   description: Send custom events for tracking
@@ -37,12 +31,201 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.aptrinsic.com/v1
+      description: Gainsight PX Production API
+  /v1/events/custom:
+    get:
+      tags:
+      - Custom Events
+      summary: Get Custom events
+      description: 'Retrieves custom events. Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical AND.
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field |
+
+        | ----- |
+
+        | identifyId |
+
+        | eventName |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator | Meaning |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | < | Less than |
+
+        | <= | Less than or equal |
+
+        | > | Greater than |
+
+        | >= | Greater than or equal |
+
+        | ~ | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/events/custom?filter=identifyId==ABC123 | Custom event matches for user with identifyId of ''ABC123''. |
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/events/custom?sort=-date | Matches sorted by date descending. |'
+      operationId: getCustomEventsUsingGET
+      parameters:
+      - name: dateRangeEnd
+        in: query
+        description: Date range end
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeEnd=12345678
+        schema:
+          type: string
+      - name: dateRangeStart
+        in: query
+        description: Date range start
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeStart=12345678
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: Filters
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        in: query
+        description: Number of events per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 1000
+          minimum: 1
+      - name: scrollId
+        in: query
+        description: Used for fetching subsequent pages after the first one.  Returned in response.scrollId
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields
+        required: false
+        allowEmptyValue: false
+        x-example: sort=-date;accountId
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    post:
+      tags:
+      - Custom Events
+      summary: Create custom event
+      description: Creates custom event with the given data
+      operationId: createCustomEventUsingPOST
+      responses:
+        '201':
+          description: Create custom events
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+        '500':
+          description: Internal error
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomEvent_2'
+        description: Custom event data
+        required: true
+    servers:
+    - url: https://api.aptrinsic.com/
 components:
   responses:
-    BadRequest:
-      description: Invalid request body or parameters
     Unauthorized:
       description: Authentication failed or API key is missing
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
     CustomEvent:
       type: object
@@ -72,12 +255,158 @@ components:
         referrer:
           type: string
           description: Referrer URL
+    CustomEvent_2:
+      type: object
+      required:
+      - eventName
+      - identifyId
+      - propertyKey
+      - userType
+      properties:
+        eventId:
+          type: string
+        identifyId:
+          type: string
+        propertyKey:
+          type: string
+        date:
+          type: integer
+          format: int64
+        eventType:
+          type: string
+        sessionId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+        accountId:
+          type: string
+        globalContext:
+          type: object
+        eventName:
+          type: string
+        attributes:
+          type: object
+        url:
+          type: string
+        referrer:
+          type: string
+        remoteHost:
+          type: string
+      title: CustomEvent
+      description: Custom Event object
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
+          type: string
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
+    CustomEventsPage:
+      type: object
+      properties:
+        customEvents:
+          type: array
+          description: Array of custom events
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/CustomEvent_2'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: CustomEventsPage
   securitySchemes:
     apiKey:
       type: apiKey
       name: X-APTRINSIC-API-KEY
       in: header
       description: Gainsight PX API key
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header
 externalDocs:
   description: Gainsight PX API Documentation
   url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
+x-refined-from:
+- gainsight-px-api-openapi.yml
+- gainsight-px-rest-api-openapi.yml

@@ -1,0 +1,138 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Segment API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: Segment
+  description: Segment Operations
+paths:
+  /v1/segment:
+    get:
+      tags:
+      - Segment
+      summary: Get segments
+      description: 'Retrieves segments. Supports paging.
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/segment?pageSize=100 | Get first 100 segments. |
+
+        | GET /v1/segment?pageSize=100&pageNumber=1 | Get next 100 segments. |'
+      operationId: getSegmentsUsingGET
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of segments per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 200
+          minimum: 1
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SegmentsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/segment/{segmentId}:
+    get:
+      tags:
+      - Segment
+      summary: Get segment
+      description: Retrieves the segment with the given id
+      operationId: getSegmentUsingGET
+      parameters:
+      - name: segmentId
+        in: path
+        description: Segment id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Segment'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+components:
+  schemas:
+    SegmentsPage:
+      type: object
+      properties:
+        segments:
+          type: array
+          description: Array of segments
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Segment'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: SegmentsPage
+    Segment:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: Segment
+      description: Segment object
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

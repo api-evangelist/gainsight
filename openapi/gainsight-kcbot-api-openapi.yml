@@ -1,0 +1,344 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST K Cbot API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: KCbot
+  description: KC Bot related endpoints
+paths:
+  /v1/kcbot:
+    get:
+      tags:
+      - KCbot
+      summary: Get KC Bots
+      description: 'Fetch metadata for KC Bots from your PX Subscription. The API provides you with the summary of basic information of each KC Bot that makes it easy to work with specific data.
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/kcbot?pageSize=100 | Get first 100 KcBots. |
+
+        | GET /v1/kcbot?pageSize=100&pageNumber=1 | Get next 100 KcBots. |
+
+        | GET /v1/kcbot?productId=1234LPSWUBFW | Get KcBots of product 1234LPSWUBFW. |
+
+
+        Important: The default pageSize on list calls is 200. The pageSize can be changed by adding a pageSize parameter to the URL (i.e. /v1/kcbot?pageSize=100) with a max pageSize=500.
+
+
+        To fetch a particular page, use the pageNumber parameter (zero based)'
+      operationId: getKcBotsUsingGET
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of events per page range[1,500]
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 200
+      - name: productId
+        in: query
+        description: Property Group
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeCenterExternalViewPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/kcbot/state:
+    put:
+      tags:
+      - KCbot
+      summary: Set KC state
+      description: 'Pauses or starts a KC.
+
+        ### Parameters
+
+        - kcId: ID of kc to be modified
+
+        - state: Desired state for kc (START or PAUSE)
+
+        - envs: If changing the state to START, list of environments to start the engagement on, defaults to [PRODUCTION]'
+      operationId: changeEngagementStateUsingPUT_1
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KCExternalStateChangeRequest'
+        description: KC State Change Request
+        required: true
+  /v1/kcbot/{kcId}:
+    get:
+      tags:
+      - KCbot
+      summary: Get KC Bot
+      description: 'Retrieves a KC Bot with the given Id
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/kcbot/{kcId} | Get kc with id {kcId}. |'
+      operationId: getKcBotWithIdUsingGET
+      parameters:
+      - name: kcId
+        in: path
+        description: KC Bot id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeCenterExternalView'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+components:
+  schemas:
+    KnowledgeCenterExternalViewPage:
+      type: object
+      properties:
+        kcList:
+          type: array
+          description: Array of KC View
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/KnowledgeCenterExternalView'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: KnowledgeCenterExternalViewPage
+    LocalizationStatus:
+      type: object
+      properties:
+        languageCode:
+          type: string
+        translated:
+          type: boolean
+      title: LocalizationStatus
+    KCExternalStateChangeRequest:
+      type: object
+      required:
+      - kcId
+      - state
+      properties:
+        kcId:
+          type: string
+          description: ID of kc to modify
+        state:
+          type: string
+          description: New state for given kc's
+          enum:
+          - START
+          - PAUSE
+        envs:
+          type: array
+          description: Collection of environments on which to change the state. Defaults to [PRODUCTION]
+          items:
+            type: string
+            enum:
+            - PRODUCTION
+            - INTEGRATION
+            - QA
+            - STAGE
+      title: KCExternalStateChangeRequest
+      description: Engagement state change request
+    UserView:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: UserView
+    KnowledgeCenterExternalView:
+      type: object
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserView'
+        createdDate:
+          type: integer
+          format: int64
+        defaultLanguage:
+          type: string
+        description:
+          type: string
+        environments:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizationStatus'
+        modifiedBy:
+          $ref: '#/components/schemas/UserView'
+        modifiedDate:
+          type: integer
+          format: int64
+        name:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        productId:
+          type: string
+        productName:
+          type: string
+        status:
+          type: string
+      title: KnowledgeCenterExternalView
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
+          type: string
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

@@ -110,7 +110,38 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
+    EventType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Event type identifier
+        name:
+          type: string
+          description: Event type name
+        description:
+          type: string
+          description: Event type description
+        isActive:
+          type: boolean
+          description: Whether the event type is active
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     EventInput:
       type: object
       required:
@@ -146,37 +177,6 @@ components:
         sourceSystem:
           type: string
           description: Source system identifier
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
-    EventType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Event type identifier
-        name:
-          type: string
-          description: Event type name
-        description:
-          type: string
-          description: Event type description
-        isActive:
-          type: boolean
-          description: Whether the event type is active
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    Unauthorized:
-      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

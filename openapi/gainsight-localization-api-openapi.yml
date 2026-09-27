@@ -1,0 +1,453 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Localization API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: Localization
+  description: localization
+paths:
+  /v1/localization/export/articles:
+    get:
+      tags:
+      - Localization
+      summary: export XLIFF for articles
+      description: retrieve the xliff file by filters in zip
+      operationId: exportXLIFFForArticlesUsingGET
+      parameters:
+      - name: id
+        in: query
+        description: id
+        required: true
+        schema:
+          type: string
+      - name: strategy
+        in: query
+        description: strategy
+        required: false
+        schema:
+          type: string
+      - name: translated
+        in: query
+        description: translated
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: trgLang
+        in: query
+        description: trgLang
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: version
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: article not found
+        '436':
+          description: article has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/export/content:
+    get:
+      tags:
+      - Localization
+      summary: export XLIFF
+      description: retrieve Content Library Entry xliff file by filters in zip
+      operationId: exportContentXLIFFUsingGET
+      parameters:
+      - name: contentId
+        in: query
+        description: contentId
+        required: true
+        schema:
+          type: string
+      - name: strategy
+        in: query
+        description: strategy
+        required: false
+        schema:
+          type: string
+      - name: translated
+        in: query
+        description: translated
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: trgLang
+        in: query
+        description: trgLang
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: type
+        required: true
+        schema:
+          type: string
+          enum:
+          - GUIDE
+          - ANNOUNCEMENT
+          - SLIDER
+          - LINK
+          - BOOLEAN_SURVEY
+          - RATING_SURVEY
+          - NPS_SURVEY
+          - CES_SURVEY
+          - MULTIPLE_QUESTION_SURVEY
+          - ARTICLE
+          - KNOWLEDGE_BASE_ARTICLE
+          - CUSTOM_LINK
+          - FUNC_CALL
+          - COMMUNITY
+      - name: version
+        in: query
+        description: version
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: Entry not found
+        '436':
+          description: Entry has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/export/engagement:
+    get:
+      tags:
+      - Localization
+      summary: export XLIFF
+      description: retrieve the engagement xliff file by filters in zip
+      operationId: exportXLIFFForEngagementUsingGET
+      parameters:
+      - name: draft
+        in: query
+        description: draft
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: id
+        in: query
+        description: id
+        required: true
+        schema:
+          type: string
+      - name: strategy
+        in: query
+        description: strategy
+        required: false
+        schema:
+          type: string
+      - name: translated
+        in: query
+        description: translated
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: trgLang
+        in: query
+        description: trgLang
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: version
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: engagement not found
+        '436':
+          description: engagement has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/export/kcbot:
+    get:
+      tags:
+      - Localization
+      summary: export XLIFF
+      description: retrieve the kcbot xliff file by filters in zip
+      operationId: exportKCXLIFFUsingGET
+      parameters:
+      - name: id
+        in: query
+        description: id
+        required: true
+        schema:
+          type: string
+      - name: kcVersion
+        in: query
+        description: kcVersion
+        required: false
+        schema:
+          type: string
+          default: v1
+      - name: strategy
+        in: query
+        description: strategy
+        required: false
+        schema:
+          type: string
+      - name: translated
+        in: query
+        description: translated
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: trgLang
+        in: query
+        description: trgLang
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: version
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: byte
+        '400':
+          description: localization is disabled
+        '435':
+          description: KCBot not found
+        '436':
+          description: KCBot has no content
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+  /v1/localization/import/articles:
+    post:
+      tags:
+      - Localization
+      summary: import XLIFF
+      description: import XLIFF content into article translation
+      operationId: importXLIFFForArticlesUsingPOST
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang equals srcLang
+        '432':
+          description: xliff parser error
+        '433':
+          description: article id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: file
+                  format: binary
+              required:
+              - file
+  /v1/localization/import/content:
+    post:
+      tags:
+      - Localization
+      summary: import XLIFF
+      description: import XLIFF content into Content Library Entry translation
+      operationId: importXLIFFForContentEntryUsingPOST
+      parameters:
+      - name: contentId
+        in: query
+        description: contentId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang equals srcLang
+        '432':
+          description: xliff parser error
+        '433':
+          description: content id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: file
+                  format: binary
+              required:
+              - file
+  /v1/localization/import/engagement:
+    post:
+      tags:
+      - Localization
+      summary: import XLIFF
+      description: import XLIFF content into engagement translation
+      operationId: importXLIFFForEngagementUsingPOST
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang is empty
+        '432':
+          description: xliff parser error
+        '433':
+          description: engagement id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: file
+                  format: binary
+              required:
+              - file
+  /v1/localization/import/kcbot:
+    post:
+      tags:
+      - Localization
+      summary: import XLIFF
+      description: import XLIFF content into kc translation
+      operationId: importXLIFFForKCUsingPOST
+      parameters:
+      - name: kcVersion
+        in: query
+        description: kcVersion
+        required: false
+        schema:
+          type: string
+          default: v1
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: created
+        '400':
+          description: trgLang equals srcLang
+        '432':
+          description: xliff parser error
+        '433':
+          description: kc id not found in xliff file
+        '434':
+          description: target language is not support by subscription
+        '437':
+          description: strategy is not valid
+        '438':
+          description: xliff version is not supported
+      deprecated: false
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: file
+                  format: binary
+              required:
+              - file
+components:
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

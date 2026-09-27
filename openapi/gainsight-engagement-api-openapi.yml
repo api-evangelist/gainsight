@@ -1,0 +1,748 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Engagement API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: Engagement
+  description: Engagement Operations
+paths:
+  /v1/engagement:
+    get:
+      tags:
+      - Engagement
+      summary: Get engagements
+      description: 'Retrieves engagements. Supports paging.
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/engagement?pageSize=100 | Get first 100 engagements. |
+
+        | GET /v1/engagement?pageSize=100&pageNumber=1 | Get next 100 engagements. |
+
+        | GET /v1/engagement?contentTypes=IN_APP_DIALOG,IN_APP_GUIDE | Get dialog and guide engagements. |'
+      operationId: getEngagementsUsingGET
+      parameters:
+      - name: contentTypes
+        in: query
+        description: Content Types
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - IN_APP_DIALOG
+            - IN_APP_CAROUSEL
+            - IN_APP_GUIDE
+            - IN_APP_NOTIFICATION
+            - OUT_BOUND_EMAIL
+            - IN_APP_NPS_SURVEY
+            - IN_APP_CES_SURVEY
+            - IN_APP_RATING_SURVEY
+            - IN_APP_BOOLEAN_SURVEY
+            - IN_APP_MULTIPLE_QUESTION_SURVEY
+            - UNRECOGNIZE
+          enum:
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+          - UNRECOGNIZE
+      - name: createdById
+        in: query
+        description: Created by ID
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of events per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 200
+          maximum: 500
+          minimum: 1
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngagementsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/engagement/env:
+    put:
+      tags:
+      - Engagement
+      summary: Set engagement environment
+      description: 'Move engagement between environments.
+
+        ### Parameters
+
+        - engagementId: ID of engagement to be modified
+
+        - env: Which environment to set the engagement to. Valid values: Production,Stage,QA,Integration (case insensitive)'
+      operationId: changeEngagementEnvUsingPUT
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngagementEnvChangeResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EngagementEnvChangeRequest'
+        description: Engagement Environment Change Request
+        required: true
+  /v1/engagement/envs:
+    put:
+      tags:
+      - Engagement
+      summary: Set engagement environments
+      description: 'Move engagement between environments.
+
+        ### Parameters
+
+        - engagementId: ID of engagement to be modified
+
+        - envs: Which environments to set the engagement to. Valid values: Production,Stage,QA,Integration (case insensitive)'
+      operationId: changeEngagementEnvsUsingPUT
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngagementEnvironmentsChangeResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EngagementEnvironmentsChangeRequest'
+        description: Engagement Environments Change Request
+        required: true
+  /v1/engagement/extended:
+    get:
+      tags:
+      - Engagement
+      summary: Get engagements with list of custom events from rules
+      description: 'Retrieves engagements with list of custom events that are used in the audience rule, either directly or indirectly via a feature match. Supports paging.
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/engagement/extended?pageSize=100 | Get first 100 engagements. |
+
+        | GET /v1/engagement/extended?pageSize=100&pageNumber=1 | Get next 100 engagements. |
+
+        | GET /v1/engagement/extended?contentTypes=IN_APP_DIALOG,IN_APP_GUIDE | Get dialog and guide engagements. |'
+      operationId: getEngagementsExtendedUsingGET
+      parameters:
+      - name: contentTypes
+        in: query
+        description: Content Types
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - IN_APP_DIALOG
+            - IN_APP_CAROUSEL
+            - IN_APP_GUIDE
+            - IN_APP_NOTIFICATION
+            - OUT_BOUND_EMAIL
+            - IN_APP_NPS_SURVEY
+            - IN_APP_CES_SURVEY
+            - IN_APP_RATING_SURVEY
+            - IN_APP_BOOLEAN_SURVEY
+            - IN_APP_MULTIPLE_QUESTION_SURVEY
+            - UNRECOGNIZE
+          enum:
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+          - UNRECOGNIZE
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of events per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 200
+          maximum: 500
+          minimum: 1
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngagementsWithCustomEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/engagement/metadata/survey:
+    get:
+      tags:
+      - Engagement
+      summary: getEngagementViewEvents
+      operationId: getEngagementViewEventsUsingGET
+      parameters:
+      - name: engagementId
+        in: query
+        description: engagementId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+      deprecated: false
+  /v1/engagement/state:
+    put:
+      tags:
+      - Engagement
+      summary: Set engagement state
+      description: 'Pauses or starts an engagement.
+
+        ### Parameters
+
+        - engagementId: ID of engagement to be modified
+
+        - state: Desired state for engagement (START or PAUSE)
+
+        - envs: If changing the state to START, list of environments to start the engagement on, defaults to [PRODUCTION]'
+      operationId: changeEngagementStateUsingPUT
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EngagementStateChangeRequest'
+        description: Engagement State Change Request
+        required: true
+  /v1/engagement/{engagementId}:
+    get:
+      tags:
+      - Engagement
+      summary: Get engagement
+      description: Retrieves the engagement with the given id
+      operationId: getEngagementUsingGET
+      parameters:
+      - name: engagementId
+        in: path
+        description: Engagement id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Engagement'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    delete:
+      tags:
+      - Engagement
+      summary: deleteEngagement
+      operationId: deleteEngagementUsingDELETE
+      parameters:
+      - name: engagementId
+        in: path
+        description: engagementId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+components:
+  schemas:
+    LocalizationStatus:
+      type: object
+      properties:
+        languageCode:
+          type: string
+        translated:
+          type: boolean
+      title: LocalizationStatus
+    EngagementEnvChangeRequest:
+      type: object
+      required:
+      - engagementId
+      - env
+      properties:
+        engagementId:
+          type: string
+          description: ID of engagement to modify
+        env:
+          type: string
+          enum:
+          - Production
+          - Stage
+          - QA
+          - Integration
+      title: EngagementEnvChangeRequest
+      description: Engagement state change request
+    EngagementEnvironmentsChangeRequest:
+      type: object
+      required:
+      - engagementId
+      - envs
+      properties:
+        engagementId:
+          type: string
+          description: ID of engagement to modify
+        envs:
+          type: array
+          description: Collection of environments
+          items:
+            type: string
+            enum:
+            - PRODUCTION
+            - INTEGRATION
+            - QA
+            - STAGE
+      title: EngagementEnvironmentsChangeRequest
+      description: Engagement environments change request
+    EngagementsWithCustomEventsPage:
+      type: object
+      properties:
+        engagements:
+          type: array
+          description: Array of engagements
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EngagementWithCustomEvents'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: EngagementsWithCustomEventsPage
+    EngagementEnvChangeResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+        status:
+          type: integer
+          format: int32
+      title: EngagementEnvChangeResponse
+      description: Engagement environment change response
+    EngagementWithCustomEvents:
+      type: object
+      required:
+      - customEvents
+      - envs
+      - id
+      - name
+      - propertyKeys
+      - state
+      - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+        state:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - STARTED
+          - PAUSED
+          - FAILED
+          - EDITING
+          - COMPLETED
+        propertyKeys:
+          type: array
+          example:
+          - AP-XXXXXXXXXX-2
+          description: Aptrinsic Tag Key, at least one is required
+          items:
+            type: string
+        envs:
+          type: array
+          example:
+          - Production
+          description: A list of environments
+          items:
+            type: string
+        customEvents:
+          type: array
+          description: A list of custom events that are referenced in the audience rules, also includes events indirectly referenced via a feature mapped to a custom event.
+          items:
+            $ref: '#/components/schemas/CustomEventMetadata'
+      title: EngagementWithCustomEvents
+      description: Engagement object
+    EngagementsPage:
+      type: object
+      properties:
+        engagements:
+          type: array
+          description: Array of engagements
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Engagement'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: EngagementsPage
+    CustomEventMetadata:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of custom event
+        properties:
+          type: array
+          items:
+            type: string
+      title: CustomEventMetadata
+      description: Custom event metadata
+    EngagementEnvironmentsChangeResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+        status:
+          type: integer
+          format: int32
+      title: EngagementEnvironmentsChangeResponse
+      description: Engagement environments change response
+    EngagementStateChangeRequest:
+      type: object
+      required:
+      - engagementId
+      - state
+      properties:
+        engagementId:
+          type: string
+          description: ID of engagement to modify
+        state:
+          type: string
+          description: New state for given engagement
+          enum:
+          - START
+          - PAUSE
+        envs:
+          type: array
+          description: Collection of environments on which to change the state. Defaults to [PRODUCTION]
+          items:
+            type: string
+            enum:
+            - PRODUCTION
+            - INTEGRATION
+            - QA
+            - STAGE
+      title: EngagementStateChangeRequest
+      description: Engagement state change request
+    Engagement:
+      type: object
+      required:
+      - envs
+      - id
+      - name
+      - propertyKeys
+      - state
+      - type
+      properties:
+        defaultLanguage:
+          type: string
+        id:
+          type: string
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizationStatus'
+        translationState:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+        state:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - STARTED
+          - PAUSED
+          - FAILED
+          - EDITING
+          - COMPLETED
+        propertyKeys:
+          type: array
+          example:
+          - AP-XXXXXXXXXX-2
+          description: Aptrinsic Tag Key, at least one is required
+          items:
+            type: string
+        envs:
+          type: array
+          example:
+          - Production
+          description: A list of environments
+          items:
+            type: string
+      title: Engagement
+      description: Engagement object
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
+          type: string
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

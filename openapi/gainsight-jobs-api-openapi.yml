@@ -178,6 +178,18 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    BulkJobError:
+      type: object
+      properties:
+        rowNumber:
+          type: integer
+          description: Row number in the CSV file
+        errorMessage:
+          type: string
+          description: Error message
+        fieldName:
+          type: string
+          description: Field that caused the error
     BulkJob:
       type: object
       properties:
@@ -225,25 +237,6 @@ components:
           type: string
           format: date-time
           description: Job completion timestamp
-    BulkJobError:
-      type: object
-      properties:
-        rowNumber:
-          type: integer
-          description: Row number in the CSV file
-        errorMessage:
-          type: string
-          description: Error message
-        fieldName:
-          type: string
-          description: Field that caused the error
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   parameters:
     jobId:
       name: jobId
@@ -252,6 +245,13 @@ components:
       description: Bulk job unique identifier
       schema:
         type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
   securitySchemes:
     apiKey:
       type: apiKey

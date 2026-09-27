@@ -144,44 +144,40 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    planId:
-      name: planId
-      in: path
-      required: true
-      description: Success plan unique identifier
-      schema:
-        type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
-    SuccessPlanInput:
+    SearchRequest:
       type: object
-      required:
-      - Name
-      - CompanyId
-      - TypeId
       properties:
-        Name:
-          type: string
-        CompanyId:
-          type: string
-        TypeId:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Active
-          - Completed
-          - Archived
-        OwnerId:
-          type: string
-        StartDate:
-          type: string
-          format: date
-        EndDate:
-          type: string
-          format: date
-        Comments:
-          type: string
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
     SuccessPlan:
       type: object
       properties:
@@ -235,39 +231,43 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    SearchRequest:
+    SuccessPlanInput:
       type: object
+      required:
+      - Name
+      - CompanyId
+      - TypeId
       properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
+        Name:
+          type: string
+        CompanyId:
+          type: string
+        TypeId:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Active
+          - Completed
+          - Archived
+        OwnerId:
+          type: string
+        StartDate:
+          type: string
+          format: date
+        EndDate:
+          type: string
+          format: date
+        Comments:
+          type: string
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Success plan unique identifier
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

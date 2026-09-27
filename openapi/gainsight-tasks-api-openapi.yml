@@ -145,47 +145,39 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
-  parameters:
-    taskId:
-      name: taskId
-      in: path
-      required: true
-      description: Task unique identifier
-      schema:
-        type: string
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
-    TaskInput:
+    SearchRequest:
       type: object
-      required:
-      - Name
-      - CTAId
       properties:
-        Name:
-          type: string
-        Description:
-          type: string
-        CTAId:
-          type: string
-        OwnerId:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Not Started
-          - In Progress
-          - Completed
-          - Skipped
-        Priority:
-          type: string
-        DueDate:
-          type: string
-          format: date
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
     Task:
       type: object
       properties:
@@ -244,32 +236,40 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-    SearchRequest:
+    TaskInput:
       type: object
+      required:
+      - Name
+      - CTAId
       properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
+        Name:
+          type: string
+        Description:
+          type: string
+        CTAId:
+          type: string
+        OwnerId:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Completed
+          - Skipped
+        Priority:
+          type: string
+        DueDate:
+          type: string
+          format: date
+  parameters:
+    taskId:
+      name: taskId
+      in: path
+      required: true
+      description: Task unique identifier
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

@@ -1,0 +1,710 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Admin API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: Admin
+  description: Admin Model
+paths:
+  /v1/admin/model/{type}/attributes:
+    get:
+      tags:
+      - Admin
+      summary: Get Attributes
+      description: Retrieves the model attributes for a given type
+      operationId: getModelAttributesUsingGET
+      parameters:
+      - name: type
+        in: path
+        description: Type
+        required: true
+        schema:
+          type: string
+          enum:
+          - user
+          - account
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttributeMetadata'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Type not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/monitoring/engagement_collisions:
+    get:
+      tags:
+      - Admin
+      summary: Get engagement collisions
+      description: 'Retrieves engagement collision events. Will return one row for each engagement collision in the given date range. Supports filtering and paging.
+
+        ### Filtering
+
+        The date range must be less than or equal to 180 days
+
+        Dates are specified as epoch milliseconds, GMT
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/admin/monitoring/engagement_collisions?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2 | Fetches first page of results |
+
+        | GET /v1/admin/monitoring/engagement_collisions?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2&pageNumber=1&scrollId=abcxyz | Fetches second page of results |'
+      operationId: getEngagementCollisionsUsingGET
+      parameters:
+      - name: dateRangeEnd
+        in: query
+        description: Date range end (epoch milliseconds)
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeEnd=1672962222000
+        schema:
+          type: integer
+          format: int64
+      - name: dateRangeStart
+        in: query
+        description: Date range start (epoch milliseconds)
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeStart=1670283822000
+        schema:
+          type: integer
+          format: int64
+      - name: pageNumber
+        in: query
+        description: Page Number (zero based)
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of records per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int64
+          default: 25
+          maximum: 1000
+          minimum: 1
+      - name: propertyKey
+        in: query
+        description: Product Key
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: scrollId
+        in: query
+        description: Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EngagementCollisionPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/monitoring/engagement_error_details/{engagementId}:
+    get:
+      tags:
+      - Admin
+      summary: Get engagement error details
+      description: 'Retrieves engagement error details. Will return one row for each engagement error.
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/admin/monitoring/engagement_error_details/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&groupByBrowser=true | Error details grouped by browser|
+
+        | GET /v1/admin/monitoring/engagement_error_details/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&groupByBrowser=false | Error details grouped by type|'
+      operationId: getEngagementErrorDetailsUsingGET
+      parameters:
+      - name: dateRangeEnd
+        in: query
+        description: Date range end (epoch milliseconds)
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeEnd=1672962222000
+        schema:
+          type: integer
+          format: int64
+      - name: dateRangeStart
+        in: query
+        description: Date range start (epoch milliseconds)
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeStart=1670283822000
+        schema:
+          type: integer
+          format: int64
+      - name: engagementId
+        in: path
+        description: Engagement id
+        required: true
+        schema:
+          type: string
+      - name: groupByBrowser
+        in: query
+        description: True to group by browser type, false to group by error
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EngagementErrorDetailsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/monitoring/engagement_errors:
+    get:
+      tags:
+      - Admin
+      summary: Get engagement errors summary
+      description: 'Retrieves engagement error summary. Will return one row for each engagement that has errors in the given date range. Supports filtering and paging.
+
+        ### Filtering
+
+        The date range must be less than or equal to 180 days
+
+        Dates are specified as epoch milliseconds, GMT
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/admin/monitoring/engagement_errors?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2 | Fetches first page of results |
+
+        | GET /v1/admin/monitoring/engagement_errors?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2&pageNumber=1&scrollId=abcxyz | Fetches second page of results |'
+      operationId: getEngagementErrorSummariesUsingGET
+      parameters:
+      - name: dateRangeEnd
+        in: query
+        description: Date range end (epoch milliseconds)
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeEnd=1672962222000
+        schema:
+          type: integer
+          format: int64
+      - name: dateRangeStart
+        in: query
+        description: Date range start (epoch milliseconds)
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeStart=1670283822000
+        schema:
+          type: integer
+          format: int64
+      - name: pageNumber
+        in: query
+        description: Page Number (zero based)
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of records per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 1000
+          minimum: 1
+      - name: propertyKey
+        in: query
+        description: Product Key
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: scrollId
+        in: query
+        description: Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EngagementErrorSummaryPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/monitoring/integrations:
+    get:
+      tags:
+      - Admin
+      summary: Get integration statuses
+      description: 'Retrieves the current statuses for the configured integrations. Will return one row for each integration.
+
+        Example:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/admin/monitoring/integrations | Fetches all integration statuses |'
+      operationId: getIntegrationStatusesUsingGET
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/IntegrationStatusPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/subscription:
+    get:
+      tags:
+      - Admin
+      summary: Get Subscription detail
+      description: Retrieves Subscription detail for the current sub
+      operationId: getDetailUsingGET
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetail'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/admin/subscription/users/notSeenAfter:
+    get:
+      tags:
+      - Admin
+      summary: Get Subscription users
+      description: Retrieves Subscription users
+      operationId: getSubscriptionUsersNotSeenAfterUsingGET
+      parameters:
+      - name: notSeenAfterTimestamp
+        in: query
+        description: Not seen after datetime (epoch milliseconds)
+        required: true
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int64
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of users per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 200
+          maximum: 1000
+          minimum: 1
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SubscriptionDetail'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Account not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+components:
+  schemas:
+    EngagementCollision:
+      type: object
+      properties:
+        engagementId:
+          type: string
+        engagementName:
+          type: string
+        propertyKey:
+          type: string
+          example:
+          - AP-XXXXXXXXXX-2
+          description: PX Product Tag Key
+        engagementType:
+          type: string
+          enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+        otherQualifiedEngagementNames:
+          type: array
+          description: Names of other qualified engagements
+          items:
+            type: string
+        views:
+          type: integer
+          format: int64
+          description: Number of views
+        priorityRule:
+          type: string
+          description: Priority rule
+        triggeredDate:
+          type: integer
+          format: int64
+          description: Timestamp of collision, in epoch milliseconds
+        viewedByUser:
+          type: string
+          description: User id
+      title: EngagementCollision
+      description: Engagement Error Summary
+    ProductDetail:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        productKeys:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductKeyDetails'
+      title: ProductDetail
+      description: Product Detail
+    SubscriptionDetail:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        iconUrl:
+          type: string
+        timeZone:
+          type: string
+        website:
+          type: string
+        description:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductDetail'
+      title: SubscriptionDetail
+      description: Subscription Detail
+    EngagementErrorSummary:
+      type: object
+      properties:
+        engagementId:
+          type: string
+        engagementName:
+          type: string
+        propertyKey:
+          type: string
+          example:
+          - AP-XXXXXXXXXX-2
+          description: PX Product Tag Key
+        engagementType:
+          type: string
+          enum:
+          - EMAIL
+          - IN_APP_DIALOG
+          - IN_APP_CAROUSEL
+          - IN_APP_GUIDE
+          - IN_APP_NOTIFICATION
+          - OUT_BOUND_EMAIL
+          - IN_APP_NPS_SURVEY
+          - IN_APP_CES_SURVEY
+          - IN_APP_RATING_SURVEY
+          - IN_APP_BOOLEAN_SURVEY
+          - IN_APP_MULTIPLE_QUESTION_SURVEY
+        firstOccurrenceDate:
+          type: integer
+          format: int64
+          description: Timestamp of first error, in epoch milliseconds
+        lastOccurrenceDate:
+          type: integer
+          format: int64
+          description: Timestamp of last error, in epoch milliseconds
+        views:
+          type: integer
+          format: int64
+          description: Number of views of engagement
+        ratio:
+          type: number
+          format: double
+          description: Ratio of errors to views
+        errorCount:
+          type: integer
+          format: int64
+          description: Number of errors
+      title: EngagementErrorSummary
+      description: Engagement Error Summary
+    EngagementErrorSummaryPage:
+      type: object
+      properties:
+        engagementErrorSummaries:
+          type: array
+          description: Array of engagement error summaries
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EngagementErrorSummary'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: EngagementErrorSummaryPage
+    EngagementCollisionPage:
+      type: object
+      properties:
+        engagementCollisions:
+          type: array
+          description: Array of engagement collisions
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EngagementCollision'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: EngagementCollisionPage
+    ProductKeyDetails:
+      type: object
+      properties:
+        channel:
+          type: string
+        productKey:
+          type: string
+        url:
+          type: string
+      title: ProductKeyDetails
+      description: Product Key Detail
+    IntegrationStatus:
+      type: object
+      properties:
+        integrationSyncName:
+          type: string
+        currentStatus:
+          type: string
+          enum:
+          - UP
+          - DOWN
+        lastSuccessfulDate:
+          type: integer
+          format: int64
+          description: Date of last successful run, in epoch milliseconds
+        lastError:
+          type: string
+        numberOfRecordsProcessed:
+          type: integer
+          format: int64
+          description: Number of records processed during the last run
+      title: IntegrationStatus
+      description: Integration Status Summary
+    EngagementErrorDetailsPage:
+      type: object
+      properties:
+        engagementErrorDetails:
+          type: array
+          description: Array of engagement error details
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EngagementErrorDetails'
+      title: EngagementErrorDetailsPage
+    EngagementErrorDetails:
+      type: object
+      properties:
+        engagementId:
+          type: string
+        stepName:
+          type: string
+        stepNumber:
+          type: integer
+          format: int32
+        errorCount:
+          type: integer
+          format: int64
+          description: Number of errors
+        errorType:
+          type: string
+          description: Error type
+        value:
+          type: string
+          description: Error details
+        browser:
+          type: string
+          description: Type of browser
+      title: EngagementErrorDetails
+      description: Engagement Error Details
+    IntegrationStatusPage:
+      type: object
+      properties:
+        integrationStatuses:
+          type: array
+          description: Array of integration status records
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/IntegrationStatus'
+      title: IntegrationStatusPage
+    AttributeMetadata:
+      type: object
+      required:
+      - apiName
+      - createdDate
+      - id
+      - internalName
+      - modifiedDate
+      - name
+      - origin
+      - state
+      - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        apiName:
+          type: string
+        internalName:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - STRING
+          - DATE_TIME
+          - BOOLEAN
+          - NUMBER
+        state:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          - DELETED
+        origin:
+          type: string
+          enum:
+          - CUSTOM
+          - DEFAULT
+        createdDate:
+          type: integer
+          format: int64
+          readOnly: true
+        modifiedDate:
+          type: integer
+          format: int64
+          readOnly: true
+        defaultValue:
+          type: string
+      title: AttributeMetadata
+      description: Attribute Metadata
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

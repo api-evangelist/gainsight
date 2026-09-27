@@ -1,0 +1,215 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST UserPreferences V2 API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: UserPreferences V2
+  description: User Preferences Version 2 API. Version 2 has support for new setting called 'trackEmailAnalytics' which is to specify whether to track email analytics or not for the given user.
+paths:
+  /v2/user/preferences:
+    post:
+      tags:
+      - UserPreferences V2
+      summary: Get user preferences.
+      description: If the field is not set - return null.
+      operationId: getUserPreferencesUsingPOST_1
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserPreferencesV2'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIdentifyId'
+        description: User identify id
+        required: true
+    put:
+      tags:
+      - UserPreferences V2
+      summary: Update user preferences, this version of API can take 'trackEmailAnalytics' and…
+      description: 'The fields are optional so it’s possible to provide only those that need to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.'
+      operationId: updateUserPreferencesUsingPUT_3
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserPreferencesV2'
+        description: User preferences
+        required: true
+  /v2/user/preferences/{identifyId}:
+    get:
+      tags:
+      - UserPreferences V2
+      summary: Get user preferences.
+      description: If the field is not set - return null.
+      operationId: getUserPreferencesUsingGET_1
+      parameters:
+      - name: identifyId
+        in: path
+        description: User identify id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserPreferencesV2'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+      - UserPreferences V2
+      summary: Update user preferences, this version of API can take 'trackEmailAnalytics'…
+      description: 'The fields are optional so it’s possible to provide only those that need to be updated.
+
+
+        If the user had preferences - override only the provided fields.
+
+
+        Valid field values: true, false, null.
+
+
+        Note: null value won’t override any other.'
+      operationId: updateUserPreferencesUsingPUT_2
+      parameters:
+      - name: identifyId
+        in: path
+        description: User identify id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Updated
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPreferencesV2'
+        description: User preferences
+        required: true
+components:
+  schemas:
+    UpdateUserPreferencesV2:
+      type: object
+      required:
+      - identifyId
+      properties:
+        guidedTours:
+          type: boolean
+        identifyId:
+          type: string
+          readOnly: true
+        onboardingBot:
+          type: boolean
+        productUpdates:
+          type: boolean
+        surveys:
+          type: boolean
+        trackEmailAnalytics:
+          type: boolean
+        trackUsage:
+          type: boolean
+      title: UpdateUserPreferencesV2
+      description: Update user preferences V2
+    UserIdentifyId:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+      title: UserIdentifyId
+      description: User object
+    UserPreferencesV2:
+      type: object
+      properties:
+        guidedTours:
+          type: boolean
+        onboardingBot:
+          type: boolean
+        productUpdates:
+          type: boolean
+        surveys:
+          type: boolean
+        trackEmailAnalytics:
+          type: boolean
+        trackUsage:
+          type: boolean
+      title: UserPreferencesV2
+      description: User preferences V2
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

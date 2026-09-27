@@ -1,0 +1,530 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Feature API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: Feature
+  description: Feature Operations
+paths:
+  /v1/feature:
+    get:
+      tags:
+      - Feature
+      summary: Get features
+      description: 'Retrieves features. Supports paging.
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/feature?pageSize=100 | Get first 100 features. |
+
+        | GET /v1/feature?pageSize=100&pageNumber=1 | Get next 100 features. |
+
+        | GET /v1/feature?propertyKey=AP-XXXXXXXX-2-1 | Get features for given property key |'
+      operationId: getFeaturesUsingGET
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of events per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 200
+          minimum: 1
+      - name: propertyKey
+        in: query
+        description: Property Key
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FeaturesPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/feature/adoption/{featureId}:
+    get:
+      tags:
+      - Feature
+      summary: Get feature adoption statistics
+      description: Retrieves the feature adoption numbers for a specific feature and date range. If dateRangeEnd is not specified, defaults to the current time. Max date range is 7 days.
+      operationId: getFeatureAdoptionUsingGET
+      parameters:
+      - name: dateRangeEnd
+        in: query
+        description: Date range end
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeEnd=1674651841000
+        schema:
+          type: integer
+          format: int64
+      - name: dateRangeStart
+        in: query
+        description: Date range start
+        required: false
+        allowEmptyValue: false
+        x-example: dateRangeStart=1674651841000
+        schema:
+          type: integer
+          format: int64
+      - name: featureId
+        in: path
+        description: Feature id
+        required: true
+        schema:
+          type: string
+      - name: propertyKey
+        in: query
+        description: Property Key
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Feature'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/feature/backfill/{featureId}:
+    post:
+      tags:
+      - Feature
+      summary: Request backfill for feature
+      description: Requests that PX begin a backfill operation for the feature with the given ID
+      operationId: backfillFeatureUsingPOST
+      parameters:
+      - name: featureId
+        in: path
+        description: Feature id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Forbidden
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+  /v1/feature/{featureId}:
+    get:
+      tags:
+      - Feature
+      summary: Get feature
+      description: Retrieves the feature with the given id
+      operationId: getFeatureUsingGET
+      parameters:
+      - name: featureId
+        in: path
+        description: Feature id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Feature'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+      - Feature
+      summary: Update feature
+      description: 'Updates a feature with the given data
+
+        Does not support editing labels
+
+        Supported Fields:
+
+
+        | FieldName |
+
+        | ----- |
+
+        | name |
+
+        | parentFeatureId (use "ROOT" to move to base of feature tree |'
+      operationId: updateFeatureUsingPUT
+      parameters:
+      - name: featureId
+        in: path
+        description: Feature id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Updated
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: Feature not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feature'
+        description: Feature data
+        required: true
+  /v2/feature_ext:
+    get:
+      tags:
+      - Feature
+      summary: getFeaturesExtended
+      operationId: getFeaturesExtendedUsingGET
+      parameters:
+      - name: pageNumber
+        in: query
+        description: Page number
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageSize
+        in: query
+        description: Number of events per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 200
+          minimum: 1
+      - name: propertyKey
+        in: query
+        description: Property Key
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FeatureWithDetailsPage'
+      deprecated: false
+components:
+  schemas:
+    FeatureLabel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        color:
+          type: string
+      title: FeatureLabel
+      description: Feature label object
+    FeatureWithDetailsPage:
+      type: object
+      properties:
+        features:
+          type: array
+          description: Array of features
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/FeatureWithDetails'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: FeatureWithDetailsPage
+    MappedElement:
+      type: object
+      required:
+      - eventType
+      - id
+      - name
+      - state
+      - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        eventType:
+          type: string
+          enum:
+          - CLICK
+          - LINK
+          - FORM
+          - PAGE_VIEW
+          - CUSTOM_EVENT
+          - SCREEN
+        state:
+          type: string
+          enum:
+          - ENABLED
+          - DISABLED
+          - DELETED
+        type:
+          type: string
+          enum:
+          - EVENT
+          - TAG
+          - URL
+          - CUSTOM_EVENT
+          - TEXT_ELEMENT
+          - SCREEN
+      title: MappedElement
+      description: Mapped Element
+    FeatureWithDetails:
+      type: object
+      required:
+      - id
+      - name
+      - propertyKey
+      - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - FEATURE
+          - MODULE
+        parentFeatureId:
+          type: string
+        propertyKey:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVATED
+          - DELETED
+        mappedElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/MappedElement'
+        featureLabels:
+          type: array
+          description: Array of labels associated with the feature
+          items:
+            $ref: '#/components/schemas/FeatureLabel'
+      title: FeatureWithDetails
+      description: Detailed Feature object
+    Feature:
+      type: object
+      required:
+      - id
+      - name
+      - propertyKey
+      - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - FEATURE
+          - MODULE
+        parentFeatureId:
+          type: string
+        propertyKey:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVATED
+          - DELETED
+        featureLabels:
+          type: array
+          description: Array of labels associated with the feature
+          items:
+            $ref: '#/components/schemas/FeatureLabel'
+      title: Feature
+      description: Feature object
+    FeaturesPage:
+      type: object
+      properties:
+        features:
+          type: array
+          description: Array of features
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Feature'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: FeaturesPage
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
+          type: string
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

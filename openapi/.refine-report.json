@@ -15,7 +15,8 @@
     "_original/gainsight-cs-timeline-api-openapi.yml",
     "_original/gainsight-cs-user-management-api-openapi.yml",
     "_original/gainsight-px-api-openapi.yml",
-    "_original/gainsight-rest-api-openapi.yml"
+    "_original/gainsight-rest-api-openapi.yml",
+    "gainsight-px-rest-api-openapi.yml"
   ],
   "outputs": [
     "gainsight-jobs-api-openapi.yml",
@@ -46,11 +47,35 @@
     "gainsight-engagements-api-openapi.yml",
     "gainsight-feature-match-api-openapi.yml",
     "gainsight-subscription-api-openapi.yml",
-    "gainsight-reports-api-openapi.yml"
+    "gainsight-reports-api-openapi.yml",
+    "gainsight-admin-api-openapi.yml",
+    "gainsight-article-api-openapi.yml",
+    "gainsight-emailevent-api-openapi.yml",
+    "gainsight-engagement-api-openapi.yml",
+    "gainsight-engagementviewevent-api-openapi.yml",
+    "gainsight-externalsegments-api-openapi.yml",
+    "gainsight-feature-api-openapi.yml",
+    "gainsight-featurematchevent-api-openapi.yml",
+    "gainsight-formsubmitevent-api-openapi.yml",
+    "gainsight-identifyevent-api-openapi.yml",
+    "gainsight-kcbot-api-openapi.yml",
+    "gainsight-leadevent-api-openapi.yml",
+    "gainsight-localization-api-openapi.yml",
+    "gainsight-pageviewevent-api-openapi.yml",
+    "gainsight-segment-api-openapi.yml",
+    "gainsight-segmentmatchevent-api-openapi.yml",
+    "gainsight-sessionevent-api-openapi.yml",
+    "gainsight-surveyresponse-api-openapi.yml",
+    "gainsight-userpreferences-api-openapi.yml",
+    "gainsight-userpreferences-v2-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "gainsight-px-rest-api-openapi.yml: previously refined output kept for 74 operation(s) no archived document covers (e.g. /v1/accounts get, /v1/accounts post, /v1/accounts/update put); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
   "notes": [
     "sourced from openapi/_original/ (15 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "gainsight-cs-bulk-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
@@ -68,10 +93,14 @@
     "gainsight-cs-user-management-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "gainsight-px-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "gainsight-rest-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "gainsight-px-rest-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 10 component key(s) illegal in 3.x (e.g. CompletableFuture\u00abResponseEntity\u00abEngagementAllTypesViewEventsPage\u00bb\u00bb)",
     "tag 'Companies' spans 2 source specs (gainsight-cs-company-api-openapi.yml, gainsight-rest-api-openapi.yml): per-path servers applied",
     "tag 'People' spans 2 source specs (gainsight-cs-person-api-openapi.yml, gainsight-rest-api-openapi.yml): per-path servers applied",
-    "tag 'Users' spans 2 source specs (gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml): per-path servers applied",
-    "apis.yml register: already-registered"
+    "tag 'Users' spans 3 source specs (gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml): per-path servers applied",
+    "tag 'Accounts' spans 2 source specs (gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml): per-path servers applied",
+    "tag 'Custom Events' spans 2 source specs (gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml): per-path servers applied",
+    "superseded outputs removed: gainsight-px-rest-api-openapi.yml",
+    "apis.yml register: written (+20 apis, 51 total)"
   ],
   "skipped": [
     "gainsight-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",

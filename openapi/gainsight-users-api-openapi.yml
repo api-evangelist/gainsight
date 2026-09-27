@@ -2,12 +2,7 @@ openapi: 3.2.0
 info:
   title: Gainsight Users API
   version: '1.0'
-  contact:
-    name: Gainsight Support
-    url: https://support.gainsight.com
-    email: support@gainsight.com
-  termsOfService: https://www.gainsight.com/terms-of-service/
-  description: 'Operations tagged Users across 2 of this provider''s published API definitions: gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Users across 3 of this provider''s published API definitions: gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{domain}.gainsightcloud.com/v1
   description: Gainsight CS Production
@@ -17,8 +12,7 @@ servers:
       description: Customer-specific domain prefix
 - url: https://api.aptrinsic.com/v1
   description: Gainsight PX Production API
-security:
-- apiKey: []
+- url: https://api.aptrinsic.com/
 tags:
 - name: Users
   description: Manage Gainsight users
@@ -64,6 +58,8 @@ paths:
                         type: integer
         '401':
           $ref: '#/components/responses/Unauthorized'
+      security:
+      - apiKey: []
     post:
       operationId: createUser
       summary: Gainsight Create or update a user
@@ -87,6 +83,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized_2'
+      security:
+      - apiKey: []
     servers:
     - url: https://{domain}.gainsightcloud.com/v1
       description: Gainsight CS Production
@@ -119,6 +117,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
     put:
       operationId: updateUser
       summary: Gainsight Update a user
@@ -146,8 +146,10 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
     patch:
-      operationId: updateUser
+      operationId: patchUsersByUserId
       summary: Gainsight Update a user
       description: Update specific attributes of a user.
       tags:
@@ -171,6 +173,10 @@ paths:
           $ref: '#/components/responses/Unauthorized_2'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
+      x-operation-id-source: normalized
+      x-operation-id-original: updateUser
     delete:
       operationId: deleteUser
       summary: Gainsight Delete a user
@@ -186,6 +192,8 @@ paths:
           $ref: '#/components/responses/Unauthorized_2'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
     servers:
     - url: https://{domain}.gainsightcloud.com/v1
       description: Gainsight CS Production
@@ -213,6 +221,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      security:
+      - apiKey: []
     servers:
     - url: https://{domain}.gainsightcloud.com/v1
       description: Gainsight CS Production
@@ -220,6 +230,478 @@ paths:
         domain:
           default: customer
           description: Customer-specific domain prefix
+  /v1/users:
+    get:
+      tags:
+      - Users
+      summary: Get users
+      description: 'Retrieves users. Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical AND.
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Operators
+
+        | Operator | Meaning |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | < | Less than |
+
+        | <= | Less than or equal |
+
+        | > | Greater than |
+
+        | >= | Greater than or equal |
+
+        | ~ | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/users?filter=lastName==Doe;firstName==John | Users with firstName of ''John'' AND lastName of ''Doe''. |
+
+        | GET /v1/users?filter=firstName==John;lastName=Doe&filter=firstName==Bob | Users with: (firstName of ''John'' AND lastName of ''Doe'') OR firstName of ''Bob''. |
+
+        | GET /v1/users?filter=location.cityName==Portland | Users with a city of ''Portland''. |
+
+        | GET /v1/users?filter=customAttributes.internalId==12345 | Users with a custom attribute of internalId equal to 12345''. |
+
+        | GET /v1/users?filter=lastInferredLocation.stateName==Georgia | Users with a last inferred location.stateName value of Georgia''. |
+
+        | GET /v1/users?filter=lastVisitedUserAgentData.userAgent.browserType==firefox | Users with firefox as last visited browser across the products ''. |
+
+        | GET /v1/users?filter=lastVisitedUserAgentData.userAgent.browserType==firefox;lastVisitedUserAgentData.propertyKey==AP-8MF5LPSWUBFW-2 | Users with firefox as last visited browser for a particular product(with property key AP-8MF5LPSWUBFW-2)''. |
+
+
+        #### Supported filter fields for last inferred location
+
+        | Field |
+
+        | ----- |
+
+        | lastInferredLocation.countryCode |
+
+        | lastInferredLocation.countryName |
+
+        | lastInferredLocation.stateCode |
+
+        | lastInferredLocation.stateName |
+
+        | lastInferredLocation.city |
+
+        | lastInferredLocation.continent |
+
+        | lastInferredLocation.postalCode |
+
+        | lastInferredLocation.regionName |
+
+        | lastInferredLocation.timeZone |
+
+        | lastInferredLocation.street |
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/users?sort=lastName;firstName | Users sorted by firstName, lastName, in ascending order. |
+
+        | GET /v1/users?sort=-createDate | Users sorted by createDate in descending order. |'
+      operationId: getUsersUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: Filters
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        in: query
+        description: Number of users per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 1000
+          minimum: 1
+      - name: scrollId
+        in: query
+        description: Used for fetching subsequent pages after the first one.  Returned in response.scrollId
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields
+        required: false
+        allowEmptyValue: false
+        x-example: sort=+firstName;-createDate
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UsersPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    post:
+      tags:
+      - Users
+      summary: Create user
+      description: Creates a new user with the given data
+      operationId: createUserUsingPOST
+      responses:
+        '201':
+          description: Created User
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '400':
+          description: Bad request, possible duplicate
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User_2'
+        description: User data
+        required: true
+    servers:
+    - url: https://api.aptrinsic.com/
+  /v1/users/delete:
+    delete:
+      tags:
+      - Users
+      summary: Delete user (identifyId passed via request body)
+      description: 'Deletes a user with identifyId specified in delete body
+
+        This delete method is useful when the identify ID contains special characters that make it impossible to use the delete method with the identifyId in the request path.
+
+        ### HardDelete:
+
+        Default behavior is to mark the user as deleted, which will cause it to be hidden in the application.
+
+        If a user with the same id is created or updated within the next 7 days,
+
+        the previously deleted record will be revived with all of its associated event history.
+
+        Conversely, if a user with the same ID is created after 7 days, a totally new record with no event history will be created.
+
+        To disable the current record from being revived in the future, set the hardDelete flag to true'
+      operationId: deleteUserUsingDELETE
+      parameters:
+      - name: hardDelete
+        in: query
+        description: Hard delete, do not revive if created/updated again in 7 day window
+        required: false
+        allowEmptyValue: false
+        x-example: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Deleted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteUser'
+        description: deleteUser
+        required: true
+    servers:
+    - url: https://api.aptrinsic.com/
+  /v1/users/denylist/{identifyId}:
+    get:
+      tags:
+      - Users
+      summary: Get user Denylist flag
+      description: Returns true if the user is marked as denied
+      operationId: getUserDenylistFlagUsingGET
+      parameters:
+      - name: identifyId
+        in: path
+        description: User identify id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetUserDenylistFlagResponse'
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetUserDenylistFlagResponse'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+      - Users
+      summary: Update user Denylist flag
+      description: Setting the Denylist flag to true will make Gainsight PX to ignore all of the user's events.
+      operationId: updateUserDenylistFlagUsingPUT
+      parameters:
+      - name: identifyId
+        in: path
+        description: User identify id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Updated
+        '204':
+          description: No Content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '403':
+          description: Access denied
+        '404':
+          description: User not found by id
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetDenylistRequestBody'
+        description: Denied flag value
+        required: true
+    servers:
+    - url: https://api.aptrinsic.com/
+  /v1/users/update:
+    put:
+      tags:
+      - Users
+      summary: Update user (identifyId passed via request body)
+      description: 'Updates a user with identifyId specified in the request body.
+
+        This update method is useful when the identify ID contains special characters that make it impossible to use the update method with the identifyId in the request path.'
+      operationId: updateUserUsingPUT
+      responses:
+        '204':
+          description: Updated
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User_2'
+        description: User data
+        required: true
+    servers:
+    - url: https://api.aptrinsic.com/
+  /v1/users/{identifyId}:
+    get:
+      tags:
+      - Users
+      summary: Get user
+      description: Retrieves the user with the given id
+      operationId: getUserUsingGET
+      parameters:
+      - name: identifyId
+        in: path
+        description: User id (from identify call)
+        required: true
+        x-example: jdoe@example.com
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User_2'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    put:
+      tags:
+      - Users
+      summary: Update user
+      description: Updates an user with the given data
+      operationId: updateUserUsingPUT_1
+      parameters:
+      - name: identifyId
+        in: path
+        description: User id (from identify call)
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Updated
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User_2'
+        description: User data
+        required: true
+    delete:
+      tags:
+      - Users
+      summary: Delete user
+      description: 'Deletes a user
+
+        ### HardDelete:
+
+        Default behavior is to mark the user as deleted, which will cause it to be hidden in the application.
+
+        If a user with the same id is created or updated within the next 7 days,
+
+        the previously deleted record will be revived with all of its associated event history.
+
+        Conversely, if a user with the same ID is created after 7 days, a totally new record with no event history will be created.
+
+        To disable the current record from being revived in the future, set the hardDelete flag to true'
+      operationId: deleteUserUsingDELETE_1
+      parameters:
+      - name: hardDelete
+        in: query
+        description: Hard delete, do not revive if created/updated again in 7 day window
+        required: false
+        allowEmptyValue: false
+        x-example: false
+        schema:
+          type: boolean
+          default: false
+      - name: identifyId
+        in: path
+        description: User id (from identify call)
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseEntity'
+        '401':
+          description: Unauthorized or bad API Key
+        '404':
+          description: User not found
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+    servers:
+    - url: https://api.aptrinsic.com/
 components:
   schemas:
     GainsightUserInput:
@@ -237,17 +719,6 @@ components:
         LicenseType:
           type: string
         Role:
-          type: string
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
           type: string
     GainsightUser:
       type: object
@@ -286,6 +757,54 @@ components:
         ModifiedDate:
           type: string
           format: date-time
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    UserInput:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+          description: Unique user identification string
+        email:
+          type: string
+          format: email
+          description: User email address
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        title:
+          type: string
+          description: Job title
+        phone:
+          type: string
+          description: Phone number
+        role:
+          type: string
+          description: User role
+        accountId:
+          type: string
+          description: Associated account ID
+        signUpDate:
+          type: integer
+          format: int64
+          description: Sign-up timestamp in milliseconds
+        customAttributes:
+          type: object
+          description: Custom user attributes
     User:
       type: object
       properties:
@@ -344,50 +863,334 @@ components:
         customAttributes:
           type: object
           description: Custom user attributes
-    UserInput:
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 37.567147
+        longitude:
+          type: number
+          format: double
+          example: -122.324211
+      title: Coordinates
+      description: Coordinates object
+    ChannelMetric:
+      type: object
+      properties:
+        groupId:
+          type: string
+        channel:
+          type: integer
+          format: int64
+        environment:
+          type: integer
+          format: int32
+        firstSeenDate:
+          type: integer
+          format: int64
+        lastSeenDate:
+          type: integer
+          format: int64
+      title: ChannelMetric
+      description: Channel  metric object
+    UsersPage:
+      type: object
+      properties:
+        users:
+          type: array
+          description: Array of users
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/User_2'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: UsersPage
+    Location:
+      type: object
+      properties:
+        countryName:
+          type: string
+          example: United States
+        countryCode:
+          type: string
+          example: USA
+          description: See ISO 3166
+        stateName:
+          type: string
+          example: California
+        stateCode:
+          type: string
+          example: CA
+          description: See ISO 3166
+        city:
+          type: string
+          example: San Mateo
+        street:
+          type: string
+          example: 101 Broadway
+        postalCode:
+          type: string
+          example: 94010
+        continent:
+          type: string
+          example: NA
+          description: See ISO 3166
+        regionName:
+          type: string
+          description: See ISO 3166-2
+        timeZone:
+          type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+      title: Location
+      description: Location object
+    GetUserDenylistFlagResponse:
+      type: object
+      properties:
+        denied:
+          type: boolean
+        identifyId:
+          type: string
+      title: GetUserDenylistFlagResponse
+      description: User Denylist Flag Response
+    DeleteUser:
       type: object
       required:
       - identifyId
       properties:
         identifyId:
           type: string
-          description: Unique user identification string
+      title: DeleteUser
+      description: Delete User object
+    UserAgentByProduct:
+      type: object
+      properties:
+        propertyKey:
+          type: string
+        userAgent:
+          $ref: '#/components/schemas/UserAgent'
+      title: UserAgentByProduct
+      description: User Agent data by product
+    UserAgent:
+      type: object
+      properties:
+        rawUserAgent:
+          type: string
+        device:
+          type: string
+        platformType:
+          type: string
+        platformVersion:
+          type: string
+        browserType:
+          type: string
+        browserVersion:
+          type: string
+      title: UserAgent
+      description: User Agent object
+    User_2:
+      type: object
+      required:
+      - identifyId
+      - propertyKeys
+      properties:
+        aptrinsicId:
+          type: string
+          readOnly: true
+        identifyId:
+          type: string
+        type:
+          type: string
+          enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+        gender:
+          type: string
+          enum:
+          - MALE
+          - FEMALE
+          - OTHER
+          - EMPTY_GENDER
         email:
           type: string
-          format: email
-          description: User email address
         firstName:
           type: string
-          description: First name
         lastName:
           type: string
-          description: Last name
-        title:
-          type: string
-          description: Job title
-        phone:
-          type: string
-          description: Phone number
-        role:
-          type: string
-          description: User role
-        accountId:
-          type: string
-          description: Associated account ID
+        lastSeenDate:
+          type: integer
+          format: int64
+          readOnly: true
         signUpDate:
           type: integer
           format: int64
-          description: Sign-up timestamp in milliseconds
+        firstVisitDate:
+          type: integer
+          format: int64
+        title:
+          type: string
+        phone:
+          type: string
+        score:
+          type: integer
+          format: int64
+        role:
+          type: string
+        subscriptionId:
+          type: string
+        accountId:
+          type: string
+        numberOfVisits:
+          type: integer
+          format: int32
+          readOnly: true
+        location:
+          $ref: '#/components/schemas/Location'
+        propertyKeys:
+          type: array
+          example:
+          - AP-XXXXXXXXXX-2
+          description: Aptrinsic Tag Key, at least one is required
+          items:
+            type: string
+        createDate:
+          type: integer
+          format: int64
+          readOnly: true
+        lastModifiedDate:
+          type: integer
+          format: int64
+          readOnly: true
         customAttributes:
           type: object
-          description: Custom user attributes
+          description: Map of apiName to value
+        globalUnsubscribe:
+          type: boolean
+        sfdcContactId:
+          type: string
+        channelMetricList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChannelMetric'
+        lastVisitedUserAgentData:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAgentByProduct'
+        id:
+          type: string
+          description: Synonym for identifyId, output only, not filterable
+          readOnly: true
+        lastInferredLocation:
+          description: Location inferred from IP address of last session
+          readOnly: true
+          $ref: '#/components/schemas/Location'
+        globalId:
+          type: string
+          description: Global user ID, only applicable for workspace-enabled subscriptions
+          readOnly: true
+      title: User
+      description: User object
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
+          type: string
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
+    SetDenylistRequestBody:
+      type: object
+      properties:
+        denied:
+          type: boolean
+      title: SetDenylistRequestBody
+      description: User Blacklist Flag
   responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
     Unauthorized_2:
       description: Authentication failed or API key is missing
   parameters:
@@ -396,12 +1199,6 @@ components:
       in: path
       required: true
       description: Gainsight user ID
-      schema:
-        type: string
-    sort:
-      name: sort
-      in: query
-      description: Sort field and direction (e.g., lastSeenDate:desc)
       schema:
         type: string
     pageSize:
@@ -425,6 +1222,12 @@ components:
       description: Scroll ID for cursor-based pagination
       schema:
         type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort field and direction (e.g., lastSeenDate:desc)
+      schema:
+        type: string
     filter:
       name: filter
       in: query
@@ -437,6 +1240,11 @@ components:
       name: accessKey
       in: header
       description: Gainsight CS REST API access key
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header
 x-refined-from:
 - gainsight-cs-user-management-api-openapi.yml
 - gainsight-px-api-openapi.yml
+- gainsight-px-rest-api-openapi.yml

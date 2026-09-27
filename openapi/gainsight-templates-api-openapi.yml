@@ -45,6 +45,9 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
     GoalTemplate:
       type: object
@@ -64,9 +67,6 @@ components:
         isActive:
           type: boolean
           description: Whether the template is active
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

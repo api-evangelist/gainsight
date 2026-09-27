@@ -46,6 +46,9 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or API key is missing
   parameters:
     scrollId:
       name: scrollId
@@ -83,9 +86,6 @@ components:
         totalEventCount:
           type: integer
           description: Total usage events for this feature
-  responses:
-    Unauthorized:
-      description: Authentication failed or API key is missing
   securitySchemes:
     apiKey:
       type: apiKey

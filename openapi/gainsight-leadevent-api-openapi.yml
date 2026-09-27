@@ -1,0 +1,215 @@
+openapi: 3.2.0
+info:
+  description: Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.
+  version: 0.1.6
+  title: Gainsight PX REST Lead Event API
+  contact:
+    name: Gainsight PX
+    url: https://www.gainsight.com/product-experience/
+    email: pxsupport@gainsight.com
+  license:
+    name: internal
+servers:
+- url: https://api.aptrinsic.com/
+tags:
+- name: LeadEvent
+  description: Lead Event Operations
+paths:
+  /v1/events/lead:
+    get:
+      tags:
+      - LeadEvent
+      summary: Get Lead events
+      description: 'Retrieves Lead events. Supports filtering, sorting and paging.
+
+        ### Filtering
+
+        The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}
+
+        Filter terms within a single filter parameter are joined by a logical AND.
+
+        Separate filter parameters are joined by a logical OR.
+
+        #### Supported filter fields
+
+        | Field |
+
+        | ----- |
+
+        | identifyId |
+
+        | email |
+
+        | date |
+
+
+        #### Operators
+
+        | Operator | Meaning |
+
+        | ----- | -------- |
+
+        | == | Exact match |
+
+        | != | Not equal |
+
+        | < | Less than |
+
+        | <= | Less than or equal |
+
+        | > | Greater than |
+
+        | >= | Greater than or equal |
+
+        | ~ | Matches string, supports wildcard characters * and ? |
+
+        | !~ | Not like, supports wildcard characters * and ? |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/events/lead?filter=identifyId==ABC123 | Lead event matches for user with identifyId of ''ABC123''. |
+
+
+        ### Sorting
+
+        The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.
+
+        #### Supported sort fields
+
+        | Field |
+
+        | ----- |
+
+        | accountId |
+
+        | date |
+
+
+        Examples:
+
+
+        | URI | Results |
+
+        | ----- | -------- |
+
+        | GET /v1/events/lead?sort=-date | Matches sorted by date descending. |'
+      operationId: getLeadEventsUsingGET
+      parameters:
+      - name: filter
+        in: query
+        description: Filters
+        required: false
+        allowEmptyValue: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        in: query
+        description: Number of events per page
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: integer
+          format: int32
+          default: 25
+          maximum: 1000
+          minimum: 1
+      - name: scrollId
+        in: query
+        description: Used for fetching subsequent pages after the first one.  Returned in response.scrollId
+        required: false
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort fields
+        required: false
+        allowEmptyValue: false
+        x-example: sort=-date;accountId
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LeadEventsPage'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized or bad API Key
+        '429':
+          description: Rate limit exceeded
+      deprecated: false
+components:
+  schemas:
+    LeadEventsPage:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result records
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/LeadEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: LeadEventsPage
+    LeadEvent:
+      type: object
+      required:
+      - identifyId
+      - propertyKey
+      - userType
+      properties:
+        eventId:
+          type: string
+        identifyId:
+          type: string
+        propertyKey:
+          type: string
+        date:
+          type: integer
+          format: int64
+        eventType:
+          type: string
+        sessionId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+        accountId:
+          type: string
+        globalContext:
+          type: object
+        email:
+          type: string
+      title: LeadEvent
+      description: Lead Event object
+  securitySchemes:
+    X-APTRINSIC-API-KEY:
+      type: apiKey
+      name: Aptrinsic API Key
+      in: header

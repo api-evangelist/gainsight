@@ -241,7 +241,7 @@ paths:
       description: Gainsight Production API
   /v1/companies/{companyId}:
     get:
-      operationId: getCompany
+      operationId: getV1CompaniesByCompanyId
       summary: Gainsight Get a company
       description: Retrieve a specific company record by ID.
       tags:
@@ -264,6 +264,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-operation-id-source: normalized
+      x-operation-id-original: getCompany
     put:
       operationId: updateCompany
       summary: Gainsight Update a company
@@ -292,7 +294,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
     delete:
-      operationId: deleteCompany
+      operationId: deleteV1CompaniesByCompanyId
       summary: Gainsight Delete a company
       description: Delete a company record by ID.
       tags:
@@ -310,22 +312,36 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-operation-id-source: normalized
+      x-operation-id-original: deleteCompany
     servers:
     - url: https://api.gainsight.com
       description: Gainsight Production API
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
-    ApiResponse:
+    SearchResponse:
       type: object
       properties:
         result:
           type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
+        data:
+          type: object
+          properties:
+            records:
+              type: array
+              items:
+                $ref: '#/components/schemas/CompanyRecord'
+            totalCount:
+              type: integer
+            count:
+              type: integer
     CompanyRecord:
       type: object
       properties:
@@ -387,22 +403,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    SearchResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            records:
-              type: array
-              items:
-                $ref: '#/components/schemas/CompanyRecord'
-            totalCount:
-              type: integer
-            count:
-              type: integer
     SearchRequest:
       type: object
       properties:
@@ -492,6 +492,17 @@ components:
                     type: integer
                   errorMessage:
                     type: string
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     CompanyInput:
       type: object
       required:
@@ -585,13 +596,6 @@ components:
       description: Gainsight record unique identifier (Gsid)
       schema:
         type: string
-    companyId:
-      name: companyId
-      in: path
-      required: true
-      description: Unique identifier of the company
-      schema:
-        type: string
     pageSize:
       name: pageSize
       in: query
@@ -607,13 +611,13 @@ components:
       schema:
         type: integer
         default: 0
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier of the company
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey
