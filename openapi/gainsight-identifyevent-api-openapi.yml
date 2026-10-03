@@ -53,11 +53,7 @@ paths:
 
         | != | Not equal |
 
-        | < | Less than |
-
-        | <= | Less than or equal |
-
-        | > | Greater than |
+        | | Greater than |
 
         | >= | Greater than or equal |
 
@@ -154,25 +150,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    IdentifyEventsPage:
-      type: object
-      properties:
-        identifyEvents:
-          type: array
-          description: Array of identify events
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/IdentifyEvent'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
-          type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: IdentifyEventsPage
     IdentifyEvent:
       type: object
       required:
@@ -208,6 +185,25 @@ components:
           type: string
       title: IdentifyEvent
       description: Identify Event object
+    IdentifyEventsPage:
+      type: object
+      properties:
+        identifyEvents:
+          type: array
+          description: Array of identify events
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/IdentifyEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: IdentifyEventsPage
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

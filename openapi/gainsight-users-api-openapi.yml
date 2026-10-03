@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Gainsight Users API
   version: '1.0'
-  description: 'Operations tagged Users across 3 of this provider''s published API definitions: gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Users across 3 of this provider''s published API definitions: gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml, gainsight-users-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{domain}.gainsightcloud.com/v1
   description: Gainsight CS Production
@@ -231,6 +231,8 @@ paths:
           default: customer
           description: Customer-specific domain prefix
   /v1/users:
+    servers:
+    - url: https://api.aptrinsic.com/
     get:
       tags:
       - Users
@@ -255,11 +257,7 @@ paths:
 
         | != | Not equal |
 
-        | < | Less than |
-
-        | <= | Less than or equal |
-
-        | > | Greater than |
+        | | Greater than |
 
         | >= | Greater than or equal |
 
@@ -411,9 +409,9 @@ paths:
               $ref: '#/components/schemas/User_2'
         description: User data
         required: true
+  /v1/users/delete:
     servers:
     - url: https://api.aptrinsic.com/
-  /v1/users/delete:
     delete:
       tags:
       - Users
@@ -471,9 +469,9 @@ paths:
               $ref: '#/components/schemas/DeleteUser'
         description: deleteUser
         required: true
+  /v1/users/denylist/{identifyId}:
     servers:
     - url: https://api.aptrinsic.com/
-  /v1/users/denylist/{identifyId}:
     get:
       tags:
       - Users
@@ -547,9 +545,9 @@ paths:
               $ref: '#/components/schemas/SetDenylistRequestBody'
         description: Denied flag value
         required: true
+  /v1/users/update:
     servers:
     - url: https://api.aptrinsic.com/
-  /v1/users/update:
     put:
       tags:
       - Users
@@ -579,9 +577,9 @@ paths:
               $ref: '#/components/schemas/User_2'
         description: User data
         required: true
+  /v1/users/{identifyId}:
     servers:
     - url: https://api.aptrinsic.com/
-  /v1/users/{identifyId}:
     get:
       tags:
       - Users
@@ -700,9 +698,57 @@ paths:
         '429':
           description: Rate limit exceeded
       deprecated: false
-    servers:
-    - url: https://api.aptrinsic.com/
 components:
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: Gainsight user ID
+      schema:
+        type: string
+    userId_2:
+      name: userId
+      in: path
+      required: true
+      description: Unique user identifier
+      schema:
+        type: string
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: Filter expression for results
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort field and direction (e.g., lastSeenDate:desc)
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+        maximum: 500
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized_2:
+      description: Authentication failed or API key is missing
   schemas:
     GainsightUserInput:
       type: object
@@ -768,43 +814,6 @@ components:
           type: string
         requestId:
           type: string
-    UserInput:
-      type: object
-      required:
-      - identifyId
-      properties:
-        identifyId:
-          type: string
-          description: Unique user identification string
-        email:
-          type: string
-          format: email
-          description: User email address
-        firstName:
-          type: string
-          description: First name
-        lastName:
-          type: string
-          description: Last name
-        title:
-          type: string
-          description: Job title
-        phone:
-          type: string
-          description: Phone number
-        role:
-          type: string
-          description: User role
-        accountId:
-          type: string
-          description: Associated account ID
-        signUpDate:
-          type: integer
-          format: int64
-          description: Sign-up timestamp in milliseconds
-        customAttributes:
-          type: object
-          description: Custom user attributes
     User:
       type: object
       properties:
@@ -863,19 +872,43 @@ components:
         customAttributes:
           type: object
           description: Custom user attributes
-    Coordinates:
+    UserInput:
       type: object
+      required:
+      - identifyId
       properties:
-        latitude:
-          type: number
-          format: double
-          example: 37.567147
-        longitude:
-          type: number
-          format: double
-          example: -122.324211
-      title: Coordinates
-      description: Coordinates object
+        identifyId:
+          type: string
+          description: Unique user identification string
+        email:
+          type: string
+          format: email
+          description: User email address
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        title:
+          type: string
+          description: Job title
+        phone:
+          type: string
+          description: Phone number
+        role:
+          type: string
+          description: User role
+        accountId:
+          type: string
+          description: Associated account ID
+        signUpDate:
+          type: integer
+          format: int64
+          description: Sign-up timestamp in milliseconds
+        customAttributes:
+          type: object
+          description: Custom user attributes
     ChannelMetric:
       type: object
       properties:
@@ -895,25 +928,124 @@ components:
           format: int64
       title: ChannelMetric
       description: Channel  metric object
-    UsersPage:
+    SetDenylistRequestBody:
       type: object
       properties:
-        users:
-          type: array
-          description: Array of users
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/User_2'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
+        denied:
+          type: boolean
+      title: SetDenylistRequestBody
+      description: User Blacklist Flag
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
           type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: UsersPage
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
+    UserAgentByProduct:
+      type: object
+      properties:
+        propertyKey:
+          type: string
+        userAgent:
+          $ref: '#/components/schemas/UserAgent'
+      title: UserAgentByProduct
+      description: User Agent data by product
+    UserAgent:
+      type: object
+      properties:
+        rawUserAgent:
+          type: string
+        device:
+          type: string
+        platformType:
+          type: string
+        platformVersion:
+          type: string
+        browserType:
+          type: string
+        browserVersion:
+          type: string
+      title: UserAgent
+      description: User Agent object
+    DeleteUser:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+      title: DeleteUser
+      description: Delete User object
     Location:
       type: object
       properties:
@@ -953,50 +1085,25 @@ components:
           $ref: '#/components/schemas/Coordinates'
       title: Location
       description: Location object
-    GetUserDenylistFlagResponse:
+    UsersPage:
       type: object
       properties:
-        denied:
-          type: boolean
-        identifyId:
+        users:
+          type: array
+          description: Array of users
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/User_2'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
           type: string
-      title: GetUserDenylistFlagResponse
-      description: User Denylist Flag Response
-    DeleteUser:
-      type: object
-      required:
-      - identifyId
-      properties:
-        identifyId:
-          type: string
-      title: DeleteUser
-      description: Delete User object
-    UserAgentByProduct:
-      type: object
-      properties:
-        propertyKey:
-          type: string
-        userAgent:
-          $ref: '#/components/schemas/UserAgent'
-      title: UserAgentByProduct
-      description: User Agent data by product
-    UserAgent:
-      type: object
-      properties:
-        rawUserAgent:
-          type: string
-        device:
-          type: string
-        platformType:
-          type: string
-        platformVersion:
-          type: string
-        browserType:
-          type: string
-        browserVersion:
-          type: string
-      title: UserAgent
-      description: User Agent object
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: UsersPage
     User_2:
       type: object
       required:
@@ -1101,139 +1208,28 @@ components:
           readOnly: true
       title: User
       description: User object
-    ResponseEntity:
+    Coordinates:
       type: object
       properties:
-        body:
-          type: object
-        statusCode:
-          type: string
-          enum:
-          - '100'
-          - '101'
-          - '102'
-          - '103'
-          - '200'
-          - '201'
-          - '202'
-          - '203'
-          - '204'
-          - '205'
-          - '206'
-          - '207'
-          - '208'
-          - '226'
-          - '300'
-          - '301'
-          - '302'
-          - '303'
-          - '304'
-          - '305'
-          - '307'
-          - '308'
-          - '400'
-          - '401'
-          - '402'
-          - '403'
-          - '404'
-          - '405'
-          - '406'
-          - '407'
-          - '408'
-          - '409'
-          - '410'
-          - '411'
-          - '412'
-          - '413'
-          - '414'
-          - '415'
-          - '416'
-          - '417'
-          - '418'
-          - '419'
-          - '420'
-          - '421'
-          - '422'
-          - '423'
-          - '424'
-          - '426'
-          - '428'
-          - '429'
-          - '431'
-          - '451'
-          - '500'
-          - '501'
-          - '502'
-          - '503'
-          - '504'
-          - '505'
-          - '506'
-          - '507'
-          - '508'
-          - '509'
-          - '510'
-          - '511'
-        statusCodeValue:
-          type: integer
-          format: int32
-      title: ResponseEntity
-    SetDenylistRequestBody:
+        latitude:
+          type: number
+          format: double
+          example: 37.567147
+        longitude:
+          type: number
+          format: double
+          example: -122.324211
+      title: Coordinates
+      description: Coordinates object
+    GetUserDenylistFlagResponse:
       type: object
       properties:
         denied:
           type: boolean
-      title: SetDenylistRequestBody
-      description: User Blacklist Flag
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: Invalid request body or parameters
-    Unauthorized_2:
-      description: Authentication failed or API key is missing
-  parameters:
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: Gainsight user ID
-      schema:
-        type: string
-    pageSize:
-      name: pageSize
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 20
-        maximum: 500
-    userId_2:
-      name: userId
-      in: path
-      required: true
-      description: Unique user identifier
-      schema:
-        type: string
-    scrollId:
-      name: scrollId
-      in: query
-      description: Scroll ID for cursor-based pagination
-      schema:
-        type: string
-    sort:
-      name: sort
-      in: query
-      description: Sort field and direction (e.g., lastSeenDate:desc)
-      schema:
-        type: string
-    filter:
-      name: filter
-      in: query
-      description: Filter expression for results
-      schema:
-        type: string
+        identifyId:
+          type: string
+      title: GetUserDenylistFlagResponse
+      description: User Denylist Flag Response
   securitySchemes:
     apiKey:
       type: apiKey
@@ -1247,4 +1243,4 @@ components:
 x-refined-from:
 - gainsight-cs-user-management-api-openapi.yml
 - gainsight-px-api-openapi.yml
-- gainsight-px-rest-api-openapi.yml
+- gainsight-users-api-openapi.yml

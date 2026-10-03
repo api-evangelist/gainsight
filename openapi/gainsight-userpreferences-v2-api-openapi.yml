@@ -19,7 +19,7 @@ paths:
     post:
       tags:
       - UserPreferences V2
-      summary: Get user preferences.
+      summary: Get user preferences
       description: If the field is not set - return null.
       operationId: getUserPreferencesUsingPOST_1
       responses:
@@ -87,7 +87,7 @@ paths:
     get:
       tags:
       - UserPreferences V2
-      summary: Get user preferences.
+      summary: Get user preferences
       description: If the field is not set - return null.
       operationId: getUserPreferencesUsingGET_1
       parameters:

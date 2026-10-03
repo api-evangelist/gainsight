@@ -70,11 +70,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    NotFound:
-      description: The requested resource was not found
+  parameters:
+    playbookId:
+      name: playbookId
+      in: path
+      required: true
+      description: Playbook unique identifier
+      schema:
+        type: string
   schemas:
     Playbook:
       type: object
@@ -118,14 +121,11 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-  parameters:
-    playbookId:
-      name: playbookId
-      in: path
-      required: true
-      description: Playbook unique identifier
-      schema:
-        type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

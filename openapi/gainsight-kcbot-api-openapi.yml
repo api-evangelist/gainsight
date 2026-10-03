@@ -160,107 +160,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    KnowledgeCenterExternalViewPage:
-      type: object
-      properties:
-        kcList:
-          type: array
-          description: Array of KC View
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/KnowledgeCenterExternalView'
-        pageNumber:
-          type: integer
-          format: int32
-          description: Page number
-          readOnly: true
-        isLastPage:
-          type: boolean
-          description: True if no more records available on next page
-          readOnly: true
-      title: KnowledgeCenterExternalViewPage
-    LocalizationStatus:
-      type: object
-      properties:
-        languageCode:
-          type: string
-        translated:
-          type: boolean
-      title: LocalizationStatus
-    KCExternalStateChangeRequest:
-      type: object
-      required:
-      - kcId
-      - state
-      properties:
-        kcId:
-          type: string
-          description: ID of kc to modify
-        state:
-          type: string
-          description: New state for given kc's
-          enum:
-          - START
-          - PAUSE
-        envs:
-          type: array
-          description: Collection of environments on which to change the state. Defaults to [PRODUCTION]
-          items:
-            type: string
-            enum:
-            - PRODUCTION
-            - INTEGRATION
-            - QA
-            - STAGE
-      title: KCExternalStateChangeRequest
-      description: Engagement state change request
-    UserView:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      title: UserView
-    KnowledgeCenterExternalView:
-      type: object
-      properties:
-        createdBy:
-          $ref: '#/components/schemas/UserView'
-        createdDate:
-          type: integer
-          format: int64
-        defaultLanguage:
-          type: string
-        description:
-          type: string
-        environments:
-          type: array
-          items:
-            type: string
-        id:
-          type: string
-        languages:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizationStatus'
-        modifiedBy:
-          $ref: '#/components/schemas/UserView'
-        modifiedDate:
-          type: integer
-          format: int64
-        name:
-          type: string
-        priority:
-          type: integer
-          format: int32
-        productId:
-          type: string
-        productName:
-          type: string
-        status:
-          type: string
-      title: KnowledgeCenterExternalView
     ResponseEntity:
       type: object
       properties:
@@ -337,6 +236,107 @@ components:
           type: integer
           format: int32
       title: ResponseEntity
+    LocalizationStatus:
+      type: object
+      properties:
+        languageCode:
+          type: string
+        translated:
+          type: boolean
+      title: LocalizationStatus
+    KCExternalStateChangeRequest:
+      type: object
+      required:
+      - kcId
+      - state
+      properties:
+        kcId:
+          type: string
+          description: ID of kc to modify
+        state:
+          type: string
+          description: New state for given kc's
+          enum:
+          - START
+          - PAUSE
+        envs:
+          type: array
+          description: Collection of environments on which to change the state. Defaults to [PRODUCTION]
+          items:
+            type: string
+            enum:
+            - PRODUCTION
+            - INTEGRATION
+            - QA
+            - STAGE
+      title: KCExternalStateChangeRequest
+      description: Engagement state change request
+    UserView:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: UserView
+    KnowledgeCenterExternalViewPage:
+      type: object
+      properties:
+        kcList:
+          type: array
+          description: Array of KC View
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/KnowledgeCenterExternalView'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: KnowledgeCenterExternalViewPage
+    KnowledgeCenterExternalView:
+      type: object
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserView'
+        createdDate:
+          type: integer
+          format: int64
+        defaultLanguage:
+          type: string
+        description:
+          type: string
+        environments:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizationStatus'
+        modifiedBy:
+          $ref: '#/components/schemas/UserView'
+        modifiedDate:
+          type: integer
+          format: int64
+        name:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        productId:
+          type: string
+        productName:
+          type: string
+        status:
+          type: string
+      title: KnowledgeCenterExternalView
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

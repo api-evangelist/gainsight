@@ -53,11 +53,7 @@ paths:
 
         | != | Not equal |
 
-        | < | Less than |
-
-        | <= | Less than or equal |
-
-        | > | Greater than |
+        | | Greater than |
 
         | >= | Greater than or equal |
 

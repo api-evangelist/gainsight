@@ -59,11 +59,7 @@ paths:
 
         | != | Not equal |
 
-        | < | Less than |
-
-        | <= | Less than or equal |
-
-        | > | Greater than |
+        | | Greater than |
 
         | >= | Greater than or equal |
 
@@ -158,38 +154,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    EmailEventsPage:
-      type: object
-      properties:
-        results:
-          type: array
-          description: Array of result records
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/EmailEvent'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
-          type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: EmailEventsPage
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          example: 37.567147
-        longitude:
-          type: number
-          format: double
-          example: -122.324211
-      title: Coordinates
-      description: Coordinates object
     Location:
       type: object
       properties:
@@ -229,6 +193,38 @@ components:
           $ref: '#/components/schemas/Coordinates'
       title: Location
       description: Location object
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 37.567147
+        longitude:
+          type: number
+          format: double
+          example: -122.324211
+      title: Coordinates
+      description: Coordinates object
+    EmailEventsPage:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result records
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EmailEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: EmailEventsPage
     EmailEvent:
       type: object
       required:

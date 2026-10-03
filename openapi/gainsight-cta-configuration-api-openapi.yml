@@ -133,18 +133,6 @@ components:
         isClosed:
           type: boolean
           description: Whether this status represents a closed state
-    CTAPriority:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Priority identifier
-        name:
-          type: string
-          description: Priority name
-        order:
-          type: integer
-          description: Display order
     CTAType:
       type: object
       properties:
@@ -157,6 +145,18 @@ components:
         isDefault:
           type: boolean
           description: Whether this is the default type
+    CTAPriority:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Priority identifier
+        name:
+          type: string
+          description: Priority name
+        order:
+          type: integer
+          description: Display order
     CTAReason:
       type: object
       properties:

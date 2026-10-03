@@ -61,11 +61,7 @@ paths:
 
         | != | Not equal |
 
-        | < | Less than |
-
-        | <= | Less than or equal |
-
-        | > | Greater than |
+        | | Greater than |
 
         | >= | Greater than or equal |
 
@@ -162,6 +158,25 @@ paths:
       deprecated: false
 components:
   schemas:
+    PageViewEventsPage:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result records
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PageViewEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: PageViewEventsPage
     PageViewEvent:
       type: object
       required:
@@ -227,25 +242,6 @@ components:
           type: string
       title: PageViewEvent
       description: Page Event object
-    PageViewEventsPage:
-      type: object
-      properties:
-        results:
-          type: array
-          description: Array of result records
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/PageViewEvent'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
-          type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: PageViewEventsPage
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

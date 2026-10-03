@@ -53,11 +53,7 @@ paths:
 
         | != | Not equal |
 
-        | < | Less than |
-
-        | <= | Less than or equal |
-
-        | > | Greater than |
+        | | Greater than |
 
         | >= | Greater than or equal |
 
@@ -154,6 +150,43 @@ paths:
       deprecated: false
 components:
   schemas:
+    SessionInitializedEvent:
+      type: object
+      required:
+      - identifyId
+      - propertyKey
+      - userType
+      properties:
+        eventId:
+          type: string
+        identifyId:
+          type: string
+        propertyKey:
+          type: string
+        date:
+          type: integer
+          format: int64
+        eventType:
+          type: string
+        sessionId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+        accountId:
+          type: string
+        globalContext:
+          type: object
+        remoteHost:
+          type: string
+        inferredLocation:
+          $ref: '#/components/schemas/Location'
+      title: SessionInitializedEvent
+      description: Session Initialized Event object
     Location:
       type: object
       properties:
@@ -193,6 +226,19 @@ components:
           $ref: '#/components/schemas/Coordinates'
       title: Location
       description: Location object
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 37.567147
+        longitude:
+          type: number
+          format: double
+          example: -122.324211
+      title: Coordinates
+      description: Coordinates object
     SessionInitializedEventsPage:
       type: object
       properties:
@@ -212,56 +258,6 @@ components:
           description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
           readOnly: true
       title: SessionInitializedEventsPage
-    SessionInitializedEvent:
-      type: object
-      required:
-      - identifyId
-      - propertyKey
-      - userType
-      properties:
-        eventId:
-          type: string
-        identifyId:
-          type: string
-        propertyKey:
-          type: string
-        date:
-          type: integer
-          format: int64
-        eventType:
-          type: string
-        sessionId:
-          type: string
-        userType:
-          type: string
-          enum:
-          - LEAD
-          - USER
-          - VISITOR
-          - EMPTY_USER_TYPE
-        accountId:
-          type: string
-        globalContext:
-          type: object
-        remoteHost:
-          type: string
-        inferredLocation:
-          $ref: '#/components/schemas/Location'
-      title: SessionInitializedEvent
-      description: Session Initialized Event object
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          example: 37.567147
-        longitude:
-          type: number
-          format: double
-          example: -122.324211
-      title: Coordinates
-      description: Coordinates object
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

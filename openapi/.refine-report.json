@@ -16,7 +16,29 @@
     "_original/gainsight-cs-user-management-api-openapi.yml",
     "_original/gainsight-px-api-openapi.yml",
     "_original/gainsight-rest-api-openapi.yml",
-    "gainsight-px-rest-api-openapi.yml"
+    "gainsight-accounts-api-openapi.yml",
+    "gainsight-admin-api-openapi.yml",
+    "gainsight-article-api-openapi.yml",
+    "gainsight-custom-events-api-openapi.yml",
+    "gainsight-emailevent-api-openapi.yml",
+    "gainsight-engagement-api-openapi.yml",
+    "gainsight-engagementviewevent-api-openapi.yml",
+    "gainsight-externalsegments-api-openapi.yml",
+    "gainsight-feature-api-openapi.yml",
+    "gainsight-featurematchevent-api-openapi.yml",
+    "gainsight-formsubmitevent-api-openapi.yml",
+    "gainsight-identifyevent-api-openapi.yml",
+    "gainsight-kcbot-api-openapi.yml",
+    "gainsight-leadevent-api-openapi.yml",
+    "gainsight-localization-api-openapi.yml",
+    "gainsight-pageviewevent-api-openapi.yml",
+    "gainsight-segment-api-openapi.yml",
+    "gainsight-segmentmatchevent-api-openapi.yml",
+    "gainsight-sessionevent-api-openapi.yml",
+    "gainsight-surveyresponse-api-openapi.yml",
+    "gainsight-user-preferences-api-openapi.yml",
+    "gainsight-userpreferences-v2-api-openapi.yml",
+    "gainsight-users-api-openapi.yml"
   ],
   "outputs": [
     "gainsight-jobs-api-openapi.yml",
@@ -66,15 +88,35 @@
     "gainsight-segmentmatchevent-api-openapi.yml",
     "gainsight-sessionevent-api-openapi.yml",
     "gainsight-surveyresponse-api-openapi.yml",
-    "gainsight-userpreferences-api-openapi.yml",
+    "gainsight-user-preferences-api-openapi.yml",
     "gainsight-userpreferences-v2-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [
-    "gainsight-px-rest-api-openapi.yml: previously refined output kept for 74 operation(s) no archived document covers (e.g. /v1/accounts get, /v1/accounts post, /v1/accounts/update put); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+    "gainsight-accounts-api-openapi.yml: previously refined output kept for 6 operation(s) no archived document covers (e.g. /v1/accounts get, /v1/accounts post, /v1/accounts/update put); its other 5 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-admin-api-openapi.yml: previously refined output kept for 7 operation(s) no archived document covers (e.g. /v1/admin/model/{type}/attributes get, /v1/admin/monitoring/engagement_collisions get, /v1/admin/monitoring/engagement_error_details/{engagementId} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-article-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /v1/articles get, /v1/articles/{articleId} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-custom-events-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /v1/events/custom get, /v1/events/custom post); its other 1 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-emailevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/email get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-engagement-api-openapi.yml: previously refined output kept for 8 operation(s) no archived document covers (e.g. /v1/engagement get, /v1/engagement/env put, /v1/engagement/envs put); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-engagementviewevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/engagementView get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-externalsegments-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /v1/external_segment/metadata post, /v1/external_segment/metadata put, /v1/external_segment/update_membership post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-feature-api-openapi.yml: previously refined output kept for 6 operation(s) no archived document covers (e.g. /v1/feature get, /v1/feature/adoption/{featureId} get, /v1/feature/backfill/{featureId} post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-featurematchevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/feature_match get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-formsubmitevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/formSubmit get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-identifyevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/identify get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-kcbot-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /v1/kcbot get, /v1/kcbot/state put, /v1/kcbot/{kcId} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-leadevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/lead get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-localization-api-openapi.yml: previously refined output kept for 8 operation(s) no archived document covers (e.g. /v1/localization/export/articles get, /v1/localization/export/content get, /v1/localization/export/engagement get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-pageviewevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/pageView get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-segment-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /v1/segment get, /v1/segment/{segmentId} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-segmentmatchevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/segment_match get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-sessionevent-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/events/session get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-surveyresponse-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/survey/responses get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-user-preferences-api-openapi.yml: previously refined output kept for 4 operation(s) no archived document covers (e.g. /v1/user/preferences post, /v1/user/preferences put, /v1/user/preferences/{identifyId} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-userpreferences-v2-api-openapi.yml: previously refined output kept for 4 operation(s) no archived document covers (e.g. /v2/user/preferences post, /v2/user/preferences put, /v2/user/preferences/{identifyId} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "gainsight-users-api-openapi.yml: previously refined output kept for 9 operation(s) no archived document covers (e.g. /v1/users get, /v1/users post, /v1/users/delete delete); its other 7 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
   ],
   "notes": [
     "sourced from openapi/_original/ (15 archived document(s)); previously refined output at the top level was skipped rather than re-split",
@@ -93,17 +135,14 @@
     "gainsight-cs-user-management-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "gainsight-px-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "gainsight-rest-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "gainsight-px-rest-api-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0; renamed 10 component key(s) illegal in 3.x (e.g. CompletableFuture\u00abResponseEntity\u00abEngagementAllTypesViewEventsPage\u00bb\u00bb)",
     "tag 'Companies' spans 2 source specs (gainsight-cs-company-api-openapi.yml, gainsight-rest-api-openapi.yml): per-path servers applied",
     "tag 'People' spans 2 source specs (gainsight-cs-person-api-openapi.yml, gainsight-rest-api-openapi.yml): per-path servers applied",
-    "tag 'Users' spans 3 source specs (gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml): per-path servers applied",
-    "tag 'Accounts' spans 2 source specs (gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml): per-path servers applied",
-    "tag 'Custom Events' spans 2 source specs (gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml): per-path servers applied",
-    "superseded outputs removed: gainsight-px-rest-api-openapi.yml",
-    "apis.yml register: written (+20 apis, 51 total)"
+    "tag 'Users' spans 3 source specs (gainsight-cs-user-management-api-openapi.yml, gainsight-px-api-openapi.yml, gainsight-users-api-openapi.yml): per-path servers applied",
+    "tag 'Accounts' spans 2 source specs (gainsight-px-api-openapi.yml, gainsight-accounts-api-openapi.yml): per-path servers applied",
+    "tag 'Custom Events' spans 2 source specs (gainsight-px-api-openapi.yml, gainsight-custom-events-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "gainsight-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-activity-types-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-companies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -111,7 +150,6 @@
     "gainsight-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-cta-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-ctas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "gainsight-custom-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-custom-objects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-engagements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -130,7 +168,6 @@
     "gainsight-subscription-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-success-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gainsight-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "gainsight-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "gainsight-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "gainsight-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

@@ -121,41 +121,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    LocalizationStatus:
-      type: object
-      properties:
-        languageCode:
-          type: string
-        translated:
-          type: boolean
-      title: LocalizationStatus
-    UserView:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      title: UserView
-    ArticleExternalViewPage:
-      type: object
-      properties:
-        articleExternalViewList:
-          type: array
-          description: Array of Articles View
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/ArticleExternalView'
-        pageNumber:
-          type: integer
-          format: int32
-          description: Page number
-          readOnly: true
-        isLastPage:
-          type: boolean
-          description: True if no more records available on next page
-          readOnly: true
-      title: ArticleExternalViewPage
     ArticleKC:
       type: object
       properties:
@@ -164,6 +129,14 @@ components:
         kcName:
           type: string
       title: ArticleKC
+    LocalizationStatus:
+      type: object
+      properties:
+        languageCode:
+          type: string
+        translated:
+          type: boolean
+      title: LocalizationStatus
     ArticleExternalView:
       type: object
       properties:
@@ -203,6 +176,33 @@ components:
         viewType:
           type: string
       title: ArticleExternalView
+    UserView:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: UserView
+    ArticleExternalViewPage:
+      type: object
+      properties:
+        articleExternalViewList:
+          type: array
+          description: Array of Articles View
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ArticleExternalView'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: ArticleExternalViewPage
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

@@ -89,6 +89,11 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
     CompanyTeamRecord:
       type: object
@@ -145,11 +150,6 @@ components:
           type: string
         requestId:
           type: string
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
   securitySchemes:
     apiKey:
       type: apiKey

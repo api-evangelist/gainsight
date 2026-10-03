@@ -79,42 +79,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: Invalid request body or parameters
-  parameters:
-    planId:
-      name: planId
-      in: path
-      required: true
-      description: Success plan unique identifier
-      schema:
-        type: string
   schemas:
-    ObjectiveInput:
-      type: object
-      required:
-      - Name
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Not Started
-          - In Progress
-          - Completed
-        Priority:
-          type: string
-        DueDate:
-          type: string
-          format: date
     Objective:
       type: object
       properties:
@@ -153,6 +118,41 @@ components:
         ModifiedDate:
           type: string
           format: date-time
+    ObjectiveInput:
+      type: object
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Completed
+        Priority:
+          type: string
+        DueDate:
+          type: string
+          format: date
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Success plan unique identifier
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

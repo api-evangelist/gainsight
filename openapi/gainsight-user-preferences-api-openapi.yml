@@ -160,6 +160,15 @@ paths:
         required: true
 components:
   schemas:
+    UserIdentifyId:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+      title: UserIdentifyId
+      description: User object
     UpdateUserPreferences:
       type: object
       required:
@@ -180,15 +189,6 @@ components:
           type: boolean
       title: UpdateUserPreferences
       description: Update user preferences
-    UserIdentifyId:
-      type: object
-      required:
-      - identifyId
-      properties:
-        identifyId:
-          type: string
-      title: UserIdentifyId
-      description: User object
     UserPreferences:
       type: object
       properties:

@@ -321,11 +321,40 @@ components:
   responses:
     Unauthorized:
       description: Authentication failed or access key is missing
-    NotFound:
-      description: The requested resource was not found
     BadRequest:
       description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
   schemas:
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Number of records affected
+            insertedCount:
+              type: integer
+              description: Number of records inserted
+            updatedCount:
+              type: integer
+              description: Number of records updated
+            failedCount:
+              type: integer
+              description: Number of failed records
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
     SearchResponse:
       type: object
       properties:
@@ -342,6 +371,77 @@ components:
               type: integer
             count:
               type: integer
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+          description: Fields to return in results
+        where:
+          type: object
+          description: Filter conditions
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Field name
+                  alias:
+                    type: string
+                    description: Field alias
+                  value:
+                    description: Filter value
+                  operator:
+                    type: string
+                    enum:
+                    - EQ
+                    - NE
+                    - GT
+                    - GTE
+                    - LT
+                    - LTE
+                    - CONTAINS
+                    - STARTS_WITH
+                    - ENDS_WITH
+                    - IN
+                    - NOT_IN
+                    description: Comparison operator
+            expression:
+              type: string
+              description: Logical expression combining conditions
+        orderBy:
+          type: object
+          properties:
+            field:
+              type: string
+            order:
+              type: string
+              enum:
+              - ASC
+              - DESC
+        limit:
+          type: integer
+          maximum: 5000
+          description: Maximum number of records to return
+        offset:
+          type: integer
+          description: Offset for pagination
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     CompanyRecord:
       type: object
       properties:
@@ -403,133 +503,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-          description: Fields to return in results
-        where:
-          type: object
-          description: Filter conditions
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: Field name
-                  alias:
-                    type: string
-                    description: Field alias
-                  value:
-                    description: Filter value
-                  operator:
-                    type: string
-                    enum:
-                    - EQ
-                    - NE
-                    - GT
-                    - GTE
-                    - LT
-                    - LTE
-                    - CONTAINS
-                    - STARTS_WITH
-                    - ENDS_WITH
-                    - IN
-                    - NOT_IN
-                    description: Comparison operator
-            expression:
-              type: string
-              description: Logical expression combining conditions
-        orderBy:
-          type: object
-          properties:
-            field:
-              type: string
-            order:
-              type: string
-              enum:
-              - ASC
-              - DESC
-        limit:
-          type: integer
-          maximum: 5000
-          description: Maximum number of records to return
-        offset:
-          type: integer
-          description: Offset for pagination
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: Number of records affected
-            insertedCount:
-              type: integer
-              description: Number of records inserted
-            updatedCount:
-              type: integer
-              description: Number of records updated
-            failedCount:
-              type: integer
-              description: Number of failed records
-            failures:
-              type: array
-              items:
-                type: object
-                properties:
-                  index:
-                    type: integer
-                  errorMessage:
-                    type: string
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
-    CompanyInput:
-      type: object
-      required:
-      - Name
-      properties:
-        Name:
-          type: string
-          description: Company name
-        Industry:
-          type: string
-          description: Industry classification
-        ARR:
-          type: number
-          description: Annual recurring revenue
-        LifecycleStage:
-          type: string
-          description: Current lifecycle stage
-        Status:
-          type: string
-          description: Company status
-        Employees:
-          type: integer
-          description: Number of employees
-        RenewalDate:
-          type: string
-          format: date
-          description: Next renewal date
     Company:
       type: object
       properties:
@@ -573,6 +546,33 @@ components:
           type: string
           format: date-time
           description: Record last modified timestamp
+    CompanyInput:
+      type: object
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+          description: Company name
+        Industry:
+          type: string
+          description: Industry classification
+        ARR:
+          type: number
+          description: Annual recurring revenue
+        LifecycleStage:
+          type: string
+          description: Current lifecycle stage
+        Status:
+          type: string
+          description: Company status
+        Employees:
+          type: integer
+          description: Number of employees
+        RenewalDate:
+          type: string
+          format: date
+          description: Next renewal date
     ApiResponse_2:
       type: object
       properties:
@@ -596,6 +596,13 @@ components:
       description: Gainsight record unique identifier (Gsid)
       schema:
         type: string
+    companyId:
+      name: companyId
+      in: path
+      required: true
+      description: Unique identifier of the company
+      schema:
+        type: string
     pageSize:
       name: pageSize
       in: query
@@ -611,13 +618,6 @@ components:
       schema:
         type: integer
         default: 0
-    companyId:
-      name: companyId
-      in: path
-      required: true
-      description: Unique identifier of the company
-      schema:
-        type: string
   securitySchemes:
     apiKey:
       type: apiKey

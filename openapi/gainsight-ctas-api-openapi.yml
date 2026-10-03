@@ -147,11 +147,78 @@ components:
   responses:
     Unauthorized:
       description: Authentication failed or access key is missing
-    NotFound:
-      description: The requested resource was not found
     BadRequest:
       description: Invalid request body or parameters
+    NotFound:
+      description: The requested resource was not found
   schemas:
+    CTA:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: CTA unique identifier
+        Name:
+          type: string
+          description: CTA name
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        CompanyName:
+          type: string
+          description: Associated company name
+        TypeId:
+          type: string
+          description: CTA type identifier
+        TypeName:
+          type: string
+          description: CTA type name
+        ReasonId:
+          type: string
+          description: CTA reason identifier
+        ReasonName:
+          type: string
+          description: CTA reason name
+        PriorityId:
+          type: string
+          description: Priority level identifier
+        StatusId:
+          type: string
+          description: Status identifier
+        StatusName:
+          type: string
+          description: Status name
+        OwnerId:
+          type: string
+          description: Assigned owner user ID
+        OwnerName:
+          type: string
+          description: Assigned owner name
+        DueDate:
+          type: string
+          format: date
+          description: Due date for the CTA
+        ClosedDate:
+          type: string
+          format: date
+          description: Date the CTA was closed
+        Comments:
+          type: string
+          description: CTA comments
+        Source:
+          type: string
+          description: CTA source
+        PlaybookId:
+          type: string
+          description: Associated playbook ID
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Last modification timestamp
     SearchRequest:
       type: object
       properties:
@@ -228,73 +295,6 @@ components:
         PlaybookId:
           type: string
           description: Playbook to associate
-    CTA:
-      type: object
-      properties:
-        Gsid:
-          type: string
-          description: CTA unique identifier
-        Name:
-          type: string
-          description: CTA name
-        CompanyId:
-          type: string
-          description: Associated company Gsid
-        CompanyName:
-          type: string
-          description: Associated company name
-        TypeId:
-          type: string
-          description: CTA type identifier
-        TypeName:
-          type: string
-          description: CTA type name
-        ReasonId:
-          type: string
-          description: CTA reason identifier
-        ReasonName:
-          type: string
-          description: CTA reason name
-        PriorityId:
-          type: string
-          description: Priority level identifier
-        StatusId:
-          type: string
-          description: Status identifier
-        StatusName:
-          type: string
-          description: Status name
-        OwnerId:
-          type: string
-          description: Assigned owner user ID
-        OwnerName:
-          type: string
-          description: Assigned owner name
-        DueDate:
-          type: string
-          format: date
-          description: Due date for the CTA
-        ClosedDate:
-          type: string
-          format: date
-          description: Date the CTA was closed
-        Comments:
-          type: string
-          description: CTA comments
-        Source:
-          type: string
-          description: CTA source
-        PlaybookId:
-          type: string
-          description: Associated playbook ID
-        CreatedDate:
-          type: string
-          format: date-time
-          description: Record creation timestamp
-        ModifiedDate:
-          type: string
-          format: date-time
-          description: Last modification timestamp
   parameters:
     ctaId:
       name: ctaId

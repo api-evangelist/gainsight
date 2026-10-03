@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Gainsight Custom Events API
   version: '1.0'
-  description: 'Operations tagged Custom Events across 2 of this provider''s published API definitions: gainsight-px-api-openapi.yml, gainsight-px-rest-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Custom Events across 2 of this provider''s published API definitions: gainsight-px-api-openapi.yml, gainsight-custom-events-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.aptrinsic.com/v1
   description: Gainsight PX Production API
@@ -37,6 +37,8 @@ paths:
     - url: https://api.aptrinsic.com/v1
       description: Gainsight PX Production API
   /v1/events/custom:
+    servers:
+    - url: https://api.aptrinsic.com/
     get:
       tags:
       - Custom Events
@@ -74,11 +76,7 @@ paths:
 
         | != | Not equal |
 
-        | < | Less than |
-
-        | <= | Less than or equal |
-
-        | > | Greater than |
+        | | Greater than |
 
         | >= | Greater than or equal |
 
@@ -218,14 +216,12 @@ paths:
               $ref: '#/components/schemas/CustomEvent_2'
         description: Custom event data
         required: true
-    servers:
-    - url: https://api.aptrinsic.com/
 components:
   responses:
-    Unauthorized:
-      description: Authentication failed or API key is missing
     BadRequest:
       description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or API key is missing
   schemas:
     CustomEvent:
       type: object
@@ -255,50 +251,6 @@ components:
         referrer:
           type: string
           description: Referrer URL
-    CustomEvent_2:
-      type: object
-      required:
-      - eventName
-      - identifyId
-      - propertyKey
-      - userType
-      properties:
-        eventId:
-          type: string
-        identifyId:
-          type: string
-        propertyKey:
-          type: string
-        date:
-          type: integer
-          format: int64
-        eventType:
-          type: string
-        sessionId:
-          type: string
-        userType:
-          type: string
-          enum:
-          - LEAD
-          - USER
-          - VISITOR
-          - EMPTY_USER_TYPE
-        accountId:
-          type: string
-        globalContext:
-          type: object
-        eventName:
-          type: string
-        attributes:
-          type: object
-        url:
-          type: string
-        referrer:
-          type: string
-        remoteHost:
-          type: string
-      title: CustomEvent
-      description: Custom Event object
     ResponseEntity:
       type: object
       properties:
@@ -375,6 +327,50 @@ components:
           type: integer
           format: int32
       title: ResponseEntity
+    CustomEvent_2:
+      type: object
+      required:
+      - eventName
+      - identifyId
+      - propertyKey
+      - userType
+      properties:
+        eventId:
+          type: string
+        identifyId:
+          type: string
+        propertyKey:
+          type: string
+        date:
+          type: integer
+          format: int64
+        eventType:
+          type: string
+        sessionId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+        accountId:
+          type: string
+        globalContext:
+          type: object
+        eventName:
+          type: string
+        attributes:
+          type: object
+        url:
+          type: string
+        referrer:
+          type: string
+        remoteHost:
+          type: string
+      title: CustomEvent
+      description: Custom Event object
     CustomEventsPage:
       type: object
       properties:
@@ -409,4 +405,4 @@ externalDocs:
   url: https://support.gainsight.com/PX/API_for_Developers/APIs_for_Developers/PX_API
 x-refined-from:
 - gainsight-px-api-openapi.yml
-- gainsight-px-rest-api-openapi.yml
+- gainsight-custom-events-api-openapi.yml
