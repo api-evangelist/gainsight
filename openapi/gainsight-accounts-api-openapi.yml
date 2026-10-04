@@ -420,10 +420,10 @@ paths:
       deprecated: false
 components:
   parameters:
-    scrollId:
-      name: scrollId
+    sort:
+      name: sort
       in: query
-      description: Scroll ID for cursor-based pagination
+      description: Sort field and direction (e.g., lastSeenDate:desc)
       schema:
         type: string
     filter:
@@ -432,17 +432,17 @@ components:
       description: Filter expression for results
       schema:
         type: string
+    scrollId:
+      name: scrollId
+      in: query
+      description: Scroll ID for cursor-based pagination
+      schema:
+        type: string
     accountId:
       name: accountId
       in: path
       required: true
       description: Unique account identifier
-      schema:
-        type: string
-    sort:
-      name: sort
-      in: query
-      description: Sort field and direction (e.g., lastSeenDate:desc)
       schema:
         type: string
     pageSize:
@@ -454,13 +454,37 @@ components:
         default: 20
         maximum: 500
   responses:
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or API key is missing
     BadRequest:
       description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
+    AccountInput:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          description: Unique account identifier
+        name:
+          type: string
+          description: Account name
+        trackedSubscriptionId:
+          type: string
+          description: Tracked subscription ID
+        sfdcId:
+          type: string
+          description: Salesforce account ID
+        plan:
+          type: string
+          description: Account plan or tier
+        customAttributes:
+          type: object
+          description: Custom account attributes
     Account:
       type: object
       properties:
@@ -495,106 +519,6 @@ components:
         customAttributes:
           type: object
           description: Custom account attributes
-    AccountInput:
-      type: object
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: string
-          description: Unique account identifier
-        name:
-          type: string
-          description: Account name
-        trackedSubscriptionId:
-          type: string
-          description: Tracked subscription ID
-        sfdcId:
-          type: string
-          description: Salesforce account ID
-        plan:
-          type: string
-          description: Account plan or tier
-        customAttributes:
-          type: object
-          description: Custom account attributes
-    ResponseEntity:
-      type: object
-      properties:
-        body:
-          type: object
-        statusCode:
-          type: string
-          enum:
-          - '100'
-          - '101'
-          - '102'
-          - '103'
-          - '200'
-          - '201'
-          - '202'
-          - '203'
-          - '204'
-          - '205'
-          - '206'
-          - '207'
-          - '208'
-          - '226'
-          - '300'
-          - '301'
-          - '302'
-          - '303'
-          - '304'
-          - '305'
-          - '307'
-          - '308'
-          - '400'
-          - '401'
-          - '402'
-          - '403'
-          - '404'
-          - '405'
-          - '406'
-          - '407'
-          - '408'
-          - '409'
-          - '410'
-          - '411'
-          - '412'
-          - '413'
-          - '414'
-          - '415'
-          - '416'
-          - '417'
-          - '418'
-          - '419'
-          - '420'
-          - '421'
-          - '422'
-          - '423'
-          - '424'
-          - '426'
-          - '428'
-          - '429'
-          - '431'
-          - '451'
-          - '500'
-          - '501'
-          - '502'
-          - '503'
-          - '504'
-          - '505'
-          - '506'
-          - '507'
-          - '508'
-          - '509'
-          - '510'
-          - '511'
-        statusCodeValue:
-          type: integer
-          format: int32
-      title: ResponseEntity
     Account_2:
       type: object
       required:
@@ -671,6 +595,82 @@ components:
           type: string
       title: Account
       description: Account object
+    ResponseEntity:
+      type: object
+      properties:
+        body:
+          type: object
+        statusCode:
+          type: string
+          enum:
+          - '100'
+          - '101'
+          - '102'
+          - '103'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '208'
+          - '226'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '308'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '418'
+          - '419'
+          - '420'
+          - '421'
+          - '422'
+          - '423'
+          - '424'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '451'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '506'
+          - '507'
+          - '508'
+          - '509'
+          - '510'
+          - '511'
+        statusCodeValue:
+          type: integer
+          format: int32
+      title: ResponseEntity
     Location:
       type: object
       properties:

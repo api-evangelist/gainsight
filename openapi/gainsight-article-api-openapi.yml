@@ -121,6 +121,14 @@ paths:
       deprecated: false
 components:
   schemas:
+    UserView:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: UserView
     ArticleKC:
       type: object
       properties:
@@ -129,14 +137,6 @@ components:
         kcName:
           type: string
       title: ArticleKC
-    LocalizationStatus:
-      type: object
-      properties:
-        languageCode:
-          type: string
-        translated:
-          type: boolean
-      title: LocalizationStatus
     ArticleExternalView:
       type: object
       properties:
@@ -176,14 +176,6 @@ components:
         viewType:
           type: string
       title: ArticleExternalView
-    UserView:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      title: UserView
     ArticleExternalViewPage:
       type: object
       properties:
@@ -203,6 +195,14 @@ components:
           description: True if no more records available on next page
           readOnly: true
       title: ArticleExternalViewPage
+    LocalizationStatus:
+      type: object
+      properties:
+        languageCode:
+          type: string
+        translated:
+          type: boolean
+      title: LocalizationStatus
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

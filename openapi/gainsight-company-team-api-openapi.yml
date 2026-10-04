@@ -89,30 +89,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
   schemas:
-    CompanyTeamRecord:
-      type: object
-      properties:
-        Gsid:
-          type: string
-          description: Record identifier
-        CompanyId:
-          type: string
-          description: Company Gsid
-        UserId:
-          type: string
-          description: Gainsight user Gsid
-        TeamRole:
-          type: string
-          description: Team role (e.g., CSM, Executive Sponsor)
-        IsPrimary:
-          type: boolean
-          description: Whether this is the primary team member
     SearchRequest:
       type: object
       properties:
@@ -150,6 +127,29 @@ components:
           type: string
         requestId:
           type: string
+    CompanyTeamRecord:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Record identifier
+        CompanyId:
+          type: string
+          description: Company Gsid
+        UserId:
+          type: string
+          description: Gainsight user Gsid
+        TeamRole:
+          type: string
+          description: Team role (e.g., CSM, Executive Sponsor)
+        IsPrimary:
+          type: boolean
+          description: Whether this is the primary team member
+  responses:
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
   securitySchemes:
     apiKey:
       type: apiKey

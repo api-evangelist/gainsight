@@ -80,6 +80,26 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ObjectiveInput:
+      type: object
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Completed
+        Priority:
+          type: string
+        DueDate:
+          type: string
+          format: date
     Objective:
       type: object
       properties:
@@ -118,33 +138,13 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-    ObjectiveInput:
-      type: object
-      required:
-      - Name
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Not Started
-          - In Progress
-          - Completed
-        Priority:
-          type: string
-        DueDate:
-          type: string
-          format: date
   responses:
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   parameters:
     planId:
       name: planId

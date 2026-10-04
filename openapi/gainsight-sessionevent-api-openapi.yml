@@ -226,19 +226,6 @@ components:
           $ref: '#/components/schemas/Coordinates'
       title: Location
       description: Location object
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          example: 37.567147
-        longitude:
-          type: number
-          format: double
-          example: -122.324211
-      title: Coordinates
-      description: Coordinates object
     SessionInitializedEventsPage:
       type: object
       properties:
@@ -258,6 +245,19 @@ components:
           description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
           readOnly: true
       title: SessionInitializedEventsPage
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          example: 37.567147
+        longitude:
+          type: number
+          format: double
+          example: -122.324211
+      title: Coordinates
+      description: Coordinates object
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

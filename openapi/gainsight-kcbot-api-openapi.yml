@@ -160,6 +160,53 @@ paths:
       deprecated: false
 components:
   schemas:
+    UserView:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: UserView
+    KnowledgeCenterExternalView:
+      type: object
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserView'
+        createdDate:
+          type: integer
+          format: int64
+        defaultLanguage:
+          type: string
+        description:
+          type: string
+        environments:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizationStatus'
+        modifiedBy:
+          $ref: '#/components/schemas/UserView'
+        modifiedDate:
+          type: integer
+          format: int64
+        name:
+          type: string
+        priority:
+          type: integer
+          format: int32
+        productId:
+          type: string
+        productName:
+          type: string
+        status:
+          type: string
+      title: KnowledgeCenterExternalView
     ResponseEntity:
       type: object
       properties:
@@ -236,14 +283,6 @@ components:
           type: integer
           format: int32
       title: ResponseEntity
-    LocalizationStatus:
-      type: object
-      properties:
-        languageCode:
-          type: string
-        translated:
-          type: boolean
-      title: LocalizationStatus
     KCExternalStateChangeRequest:
       type: object
       required:
@@ -271,14 +310,14 @@ components:
             - STAGE
       title: KCExternalStateChangeRequest
       description: Engagement state change request
-    UserView:
+    LocalizationStatus:
       type: object
       properties:
-        id:
+        languageCode:
           type: string
-        name:
-          type: string
-      title: UserView
+        translated:
+          type: boolean
+      title: LocalizationStatus
     KnowledgeCenterExternalViewPage:
       type: object
       properties:
@@ -298,45 +337,6 @@ components:
           description: True if no more records available on next page
           readOnly: true
       title: KnowledgeCenterExternalViewPage
-    KnowledgeCenterExternalView:
-      type: object
-      properties:
-        createdBy:
-          $ref: '#/components/schemas/UserView'
-        createdDate:
-          type: integer
-          format: int64
-        defaultLanguage:
-          type: string
-        description:
-          type: string
-        environments:
-          type: array
-          items:
-            type: string
-        id:
-          type: string
-        languages:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizationStatus'
-        modifiedBy:
-          $ref: '#/components/schemas/UserView'
-        modifiedDate:
-          type: integer
-          format: int64
-        name:
-          type: string
-        priority:
-          type: integer
-          format: int32
-        productId:
-          type: string
-        productName:
-          type: string
-        status:
-          type: string
-      title: KnowledgeCenterExternalView
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

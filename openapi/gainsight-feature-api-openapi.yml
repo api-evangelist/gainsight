@@ -289,7 +289,7 @@ paths:
       deprecated: false
 components:
   schemas:
-    FeatureWithDetailsPage:
+    FeaturesPage:
       type: object
       properties:
         features:
@@ -297,7 +297,7 @@ components:
           description: Array of features
           readOnly: true
           items:
-            $ref: '#/components/schemas/FeatureWithDetails'
+            $ref: '#/components/schemas/Feature'
         pageNumber:
           type: integer
           format: int32
@@ -307,7 +307,7 @@ components:
           type: boolean
           description: True if no more records available on next page
           readOnly: true
-      title: FeatureWithDetailsPage
+      title: FeaturesPage
     ResponseEntity:
       type: object
       properties:
@@ -384,6 +384,106 @@ components:
           type: integer
           format: int32
       title: ResponseEntity
+    FeatureWithDetails:
+      type: object
+      required:
+      - id
+      - name
+      - propertyKey
+      - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - FEATURE
+          - MODULE
+        parentFeatureId:
+          type: string
+        propertyKey:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVATED
+          - DELETED
+        mappedElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/MappedElement'
+        featureLabels:
+          type: array
+          description: Array of labels associated with the feature
+          items:
+            $ref: '#/components/schemas/FeatureLabel'
+      title: FeatureWithDetails
+      description: Detailed Feature object
+    FeatureLabel:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        color:
+          type: string
+      title: FeatureLabel
+      description: Feature label object
+    FeatureWithDetailsPage:
+      type: object
+      properties:
+        features:
+          type: array
+          description: Array of features
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/FeatureWithDetails'
+        pageNumber:
+          type: integer
+          format: int32
+          description: Page number
+          readOnly: true
+        isLastPage:
+          type: boolean
+          description: True if no more records available on next page
+          readOnly: true
+      title: FeatureWithDetailsPage
+    Feature:
+      type: object
+      required:
+      - id
+      - name
+      - propertyKey
+      - type
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - FEATURE
+          - MODULE
+        parentFeatureId:
+          type: string
+        propertyKey:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVATED
+          - DELETED
+        featureLabels:
+          type: array
+          description: Array of labels associated with the feature
+          items:
+            $ref: '#/components/schemas/FeatureLabel'
+      title: Feature
+      description: Feature object
     MappedElement:
       type: object
       required:
@@ -423,106 +523,6 @@ components:
           - SCREEN
       title: MappedElement
       description: Mapped Element
-    Feature:
-      type: object
-      required:
-      - id
-      - name
-      - propertyKey
-      - type
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - FEATURE
-          - MODULE
-        parentFeatureId:
-          type: string
-        propertyKey:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVATED
-          - DELETED
-        featureLabels:
-          type: array
-          description: Array of labels associated with the feature
-          items:
-            $ref: '#/components/schemas/FeatureLabel'
-      title: Feature
-      description: Feature object
-    FeaturesPage:
-      type: object
-      properties:
-        features:
-          type: array
-          description: Array of features
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Feature'
-        pageNumber:
-          type: integer
-          format: int32
-          description: Page number
-          readOnly: true
-        isLastPage:
-          type: boolean
-          description: True if no more records available on next page
-          readOnly: true
-      title: FeaturesPage
-    FeatureLabel:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        color:
-          type: string
-      title: FeatureLabel
-      description: Feature label object
-    FeatureWithDetails:
-      type: object
-      required:
-      - id
-      - name
-      - propertyKey
-      - type
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - FEATURE
-          - MODULE
-        parentFeatureId:
-          type: string
-        propertyKey:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVATED
-          - DELETED
-        mappedElements:
-          type: array
-          items:
-            $ref: '#/components/schemas/MappedElement'
-        featureLabels:
-          type: array
-          description: Array of labels associated with the feature
-          items:
-            $ref: '#/components/schemas/FeatureLabel'
-      title: FeatureWithDetails
-      description: Detailed Feature object
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

@@ -157,51 +157,21 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
+  parameters:
+    scimUserId:
+      name: scimUserId
+      in: path
+      required: true
+      description: SCIM user ID
+      schema:
+        type: string
   schemas:
-    ScimUserInput:
-      type: object
-      required:
-      - schemas
-      - userName
-      - name
-      - emails
-      properties:
-        schemas:
-          type: array
-          items:
-            type: string
-        userName:
-          type: string
-        name:
-          type: object
-          required:
-          - givenName
-          - familyName
-          properties:
-            givenName:
-              type: string
-            familyName:
-              type: string
-        emails:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-                format: email
-              type:
-                type: string
-              primary:
-                type: boolean
-        active:
-          type: boolean
     ScimUser:
       type: object
       properties:
@@ -245,14 +215,44 @@ components:
             lastModified:
               type: string
               format: date-time
-  parameters:
-    scimUserId:
-      name: scimUserId
-      in: path
-      required: true
-      description: SCIM user ID
-      schema:
-        type: string
+    ScimUserInput:
+      type: object
+      required:
+      - schemas
+      - userName
+      - name
+      - emails
+      properties:
+        schemas:
+          type: array
+          items:
+            type: string
+        userName:
+          type: string
+        name:
+          type: object
+          required:
+          - givenName
+          - familyName
+          properties:
+            givenName:
+              type: string
+            familyName:
+              type: string
+        emails:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                format: email
+              type:
+                type: string
+              primary:
+                type: boolean
+        active:
+          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

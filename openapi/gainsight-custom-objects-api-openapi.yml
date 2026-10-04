@@ -169,54 +169,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-            insertedCount:
-              type: integer
-            updatedCount:
-              type: integer
-            failedCount:
-              type: integer
-            failures:
-              type: array
-              items:
-                type: object
-                properties:
-                  index:
-                    type: integer
-                  errorMessage:
-                    type: string
-    SearchResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            records:
-              type: array
-              items:
-                type: object
-            totalCount:
-              type: integer
-            count:
-              type: integer
     SearchRequest:
       type: object
       properties:
@@ -268,6 +227,31 @@ components:
           maximum: 5000
         offset:
           type: integer
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
     ApiResponse:
       type: object
       properties:
@@ -279,6 +263,22 @@ components:
           type: string
         requestId:
           type: string
+    SearchResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            records:
+              type: array
+              items:
+                type: object
+            totalCount:
+              type: integer
+            count:
+              type: integer
   parameters:
     objectName:
       name: objectName

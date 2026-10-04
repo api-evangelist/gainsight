@@ -90,18 +90,28 @@ paths:
         required: true
 components:
   schemas:
-    ExternalSegmentDto:
+    SegmentAction:
       type: object
+      required:
+      - identities
+      - lastQualificationTime
+      - segmentId
       properties:
-        id:
+        identities:
+          type: array
+          description: List of user identity IDs
+          items:
+            type: string
+        lastQualificationTime:
           type: string
-        externalId:
+          example: '2023-01-12T00:25:15.269332Z'
+          description: Last qualification time in ISO 8601 format
+        segmentId:
           type: string
-        name:
-          type: string
-        description:
-          type: string
-      title: ExternalSegmentDto
+          example: 21d7ef5a-77ac-43d0-80c5-0ce1871a5ec7
+          description: Segment ID
+      title: SegmentAction
+      description: Segment action containing segment ID, qualification time, and identities
     SegmentPayload:
       type: object
       required:
@@ -127,28 +137,18 @@ components:
             $ref: '#/components/schemas/SegmentAction'
       title: SegmentPayload
       description: Payload for adding or removing segment identities
-    SegmentAction:
+    ExternalSegmentDto:
       type: object
-      required:
-      - identities
-      - lastQualificationTime
-      - segmentId
       properties:
-        identities:
-          type: array
-          description: List of user identity IDs
-          items:
-            type: string
-        lastQualificationTime:
+        id:
           type: string
-          example: '2023-01-12T00:25:15.269332Z'
-          description: Last qualification time in ISO 8601 format
-        segmentId:
+        externalId:
           type: string
-          example: 21d7ef5a-77ac-43d0-80c5-0ce1871a5ec7
-          description: Segment ID
-      title: SegmentAction
-      description: Segment action containing segment ID, qualification time, and identities
+        name:
+          type: string
+        description:
+          type: string
+      title: ExternalSegmentDto
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

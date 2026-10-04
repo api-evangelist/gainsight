@@ -251,6 +251,69 @@ components:
         referrer:
           type: string
           description: Referrer URL
+    CustomEventsPage:
+      type: object
+      properties:
+        customEvents:
+          type: array
+          description: Array of custom events
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/CustomEvent_2'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: CustomEventsPage
+    CustomEvent_2:
+      type: object
+      required:
+      - eventName
+      - identifyId
+      - propertyKey
+      - userType
+      properties:
+        eventId:
+          type: string
+        identifyId:
+          type: string
+        propertyKey:
+          type: string
+        date:
+          type: integer
+          format: int64
+        eventType:
+          type: string
+        sessionId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - LEAD
+          - USER
+          - VISITOR
+          - EMPTY_USER_TYPE
+        accountId:
+          type: string
+        globalContext:
+          type: object
+        eventName:
+          type: string
+        attributes:
+          type: object
+        url:
+          type: string
+        referrer:
+          type: string
+        remoteHost:
+          type: string
+      title: CustomEvent
+      description: Custom Event object
     ResponseEntity:
       type: object
       properties:
@@ -327,69 +390,6 @@ components:
           type: integer
           format: int32
       title: ResponseEntity
-    CustomEvent_2:
-      type: object
-      required:
-      - eventName
-      - identifyId
-      - propertyKey
-      - userType
-      properties:
-        eventId:
-          type: string
-        identifyId:
-          type: string
-        propertyKey:
-          type: string
-        date:
-          type: integer
-          format: int64
-        eventType:
-          type: string
-        sessionId:
-          type: string
-        userType:
-          type: string
-          enum:
-          - LEAD
-          - USER
-          - VISITOR
-          - EMPTY_USER_TYPE
-        accountId:
-          type: string
-        globalContext:
-          type: object
-        eventName:
-          type: string
-        attributes:
-          type: object
-        url:
-          type: string
-        referrer:
-          type: string
-        remoteHost:
-          type: string
-      title: CustomEvent
-      description: Custom Event object
-    CustomEventsPage:
-      type: object
-      properties:
-        customEvents:
-          type: array
-          description: Array of custom events
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/CustomEvent_2'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
-          type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: CustomEventsPage
   securitySchemes:
     apiKey:
       type: apiKey

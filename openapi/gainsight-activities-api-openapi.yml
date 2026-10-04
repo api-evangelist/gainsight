@@ -204,7 +204,40 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
+    BadRequest:
+      description: Invalid request body or parameters
   schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
     ActivityInput:
       type: object
       required:
@@ -251,32 +284,6 @@ components:
           - Positive
           - Neutral
           - Negative
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
     ApiResponse:
       type: object
       properties:
@@ -353,13 +360,6 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
-  responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   parameters:
     activityId:
       name: activityId

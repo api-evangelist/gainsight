@@ -319,58 +319,13 @@ paths:
       description: Gainsight Production API
 components:
   responses:
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-              description: Number of records affected
-            insertedCount:
-              type: integer
-              description: Number of records inserted
-            updatedCount:
-              type: integer
-              description: Number of records updated
-            failedCount:
-              type: integer
-              description: Number of failed records
-            failures:
-              type: array
-              items:
-                type: object
-                properties:
-                  index:
-                    type: integer
-                  errorMessage:
-                    type: string
-    SearchResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            records:
-              type: array
-              items:
-                $ref: '#/components/schemas/CompanyRecord'
-            totalCount:
-              type: integer
-            count:
-              type: integer
     SearchRequest:
       type: object
       properties:
@@ -431,17 +386,35 @@ components:
         offset:
           type: integer
           description: Offset for pagination
-    ApiResponse:
+    WriteResponse:
       type: object
       properties:
         result:
           type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Number of records affected
+            insertedCount:
+              type: integer
+              description: Number of records inserted
+            updatedCount:
+              type: integer
+              description: Number of records updated
+            failedCount:
+              type: integer
+              description: Number of failed records
+            failures:
+              type: array
+              items:
+                type: object
+                properties:
+                  index:
+                    type: integer
+                  errorMessage:
+                    type: string
     CompanyRecord:
       type: object
       properties:
@@ -503,6 +476,33 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
+    SearchResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            records:
+              type: array
+              items:
+                $ref: '#/components/schemas/CompanyRecord'
+            totalCount:
+              type: integer
+            count:
+              type: integer
     Company:
       type: object
       properties:
@@ -546,6 +546,21 @@ components:
           type: string
           format: date-time
           description: Record last modified timestamp
+    ApiResponse_2:
+      type: object
+      properties:
+        result:
+          type: boolean
+          description: Whether the operation was successful
+        errorCode:
+          type: string
+          description: Error code if the operation failed
+        errorDesc:
+          type: string
+          description: Error description if the operation failed
+        requestId:
+          type: string
+          description: Unique ID for the request
     CompanyInput:
       type: object
       required:
@@ -573,21 +588,6 @@ components:
           type: string
           format: date
           description: Next renewal date
-    ApiResponse_2:
-      type: object
-      properties:
-        result:
-          type: boolean
-          description: Whether the operation was successful
-        errorCode:
-          type: string
-          description: Error code if the operation failed
-        errorDesc:
-          type: string
-          description: Error description if the operation failed
-        requestId:
-          type: string
-          description: Unique ID for the request
   parameters:
     recordId:
       name: recordId
@@ -603,6 +603,13 @@ components:
       description: Unique identifier of the company
       schema:
         type: string
+    pageNumber:
+      name: pageNumber
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 0
     pageSize:
       name: pageSize
       in: query
@@ -611,13 +618,6 @@ components:
         type: integer
         default: 25
         maximum: 100
-    pageNumber:
-      name: pageNumber
-      in: query
-      description: Page number for pagination
-      schema:
-        type: integer
-        default: 0
   securitySchemes:
     apiKey:
       type: apiKey

@@ -145,13 +145,39 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
+    SearchRequest:
+      type: object
+      properties:
+        select:
+          type: array
+          items:
+            type: string
+        where:
+          type: object
+          properties:
+            conditions:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value: {}
+                  operator:
+                    type: string
+            expression:
+              type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
     Task:
       type: object
       properties:
@@ -236,32 +262,6 @@ components:
         DueDate:
           type: string
           format: date
-    SearchRequest:
-      type: object
-      properties:
-        select:
-          type: array
-          items:
-            type: string
-        where:
-          type: object
-          properties:
-            conditions:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  value: {}
-                  operator:
-                    type: string
-            expression:
-              type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
   parameters:
     taskId:
       name: taskId

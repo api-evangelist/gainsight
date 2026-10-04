@@ -62,12 +62,24 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request body or parameters
-    Unauthorized:
-      description: Authentication failed or API key is missing
   schemas:
+    SubscriptionInput:
+      type: object
+      required:
+      - name
+      - callbackUrl
+      - eventType
+      properties:
+        name:
+          type: string
+          description: Subscription name
+        callbackUrl:
+          type: string
+          format: uri
+          description: Webhook callback URL
+        eventType:
+          type: string
+          description: Event type to subscribe to
     Subscription:
       type: object
       properties:
@@ -87,23 +99,11 @@ components:
         active:
           type: boolean
           description: Whether the subscription is active
-    SubscriptionInput:
-      type: object
-      required:
-      - name
-      - callbackUrl
-      - eventType
-      properties:
-        name:
-          type: string
-          description: Subscription name
-        callbackUrl:
-          type: string
-          format: uri
-          description: Webhook callback URL
-        eventType:
-          type: string
-          description: Event type to subscribe to
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or API key is missing
   securitySchemes:
     apiKey:
       type: apiKey

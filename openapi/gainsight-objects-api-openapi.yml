@@ -70,6 +70,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    objectName:
+      name: objectName
+      in: path
+      required: true
+      description: Name of the Gainsight object
+      schema:
+        type: string
   schemas:
     ObjectMetadata:
       type: object
@@ -101,14 +109,6 @@ components:
         modifiedDate:
           type: string
           format: date-time
-  parameters:
-    objectName:
-      name: objectName
-      in: path
-      required: true
-      description: Name of the Gainsight object
-      schema:
-        type: string
   responses:
     NotFound:
       description: The requested resource was not found

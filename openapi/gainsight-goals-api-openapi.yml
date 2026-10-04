@@ -145,39 +145,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    GoalInput:
-      type: object
-      required:
-      - Name
-      - CompanyId
-      properties:
-        Name:
-          type: string
-        Description:
-          type: string
-        CompanyId:
-          type: string
-        TemplateId:
-          type: string
-        Status:
-          type: string
-          enum:
-          - Not Started
-          - In Progress
-          - Achieved
-          - Missed
-        OwnerId:
-          type: string
-        TargetDate:
-          type: string
-          format: date
     SearchRequest:
       type: object
       properties:
@@ -252,6 +226,32 @@ components:
         ModifiedDate:
           type: string
           format: date-time
+    GoalInput:
+      type: object
+      required:
+      - Name
+      - CompanyId
+      properties:
+        Name:
+          type: string
+        Description:
+          type: string
+        CompanyId:
+          type: string
+        TemplateId:
+          type: string
+        Status:
+          type: string
+          enum:
+          - Not Started
+          - In Progress
+          - Achieved
+          - Missed
+        OwnerId:
+          type: string
+        TargetDate:
+          type: string
+          format: date
   parameters:
     goalId:
       name: goalId

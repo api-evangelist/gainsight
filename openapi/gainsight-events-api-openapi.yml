@@ -111,21 +111,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    EventType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Event type identifier
-        name:
-          type: string
-          description: Event type name
-        description:
-          type: string
-          description: Event type description
-        isActive:
-          type: boolean
-          description: Whether the event type is active
     ApiResponse:
       type: object
       properties:
@@ -172,6 +157,21 @@ components:
         sourceSystem:
           type: string
           description: Source system identifier
+    EventType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Event type identifier
+        name:
+          type: string
+          description: Event type name
+        description:
+          type: string
+          description: Event type description
+        isActive:
+          type: boolean
+          description: Whether the event type is active
   responses:
     Unauthorized:
       description: Authentication failed or access key is missing

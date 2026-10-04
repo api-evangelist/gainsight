@@ -152,6 +152,25 @@ paths:
       deprecated: false
 components:
   schemas:
+    FeatureMatchEventsPage:
+      type: object
+      properties:
+        featureMatchEvents:
+          type: array
+          description: Array of feature matches
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/FeatureMatchEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: FeatureMatchEventsPage
     FeatureMatchEvent:
       type: object
       required:
@@ -187,25 +206,6 @@ components:
           type: string
       title: FeatureMatchEvent
       description: Feature Match Event
-    FeatureMatchEventsPage:
-      type: object
-      properties:
-        featureMatchEvents:
-          type: array
-          description: Array of feature matches
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/FeatureMatchEvent'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
-          type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: FeatureMatchEventsPage
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

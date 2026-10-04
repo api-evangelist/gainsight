@@ -133,18 +133,6 @@ components:
         isClosed:
           type: boolean
           description: Whether this status represents a closed state
-    CTAType:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Type identifier
-        name:
-          type: string
-          description: Type name
-        isDefault:
-          type: boolean
-          description: Whether this is the default type
     CTAPriority:
       type: object
       properties:
@@ -169,6 +157,18 @@ components:
         typeId:
           type: string
           description: Associated CTA type ID
+    CTAType:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Type identifier
+        name:
+          type: string
+          description: Type name
+        isDefault:
+          type: boolean
+          description: Whether this is the default type
   responses:
     Unauthorized:
       description: Authentication failed or access key is missing
