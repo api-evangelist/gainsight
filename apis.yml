@@ -2608,6 +2608,8 @@ apis:
   humanURL: https://support.gainsight.com/PX/API_for_Developers/02About/Work_with_the_Gainsight_API
   baseURL: https://api.aptrinsic.com/v1
   tags:
+  - Session Event
+  tags_raw:
   - SessionEvent
   properties:
   - type: OpenAPI
@@ -2709,6 +2711,9 @@ apis:
   - type: RateLimits
     url: rate-limits/gainsight-rate-limits.yml
 common:
+- type: CapabilityMap
+  url: capabilities/gainsight-capability-edges.yml
+  name: Gainsight Business Capability Map
 - type: Website
   url: https://www.gainsight.com/
 - type: AgenticAccess
