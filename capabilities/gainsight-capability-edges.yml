@@ -1,0 +1,109 @@
+slug: gainsight
+provider: Gainsight
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: CTAs
+  spec_file: gainsight-ctas-api-openapi.yml
+  capability_id: BC-4260
+  capability_id_l1: BC-4260
+  capability_name: Customer Success Management
+  confidence: 0.78
+  evidence: '"The Call To Action (CTA) API enables creating and updating CTAs ... through Cockpit REST
+    APIs for managing customer success actions"'
+  reason: CTAs are Gainsight CS Cockpit work items driving CSM intervention on accounts — squarely Customer
+    Success Management. The surface spans risk, lifecycle and expansion plays generically, so no single
+    L2 is asserted.
+- tag: Feature
+  spec_file: gainsight-feature-api-openapi.yml
+  capability_id: BC-4280.30
+  capability_id_l1: BC-4280
+  capability_name: Product Usage Analytics
+  confidence: 0.78
+  evidence: GET /v1/feature/adoption/{featureId}  Get feature adoption statistics
+  reason: Operations expose product features and their adoption statistics within a product-experience
+    analytics product — analytical views of product usage including feature engagement. Not a feature-flag
+    surface (no targeting/rollout operations).
+- tag: Success Plans
+  spec_file: gainsight-success-plans-api-openapi.yml
+  capability_id: BC-4260.40
+  capability_id_l1: BC-4260
+  capability_name: Customer Lifecycle Engagement
+  confidence: 0.78
+  evidence: '"The Success Plan API enables creating, updating, and fetching Success Plans and their configurations,
+    supporting structured goal tracking for customer engagements"'
+  reason: Gainsight CS success plans are the joint success-planning artefact of customer success management;
+    L2 Customer Lifecycle Engagement explicitly covers joint success planning, though it could also be
+    read as health/retention advocacy.
+- tag: Companies
+  spec_file: gainsight-companies-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.75
+  evidence: '"POST /data/objects/Company  insertCompanies  Gainsight Insert company records", "Gainsight
+    Search company records", schema "CompanyRecord"'
+  reason: CRUD and search over the Company object, which in Gainsight CS is the customer account master
+    record — customer data management. Could arguably be account management, but the operations are pure
+    record maintenance, so Customer Data Management is the better fit.
+- tag: Objectives
+  spec_file: gainsight-objectives-api-openapi.yml
+  capability_id: BC-4260.40
+  capability_id_l1: BC-4260
+  capability_name: Customer Lifecycle Engagement
+  confidence: 0.74
+  evidence: The Success Plan API enables creating, updating, and fetching Success Plans and their configurations,
+    supporting structured goal tracking for customer engagements
+  reason: Objectives belong to Gainsight CS Success Plans — joint success planning and goal tracking with
+    customers, which is customer lifecycle engagement within customer success management.
+- tag: Custom Events
+  spec_file: gainsight-custom-events-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.72
+  evidence: '"POST /custom_events  sendCustomEvent  Gainsight Send a custom event"; "POST /v1/events/custom  createCustomEventUsingPOST  Create
+    custom event"'
+  reason: Ingestion and retrieval of custom product usage events captured by the PX subscription — product
+    telemetry instrumentation. The vendor description confirms the API accesses "events that have been
+    captured by the Gainsight PX subscription".
+- tag: PageViewEvent
+  spec_file: gainsight-pageviewevent-api-openapi.yml
+  capability_id: BC-4280
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry & Experimentation Management
+  confidence: 0.72
+  evidence: GET /v1/events/pageView  Get Page View events
+  reason: Page view event retrieval from the PX usage event store — product usage telemetry; L2 between
+    instrumentation and usage analytics is not determinable, so L1 only.
+- tag: SessionEvent
+  spec_file: gainsight-sessionevent-api-openapi.yml
+  capability_id: BC-4280
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry & Experimentation Management
+  confidence: 0.72
+  evidence: GET /v1/events/session — "Get Session events"; schemas SessionInitializedEvent, SessionInitializedEventsPage;
+    "access the users, accounts, and events that have been captured by the Gainsight PX subscription"
+  reason: Read access to captured product-usage session events from a product-experience analytics platform
+    — product telemetry/usage analytics. L1 is clear; whether it is instrumentation capture or usage analytics
+    is ambiguous from a single read endpoint, so no L2.
+- tag: FeatureMatchEvent
+  spec_file: gainsight-featurematchevent-api-openapi.yml
+  capability_id: BC-4280
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry & Experimentation Management
+  confidence: 0.7
+  evidence: GET /v1/events/feature_match  Get feature match events
+  reason: Retrieval of captured product usage events ('events that have been captured by the Gainsight
+    PX subscription'), so product telemetry; evidence does not clearly distinguish instrumentation from
+    analytics, so L1 only.
