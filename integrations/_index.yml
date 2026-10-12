@@ -127,7 +127,6 @@
   arazzo: null
 - slug: gainsight-fathom
   label: Fathom
-  partner: fathom
   partner_name: Fathom
   category: AI Meeting Assistants
   type: marketplace
@@ -135,7 +134,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/gainsight/integrations/fathom
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: gainsight-front
   label: Front
@@ -245,7 +244,6 @@
   arazzo: null
 - slug: gainsight-microsoft-excel
   label: Microsoft Excel
-  partner: microsoft-excel
   partner_name: Microsoft Excel
   category: Microsoft
   type: marketplace
@@ -253,7 +251,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/gainsight/integrations/excel
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: gainsight-follow-up-boss
   label: Follow Up Boss
