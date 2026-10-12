@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-users-page-schema.json",
+  "title": "UsersPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-users-api-openapi.yml#/components/schemas/UsersPage",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "description": "Array of users",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/User_2"
+      }
+    },
+    "totalHits": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total number of records matching filters",
+      "readOnly": true
+    },
+    "scrollId": {
+      "type": "string",
+      "description": "If passed on subsequent requests as the scrollId parameter, will fetch the next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "ChannelMetric": {
+      "type": "object",
+      "properties": {
+        "groupId": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "environment": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "firstSeenDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "lastSeenDate": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "ChannelMetric",
+      "description": "Channel  metric object"
+    },
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "Coordinates",
+      "description": "Coordinates object"
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "countryName": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "stateName": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "continent": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "regionName": {
+          "type": "string",
+          "description": "See ISO 3166-2"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "coordinates": {
+          "$ref": "#/$defs/Coordinates"
+        }
+      },
+      "title": "Location",
+      "description": "Location object"
+    },
+    "UserAgent": {
+      "type": "object",
+      "properties": {
+        "rawUserAgent": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        },
+        "platformType": {
+          "type": "string"
+        },
+        "platformVersion": {
+          "type": "string"
+        },
+        "browserType": {
+          "type": "string"
+        },
+        "browserVersion": {
+          "type": "string"
+        }
+      },
+      "title": "UserAgent",
+      "description": "User Agent object"
+    },
+    "UserAgentByProduct": {
+      "type": "object",
+      "properties": {
+        "propertyKey": {
+          "type": "string"
+        },
+        "userAgent": {
+          "$ref": "#/$defs/UserAgent"
+        }
+      },
+      "title": "UserAgentByProduct",
+      "description": "User Agent data by product"
+    },
+    "User_2": {
+      "type": "object",
+      "required": [
+        "identifyId",
+        "propertyKeys"
+      ],
+      "properties": {
+        "aptrinsicId": {
+          "type": "string",
+          "readOnly": true
+        },
+        "identifyId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "LEAD",
+            "USER",
+            "VISITOR",
+            "EMPTY_USER_TYPE"
+          ]
+        },
+        "gender": {
+          "type": "string",
+          "enum": [
+            "MALE",
+            "FEMALE",
+            "OTHER",
+            "EMPTY_GENDER"
+          ]
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "lastSeenDate": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "signUpDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "firstVisitDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "score": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "role": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "numberOfVisits": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true
+        },
+        "location": {
+          "$ref": "#/$defs/Location"
+        },
+        "propertyKeys": {
+          "type": "array",
+          "description": "Aptrinsic Tag Key, at least one is required",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createDate": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "lastModifiedDate": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "customAttributes": {
+          "type": "object",
+          "description": "Map of apiName to value"
+        },
+        "globalUnsubscribe": {
+          "type": "boolean"
+        },
+        "sfdcContactId": {
+          "type": "string"
+        },
+        "channelMetricList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ChannelMetric"
+          }
+        },
+        "lastVisitedUserAgentData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/UserAgentByProduct"
+          }
+        },
+        "id": {
+          "type": "string",
+          "description": "Synonym for identifyId, output only, not filterable",
+          "readOnly": true
+        },
+        "lastInferredLocation": {
+          "description": "Location inferred from IP address of last session",
+          "readOnly": true,
+          "$ref": "#/$defs/Location"
+        },
+        "globalId": {
+          "type": "string",
+          "description": "Global user ID, only applicable for workspace-enabled subscriptions",
+          "readOnly": true
+        }
+      },
+      "title": "User",
+      "description": "User object"
+    }
+  }
+}

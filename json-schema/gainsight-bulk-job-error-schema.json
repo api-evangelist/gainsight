@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-bulk-job-error-schema.json",
+  "title": "BulkJobError",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-jobs-api-openapi.yml#/components/schemas/BulkJobError",
+  "type": "object",
+  "properties": {
+    "rowNumber": {
+      "type": "integer",
+      "description": "Row number in the CSV file"
+    },
+    "errorMessage": {
+      "type": "string",
+      "description": "Error message"
+    },
+    "fieldName": {
+      "type": "string",
+      "description": "Field that caused the error"
+    }
+  }
+}

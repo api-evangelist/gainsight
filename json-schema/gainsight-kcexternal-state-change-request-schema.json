@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-kcexternal-state-change-request-schema.json",
+  "title": "KCExternalStateChangeRequest",
+  "description": "Engagement state change request",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-kcbot-api-openapi.yml#/components/schemas/KCExternalStateChangeRequest",
+  "type": "object",
+  "required": [
+    "kcId",
+    "state"
+  ],
+  "properties": {
+    "kcId": {
+      "type": "string",
+      "description": "ID of kc to modify"
+    },
+    "state": {
+      "type": "string",
+      "description": "New state for given kc's",
+      "enum": [
+        "START",
+        "PAUSE"
+      ]
+    },
+    "envs": {
+      "type": "array",
+      "description": "Collection of environments on which to change the state. Defaults to [PRODUCTION]",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PRODUCTION",
+          "INTEGRATION",
+          "QA",
+          "STAGE"
+        ]
+      }
+    }
+  }
+}

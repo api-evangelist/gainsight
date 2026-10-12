@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-event-type-schema.json",
+  "title": "EventType",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-events-api-openapi.yml#/components/schemas/EventType",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Event type identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Event type name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Event type description"
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Whether the event type is active"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-success-plan-input-schema.json",
+  "title": "SuccessPlanInput",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-success-plans-api-openapi.yml#/components/schemas/SuccessPlanInput",
+  "type": "object",
+  "required": [
+    "Name",
+    "CompanyId",
+    "TypeId"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "CompanyId": {
+      "type": "string"
+    },
+    "TypeId": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Completed",
+        "Archived"
+      ]
+    },
+    "OwnerId": {
+      "type": "string"
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "Comments": {
+      "type": "string"
+    }
+  }
+}

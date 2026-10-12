@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-accounts-page-schema.json",
+  "title": "AccountsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-accounts-api-openapi.yml#/components/schemas/AccountsPage",
+  "type": "object",
+  "properties": {
+    "accounts": {
+      "type": "array",
+      "description": "Array of accounts",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/Account_2"
+      }
+    },
+    "totalHits": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total number of records matching filters",
+      "readOnly": true
+    },
+    "scrollId": {
+      "type": "string",
+      "description": "If passed on subsequent requests as the scrollId parameter, will fetch the next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "Account_2": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "propertyKeys"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "trackedSubscriptionId": {
+          "type": "string"
+        },
+        "sfdcId": {
+          "type": "string"
+        },
+        "lastSeenDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "dunsNumber": {
+          "type": "string"
+        },
+        "industry": {
+          "type": "string"
+        },
+        "numberOfEmployees": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sicCode": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "naicsCode": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/$defs/Location"
+        },
+        "numberOfUsers": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of users",
+          "readOnly": true
+        },
+        "propertyKeys": {
+          "type": "array",
+          "description": "Aptrinsic Tag Key, at least one is required",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createDate": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "lastModifiedDate": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true
+        },
+        "customAttributes": {
+          "type": "object",
+          "description": "Map of apiName to value"
+        },
+        "parentGroupId": {
+          "type": "string",
+          "description": "Id to group Accounts together"
+        },
+        "renewalDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "healthScore": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "gsId": {
+          "type": "string"
+        },
+        "nps": {
+          "type": "number",
+          "format": "float"
+        },
+        "csm": {
+          "type": "string"
+        }
+      },
+      "title": "Account",
+      "description": "Account object"
+    },
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "Coordinates",
+      "description": "Coordinates object"
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "countryName": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "stateName": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "continent": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "regionName": {
+          "type": "string",
+          "description": "See ISO 3166-2"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "coordinates": {
+          "$ref": "#/$defs/Coordinates"
+        }
+      },
+      "title": "Location",
+      "description": "Location object"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-company-team-record-schema.json",
+  "title": "CompanyTeamRecord",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-company-team-api-openapi.yml#/components/schemas/CompanyTeamRecord",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Record identifier"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Company Gsid"
+    },
+    "UserId": {
+      "type": "string",
+      "description": "Gainsight user Gsid"
+    },
+    "TeamRole": {
+      "type": "string",
+      "description": "Team role (e.g., CSM, Executive Sponsor)"
+    },
+    "IsPrimary": {
+      "type": "boolean",
+      "description": "Whether this is the primary team member"
+    }
+  }
+}

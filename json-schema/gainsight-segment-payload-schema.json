@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-segment-payload-schema.json",
+  "title": "SegmentPayload",
+  "description": "Payload for adding or removing segment identities",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-externalsegments-api-openapi.yml#/components/schemas/SegmentPayload",
+  "type": "object",
+  "required": [
+    "add",
+    "remove"
+  ],
+  "properties": {
+    "add": {
+      "type": "array",
+      "description": "List of segments to add",
+      "items": {
+        "$ref": "#/$defs/SegmentAction"
+      }
+    },
+    "identityType": {
+      "type": "string",
+      "description": "Identity type for all identities",
+      "enum": [
+        "IDENTIFY_ID",
+        "GLOBAL_ID"
+      ]
+    },
+    "remove": {
+      "type": "array",
+      "description": "List of segments to remove",
+      "items": {
+        "$ref": "#/$defs/SegmentAction"
+      }
+    }
+  },
+  "$defs": {
+    "SegmentAction": {
+      "type": "object",
+      "required": [
+        "identities",
+        "lastQualificationTime",
+        "segmentId"
+      ],
+      "properties": {
+        "identities": {
+          "type": "array",
+          "description": "List of user identity IDs",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lastQualificationTime": {
+          "type": "string",
+          "description": "Last qualification time in ISO 8601 format"
+        },
+        "segmentId": {
+          "type": "string",
+          "description": "Segment ID"
+        }
+      },
+      "title": "SegmentAction",
+      "description": "Segment action containing segment ID, qualification time, and identities"
+    }
+  }
+}

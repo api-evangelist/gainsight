@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-engagement-error-summary-page-schema.json",
+  "title": "EngagementErrorSummaryPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-admin-api-openapi.yml#/components/schemas/EngagementErrorSummaryPage",
+  "type": "object",
+  "properties": {
+    "engagementErrorSummaries": {
+      "type": "array",
+      "description": "Array of engagement error summaries",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/EngagementErrorSummary"
+      }
+    },
+    "totalHits": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total number of records matching filters",
+      "readOnly": true
+    },
+    "scrollId": {
+      "type": "string",
+      "description": "If passed on subsequent requests as the scrollId parameter, will fetch the next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "EngagementErrorSummary": {
+      "type": "object",
+      "properties": {
+        "engagementId": {
+          "type": "string"
+        },
+        "engagementName": {
+          "type": "string"
+        },
+        "propertyKey": {
+          "type": "string",
+          "description": "PX Product Tag Key"
+        },
+        "engagementType": {
+          "type": "string",
+          "enum": [
+            "EMAIL",
+            "IN_APP_DIALOG",
+            "IN_APP_CAROUSEL",
+            "IN_APP_GUIDE",
+            "IN_APP_NOTIFICATION",
+            "OUT_BOUND_EMAIL",
+            "IN_APP_NPS_SURVEY",
+            "IN_APP_CES_SURVEY",
+            "IN_APP_RATING_SURVEY",
+            "IN_APP_BOOLEAN_SURVEY",
+            "IN_APP_MULTIPLE_QUESTION_SURVEY"
+          ]
+        },
+        "firstOccurrenceDate": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp of first error, in epoch milliseconds"
+        },
+        "lastOccurrenceDate": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp of last error, in epoch milliseconds"
+        },
+        "views": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of views of engagement"
+        },
+        "ratio": {
+          "type": "number",
+          "format": "double",
+          "description": "Ratio of errors to views"
+        },
+        "errorCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Number of errors"
+        }
+      },
+      "title": "EngagementErrorSummary",
+      "description": "Engagement Error Summary"
+    }
+  }
+}

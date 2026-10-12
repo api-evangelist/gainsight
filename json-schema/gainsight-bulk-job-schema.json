@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-bulk-job-schema.json",
+  "title": "BulkJob",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-jobs-api-openapi.yml#/components/schemas/BulkJob",
+  "type": "object",
+  "properties": {
+    "jobId": {
+      "type": "string",
+      "description": "Bulk job unique identifier"
+    },
+    "objectName": {
+      "type": "string",
+      "description": "Target object name"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "INSERT",
+        "UPDATE",
+        "UPSERT"
+      ],
+      "description": "Operation type"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "FAILED"
+      ],
+      "description": "Job status"
+    },
+    "totalRecords": {
+      "type": "integer",
+      "description": "Total records in the file"
+    },
+    "processedRecords": {
+      "type": "integer",
+      "description": "Number of records processed"
+    },
+    "successCount": {
+      "type": "integer",
+      "description": "Number of successful records"
+    },
+    "failureCount": {
+      "type": "integer",
+      "description": "Number of failed records"
+    },
+    "fileName": {
+      "type": "string",
+      "description": "Original CSV file name"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Job creation timestamp"
+    },
+    "completedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Job completion timestamp"
+    }
+  }
+}

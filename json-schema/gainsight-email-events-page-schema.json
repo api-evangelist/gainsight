@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-email-events-page-schema.json",
+  "title": "EmailEventsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-emailevent-api-openapi.yml#/components/schemas/EmailEventsPage",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "Array of result records",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/EmailEvent"
+      }
+    },
+    "totalHits": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total number of records matching filters",
+      "readOnly": true
+    },
+    "scrollId": {
+      "type": "string",
+      "description": "If passed on subsequent requests as the scrollId parameter, will fetch the next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "Coordinates",
+      "description": "Coordinates object"
+    },
+    "EmailEvent": {
+      "type": "object",
+      "required": [
+        "identifyId",
+        "propertyKey",
+        "userType"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "identifyId": {
+          "type": "string"
+        },
+        "propertyKey": {
+          "type": "string"
+        },
+        "date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "string",
+          "enum": [
+            "LEAD",
+            "USER",
+            "VISITOR",
+            "EMPTY_USER_TYPE"
+          ]
+        },
+        "globalContext": {
+          "type": "object"
+        },
+        "engagementId": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "emailTrackType": {
+          "type": "string",
+          "enum": [
+            "EMPTY_EMAIL_TRACK_TYPE",
+            "EMAIL_TRACK_BOUNCE",
+            "EMAIL_TRACK_DEFERRED",
+            "EMAIL_TRACK_DELIVERED",
+            "EMAIL_TRACK_DROPPED",
+            "EMAIL_TRACK_PROCESSED",
+            "EMAIL_TRACK_OPEN",
+            "EMAIL_TRACK_CLICK",
+            "EMAIL_TRACK_UNSUBSCRIBE"
+          ]
+        },
+        "status": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "bounceType": {
+          "type": "string",
+          "enum": [
+            "EMPTY_BOUNCE_TYPE",
+            "DELIVER_BOUNCE",
+            "DELIVER_BLOCKED",
+            "DELIVER_EXIPERED"
+          ]
+        },
+        "mtaResponse": {
+          "type": "string"
+        },
+        "attempt": {
+          "type": "string"
+        },
+        "linkIndex": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "linkType": {
+          "type": "string",
+          "enum": [
+            "EMPTY_LINK_TYPE",
+            "HTML_LINK_TYPE",
+            "HEADER_LINK_TYPE",
+            "TEXT_LINK_TYPE"
+          ]
+        },
+        "linkUrl": {
+          "type": "string"
+        },
+        "inferredLocation": {
+          "$ref": "#/$defs/Location"
+        }
+      },
+      "title": "EmailEvent",
+      "description": "Email Event object"
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "countryName": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "stateName": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "continent": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "regionName": {
+          "type": "string",
+          "description": "See ISO 3166-2"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "coordinates": {
+          "$ref": "#/$defs/Coordinates"
+        }
+      },
+      "title": "Location",
+      "description": "Location object"
+    }
+  }
+}

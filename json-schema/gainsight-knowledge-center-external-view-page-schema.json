@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-knowledge-center-external-view-page-schema.json",
+  "title": "KnowledgeCenterExternalViewPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-kcbot-api-openapi.yml#/components/schemas/KnowledgeCenterExternalViewPage",
+  "type": "object",
+  "properties": {
+    "kcList": {
+      "type": "array",
+      "description": "Array of KC View",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/KnowledgeCenterExternalView"
+      }
+    },
+    "pageNumber": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Page number",
+      "readOnly": true
+    },
+    "isLastPage": {
+      "type": "boolean",
+      "description": "True if no more records available on next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "KnowledgeCenterExternalView": {
+      "type": "object",
+      "properties": {
+        "createdBy": {
+          "$ref": "#/$defs/UserView"
+        },
+        "createdDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "defaultLanguage": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "environments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalizationStatus"
+          }
+        },
+        "modifiedBy": {
+          "$ref": "#/$defs/UserView"
+        },
+        "modifiedDate": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "productName": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "title": "KnowledgeCenterExternalView"
+    },
+    "LocalizationStatus": {
+      "type": "object",
+      "properties": {
+        "languageCode": {
+          "type": "string"
+        },
+        "translated": {
+          "type": "boolean"
+        }
+      },
+      "title": "LocalizationStatus"
+    },
+    "UserView": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "UserView"
+    }
+  }
+}

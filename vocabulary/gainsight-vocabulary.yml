@@ -15,3 +15,22 @@ terms:
   description: Manage event subscriptions
 - term: Users
   description: Manage user records and attributes
+generated: '2026-10-12'
+method: derived
+source: openapi/ tags
+vocabulary:
+  name: Gainsight Domain Vocabulary
+  description: Tag-derived vocabulary for the Gainsight API surface; sourced from openapi/ tags.
+  terms:
+  - term: Accounts
+    definition: Manage account records and attributes
+  - term: Custom Events
+    definition: Send custom events for tracking
+  - term: Engagements
+    definition: Manage in-app engagements
+  - term: Feature Match
+    definition: Track feature usage and adoption
+  - term: Subscription
+    definition: Manage event subscriptions
+  - term: Users
+    definition: Manage user records and attributes

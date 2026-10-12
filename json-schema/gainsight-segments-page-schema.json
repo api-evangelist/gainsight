@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-segments-page-schema.json",
+  "title": "SegmentsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-segment-api-openapi.yml#/components/schemas/SegmentsPage",
+  "type": "object",
+  "properties": {
+    "segments": {
+      "type": "array",
+      "description": "Array of segments",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/Segment"
+      }
+    },
+    "pageNumber": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Page number",
+      "readOnly": true
+    },
+    "isLastPage": {
+      "type": "boolean",
+      "description": "True if no more records available on next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "Segment": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "Segment",
+      "description": "Segment object"
+    }
+  }
+}

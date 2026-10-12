@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-account-input-schema.json",
+  "title": "AccountInput",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-accounts-api-openapi.yml#/components/schemas/AccountInput",
+  "type": "object",
+  "required": [
+    "id",
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique account identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Account name"
+    },
+    "trackedSubscriptionId": {
+      "type": "string",
+      "description": "Tracked subscription ID"
+    },
+    "sfdcId": {
+      "type": "string",
+      "description": "Salesforce account ID"
+    },
+    "plan": {
+      "type": "string",
+      "description": "Account plan or tier"
+    },
+    "customAttributes": {
+      "type": "object",
+      "description": "Custom account attributes"
+    }
+  }
+}

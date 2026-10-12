@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-goal-metric-schema.json",
+  "title": "GoalMetric",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-metrics-api-openapi.yml#/components/schemas/GoalMetric",
+  "type": "object",
+  "properties": {
+    "Gsid": {
+      "type": "string",
+      "description": "Metric identifier"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Metric name"
+    },
+    "GoalId": {
+      "type": "string",
+      "description": "Parent goal identifier"
+    },
+    "CurrentValue": {
+      "type": "number",
+      "description": "Current metric value"
+    },
+    "TargetValue": {
+      "type": "number",
+      "description": "Target metric value"
+    },
+    "Unit": {
+      "type": "string",
+      "description": "Measurement unit"
+    },
+    "LastUpdatedDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

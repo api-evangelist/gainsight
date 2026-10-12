@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-lead-events-page-schema.json",
+  "title": "LeadEventsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-leadevent-api-openapi.yml#/components/schemas/LeadEventsPage",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "Array of result records",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/LeadEvent"
+      }
+    },
+    "totalHits": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total number of records matching filters",
+      "readOnly": true
+    },
+    "scrollId": {
+      "type": "string",
+      "description": "If passed on subsequent requests as the scrollId parameter, will fetch the next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "LeadEvent": {
+      "type": "object",
+      "required": [
+        "identifyId",
+        "propertyKey",
+        "userType"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "identifyId": {
+          "type": "string"
+        },
+        "propertyKey": {
+          "type": "string"
+        },
+        "date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "string",
+          "enum": [
+            "LEAD",
+            "USER",
+            "VISITOR",
+            "EMPTY_USER_TYPE"
+          ]
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "globalContext": {
+          "type": "object"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "title": "LeadEvent",
+      "description": "Lead Event object"
+    }
+  }
+}

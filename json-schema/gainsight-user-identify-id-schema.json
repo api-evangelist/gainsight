@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-user-identify-id-schema.json",
+  "title": "UserIdentifyId",
+  "description": "User object",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-userpreferences-v2-api-openapi.yml#/components/schemas/UserIdentifyId",
+  "type": "object",
+  "required": [
+    "identifyId"
+  ],
+  "properties": {
+    "identifyId": {
+      "type": "string"
+    }
+  }
+}

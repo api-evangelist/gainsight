@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-engagements-with-custom-events-page-schema.json",
+  "title": "EngagementsWithCustomEventsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-engagement-api-openapi.yml#/components/schemas/EngagementsWithCustomEventsPage",
+  "type": "object",
+  "properties": {
+    "engagements": {
+      "type": "array",
+      "description": "Array of engagements",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/EngagementWithCustomEvents"
+      }
+    },
+    "pageNumber": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Page number",
+      "readOnly": true
+    },
+    "isLastPage": {
+      "type": "boolean",
+      "description": "True if no more records available on next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "CustomEventMetadata": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of custom event"
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "CustomEventMetadata",
+      "description": "Custom event metadata"
+    },
+    "EngagementWithCustomEvents": {
+      "type": "object",
+      "required": [
+        "customEvents",
+        "envs",
+        "id",
+        "name",
+        "propertyKeys",
+        "state",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "EMAIL",
+            "IN_APP_DIALOG",
+            "IN_APP_CAROUSEL",
+            "IN_APP_GUIDE",
+            "IN_APP_NOTIFICATION",
+            "OUT_BOUND_EMAIL",
+            "IN_APP_NPS_SURVEY",
+            "IN_APP_CES_SURVEY",
+            "IN_APP_RATING_SURVEY",
+            "IN_APP_BOOLEAN_SURVEY",
+            "IN_APP_MULTIPLE_QUESTION_SURVEY"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "IN_PROGRESS",
+            "STARTED",
+            "PAUSED",
+            "FAILED",
+            "EDITING",
+            "COMPLETED"
+          ]
+        },
+        "propertyKeys": {
+          "type": "array",
+          "description": "Aptrinsic Tag Key, at least one is required",
+          "items": {
+            "type": "string"
+          }
+        },
+        "envs": {
+          "type": "array",
+          "description": "A list of environments",
+          "items": {
+            "type": "string"
+          }
+        },
+        "customEvents": {
+          "type": "array",
+          "description": "A list of custom events that are referenced in the audience rules, also includes events indirectly referenced via a feature mapped to a custom event.",
+          "items": {
+            "$ref": "#/$defs/CustomEventMetadata"
+          }
+        }
+      },
+      "title": "EngagementWithCustomEvents",
+      "description": "Engagement object"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-subscription-input-schema.json",
+  "title": "SubscriptionInput",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-subscription-api-openapi.yml#/components/schemas/SubscriptionInput",
+  "type": "object",
+  "required": [
+    "name",
+    "callbackUrl",
+    "eventType"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Subscription name"
+    },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook callback URL"
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Event type to subscribe to"
+    }
+  }
+}

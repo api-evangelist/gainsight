@@ -1,0 +1,71 @@
+arazzo: 1.0.1
+info:
+  title: Calendly booking to Gainsight person
+  summary: Update or create a person in Gainsight when a Calendly meeting is booked.
+  description: Reads the invitee of a booked Calendly scheduled event and upserts a Gainsight person keyed on Email. The trigger (a new booking) is delivered by a Calendly webhook subscription; this workflow starts from the event and invitee identifiers that webhook carries.
+  version: 1.0.0
+x-integration:
+  partner: calendly
+  template: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
+  edge_evidence: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-12'
+  generator: api-evangelist enrichment pipeline local-v5
+  guessed_steps:
+  - step: upsert-gainsight-person
+    cause: provider-contract
+    why: PersonRecord field names (Email, FirstName, LastName) are taken from the spec schema; the keys query value Email is the example the spec's own parameter description gives.
+sourceDescriptions:
+- name: calendly
+  url: https://raw.githubusercontent.com/api-evangelist/calendly/refs/heads/main/openapi/calendly-invitees-api-openapi.yml
+  type: openapi
+- name: gainsight
+  url: https://raw.githubusercontent.com/api-evangelist/gainsight/refs/heads/main/openapi/gainsight-people-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: calendly-booking-to-gainsight-person
+  summary: Upsert the booked invitee as a Gainsight person.
+  inputs:
+    type: object
+    required: [event_uuid, invitee_uuid]
+    properties:
+      event_uuid:
+        type: string
+      invitee_uuid:
+        type: string
+  steps:
+  - stepId: get-calendly-invitee
+    operationId: $sourceDescriptions.calendly.getEventInvitee
+    parameters:
+    - name: event_uuid
+      in: path
+      value: $inputs.event_uuid
+    - name: invitee_uuid
+      in: path
+      value: $inputs.invitee_uuid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      email: $response.body#/resource/email
+      first_name: $response.body#/resource/first_name
+      last_name: $response.body#/resource/last_name
+  - stepId: upsert-gainsight-person
+    operationId: $sourceDescriptions.gainsight.upsertPeople
+    parameters:
+    - name: keys
+      in: query
+      value: Email
+    requestBody:
+      contentType: application/json
+      payload:
+        records:
+        - Email: $steps.get-calendly-invitee.outputs.email
+          FirstName: $steps.get-calendly-invitee.outputs.first_name
+          LastName: $steps.get-calendly-invitee.outputs.last_name
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      result: $response.body
+  outputs:
+    result: $steps.upsert-gainsight-person.outputs.result

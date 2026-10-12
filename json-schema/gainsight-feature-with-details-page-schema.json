@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-feature-with-details-page-schema.json",
+  "title": "FeatureWithDetailsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-feature-api-openapi.yml#/components/schemas/FeatureWithDetailsPage",
+  "type": "object",
+  "properties": {
+    "features": {
+      "type": "array",
+      "description": "Array of features",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/FeatureWithDetails"
+      }
+    },
+    "pageNumber": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Page number",
+      "readOnly": true
+    },
+    "isLastPage": {
+      "type": "boolean",
+      "description": "True if no more records available on next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "FeatureLabel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      },
+      "title": "FeatureLabel",
+      "description": "Feature label object"
+    },
+    "FeatureWithDetails": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "propertyKey",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "FEATURE",
+            "MODULE"
+          ]
+        },
+        "parentFeatureId": {
+          "type": "string"
+        },
+        "propertyKey": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVATED",
+            "DELETED"
+          ]
+        },
+        "mappedElements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MappedElement"
+          }
+        },
+        "featureLabels": {
+          "type": "array",
+          "description": "Array of labels associated with the feature",
+          "items": {
+            "$ref": "#/$defs/FeatureLabel"
+          }
+        }
+      },
+      "title": "FeatureWithDetails",
+      "description": "Detailed Feature object"
+    },
+    "MappedElement": {
+      "type": "object",
+      "required": [
+        "eventType",
+        "id",
+        "name",
+        "state",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "eventType": {
+          "type": "string",
+          "enum": [
+            "CLICK",
+            "LINK",
+            "FORM",
+            "PAGE_VIEW",
+            "CUSTOM_EVENT",
+            "SCREEN"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "ENABLED",
+            "DISABLED",
+            "DELETED"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "EVENT",
+            "TAG",
+            "URL",
+            "CUSTOM_EVENT",
+            "TEXT_ELEMENT",
+            "SCREEN"
+          ]
+        }
+      },
+      "title": "MappedElement",
+      "description": "Mapped Element"
+    }
+  }
+}

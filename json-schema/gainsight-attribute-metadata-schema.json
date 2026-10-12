@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-attribute-metadata-schema.json",
+  "title": "AttributeMetadata",
+  "description": "Attribute Metadata",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-admin-api-openapi.yml#/components/schemas/AttributeMetadata",
+  "type": "object",
+  "required": [
+    "apiName",
+    "createdDate",
+    "id",
+    "internalName",
+    "modifiedDate",
+    "name",
+    "origin",
+    "state",
+    "type"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "apiName": {
+      "type": "string"
+    },
+    "internalName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "STRING",
+        "DATE_TIME",
+        "BOOLEAN",
+        "NUMBER"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "ENABLED",
+        "DISABLED",
+        "DELETED"
+      ]
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "CUSTOM",
+        "DEFAULT"
+      ]
+    },
+    "createdDate": {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true
+    },
+    "modifiedDate": {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true
+    },
+    "defaultValue": {
+      "type": "string"
+    }
+  }
+}

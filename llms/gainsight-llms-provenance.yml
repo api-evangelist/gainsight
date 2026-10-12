@@ -1,0 +1,6 @@
+generated: '2026-10-12'
+method: probed
+generator: harvest-llms.py
+source: https://developer-portal.gainsight.com/llms.txt
+bytes: 71042
+note: saved verbatim; the provider's own document

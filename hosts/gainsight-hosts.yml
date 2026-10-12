@@ -1,0 +1,163 @@
+generated: '2026-10-12'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 13
+  own: 7
+  other_domain: 4
+  platform: 2
+  roles:
+  - api
+  - community
+  - docs
+  - identity
+  - other
+  - portal
+  - source
+  - status
+  - website
+hosts:
+- host: api.aptrinsic.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: aptrinsic.com
+  role: api
+  relation: other-domain
+- host: api2-eu-west-1.insided.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: insided.com
+  role: other
+  relation: other-domain
+- host: app.gainsight.com
+  found_by:
+  - pointer
+  types:
+  - Login
+  serves: []
+  registrable_domain: gainsight.com
+  role: identity
+  relation: own
+- host: communities.gainsight.com
+  found_by:
+  - pointer
+  types:
+  - Community
+  serves: []
+  registrable_domain: gainsight.com
+  role: community
+  relation: own
+- host: companyapi.gainsightcloud.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: gainsightcloud.com
+  role: other
+  relation: other-domain
+- host: developer-portal.gainsight.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - DeveloperPortal
+  - APIReference
+  - GettingStarted
+  serves:
+  - docs
+  registrable_domain: gainsight.com
+  role: portal
+  relation: own
+- host: education.gainsight.com
+  found_by:
+  - pointer
+  types:
+  - education
+  serves: []
+  registrable_domain: gainsight.com
+  role: other
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: status.gainsight.com
+  found_by:
+  - pointer
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: gainsight.com
+  role: status
+  relation: own
+- host: support.gainsight.com
+  found_by:
+  - pointer
+  - apis[]
+  - vendor-detect
+  types:
+  - Portal
+  - developer-docs
+  - Authentication
+  - oauth
+  - ReleaseNotes
+  - Documentation
+  - Support
+  serves:
+  - docs
+  - cdn
+  vendor: cloudfront
+  registrable_domain: gainsight.com
+  role: docs
+  relation: own
+- host: www.gainsight.com
+  found_by:
+  - pointer
+  - vendor-detect
+  types:
+  - Newsroom
+  - Leadership
+  - Website
+  - TermsOfService
+  - PrivacyPolicy
+  - Blog
+  - Security
+  - Pricing
+  serves:
+  - cdn
+  - hosting
+  vendor: cloudflare
+  registrable_domain: gainsight.com
+  role: website
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: '{domain}.gainsightcloud.com'
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: gainsightcloud.com
+  role: other
+  relation: other-domain

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-activity-input-schema.json",
+  "title": "ActivityInput",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-activities-api-openapi.yml#/components/schemas/ActivityInput",
+  "type": "object",
+  "required": [
+    "Subject",
+    "ActivityTypeId",
+    "CompanyId",
+    "ActivityDate"
+  ],
+  "properties": {
+    "Subject": {
+      "type": "string",
+      "description": "Activity subject"
+    },
+    "Notes": {
+      "type": "string",
+      "description": "Activity notes"
+    },
+    "ActivityTypeId": {
+      "type": "string",
+      "description": "Activity type identifier"
+    },
+    "CompanyId": {
+      "type": "string",
+      "description": "Associated company Gsid"
+    },
+    "ActivityDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of the activity"
+    },
+    "OwnerId": {
+      "type": "string",
+      "description": "Activity owner user ID"
+    },
+    "ExternalId": {
+      "type": "string",
+      "description": "External system identifier"
+    },
+    "Attendees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    },
+    "Sentiment": {
+      "type": "string",
+      "enum": [
+        "Positive",
+        "Neutral",
+        "Negative"
+      ]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-segment-match-events-page-schema.json",
+  "title": "SegmentMatchEventsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-segmentmatchevent-api-openapi.yml#/components/schemas/SegmentMatchEventsPage",
+  "type": "object",
+  "properties": {
+    "featureMatchEvents": {
+      "type": "array",
+      "description": "Array of segment matches",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/SegmentMatchEvent"
+      }
+    },
+    "totalHits": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total number of records matching filters",
+      "readOnly": true
+    },
+    "scrollId": {
+      "type": "string",
+      "description": "If passed on subsequent requests as the scrollId parameter, will fetch the next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "SegmentMatchEvent": {
+      "type": "object",
+      "required": [
+        "identifyId",
+        "propertyKey",
+        "userType"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "identifyId": {
+          "type": "string"
+        },
+        "propertyKey": {
+          "type": "string"
+        },
+        "date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "string",
+          "enum": [
+            "LEAD",
+            "USER",
+            "VISITOR",
+            "EMPTY_USER_TYPE"
+          ]
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "globalContext": {
+          "type": "object"
+        },
+        "segmentId": {
+          "type": "string"
+        }
+      },
+      "title": "SegmentMatchEvent",
+      "description": "Segment Match Event"
+    }
+  }
+}

@@ -1,0 +1,430 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/gainsight/integrations
+checked:
+- https://composio.dev/toolkits/gainsight
+- https://monid.ai/tools/gainsight
+- https://n8n.io/integrations/gainsight/
+- https://zapier.com/apps/gainsight/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: gainsight
+  url: https://zapier.com/apps/gainsight/integrations
+  external_url: https://www.gainsight.com/
+  partner_tier: BRONZE
+  triggers: []
+  actions:
+  - key: add_activity_to_timeline
+    label: Add Activity to Timeline
+  - key: company_actions_dynamic
+    label: Create or Update Company
+  - key: create_person_dynamic
+    label: Upsert Person
+  - key: custom_dynamic
+    label: Create or Update Custom Object
+  - key: save_activity
+    label: Save New Activity
+  searches:
+  - key: find_user_by_email
+    label: Find User by Email
+edges:
+- partner_name: Demio
+  partner: demio
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/demio
+  direction: third-party
+  category: Webinars
+  partner_url: https://demio.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Zoom
+  partner: zoom
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/zoom
+  direction: third-party
+  category: Video Conferencing
+  partner_url: https://www.zoom.us/
+- partner_name: Rocketlane
+  partner: rocketlane
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/rocketlane
+  direction: third-party
+  category: Project Management
+  partner_url: https://rocketlane.com/
+- partner_name: Pendo
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/pendo-legacy
+  direction: third-party
+  category: Analytics
+  partner_url: https://www.pendo.io/
+- partner_name: Cognito Forms
+  partner: cognito-forms
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/cognito-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.cognitoforms.com/
+- partner_name: Forms for Slack
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/forms-for-slack
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://slackforms.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
+- partner_name: Fathom
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/fathom
+  direction: third-party
+  category: AI Meeting Assistants
+  partner_url: https://fathom.video/users/sign_up?utm_campaign=apipartners&utm_source=apipartner&utm_medium=CTA&utm_content=zapierlisting&utm_date=260714
+- partner_name: Front
+  partner: front
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/front-app
+  direction: third-party
+  category: Customer Support
+  partner_url: https://front.com/?utm_medium=referral&utm_source=partner-marketplace&utm_campaign=zapier
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: G2 Crowd
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/g2-crowd
+  direction: third-party
+  category: Reviews
+  partner_url: https://zapier.com/www.g2crowd.com
+- partner_name: Wootric by InMoment
+  partner: wootric
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/wootric
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.wootric.com/
+- partner_name: Skilljar
+  partner: skilljar
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/skilljar
+  direction: third-party
+  category: Online Courses
+  partner_url: http://www.skilljar.com/
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: Asana
+  partner: asana
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/asana
+  direction: third-party
+  category: Project Management
+  partner_url: http://asana.com/
+- partner_name: BigMarker
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/bigmarker
+  direction: third-party
+  category: Webinars
+  partner_url: http://www.bigmarker.com/
+- partner_name: Trello
+  partner: trello
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/trello
+  direction: third-party
+  category: Project Management
+  partner_url: https://trello.com/
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: Follow Up Boss
+  partner: follow-up-boss
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/follow-up-boss
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: http://www.followupboss.com/
+- partner_name: involve.me
+  partner: involve-me
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/involveme
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.involve.me/integrations/zapier?utm_medium=referral&utm_source=zapier.com&utm_campaign=integrations_directory-listing
+- partner_name: Shortcut
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/shortcut
+  direction: third-party
+  category: Project Management
+  partner_url: https://www.shortcut.com/integrations/zapier?utm_source=zapier&utm_medium=directory&utm_id=integration
+- partner_name: ChatGPT (OpenAI)
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/chatgpt
+  direction: third-party
+  category: AI Assistants
+  partner_url: https://chat.openai.com/chat
+- partner_name: Box
+  partner: box
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/box
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://www.box.com/
+- partner_name: Customer.io
+  partner: customer-io
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/customerio
+  direction: third-party
+  category: Email
+  partner_url: https://customer.io/?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier-landing-page
+- partner_name: PagerDuty
+  partner: pagerduty
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/pagerduty
+  direction: third-party
+  category: Server Monitoring
+  partner_url: http://www.pagerduty.com/sign-up/
+- partner_name: Productboard
+  partner: productboard
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/productboard
+  direction: third-party
+  category: Product Management
+  partner_url: http://www.productboard.com/
+- partner_name: Aircall
+  partner: aircall
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/aircall
+  direction: third-party
+  category: Developer Tools
+  partner_url: https://aircall.io/
+templates:
+- title: Update or create a new person in Gainsight when a Calendly meeting is booked
+  url: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
+  apps:
+  - calendly
+  - gainsight
+- title: Create or update Gainsight custom objects from new Jotform submissions
+  url: https://zapier.com/apps/gainsight/integrations/jotform/1316648/create-or-update-gainsight-custom-objects-from-new-jotform-submissions
+  apps:
+  - jotform
+  - gainsight
+- title: Update Gainsight companies when new Onboard.io maps are launched
+  url: https://zapier.com/apps/gainsight/integrations/onboardio/624926/update-gainsight-companies-when-new-onboardio-maps-are-launched
+  apps:
+  - onboardio
+  - filter
+  - gainsight
+- title: Update custom objects in Gainsight for new CXera experience visits
+  url: https://zapier.com/apps/cxera/integrations/gainsight/1101150/update-custom-objects-in-gainsight-for-new-cxera-experience-visits
+  apps:
+  - cxera
+  - gainsight
+- title: Create or update Gainsight custom objects from new Google Sheets rows
+  url: https://zapier.com/apps/gainsight/integrations/google-sheets/1242597/create-or-update-gainsight-custom-objects-from-new-google-sheets-rows
+  apps:
+  - google-sheets
+  - gainsight
+- title: Create or update Gainsight custom objects from new Typeform entries
+  url: https://zapier.com/apps/gainsight/integrations/typeform/1312751/create-or-update-gainsight-custom-objects-from-new-typeform-entries
+  apps:
+  - typeform
+  - gainsight
+- title: Create or update Gainsight custom objects for completed LearnUpon enrollments
+  url: https://zapier.com/apps/gainsight/integrations/learnupon/1330004/create-or-update-gainsight-custom-objects-for-completed-learnupon-enrollments
+  apps:
+  - learnupon
+  - gainsight
+- title: Create or update Gainsight companies for new Unbounce form submissions
+  url: https://zapier.com/apps/gainsight/integrations/unbounce/1412718/create-or-update-gainsight-companies-for-new-unbounce-form-submissions
+  apps:
+  - unbounce
+  - gainsight
+- title: Create or update Gainsight companies from new Leadpages form submissions
+  url: https://zapier.com/apps/gainsight/integrations/leadpages/1416916/create-or-update-gainsight-companies-from-new-leadpages-form-submissions
+  apps:
+  - leadpages
+  - gainsight
+- title: Create or update Gainsight companies from new Formidable Forms entries
+  url: https://zapier.com/apps/formidable/integrations/gainsight/1424655/create-or-update-gainsight-companies-from-new-formidable-forms-entries
+  apps:
+  - formidable
+  - gainsight
+- title: Create or update Gainsight custom objects from new SurveyMonkey responses
+  url: https://zapier.com/apps/gainsight/integrations/surveymonkey/1427231/create-or-update-gainsight-custom-objects-from-new-surveymonkey-responses
+  apps:
+  - surveymonkey
+  - gainsight
+- title: Create or update Gainsight custom objects from new Gravity Forms submissions
+  url: https://zapier.com/apps/gainsight/integrations/gravity-forms/1427285/create-or-update-gainsight-custom-objects-from-new-gravity-forms-submissions
+  apps:
+  - gravity-forms
+  - gainsight
+skips:
+- label: Create or update Gainsight custom objects from new Typeform entries
+  cause: partner-contract
+  why: The catalog Typeform specs (forms, images, themes) carry no Responses API operation to read new entries from.
+template_total: 35

@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/gainsight/main/json-schema/gainsight-session-initialized-events-page-schema.json",
+  "title": "SessionInitializedEventsPage",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/gainsight-sessionevent-api-openapi.yml#/components/schemas/SessionInitializedEventsPage",
+  "type": "object",
+  "properties": {
+    "sessionInitializedEvents": {
+      "type": "array",
+      "description": "Array of events",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/$defs/SessionInitializedEvent"
+      }
+    },
+    "totalHits": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total number of records matching filters",
+      "readOnly": true
+    },
+    "scrollId": {
+      "type": "string",
+      "description": "If passed on subsequent requests as the scrollId parameter, will fetch the next page",
+      "readOnly": true
+    }
+  },
+  "$defs": {
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "Coordinates",
+      "description": "Coordinates object"
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "countryName": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "stateName": {
+          "type": "string"
+        },
+        "stateCode": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "city": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "continent": {
+          "type": "string",
+          "description": "See ISO 3166"
+        },
+        "regionName": {
+          "type": "string",
+          "description": "See ISO 3166-2"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "coordinates": {
+          "$ref": "#/$defs/Coordinates"
+        }
+      },
+      "title": "Location",
+      "description": "Location object"
+    },
+    "SessionInitializedEvent": {
+      "type": "object",
+      "required": [
+        "identifyId",
+        "propertyKey",
+        "userType"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "identifyId": {
+          "type": "string"
+        },
+        "propertyKey": {
+          "type": "string"
+        },
+        "date": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "string",
+          "enum": [
+            "LEAD",
+            "USER",
+            "VISITOR",
+            "EMPTY_USER_TYPE"
+          ]
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "globalContext": {
+          "type": "object"
+        },
+        "remoteHost": {
+          "type": "string"
+        },
+        "inferredLocation": {
+          "$ref": "#/$defs/Location"
+        }
+      },
+      "title": "SessionInitializedEvent",
+      "description": "Session Initialized Event object"
+    }
+  }
+}
