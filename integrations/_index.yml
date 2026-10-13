@@ -359,3 +359,15 @@
   source: edge
   status: pending-generation
   arazzo: null
+- slug: gainsight-aws-marketplace
+  label: AWS Marketplace
+  partner: amazon-web-services
+  partner_name: AWS Marketplace
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=seller-5hkojbc2cb6ey
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

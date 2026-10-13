@@ -3,6 +3,7 @@ method: searched
 source:
 - https://zapier.com/apps/gainsight/integrations
 checked:
+- https://aws.amazon.com/marketplace/
 - https://composio.dev/toolkits/gainsight
 - https://monid.ai/tools/gainsight
 - https://n8n.io/integrations/gainsight/
@@ -361,6 +362,25 @@ edges:
   direction: third-party
   category: Developer Tools
   partner_url: https://aircall.io/
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=seller-5hkojbc2cb6ey
+  listing_count: 6
+  apps:
+  - Skilljar by Gainsight
+  - Gainsight - CS
+  - Gainsight - Customer Communities
+  - Staircase AI by Gainsight
+  - Gainsight - Atlas
+  seller_name: Gainsight
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 templates:
 - title: Update or create a new person in Gainsight when a Calendly meeting is booked
   url: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
