@@ -1,0 +1,46 @@
+# DERIVED by derive-integration-map.py (roadmap#949): each integration workflow, step by step,
+# resolved to spec file -> tag -> business capability (Turbo EA, CC BY 4.0) and the operation's
+# phrasing intent. Read from our own files; an unmapped link says why.
+slug: gainsight
+workflows:
+- file: gainsight-calendly-upsert-person-on-booking.yml
+  title: Calendly booking to Gainsight person
+  partner: calendly
+  template: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
+  repos:
+  - calendly
+  - gainsight
+  steps:
+  - step: get-calendly-invitee
+    repo: calendly
+    spec_file: calendly-invitees-api-openapi.yml
+    operationId: getEventInvitee
+    tag: Invitees
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: upsert-gainsight-person
+    repo: gainsight
+    spec_file: gainsight-people-api-openapi.yml
+    operationId: upsertPeople
+    tag: People
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Upsert person records
+    effect: write
+    unmapped: no capability edge for this spec file
+  connects:
+    calendly:
+      capabilities: []
+      tags:
+      - Invitees
+    gainsight:
+      capabilities: []
+      tags:
+      - People
+  intents:
+  - Upsert person records
