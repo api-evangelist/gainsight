@@ -5,8 +5,10 @@ source:
 checked:
 - https://aws.amazon.com/marketplace/
 - https://composio.dev/toolkits/gainsight
+- https://hightouch.com/docs/destinations/gainsight
 - https://monid.ai/tools/gainsight
 - https://n8n.io/integrations/gainsight/
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gainsight-px-cloud
 - https://zapier.com/apps/gainsight/integrations
 summary: null
 marketplace_apps:
@@ -381,6 +383,66 @@ edges:
   seller_name: Gainsight
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: Twilio Segment
+  partner: segment
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gainsight-px-cloud
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - actions-gainsight-px-cloud
+      - gainsight
+      - gainsight-px
+      status: PUBLIC
+      partner_owned: true
+      connection_modes:
+      - cloud:mobile
+      - cloud:server
+      - cloud:web
+      - device:web
+      accepted_methods:
+      - Alias
+      - Group
+      - Identify
+      - Page
+      - Track
+      component_owners:
+      - PARTNER
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/gainsight
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - gainsight
+      - gainsightpx
+      status: released
+      sync_types:
+      - Company
+      - Custom Objects
+      - Person
+      sync_modes:
+      - update
+      - upsert
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
 templates:
 - title: Update or create a new person in Gainsight when a Calendly meeting is booked
   url: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked

@@ -371,3 +371,27 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
+- slug: gainsight-twilio-segment
+  label: Twilio Segment
+  partner: segment
+  partner_name: Twilio Segment
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gainsight-px-cloud
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: gainsight-hightouch
+  label: Hightouch
+  partner: hightouch
+  partner_name: Hightouch
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://hightouch.com/docs/destinations/gainsight
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
