@@ -375,12 +375,12 @@
   label: Twilio Segment
   partner: segment
   partner_name: Twilio Segment
-  type: coverage
-  marketplace: coverage
+  type: marketplace
+  marketplace: segment-partner-destinations
   channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gainsight-px-cloud
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: gainsight-hightouch
@@ -393,5 +393,18 @@
   evidence: https://hightouch.com/docs/destinations/gainsight
   source: edge
   relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: gainsight-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/gainsightpx/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
