@@ -5,10 +5,12 @@ source:
 checked:
 - https://aws.amazon.com/marketplace/
 - https://composio.dev/toolkits/gainsight
+- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://hightouch.com/docs/destinations/gainsight
 - https://monid.ai/tools/gainsight
 - https://n8n.io/integrations/gainsight/
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gainsight-px-cloud
+- https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/gainsight/integrations
 - okta/integrations/okta-integration-edges.yml
 summary: null
@@ -465,6 +467,59 @@ edges:
   - OKTA_VERIFIED
   features:
   - SAML
+- partner_name: Zapier
+  partner: zapier
+  partner_match: aggregator
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://zapier.com/apps/gainsight-customer-communities/integrations
+  category: null
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: Gainsight Customer Communities
+    matched_domain: gainsight.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: gainsight-customer-communities
+    beta: false
+    builder: unknown (not in the directory record)
+    other_apps:
+    - gainsight
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
+- partner_name: Pipedream
+  partner: pipedream
+  partner_match: aggregator
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/gainsight_nxt
+  category: null
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: gainsight nxt
+    matched_domain: gainsight.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: gainsight_nxt
+    actions: true
+    sources: false
+    builder: Pipedream repo (component)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
 templates:
 - title: Update or create a new person in Gainsight when a Calendly meeting is booked
   url: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
