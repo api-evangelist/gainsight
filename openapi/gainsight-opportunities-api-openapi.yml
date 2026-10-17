@@ -156,10 +156,18 @@ components:
   responses:
     NotFound:
       description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
+  parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      description: Opportunity record Gsid
+      schema:
+        type: string
   schemas:
     SearchRequest:
       type: object
@@ -187,6 +195,22 @@ components:
           type: integer
         offset:
           type: integer
+    WriteResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            insertedCount:
+              type: integer
+            updatedCount:
+              type: integer
+            failedCount:
+              type: integer
     OpportunityRecord:
       type: object
       properties:
@@ -260,30 +284,6 @@ components:
         ModifiedDate:
           type: string
           format: date-time
-    WriteResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            count:
-              type: integer
-            insertedCount:
-              type: integer
-            updatedCount:
-              type: integer
-            failedCount:
-              type: integer
-  parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      description: Opportunity record Gsid
-      schema:
-        type: string
   securitySchemes:
     apiKey:
       type: apiKey

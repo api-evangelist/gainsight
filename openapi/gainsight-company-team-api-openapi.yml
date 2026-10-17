@@ -90,6 +90,17 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     SearchRequest:
       type: object
       properties:
@@ -116,17 +127,6 @@ components:
           type: integer
         offset:
           type: integer
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
     CompanyTeamRecord:
       type: object
       properties:
@@ -146,10 +146,10 @@ components:
           type: boolean
           description: Whether this is the primary team member
   responses:
-    Unauthorized:
-      description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   securitySchemes:
     apiKey:
       type: apiKey

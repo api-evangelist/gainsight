@@ -160,6 +160,32 @@ paths:
         required: true
 components:
   schemas:
+    UserIdentifyId:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+      title: UserIdentifyId
+      description: User object
+    UserPreferencesV2:
+      type: object
+      properties:
+        guidedTours:
+          type: boolean
+        onboardingBot:
+          type: boolean
+        productUpdates:
+          type: boolean
+        surveys:
+          type: boolean
+        trackEmailAnalytics:
+          type: boolean
+        trackUsage:
+          type: boolean
+      title: UserPreferencesV2
+      description: User preferences V2
     UpdateUserPreferencesV2:
       type: object
       required:
@@ -182,32 +208,6 @@ components:
           type: boolean
       title: UpdateUserPreferencesV2
       description: Update user preferences V2
-    UserPreferencesV2:
-      type: object
-      properties:
-        guidedTours:
-          type: boolean
-        onboardingBot:
-          type: boolean
-        productUpdates:
-          type: boolean
-        surveys:
-          type: boolean
-        trackEmailAnalytics:
-          type: boolean
-        trackUsage:
-          type: boolean
-      title: UserPreferencesV2
-      description: User preferences V2
-    UserIdentifyId:
-      type: object
-      required:
-      - identifyId
-      properties:
-        identifyId:
-          type: string
-      title: UserIdentifyId
-      description: User object
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

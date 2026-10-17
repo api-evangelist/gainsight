@@ -158,25 +158,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    EngagementAllTypesViewEventsPage:
-      type: object
-      properties:
-        results:
-          type: array
-          description: Array of result records
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/EngagementAllTypesViewEvent'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
-          type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: EngagementAllTypesViewEventsPage
     EngagementAllTypesViewEvent:
       type: object
       required:
@@ -277,6 +258,25 @@ components:
           type: string
       title: EngagementAllTypesViewEvent
       description: Engagement View Event object
+    EngagementAllTypesViewEventsPage:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result records
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EngagementAllTypesViewEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: EngagementAllTypesViewEventsPage
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

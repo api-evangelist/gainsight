@@ -160,6 +160,30 @@ paths:
         required: true
 components:
   schemas:
+    UserPreferences:
+      type: object
+      properties:
+        guidedTours:
+          type: boolean
+        onboardingBot:
+          type: boolean
+        productUpdates:
+          type: boolean
+        surveys:
+          type: boolean
+        trackUsage:
+          type: boolean
+      title: UserPreferences
+      description: User preferences
+    UserIdentifyId:
+      type: object
+      required:
+      - identifyId
+      properties:
+        identifyId:
+          type: string
+      title: UserIdentifyId
+      description: User object
     UpdateUserPreferences:
       type: object
       required:
@@ -180,30 +204,6 @@ components:
           type: boolean
       title: UpdateUserPreferences
       description: Update user preferences
-    UserIdentifyId:
-      type: object
-      required:
-      - identifyId
-      properties:
-        identifyId:
-          type: string
-      title: UserIdentifyId
-      description: User object
-    UserPreferences:
-      type: object
-      properties:
-        guidedTours:
-          type: boolean
-        onboardingBot:
-          type: boolean
-        productUpdates:
-          type: boolean
-        surveys:
-          type: boolean
-        trackUsage:
-          type: boolean
-      title: UserPreferences
-      description: User preferences
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

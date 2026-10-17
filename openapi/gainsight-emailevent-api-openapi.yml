@@ -154,6 +154,25 @@ paths:
       deprecated: false
 components:
   schemas:
+    EmailEventsPage:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result records
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/EmailEvent'
+        totalHits:
+          type: integer
+          format: int64
+          description: Total number of records matching filters
+          readOnly: true
+        scrollId:
+          type: string
+          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
+          readOnly: true
+      title: EmailEventsPage
     Location:
       type: object
       properties:
@@ -280,25 +299,6 @@ components:
           example: -122.324211
       title: Coordinates
       description: Coordinates object
-    EmailEventsPage:
-      type: object
-      properties:
-        results:
-          type: array
-          description: Array of result records
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/EmailEvent'
-        totalHits:
-          type: integer
-          format: int64
-          description: Total number of records matching filters
-          readOnly: true
-        scrollId:
-          type: string
-          description: If passed on subsequent requests as the scrollId parameter, will fetch the next page
-          readOnly: true
-      title: EmailEventsPage
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

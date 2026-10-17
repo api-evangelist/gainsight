@@ -100,6 +100,18 @@ paths:
       deprecated: false
 components:
   schemas:
+    Segment:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: Segment
+      description: Segment object
     SegmentsPage:
       type: object
       properties:
@@ -119,18 +131,6 @@ components:
           description: True if no more records available on next page
           readOnly: true
       title: SegmentsPage
-    Segment:
-      type: object
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      title: Segment
-      description: Segment object
   securitySchemes:
     X-APTRINSIC-API-KEY:
       type: apiKey

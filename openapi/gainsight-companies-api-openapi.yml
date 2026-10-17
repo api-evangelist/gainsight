@@ -318,14 +318,95 @@ paths:
     - url: https://api.gainsight.com
       description: Gainsight Production API
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
-    BadRequest:
-      description: Invalid request body or parameters
   schemas:
+    CompanyRecord:
+      type: object
+      properties:
+        Gsid:
+          type: string
+          description: Gainsight unique identifier
+        Name:
+          type: string
+          description: Company name
+        Industry:
+          type: string
+          description: Industry classification
+        ARR:
+          type: number
+          description: Annual recurring revenue
+        MRR:
+          type: number
+          description: Monthly recurring revenue
+        LifecycleStage:
+          type: string
+          description: Current customer lifecycle stage
+        Stage:
+          type: string
+          description: Company stage
+        Status:
+          type: string
+          description: Company status
+        CSMName:
+          type: string
+          description: Assigned CSM name
+        Employees:
+          type: integer
+          description: Number of employees
+        OriginalContractDate:
+          type: string
+          format: date
+          description: Original contract date
+        RenewalDate:
+          type: string
+          format: date
+          description: Next renewal date
+        CurrScoreId:
+          type: string
+          description: Current health score ID
+        OverallScore:
+          type: number
+          description: Overall health score value
+        SfdcAccountId:
+          type: string
+          description: Salesforce account ID
+        ParentCompanyId:
+          type: string
+          description: Parent company Gsid
+        CreatedDate:
+          type: string
+          format: date-time
+          description: Record creation timestamp
+        ModifiedDate:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+    SearchResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        data:
+          type: object
+          properties:
+            records:
+              type: array
+              items:
+                $ref: '#/components/schemas/CompanyRecord'
+            totalCount:
+              type: integer
+            count:
+              type: integer
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     SearchRequest:
       type: object
       properties:
@@ -415,94 +496,21 @@ components:
                     type: integer
                   errorMessage:
                     type: string
-    CompanyRecord:
-      type: object
-      properties:
-        Gsid:
-          type: string
-          description: Gainsight unique identifier
-        Name:
-          type: string
-          description: Company name
-        Industry:
-          type: string
-          description: Industry classification
-        ARR:
-          type: number
-          description: Annual recurring revenue
-        MRR:
-          type: number
-          description: Monthly recurring revenue
-        LifecycleStage:
-          type: string
-          description: Current customer lifecycle stage
-        Stage:
-          type: string
-          description: Company stage
-        Status:
-          type: string
-          description: Company status
-        CSMName:
-          type: string
-          description: Assigned CSM name
-        Employees:
-          type: integer
-          description: Number of employees
-        OriginalContractDate:
-          type: string
-          format: date
-          description: Original contract date
-        RenewalDate:
-          type: string
-          format: date
-          description: Next renewal date
-        CurrScoreId:
-          type: string
-          description: Current health score ID
-        OverallScore:
-          type: number
-          description: Overall health score value
-        SfdcAccountId:
-          type: string
-          description: Salesforce account ID
-        ParentCompanyId:
-          type: string
-          description: Parent company Gsid
-        CreatedDate:
-          type: string
-          format: date-time
-          description: Record creation timestamp
-        ModifiedDate:
-          type: string
-          format: date-time
-          description: Last modification timestamp
-    ApiResponse:
+    ApiResponse_2:
       type: object
       properties:
         result:
           type: boolean
+          description: Whether the operation was successful
         errorCode:
           type: string
+          description: Error code if the operation failed
         errorDesc:
           type: string
+          description: Error description if the operation failed
         requestId:
           type: string
-    SearchResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        data:
-          type: object
-          properties:
-            records:
-              type: array
-              items:
-                $ref: '#/components/schemas/CompanyRecord'
-            totalCount:
-              type: integer
-            count:
-              type: integer
+          description: Unique ID for the request
     Company:
       type: object
       properties:
@@ -546,21 +554,6 @@ components:
           type: string
           format: date-time
           description: Record last modified timestamp
-    ApiResponse_2:
-      type: object
-      properties:
-        result:
-          type: boolean
-          description: Whether the operation was successful
-        errorCode:
-          type: string
-          description: Error code if the operation failed
-        errorDesc:
-          type: string
-          description: Error description if the operation failed
-        requestId:
-          type: string
-          description: Unique ID for the request
     CompanyInput:
       type: object
       required:
@@ -588,6 +581,13 @@ components:
           type: string
           format: date
           description: Next renewal date
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   parameters:
     recordId:
       name: recordId

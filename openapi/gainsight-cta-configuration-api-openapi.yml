@@ -121,18 +121,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    CTAStatus:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Status identifier
-        name:
-          type: string
-          description: Status name
-        isClosed:
-          type: boolean
-          description: Whether this status represents a closed state
     CTAPriority:
       type: object
       properties:
@@ -145,6 +133,18 @@ components:
         order:
           type: integer
           description: Display order
+    CTAStatus:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Status identifier
+        name:
+          type: string
+          description: Status name
+        isClosed:
+          type: boolean
+          description: Whether this status represents a closed state
     CTAReason:
       type: object
       properties:

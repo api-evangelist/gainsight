@@ -75,11 +75,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
   parameters:
     fieldName:
       name: fieldName
@@ -95,6 +90,11 @@ components:
       description: Name of the Gainsight object
       schema:
         type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
     FieldMetadata:
       type: object

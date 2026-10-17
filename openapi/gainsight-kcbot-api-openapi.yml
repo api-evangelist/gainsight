@@ -160,14 +160,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    UserView:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      title: UserView
     KnowledgeCenterExternalView:
       type: object
       properties:
@@ -283,6 +275,14 @@ components:
           type: integer
           format: int32
       title: ResponseEntity
+    LocalizationStatus:
+      type: object
+      properties:
+        languageCode:
+          type: string
+        translated:
+          type: boolean
+      title: LocalizationStatus
     KCExternalStateChangeRequest:
       type: object
       required:
@@ -310,14 +310,14 @@ components:
             - STAGE
       title: KCExternalStateChangeRequest
       description: Engagement state change request
-    LocalizationStatus:
+    UserView:
       type: object
       properties:
-        languageCode:
+        id:
           type: string
-        translated:
-          type: boolean
-      title: LocalizationStatus
+        name:
+          type: string
+      title: UserView
     KnowledgeCenterExternalViewPage:
       type: object
       properties:

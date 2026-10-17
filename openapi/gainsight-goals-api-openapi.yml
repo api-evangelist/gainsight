@@ -147,10 +147,10 @@ components:
   responses:
     NotFound:
       description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
     SearchRequest:
       type: object

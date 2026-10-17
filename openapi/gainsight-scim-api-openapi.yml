@@ -159,18 +159,10 @@ components:
   responses:
     NotFound:
       description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
-  parameters:
-    scimUserId:
-      name: scimUserId
-      in: path
-      required: true
-      description: SCIM user ID
-      schema:
-        type: string
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
     ScimUser:
       type: object
@@ -253,6 +245,14 @@ components:
                 type: boolean
         active:
           type: boolean
+  parameters:
+    scimUserId:
+      name: scimUserId
+      in: path
+      required: true
+      description: SCIM user ID
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

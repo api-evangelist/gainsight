@@ -419,11 +419,18 @@ paths:
           description: Rate limit exceeded
       deprecated: false
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or API key is missing
   parameters:
-    sort:
-      name: sort
+    scrollId:
+      name: scrollId
       in: query
-      description: Sort field and direction (e.g., lastSeenDate:desc)
+      description: Scroll ID for cursor-based pagination
       schema:
         type: string
     filter:
@@ -432,17 +439,17 @@ components:
       description: Filter expression for results
       schema:
         type: string
-    scrollId:
-      name: scrollId
-      in: query
-      description: Scroll ID for cursor-based pagination
-      schema:
-        type: string
     accountId:
       name: accountId
       in: path
       required: true
       description: Unique account identifier
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort field and direction (e.g., lastSeenDate:desc)
       schema:
         type: string
     pageSize:
@@ -453,13 +460,6 @@ components:
         type: integer
         default: 20
         maximum: 500
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or API key is missing
-    BadRequest:
-      description: Invalid request body or parameters
   schemas:
     AccountInput:
       type: object
@@ -519,82 +519,6 @@ components:
         customAttributes:
           type: object
           description: Custom account attributes
-    Account_2:
-      type: object
-      required:
-      - id
-      - name
-      - propertyKeys
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        trackedSubscriptionId:
-          type: string
-        sfdcId:
-          type: string
-        lastSeenDate:
-          type: integer
-          format: int64
-        dunsNumber:
-          type: string
-        industry:
-          type: string
-        numberOfEmployees:
-          type: integer
-          format: int32
-        sicCode:
-          type: string
-        website:
-          type: string
-        naicsCode:
-          type: string
-        plan:
-          type: string
-        location:
-          $ref: '#/components/schemas/Location'
-        numberOfUsers:
-          type: integer
-          format: int32
-          description: Number of users
-          readOnly: true
-        propertyKeys:
-          type: array
-          example:
-          - AP-XXXXXXXXXX-2
-          description: Aptrinsic Tag Key, at least one is required
-          items:
-            type: string
-        createDate:
-          type: integer
-          format: int64
-          readOnly: true
-        lastModifiedDate:
-          type: integer
-          format: int64
-          readOnly: true
-        customAttributes:
-          type: object
-          description: Map of apiName to value
-        parentGroupId:
-          type: string
-          description: Id to group Accounts together
-        renewalDate:
-          type: integer
-          format: int64
-        healthScore:
-          type: integer
-          format: int32
-        gsId:
-          type: string
-        nps:
-          type: number
-          format: float
-        csm:
-          type: string
-      title: Account
-      description: Account object
     ResponseEntity:
       type: object
       properties:
@@ -710,6 +634,82 @@ components:
           $ref: '#/components/schemas/Coordinates'
       title: Location
       description: Location object
+    Account_2:
+      type: object
+      required:
+      - id
+      - name
+      - propertyKeys
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        trackedSubscriptionId:
+          type: string
+        sfdcId:
+          type: string
+        lastSeenDate:
+          type: integer
+          format: int64
+        dunsNumber:
+          type: string
+        industry:
+          type: string
+        numberOfEmployees:
+          type: integer
+          format: int32
+        sicCode:
+          type: string
+        website:
+          type: string
+        naicsCode:
+          type: string
+        plan:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        numberOfUsers:
+          type: integer
+          format: int32
+          description: Number of users
+          readOnly: true
+        propertyKeys:
+          type: array
+          example:
+          - AP-XXXXXXXXXX-2
+          description: Aptrinsic Tag Key, at least one is required
+          items:
+            type: string
+        createDate:
+          type: integer
+          format: int64
+          readOnly: true
+        lastModifiedDate:
+          type: integer
+          format: int64
+          readOnly: true
+        customAttributes:
+          type: object
+          description: Map of apiName to value
+        parentGroupId:
+          type: string
+          description: Id to group Accounts together
+        renewalDate:
+          type: integer
+          format: int64
+        healthScore:
+          type: integer
+          format: int32
+        gsId:
+          type: string
+        nps:
+          type: number
+          format: float
+        csm:
+          type: string
+      title: Account
+      description: Account object
     Coordinates:
       type: object
       properties:

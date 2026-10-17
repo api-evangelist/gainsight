@@ -207,11 +207,22 @@ components:
   responses:
     NotFound:
       description: The requested resource was not found
-    Unauthorized:
-      description: Authentication failed or access key is missing
     BadRequest:
       description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication failed or access key is missing
   schemas:
+    ApiResponse:
+      type: object
+      properties:
+        result:
+          type: boolean
+        errorCode:
+          type: string
+        errorDesc:
+          type: string
+        requestId:
+          type: string
     SearchRequest:
       type: object
       properties:
@@ -238,63 +249,6 @@ components:
           type: integer
         offset:
           type: integer
-    ActivityInput:
-      type: object
-      required:
-      - Subject
-      - ActivityTypeId
-      - CompanyId
-      - ActivityDate
-      properties:
-        Subject:
-          type: string
-          description: Activity subject
-        Notes:
-          type: string
-          description: Activity notes
-        ActivityTypeId:
-          type: string
-          description: Activity type identifier
-        CompanyId:
-          type: string
-          description: Associated company Gsid
-        ActivityDate:
-          type: string
-          format: date-time
-          description: Date and time of the activity
-        OwnerId:
-          type: string
-          description: Activity owner user ID
-        ExternalId:
-          type: string
-          description: External system identifier
-        Attendees:
-          type: array
-          items:
-            type: object
-            properties:
-              personId:
-                type: string
-              email:
-                type: string
-                format: email
-        Sentiment:
-          type: string
-          enum:
-          - Positive
-          - Neutral
-          - Negative
-    ApiResponse:
-      type: object
-      properties:
-        result:
-          type: boolean
-        errorCode:
-          type: string
-        errorDesc:
-          type: string
-        requestId:
-          type: string
     Activity:
       type: object
       properties:
@@ -360,6 +314,52 @@ components:
           type: string
           format: date-time
           description: Last modification timestamp
+    ActivityInput:
+      type: object
+      required:
+      - Subject
+      - ActivityTypeId
+      - CompanyId
+      - ActivityDate
+      properties:
+        Subject:
+          type: string
+          description: Activity subject
+        Notes:
+          type: string
+          description: Activity notes
+        ActivityTypeId:
+          type: string
+          description: Activity type identifier
+        CompanyId:
+          type: string
+          description: Associated company Gsid
+        ActivityDate:
+          type: string
+          format: date-time
+          description: Date and time of the activity
+        OwnerId:
+          type: string
+          description: Activity owner user ID
+        ExternalId:
+          type: string
+          description: External system identifier
+        Attendees:
+          type: array
+          items:
+            type: object
+            properties:
+              personId:
+                type: string
+              email:
+                type: string
+                format: email
+        Sentiment:
+          type: string
+          enum:
+          - Positive
+          - Neutral
+          - Negative
   parameters:
     activityId:
       name: activityId
