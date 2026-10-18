@@ -197,3 +197,65 @@ plans:
   type: enterprise
   entries: *id014
   product: Customer Communities
+x-canonical:
+  generated: '2026-10-18'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  units: []
+  plans:
+  - name: Essentials
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Essentials
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Professional
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Product Experience
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Professional
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Business
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods: []
