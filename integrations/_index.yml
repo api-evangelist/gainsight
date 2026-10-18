@@ -489,7 +489,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: gainsight-fivetran
   label: Fivetran
@@ -516,7 +516,7 @@
     - connectors/applications/gainsight-product-experience
     vendor_link: https://www.gainsight.com/customer-success/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: gainsight-meltano
   label: Meltano
@@ -545,7 +545,7 @@
     quality:
     - silver
     builder: 'community (Meltano Hub variant maintainers: widen)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: gainsight-google-workspace-own
   label: Google Workspace (own)
