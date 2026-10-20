@@ -6,14 +6,19 @@ checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
 - https://api.nuget.org/v3
 - https://aws.amazon.com/marketplace/
+- https://cdn.winget.microsoft.com/cache
 - https://composio.dev/toolkits/gainsight
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
 - https://crates.io/api/v1
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
 - https://github.com/meltano/hub
 - https://hightouch.com/docs/destinations/gainsight
 - https://monid.ai/tools/gainsight
@@ -816,6 +821,56 @@ edges:
   direction: third-party
   category: Developer Tools
   partner_url: https://aircall.io/
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official CLI (npm registry)
+  evidence: https://www.npmjs.com/package/@gainsight-cs/gs-admin-cli
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public package index)
+    spec_file: null
+    packages:
+    - name: '@gainsight-cs/gs-admin-cli'
+      version: 1.0.5
+      released: '2026-06-25'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@gainsight-cs/gs-admin-cli
+      cli: bin gs-admin
+      repo_leg: github-org:gainsight
+      publisher_leg: email:gainsight.com
+      matched_by: domain
+    - name: '@gainsight-hub/developer-studio-cli'
+      version: 1.8.2
+      released: '2026-09-24'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@gainsight-hub/developer-studio-cli
+      cli: bin gsds
+      repo_leg: domain:gainsight.com
+      publisher_leg: email:gainsight.com
+      matched_by: domain
+    - name: '@gainsight/gs-admin-cli'
+      version: 1.0.12
+      released: '2026-10-15'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@gainsight/gs-admin-cli
+      cli: bin gs-admin
+      repo_leg: github-org:gainsight
+      publisher_leg: email:gainsight.com
+      matched_by: domain
+    current: true
+    signal_note: 'the provider''s own command-line tool on a package manager: distribution, not an integration;
+      lapsed = no release in 24 months or deprecated / disabled by the manager'
+    detected_by: sweep-official-clis.py
+    detected: '2026-10-20'
+  detected_by: sweep-official-clis.py
+  first_seen: '2026-10-20'
 templates:
 - title: Update or create a new person in Gainsight when a Calendly meeting is booked
   url: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
