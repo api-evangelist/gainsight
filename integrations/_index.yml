@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
   template: https://zapier.com/apps/calendly/integrations/gainsight/1741577/update-or-create-a-new-person-in-gainsight-when-a-calendly-meeting-is-booked
   source: template
+  relationship: ipaas-bridge
   arazzo: gainsight-calendly-upsert-person-on-booking.yml
   status: arazzo-broken
   broken_reason: 'source url->missing local spec: https://raw.githubusercontent.com/api-evangelist/calendly/refs/heads/main/openapi/calendly-invitees-api-openapi.yml'
@@ -30,334 +31,7 @@
   evidence: https://zapier.com/apps/gainsight/integrations/typeform/1312751/create-or-update-gainsight-custom-objects-from-new-typeform-entries
   template: https://zapier.com/apps/gainsight/integrations/typeform/1312751/create-or-update-gainsight-custom-objects-from-new-typeform-entries
   source: template
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-demio
-  label: Demio
-  partner: demio
-  partner_name: Demio
-  category: Webinars
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/demio
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-hubspot
-  label: HubSpot
-  partner: hubspot
-  partner_name: HubSpot
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/hubspot
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-zoom
-  label: Zoom
-  partner: zoom
-  partner_name: Zoom
-  category: Video Conferencing
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/zoom
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-rocketlane
-  label: Rocketlane
-  partner: rocketlane
-  partner_name: Rocketlane
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/rocketlane
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-pendo
-  label: Pendo
-  partner_name: Pendo
-  category: Analytics
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/pendo-legacy
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-cognito-forms
-  label: Cognito Forms
-  partner: cognito-forms
-  partner_name: Cognito Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/cognito-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-forms-for-slack
-  label: Forms for Slack
-  partner_name: Forms for Slack
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/forms-for-slack
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-salesforce
-  label: Salesforce
-  partner: salesforce
-  partner_name: Salesforce
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/salesforce
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-fathom
-  label: Fathom
-  partner_name: Fathom
-  category: AI Meeting Assistants
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/fathom
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-front
-  label: Front
-  partner: front
-  partner_name: Front
-  category: Customer Support
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/front-app
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-clickup
-  label: ClickUp
-  partner: clickup
-  partner_name: ClickUp
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/clickup
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-g2-crowd
-  label: G2 Crowd
-  partner_name: G2 Crowd
-  category: Reviews
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/g2-crowd
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-wootric-by-inmoment
-  label: Wootric by InMoment
-  partner: wootric
-  partner_name: Wootric by InMoment
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/wootric
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-skilljar
-  label: Skilljar
-  partner: skilljar
-  partner_name: Skilljar
-  category: Online Courses
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/skilljar
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-microsoft-outlook
-  label: Microsoft Outlook
-  partner: microsoft-outlook
-  partner_name: Microsoft Outlook
-  category: Calendar
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/microsoft-outlook
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-asana
-  label: Asana
-  partner: asana
-  partner_name: Asana
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/asana
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-bigmarker
-  label: BigMarker
-  partner_name: BigMarker
-  category: Webinars
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/bigmarker
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-trello
-  label: Trello
-  partner: trello
-  partner_name: Trello
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/trello
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-microsoft-excel
-  label: Microsoft Excel
-  partner_name: Microsoft Excel
-  category: Microsoft
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/excel
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-follow-up-boss
-  label: Follow Up Boss
-  partner: follow-up-boss
-  partner_name: Follow Up Boss
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/follow-up-boss
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-involve-me
-  label: involve.me
-  partner: involve-me
-  partner_name: involve.me
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/involveme
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-shortcut
-  label: Shortcut
-  partner_name: Shortcut
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/shortcut
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-chatgpt-openai
-  label: ChatGPT (OpenAI)
-  partner_name: ChatGPT (OpenAI)
-  category: AI Assistants
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/chatgpt
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: gainsight-box
-  label: Box
-  partner: box
-  partner_name: Box
-  category: File Management & Storage
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/box
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-customer-io
-  label: Customer.io
-  partner: customer-io
-  partner_name: Customer.io
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/customerio
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-pagerduty
-  label: PagerDuty
-  partner: pagerduty
-  partner_name: PagerDuty
-  category: Server Monitoring
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/pagerduty
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-productboard
-  label: Productboard
-  partner: productboard
-  partner_name: Productboard
-  category: Product Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/productboard
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: gainsight-aircall
-  label: Aircall
-  partner: aircall
-  partner_name: Aircall
-  category: Developer Tools
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/gainsight/integrations/aircall
-  source: edge
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: gainsight-okta-own
@@ -688,4 +362,363 @@
     sources: false
     builder: Pipedream repo (component)
   status: not-a-workflow
+  arazzo: null
+- slug: gainsight-demio
+  label: Demio
+  partner: demio
+  partner_name: Demio
+  category: Webinars
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/demio
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-hubspot
+  label: HubSpot
+  partner: hubspot
+  partner_name: HubSpot
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/hubspot
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-zoom
+  label: Zoom
+  partner: zoom
+  partner_name: Zoom
+  category: Video Conferencing
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/zoom
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-rocketlane
+  label: Rocketlane
+  partner: rocketlane
+  partner_name: Rocketlane
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/rocketlane
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-pendo
+  label: Pendo
+  partner: pendoio
+  partner_name: Pendo
+  category: Analytics
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/pendo-legacy
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-cognito-forms
+  label: Cognito Forms
+  partner: cognito-forms
+  partner_name: Cognito Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/cognito-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-forms-for-slack
+  label: Forms for Slack
+  partner_name: Forms for Slack
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/forms-for-slack
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: gainsight-fathom
+  label: Fathom
+  partner_name: Fathom
+  category: AI Meeting Assistants
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/fathom
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: gainsight-front
+  label: Front
+  partner: front
+  partner_name: Front
+  category: Customer Support
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/front-app
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-salesforce
+  label: Salesforce
+  partner: salesforce
+  partner_name: Salesforce
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/salesforce
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-clickup
+  label: ClickUp
+  partner: clickup
+  partner_name: ClickUp
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/clickup
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-g2-crowd
+  label: G2 Crowd
+  partner_name: G2 Crowd
+  category: Reviews
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/g2-crowd
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: gainsight-wootric-by-inmoment
+  label: Wootric by InMoment
+  partner: wootric
+  partner_name: Wootric by InMoment
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/wootric
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-skilljar
+  label: Skilljar
+  partner: skilljar
+  partner_name: Skilljar
+  category: Online Courses
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/skilljar
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-microsoft-outlook
+  label: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_name: Microsoft Outlook
+  category: Calendar
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/microsoft-outlook
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-asana
+  label: Asana
+  partner: asana
+  partner_name: Asana
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/asana
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-bigmarker
+  label: BigMarker
+  partner_name: BigMarker
+  category: Webinars
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/bigmarker
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: gainsight-trello
+  label: Trello
+  partner: trello
+  partner_name: Trello
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/trello
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-microsoft-excel
+  label: Microsoft Excel
+  partner_name: Microsoft Excel
+  category: Microsoft
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/excel
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: gainsight-follow-up-boss
+  label: Follow Up Boss
+  partner: follow-up-boss
+  partner_name: Follow Up Boss
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/follow-up-boss
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-involve-me
+  label: involve.me
+  partner: involve-me
+  partner_name: involve.me
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/involveme
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: gainsight-shortcut
+  label: Shortcut
+  partner: shortcut-software
+  partner_name: Shortcut
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/shortcut
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-chatgpt-openai
+  label: ChatGPT (OpenAI)
+  partner: openai
+  partner_name: ChatGPT (OpenAI)
+  category: AI Assistants
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/chatgpt
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-box
+  label: Box
+  partner: box
+  partner_name: Box
+  category: File Management & Storage
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/box
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-customer-io
+  label: Customer.io
+  partner: customer-io
+  partner_name: Customer.io
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/customerio
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-pagerduty
+  label: PagerDuty
+  partner: pagerduty
+  partner_name: PagerDuty
+  category: Server Monitoring
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/pagerduty
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-productboard
+  label: Productboard
+  partner: productboard
+  partner_name: Productboard
+  category: Product Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/productboard
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: gainsight-aircall
+  label: Aircall
+  partner: aircall
+  partner_name: Aircall
+  category: Developer Tools
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/gainsight/integrations/aircall
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
   arazzo: null
