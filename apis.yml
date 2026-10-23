@@ -62,6 +62,8 @@ tags:
 - Community
 
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/gainsight/overview
 - type: Deprecation
   url: lifecycle/gainsight-lifecycle.yml
 - type: Spectral
