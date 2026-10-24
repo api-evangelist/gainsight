@@ -1,0 +1,758 @@
+{
+  "info": {
+    "_postman_id": "bd2897e1-859a-44a0-96bd-7d858f91f5ab",
+    "name": "Gainsight PX REST K Cbot API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:31:10.000Z",
+    "updatedAt": "2026-10-21T20:31:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bd2897e1-859a-44a0-96bd-7d858f91f5ab"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "kcbot",
+          "item": [
+            {
+              "name": "state",
+              "item": [
+                {
+                  "name": "Set KC state",
+                  "id": "a11dcd50-3da7-4090-963d-fd60c20a3fed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"kcId\": \"<string>\",\n  \"state\": \"START\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"INTEGRATION\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/kcbot/state",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "kcbot",
+                        "state"
+                      ]
+                    },
+                    "description": "Pauses or starts a KC.\n### Parameters\n- kcId: ID of kc to be modified\n- state: Desired state for kc (START or PAUSE)\n- envs: If changing the state to START, list of environments to start the engagement on, defaults to [PRODUCTION]"
+                  },
+                  "response": [
+                    {
+                      "id": "babbd724-e418-4ea4-842c-bc346cd59970",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"kcId\": \"<string>\",\n  \"state\": \"START\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"INTEGRATION\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"204\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-babbd724-e418-4ea4-842c-bc346cd59970"
+                    },
+                    {
+                      "id": "0a35089c-95fa-4891-a9ad-62d3534469ab",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"kcId\": \"<string>\",\n  \"state\": \"START\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"INTEGRATION\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-0a35089c-95fa-4891-a9ad-62d3534469ab"
+                    },
+                    {
+                      "id": "64f984ed-c89d-4299-8756-170e21d7d2f0",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"kcId\": \"<string>\",\n  \"state\": \"START\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"INTEGRATION\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-64f984ed-c89d-4299-8756-170e21d7d2f0"
+                    },
+                    {
+                      "id": "00fd0da1-9f38-4444-a969-dd518b95cc82",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"kcId\": \"<string>\",\n  \"state\": \"START\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"INTEGRATION\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-00fd0da1-9f38-4444-a969-dd518b95cc82"
+                    },
+                    {
+                      "id": "ac964034-c492-49d2-b3bf-565f04fd6855",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"kcId\": \"<string>\",\n  \"state\": \"START\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"INTEGRATION\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-ac964034-c492-49d2-b3bf-565f04fd6855"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:31:11.000Z",
+                  "updatedAt": "2026-10-21T20:31:11.000Z",
+                  "uid": "35240-a11dcd50-3da7-4090-963d-fd60c20a3fed"
+                }
+              ],
+              "id": "490e02da-8f8e-48b1-9a97-4e288190fcc2",
+              "createdAt": "2026-10-21T20:31:11.000Z",
+              "updatedAt": "2026-10-21T20:31:11.000Z",
+              "uid": "35240-490e02da-8f8e-48b1-9a97-4e288190fcc2"
+            },
+            {
+              "name": "{kcId}",
+              "item": [
+                {
+                  "name": "Get KC Bot",
+                  "id": "30ec4c7f-4c2f-4c0e-ae08-f6d289f7859f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/kcbot/:kcId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "kcbot",
+                        ":kcId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "96bbd046-90fb-431e-8ce7-60ecb9e1c545",
+                          "key": "kcId",
+                          "value": "<string>",
+                          "description": "(Required) KC Bot id"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves a KC Bot with the given Id\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/kcbot/{kcId} | Get kc with id {kcId}. |"
+                  },
+                  "response": [
+                    {
+                      "id": "90586adc-05d7-4cff-97ec-30ec94d9dce3",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/:kcId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            ":kcId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "kcId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"createdBy\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"createdDate\": \"<long>\",\n  \"defaultLanguage\": \"<string>\",\n  \"description\": \"<string>\",\n  \"environments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"languages\": [\n    {\n      \"languageCode\": \"<string>\",\n      \"translated\": \"<boolean>\"\n    },\n    {\n      \"languageCode\": \"<string>\",\n      \"translated\": \"<boolean>\"\n    }\n  ],\n  \"modifiedBy\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"modifiedDate\": \"<long>\",\n  \"name\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"productId\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-90586adc-05d7-4cff-97ec-30ec94d9dce3"
+                    },
+                    {
+                      "id": "76e2b21f-0b08-4029-8128-e6d6bc354271",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/:kcId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            ":kcId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "kcId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-76e2b21f-0b08-4029-8128-e6d6bc354271"
+                    },
+                    {
+                      "id": "f9ee5b4c-054b-47e9-bde3-68d2fbc7573f",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/:kcId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            ":kcId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "kcId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-f9ee5b4c-054b-47e9-bde3-68d2fbc7573f"
+                    },
+                    {
+                      "id": "0828ece8-77c6-497d-b05b-5f830c5cc29c",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/kcbot/:kcId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "kcbot",
+                            ":kcId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "kcId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:11.000Z",
+                      "updatedAt": "2026-10-21T20:31:11.000Z",
+                      "uid": "35240-0828ece8-77c6-497d-b05b-5f830c5cc29c"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:31:11.000Z",
+                  "updatedAt": "2026-10-21T20:31:11.000Z",
+                  "uid": "35240-30ec4c7f-4c2f-4c0e-ae08-f6d289f7859f"
+                }
+              ],
+              "id": "19f255f8-548a-45f3-a3cd-83695189d51d",
+              "createdAt": "2026-10-21T20:31:11.000Z",
+              "updatedAt": "2026-10-21T20:31:11.000Z",
+              "uid": "35240-19f255f8-548a-45f3-a3cd-83695189d51d"
+            },
+            {
+              "name": "Get KC Bots",
+              "id": "224b5cfd-3d7c-4b8b-9519-b6ce31b00d8c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/kcbot?pageNumber=0&pageSize=200&productId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "kcbot"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number",
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Number of events per page range[1,500]",
+                      "key": "pageSize",
+                      "value": "200"
+                    },
+                    {
+                      "description": "Property Group",
+                      "key": "productId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Fetch metadata for KC Bots from your PX Subscription. The API provides you with the summary of basic information of each KC Bot that makes it easy to work with specific data.\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/kcbot?pageSize=100 | Get first 100 KcBots. |\n| GET /v1/kcbot?pageSize=100&pageNumber=1 | Get next 100 KcBots. |\n| GET /v1/kcbot?productId=1234LPSWUBFW | Get KcBots of product 1234LPSWUBFW. |\n\nImportant: The default pageSize on list calls is 200. The pageSize can be changed by adding a pageSize parameter to the URL (i.e. /v1/kcbot?pageSize=100) with a max pageSize=500.\n\nTo fetch a particular page, use the pageNumber parameter (zero based)"
+              },
+              "response": [
+                {
+                  "id": "01f8e724-0fb0-4035-a680-e47cdd9220e0",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/kcbot?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "kcbot"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"kcList\": [\n    {\n      \"createdBy\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"createdDate\": \"<long>\",\n      \"defaultLanguage\": \"<string>\",\n      \"description\": \"<string>\",\n      \"environments\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"languages\": [\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        },\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        }\n      ],\n      \"modifiedBy\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"modifiedDate\": \"<long>\",\n      \"name\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"productId\": \"<string>\",\n      \"productName\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"createdBy\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"createdDate\": \"<long>\",\n      \"defaultLanguage\": \"<string>\",\n      \"description\": \"<string>\",\n      \"environments\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"languages\": [\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        },\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        }\n      ],\n      \"modifiedBy\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"modifiedDate\": \"<long>\",\n      \"name\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"productId\": \"<string>\",\n      \"productName\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"pageNumber\": \"<integer>\",\n  \"isLastPage\": \"<boolean>\"\n}",
+                  "createdAt": "2026-10-21T20:31:11.000Z",
+                  "updatedAt": "2026-10-21T20:31:11.000Z",
+                  "uid": "35240-01f8e724-0fb0-4035-a680-e47cdd9220e0"
+                },
+                {
+                  "id": "73eb94d8-5122-4f04-8763-c1c10a31abd8",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/kcbot?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "kcbot"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:31:11.000Z",
+                  "updatedAt": "2026-10-21T20:31:11.000Z",
+                  "uid": "35240-73eb94d8-5122-4f04-8763-c1c10a31abd8"
+                },
+                {
+                  "id": "bce0340e-8eed-490a-8db8-1ea754c577e7",
+                  "name": "Unauthorized or bad API Key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/kcbot?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "kcbot"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:31:11.000Z",
+                  "updatedAt": "2026-10-21T20:31:11.000Z",
+                  "uid": "35240-bce0340e-8eed-490a-8db8-1ea754c577e7"
+                },
+                {
+                  "id": "cf663a25-9b14-4abb-a586-0789d343b7a3",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/kcbot?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "kcbot"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:31:11.000Z",
+                  "updatedAt": "2026-10-21T20:31:11.000Z",
+                  "uid": "35240-cf663a25-9b14-4abb-a586-0789d343b7a3"
+                }
+              ],
+              "createdAt": "2026-10-21T20:31:11.000Z",
+              "updatedAt": "2026-10-21T20:31:11.000Z",
+              "uid": "35240-224b5cfd-3d7c-4b8b-9519-b6ce31b00d8c"
+            }
+          ],
+          "id": "949d28f6-0bdd-4b4b-b878-a9e01a3c43ab",
+          "createdAt": "2026-10-21T20:31:11.000Z",
+          "updatedAt": "2026-10-21T20:31:11.000Z",
+          "uid": "35240-949d28f6-0bdd-4b4b-b878-a9e01a3c43ab"
+        }
+      ],
+      "id": "fc9d6e79-b808-4057-9607-213a2628c6e2",
+      "createdAt": "2026-10-21T20:31:11.000Z",
+      "updatedAt": "2026-10-21T20:31:11.000Z",
+      "uid": "35240-fc9d6e79-b808-4057-9607-213a2628c6e2"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

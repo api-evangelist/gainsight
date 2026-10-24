@@ -1,177 +1,132 @@
 {
+  "info": {
+    "_postman_id": "04aba947-4fd0-40c3-9ab3-cc1352f8e78e",
+    "name": "Gainsight PX Subscription API",
+    "description": "Product Experience (PX) API for tracking product usage, user behavior, and in-app engagement analytics. Powered by the Aptrinsic platform.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:15.000Z",
+    "updatedAt": "2026-10-21T20:30:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-04aba947-4fd0-40c3-9ab3-cc1352f8e78e"
+  },
   "item": [
     {
-      "id": "7ff9075f-14c8-4427-9736-61088c09ce1c",
-      "name": "Subscription",
-      "description": {
-        "content": "Manage event subscriptions",
-        "type": "text/plain"
-      },
+      "name": "subscriptions",
       "item": [
         {
-          "id": "8b376be5-ad8b-4556-b530-f155169d62df",
           "name": "Gainsight List event subscriptions",
+          "id": "39bba46a-2787-4b45-9008-66d5c5caadd7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight List event subscriptions",
-            "description": {
-              "content": "Retrieve a list of configured event subscriptions.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "subscriptions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ]
+            },
+            "description": "Retrieve a list of configured event subscriptions."
           },
           "response": [
             {
-              "id": "cc322145-01f7-4fb3-ac4f-7d066efe6cbb",
+              "id": "c7f28c88-51de-4444-96a9-d83a40c41cc5",
               "name": "Subscriptions retrieved",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"callbackUrl\": \"http://mDkyfHIsbsQOT.cdpk7IlcmwkysVtSYaOMM6GQ-y+GBkgTAS0HRvsZ6H4jDvYO79K\",\n      \"eventType\": \"string\",\n      \"active\": false\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"callbackUrl\": \"http://cPIRWYNgtUlxrKUqssibYwEwitsqnom.ivI3c7Qj\",\n      \"eventType\": \"string\",\n      \"active\": true\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"callbackUrl\": \"<uri>\",\n      \"eventType\": \"<string>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"callbackUrl\": \"<uri>\",\n      \"eventType\": \"<string>\",\n      \"active\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:30:16.000Z",
+              "updatedAt": "2026-10-21T20:30:16.000Z",
+              "uid": "35240-c7f28c88-51de-4444-96a9-d83a40c41cc5"
             },
             {
-              "id": "0bc2544b-78a3-4980-b80e-d00a570e8f55",
+              "id": "b526b906-91be-4721-99a4-9146c79bd5e1",
               "name": "Authentication failed or API key is missing",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:30:16.000Z",
+              "updatedAt": "2026-10-21T20:30:16.000Z",
+              "uid": "35240-b526b906-91be-4721-99a4-9146c79bd5e1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:30:16.000Z",
+          "updatedAt": "2026-10-21T20:30:16.000Z",
+          "uid": "35240-39bba46a-2787-4b45-9008-66d5c5caadd7"
         },
         {
-          "id": "fcb63996-3898-4494-846c-38e34ca5963b",
           "name": "Gainsight Create an event subscription",
+          "id": "a714a0ca-d6d4-433e-ad29-7ca14f11cfce",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight Create an event subscription",
-            "description": {
-              "content": "Create a new webhook subscription for events.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "subscriptions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -182,210 +137,188 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"name\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"eventType\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ]
+            },
+            "description": "Create a new webhook subscription for events."
           },
           "response": [
             {
-              "id": "29743b02-de80-40b3-830d-520e5c595e74",
+              "id": "a7380b67-868d-494f-9801-dcc5c4e06394",
               "name": "Subscription created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"name\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"eventType\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"callbackUrl\": \"https://KwCMOVMbfVtKjlod.djiayJZMtzCEIFAxI4L.bX.5GrUBytzugVrd,PdM.vR6VuadedJpvyZ3igmaimZd0Rb4DbTd\",\n  \"eventType\": \"string\",\n  \"active\": true\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"eventType\": \"<string>\",\n  \"active\": \"<boolean>\"\n}",
+              "createdAt": "2026-10-21T20:30:16.000Z",
+              "updatedAt": "2026-10-21T20:30:16.000Z",
+              "uid": "35240-a7380b67-868d-494f-9801-dcc5c4e06394"
             },
             {
-              "id": "7f088fa9-989a-487e-9e77-72c4453153f0",
+              "id": "cb904f08-109d-4e66-8b50-7aa4cc67a2bb",
               "name": "Invalid request body or parameters",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"name\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"eventType\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:30:16.000Z",
+              "updatedAt": "2026-10-21T20:30:16.000Z",
+              "uid": "35240-cb904f08-109d-4e66-8b50-7aa4cc67a2bb"
             },
             {
-              "id": "96f92625-ef20-46b1-86b4-94756f53ae3c",
+              "id": "9d4bcfea-2e0f-4b42-92fa-bc36dda6ff2f",
               "name": "Authentication failed or API key is missing",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"name\": \"<string>\",\n  \"callbackUrl\": \"<uri>\",\n  \"eventType\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:30:16.000Z",
+              "updatedAt": "2026-10-21T20:30:16.000Z",
+              "uid": "35240-9d4bcfea-2e0f-4b42-92fa-bc36dda6ff2f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:30:16.000Z",
+          "updatedAt": "2026-10-21T20:30:16.000Z",
+          "uid": "35240-a714a0ca-d6d4-433e-ad29-7ca14f11cfce"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "db273c8a-5b63-432c-98c7-3ebcf42b6c86",
+      "createdAt": "2026-10-21T20:30:16.000Z",
+      "updatedAt": "2026-10-21T20:30:16.000Z",
+      "uid": "35240-db273c8a-5b63-432c-98c7-3ebcf42b6c86"
     }
   ],
   "auth": {
@@ -393,25 +326,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "X-APTRINSIC-API-KEY",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "2ed87408-8a61-4823-a605-74ae165675c8",
-    "name": "Gainsight CS Bulk Accounts Subscription API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/v1"
     }
-  }
+  ]
 }

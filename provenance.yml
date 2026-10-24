@@ -12,6 +12,9 @@ artifacts:
   authentication/gainsight-authentication.yml:
     method: searched
     evidence: declared in the artifact
+  capabilities/gainsight-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
   changelog/gainsight-changelog.yml:
     method: searched
     evidence: declared in the artifact
@@ -36,6 +39,12 @@ artifacts:
   collections/gainsight-activity-types-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-activity-types-api
+  collections/gainsight-admin-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-admin-api
+  collections/gainsight-article-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-article-api
   collections/gainsight-companies-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-companies-api
@@ -156,42 +165,75 @@ artifacts:
   collections/gainsight-custom-objects-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-custom-objects-api
+  collections/gainsight-emailevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-emailevent-api
+  collections/gainsight-engagement-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-engagement-api
   collections/gainsight-engagements-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-engagements-api
   collections/gainsight-engagements-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-engagements-api
+  collections/gainsight-engagementviewevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-engagementviewevent-api
   collections/gainsight-events-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-events-api
   collections/gainsight-events-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-events-api
+  collections/gainsight-externalsegments-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-externalsegments-api
+  collections/gainsight-feature-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-feature-api
   collections/gainsight-feature-match-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-feature-match-api
   collections/gainsight-feature-match-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-feature-match-api
+  collections/gainsight-featurematchevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-featurematchevent-api
   collections/gainsight-fields-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-fields-api
   collections/gainsight-fields-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-fields-api
+  collections/gainsight-formsubmitevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-formsubmitevent-api
   collections/gainsight-goals-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-goals-api
   collections/gainsight-goals-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-goals-api
+  collections/gainsight-identifyevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-identifyevent-api
   collections/gainsight-jobs-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-jobs-api
   collections/gainsight-jobs-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-jobs-api
+  collections/gainsight-kcbot-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-kcbot-api
+  collections/gainsight-leadevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-leadevent-api
+  collections/gainsight-localization-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-localization-api
   collections/gainsight-metrics-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-metrics-api
@@ -216,6 +258,9 @@ artifacts:
   collections/gainsight-opportunities-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-opportunities-api
+  collections/gainsight-pageviewevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-pageviewevent-api
   collections/gainsight-people-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-people-api
@@ -252,6 +297,15 @@ artifacts:
   collections/gainsight-scim-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-scim-api
+  collections/gainsight-segment-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-segment-api
+  collections/gainsight-segmentmatchevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-segmentmatchevent-api
+  collections/gainsight-sessionevent-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-sessionevent-api
   collections/gainsight-subscription-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-subscription-api
@@ -264,6 +318,9 @@ artifacts:
   collections/gainsight-success-plans-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-success-plans-api
+  collections/gainsight-surveyresponse-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-surveyresponse-api
   collections/gainsight-tasks-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-tasks-api
@@ -276,6 +333,12 @@ artifacts:
   collections/gainsight-templates-api.postman_collection.json:
     method: derived
     evidence: openapi/gainsight-templates-api
+  collections/gainsight-user-preferences-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-user-preferences-api
+  collections/gainsight-userpreferences-v2-api.postman_collection.json:
+    method: derived
+    evidence: openapi/gainsight-userpreferences-v2-api
   collections/gainsight-users-api.opencollection.json:
     method: derived
     evidence: openapi/gainsight-users-api
@@ -303,7 +366,28 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/gainsight-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/gainsight-calendly-upsert-person-on-booking.yml:
+    method: generated
+    evidence: declared in the artifact
+  integrations/gainsight-integration-edges.yml:
+    method: searched
+    evidence: declared in the artifact
+  integrations/gainsight-integration-map.yml:
+    method: unknown
+    evidence: no authorship recorded
   json-ld/gainsight-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-account-2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-account-input-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-account-schema.json:
@@ -312,7 +396,16 @@ artifacts:
   json-schema/gainsight-accountinput-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-accounts-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-activity-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-activity-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-activity-type-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-activityinput-schema.json:
@@ -321,7 +414,28 @@ artifacts:
   json-schema/gainsight-activitytype-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-api-response-2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-api-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-apiresponse-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-article-external-view-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-article-external-view-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-attribute-metadata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-bulk-job-error-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-bulk-job-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-bulkjob-schema.json:
@@ -330,7 +444,16 @@ artifacts:
   json-schema/gainsight-bulkjoberror-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-company-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-company-record-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-company-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-company-team-record-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-companyinput-schema.json:
@@ -360,10 +483,46 @@ artifacts:
   json-schema/gainsight-ctatype-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-custom-event-2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-custom-event-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-custom-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-customevent-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-email-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-engagement-all-types-view-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-engagement-environments-change-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-engagement-error-summary-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-engagement-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-engagement-state-change-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-engagements-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-engagements-with-custom-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-event-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-event-type-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-eventinput-schema.json:
@@ -372,10 +531,31 @@ artifacts:
   json-schema/gainsight-eventtype-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-external-segment-dto-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-feature-match-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-feature-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-feature-with-details-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-features-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-field-metadata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-fieldmetadata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-form-submit-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-gainsight-user-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-gainsightuser-schema.json:
@@ -384,7 +564,19 @@ artifacts:
   json-schema/gainsight-gainsightuserinput-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-goal-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-goal-metric-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-goal-metric-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-goal-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-goal-template-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-goalinput-schema.json:
@@ -399,6 +591,27 @@ artifacts:
   json-schema/gainsight-goaltemplate-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-identify-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-kcexternal-state-change-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-knowledge-center-external-view-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-knowledge-center-external-view-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-lead-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-object-metadata-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-objective-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-objective-schema.json:
     method: unknown
     evidence: no authorship recorded
@@ -408,10 +621,19 @@ artifacts:
   json-schema/gainsight-objectmetadata-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-opportunity-record-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-opportunity-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-opportunityrecord-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-page-view-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-person-record-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-person-schema.json:
@@ -423,10 +645,25 @@ artifacts:
   json-schema/gainsight-playbook-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-response-entity-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-scim-user-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-scim-user-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-scimuser-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-scimuserinput-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-search-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-search-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-searchrequest-schema.json:
@@ -435,16 +672,43 @@ artifacts:
   json-schema/gainsight-searchresponse-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-segment-match-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-segment-payload-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-segment-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-segments-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-session-initialized-events-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-subscription-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-subscription-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-subscriptioninput-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-success-plan-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-success-plan-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-successplan-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-successplaninput-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-task-input-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-task-schema.json:
@@ -456,10 +720,37 @@ artifacts:
   json-schema/gainsight-timeline-activity-schema.json:
     method: unknown
     evidence: no authorship recorded
+  json-schema/gainsight-update-user-preferences-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-update-user-preferences-v2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-user-2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-user-identify-id-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-user-input-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-user-preferences-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-user-preferences-v2-schema.json:
+    method: unknown
+    evidence: no authorship recorded
   json-schema/gainsight-user-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-userinput-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-users-page-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/gainsight-write-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/gainsight-writeresponse-schema.json:
@@ -468,127 +759,7 @@ artifacts:
   json-structure/gainsight-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -672,10 +843,31 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/gainsight-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
   llms/gainsight-cc-llms.txt:
+    method: searched
+    evidence: 'derive-llms-provenance.py: harvested'
+  llms/gainsight-llms-provenance.yml:
+    method: searched
+    evidence: 'derive-llms-provenance.py: harvested'
+  llms/gainsight-llms.txt:
     method: searched
     evidence: 'derive-llms-provenance.py: harvested'
   llms/gainsight-px-llms.txt:
@@ -748,14 +940,20 @@ artifacts:
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/gainsight-accounts-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-activities-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/gainsight-activity-types-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-admin-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-article-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-companies-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
@@ -772,29 +970,62 @@ artifacts:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/gainsight-custom-events-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-custom-objects-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-emailevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-engagement-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-engagements-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-engagementviewevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-events-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-externalsegments-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-feature-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-feature-match-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-featurematchevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-fields-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-formsubmitevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-goals-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-identifyevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-jobs-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-kcbot-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-leadevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-localization-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-metrics-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
@@ -807,37 +1038,202 @@ artifacts:
   openapi/gainsight-opportunities-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-pageviewevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-people-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/gainsight-playbooks-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/gainsight-px-rest-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
   openapi/gainsight-reports-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/gainsight-scim-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-segment-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-segmentmatchevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-sessionevent-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-subscription-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/gainsight-success-plans-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-surveyresponse-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-tasks-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/gainsight-templates-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/gainsight-user-preferences-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/gainsight-userpreferences-v2-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/gainsight-users-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
+  overlays/gainsight-accounts-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-activities-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-activity-types-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-admin-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-article-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-companies-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-company-team-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-configuration-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-cta-configuration-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-ctas-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-custom-events-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-custom-objects-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-emailevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-engagement-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-engagements-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-engagementviewevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-events-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-externalsegments-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-feature-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-feature-match-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-featurematchevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-fields-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-formsubmitevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-goals-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-identifyevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-jobs-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-kcbot-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-leadevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-localization-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-metrics-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-objectives-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-objects-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-opportunities-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-pageviewevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-people-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-playbooks-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
   overlays/gainsight-px-rest-api-overlay.yaml:
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/gainsight-reports-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-scim-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-segment-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-segmentmatchevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-sessionevent-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-subscription-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-success-plans-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-surveyresponse-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-tasks-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-templates-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-user-preferences-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-userpreferences-v2-api-phrasing-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/gainsight-users-api-phrasing-overlay.yaml:
     method: generated
     evidence: declared in the artifact
   packages/gainsight-packages.yml:
@@ -850,6 +1246,9 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   rules/gainsight-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/gainsight-rules.yml:
     method: generated
     evidence: declared in the artifact
   sandbox/gainsight-sandbox.yml:
@@ -882,9 +1281,12 @@ artifacts:
   skills/gainsight-px-track-custom-event.md:
     method: unknown
     evidence: no authorship recorded
-  vocabulary/gainsight-vocabulary.yml:
+  vendors/gainsight-vendors.yml:
     method: unknown
     evidence: no authorship recorded
+  vocabulary/gainsight-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
   well-known/gainsight-oauth-authorization-server.json:
     method: unknown
     evidence: no authorship recorded

@@ -1,0 +1,321 @@
+{
+  "info": {
+    "_postman_id": "2c831774-0b4d-4585-9674-56f64d23e7e3",
+    "name": "Gainsight PX REST Email Event API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:39.000Z",
+    "updatedAt": "2026-10-21T20:30:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2c831774-0b4d-4585-9674-56f64d23e7e3"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "events",
+          "item": [
+            {
+              "name": "email",
+              "item": [
+                {
+                  "name": "Get Email events",
+                  "id": "58bad87f-5ef7-4c50-babb-9228ae3b2e53",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/events/email?filter=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "events",
+                        "email"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort fields",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves Email events. Supports filtering, sorting and paging.\n### Filtering\nThe filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}\nFilter terms within a single filter parameter are joined by a logical AND.\nSeparate filter parameters are joined by a logical OR.\n#### Supported filter fields\n| Field |\n| ----- |\n| identifyId |\n| date |\n| email |\n| engagementId |\n| emailTrackType |\n| executionDate |\n\n#### Operators\n| Operator | Meaning |\n| ----- | -------- |\n| == | Exact match |\n| != | Not equal |\n| | Greater than |\n| >= | Greater than or equal |\n| ~ | Matches string, supports wildcard characters * and ? |\n| !~ | Not like, supports wildcard characters * and ? |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/email?filter=identifyId==ABC123 | Email event matches for user with identifyId of 'ABC123'. |\n\n### Sorting\nThe sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.\n#### Supported sort fields\n| Field |\n| ----- |\n| date |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/email?sort=-date | Matches sorted by date descending. |"
+                  },
+                  "response": [
+                    {
+                      "id": "3bcc5038-23f4-4f75-a8d9-3ef4f5d19fde",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/email?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "email"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"results\": [\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"VISITOR\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"globalContext\": {},\n      \"engagementId\": \"<string>\",\n      \"email\": \"<string>\",\n      \"emailTrackType\": \"EMAIL_TRACK_PROCESSED\",\n      \"status\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"bounceType\": \"DELIVER_EXIPERED\",\n      \"mtaResponse\": \"<string>\",\n      \"attempt\": \"<string>\",\n      \"linkIndex\": \"<integer>\",\n      \"linkType\": \"TEXT_LINK_TYPE\",\n      \"linkUrl\": \"<string>\",\n      \"inferredLocation\": {\n        \"countryName\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"stateName\": \"<string>\",\n        \"stateCode\": \"<string>\",\n        \"city\": \"<string>\",\n        \"street\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"continent\": \"<string>\",\n        \"regionName\": \"<string>\",\n        \"timeZone\": \"<string>\",\n        \"coordinates\": {\n          \"latitude\": \"<double>\",\n          \"longitude\": \"<double>\"\n        }\n      }\n    },\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"LEAD\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"globalContext\": {},\n      \"engagementId\": \"<string>\",\n      \"email\": \"<string>\",\n      \"emailTrackType\": \"EMAIL_TRACK_CLICK\",\n      \"status\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"bounceType\": \"EMPTY_BOUNCE_TYPE\",\n      \"mtaResponse\": \"<string>\",\n      \"attempt\": \"<string>\",\n      \"linkIndex\": \"<integer>\",\n      \"linkType\": \"EMPTY_LINK_TYPE\",\n      \"linkUrl\": \"<string>\",\n      \"inferredLocation\": {\n        \"countryName\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"stateName\": \"<string>\",\n        \"stateCode\": \"<string>\",\n        \"city\": \"<string>\",\n        \"street\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"continent\": \"<string>\",\n        \"regionName\": \"<string>\",\n        \"timeZone\": \"<string>\",\n        \"coordinates\": {\n          \"latitude\": \"<double>\",\n          \"longitude\": \"<double>\"\n        }\n      }\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:30:40.000Z",
+                      "updatedAt": "2026-10-21T20:30:40.000Z",
+                      "uid": "35240-3bcc5038-23f4-4f75-a8d9-3ef4f5d19fde"
+                    },
+                    {
+                      "id": "60cfbe7d-be0f-4914-9af3-7661de5fcc7a",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/email?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "email"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:40.000Z",
+                      "updatedAt": "2026-10-21T20:30:40.000Z",
+                      "uid": "35240-60cfbe7d-be0f-4914-9af3-7661de5fcc7a"
+                    },
+                    {
+                      "id": "2491bf29-a587-4888-9a75-484b35a18876",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/email?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "email"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:40.000Z",
+                      "updatedAt": "2026-10-21T20:30:40.000Z",
+                      "uid": "35240-2491bf29-a587-4888-9a75-484b35a18876"
+                    },
+                    {
+                      "id": "47e83582-204d-4bcb-b2c5-8c843a33c4b9",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/email?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "email"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:40.000Z",
+                      "updatedAt": "2026-10-21T20:30:40.000Z",
+                      "uid": "35240-47e83582-204d-4bcb-b2c5-8c843a33c4b9"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:40.000Z",
+                  "updatedAt": "2026-10-21T20:30:40.000Z",
+                  "uid": "35240-58bad87f-5ef7-4c50-babb-9228ae3b2e53"
+                }
+              ],
+              "id": "90b4b832-31a2-4af6-a2aa-c0f992307080",
+              "createdAt": "2026-10-21T20:30:40.000Z",
+              "updatedAt": "2026-10-21T20:30:40.000Z",
+              "uid": "35240-90b4b832-31a2-4af6-a2aa-c0f992307080"
+            }
+          ],
+          "id": "3eee0e04-5702-430a-af73-942ea870224e",
+          "createdAt": "2026-10-21T20:30:40.000Z",
+          "updatedAt": "2026-10-21T20:30:40.000Z",
+          "uid": "35240-3eee0e04-5702-430a-af73-942ea870224e"
+        }
+      ],
+      "id": "0bd600c5-0369-414e-9aba-f56ca3b1f1a0",
+      "createdAt": "2026-10-21T20:30:40.000Z",
+      "updatedAt": "2026-10-21T20:30:40.000Z",
+      "uid": "35240-0bd600c5-0369-414e-9aba-f56ca3b1f1a0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

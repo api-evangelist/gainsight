@@ -1,0 +1,321 @@
+{
+  "info": {
+    "_postman_id": "aa42b04b-24f6-4ac6-92be-e5101550d06b",
+    "name": "Gainsight PX REST Segment Match Event API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:31:26.000Z",
+    "updatedAt": "2026-10-21T20:31:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aa42b04b-24f6-4ac6-92be-e5101550d06b"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "events",
+          "item": [
+            {
+              "name": "segment_match",
+              "item": [
+                {
+                  "name": "Get segment match events",
+                  "id": "f1e821fd-15aa-4b91-8813-039058a43971",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/events/segment_match?filter=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "events",
+                        "segment_match"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort fields",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves segment match events. Supports filtering, sorting and paging.\n### Filtering\nThe filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}\nFilter terms within a single filter parameter are joined by a logical AND.\nSeparate filter parameters are joined by a logical OR.\n#### Supported filter fields\n| Field |\n| ----- |\n| segmentId |\n| identifyId (equality only) |\n| accountId |\n| date |\n\n#### Operators\n| Operator | Meaning |\n| ----- | -------- |\n| == | Exact match |\n| != | Not equal |\n| | Greater than |\n| >= | Greater than or equal |\n| ~ | Matches string, supports wildcard characters * and ? |\n| !~ | Not like, supports wildcard characters * and ? |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/segment_match?filter=identifyId==ABC123 | Segment matches for user with identifyId of 'ABC123'. |\n\n### Sorting\nThe sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.\n#### Supported sort fields\n| Field |\n| ----- |\n| accountId |\n| date |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/segment_match?sort=-accountId | Matches sorted by accountId descending. |"
+                  },
+                  "response": [
+                    {
+                      "id": "c0451bf4-2ba9-4cc2-991c-e957eaa8ceec",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/segment_match?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "segment_match"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"featureMatchEvents\": [\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"USER\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"EMPTY_USER_TYPE\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:31:27.000Z",
+                      "updatedAt": "2026-10-21T20:31:27.000Z",
+                      "uid": "35240-c0451bf4-2ba9-4cc2-991c-e957eaa8ceec"
+                    },
+                    {
+                      "id": "22a5a335-dca7-41e0-b806-f98a0896c34d",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/segment_match?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "segment_match"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:27.000Z",
+                      "updatedAt": "2026-10-21T20:31:27.000Z",
+                      "uid": "35240-22a5a335-dca7-41e0-b806-f98a0896c34d"
+                    },
+                    {
+                      "id": "ab9876ba-d76c-4817-91ce-abe2f7c4c729",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/segment_match?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "segment_match"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:27.000Z",
+                      "updatedAt": "2026-10-21T20:31:27.000Z",
+                      "uid": "35240-ab9876ba-d76c-4817-91ce-abe2f7c4c729"
+                    },
+                    {
+                      "id": "21d8ea39-7b54-4900-984b-e1002ed0e4da",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/segment_match?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "segment_match"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:27.000Z",
+                      "updatedAt": "2026-10-21T20:31:27.000Z",
+                      "uid": "35240-21d8ea39-7b54-4900-984b-e1002ed0e4da"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:31:27.000Z",
+                  "updatedAt": "2026-10-21T20:31:27.000Z",
+                  "uid": "35240-f1e821fd-15aa-4b91-8813-039058a43971"
+                }
+              ],
+              "id": "511db5fa-00d3-4bc5-be31-fca425893905",
+              "createdAt": "2026-10-21T20:31:27.000Z",
+              "updatedAt": "2026-10-21T20:31:27.000Z",
+              "uid": "35240-511db5fa-00d3-4bc5-be31-fca425893905"
+            }
+          ],
+          "id": "22a51459-c459-4d1b-9e01-372ae767b457",
+          "createdAt": "2026-10-21T20:31:27.000Z",
+          "updatedAt": "2026-10-21T20:31:27.000Z",
+          "uid": "35240-22a51459-c459-4d1b-9e01-372ae767b457"
+        }
+      ],
+      "id": "51e5de4a-2eea-4f78-8bda-8df667cfda6a",
+      "createdAt": "2026-10-21T20:31:27.000Z",
+      "updatedAt": "2026-10-21T20:31:27.000Z",
+      "uid": "35240-51e5de4a-2eea-4f78-8bda-8df667cfda6a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

@@ -1,619 +1,544 @@
 {
+  "info": {
+    "_postman_id": "6a52f69f-57aa-4e80-9034-fe7c88f482d0",
+    "name": "Gainsight CS Events API",
+    "description": "The Events API enables external systems to publish events into Gainsight, supporting system asset events for cross-system communication with operations including insert, update, upsert, and delete.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:18.000Z",
+    "updatedAt": "2026-10-21T20:29:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6a52f69f-57aa-4e80-9034-fe7c88f482d0"
+  },
   "item": [
     {
-      "id": "ff3ac6c7-c7c2-4fe1-a34e-ab7908348ab0",
-      "name": "Events",
-      "description": {
-        "content": "Publish and manage events",
-        "type": "text/plain"
-      },
+      "name": "events",
       "item": [
         {
-          "id": "4d92438c-6c06-452d-af44-feddd80e2cff",
+          "name": "bulk",
+          "item": [
+            {
+              "name": "Gainsight Bulk publish events",
+              "id": "e0868bfa-cdce-4dd8-bccb-656b6228c9c0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"DELETE\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    },\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"UPSERT\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events/bulk",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    "bulk"
+                  ]
+                },
+                "description": "Publish multiple events in a single request."
+              },
+              "response": [
+                {
+                  "id": "01b4ac2f-461f-4860-8929-bd51b4490335",
+                  "name": "Events published",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"DELETE\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    },\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"UPSERT\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/bulk",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "bulk"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"successCount\": \"<integer>\",\n    \"failureCount\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-01b4ac2f-461f-4860-8929-bd51b4490335"
+                },
+                {
+                  "id": "418ee640-6bee-42b2-b030-339cc00125f7",
+                  "name": "Invalid request body or parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"DELETE\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    },\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"UPSERT\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/bulk",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "bulk"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-418ee640-6bee-42b2-b030-339cc00125f7"
+                },
+                {
+                  "id": "bcca336c-e3fc-4fc6-8306-174251bfbe2f",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"DELETE\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    },\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"UPSERT\",\n      \"payload\": {},\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/bulk",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "bulk"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-bcca336c-e3fc-4fc6-8306-174251bfbe2f"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:19.000Z",
+              "updatedAt": "2026-10-21T20:29:19.000Z",
+              "uid": "35240-e0868bfa-cdce-4dd8-bccb-656b6228c9c0"
+            }
+          ],
+          "id": "80cf4f1b-fbdb-419e-88a9-215857949ee3",
+          "createdAt": "2026-10-21T20:29:19.000Z",
+          "updatedAt": "2026-10-21T20:29:19.000Z",
+          "uid": "35240-80cf4f1b-fbdb-419e-88a9-215857949ee3"
+        },
+        {
+          "name": "types",
+          "item": [
+            {
+              "name": "Gainsight List event types",
+              "id": "f05c1fcb-f812-40ff-935a-46d8be1cac10",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events/types",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    "types"
+                  ]
+                },
+                "description": "Retrieve configured event types."
+              },
+              "response": [
+                {
+                  "id": "32cb13fe-bf47-4e08-b7b9-65d10f5cda64",
+                  "name": "Event types returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "types"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-32cb13fe-bf47-4e08-b7b9-65d10f5cda64"
+                },
+                {
+                  "id": "8f921fd6-16da-4ead-8530-48cf60cdb8f4",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "types"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:19.000Z",
+                  "updatedAt": "2026-10-21T20:29:19.000Z",
+                  "uid": "35240-8f921fd6-16da-4ead-8530-48cf60cdb8f4"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:19.000Z",
+              "updatedAt": "2026-10-21T20:29:19.000Z",
+              "uid": "35240-f05c1fcb-f812-40ff-935a-46d8be1cac10"
+            }
+          ],
+          "id": "1c5d0c9d-05d0-4fff-8ed6-795c86d25f13",
+          "createdAt": "2026-10-21T20:29:19.000Z",
+          "updatedAt": "2026-10-21T20:29:19.000Z",
+          "uid": "35240-1c5d0c9d-05d0-4fff-8ed6-795c86d25f13"
+        },
+        {
           "name": "Gainsight Publish an event",
+          "id": "7e9452ab-bd74-4415-8209-d298ed0b760d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight Publish an event",
-            "description": {
-              "content": "Publish an event from an external system into Gainsight. Supports system asset events for triggering rules and workflows.",
-              "type": "text/plain"
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"INSERT\",\n  \"payload\": {},\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
             },
             "url": {
+              "raw": "{{baseUrl}}/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "events"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
               ]
             },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"payload\": \"<object>\",\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
+            "description": "Publish an event from an external system into Gainsight. Supports system asset events for triggering rules and workflows."
           },
           "response": [
             {
-              "id": "d6bc8db4-f4e0-4532-96c5-c2b7723555ca",
+              "id": "1ba5e001-6c58-4349-a443-6636cfa1d028",
               "name": "Event published successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "accessKey",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"payload\": \"<object>\",\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
+                  "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"INSERT\",\n  \"payload\": {},\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"result\": false,\n  \"errorCode\": \"string\",\n  \"errorDesc\": \"string\",\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<boolean>\",\n  \"errorCode\": \"<string>\",\n  \"errorDesc\": \"<string>\",\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:29:19.000Z",
+              "updatedAt": "2026-10-21T20:29:19.000Z",
+              "uid": "35240-1ba5e001-6c58-4349-a443-6636cfa1d028"
             },
             {
-              "id": "ef472abb-91f4-4e6b-bbbc-3786c2b02e01",
+              "id": "753418be-1aea-4a0f-9945-f60f081e5fbb",
               "name": "Invalid request body or parameters",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "accessKey",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"payload\": \"<object>\",\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
+                  "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"INSERT\",\n  \"payload\": {},\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:19.000Z",
+              "updatedAt": "2026-10-21T20:29:19.000Z",
+              "uid": "35240-753418be-1aea-4a0f-9945-f60f081e5fbb"
             },
             {
-              "id": "592a398a-4a48-4a02-ad11-a0bb2adbde1c",
+              "id": "81816004-f69f-4490-89b2-33e6bacf1ec7",
               "name": "Authentication failed or access key is missing",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"INSERT\",\n  \"payload\": {},\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"eventType\": \"<string>\",\n  \"objectType\": \"<string>\",\n  \"operation\": \"<string>\",\n  \"payload\": \"<object>\",\n  \"companyId\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"sourceSystem\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:19.000Z",
+              "updatedAt": "2026-10-21T20:29:19.000Z",
+              "uid": "35240-81816004-f69f-4490-89b2-33e6bacf1ec7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "36b26925-6bd1-469c-858d-bee56e6b7f7b",
-          "name": "Gainsight Bulk publish events",
-          "request": {
-            "name": "Gainsight Bulk publish events",
-            "description": {
-              "content": "Publish multiple events in a single request.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "events",
-                "bulk"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"payload\": \"<object>\",\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    },\n    {\n      \"eventType\": \"<string>\",\n      \"objectType\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"payload\": \"<object>\",\n      \"companyId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"sourceSystem\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "bbde75f6-06d6-4adf-87da-7b393582dbe4",
-              "name": "Events published",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    "bulk"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"string\",\n      \"objectType\": \"string\",\n      \"operation\": \"UPSERT\",\n      \"payload\": {},\n      \"companyId\": \"string\",\n      \"timestamp\": \"2010-10-12T02:44:51.504Z\",\n      \"sourceSystem\": \"string\"\n    },\n    {\n      \"eventType\": \"string\",\n      \"objectType\": \"string\",\n      \"operation\": \"UPDATE\",\n      \"payload\": {},\n      \"companyId\": \"string\",\n      \"timestamp\": \"1990-09-26T23:41:41.556Z\",\n      \"sourceSystem\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"successCount\": 7422,\n    \"failureCount\": 3909\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a9c3ebcb-4226-4575-81e8-19a0f47f0103",
-              "name": "Invalid request body or parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    "bulk"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"string\",\n      \"objectType\": \"string\",\n      \"operation\": \"UPSERT\",\n      \"payload\": {},\n      \"companyId\": \"string\",\n      \"timestamp\": \"2010-10-12T02:44:51.504Z\",\n      \"sourceSystem\": \"string\"\n    },\n    {\n      \"eventType\": \"string\",\n      \"objectType\": \"string\",\n      \"operation\": \"UPDATE\",\n      \"payload\": {},\n      \"companyId\": \"string\",\n      \"timestamp\": \"1990-09-26T23:41:41.556Z\",\n      \"sourceSystem\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2b70e625-50d2-4fec-b5bb-4320de7fd2b3",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    "bulk"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"records\": [\n    {\n      \"eventType\": \"string\",\n      \"objectType\": \"string\",\n      \"operation\": \"UPSERT\",\n      \"payload\": {},\n      \"companyId\": \"string\",\n      \"timestamp\": \"2010-10-12T02:44:51.504Z\",\n      \"sourceSystem\": \"string\"\n    },\n    {\n      \"eventType\": \"string\",\n      \"objectType\": \"string\",\n      \"operation\": \"UPDATE\",\n      \"payload\": {},\n      \"companyId\": \"string\",\n      \"timestamp\": \"1990-09-26T23:41:41.556Z\",\n      \"sourceSystem\": \"string\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b8935000-3261-4470-a2d1-c55394f53152",
-          "name": "Gainsight List event types",
-          "request": {
-            "name": "Gainsight List event types",
-            "description": {
-              "content": "Retrieve configured event types.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "events",
-                "types"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a0e0b126-3e33-47da-8b71-9368a4cae56a",
-              "name": "Event types returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    "types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"isActive\": true\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"isActive\": false\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cee1648a-5351-4e2b-9723-8379621e9657",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    "types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:29:19.000Z",
+          "updatedAt": "2026-10-21T20:29:19.000Z",
+          "uid": "35240-7e9452ab-bd74-4415-8209-d298ed0b760d"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "87648f3a-febe-4787-b147-97c8b1acfe68",
+      "createdAt": "2026-10-21T20:29:19.000Z",
+      "updatedAt": "2026-10-21T20:29:19.000Z",
+      "uid": "35240-87648f3a-febe-4787-b147-97c8b1acfe68"
     }
   ],
   "auth": {
@@ -621,25 +546,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "99c26254-a8b5-476c-8bf5-f701001489b3",
-    "name": "Gainsight CS Bulk Accounts Events API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

@@ -1,202 +1,183 @@
 {
+  "info": {
+    "_postman_id": "1098fbbd-13e9-433b-8a8d-c7fe553ea6ab",
+    "name": "Gainsight REST Reports API",
+    "description": "The Gainsight REST API allows developers to integrate customer success data, automate workflows, and build custom applications on top of the Gainsight platform. Provides access to core Gainsight objects and operations.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:06.000Z",
+    "updatedAt": "2026-10-21T20:30:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1098fbbd-13e9-433b-8a8d-c7fe553ea6ab"
+  },
   "item": [
     {
-      "id": "19e92a48-946c-400a-8ddc-784795000c07",
-      "name": "Reports",
-      "description": {
-        "content": "Run reports and retrieve analytics data",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "ea7eecc7-04ef-4706-a6df-ef00aa6b398c",
-          "name": "Gainsight Run a report",
-          "request": {
-            "name": "Gainsight Run a report",
-            "description": {
-              "content": "Execute a report query against Gainsight data.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "reports"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"reportId\": \"<string>\",\n  \"filters\": \"<object>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "reports",
+          "item": [
             {
-              "id": "64415d55-d09c-443e-b09d-6ab89f09c05c",
-              "name": "Report data returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "reports"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+              "name": "Gainsight Run a report",
+              "id": "18c30906-687c-4efa-807d-7a7d2a444fb5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"reportId\": \"<string>\",\n  \"filters\": \"<object>\"\n}",
+                  "raw": "{\n  \"reportId\": \"<string>\",\n  \"filters\": {}\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "caec565e-c801-4a24-83c6-ba00f0e460a6",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "v1",
-                    "reports"
-                  ],
+                  "raw": "{{baseUrl}}/v1/reports",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
+                  "path": [
+                    "v1",
+                    "reports"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"reportId\": \"<string>\",\n  \"filters\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Execute a report query against Gainsight data."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "fe2dbd2e-7a97-4a5f-bea0-b443eb13cf6e",
+                  "name": "Report data returned",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reportId\": \"<string>\",\n  \"filters\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "reports"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {}\n}",
+                  "createdAt": "2026-10-21T20:30:06.000Z",
+                  "updatedAt": "2026-10-21T20:30:06.000Z",
+                  "uid": "35240-fe2dbd2e-7a97-4a5f-bea0-b443eb13cf6e"
+                },
+                {
+                  "id": "1d9ce81f-949a-4203-babf-e7ec82751713",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reportId\": \"<string>\",\n  \"filters\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "reports"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:06.000Z",
+                  "updatedAt": "2026-10-21T20:30:06.000Z",
+                  "uid": "35240-1d9ce81f-949a-4203-babf-e7ec82751713"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:30:06.000Z",
+              "updatedAt": "2026-10-21T20:30:06.000Z",
+              "uid": "35240-18c30906-687c-4efa-807d-7a7d2a444fb5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "737c7601-d464-4183-b5f5-6b7e7cfb4e88",
+          "createdAt": "2026-10-21T20:30:06.000Z",
+          "updatedAt": "2026-10-21T20:30:06.000Z",
+          "uid": "35240-737c7601-d464-4183-b5f5-6b7e7cfb4e88"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "100477c8-47e8-4e4d-ac07-732557e53c1f",
+      "createdAt": "2026-10-21T20:30:06.000Z",
+      "updatedAt": "2026-10-21T20:30:06.000Z",
+      "uid": "35240-100477c8-47e8-4e4d-ac07-732557e53c1f"
     }
   ],
   "auth": {
@@ -204,25 +185,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bb50b0a1-1fdf-46d7-be51-0e94585edbc1",
-    "name": "Gainsight CS Bulk Accounts Reports API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.gainsight.com"
     }
-  }
+  ]
 }

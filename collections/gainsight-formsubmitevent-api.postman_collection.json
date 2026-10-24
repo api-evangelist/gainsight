@@ -1,0 +1,321 @@
+{
+  "info": {
+    "_postman_id": "1ab185ff-e202-468d-aa8a-664e9baaffc6",
+    "name": "Gainsight PX REST Form Submit Event API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:31:04.000Z",
+    "updatedAt": "2026-10-21T20:31:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1ab185ff-e202-468d-aa8a-664e9baaffc6"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "events",
+          "item": [
+            {
+              "name": "formSubmit",
+              "item": [
+                {
+                  "name": "Get formSubmit events",
+                  "id": "46f369dc-c94f-4850-9d25-c5078800ce13",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/events/formSubmit?filter=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "events",
+                        "formSubmit"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort fields",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves Form Submit events. Supports filtering, sorting and paging.\n### Filtering\nThe filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}\nFilter terms within a single filter parameter are joined by a logical AND.\nSeparate filter parameters are joined by a logical OR.\n#### Supported filter fields\n| Field |\n| ----- |\n| identifyId |\n| accountId |\n| date |\n\n#### Operators\n| Operator | Meaning |\n| ----- | -------- |\n| == | Exact match |\n| != | Not equal |\n| | Greater than |\n| >= | Greater than or equal |\n| ~ | Matches string, supports wildcard characters * and ? |\n| !~ | Not like, supports wildcard characters * and ? |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/formSubmit?filter=identifyId==ABC123 | Form Submit event matches for user with identifyId of 'ABC123'. |\n\n### Sorting\nThe sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.\n#### Supported sort fields\n| Field |\n| ----- |\n| date |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/formSubmit?sort=-date | Matches sorted by date descending. |"
+                  },
+                  "response": [
+                    {
+                      "id": "67a36af0-bc69-4575-aa13-625ea76e18e8",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/formSubmit?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "formSubmit"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"results\": [\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"LEAD\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"scheme\": \"<string>\",\n      \"host\": \"<string>\",\n      \"path\": \"<string>\",\n      \"queryString\": \"<string>\",\n      \"hash\": \"<string>\",\n      \"queryParams\": {\n        \"est_9\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"non_b3\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"remoteHost\": \"<string>\",\n      \"referrer\": \"<string>\",\n      \"screenHeight\": \"<integer>\",\n      \"screenWidth\": \"<integer>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pageTitle\": \"<string>\",\n      \"formData\": {\n        \"irure71b\": \"<string>\",\n        \"magna028\": \"<string>\"\n      }\n    },\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"VISITOR\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"scheme\": \"<string>\",\n      \"host\": \"<string>\",\n      \"path\": \"<string>\",\n      \"queryString\": \"<string>\",\n      \"hash\": \"<string>\",\n      \"queryParams\": {\n        \"voluptate_47\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"remoteHost\": \"<string>\",\n      \"referrer\": \"<string>\",\n      \"screenHeight\": \"<integer>\",\n      \"screenWidth\": \"<integer>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pageTitle\": \"<string>\",\n      \"formData\": {\n        \"quib8\": \"<string>\",\n        \"in8f\": \"<string>\",\n        \"eu_05f\": \"<string>\",\n        \"eu_e\": \"<string>\"\n      }\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:31:04.000Z",
+                      "updatedAt": "2026-10-21T20:31:04.000Z",
+                      "uid": "35240-67a36af0-bc69-4575-aa13-625ea76e18e8"
+                    },
+                    {
+                      "id": "342e679a-66fe-45a8-958d-ab57ab6a201f",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/formSubmit?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "formSubmit"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:04.000Z",
+                      "updatedAt": "2026-10-21T20:31:04.000Z",
+                      "uid": "35240-342e679a-66fe-45a8-958d-ab57ab6a201f"
+                    },
+                    {
+                      "id": "86a72721-b172-4974-a638-79eeb3bbb1ab",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/formSubmit?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "formSubmit"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:04.000Z",
+                      "updatedAt": "2026-10-21T20:31:04.000Z",
+                      "uid": "35240-86a72721-b172-4974-a638-79eeb3bbb1ab"
+                    },
+                    {
+                      "id": "fc7505a8-932a-407e-bf00-9e407826d3db",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/formSubmit?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "formSubmit"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:04.000Z",
+                      "updatedAt": "2026-10-21T20:31:04.000Z",
+                      "uid": "35240-fc7505a8-932a-407e-bf00-9e407826d3db"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:31:04.000Z",
+                  "updatedAt": "2026-10-21T20:31:04.000Z",
+                  "uid": "35240-46f369dc-c94f-4850-9d25-c5078800ce13"
+                }
+              ],
+              "id": "a56c0725-313c-41ec-b9b5-a3fbf2fc00c0",
+              "createdAt": "2026-10-21T20:31:04.000Z",
+              "updatedAt": "2026-10-21T20:31:04.000Z",
+              "uid": "35240-a56c0725-313c-41ec-b9b5-a3fbf2fc00c0"
+            }
+          ],
+          "id": "ce49e908-ff31-484a-a2c1-0d68ce189496",
+          "createdAt": "2026-10-21T20:31:04.000Z",
+          "updatedAt": "2026-10-21T20:31:04.000Z",
+          "uid": "35240-ce49e908-ff31-484a-a2c1-0d68ce189496"
+        }
+      ],
+      "id": "79ea0d34-67b6-4795-910b-45e4ec2d11ee",
+      "createdAt": "2026-10-21T20:31:04.000Z",
+      "updatedAt": "2026-10-21T20:31:04.000Z",
+      "uid": "35240-79ea0d34-67b6-4795-910b-45e4ec2d11ee"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

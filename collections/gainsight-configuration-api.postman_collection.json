@@ -1,176 +1,153 @@
 {
+  "info": {
+    "_postman_id": "cffc4a0d-f738-4824-b2bb-5f7100bd8ae0",
+    "name": "Gainsight CS Success Plan Configuration API",
+    "description": "The Success Plan API enables creating, updating, and fetching Success Plans and their configurations, supporting structured goal tracking for customer engagements.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:28:37.000Z",
+    "updatedAt": "2026-10-21T20:28:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cffc4a0d-f738-4824-b2bb-5f7100bd8ae0"
+  },
   "item": [
     {
-      "id": "191c36b1-abc1-4d60-a964-556c6e829610",
-      "name": "Configuration",
-      "description": {
-        "content": "Success plan configuration",
-        "type": "text/plain"
-      },
+      "name": "successplans",
       "item": [
         {
-          "id": "bca6c609-fe71-4fe7-b4fc-98faabdbf72f",
-          "name": "Gainsight Get success plan types",
-          "request": {
-            "name": "Gainsight Get success plan types",
-            "description": {
-              "content": "Retrieve configured success plan types.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "successplans",
-                "config",
-                "types"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "config",
+          "item": [
             {
-              "id": "3aa3b70e-10e0-4380-a500-db59a83e1ccd",
-              "name": "Success plan types returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    "config",
-                    "types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+              "name": "types",
+              "item": [
+                {
+                  "name": "Gainsight Get success plan types",
+                  "id": "c1889a89-c3a2-4d03-8f93-6f333d376b52",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5beac26a-ea1a-4dcd-8518-a10159bdb3da",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    "config",
-                    "types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/successplans/config/types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "successplans",
+                        "config",
+                        "types"
+                      ]
                     },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    "description": "Retrieve configured success plan types."
+                  },
+                  "response": [
+                    {
+                      "id": "4506a05a-d99b-4147-b656-348128387456",
+                      "name": "Success plan types returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/config/types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            "config",
+                            "types"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:28:38.000Z",
+                      "updatedAt": "2026-10-21T20:28:38.000Z",
+                      "uid": "35240-4506a05a-d99b-4147-b656-348128387456"
+                    },
+                    {
+                      "id": "f578e4d2-61ee-479f-9da1-12e023f77c2b",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/config/types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            "config",
+                            "types"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:38.000Z",
+                      "updatedAt": "2026-10-21T20:28:38.000Z",
+                      "uid": "35240-f578e4d2-61ee-479f-9da1-12e023f77c2b"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:38.000Z",
+                  "updatedAt": "2026-10-21T20:28:38.000Z",
+                  "uid": "35240-c1889a89-c3a2-4d03-8f93-6f333d376b52"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "38abaf40-9678-4b7c-94de-ebcc0855ce7c",
+              "createdAt": "2026-10-21T20:28:38.000Z",
+              "updatedAt": "2026-10-21T20:28:38.000Z",
+              "uid": "35240-38abaf40-9678-4b7c-94de-ebcc0855ce7c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "18f08a6b-7a8f-4512-8b72-7adb5191828a",
+          "createdAt": "2026-10-21T20:28:38.000Z",
+          "updatedAt": "2026-10-21T20:28:38.000Z",
+          "uid": "35240-18f08a6b-7a8f-4512-8b72-7adb5191828a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "17e77ea3-7d12-4d51-a33f-bc89a95c0914",
+      "createdAt": "2026-10-21T20:28:38.000Z",
+      "updatedAt": "2026-10-21T20:28:38.000Z",
+      "uid": "35240-17e77ea3-7d12-4d51-a33f-bc89a95c0914"
     }
   ],
   "auth": {
@@ -178,25 +155,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bde4775b-e104-458f-868e-366711c1e645",
-    "name": "Gainsight CS Bulk Accounts Configuration API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

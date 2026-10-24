@@ -1,201 +1,165 @@
 {
+  "info": {
+    "_postman_id": "f28a4f49-b341-4ee2-938f-ef037889f7d8",
+    "name": "Gainsight PX Feature Match API",
+    "description": "Product Experience (PX) API for tracking product usage, user behavior, and in-app engagement analytics. Powered by the Aptrinsic platform.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:22.000Z",
+    "updatedAt": "2026-10-21T20:29:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f28a4f49-b341-4ee2-938f-ef037889f7d8"
+  },
   "item": [
     {
-      "id": "4ff70426-d1c2-496e-849c-4bf6345cc9fe",
-      "name": "Feature Match",
-      "description": {
-        "content": "Track feature usage and adoption",
-        "type": "text/plain"
-      },
+      "name": "feature_match",
       "item": [
         {
-          "id": "df5827bb-34e4-4cff-a93b-d31f84e1b063",
           "name": "Gainsight List features",
+          "id": "9b68941d-420c-4424-8837-126b430ff62d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight List features",
-            "description": {
-              "content": "Retrieve tracked features and their adoption metrics.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "feature_match"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "pageSize",
-                  "value": "20",
-                  "description": "Number of results per page"
-                },
-                {
-                  "disabled": false,
-                  "key": "scrollId",
-                  "value": "<string>",
-                  "description": "Scroll ID for cursor-based pagination"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/feature_match?pageSize=20&scrollId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "feature_match"
+              ],
+              "query": [
+                {
+                  "description": "Number of results per page",
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "description": "Scroll ID for cursor-based pagination",
+                  "key": "scrollId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve tracked features and their adoption metrics."
           },
           "response": [
             {
-              "id": "89b1601d-4c26-44d0-a383-231ab58d0f93",
+              "id": "4ae8dead-fd02-4d05-a18f-ecfc807e4b24",
               "name": "Features retrieved",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "feature_match"
-                  ],
+                  "raw": "{{baseUrl}}/feature_match?pageSize=20&scrollId=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "feature_match"
+                  ],
                   "query": [
                     {
+                      "description": "Number of results per page",
                       "key": "pageSize",
                       "value": "20"
                     },
                     {
+                      "description": "Scroll ID for cursor-based pagination",
                       "key": "scrollId",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"totalUserCount\": 3182,\n      \"totalEventCount\": 5815\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"url\": \"string\",\n      \"totalUserCount\": 5696,\n      \"totalEventCount\": 2516\n    }\n  ],\n  \"scrollId\": \"string\",\n  \"totalHits\": 4902\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"totalUserCount\": \"<integer>\",\n      \"totalEventCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"url\": \"<string>\",\n      \"totalUserCount\": \"<integer>\",\n      \"totalEventCount\": \"<integer>\"\n    }\n  ],\n  \"scrollId\": \"<string>\",\n  \"totalHits\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:29:23.000Z",
+              "updatedAt": "2026-10-21T20:29:23.000Z",
+              "uid": "35240-4ae8dead-fd02-4d05-a18f-ecfc807e4b24"
             },
             {
-              "id": "a8f39d7c-6677-4642-935c-feb7ddfc8eb5",
+              "id": "4ed21264-2d51-49db-99ef-bd4a4980f7d3",
               "name": "Authentication failed or API key is missing",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "feature_match"
-                  ],
+                  "raw": "{{baseUrl}}/feature_match?pageSize=20&scrollId=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "feature_match"
+                  ],
                   "query": [
                     {
+                      "description": "Number of results per page",
                       "key": "pageSize",
                       "value": "20"
                     },
                     {
+                      "description": "Scroll ID for cursor-based pagination",
                       "key": "scrollId",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:23.000Z",
+              "updatedAt": "2026-10-21T20:29:23.000Z",
+              "uid": "35240-4ed21264-2d51-49db-99ef-bd4a4980f7d3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:29:23.000Z",
+          "updatedAt": "2026-10-21T20:29:23.000Z",
+          "uid": "35240-9b68941d-420c-4424-8837-126b430ff62d"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "1a099f47-cf8b-4c69-a274-99ead7472689",
+      "createdAt": "2026-10-21T20:29:23.000Z",
+      "updatedAt": "2026-10-21T20:29:23.000Z",
+      "uid": "35240-1a099f47-cf8b-4c69-a274-99ead7472689"
     }
   ],
   "auth": {
@@ -203,25 +167,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "X-APTRINSIC-API-KEY",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6affc14b-d8ff-4b1b-a6c8-40d1128b431f",
-    "name": "Gainsight CS Bulk Accounts Feature Match API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/v1"
     }
-  }
+  ]
 }

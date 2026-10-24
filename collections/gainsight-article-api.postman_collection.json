@@ -1,0 +1,473 @@
+{
+  "info": {
+    "_postman_id": "6229dd1b-795b-4d82-9570-ee41d16b7a52",
+    "name": "Gainsight PX REST Article API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:36.000Z",
+    "updatedAt": "2026-10-21T20:30:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6229dd1b-795b-4d82-9570-ee41d16b7a52"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "articles",
+          "item": [
+            {
+              "name": "{articleId}",
+              "item": [
+                {
+                  "name": "Get Article",
+                  "id": "be9fba73-328b-4608-be4c-9c52b0b8b2f8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/articles/:articleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "articles",
+                        ":articleId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e8917bfc-e427-4476-b1d5-b7e4b6416699",
+                          "key": "articleId",
+                          "value": "<string>",
+                          "description": "(Required) Article id"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves article with the given article Id\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/articles/{articleId} | Get article with id {articleId}. |"
+                  },
+                  "response": [
+                    {
+                      "id": "73bc53ea-7380-4f4f-a75c-362ce9eb4558",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/articles/:articleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "articles",
+                            ":articleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"articleKCs\": [\n    {\n      \"kcId\": \"<string>\",\n      \"kcName\": \"<string>\"\n    },\n    {\n      \"kcId\": \"<string>\",\n      \"kcName\": \"<string>\"\n    }\n  ],\n  \"articleName\": \"<string>\",\n  \"author\": \"<string>\",\n  \"createdDate\": \"<long>\",\n  \"defaultLanguage\": \"<string>\",\n  \"id\": \"<string>\",\n  \"languages\": [\n    {\n      \"languageCode\": \"<string>\",\n      \"translated\": \"<boolean>\"\n    },\n    {\n      \"languageCode\": \"<string>\",\n      \"translated\": \"<boolean>\"\n    }\n  ],\n  \"modifiedBy\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"modifiedDate\": \"<long>\",\n  \"productId\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"releaseDate\": \"<dateTime>\",\n  \"translationState\": \"<string>\",\n  \"viewType\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:30:37.000Z",
+                      "updatedAt": "2026-10-21T20:30:37.000Z",
+                      "uid": "35240-73bc53ea-7380-4f4f-a75c-362ce9eb4558"
+                    },
+                    {
+                      "id": "3b010362-0ac9-4ecc-a4f0-319d74ee591f",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/articles/:articleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "articles",
+                            ":articleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:37.000Z",
+                      "updatedAt": "2026-10-21T20:30:37.000Z",
+                      "uid": "35240-3b010362-0ac9-4ecc-a4f0-319d74ee591f"
+                    },
+                    {
+                      "id": "92e63984-8e0b-454e-ad23-e63c7c8bff45",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/articles/:articleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "articles",
+                            ":articleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:37.000Z",
+                      "updatedAt": "2026-10-21T20:30:37.000Z",
+                      "uid": "35240-92e63984-8e0b-454e-ad23-e63c7c8bff45"
+                    },
+                    {
+                      "id": "07779f97-d8c8-4bcb-9f50-c767e3905cec",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/articles/:articleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "articles",
+                            ":articleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "articleId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:37.000Z",
+                      "updatedAt": "2026-10-21T20:30:37.000Z",
+                      "uid": "35240-07779f97-d8c8-4bcb-9f50-c767e3905cec"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:37.000Z",
+                  "updatedAt": "2026-10-21T20:30:37.000Z",
+                  "uid": "35240-be9fba73-328b-4608-be4c-9c52b0b8b2f8"
+                }
+              ],
+              "id": "75692abd-7115-4209-949e-adc5d27dbf32",
+              "createdAt": "2026-10-21T20:30:37.000Z",
+              "updatedAt": "2026-10-21T20:30:37.000Z",
+              "uid": "35240-75692abd-7115-4209-949e-adc5d27dbf32"
+            },
+            {
+              "name": "Get Articles",
+              "id": "17e6fa29-2390-425f-a242-11b678fbfb29",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/articles?pageNumber=0&pageSize=200&productId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "articles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number",
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Number of events per page range[1,500]",
+                      "key": "pageSize",
+                      "value": "200"
+                    },
+                    {
+                      "description": "Property Group",
+                      "key": "productId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Fetch metadata for Articles from your PX Subscription. The API provides you with the summary of basic information of each article that makes it easy to work with specific data.\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/articles?pageSize=100 | Get first 100 articles. |\n| GET /v1/articles?pageSize=100&pageNumber=1 | Get next 100 articles. |\n| GET /v1/articles?productId=1234LPSWUBFW | Get Articles of product 1234LPSWUBFW. |\n\nImportant: The default pageSize on list calls is 200. The pageSize can be changed by adding a pageSize parameter to the URL (i.e. /v1/articles?pageSize=100) with a max pageSize=500.\n\nTo fetch a particular page, use the pageNumber parameter (zero based)"
+              },
+              "response": [
+                {
+                  "id": "8bd98200-d33e-4806-b480-8bb81201341e",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/articles?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "articles"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"articleExternalViewList\": [\n    {\n      \"articleKCs\": [\n        {\n          \"kcId\": \"<string>\",\n          \"kcName\": \"<string>\"\n        },\n        {\n          \"kcId\": \"<string>\",\n          \"kcName\": \"<string>\"\n        }\n      ],\n      \"articleName\": \"<string>\",\n      \"author\": \"<string>\",\n      \"createdDate\": \"<long>\",\n      \"defaultLanguage\": \"<string>\",\n      \"id\": \"<string>\",\n      \"languages\": [\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        },\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        }\n      ],\n      \"modifiedBy\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"modifiedDate\": \"<long>\",\n      \"productId\": \"<string>\",\n      \"productName\": \"<string>\",\n      \"releaseDate\": \"<dateTime>\",\n      \"translationState\": \"<string>\",\n      \"viewType\": \"<string>\"\n    },\n    {\n      \"articleKCs\": [\n        {\n          \"kcId\": \"<string>\",\n          \"kcName\": \"<string>\"\n        },\n        {\n          \"kcId\": \"<string>\",\n          \"kcName\": \"<string>\"\n        }\n      ],\n      \"articleName\": \"<string>\",\n      \"author\": \"<string>\",\n      \"createdDate\": \"<long>\",\n      \"defaultLanguage\": \"<string>\",\n      \"id\": \"<string>\",\n      \"languages\": [\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        },\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        }\n      ],\n      \"modifiedBy\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"modifiedDate\": \"<long>\",\n      \"productId\": \"<string>\",\n      \"productName\": \"<string>\",\n      \"releaseDate\": \"<dateTime>\",\n      \"translationState\": \"<string>\",\n      \"viewType\": \"<string>\"\n    }\n  ],\n  \"pageNumber\": \"<integer>\",\n  \"isLastPage\": \"<boolean>\"\n}",
+                  "createdAt": "2026-10-21T20:30:37.000Z",
+                  "updatedAt": "2026-10-21T20:30:37.000Z",
+                  "uid": "35240-8bd98200-d33e-4806-b480-8bb81201341e"
+                },
+                {
+                  "id": "bde4a3d6-8182-40ec-aa34-a92158efd393",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/articles?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "articles"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:37.000Z",
+                  "updatedAt": "2026-10-21T20:30:37.000Z",
+                  "uid": "35240-bde4a3d6-8182-40ec-aa34-a92158efd393"
+                },
+                {
+                  "id": "5288cdd6-6206-4e29-b8c8-0a5c75f64861",
+                  "name": "Unauthorized or bad API Key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/articles?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "articles"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:37.000Z",
+                  "updatedAt": "2026-10-21T20:30:37.000Z",
+                  "uid": "35240-5288cdd6-6206-4e29-b8c8-0a5c75f64861"
+                },
+                {
+                  "id": "14f044a3-5111-4245-bbbc-49a1c176d6b6",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/articles?pageNumber=0&pageSize=200&productId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "articles"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page range[1,500]",
+                          "key": "pageSize",
+                          "value": "200"
+                        },
+                        {
+                          "description": "Property Group",
+                          "key": "productId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:37.000Z",
+                  "updatedAt": "2026-10-21T20:30:37.000Z",
+                  "uid": "35240-14f044a3-5111-4245-bbbc-49a1c176d6b6"
+                }
+              ],
+              "createdAt": "2026-10-21T20:30:37.000Z",
+              "updatedAt": "2026-10-21T20:30:37.000Z",
+              "uid": "35240-17e6fa29-2390-425f-a242-11b678fbfb29"
+            }
+          ],
+          "id": "359deb2b-a61f-4f34-9fe1-f5b77b08ae2f",
+          "createdAt": "2026-10-21T20:30:37.000Z",
+          "updatedAt": "2026-10-21T20:30:37.000Z",
+          "uid": "35240-359deb2b-a61f-4f34-9fe1-f5b77b08ae2f"
+        }
+      ],
+      "id": "31b64b8d-1be6-43ce-a810-5e3e461fe899",
+      "createdAt": "2026-10-21T20:30:37.000Z",
+      "updatedAt": "2026-10-21T20:30:37.000Z",
+      "uid": "35240-31b64b8d-1be6-43ce-a810-5e3e461fe899"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

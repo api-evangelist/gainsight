@@ -1,512 +1,426 @@
 {
+  "info": {
+    "_postman_id": "d1fb7e28-c8c4-4336-8a13-faa910d431da",
+    "name": "Gainsight CS Data Management Fields API",
+    "description": "The Data Management API provides access to Gainsight object and field metadata, enabling retrieval of schema information for integration and data mapping purposes.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:26.000Z",
+    "updatedAt": "2026-10-21T20:29:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d1fb7e28-c8c4-4336-8a13-faa910d431da"
+  },
   "item": [
     {
-      "id": "482e727b-ba89-4d1e-a67e-132464772c57",
-      "name": "Fields",
-      "description": {
-        "content": "Retrieve field metadata",
-        "type": "text/plain"
-      },
+      "name": "meta",
       "item": [
         {
-          "id": "9e6b5e0f-d743-4404-9689-f29681935525",
-          "name": "Gainsight List fields for an object",
-          "request": {
-            "name": "Gainsight List fields for an object",
-            "description": {
-              "content": "Retrieve field metadata for a specific Gainsight object.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "meta",
-                "objects",
-                ":objectName",
-                "fields"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "objectName",
-                  "description": "(Required) Name of the Gainsight object"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "objects",
+          "item": [
             {
-              "id": "f7930749-ff17-4d41-a4bf-dc3ce9cc6f80",
-              "name": "Field metadata returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "meta",
-                    "objects",
-                    ":objectName",
-                    "fields"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the Gainsight object"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{objectName}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "fields",
+                  "item": [
+                    {
+                      "name": "{fieldName}",
+                      "item": [
+                        {
+                          "name": "Gainsight Get field metadata",
+                          "id": "f4590218-41c1-452d-a607-0225c621d8f6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/meta/objects/:objectName/fields/:fieldName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "meta",
+                                "objects",
+                                ":objectName",
+                                "fields",
+                                ":fieldName"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "226a7f68-9aaa-45fd-ad06-7fa1b3cecb22",
+                                  "key": "objectName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the Gainsight object"
+                                },
+                                {
+                                  "id": "648b4875-9a91-4608-8557-bb2929e41fa9",
+                                  "key": "fieldName",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the field"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve metadata for a specific field on a Gainsight object."
+                          },
+                          "response": [
+                            {
+                              "id": "b517ee15-732f-4c8d-93ae-4c47be13c105",
+                              "name": "Field metadata returned",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "accessKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/meta/objects/:objectName/fields/:fieldName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "meta",
+                                    "objects",
+                                    ":objectName",
+                                    "fields",
+                                    ":fieldName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "objectName"
+                                    },
+                                    {
+                                      "key": "fieldName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"fieldName\": \"<string>\",\n    \"label\": \"<string>\",\n    \"description\": \"<string>\",\n    \"dataType\": \"DATE\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"isCustom\": \"<boolean>\",\n    \"maxLength\": \"<integer>\",\n    \"picklistValues\": [\n      {\n        \"value\": \"<string>\",\n        \"label\": \"<string>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"label\": \"<string>\"\n      }\n    ],\n    \"lookupObjectName\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-10-21T20:29:26.000Z",
+                              "updatedAt": "2026-10-21T20:29:26.000Z",
+                              "uid": "35240-b517ee15-732f-4c8d-93ae-4c47be13c105"
+                            },
+                            {
+                              "id": "bb0f118a-4a0b-4015-b45d-4a489aafd565",
+                              "name": "Authentication failed or access key is missing",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "accessKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/meta/objects/:objectName/fields/:fieldName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "meta",
+                                    "objects",
+                                    ":objectName",
+                                    "fields",
+                                    ":fieldName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "objectName"
+                                    },
+                                    {
+                                      "key": "fieldName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:29:26.000Z",
+                              "updatedAt": "2026-10-21T20:29:26.000Z",
+                              "uid": "35240-bb0f118a-4a0b-4015-b45d-4a489aafd565"
+                            },
+                            {
+                              "id": "9a23a5f7-1f0c-4d92-8ca5-80d20224b060",
+                              "name": "The requested resource was not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "accessKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/meta/objects/:objectName/fields/:fieldName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "meta",
+                                    "objects",
+                                    ":objectName",
+                                    "fields",
+                                    ":fieldName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "objectName"
+                                    },
+                                    {
+                                      "key": "fieldName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:29:26.000Z",
+                              "updatedAt": "2026-10-21T20:29:26.000Z",
+                              "uid": "35240-9a23a5f7-1f0c-4d92-8ca5-80d20224b060"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:29:26.000Z",
+                          "updatedAt": "2026-10-21T20:29:26.000Z",
+                          "uid": "35240-f4590218-41c1-452d-a607-0225c621d8f6"
+                        }
+                      ],
+                      "id": "32af687a-da5d-4849-bfab-63316567fc66",
+                      "createdAt": "2026-10-21T20:29:26.000Z",
+                      "updatedAt": "2026-10-21T20:29:26.000Z",
+                      "uid": "35240-32af687a-da5d-4849-bfab-63316567fc66"
+                    },
+                    {
+                      "name": "Gainsight List fields for an object",
+                      "id": "e178cf80-61dd-4a00-b154-10a90e1e444e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/meta/objects/:objectName/fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "meta",
+                            "objects",
+                            ":objectName",
+                            "fields"
+                          ],
+                          "variable": [
+                            {
+                              "id": "68d914cb-ff8a-4d4b-b96c-aad8777b912c",
+                              "key": "objectName",
+                              "value": "<string>",
+                              "description": "(Required) Name of the Gainsight object"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve field metadata for a specific Gainsight object."
+                      },
+                      "response": [
+                        {
+                          "id": "eb76875e-de2f-4527-810c-bf7fdda7d06e",
+                          "name": "Field metadata returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "accessKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/meta/objects/:objectName/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "meta",
+                                "objects",
+                                ":objectName",
+                                "fields"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "objectName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"fieldName\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dataType\": \"BOOLEAN\",\n      \"isRequired\": \"<boolean>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"isCustom\": \"<boolean>\",\n      \"maxLength\": \"<integer>\",\n      \"picklistValues\": [\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\"\n        }\n      ],\n      \"lookupObjectName\": \"<string>\"\n    },\n    {\n      \"fieldName\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dataType\": \"BOOLEAN\",\n      \"isRequired\": \"<boolean>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"isCustom\": \"<boolean>\",\n      \"maxLength\": \"<integer>\",\n      \"picklistValues\": [\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"label\": \"<string>\"\n        }\n      ],\n      \"lookupObjectName\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T20:29:26.000Z",
+                          "updatedAt": "2026-10-21T20:29:26.000Z",
+                          "uid": "35240-eb76875e-de2f-4527-810c-bf7fdda7d06e"
+                        },
+                        {
+                          "id": "d4011d89-d316-42ed-8b39-0cf8ad9845d9",
+                          "name": "Authentication failed or access key is missing",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "accessKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/meta/objects/:objectName/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "meta",
+                                "objects",
+                                ":objectName",
+                                "fields"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "objectName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:26.000Z",
+                          "updatedAt": "2026-10-21T20:29:26.000Z",
+                          "uid": "35240-d4011d89-d316-42ed-8b39-0cf8ad9845d9"
+                        },
+                        {
+                          "id": "24be2bcc-1c1d-4c3c-9072-875b6c0e07f0",
+                          "name": "The requested resource was not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "accessKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/meta/objects/:objectName/fields",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "meta",
+                                "objects",
+                                ":objectName",
+                                "fields"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "objectName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:26.000Z",
+                          "updatedAt": "2026-10-21T20:29:26.000Z",
+                          "uid": "35240-24be2bcc-1c1d-4c3c-9072-875b6c0e07f0"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:26.000Z",
+                      "updatedAt": "2026-10-21T20:29:26.000Z",
+                      "uid": "35240-e178cf80-61dd-4a00-b154-10a90e1e444e"
+                    }
+                  ],
+                  "id": "0da0c8aa-0c27-4943-b422-a8794ec0890d",
+                  "createdAt": "2026-10-21T20:29:26.000Z",
+                  "updatedAt": "2026-10-21T20:29:26.000Z",
+                  "uid": "35240-0da0c8aa-0c27-4943-b422-a8794ec0890d"
                 }
               ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"fieldName\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"RICH_TEXT\",\n      \"isRequired\": false,\n      \"isReadOnly\": true,\n      \"isCustom\": false,\n      \"maxLength\": 5306,\n      \"picklistValues\": [\n        {\n          \"value\": \"string\",\n          \"label\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"label\": \"string\"\n        }\n      ],\n      \"lookupObjectName\": \"string\"\n    },\n    {\n      \"fieldName\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"dataType\": \"RICH_TEXT\",\n      \"isRequired\": false,\n      \"isReadOnly\": true,\n      \"isCustom\": true,\n      \"maxLength\": 4654,\n      \"picklistValues\": [\n        {\n          \"value\": \"string\",\n          \"label\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"label\": \"string\"\n        }\n      ],\n      \"lookupObjectName\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fee3684f-1deb-4dd8-9c14-8ca0e6eef6c7",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "meta",
-                    "objects",
-                    ":objectName",
-                    "fields"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the Gainsight object"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0c227c79-9eae-49aa-8853-847b3a6d2a75",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "meta",
-                    "objects",
-                    ":objectName",
-                    "fields"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the Gainsight object"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "4fc1d574-e70e-4164-847d-f2f4daf8a1ac",
+              "createdAt": "2026-10-21T20:29:26.000Z",
+              "updatedAt": "2026-10-21T20:29:26.000Z",
+              "uid": "35240-4fc1d574-e70e-4164-847d-f2f4daf8a1ac"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5df79ee1-4a47-49e5-a7c1-27eeeacafa2e",
-          "name": "Gainsight Get field metadata",
-          "request": {
-            "name": "Gainsight Get field metadata",
-            "description": {
-              "content": "Retrieve metadata for a specific field on a Gainsight object.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "meta",
-                "objects",
-                ":objectName",
-                "fields",
-                ":fieldName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "objectName",
-                  "description": "(Required) Name of the Gainsight object"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "fieldName",
-                  "description": "(Required) Name of the field"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "fc43a5bc-8441-4128-ba87-b72e497d815f",
-              "name": "Field metadata returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "meta",
-                    "objects",
-                    ":objectName",
-                    "fields",
-                    ":fieldName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the Gainsight object"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fieldName",
-                      "description": "(Required) Name of the field"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"fieldName\": \"string\",\n    \"label\": \"string\",\n    \"description\": \"string\",\n    \"dataType\": \"RICH_TEXT\",\n    \"isRequired\": false,\n    \"isReadOnly\": true,\n    \"isCustom\": true,\n    \"maxLength\": 8543,\n    \"picklistValues\": [\n      {\n        \"value\": \"string\",\n        \"label\": \"string\"\n      },\n      {\n        \"value\": \"string\",\n        \"label\": \"string\"\n      }\n    ],\n    \"lookupObjectName\": \"string\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6fb286e7-3c31-4517-a159-569620e2597a",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "meta",
-                    "objects",
-                    ":objectName",
-                    "fields",
-                    ":fieldName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the Gainsight object"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fieldName",
-                      "description": "(Required) Name of the field"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "25b2cb5c-890f-402f-a05e-c7abb1f766da",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "meta",
-                    "objects",
-                    ":objectName",
-                    "fields",
-                    ":fieldName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "objectName",
-                      "description": "(Required) Name of the Gainsight object"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "fieldName",
-                      "description": "(Required) Name of the field"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0b499e4f-2873-4c30-8cb5-7bf35903db93",
+          "createdAt": "2026-10-21T20:29:26.000Z",
+          "updatedAt": "2026-10-21T20:29:26.000Z",
+          "uid": "35240-0b499e4f-2873-4c30-8cb5-7bf35903db93"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "322f4686-877b-475e-ade1-387d515196c6",
+      "createdAt": "2026-10-21T20:29:26.000Z",
+      "updatedAt": "2026-10-21T20:29:26.000Z",
+      "uid": "35240-322f4686-877b-475e-ade1-387d515196c6"
     }
   ],
   "auth": {
@@ -514,25 +428,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6d070750-7c97-47e1-9b8d-e1d07ec1e7f4",
-    "name": "Gainsight CS Bulk Accounts Fields API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

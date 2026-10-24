@@ -1,173 +1,141 @@
 {
+  "info": {
+    "_postman_id": "a6661022-e2fb-4aa0-8ac9-66b639ca9760",
+    "name": "Gainsight CS Customer Goals Templates API",
+    "description": "The Customer Goals API enables external systems to create, update, and fetch customer goals programmatically, including template and metrics management for structured goal tracking.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:26.000Z",
+    "updatedAt": "2026-10-21T20:30:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a6661022-e2fb-4aa0-8ac9-66b639ca9760"
+  },
   "item": [
     {
-      "id": "8d138e27-3e81-407e-930b-a6608f17d7e9",
-      "name": "Templates",
-      "description": {
-        "content": "Manage goal templates",
-        "type": "text/plain"
-      },
+      "name": "goals",
       "item": [
         {
-          "id": "9acbb925-d69e-4c27-8753-d7d789c7df1c",
-          "name": "Gainsight List goal templates",
-          "request": {
-            "name": "Gainsight List goal templates",
-            "description": {
-              "content": "Retrieve configured goal templates.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "goals",
-                "templates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "templates",
+          "item": [
             {
-              "id": "d74dbf01-5d08-411f-917b-179e47e5dd29",
-              "name": "Templates returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    "templates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+              "name": "Gainsight List goal templates",
+              "id": "3fdccdbc-988a-46ad-af4d-596e8d4a98e9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"category\": \"string\",\n      \"isActive\": false\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"category\": \"string\",\n      \"isActive\": false\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "323df1a8-ba3b-4842-b663-85078f2c9021",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "goals",
-                    "templates"
-                  ],
+                  "raw": "{{baseUrl}}/goals/templates",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
+                  "path": [
+                    "goals",
+                    "templates"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve configured goal templates."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "9f89c496-abe8-4707-8c90-888bc3e7b8bb",
+                  "name": "Templates returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/templates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        "templates"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"category\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"category\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:30:27.000Z",
+                  "updatedAt": "2026-10-21T20:30:27.000Z",
+                  "uid": "35240-9f89c496-abe8-4707-8c90-888bc3e7b8bb"
+                },
+                {
+                  "id": "5b9a399d-2edc-448c-986c-09d00abd923b",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/templates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        "templates"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:27.000Z",
+                  "updatedAt": "2026-10-21T20:30:27.000Z",
+                  "uid": "35240-5b9a399d-2edc-448c-986c-09d00abd923b"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:30:27.000Z",
+              "updatedAt": "2026-10-21T20:30:27.000Z",
+              "uid": "35240-3fdccdbc-988a-46ad-af4d-596e8d4a98e9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "27fb91a5-21bb-4daa-87a2-ec08695b3225",
+          "createdAt": "2026-10-21T20:30:27.000Z",
+          "updatedAt": "2026-10-21T20:30:27.000Z",
+          "uid": "35240-27fb91a5-21bb-4daa-87a2-ec08695b3225"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "116ff01b-614c-401d-8796-070d7e6f0dc2",
+      "createdAt": "2026-10-21T20:30:27.000Z",
+      "updatedAt": "2026-10-21T20:30:27.000Z",
+      "uid": "35240-116ff01b-614c-401d-8796-070d7e6f0dc2"
     }
   ],
   "auth": {
@@ -175,25 +143,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3ce006a0-4fe8-49b8-8ae0-01b63563faaf",
-    "name": "Gainsight CS Bulk Accounts Templates API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

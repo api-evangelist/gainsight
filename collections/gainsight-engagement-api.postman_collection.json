@@ -1,0 +1,1931 @@
+{
+  "info": {
+    "_postman_id": "5934d9e2-a862-4f2f-a24d-21d6181d9c3c",
+    "name": "Gainsight PX REST Engagement API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:44.000Z",
+    "updatedAt": "2026-10-21T20:30:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5934d9e2-a862-4f2f-a24d-21d6181d9c3c"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "engagement",
+          "item": [
+            {
+              "name": "env",
+              "item": [
+                {
+                  "name": "Set engagement environment",
+                  "id": "fdd852e4-841a-4f10-8f7f-bc2d21726463",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"engagementId\": \"<string>\",\n  \"env\": \"Integration\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement/env",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement",
+                        "env"
+                      ]
+                    },
+                    "description": "Move engagement between environments.\n### Parameters\n- engagementId: ID of engagement to be modified\n- env: Which environment to set the engagement to. Valid values: Production,Stage,QA,Integration (case insensitive)"
+                  },
+                  "response": [
+                    {
+                      "id": "421ed303-078d-4970-b616-f74925a60caf",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"env\": \"Integration\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/env",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "env"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-421ed303-078d-4970-b616-f74925a60caf"
+                    },
+                    {
+                      "id": "e47c9d49-8064-41c2-872b-462360194fa7",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"env\": \"Integration\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/env",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "env"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-e47c9d49-8064-41c2-872b-462360194fa7"
+                    },
+                    {
+                      "id": "71e1fc02-9e27-448c-9c0e-c6b0585c0621",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"env\": \"Integration\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/env",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "env"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-71e1fc02-9e27-448c-9c0e-c6b0585c0621"
+                    },
+                    {
+                      "id": "a564b2f7-cb13-4261-a765-84d36c90bf33",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"env\": \"Integration\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/env",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "env"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-a564b2f7-cb13-4261-a765-84d36c90bf33"
+                    },
+                    {
+                      "id": "08cc96e1-70e0-439f-ab79-7d8ded66f6cb",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"env\": \"Integration\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/env",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "env"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-08cc96e1-70e0-439f-ab79-7d8ded66f6cb"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-fdd852e4-841a-4f10-8f7f-bc2d21726463"
+                }
+              ],
+              "id": "b0562df6-f8d7-49f4-a1ce-085102bee51c",
+              "createdAt": "2026-10-21T20:30:44.000Z",
+              "updatedAt": "2026-10-21T20:30:44.000Z",
+              "uid": "35240-b0562df6-f8d7-49f4-a1ce-085102bee51c"
+            },
+            {
+              "name": "envs",
+              "item": [
+                {
+                  "name": "Set engagement environments",
+                  "id": "49503017-97c4-44f5-a1c9-be15bf1911fb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"engagementId\": \"<string>\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"QA\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement/envs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement",
+                        "envs"
+                      ]
+                    },
+                    "description": "Move engagement between environments.\n### Parameters\n- engagementId: ID of engagement to be modified\n- envs: Which environments to set the engagement to. Valid values: Production,Stage,QA,Integration (case insensitive)"
+                  },
+                  "response": [
+                    {
+                      "id": "950d29ab-9796-4d9c-b3de-f1389f6d67a9",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/envs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "envs"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-950d29ab-9796-4d9c-b3de-f1389f6d67a9"
+                    },
+                    {
+                      "id": "a4a11796-06c0-46a5-b0fd-5223497d29fb",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/envs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "envs"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-a4a11796-06c0-46a5-b0fd-5223497d29fb"
+                    },
+                    {
+                      "id": "d2c83da2-a708-45c7-bd13-3e50d629743b",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/envs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "envs"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-d2c83da2-a708-45c7-bd13-3e50d629743b"
+                    },
+                    {
+                      "id": "98ba2dcc-a964-4b2e-9a56-3d932f4026e1",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/envs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "envs"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-98ba2dcc-a964-4b2e-9a56-3d932f4026e1"
+                    },
+                    {
+                      "id": "6c246e62-5ee4-4471-81bc-f4191de9a892",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"envs\": [\n    \"INTEGRATION\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/envs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "envs"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-6c246e62-5ee4-4471-81bc-f4191de9a892"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-49503017-97c4-44f5-a1c9-be15bf1911fb"
+                }
+              ],
+              "id": "00c30413-4031-44c9-b2ea-addf527a81e7",
+              "createdAt": "2026-10-21T20:30:44.000Z",
+              "updatedAt": "2026-10-21T20:30:44.000Z",
+              "uid": "35240-00c30413-4031-44c9-b2ea-addf527a81e7"
+            },
+            {
+              "name": "extended",
+              "item": [
+                {
+                  "name": "Get engagements with list of custom events from rules",
+                  "id": "dcc1ddd2-a4bf-4e6b-9c53-2653b8094acb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement/extended?contentTypes=OUT_BOUND_EMAIL&pageNumber=0&pageSize=200",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement",
+                        "extended"
+                      ],
+                      "query": [
+                        {
+                          "description": "Content Types",
+                          "key": "contentTypes",
+                          "value": "OUT_BOUND_EMAIL"
+                        },
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "200"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves engagements with list of custom events that are used in the audience rule, either directly or indirectly via a feature match. Supports paging.\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/engagement/extended?pageSize=100 | Get first 100 engagements. |\n| GET /v1/engagement/extended?pageSize=100&pageNumber=1 | Get next 100 engagements. |\n| GET /v1/engagement/extended?contentTypes=IN_APP_DIALOG,IN_APP_GUIDE | Get dialog and guide engagements. |"
+                  },
+                  "response": [
+                    {
+                      "id": "35a6f1e5-660f-42aa-9c84-896b3c7d6c90",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/extended?contentTypes=OUT_BOUND_EMAIL&pageNumber=0&pageSize=200",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "extended"
+                          ],
+                          "query": [
+                            {
+                              "description": "Content Types",
+                              "key": "contentTypes",
+                              "value": "OUT_BOUND_EMAIL"
+                            },
+                            {
+                              "description": "Page number",
+                              "key": "pageNumber",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "200"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"engagements\": [\n    {\n      \"customEvents\": [\n        {\n          \"name\": \"<string>\",\n          \"properties\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"properties\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"envs\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"propertyKeys\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"state\": \"COMPLETED\",\n      \"type\": \"EMAIL\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"customEvents\": [\n        {\n          \"name\": \"<string>\",\n          \"properties\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"properties\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"envs\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"propertyKeys\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"state\": \"FAILED\",\n      \"type\": \"IN_APP_CES_SURVEY\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"pageNumber\": \"<integer>\",\n  \"isLastPage\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-35a6f1e5-660f-42aa-9c84-896b3c7d6c90"
+                    },
+                    {
+                      "id": "9d13c14f-d9c0-4d8f-b858-f18c0026f2d0",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/extended?contentTypes=OUT_BOUND_EMAIL&pageNumber=0&pageSize=200",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "extended"
+                          ],
+                          "query": [
+                            {
+                              "description": "Content Types",
+                              "key": "contentTypes",
+                              "value": "OUT_BOUND_EMAIL"
+                            },
+                            {
+                              "description": "Page number",
+                              "key": "pageNumber",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "200"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-9d13c14f-d9c0-4d8f-b858-f18c0026f2d0"
+                    },
+                    {
+                      "id": "8090cdb1-7f27-48ea-8b5c-b4a21da91a82",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/extended?contentTypes=OUT_BOUND_EMAIL&pageNumber=0&pageSize=200",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "extended"
+                          ],
+                          "query": [
+                            {
+                              "description": "Content Types",
+                              "key": "contentTypes",
+                              "value": "OUT_BOUND_EMAIL"
+                            },
+                            {
+                              "description": "Page number",
+                              "key": "pageNumber",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "200"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-8090cdb1-7f27-48ea-8b5c-b4a21da91a82"
+                    },
+                    {
+                      "id": "55b449d5-1aa5-4373-bbbc-d8f67e547ca6",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/extended?contentTypes=OUT_BOUND_EMAIL&pageNumber=0&pageSize=200",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "extended"
+                          ],
+                          "query": [
+                            {
+                              "description": "Content Types",
+                              "key": "contentTypes",
+                              "value": "OUT_BOUND_EMAIL"
+                            },
+                            {
+                              "description": "Page number",
+                              "key": "pageNumber",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "200"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-55b449d5-1aa5-4373-bbbc-d8f67e547ca6"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-dcc1ddd2-a4bf-4e6b-9c53-2653b8094acb"
+                }
+              ],
+              "id": "2612acad-9add-4eb9-b85e-9dc6525a0bc5",
+              "createdAt": "2026-10-21T20:30:44.000Z",
+              "updatedAt": "2026-10-21T20:30:44.000Z",
+              "uid": "35240-2612acad-9add-4eb9-b85e-9dc6525a0bc5"
+            },
+            {
+              "name": "metadata",
+              "item": [
+                {
+                  "name": "survey",
+                  "item": [
+                    {
+                      "name": "getEngagementViewEvents",
+                      "id": "8aafa5c4-add5-4979-b8c4-e9604ad69dd4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/metadata/survey?engagementId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "metadata",
+                            "survey"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) engagementId",
+                              "key": "engagementId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "25739207-b960-4b5c-996c-04b881b515fa",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/engagement/metadata/survey?engagementId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "engagement",
+                                "metadata",
+                                "survey"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) engagementId",
+                                  "key": "engagementId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"body\": {},\n  \"statusCode\": \"415\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                          "createdAt": "2026-10-21T20:30:44.000Z",
+                          "updatedAt": "2026-10-21T20:30:44.000Z",
+                          "uid": "35240-25739207-b960-4b5c-996c-04b881b515fa"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-8aafa5c4-add5-4979-b8c4-e9604ad69dd4"
+                    }
+                  ],
+                  "id": "4184c2c6-6ea2-45b6-aee6-86033487bfc2",
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-4184c2c6-6ea2-45b6-aee6-86033487bfc2"
+                }
+              ],
+              "id": "154ce51d-99d2-4ebe-8317-2200a66d20f0",
+              "createdAt": "2026-10-21T20:30:44.000Z",
+              "updatedAt": "2026-10-21T20:30:44.000Z",
+              "uid": "35240-154ce51d-99d2-4ebe-8317-2200a66d20f0"
+            },
+            {
+              "name": "state",
+              "item": [
+                {
+                  "name": "Set engagement state",
+                  "id": "99aa81ac-99e2-4694-be5a-874d259d4867",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"engagementId\": \"<string>\",\n  \"state\": \"PAUSE\",\n  \"envs\": [\n    \"STAGE\",\n    \"QA\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement/state",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement",
+                        "state"
+                      ]
+                    },
+                    "description": "Pauses or starts an engagement.\n### Parameters\n- engagementId: ID of engagement to be modified\n- state: Desired state for engagement (START or PAUSE)\n- envs: If changing the state to START, list of environments to start the engagement on, defaults to [PRODUCTION]"
+                  },
+                  "response": [
+                    {
+                      "id": "2a9122fc-7b30-4e2b-9443-e48b42708061",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"state\": \"PAUSE\",\n  \"envs\": [\n    \"STAGE\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"415\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-2a9122fc-7b30-4e2b-9443-e48b42708061"
+                    },
+                    {
+                      "id": "ca768ee7-6382-4bd5-8269-d4841200f898",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"state\": \"PAUSE\",\n  \"envs\": [\n    \"STAGE\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-ca768ee7-6382-4bd5-8269-d4841200f898"
+                    },
+                    {
+                      "id": "804555c0-3366-491b-b137-1eea0a8be25c",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"state\": \"PAUSE\",\n  \"envs\": [\n    \"STAGE\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-804555c0-3366-491b-b137-1eea0a8be25c"
+                    },
+                    {
+                      "id": "b60fc550-78d3-40c2-808d-a7aa70df48aa",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"state\": \"PAUSE\",\n  \"envs\": [\n    \"STAGE\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-b60fc550-78d3-40c2-808d-a7aa70df48aa"
+                    },
+                    {
+                      "id": "36653199-0c7f-4142-b023-2453e43bc150",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"engagementId\": \"<string>\",\n  \"state\": \"PAUSE\",\n  \"envs\": [\n    \"STAGE\",\n    \"QA\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/state",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            "state"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-36653199-0c7f-4142-b023-2453e43bc150"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-99aa81ac-99e2-4694-be5a-874d259d4867"
+                }
+              ],
+              "id": "d17e2c76-9873-48c8-af9e-cb2ef0e13359",
+              "createdAt": "2026-10-21T20:30:44.000Z",
+              "updatedAt": "2026-10-21T20:30:44.000Z",
+              "uid": "35240-d17e2c76-9873-48c8-af9e-cb2ef0e13359"
+            },
+            {
+              "name": "{engagementId}",
+              "item": [
+                {
+                  "name": "Get engagement",
+                  "id": "2c9b113d-806e-46f7-a13f-99408c47d93a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement",
+                        ":engagementId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ec24521d-a092-466a-9da2-495f8c002947",
+                          "key": "engagementId",
+                          "value": "<string>",
+                          "description": "(Required) Engagement id"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the engagement with the given id"
+                  },
+                  "response": [
+                    {
+                      "id": "26b27d8d-ec03-496c-8e55-148b5d7d73c3",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"envs\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": \"PAUSED\",\n  \"type\": \"EMAIL\",\n  \"defaultLanguage\": \"<string>\",\n  \"languages\": [\n    {\n      \"languageCode\": \"<string>\",\n      \"translated\": \"<boolean>\"\n    },\n    {\n      \"languageCode\": \"<string>\",\n      \"translated\": \"<boolean>\"\n    }\n  ],\n  \"translationState\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-26b27d8d-ec03-496c-8e55-148b5d7d73c3"
+                    },
+                    {
+                      "id": "782f9542-eccc-4c93-ad68-d6c2ac613059",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-782f9542-eccc-4c93-ad68-d6c2ac613059"
+                    },
+                    {
+                      "id": "e0080814-6a8b-48d9-a39e-a8ea97bb038e",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-e0080814-6a8b-48d9-a39e-a8ea97bb038e"
+                    },
+                    {
+                      "id": "3c0e5a30-5111-4212-9b45-000eebbedb6b",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-3c0e5a30-5111-4212-9b45-000eebbedb6b"
+                    },
+                    {
+                      "id": "e86ea14e-995d-4950-9985-15d7ded72b39",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-e86ea14e-995d-4950-9985-15d7ded72b39"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-2c9b113d-806e-46f7-a13f-99408c47d93a"
+                },
+                {
+                  "name": "deleteEngagement",
+                  "id": "c9f0c001-46e0-471f-9a90-ad49b55d0271",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement",
+                        ":engagementId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8eda41f5-0fbb-4ccf-9045-15ccd75c239c",
+                          "key": "engagementId",
+                          "value": "<string>",
+                          "description": "(Required) engagementId"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8c6d853f-1156-45a1-8434-de210010a5ad",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"415\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-8c6d853f-1156-45a1-8434-de210010a5ad"
+                    },
+                    {
+                      "id": "8acb928e-b9e8-4f36-b460-c3ace1c6493b",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-8acb928e-b9e8-4f36-b460-c3ace1c6493b"
+                    },
+                    {
+                      "id": "f45370eb-eaa5-4e73-93fa-6ef3663590d0",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-f45370eb-eaa5-4e73-93fa-6ef3663590d0"
+                    },
+                    {
+                      "id": "76bf1447-45b2-40ef-8b34-e5c71d543143",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/engagement/:engagementId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "engagement",
+                            ":engagementId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "engagementId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:44.000Z",
+                      "updatedAt": "2026-10-21T20:30:44.000Z",
+                      "uid": "35240-76bf1447-45b2-40ef-8b34-e5c71d543143"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-c9f0c001-46e0-471f-9a90-ad49b55d0271"
+                }
+              ],
+              "id": "b0c85cca-c1a8-404b-b41e-54e477127612",
+              "createdAt": "2026-10-21T20:30:44.000Z",
+              "updatedAt": "2026-10-21T20:30:44.000Z",
+              "uid": "35240-b0c85cca-c1a8-404b-b41e-54e477127612"
+            },
+            {
+              "name": "Get engagements",
+              "id": "7f3b4bcc-bc94-4ce7-9f3c-3dd6218f555d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/engagement?contentTypes=OUT_BOUND_EMAIL&createdById=<string>&pageNumber=0&pageSize=200",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "engagement"
+                  ],
+                  "query": [
+                    {
+                      "description": "Content Types",
+                      "key": "contentTypes",
+                      "value": "OUT_BOUND_EMAIL"
+                    },
+                    {
+                      "description": "Created by ID",
+                      "key": "createdById",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Page number",
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Number of events per page",
+                      "key": "pageSize",
+                      "value": "200"
+                    }
+                  ]
+                },
+                "description": "Retrieves engagements. Supports paging.\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/engagement?pageSize=100 | Get first 100 engagements. |\n| GET /v1/engagement?pageSize=100&pageNumber=1 | Get next 100 engagements. |\n| GET /v1/engagement?contentTypes=IN_APP_DIALOG,IN_APP_GUIDE | Get dialog and guide engagements. |"
+              },
+              "response": [
+                {
+                  "id": "3f66ee02-df5b-4933-93d1-721039a8ecf1",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement?contentTypes=OUT_BOUND_EMAIL&createdById=<string>&pageNumber=0&pageSize=200",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Content Types",
+                          "key": "contentTypes",
+                          "value": "OUT_BOUND_EMAIL"
+                        },
+                        {
+                          "description": "Created by ID",
+                          "key": "createdById",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "200"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"engagements\": [\n    {\n      \"envs\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"propertyKeys\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"state\": \"COMPLETED\",\n      \"type\": \"EMAIL\",\n      \"defaultLanguage\": \"<string>\",\n      \"languages\": [\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        },\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        }\n      ],\n      \"translationState\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"envs\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"propertyKeys\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"state\": \"EDITING\",\n      \"type\": \"IN_APP_CAROUSEL\",\n      \"defaultLanguage\": \"<string>\",\n      \"languages\": [\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        },\n        {\n          \"languageCode\": \"<string>\",\n          \"translated\": \"<boolean>\"\n        }\n      ],\n      \"translationState\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"pageNumber\": \"<integer>\",\n  \"isLastPage\": \"<boolean>\"\n}",
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-3f66ee02-df5b-4933-93d1-721039a8ecf1"
+                },
+                {
+                  "id": "fe02bb1a-6787-444c-be2c-6abdcff13ce6",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement?contentTypes=OUT_BOUND_EMAIL&createdById=<string>&pageNumber=0&pageSize=200",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Content Types",
+                          "key": "contentTypes",
+                          "value": "OUT_BOUND_EMAIL"
+                        },
+                        {
+                          "description": "Created by ID",
+                          "key": "createdById",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "200"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-fe02bb1a-6787-444c-be2c-6abdcff13ce6"
+                },
+                {
+                  "id": "e47dc7e6-c3b9-4182-9777-35c871b878ac",
+                  "name": "Unauthorized or bad API Key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement?contentTypes=OUT_BOUND_EMAIL&createdById=<string>&pageNumber=0&pageSize=200",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Content Types",
+                          "key": "contentTypes",
+                          "value": "OUT_BOUND_EMAIL"
+                        },
+                        {
+                          "description": "Created by ID",
+                          "key": "createdById",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "200"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-e47dc7e6-c3b9-4182-9777-35c871b878ac"
+                },
+                {
+                  "id": "d258d468-cc1f-4c4f-aee6-e0b8ed01b872",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/engagement?contentTypes=OUT_BOUND_EMAIL&createdById=<string>&pageNumber=0&pageSize=200",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "engagement"
+                      ],
+                      "query": [
+                        {
+                          "description": "Content Types",
+                          "key": "contentTypes",
+                          "value": "OUT_BOUND_EMAIL"
+                        },
+                        {
+                          "description": "Created by ID",
+                          "key": "createdById",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "200"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:30:44.000Z",
+                  "updatedAt": "2026-10-21T20:30:44.000Z",
+                  "uid": "35240-d258d468-cc1f-4c4f-aee6-e0b8ed01b872"
+                }
+              ],
+              "createdAt": "2026-10-21T20:30:44.000Z",
+              "updatedAt": "2026-10-21T20:30:44.000Z",
+              "uid": "35240-7f3b4bcc-bc94-4ce7-9f3c-3dd6218f555d"
+            }
+          ],
+          "id": "88cbe52b-99e3-4d7c-9fce-b1bc55a8a661",
+          "createdAt": "2026-10-21T20:30:44.000Z",
+          "updatedAt": "2026-10-21T20:30:44.000Z",
+          "uid": "35240-88cbe52b-99e3-4d7c-9fce-b1bc55a8a661"
+        }
+      ],
+      "id": "68201f64-095f-4852-a988-17e9ea806ec0",
+      "createdAt": "2026-10-21T20:30:44.000Z",
+      "updatedAt": "2026-10-21T20:30:44.000Z",
+      "uid": "35240-68201f64-095f-4852-a988-17e9ea806ec0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

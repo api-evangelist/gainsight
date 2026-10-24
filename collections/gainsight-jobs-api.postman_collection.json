@@ -1,1089 +1,892 @@
 {
+  "info": {
+    "_postman_id": "b9d00e74-d5b8-4c6b-a6ed-9ec6c6c32c02",
+    "name": "Gainsight CS Bulk Jobs API",
+    "description": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:34.000Z",
+    "updatedAt": "2026-10-21T20:29:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b9d00e74-d5b8-4c6b-a6ed-9ec6c6c32c02"
+  },
   "item": [
     {
-      "id": "a621978b-6211-4492-b6e0-92e2f9e1cbcd",
-      "name": "Jobs",
-      "description": {
-        "content": "Manage bulk import jobs",
-        "type": "text/plain"
-      },
+      "name": "bulk",
       "item": [
         {
-          "id": "92cada55-015b-4b30-b12e-61bbb91dc145",
-          "name": "Gainsight Create a bulk job",
-          "request": {
-            "name": "Gainsight Create a bulk job",
-            "description": {
-              "content": "Create a new bulk import job to insert or update records from a CSV file into a Gainsight object. Rate limited to 10 calls per hour and 100 per day.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "bulk",
-                "jobs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "objectName",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) Target Gainsight object name"
-                },
-                {
-                  "key": "operation",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)"
-                },
-                {
-                  "key": "file",
-                  "type": "file",
-                  "description": "(Required) CSV file containing records to import"
-                },
-                {
-                  "key": "keyFields",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "Comma-separated key fields for matching (required for UPDATE and UPSERT)"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "jobs",
+          "item": [
             {
-              "id": "5d30244d-9324-4c2f-ae8b-2501f54dfab1",
-              "name": "Bulk job created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "{jobId}",
+              "item": [
+                {
+                  "name": "errors",
+                  "item": [
                     {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
+                      "name": "Gainsight Get bulk job errors",
+                      "id": "803d37d8-a058-4fcc-9b2f-ff84c1bd0566",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bulk/jobs/:jobId/errors",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bulk",
+                            "jobs",
+                            ":jobId",
+                            "errors"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3a8a0314-3238-4a38-a847-f809cb05d5fe",
+                              "key": "jobId",
+                              "value": "<string>",
+                              "description": "(Required) Bulk job unique identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve error details for a completed bulk job."
+                      },
+                      "response": [
+                        {
+                          "id": "7a2f9a8c-6bae-4f84-842a-b530776feec6",
+                          "name": "Job errors returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "accessKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/bulk/jobs/:jobId/errors",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "bulk",
+                                "jobs",
+                                ":jobId",
+                                "errors"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"rowNumber\": \"<integer>\",\n      \"errorMessage\": \"<string>\",\n      \"fieldName\": \"<string>\"\n    },\n    {\n      \"rowNumber\": \"<integer>\",\n      \"errorMessage\": \"<string>\",\n      \"fieldName\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T20:29:35.000Z",
+                          "updatedAt": "2026-10-21T20:29:35.000Z",
+                          "uid": "35240-7a2f9a8c-6bae-4f84-842a-b530776feec6"
+                        },
+                        {
+                          "id": "85821099-17d8-49f9-a9a0-c72225067cd6",
+                          "name": "Authentication failed or access key is missing",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "accessKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/bulk/jobs/:jobId/errors",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "bulk",
+                                "jobs",
+                                ":jobId",
+                                "errors"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:35.000Z",
+                          "updatedAt": "2026-10-21T20:29:35.000Z",
+                          "uid": "35240-85821099-17d8-49f9-a9a0-c72225067cd6"
+                        },
+                        {
+                          "id": "e208ded4-7f38-415e-acb7-ba9548302a66",
+                          "name": "The requested resource was not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "accessKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/bulk/jobs/:jobId/errors",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "bulk",
+                                "jobs",
+                                ":jobId",
+                                "errors"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:29:35.000Z",
+                          "updatedAt": "2026-10-21T20:29:35.000Z",
+                          "uid": "35240-e208ded4-7f38-415e-acb7-ba9548302a66"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:29:35.000Z",
+                      "updatedAt": "2026-10-21T20:29:35.000Z",
+                      "uid": "35240-803d37d8-a058-4fcc-9b2f-ff84c1bd0566"
                     }
-                  ]
+                  ],
+                  "id": "b8bac199-a34f-4b97-9ef0-a6a0ee01854f",
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-b8bac199-a34f-4b97-9ef0-a6a0ee01854f"
                 },
+                {
+                  "name": "Gainsight Get bulk job status",
+                  "id": "f7f0b555-fe19-4c07-9543-643da0f92d24",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bulk/jobs/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bulk",
+                        "jobs",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "06fc8fe1-7046-4125-92cd-6aa88a021386",
+                          "key": "jobId",
+                          "value": "<string>",
+                          "description": "(Required) Bulk job unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the status and details of a specific bulk job."
+                  },
+                  "response": [
+                    {
+                      "id": "eb2b4f71-0ae2-481e-a33f-ddd2a41735fe",
+                      "name": "Job details returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bulk/jobs/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bulk",
+                            "jobs",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"jobId\": \"<string>\",\n    \"objectName\": \"<string>\",\n    \"operation\": \"INSERT\",\n    \"status\": \"PENDING\",\n    \"totalRecords\": \"<integer>\",\n    \"processedRecords\": \"<integer>\",\n    \"successCount\": \"<integer>\",\n    \"failureCount\": \"<integer>\",\n    \"fileName\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:29:35.000Z",
+                      "updatedAt": "2026-10-21T20:29:35.000Z",
+                      "uid": "35240-eb2b4f71-0ae2-481e-a33f-ddd2a41735fe"
+                    },
+                    {
+                      "id": "cde6a22b-a334-4c23-94b4-008d238f9c9b",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bulk/jobs/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bulk",
+                            "jobs",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:35.000Z",
+                      "updatedAt": "2026-10-21T20:29:35.000Z",
+                      "uid": "35240-cde6a22b-a334-4c23-94b4-008d238f9c9b"
+                    },
+                    {
+                      "id": "aa834963-b61f-4141-a77f-c65f91fd3c29",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bulk/jobs/:jobId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bulk",
+                            "jobs",
+                            ":jobId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "jobId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:35.000Z",
+                      "updatedAt": "2026-10-21T20:29:35.000Z",
+                      "uid": "35240-aa834963-b61f-4141-a77f-c65f91fd3c29"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-f7f0b555-fe19-4c07-9543-643da0f92d24"
+                }
+              ],
+              "id": "2008f6df-ea9c-443c-a58c-c34ebdcf81b6",
+              "createdAt": "2026-10-21T20:29:35.000Z",
+              "updatedAt": "2026-10-21T20:29:35.000Z",
+              "uid": "35240-2008f6df-ea9c-443c-a58c-c34ebdcf81b6"
+            },
+            {
+              "name": "Gainsight Create a bulk job",
+              "id": "a7a579be-f7ce-4243-a9c3-dd15a04b89b9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "(Required) Target Gainsight object name",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Target Gainsight object name",
                       "key": "objectName",
                       "value": "<string>",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
                       "key": "operation",
-                      "value": "<string>",
+                      "value": "UPDATE",
                       "type": "text"
                     },
                     {
-                      "description": {
-                        "content": "(Required) CSV file containing records to import",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) CSV file containing records to import",
                       "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
+                      "type": "file",
+                      "value": null
                     },
                     {
-                      "description": {
-                        "content": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
-                        "type": "text/plain"
-                      },
+                      "description": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
                       "key": "keyFields",
                       "value": "<string>",
                       "type": "text"
                     }
                   ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"jobId\": \"string\",\n    \"objectName\": \"string\",\n    \"operation\": \"UPSERT\",\n    \"status\": \"IN_PROGRESS\",\n    \"totalRecords\": 5434,\n    \"processedRecords\": 2517,\n    \"successCount\": 84,\n    \"failureCount\": 2040,\n    \"fileName\": \"string\",\n    \"createdDate\": \"1966-08-03T03:08:11.483Z\",\n    \"completedDate\": \"1965-01-14T15:16:02.128Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d858faf4-99e9-465f-a0e1-5c8fed6087cc",
-              "name": "Invalid request body or parameters",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "bulk",
-                    "jobs"
-                  ],
+                  "raw": "{{baseUrl}}/bulk/jobs",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
+                  "path": [
+                    "bulk",
+                    "jobs"
                   ]
                 },
+                "description": "Create a new bulk import job to insert or update records from a CSV file into a Gainsight object. Rate limited to 10 calls per hour and 100 per day."
+              },
+              "response": [
+                {
+                  "id": "fad9ef87-2fb0-4828-a93d-eed06bb5ec99",
+                  "name": "Bulk job created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) Target Gainsight object name",
+                          "key": "objectName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
+                          "key": "operation",
+                          "value": "UPDATE",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) CSV file containing records to import",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
+                          "key": "keyFields",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bulk/jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bulk",
+                        "jobs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"jobId\": \"<string>\",\n    \"objectName\": \"<string>\",\n    \"operation\": \"INSERT\",\n    \"status\": \"PENDING\",\n    \"totalRecords\": \"<integer>\",\n    \"processedRecords\": \"<integer>\",\n    \"successCount\": \"<integer>\",\n    \"failureCount\": \"<integer>\",\n    \"fileName\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-fad9ef87-2fb0-4828-a93d-eed06bb5ec99"
+                },
+                {
+                  "id": "fcfc5d3d-1042-4356-a319-c4d0a437f5c3",
+                  "name": "Invalid request body or parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) Target Gainsight object name",
+                          "key": "objectName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
+                          "key": "operation",
+                          "value": "UPDATE",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) CSV file containing records to import",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
+                          "key": "keyFields",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bulk/jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bulk",
+                        "jobs"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-fcfc5d3d-1042-4356-a319-c4d0a437f5c3"
+                },
+                {
+                  "id": "731114b9-5cf3-471b-b527-335aa1972a62",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) Target Gainsight object name",
+                          "key": "objectName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
+                          "key": "operation",
+                          "value": "UPDATE",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) CSV file containing records to import",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
+                          "key": "keyFields",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bulk/jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bulk",
+                        "jobs"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-731114b9-5cf3-471b-b527-335aa1972a62"
+                },
+                {
+                  "id": "3579ec31-a8c2-4bdf-8613-e85783e916b2",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) Target Gainsight object name",
+                          "key": "objectName",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
+                          "key": "operation",
+                          "value": "UPDATE",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) CSV file containing records to import",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
+                          "key": "keyFields",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bulk/jobs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bulk",
+                        "jobs"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-3579ec31-a8c2-4bdf-8613-e85783e916b2"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:35.000Z",
+              "updatedAt": "2026-10-21T20:29:35.000Z",
+              "uid": "35240-a7a579be-f7ce-4243-a9c3-dd15a04b89b9"
+            },
+            {
+              "name": "Gainsight List bulk jobs",
+              "id": "38816dc3-e93d-469a-ad6a-6f375d2c1607",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    "key": "Accept",
+                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "(Required) Target Gainsight object name",
-                        "type": "text/plain"
-                      },
-                      "key": "objectName",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
-                        "type": "text/plain"
-                      },
-                      "key": "operation",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) CSV file containing records to import",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
-                        "type": "text/plain"
-                      },
-                      "key": "keyFields",
-                      "value": "<string>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d1e44a62-dc42-47c7-b7c1-bd517e249ac3",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "bulk",
-                    "jobs"
-                  ],
+                  "raw": "{{baseUrl}}/bulk/jobs?status=FAILED&limit=25&offset=0",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "(Required) Target Gainsight object name",
-                        "type": "text/plain"
-                      },
-                      "key": "objectName",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
-                        "type": "text/plain"
-                      },
-                      "key": "operation",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) CSV file containing records to import",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
-                        "type": "text/plain"
-                      },
-                      "key": "keyFields",
-                      "value": "<string>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "41579b80-6e05-44f1-bcf2-10544c330903",
-              "name": "Rate limit exceeded",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "bulk",
                     "jobs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "(Required) Target Gainsight object name",
-                        "type": "text/plain"
-                      },
-                      "key": "objectName",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) Bulk operation type (This can only be one of INSERT,UPDATE,UPSERT)",
-                        "type": "text/plain"
-                      },
-                      "key": "operation",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "(Required) CSV file containing records to import",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
-                        "content": "Comma-separated key fields for matching (required for UPDATE and UPSERT)",
-                        "type": "text/plain"
-                      },
-                      "key": "keyFields",
-                      "value": "<string>",
-                      "type": "text"
-                    }
-                  ]
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d499bad2-4452-4eb8-b142-67fdfe825b9e",
-          "name": "Gainsight List bulk jobs",
-          "request": {
-            "name": "Gainsight List bulk jobs",
-            "description": {
-              "content": "Retrieve a list of bulk import jobs.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "bulk",
-                "jobs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Filter by job status"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "25",
-                  "description": "Maximum number of jobs to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Offset for pagination"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "11a90c7d-eab0-43df-9957-cc2cb2245cf2",
-              "name": "Jobs returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
                   ],
                   "query": [
                     {
+                      "description": "Filter by job status",
                       "key": "status",
-                      "value": "<string>"
+                      "value": "FAILED"
                     },
                     {
+                      "description": "Maximum number of jobs to return",
                       "key": "limit",
                       "value": "25"
                     },
                     {
+                      "description": "Offset for pagination",
                       "key": "offset",
                       "value": "0"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                "description": "Retrieve a list of bulk import jobs."
+              },
+              "response": [
+                {
+                  "id": "cc1c71e0-d2f5-49bc-af8c-4a7c32d80c1f",
+                  "name": "Jobs returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bulk/jobs?status=FAILED&limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bulk",
+                        "jobs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by job status",
+                          "key": "status",
+                          "value": "FAILED"
+                        },
+                        {
+                          "description": "Maximum number of jobs to return",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Offset for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"records\": [\n      {\n        \"jobId\": \"string\",\n        \"objectName\": \"string\",\n        \"operation\": \"UPDATE\",\n        \"status\": \"IN_PROGRESS\",\n        \"totalRecords\": 5233,\n        \"processedRecords\": 6063,\n        \"successCount\": 7189,\n        \"failureCount\": 4915,\n        \"fileName\": \"string\",\n        \"createdDate\": \"1977-08-14T03:28:04.564Z\",\n        \"completedDate\": \"2014-07-12T03:59:06.610Z\"\n      },\n      {\n        \"jobId\": \"string\",\n        \"objectName\": \"string\",\n        \"operation\": \"INSERT\",\n        \"status\": \"COMPLETED\",\n        \"totalRecords\": 2879,\n        \"processedRecords\": 1528,\n        \"successCount\": 8647,\n        \"failureCount\": 897,\n        \"fileName\": \"string\",\n        \"createdDate\": \"1969-06-09T11:33:15.935Z\",\n        \"completedDate\": \"1989-10-20T03:00:50.096Z\"\n      }\n    ],\n    \"totalCount\": 7363\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "49d2d2cb-6932-4688-b1b1-adf45171904d",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "25"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"records\": [\n      {\n        \"jobId\": \"<string>\",\n        \"objectName\": \"<string>\",\n        \"operation\": \"UPSERT\",\n        \"status\": \"FAILED\",\n        \"totalRecords\": \"<integer>\",\n        \"processedRecords\": \"<integer>\",\n        \"successCount\": \"<integer>\",\n        \"failureCount\": \"<integer>\",\n        \"fileName\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"completedDate\": \"<dateTime>\"\n      },\n      {\n        \"jobId\": \"<string>\",\n        \"objectName\": \"<string>\",\n        \"operation\": \"UPDATE\",\n        \"status\": \"FAILED\",\n        \"totalRecords\": \"<integer>\",\n        \"processedRecords\": \"<integer>\",\n        \"successCount\": \"<integer>\",\n        \"failureCount\": \"<integer>\",\n        \"fileName\": \"<string>\",\n        \"createdDate\": \"<dateTime>\",\n        \"completedDate\": \"<dateTime>\"\n      }\n    ],\n    \"totalCount\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-cc1c71e0-d2f5-49bc-af8c-4a7c32d80c1f"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "16544eb6-5a0f-4634-a6e3-4acd66395b67",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bulk/jobs?status=FAILED&limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bulk",
+                        "jobs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by job status",
+                          "key": "status",
+                          "value": "FAILED"
+                        },
+                        {
+                          "description": "Maximum number of jobs to return",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Offset for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:35.000Z",
+                  "updatedAt": "2026-10-21T20:29:35.000Z",
+                  "uid": "35240-16544eb6-5a0f-4634-a6e3-4acd66395b67"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:29:35.000Z",
+              "updatedAt": "2026-10-21T20:29:35.000Z",
+              "uid": "35240-38816dc3-e93d-469a-ad6a-6f375d2c1607"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b396da7f-b044-48fe-bca2-5fab50f8223c",
-          "name": "Gainsight Get bulk job status",
-          "request": {
-            "name": "Gainsight Get bulk job status",
-            "description": {
-              "content": "Retrieve the status and details of a specific bulk job.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "bulk",
-                "jobs",
-                ":jobId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "jobId",
-                  "description": "(Required) Bulk job unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "cb54de10-7142-4bbd-9c3c-9df258e33193",
-              "name": "Job details returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs",
-                    ":jobId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "jobId",
-                      "description": "(Required) Bulk job unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"jobId\": \"string\",\n    \"objectName\": \"string\",\n    \"operation\": \"UPSERT\",\n    \"status\": \"IN_PROGRESS\",\n    \"totalRecords\": 5434,\n    \"processedRecords\": 2517,\n    \"successCount\": 84,\n    \"failureCount\": 2040,\n    \"fileName\": \"string\",\n    \"createdDate\": \"1966-08-03T03:08:11.483Z\",\n    \"completedDate\": \"1965-01-14T15:16:02.128Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "578c68a4-d9d4-4601-9686-fecd359d8872",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs",
-                    ":jobId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "jobId",
-                      "description": "(Required) Bulk job unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9619647d-55e8-402c-985c-d6b03b05b7a7",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs",
-                    ":jobId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "jobId",
-                      "description": "(Required) Bulk job unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8fcfee26-ec77-4d9d-9cfb-6ff8801716eb",
-          "name": "Gainsight Get bulk job errors",
-          "request": {
-            "name": "Gainsight Get bulk job errors",
-            "description": {
-              "content": "Retrieve error details for a completed bulk job.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "bulk",
-                "jobs",
-                ":jobId",
-                "errors"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "jobId",
-                  "description": "(Required) Bulk job unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "6a988826-5a42-4f2e-bb75-385d9ade3677",
-              "name": "Job errors returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs",
-                    ":jobId",
-                    "errors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "jobId",
-                      "description": "(Required) Bulk job unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": [\n    {\n      \"rowNumber\": 9240,\n      \"errorMessage\": \"string\",\n      \"fieldName\": \"string\"\n    },\n    {\n      \"rowNumber\": 6455,\n      \"errorMessage\": \"string\",\n      \"fieldName\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8802a7a9-9afb-43f9-b168-06bc1a52b3d3",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs",
-                    ":jobId",
-                    "errors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "jobId",
-                      "description": "(Required) Bulk job unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "282bf109-843c-4107-bfc3-27ba94f0b81c",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "bulk",
-                    "jobs",
-                    ":jobId",
-                    "errors"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "jobId",
-                      "description": "(Required) Bulk job unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "da02a65e-36fa-47ce-a4ab-aa382261e52c",
+          "createdAt": "2026-10-21T20:29:35.000Z",
+          "updatedAt": "2026-10-21T20:29:35.000Z",
+          "uid": "35240-da02a65e-36fa-47ce-a4ab-aa382261e52c"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "65b7fab5-7ba8-48f7-aa0c-41461b51564f",
+      "createdAt": "2026-10-21T20:29:35.000Z",
+      "updatedAt": "2026-10-21T20:29:35.000Z",
+      "uid": "35240-65b7fab5-7ba8-48f7-aa0c-41461b51564f"
     }
   ],
   "auth": {
@@ -1091,25 +894,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ed7a165e-47bf-4efa-b3f6-989be3f5576e",
-    "name": "Gainsight CS Bulk Accounts Jobs API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

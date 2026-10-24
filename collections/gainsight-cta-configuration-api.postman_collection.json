@@ -1,625 +1,537 @@
 {
+  "info": {
+    "_postman_id": "bcd53fc6-5f1a-4095-8e6f-b1aa5982bee2",
+    "name": "Gainsight CS CTA CTA Configuration API",
+    "description": "The Call To Action (CTA) API enables creating and updating CTAs, fetching CTA details, and retrieving CTA configurations through Cockpit REST APIs for managing customer success actions.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:28:43.000Z",
+    "updatedAt": "2026-10-21T20:28:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bcd53fc6-5f1a-4095-8e6f-b1aa5982bee2"
+  },
   "item": [
     {
-      "id": "b438bc2a-438e-4617-8ef5-8fe0715c3c64",
-      "name": "CTA Configuration",
-      "description": {
-        "content": "Retrieve CTA type and reason configurations",
-        "type": "text/plain"
-      },
+      "name": "ctas",
       "item": [
         {
-          "id": "b5494efa-296a-46fa-8c5a-6a0aa39f11c0",
-          "name": "Gainsight Get CTA types",
-          "request": {
-            "name": "Gainsight Get CTA types",
-            "description": {
-              "content": "Retrieve the list of configured CTA types.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "ctas",
-                "config",
-                "types"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "config",
+          "item": [
             {
-              "id": "b71e7892-d2c9-4d49-aa73-dd2b720e2c8c",
-              "name": "CTA types returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+              "name": "types",
+              "item": [
+                {
+                  "name": "Gainsight Get CTA types",
+                  "id": "9f83557d-13be-4520-9185-2ea959dde7b8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ctas/config/types",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ctas",
+                        "config",
+                        "types"
+                      ]
+                    },
+                    "description": "Retrieve the list of configured CTA types."
+                  },
+                  "response": [
+                    {
+                      "id": "40040158-1f55-46fb-aea5-3e95f4ee63a7",
+                      "name": "CTA types returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "types"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"isDefault\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"isDefault\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-40040158-1f55-46fb-aea5-3e95f4ee63a7"
+                    },
+                    {
+                      "id": "817b6598-c516-4a64-9627-3a0db97d48e7",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "types"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-817b6598-c516-4a64-9627-3a0db97d48e7"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:44.000Z",
+                  "updatedAt": "2026-10-21T20:28:44.000Z",
+                  "uid": "35240-9f83557d-13be-4520-9185-2ea959dde7b8"
                 }
               ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isDefault\": true\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isDefault\": false\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "9a503adb-af99-47c7-aaa9-e3eb232fafaa",
+              "createdAt": "2026-10-21T20:28:44.000Z",
+              "updatedAt": "2026-10-21T20:28:44.000Z",
+              "uid": "35240-9a503adb-af99-47c7-aaa9-e3eb232fafaa"
             },
             {
-              "id": "6c579e68-e4db-415d-b639-0427cf7684b8",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "types"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "name": "reasons",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Gainsight Get CTA reasons",
+                  "id": "6e758ed7-7d31-4956-8b10-7aba7f10a593",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ctas/config/reasons?typeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ctas",
+                        "config",
+                        "reasons"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter reasons by CTA type ID",
+                          "key": "typeId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the list of configured CTA reasons."
+                  },
+                  "response": [
+                    {
+                      "id": "35b5e7a1-0d64-4363-acf1-7aaba602457a",
+                      "name": "CTA reasons returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/reasons?typeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "reasons"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter reasons by CTA type ID",
+                              "key": "typeId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"typeId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"typeId\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-35b5e7a1-0d64-4363-acf1-7aaba602457a"
+                    },
+                    {
+                      "id": "1dfe5768-c647-4643-9c1a-9ebda6280182",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/reasons?typeId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "reasons"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter reasons by CTA type ID",
+                              "key": "typeId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-1dfe5768-c647-4643-9c1a-9ebda6280182"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:44.000Z",
+                  "updatedAt": "2026-10-21T20:28:44.000Z",
+                  "uid": "35240-6e758ed7-7d31-4956-8b10-7aba7f10a593"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "98af41e6-c61e-4bcf-b879-4c84abf3e482",
+              "createdAt": "2026-10-21T20:28:44.000Z",
+              "updatedAt": "2026-10-21T20:28:44.000Z",
+              "uid": "35240-98af41e6-c61e-4bcf-b879-4c84abf3e482"
+            },
+            {
+              "name": "priorities",
+              "item": [
+                {
+                  "name": "Gainsight Get CTA priorities",
+                  "id": "f58c506f-07d1-421b-8f10-7f7b050e2698",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ctas/config/priorities",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ctas",
+                        "config",
+                        "priorities"
+                      ]
+                    },
+                    "description": "Retrieve the list of configured CTA priorities."
+                  },
+                  "response": [
+                    {
+                      "id": "e9424ad8-e24e-4de8-8a89-dfe07c34588b",
+                      "name": "CTA priorities returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/priorities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "priorities"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-e9424ad8-e24e-4de8-8a89-dfe07c34588b"
+                    },
+                    {
+                      "id": "e390fdf1-b35a-4062-aa3e-6dc67cf27ec8",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/priorities",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "priorities"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-e390fdf1-b35a-4062-aa3e-6dc67cf27ec8"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:44.000Z",
+                  "updatedAt": "2026-10-21T20:28:44.000Z",
+                  "uid": "35240-f58c506f-07d1-421b-8f10-7f7b050e2698"
+                }
+              ],
+              "id": "47ab5864-5cb0-48f3-bc43-be9c971678b1",
+              "createdAt": "2026-10-21T20:28:44.000Z",
+              "updatedAt": "2026-10-21T20:28:44.000Z",
+              "uid": "35240-47ab5864-5cb0-48f3-bc43-be9c971678b1"
+            },
+            {
+              "name": "statuses",
+              "item": [
+                {
+                  "name": "Gainsight Get CTA statuses",
+                  "id": "fd9e90d9-517f-46cc-b936-031eef27781f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ctas/config/statuses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ctas",
+                        "config",
+                        "statuses"
+                      ]
+                    },
+                    "description": "Retrieve the list of configured CTA statuses."
+                  },
+                  "response": [
+                    {
+                      "id": "82984ac7-e1aa-4daf-9bde-e9aaa74e3a73",
+                      "name": "CTA statuses returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/statuses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "statuses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"isClosed\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"isClosed\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-82984ac7-e1aa-4daf-9bde-e9aaa74e3a73"
+                    },
+                    {
+                      "id": "bd6e331d-48d4-4307-834d-e410ea48eb05",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ctas/config/statuses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ctas",
+                            "config",
+                            "statuses"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:44.000Z",
+                      "updatedAt": "2026-10-21T20:28:44.000Z",
+                      "uid": "35240-bd6e331d-48d4-4307-834d-e410ea48eb05"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:44.000Z",
+                  "updatedAt": "2026-10-21T20:28:44.000Z",
+                  "uid": "35240-fd9e90d9-517f-46cc-b936-031eef27781f"
+                }
+              ],
+              "id": "8f8f7a1a-8db9-4d41-bb94-f6ad5c02ee18",
+              "createdAt": "2026-10-21T20:28:44.000Z",
+              "updatedAt": "2026-10-21T20:28:44.000Z",
+              "uid": "35240-8f8f7a1a-8db9-4d41-bb94-f6ad5c02ee18"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5ac9ca80-3500-49bf-9227-664a50dc372c",
-          "name": "Gainsight Get CTA reasons",
-          "request": {
-            "name": "Gainsight Get CTA reasons",
-            "description": {
-              "content": "Retrieve the list of configured CTA reasons.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "ctas",
-                "config",
-                "reasons"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "typeId",
-                  "value": "<string>",
-                  "description": "Filter reasons by CTA type ID"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "1acb6b6b-586c-446d-bbde-23356e11f87a",
-              "name": "CTA reasons returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "reasons"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "typeId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"typeId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"typeId\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d293176a-60c8-4983-afcb-a5415dab56e7",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "reasons"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "typeId",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f30915e5-573b-4943-b2cc-85b0f1d833b6",
-          "name": "Gainsight Get CTA priorities",
-          "request": {
-            "name": "Gainsight Get CTA priorities",
-            "description": {
-              "content": "Retrieve the list of configured CTA priorities.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "ctas",
-                "config",
-                "priorities"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "2dc4fb96-ba71-4a08-b600-55a30af0662d",
-              "name": "CTA priorities returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "priorities"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"order\": 8299\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"order\": 3232\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "04d177a4-dd3c-405e-9ec4-901aa7873aee",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "priorities"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "319db433-0db2-4ac6-b2ce-94b06cec192a",
-          "name": "Gainsight Get CTA statuses",
-          "request": {
-            "name": "Gainsight Get CTA statuses",
-            "description": {
-              "content": "Retrieve the list of configured CTA statuses.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "ctas",
-                "config",
-                "statuses"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5ece532e-68cc-46e7-9a32-debc64f8dae9",
-              "name": "CTA statuses returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "statuses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isClosed\": true\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isClosed\": true\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "231724e9-ec69-47d9-a56f-855517f307c5",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ctas",
-                    "config",
-                    "statuses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6ce075af-9330-4962-8a9f-daa34f3ce85f",
+          "createdAt": "2026-10-21T20:28:44.000Z",
+          "updatedAt": "2026-10-21T20:28:44.000Z",
+          "uid": "35240-6ce075af-9330-4962-8a9f-daa34f3ce85f"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "db0403ca-0e86-4910-b59d-760713df98e7",
+      "createdAt": "2026-10-21T20:28:44.000Z",
+      "updatedAt": "2026-10-21T20:28:44.000Z",
+      "uid": "35240-db0403ca-0e86-4910-b59d-760713df98e7"
     }
   ],
   "auth": {
@@ -627,25 +539,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8dc65ca2-064b-4d4b-a5a4-714c35d05aac",
-    "name": "Gainsight CS Bulk Accounts CTA Configuration API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

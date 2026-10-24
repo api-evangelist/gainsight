@@ -1,0 +1,487 @@
+{
+  "info": {
+    "_postman_id": "b6063be1-1502-4520-89cd-b179c14aa7f3",
+    "name": "Gainsight PX REST External Segments API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:53.000Z",
+    "updatedAt": "2026-10-21T20:30:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b6063be1-1502-4520-89cd-b179c14aa7f3"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "external_segment",
+          "item": [
+            {
+              "name": "metadata",
+              "item": [
+                {
+                  "name": "createExternalSegment",
+                  "id": "edfbffa0-4712-4911-91df-e5e4ffb5eb6b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/external_segment/metadata?failIfExists=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "external_segment",
+                        "metadata"
+                      ],
+                      "query": [
+                        {
+                          "description": "failIfExists",
+                          "key": "failIfExists",
+                          "value": "false"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "2929b345-f369-45a3-8a1e-79755fdc8864",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/external_segment/metadata?failIfExists=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "external_segment",
+                            "metadata"
+                          ],
+                          "query": [
+                            {
+                              "description": "failIfExists",
+                              "key": "failIfExists",
+                              "value": "false"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:30:54.000Z",
+                      "updatedAt": "2026-10-21T20:30:54.000Z",
+                      "uid": "35240-2929b345-f369-45a3-8a1e-79755fdc8864"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:54.000Z",
+                  "updatedAt": "2026-10-21T20:30:54.000Z",
+                  "uid": "35240-edfbffa0-4712-4911-91df-e5e4ffb5eb6b"
+                },
+                {
+                  "name": "updateExternalSegment",
+                  "id": "fe0fc69d-6563-4a8a-9e7d-1c65aed672cc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/external_segment/metadata",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "external_segment",
+                        "metadata"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "a16e3525-2867-4e52-adfd-d3d657d7a975",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/external_segment/metadata",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "external_segment",
+                            "metadata"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:30:54.000Z",
+                      "updatedAt": "2026-10-21T20:30:54.000Z",
+                      "uid": "35240-a16e3525-2867-4e52-adfd-d3d657d7a975"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:54.000Z",
+                  "updatedAt": "2026-10-21T20:30:54.000Z",
+                  "uid": "35240-fe0fc69d-6563-4a8a-9e7d-1c65aed672cc"
+                }
+              ],
+              "id": "f600c3e7-af72-4a49-880f-da10607e5c51",
+              "createdAt": "2026-10-21T20:30:54.000Z",
+              "updatedAt": "2026-10-21T20:30:54.000Z",
+              "uid": "35240-f600c3e7-af72-4a49-880f-da10607e5c51"
+            },
+            {
+              "name": "update_membership",
+              "item": [
+                {
+                  "name": "Update External Segment membership",
+                  "id": "906d58ec-1412-4d10-b1cf-410f2b19913c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"add\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"identityType\": \"GLOBAL_ID\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/external_segment/update_membership",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "external_segment",
+                        "update_membership"
+                      ]
+                    },
+                    "description": "Updates External Segment membership"
+                  },
+                  "response": [
+                    {
+                      "id": "54fa1715-2f9a-42cc-955c-6455fc1e7499",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"add\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"identityType\": \"GLOBAL_ID\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/external_segment/update_membership",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "external_segment",
+                            "update_membership"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:54.000Z",
+                      "updatedAt": "2026-10-21T20:30:54.000Z",
+                      "uid": "35240-54fa1715-2f9a-42cc-955c-6455fc1e7499"
+                    },
+                    {
+                      "id": "3852480f-778b-49b7-b563-89179bbb59bd",
+                      "name": "Bad request, possible duplicate",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"add\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"identityType\": \"GLOBAL_ID\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/external_segment/update_membership",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "external_segment",
+                            "update_membership"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:54.000Z",
+                      "updatedAt": "2026-10-21T20:30:54.000Z",
+                      "uid": "35240-3852480f-778b-49b7-b563-89179bbb59bd"
+                    },
+                    {
+                      "id": "cf978002-d21a-43b1-8d1e-fc1b0492f907",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"add\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"identityType\": \"GLOBAL_ID\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/external_segment/update_membership",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "external_segment",
+                            "update_membership"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:54.000Z",
+                      "updatedAt": "2026-10-21T20:30:54.000Z",
+                      "uid": "35240-cf978002-d21a-43b1-8d1e-fc1b0492f907"
+                    },
+                    {
+                      "id": "77bae71a-0e98-4466-8ddf-110a83f850ad",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"add\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"remove\": [\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    },\n    {\n      \"identities\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"lastQualificationTime\": \"<string>\",\n      \"segmentId\": \"<string>\"\n    }\n  ],\n  \"identityType\": \"GLOBAL_ID\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/external_segment/update_membership",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "external_segment",
+                            "update_membership"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:54.000Z",
+                      "updatedAt": "2026-10-21T20:30:54.000Z",
+                      "uid": "35240-77bae71a-0e98-4466-8ddf-110a83f850ad"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:54.000Z",
+                  "updatedAt": "2026-10-21T20:30:54.000Z",
+                  "uid": "35240-906d58ec-1412-4d10-b1cf-410f2b19913c"
+                }
+              ],
+              "id": "b279b165-2313-474a-a3de-3d50161df1bb",
+              "createdAt": "2026-10-21T20:30:54.000Z",
+              "updatedAt": "2026-10-21T20:30:54.000Z",
+              "uid": "35240-b279b165-2313-474a-a3de-3d50161df1bb"
+            }
+          ],
+          "id": "1db52302-d2b5-4c38-b2b4-1b6a24a23ffe",
+          "createdAt": "2026-10-21T20:30:54.000Z",
+          "updatedAt": "2026-10-21T20:30:54.000Z",
+          "uid": "35240-1db52302-d2b5-4c38-b2b4-1b6a24a23ffe"
+        }
+      ],
+      "id": "9d7af1ed-75f7-4586-813a-0d2cce72a819",
+      "createdAt": "2026-10-21T20:30:54.000Z",
+      "updatedAt": "2026-10-21T20:30:54.000Z",
+      "uid": "35240-9d7af1ed-75f7-4586-813a-0d2cce72a819"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

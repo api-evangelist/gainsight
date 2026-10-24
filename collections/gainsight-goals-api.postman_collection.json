@@ -1,1009 +1,876 @@
 {
+  "info": {
+    "_postman_id": "07f1456a-db8f-4cf5-90e5-92fc149bb264",
+    "name": "Gainsight CS Customer Goals API",
+    "description": "The Customer Goals API enables external systems to create, update, and fetch customer goals programmatically, including template and metrics management for structured goal tracking.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:30.000Z",
+    "updatedAt": "2026-10-21T20:29:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-07f1456a-db8f-4cf5-90e5-92fc149bb264"
+  },
   "item": [
     {
-      "id": "01b1f061-4bd9-4c91-89dd-d7bfc959fe6d",
-      "name": "Goals",
-      "description": {
-        "content": "Manage customer goals",
-        "type": "text/plain"
-      },
+      "name": "goals",
       "item": [
         {
-          "id": "8a7850da-264a-4ef7-8095-623979b44105",
+          "name": "{goalId}",
+          "item": [
+            {
+              "name": "Gainsight Get a customer goal",
+              "id": "dc5e93d8-306f-4f0c-8ada-7ed0bc88ee41",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/goals/:goalId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "goals",
+                    ":goalId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4ae04fd7-f6e4-4b63-814a-3011ce7da711",
+                      "key": "goalId",
+                      "value": "<string>",
+                      "description": "(Required) Customer goal unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific customer goal by ID."
+              },
+              "response": [
+                {
+                  "id": "a128b9d7-e06f-4245-9485-9c69c2266e2e",
+                  "name": "Goal returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "goalId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"Gsid\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"CompanyId\": \"<string>\",\n    \"CompanyName\": \"<string>\",\n    \"TemplateId\": \"<string>\",\n    \"Status\": \"In Progress\",\n    \"OwnerId\": \"<string>\",\n    \"OwnerName\": \"<string>\",\n    \"TargetDate\": \"<date>\",\n    \"CompletionPercentage\": \"<number>\",\n    \"CreatedDate\": \"<dateTime>\",\n    \"ModifiedDate\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-a128b9d7-e06f-4245-9485-9c69c2266e2e"
+                },
+                {
+                  "id": "663d9cb7-156d-446c-b48c-06d28d8b926e",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "goalId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-663d9cb7-156d-446c-b48c-06d28d8b926e"
+                },
+                {
+                  "id": "b2bf63f6-cd18-49e8-9e45-86fc2c51018f",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "goalId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-b2bf63f6-cd18-49e8-9e45-86fc2c51018f"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:30.000Z",
+              "updatedAt": "2026-10-21T20:29:30.000Z",
+              "uid": "35240-dc5e93d8-306f-4f0c-8ada-7ed0bc88ee41"
+            },
+            {
+              "name": "Gainsight Update a customer goal",
+              "id": "818b41f8-e542-4b5b-89a2-ceca0e7d58db",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/goals/:goalId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "goals",
+                    ":goalId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2d7e8e91-3ae7-4f5c-bcfc-026c47b73e69",
+                      "key": "goalId",
+                      "value": "<string>",
+                      "description": "(Required) Customer goal unique identifier"
+                    }
+                  ]
+                },
+                "description": "Update an existing customer goal."
+              },
+              "response": [
+                {
+                  "id": "821bcc20-8231-4c3b-9c3d-279e836d328d",
+                  "name": "Goal updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "goalId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"Gsid\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"CompanyId\": \"<string>\",\n    \"CompanyName\": \"<string>\",\n    \"TemplateId\": \"<string>\",\n    \"Status\": \"In Progress\",\n    \"OwnerId\": \"<string>\",\n    \"OwnerName\": \"<string>\",\n    \"TargetDate\": \"<date>\",\n    \"CompletionPercentage\": \"<number>\",\n    \"CreatedDate\": \"<dateTime>\",\n    \"ModifiedDate\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-821bcc20-8231-4c3b-9c3d-279e836d328d"
+                },
+                {
+                  "id": "0b7ef76b-c94e-466d-b6d8-b632a31900f7",
+                  "name": "Invalid request body or parameters",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "goalId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-0b7ef76b-c94e-466d-b6d8-b632a31900f7"
+                },
+                {
+                  "id": "b2959647-e379-4702-bd16-8c3083d8838c",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "goalId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-b2959647-e379-4702-bd16-8c3083d8838c"
+                },
+                {
+                  "id": "2ede36b1-14cc-4cee-bcee-77d34531602d",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "goalId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-2ede36b1-14cc-4cee-bcee-77d34531602d"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:30.000Z",
+              "updatedAt": "2026-10-21T20:29:30.000Z",
+              "uid": "35240-818b41f8-e542-4b5b-89a2-ceca0e7d58db"
+            }
+          ],
+          "id": "66de3bd0-3430-4e12-9fe8-134a9bdf22e4",
+          "createdAt": "2026-10-21T20:29:30.000Z",
+          "updatedAt": "2026-10-21T20:29:30.000Z",
+          "uid": "35240-66de3bd0-3430-4e12-9fe8-134a9bdf22e4"
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "Gainsight Search customer goals",
+              "id": "d060c853-5aba-45fe-9f93-695f4ae9b35c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/goals/search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "goals",
+                    "search"
+                  ]
+                },
+                "description": "Search for customer goals using filter criteria."
+              },
+              "response": [
+                {
+                  "id": "60b7b614-5b1d-4442-9cbc-dea48ccff6a1",
+                  "name": "Goals returned",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        "search"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"<string>\",\n        \"Name\": \"<string>\",\n        \"Description\": \"<string>\",\n        \"CompanyId\": \"<string>\",\n        \"CompanyName\": \"<string>\",\n        \"TemplateId\": \"<string>\",\n        \"Status\": \"Not Started\",\n        \"OwnerId\": \"<string>\",\n        \"OwnerName\": \"<string>\",\n        \"TargetDate\": \"<date>\",\n        \"CompletionPercentage\": \"<number>\",\n        \"CreatedDate\": \"<dateTime>\",\n        \"ModifiedDate\": \"<dateTime>\"\n      },\n      {\n        \"Gsid\": \"<string>\",\n        \"Name\": \"<string>\",\n        \"Description\": \"<string>\",\n        \"CompanyId\": \"<string>\",\n        \"CompanyName\": \"<string>\",\n        \"TemplateId\": \"<string>\",\n        \"Status\": \"Not Started\",\n        \"OwnerId\": \"<string>\",\n        \"OwnerName\": \"<string>\",\n        \"TargetDate\": \"<date>\",\n        \"CompletionPercentage\": \"<number>\",\n        \"CreatedDate\": \"<dateTime>\",\n        \"ModifiedDate\": \"<dateTime>\"\n      }\n    ],\n    \"totalCount\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-60b7b614-5b1d-4442-9cbc-dea48ccff6a1"
+                },
+                {
+                  "id": "ea22fef7-65d9-4850-a33c-0ff36d4d9428",
+                  "name": "Invalid request body or parameters",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        "search"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-ea22fef7-65d9-4850-a33c-0ff36d4d9428"
+                },
+                {
+                  "id": "55d79c5e-8584-4afd-a0f8-3b25aa87305c",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": {},\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/search",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        "search"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:29:30.000Z",
+                  "updatedAt": "2026-10-21T20:29:30.000Z",
+                  "uid": "35240-55d79c5e-8584-4afd-a0f8-3b25aa87305c"
+                }
+              ],
+              "createdAt": "2026-10-21T20:29:30.000Z",
+              "updatedAt": "2026-10-21T20:29:30.000Z",
+              "uid": "35240-d060c853-5aba-45fe-9f93-695f4ae9b35c"
+            }
+          ],
+          "id": "1775bbd1-fd82-4811-b7e9-7161c0de77ae",
+          "createdAt": "2026-10-21T20:29:30.000Z",
+          "updatedAt": "2026-10-21T20:29:30.000Z",
+          "uid": "35240-1775bbd1-fd82-4811-b7e9-7161c0de77ae"
+        },
+        {
           "name": "Gainsight Create a customer goal",
+          "id": "76d1bffa-42e6-47df-b6a2-584ffbe8ac8c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight Create a customer goal",
-            "description": {
-              "content": "Create a new customer goal record.",
-              "type": "text/plain"
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
             },
             "url": {
+              "raw": "{{baseUrl}}/goals",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "goals"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
               ]
             },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
+            "description": "Create a new customer goal record."
           },
           "response": [
             {
-              "id": "5743d070-9d63-4535-b3e0-c2e796afc152",
+              "id": "8805a56d-2063-47fc-ba73-cdcff0973160",
               "name": "Goal created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "accessKey",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/goals",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "goals"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"TemplateId\": \"string\",\n    \"Status\": \"Missed\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"TargetDate\": \"1982-03-22\",\n    \"CompletionPercentage\": 5165.140360391956,\n    \"CreatedDate\": \"1986-01-08T17:41:15.925Z\",\n    \"ModifiedDate\": \"2006-05-09T13:52:21.246Z\"\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"Gsid\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"CompanyId\": \"<string>\",\n    \"CompanyName\": \"<string>\",\n    \"TemplateId\": \"<string>\",\n    \"Status\": \"In Progress\",\n    \"OwnerId\": \"<string>\",\n    \"OwnerName\": \"<string>\",\n    \"TargetDate\": \"<date>\",\n    \"CompletionPercentage\": \"<number>\",\n    \"CreatedDate\": \"<dateTime>\",\n    \"ModifiedDate\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-10-21T20:29:30.000Z",
+              "updatedAt": "2026-10-21T20:29:30.000Z",
+              "uid": "35240-8805a56d-2063-47fc-ba73-cdcff0973160"
             },
             {
-              "id": "9799200d-d10b-49c8-857c-70343d76bf1b",
+              "id": "893f9298-5e9a-40fc-8799-32c37d18ac89",
               "name": "Invalid request body or parameters",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "accessKey",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/goals",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "goals"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:30.000Z",
+              "updatedAt": "2026-10-21T20:29:30.000Z",
+              "uid": "35240-893f9298-5e9a-40fc-8799-32c37d18ac89"
             },
             {
-              "id": "018d01d7-bf2c-4143-a5f6-03ae236db599",
+              "id": "4711b209-f1b4-4c64-8652-a8f35d07dab0",
               "name": "Authentication failed or access key is missing",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "accessKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"Achieved\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/goals",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "goals"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:30.000Z",
+              "updatedAt": "2026-10-21T20:29:30.000Z",
+              "uid": "35240-4711b209-f1b4-4c64-8652-a8f35d07dab0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "736c1704-2ec4-4e52-bac5-8ebaeac9dba2",
-          "name": "Gainsight Get a customer goal",
-          "request": {
-            "name": "Gainsight Get a customer goal",
-            "description": {
-              "content": "Retrieve a specific customer goal by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "goals",
-                ":goalId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "goalId",
-                  "description": "(Required) Customer goal unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "fec4c377-f927-4255-bddf-5c96dfea881f",
-              "name": "Goal returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"TemplateId\": \"string\",\n    \"Status\": \"Missed\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"TargetDate\": \"1982-03-22\",\n    \"CompletionPercentage\": 5165.140360391956,\n    \"CreatedDate\": \"1986-01-08T17:41:15.925Z\",\n    \"ModifiedDate\": \"2006-05-09T13:52:21.246Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7e59e6dd-713c-4ad4-9075-9c6a7a6df6a4",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b7a3f396-15aa-4589-b83d-348afedb37fa",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f5ec8419-6b2b-4919-842d-783540347a73",
-          "name": "Gainsight Update a customer goal",
-          "request": {
-            "name": "Gainsight Update a customer goal",
-            "description": {
-              "content": "Update an existing customer goal.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "goals",
-                ":goalId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "goalId",
-                  "description": "(Required) Customer goal unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "324e215f-1d21-4798-ab95-f03107e206c5",
-              "name": "Goal updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"CompanyId\": \"string\",\n    \"CompanyName\": \"string\",\n    \"TemplateId\": \"string\",\n    \"Status\": \"Missed\",\n    \"OwnerId\": \"string\",\n    \"OwnerName\": \"string\",\n    \"TargetDate\": \"1982-03-22\",\n    \"CompletionPercentage\": 5165.140360391956,\n    \"CreatedDate\": \"1986-01-08T17:41:15.925Z\",\n    \"ModifiedDate\": \"2006-05-09T13:52:21.246Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9ca2ce16-c8db-412d-8738-6e61d9ddef4c",
-              "name": "Invalid request body or parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2777cf00-bf9e-4a68-95aa-066ab6b137e3",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "813b4ac4-38ff-46da-8002-28f2325b1683",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"CompanyId\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"TemplateId\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"TargetDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "868e9fd2-71e4-4475-ae1a-01cdfe68fc19",
-          "name": "Gainsight Search customer goals",
-          "request": {
-            "name": "Gainsight Search customer goals",
-            "description": {
-              "content": "Search for customer goals using filter criteria.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "goals",
-                "search"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "70855091-2ceb-4832-b038-744eaea48615",
-              "name": "Goals returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    "search"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": {\n    \"records\": [\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"TemplateId\": \"string\",\n        \"Status\": \"Achieved\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"TargetDate\": \"1952-01-12\",\n        \"CompletionPercentage\": 9476.389394502252,\n        \"CreatedDate\": \"1994-02-10T09:35:37.458Z\",\n        \"ModifiedDate\": \"1994-11-25T03:02:18.396Z\"\n      },\n      {\n        \"Gsid\": \"string\",\n        \"Name\": \"string\",\n        \"Description\": \"string\",\n        \"CompanyId\": \"string\",\n        \"CompanyName\": \"string\",\n        \"TemplateId\": \"string\",\n        \"Status\": \"In Progress\",\n        \"OwnerId\": \"string\",\n        \"OwnerName\": \"string\",\n        \"TargetDate\": \"1965-07-22\",\n        \"CompletionPercentage\": 6080.405960289611,\n        \"CreatedDate\": \"2004-11-11T04:19:14.197Z\",\n        \"ModifiedDate\": \"1994-12-29T09:50:18.368Z\"\n      }\n    ],\n    \"totalCount\": 4375\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b08fef02-66ee-4aef-9dea-33c83223a0e4",
-              "name": "Invalid request body or parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    "search"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f8d000ae-8c6d-4db6-b550-92e18df9fd4f",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    "search"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"select\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"where\": {\n    \"conditions\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"\",\n        \"operator\": \"<string>\"\n      }\n    ],\n    \"expression\": \"<string>\"\n  },\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:29:30.000Z",
+          "updatedAt": "2026-10-21T20:29:30.000Z",
+          "uid": "35240-76d1bffa-42e6-47df-b6a2-584ffbe8ac8c"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "4072f391-f7cc-465c-a86f-594b512cb508",
+      "createdAt": "2026-10-21T20:29:30.000Z",
+      "updatedAt": "2026-10-21T20:29:30.000Z",
+      "uid": "35240-4072f391-f7cc-465c-a86f-594b512cb508"
     }
   ],
   "auth": {
@@ -1011,25 +878,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "1a99792a-3d07-45f2-a18d-54a813cebf95",
-    "name": "Gainsight CS Bulk Accounts Goals API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

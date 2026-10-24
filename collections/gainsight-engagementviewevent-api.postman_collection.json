@@ -1,0 +1,321 @@
+{
+  "info": {
+    "_postman_id": "ebaf9e2c-69d2-4797-95d3-56cd9c316dba",
+    "name": "Gainsight PX REST Engagement View Event API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:48.000Z",
+    "updatedAt": "2026-10-21T20:30:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ebaf9e2c-69d2-4797-95d3-56cd9c316dba"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "events",
+          "item": [
+            {
+              "name": "engagementView",
+              "item": [
+                {
+                  "name": "Get Engagement View events",
+                  "id": "f6d2ab99-9769-4484-8ca3-f94962e7708d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/events/engagementView?filter=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "events",
+                        "engagementView"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort fields",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves Engagement View events. Supports filtering, sorting and paging.\n### Filtering\nThe filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}\nFilter terms within a single filter parameter are joined by a logical AND.\nSeparate filter parameters are joined by a logical OR.\n#### Supported filter fields\n| Field |\n| ----- |\n| identifyId |\n| accountId |\n| date |\n| contentType |\n| carouselState |\n| guideState |\n| surveyState |\n\n#### Operators\n| Operator | Meaning |\n| ----- | -------- |\n| == | Exact match |\n| != | Not equal |\n| | Greater than |\n| >= | Greater than or equal |\n| ~ | Matches string, supports wildcard characters * and ? |\n| !~ | Not like, supports wildcard characters * and ? |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/engagementView?filter=identifyId==ABC123 | Engagement View event matches for user with identifyId of 'ABC123'. |\n\n### Sorting\nThe sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.\n#### Supported sort fields\n| Field |\n| ----- |\n| accountId |\n| date |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/engagementView?sort=-date | Matches sorted by date descending. |"
+                  },
+                  "response": [
+                    {
+                      "id": "6005bbd0-abca-4600-a9e7-eb04121ee44f",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/engagementView?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "engagementView"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"results\": [\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"USER\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"engagementId\": \"<string>\",\n      \"engagementTrackType\": \"ENGAGEMENT_CLICK\",\n      \"contentId\": \"<string>\",\n      \"contentType\": \"IN_APP_SURVEY_RATING\",\n      \"executionDate\": \"<long>\",\n      \"executionId\": \"<string>\",\n      \"viewEventId\": \"<string>\",\n      \"carouselState\": \"COMPLETED\",\n      \"slideId\": \"<string>\",\n      \"sequenceNumber\": \"<long>\",\n      \"linkUrl\": \"<string>\",\n      \"guideState\": \"COMPLETED\",\n      \"stepId\": \"<string>\",\n      \"surveyState\": \"COMPLETED\",\n      \"contactMeAllowed\": \"<boolean>\",\n      \"score\": \"<integer>\",\n      \"comment\": \"<string>\",\n      \"questionType\": \"<string>\",\n      \"selectionIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"path\": \"<string>\"\n    },\n    {\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"VISITOR\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"engagementId\": \"<string>\",\n      \"engagementTrackType\": \"ENGAGEMENT_VIEW\",\n      \"contentId\": \"<string>\",\n      \"contentType\": \"IN_APP_DIALOG\",\n      \"executionDate\": \"<long>\",\n      \"executionId\": \"<string>\",\n      \"viewEventId\": \"<string>\",\n      \"carouselState\": \"COMPLETED\",\n      \"slideId\": \"<string>\",\n      \"sequenceNumber\": \"<long>\",\n      \"linkUrl\": \"<string>\",\n      \"guideState\": \"VIEWED\",\n      \"stepId\": \"<string>\",\n      \"surveyState\": \"COMPLETED\",\n      \"contactMeAllowed\": \"<boolean>\",\n      \"score\": \"<integer>\",\n      \"comment\": \"<string>\",\n      \"questionType\": \"<string>\",\n      \"selectionIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"path\": \"<string>\"\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:30:49.000Z",
+                      "updatedAt": "2026-10-21T20:30:49.000Z",
+                      "uid": "35240-6005bbd0-abca-4600-a9e7-eb04121ee44f"
+                    },
+                    {
+                      "id": "3bb83241-1bb8-44e2-984e-ee65f41ac14c",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/engagementView?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "engagementView"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:49.000Z",
+                      "updatedAt": "2026-10-21T20:30:49.000Z",
+                      "uid": "35240-3bb83241-1bb8-44e2-984e-ee65f41ac14c"
+                    },
+                    {
+                      "id": "163f74c1-b55b-47ab-9d3b-da2b0fcf4889",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/engagementView?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "engagementView"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:49.000Z",
+                      "updatedAt": "2026-10-21T20:30:49.000Z",
+                      "uid": "35240-163f74c1-b55b-47ab-9d3b-da2b0fcf4889"
+                    },
+                    {
+                      "id": "be0beabc-0bf0-4818-abe4-1c13e40230bc",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/engagementView?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "engagementView"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:49.000Z",
+                      "updatedAt": "2026-10-21T20:30:49.000Z",
+                      "uid": "35240-be0beabc-0bf0-4818-abe4-1c13e40230bc"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:49.000Z",
+                  "updatedAt": "2026-10-21T20:30:49.000Z",
+                  "uid": "35240-f6d2ab99-9769-4484-8ca3-f94962e7708d"
+                }
+              ],
+              "id": "4a5375c4-c353-4db5-b584-a6f529625afd",
+              "createdAt": "2026-10-21T20:30:49.000Z",
+              "updatedAt": "2026-10-21T20:30:49.000Z",
+              "uid": "35240-4a5375c4-c353-4db5-b584-a6f529625afd"
+            }
+          ],
+          "id": "46e6e122-4cd7-47e5-bb8b-9c12ea5a9bc2",
+          "createdAt": "2026-10-21T20:30:49.000Z",
+          "updatedAt": "2026-10-21T20:30:49.000Z",
+          "uid": "35240-46e6e122-4cd7-47e5-bb8b-9c12ea5a9bc2"
+        }
+      ],
+      "id": "26828376-28ab-4468-b83b-ad6897e3c3a0",
+      "createdAt": "2026-10-21T20:30:49.000Z",
+      "updatedAt": "2026-10-21T20:30:49.000Z",
+      "uid": "35240-26828376-28ab-4468-b83b-ad6897e3c3a0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

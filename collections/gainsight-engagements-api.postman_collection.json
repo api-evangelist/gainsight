@@ -1,201 +1,165 @@
 {
+  "info": {
+    "_postman_id": "46ed9288-f1d3-46f2-91a1-706fd6d48153",
+    "name": "Gainsight PX Engagements API",
+    "description": "Product Experience (PX) API for tracking product usage, user behavior, and in-app engagement analytics. Powered by the Aptrinsic platform.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:12.000Z",
+    "updatedAt": "2026-10-21T20:29:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-46ed9288-f1d3-46f2-91a1-706fd6d48153"
+  },
   "item": [
     {
-      "id": "6b85ef2c-cecd-47ee-aa99-bab82bb9c989",
-      "name": "Engagements",
-      "description": {
-        "content": "Manage in-app engagements",
-        "type": "text/plain"
-      },
+      "name": "engagements",
       "item": [
         {
-          "id": "056f7159-aba6-4ab1-812b-b5bdbad24088",
           "name": "Gainsight List engagements",
+          "id": "fabb1403-c8c8-4c70-b404-c4ae6a5d8ec2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight List engagements",
-            "description": {
-              "content": "Retrieve a list of in-app engagements.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "engagements"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "pageSize",
-                  "value": "20",
-                  "description": "Number of results per page"
-                },
-                {
-                  "disabled": false,
-                  "key": "scrollId",
-                  "value": "<string>",
-                  "description": "Scroll ID for cursor-based pagination"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/engagements?pageSize=20&scrollId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "engagements"
+              ],
+              "query": [
+                {
+                  "description": "Number of results per page",
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "description": "Scroll ID for cursor-based pagination",
+                  "key": "scrollId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve a list of in-app engagements."
           },
           "response": [
             {
-              "id": "bd0bf29f-f767-45bf-aee9-0cca07f410a2",
+              "id": "2b93f6a5-180f-431e-9b17-885dc7b01cd2",
               "name": "Engagements retrieved",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "engagements"
-                  ],
+                  "raw": "{{baseUrl}}/engagements?pageSize=20&scrollId=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "engagements"
+                  ],
                   "query": [
                     {
+                      "description": "Number of results per page",
                       "key": "pageSize",
                       "value": "20"
                     },
                     {
+                      "description": "Scroll ID for cursor-based pagination",
                       "key": "scrollId",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"Dialog\",\n      \"state\": \"STAGED\",\n      \"createdDate\": 3072\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"Dialog\",\n      \"state\": \"STAGED\",\n      \"createdDate\": 3955\n    }\n  ],\n  \"scrollId\": \"string\",\n  \"totalHits\": 795\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"Tooltip\",\n      \"state\": \"LIVE\",\n      \"createdDate\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"Dialog\",\n      \"state\": \"LIVE\",\n      \"createdDate\": \"<long>\"\n    }\n  ],\n  \"scrollId\": \"<string>\",\n  \"totalHits\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:29:13.000Z",
+              "updatedAt": "2026-10-21T20:29:13.000Z",
+              "uid": "35240-2b93f6a5-180f-431e-9b17-885dc7b01cd2"
             },
             {
-              "id": "4e2c6051-83ee-48ef-9f89-5639813a5afd",
+              "id": "a614a8b4-13e1-4b81-a3b7-968ce3386bc9",
               "name": "Authentication failed or API key is missing",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "engagements"
-                  ],
+                  "raw": "{{baseUrl}}/engagements?pageSize=20&scrollId=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "engagements"
+                  ],
                   "query": [
                     {
+                      "description": "Number of results per page",
                       "key": "pageSize",
                       "value": "20"
                     },
                     {
+                      "description": "Scroll ID for cursor-based pagination",
                       "key": "scrollId",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:29:13.000Z",
+              "updatedAt": "2026-10-21T20:29:13.000Z",
+              "uid": "35240-a614a8b4-13e1-4b81-a3b7-968ce3386bc9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:29:13.000Z",
+          "updatedAt": "2026-10-21T20:29:13.000Z",
+          "uid": "35240-fabb1403-c8c8-4c70-b404-c4ae6a5d8ec2"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "ca2e3778-a1cd-4baa-9e84-527ebc7c70c4",
+      "createdAt": "2026-10-21T20:29:13.000Z",
+      "updatedAt": "2026-10-21T20:29:13.000Z",
+      "uid": "35240-ca2e3778-a1cd-4baa-9e84-527ebc7c70c4"
     }
   ],
   "auth": {
@@ -203,25 +167,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "X-APTRINSIC-API-KEY",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "e6d2812f-6835-4141-9ac1-dfa9ffdd70e8",
-    "name": "Gainsight CS Bulk Accounts Engagements API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/v1"
     }
-  }
+  ]
 }

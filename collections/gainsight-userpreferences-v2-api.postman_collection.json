@@ -1,0 +1,1297 @@
+{
+  "info": {
+    "_postman_id": "52b6f86a-4271-4530-8fca-c08c09102abb",
+    "name": "Gainsight PX REST UserPreferences V2 API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:31:39.000Z",
+    "updatedAt": "2026-10-21T20:31:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-52b6f86a-4271-4530-8fca-c08c09102abb"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "preferences",
+              "item": [
+                {
+                  "name": "{identifyId}",
+                  "item": [
+                    {
+                      "name": "Get user preferences",
+                      "id": "158fed09-46be-416f-af4a-f148b9572baf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences",
+                            ":identifyId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d0878682-0ceb-40f0-8a92-0b9f8e2380cd",
+                              "key": "identifyId",
+                              "value": "<string>",
+                              "description": "(Required) User identify id"
+                            }
+                          ]
+                        },
+                        "description": "If the field is not set - return null."
+                      },
+                      "response": [
+                        {
+                          "id": "92807b62-bd5a-450d-a2b3-f481459e62fa",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-92807b62-bd5a-450d-a2b3-f481459e62fa"
+                        },
+                        {
+                          "id": "d827827d-554d-48e3-9c53-09d7982bff2d",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-d827827d-554d-48e3-9c53-09d7982bff2d"
+                        },
+                        {
+                          "id": "6e1a681d-e2ed-4797-9e6a-036c0b98b178",
+                          "name": "Unauthorized or bad API Key",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-6e1a681d-e2ed-4797-9e6a-036c0b98b178"
+                        },
+                        {
+                          "id": "e7de24a4-acdb-49d4-8878-e0b9833bad4e",
+                          "name": "Access denied",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-e7de24a4-acdb-49d4-8878-e0b9833bad4e"
+                        },
+                        {
+                          "id": "fbbb4b0f-a061-4dd6-9898-93d1ca4d7178",
+                          "name": "User not found by id",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-fbbb4b0f-a061-4dd6-9898-93d1ca4d7178"
+                        },
+                        {
+                          "id": "616132f4-ade0-4ea4-991b-31040a55a0a4",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-616132f4-ade0-4ea4-991b-31040a55a0a4"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-158fed09-46be-416f-af4a-f148b9572baf"
+                    },
+                    {
+                      "name": "Update user preferences, this version of API can take 'trackEmailAnalytics'\u2026",
+                      "id": "e65effd9-d615-4850-af5c-a870dd06ff5c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences",
+                            ":identifyId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "db92ee04-ac9e-4d7e-89f5-dbc878ae4b78",
+                              "key": "identifyId",
+                              "value": "<string>",
+                              "description": "(Required) User identify id"
+                            }
+                          ]
+                        },
+                        "description": "The fields are optional so it\u2019s possible to provide only those that need to be updated.\n\nIf the user had preferences - override only the provided fields.\n\nValid field values: true, false, null.\n\nNote: null value won\u2019t override any other."
+                      },
+                      "response": [
+                        {
+                          "id": "37dfdf9d-9a5d-4e16-9f71-d79a5eb46a02",
+                          "name": "Updated",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-37dfdf9d-9a5d-4e16-9f71-d79a5eb46a02"
+                        },
+                        {
+                          "id": "77447f9e-3b76-47c8-8257-635f3bc068b6",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-77447f9e-3b76-47c8-8257-635f3bc068b6"
+                        },
+                        {
+                          "id": "072fd7bd-42a7-47ed-96b8-d1eb6e6a8b43",
+                          "name": "Unauthorized or bad API Key",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-072fd7bd-42a7-47ed-96b8-d1eb6e6a8b43"
+                        },
+                        {
+                          "id": "0e94c9f7-c75d-436a-8cec-18af1880d58c",
+                          "name": "Access denied",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-0e94c9f7-c75d-436a-8cec-18af1880d58c"
+                        },
+                        {
+                          "id": "5ddd8f15-e7c2-410f-9cbd-ab050038cfda",
+                          "name": "User not found by id",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-5ddd8f15-e7c2-410f-9cbd-ab050038cfda"
+                        },
+                        {
+                          "id": "557772f1-b26c-4e74-a316-cdeb198f2f32",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/user/preferences/:identifyId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "user",
+                                "preferences",
+                                ":identifyId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "identifyId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:40.000Z",
+                          "updatedAt": "2026-10-21T20:31:40.000Z",
+                          "uid": "35240-557772f1-b26c-4e74-a316-cdeb198f2f32"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-e65effd9-d615-4850-af5c-a870dd06ff5c"
+                    }
+                  ],
+                  "id": "623f9e8f-384d-4e45-998b-d5c47c237eb8",
+                  "createdAt": "2026-10-21T20:31:39.000Z",
+                  "updatedAt": "2026-10-21T20:31:39.000Z",
+                  "uid": "35240-623f9e8f-384d-4e45-998b-d5c47c237eb8"
+                },
+                {
+                  "name": "Get user preferences",
+                  "id": "ed6a1ab7-0f77-47c2-ab92-a726ed88707f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"identifyId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/user/preferences",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "user",
+                        "preferences"
+                      ]
+                    },
+                    "description": "If the field is not set - return null."
+                  },
+                  "response": [
+                    {
+                      "id": "8381ce53-2f9f-4788-869a-cfc8a1f620b4",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-8381ce53-2f9f-4788-869a-cfc8a1f620b4"
+                    },
+                    {
+                      "id": "26ef82d4-c7a5-4bc9-93ad-011e111bc5f7",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-26ef82d4-c7a5-4bc9-93ad-011e111bc5f7"
+                    },
+                    {
+                      "id": "8356141b-7085-4380-8ee5-ee033eba7836",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-8356141b-7085-4380-8ee5-ee033eba7836"
+                    },
+                    {
+                      "id": "87be6868-7645-4e4b-821a-b2f3a7da27f8",
+                      "name": "Access denied",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-87be6868-7645-4e4b-821a-b2f3a7da27f8"
+                    },
+                    {
+                      "id": "3d474087-24e3-4ff8-845b-87dd36057b54",
+                      "name": "User not found by id",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-3d474087-24e3-4ff8-845b-87dd36057b54"
+                    },
+                    {
+                      "id": "bafbcbd6-dbb9-4f5b-bbb5-ea8cdda799aa",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-bafbcbd6-dbb9-4f5b-bbb5-ea8cdda799aa"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:31:40.000Z",
+                  "updatedAt": "2026-10-21T20:31:40.000Z",
+                  "uid": "35240-ed6a1ab7-0f77-47c2-ab92-a726ed88707f"
+                },
+                {
+                  "name": "Update user preferences, this version of API can take 'trackEmailAnalytics' and\u2026",
+                  "id": "2dfc296d-59cb-4f59-8d42-a5b96cc8024c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"identifyId\": \"<string>\",\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/user/preferences",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "user",
+                        "preferences"
+                      ]
+                    },
+                    "description": "The fields are optional so it\u2019s possible to provide only those that need to be updated.\n\nIf the user had preferences - override only the provided fields.\n\nValid field values: true, false, null.\n\nNote: null value won\u2019t override any other."
+                  },
+                  "response": [
+                    {
+                      "id": "5a6791f3-9b3d-44ab-bec2-0b0ce028f1f6",
+                      "name": "Updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\",\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-5a6791f3-9b3d-44ab-bec2-0b0ce028f1f6"
+                    },
+                    {
+                      "id": "fccc7238-a890-4f1b-b67e-d75eb7a42349",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\",\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-fccc7238-a890-4f1b-b67e-d75eb7a42349"
+                    },
+                    {
+                      "id": "545a3825-ec55-4002-bf69-6db89f85a174",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\",\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-545a3825-ec55-4002-bf69-6db89f85a174"
+                    },
+                    {
+                      "id": "fa136edb-36c3-4e62-85d9-63d7749ba184",
+                      "name": "Access denied",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\",\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-fa136edb-36c3-4e62-85d9-63d7749ba184"
+                    },
+                    {
+                      "id": "2db1de01-031f-4467-8ebc-884c36d88fa5",
+                      "name": "User not found by id",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\",\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-2db1de01-031f-4467-8ebc-884c36d88fa5"
+                    },
+                    {
+                      "id": "79173bef-f866-4c67-8a89-ba60b31931d5",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"identifyId\": \"<string>\",\n  \"guidedTours\": \"<boolean>\",\n  \"onboardingBot\": \"<boolean>\",\n  \"productUpdates\": \"<boolean>\",\n  \"surveys\": \"<boolean>\",\n  \"trackEmailAnalytics\": \"<boolean>\",\n  \"trackUsage\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/user/preferences",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "user",
+                            "preferences"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:40.000Z",
+                      "updatedAt": "2026-10-21T20:31:40.000Z",
+                      "uid": "35240-79173bef-f866-4c67-8a89-ba60b31931d5"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:31:40.000Z",
+                  "updatedAt": "2026-10-21T20:31:40.000Z",
+                  "uid": "35240-2dfc296d-59cb-4f59-8d42-a5b96cc8024c"
+                }
+              ],
+              "id": "2797cc3d-a393-46bb-bbbe-09cdf332ebd1",
+              "createdAt": "2026-10-21T20:31:39.000Z",
+              "updatedAt": "2026-10-21T20:31:39.000Z",
+              "uid": "35240-2797cc3d-a393-46bb-bbbe-09cdf332ebd1"
+            }
+          ],
+          "id": "204a45fa-d390-4401-93e4-ebb5ada129f1",
+          "createdAt": "2026-10-21T20:31:39.000Z",
+          "updatedAt": "2026-10-21T20:31:39.000Z",
+          "uid": "35240-204a45fa-d390-4401-93e4-ebb5ada129f1"
+        }
+      ],
+      "id": "40e38f4d-1811-420f-a8f0-006cfad8e764",
+      "createdAt": "2026-10-21T20:31:39.000Z",
+      "updatedAt": "2026-10-21T20:31:39.000Z",
+      "uid": "35240-40e38f4d-1811-420f-a8f0-006cfad8e764"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

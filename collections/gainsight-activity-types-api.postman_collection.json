@@ -1,173 +1,141 @@
 {
+  "info": {
+    "_postman_id": "c8cf23e5-cb8b-4da3-91bc-7550a9d088ea",
+    "name": "Gainsight CS Timeline Activity Types API",
+    "description": "The Timeline API enables creating, updating, reading, and deleting Timeline activities, supporting both single and bulk operations with up to 80MB payloads for bulk requests.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:28:20.000Z",
+    "updatedAt": "2026-10-21T20:28:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c8cf23e5-cb8b-4da3-91bc-7550a9d088ea"
+  },
   "item": [
     {
-      "id": "cca1e5cc-61f3-4e48-af3d-1dbdad7f7207",
-      "name": "Activity Types",
-      "description": {
-        "content": "Retrieve activity type configurations",
-        "type": "text/plain"
-      },
+      "name": "timeline",
       "item": [
         {
-          "id": "3b5f04a3-0236-4987-aa3e-cf5c31da7722",
-          "name": "Gainsight Get activity types",
-          "request": {
-            "name": "Gainsight Get activity types",
-            "description": {
-              "content": "Retrieve the list of configured timeline activity types.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "timeline",
-                "activityTypes"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "activityTypes",
+          "item": [
             {
-              "id": "ee00d7f3-5d2b-4025-8019-09a48fe07163",
-              "name": "Activity types returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "timeline",
-                    "activityTypes"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+              "name": "Gainsight Get activity types",
+              "id": "dbebd96c-b271-4a44-afec-9f1b7f68c9c8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": false,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isSystem\": true,\n      \"isActive\": false\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"isSystem\": true,\n      \"isActive\": false\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "59fdad0d-c90b-4f60-b766-cc89601c3f6e",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "timeline",
-                    "activityTypes"
-                  ],
+                  "raw": "{{baseUrl}}/timeline/activityTypes",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
+                  "path": [
+                    "timeline",
+                    "activityTypes"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve the list of configured timeline activity types."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "4b754762-0067-4c7c-83c7-f5b4dad78333",
+                  "name": "Activity types returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/activityTypes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "activityTypes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"isSystem\": \"<boolean>\",\n      \"isActive\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"isSystem\": \"<boolean>\",\n      \"isActive\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:28:20.000Z",
+                  "updatedAt": "2026-10-21T20:28:20.000Z",
+                  "uid": "35240-4b754762-0067-4c7c-83c7-f5b4dad78333"
+                },
+                {
+                  "id": "a237acca-566a-4011-a1a4-58ce675f3445",
+                  "name": "Authentication failed or access key is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "accessKey",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/activityTypes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "activityTypes"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:20.000Z",
+                  "updatedAt": "2026-10-21T20:28:20.000Z",
+                  "uid": "35240-a237acca-566a-4011-a1a4-58ce675f3445"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:28:20.000Z",
+              "updatedAt": "2026-10-21T20:28:20.000Z",
+              "uid": "35240-dbebd96c-b271-4a44-afec-9f1b7f68c9c8"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "bbbf524f-b709-4352-85ff-34eb5d05bcfc",
+          "createdAt": "2026-10-21T20:28:20.000Z",
+          "updatedAt": "2026-10-21T20:28:20.000Z",
+          "uid": "35240-bbbf524f-b709-4352-85ff-34eb5d05bcfc"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "d6e0ebe5-f763-4ebf-a6e7-e67c85921b87",
+      "createdAt": "2026-10-21T20:28:20.000Z",
+      "updatedAt": "2026-10-21T20:28:20.000Z",
+      "uid": "35240-d6e0ebe5-f763-4ebf-a6e7-e67c85921b87"
     }
   ],
   "auth": {
@@ -175,25 +143,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "15fb52ff-2a9b-4f78-a14a-bda898bd2c7a",
-    "name": "Gainsight CS Bulk Accounts Activity Types API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

@@ -1,271 +1,858 @@
 {
+  "info": {
+    "_postman_id": "aa32b457-8419-4826-bf6a-f1457f0ff372",
+    "name": "Gainsight Custom Events API",
+    "description": "Operations tagged Custom Events across 2 of this provider's published API definitions: gainsight-px-api-openapi.yml, gainsight-custom-events-api-openapi.yml. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:28:56.000Z",
+    "updatedAt": "2026-10-21T20:28:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aa32b457-8419-4826-bf6a-f1457f0ff372"
+  },
   "item": [
     {
-      "id": "26ce66fd-0a73-45c7-8c30-0710f82d887d",
-      "name": "Custom Events",
-      "description": {
-        "content": "Send custom events for tracking",
-        "type": "text/plain"
-      },
+      "name": "custom_events",
       "item": [
         {
-          "id": "6c001574-8439-4443-a9ea-5e346464671b",
           "name": "Gainsight Send a custom event",
+          "id": "24c83a4d-dd72-4c95-b04b-bc2cf2aa4783",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight Send a custom event",
-            "description": {
-              "content": "Send a custom event for a user to track specific interactions.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "custom_events"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
+            "auth": {
+              "type": "apikey",
+              "apikey": [
                 {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
+                  "key": "key",
+                  "value": "X-APTRINSIC-API-KEY",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
                 }
               ]
             },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": \"<object>\",\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
+              "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/custom_events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "custom_events"
+              ]
+            },
+            "description": "Send a custom event for a user to track specific interactions."
           },
           "response": [
             {
-              "id": "f3891962-644b-4fd0-8536-c6a18c51f552",
+              "id": "46862540-a5cb-49e3-89c9-d1e73a3d7210",
               "name": "Event sent successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "custom_events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": \"<object>\",\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
+                  "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/custom_events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "custom_events"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:28:57.000Z",
+              "updatedAt": "2026-10-21T20:28:57.000Z",
+              "uid": "35240-46862540-a5cb-49e3-89c9-d1e73a3d7210"
             },
             {
-              "id": "a16a7298-3eb4-4ff6-990f-83fd6a09a4cd",
+              "id": "576721d7-d102-4f3b-af6b-605a33faf5fe",
               "name": "Invalid request body or parameters",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "custom_events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": \"<object>\",\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
+                  "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/custom_events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "custom_events"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:28:57.000Z",
+              "updatedAt": "2026-10-21T20:28:57.000Z",
+              "uid": "35240-576721d7-d102-4f3b-af6b-605a33faf5fe"
             },
             {
-              "id": "a332608f-0910-47d7-91ee-28709d61751b",
+              "id": "3fd0ce70-cf35-4c50-8990-e3bb4cc755d5",
               "name": "Authentication failed or API key is missing",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "custom_events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": \"<object>\",\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
+                  "raw": "{\n  \"identifyId\": \"<string>\",\n  \"eventName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/custom_events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "custom_events"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:28:57.000Z",
+              "updatedAt": "2026-10-21T20:28:57.000Z",
+              "uid": "35240-3fd0ce70-cf35-4c50-8990-e3bb4cc755d5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:28:57.000Z",
+          "updatedAt": "2026-10-21T20:28:57.000Z",
+          "uid": "35240-24c83a4d-dd72-4c95-b04b-bc2cf2aa4783"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
+      "id": "93459238-2ca3-4a02-8511-802193c25ce8",
+      "createdAt": "2026-10-21T20:28:57.000Z",
+      "updatedAt": "2026-10-21T20:28:57.000Z",
+      "uid": "35240-93459238-2ca3-4a02-8511-802193c25ce8"
     },
     {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "name": "v1",
+      "item": [
+        {
+          "name": "events",
+          "item": [
+            {
+              "name": "custom",
+              "item": [
+                {
+                  "name": "Get Custom events",
+                  "id": "15e6bf92-34c8-400d-bf88-b89446026b35",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/events/custom?dateRangeEnd=<string>&dateRangeStart=<string>&filter=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "events",
+                        "custom"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date range end",
+                          "key": "dateRangeEnd",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date range start",
+                          "key": "dateRangeStart",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of events per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort fields",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves custom events. Supports filtering, sorting and paging.\n### Filtering\nThe filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}\nFilter terms within a single filter parameter are joined by a logical AND.\nSeparate filter parameters are joined by a logical OR.\n#### Supported filter fields\n| Field |\n| ----- |\n| identifyId |\n| eventName |\n| date |\n\n#### Operators\n| Operator | Meaning |\n| ----- | -------- |\n| == | Exact match |\n| != | Not equal |\n| | Greater than |\n| >= | Greater than or equal |\n| ~ | Matches string, supports wildcard characters * and ? |\n| !~ | Not like, supports wildcard characters * and ? |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/custom?filter=identifyId==ABC123 | Custom event matches for user with identifyId of 'ABC123'. |\n\n### Sorting\nThe sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.\n#### Supported sort fields\n| Field |\n| ----- |\n| accountId |\n| date |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/events/custom?sort=-date | Matches sorted by date descending. |"
+                  },
+                  "response": [
+                    {
+                      "id": "e69b5a50-4183-4178-a6d8-01049888f78c",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom?dateRangeEnd=<string>&dateRangeStart=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Date range end",
+                              "key": "dateRangeEnd",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date range start",
+                              "key": "dateRangeStart",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"customEvents\": [\n    {\n      \"eventName\": \"<string>\",\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"LEAD\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"attributes\": {},\n      \"url\": \"<string>\",\n      \"referrer\": \"<string>\",\n      \"remoteHost\": \"<string>\"\n    },\n    {\n      \"eventName\": \"<string>\",\n      \"identifyId\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"userType\": \"EMPTY_USER_TYPE\",\n      \"eventId\": \"<string>\",\n      \"date\": \"<long>\",\n      \"eventType\": \"<string>\",\n      \"sessionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"globalContext\": {},\n      \"attributes\": {},\n      \"url\": \"<string>\",\n      \"referrer\": \"<string>\",\n      \"remoteHost\": \"<string>\"\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-e69b5a50-4183-4178-a6d8-01049888f78c"
+                    },
+                    {
+                      "id": "2de8e989-45ad-4869-a2ca-c0f6f877bb38",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom?dateRangeEnd=<string>&dateRangeStart=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Date range end",
+                              "key": "dateRangeEnd",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date range start",
+                              "key": "dateRangeStart",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-2de8e989-45ad-4869-a2ca-c0f6f877bb38"
+                    },
+                    {
+                      "id": "a3869da4-0067-40f0-85d6-a5a6b4df7d21",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom?dateRangeEnd=<string>&dateRangeStart=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Date range end",
+                              "key": "dateRangeEnd",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date range start",
+                              "key": "dateRangeStart",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-a3869da4-0067-40f0-85d6-a5a6b4df7d21"
+                    },
+                    {
+                      "id": "13232317-ef1e-4421-ad2a-038e930253cd",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom?dateRangeEnd=<string>&dateRangeStart=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ],
+                          "query": [
+                            {
+                              "description": "Date range end",
+                              "key": "dateRangeEnd",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date range start",
+                              "key": "dateRangeStart",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filters",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Number of events per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort fields",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-13232317-ef1e-4421-ad2a-038e930253cd"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:57.000Z",
+                  "updatedAt": "2026-10-21T20:28:57.000Z",
+                  "uid": "35240-15e6bf92-34c8-400d-bf88-b89446026b35"
+                },
+                {
+                  "name": "Create custom event",
+                  "id": "388b214d-cbca-410e-aac8-0884fa950a08",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"eventName\": \"<string>\",\n  \"identifyId\": \"<string>\",\n  \"propertyKey\": \"<string>\",\n  \"userType\": \"USER\",\n  \"eventId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"eventType\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"globalContext\": {},\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"remoteHost\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/events/custom",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "events",
+                        "custom"
+                      ]
+                    },
+                    "description": "Creates custom event with the given data"
+                  },
+                  "response": [
+                    {
+                      "id": "cd6c20c5-09d9-4f64-9c18-87353922effc",
+                      "name": "Create custom events",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventName\": \"<string>\",\n  \"identifyId\": \"<string>\",\n  \"propertyKey\": \"<string>\",\n  \"userType\": \"USER\",\n  \"eventId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"eventType\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"globalContext\": {},\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"remoteHost\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"204\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-cd6c20c5-09d9-4f64-9c18-87353922effc"
+                    },
+                    {
+                      "id": "768312e3-3162-4db2-8b5a-83a5d11253ae",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventName\": \"<string>\",\n  \"identifyId\": \"<string>\",\n  \"propertyKey\": \"<string>\",\n  \"userType\": \"USER\",\n  \"eventId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"eventType\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"globalContext\": {},\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"remoteHost\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-768312e3-3162-4db2-8b5a-83a5d11253ae"
+                    },
+                    {
+                      "id": "6fcd6c0a-c2d2-4f3a-b21a-30859d612c94",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventName\": \"<string>\",\n  \"identifyId\": \"<string>\",\n  \"propertyKey\": \"<string>\",\n  \"userType\": \"USER\",\n  \"eventId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"eventType\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"globalContext\": {},\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"remoteHost\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-6fcd6c0a-c2d2-4f3a-b21a-30859d612c94"
+                    },
+                    {
+                      "id": "537e2cbf-df8b-4bd4-ba2a-91d50217822a",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventName\": \"<string>\",\n  \"identifyId\": \"<string>\",\n  \"propertyKey\": \"<string>\",\n  \"userType\": \"USER\",\n  \"eventId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"eventType\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"globalContext\": {},\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"remoteHost\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-537e2cbf-df8b-4bd4-ba2a-91d50217822a"
+                    },
+                    {
+                      "id": "6d5f6d68-aa79-45de-906e-17114d0f8e62",
+                      "name": "Internal error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"eventName\": \"<string>\",\n  \"identifyId\": \"<string>\",\n  \"propertyKey\": \"<string>\",\n  \"userType\": \"USER\",\n  \"eventId\": \"<string>\",\n  \"date\": \"<long>\",\n  \"eventType\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"globalContext\": {},\n  \"attributes\": {},\n  \"url\": \"<string>\",\n  \"referrer\": \"<string>\",\n  \"remoteHost\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/events/custom",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "events",
+                            "custom"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:57.000Z",
+                      "updatedAt": "2026-10-21T20:28:57.000Z",
+                      "uid": "35240-6d5f6d68-aa79-45de-906e-17114d0f8e62"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:57.000Z",
+                  "updatedAt": "2026-10-21T20:28:57.000Z",
+                  "uid": "35240-388b214d-cbca-410e-aac8-0884fa950a08"
+                }
+              ],
+              "id": "df518228-4633-4c27-a6e5-7adc07131fb8",
+              "createdAt": "2026-10-21T20:28:57.000Z",
+              "updatedAt": "2026-10-21T20:28:57.000Z",
+              "uid": "35240-df518228-4633-4c27-a6e5-7adc07131fb8"
+            }
+          ],
+          "id": "22aefd8e-f5d8-4bee-addf-0b0a891999be",
+          "createdAt": "2026-10-21T20:28:57.000Z",
+          "updatedAt": "2026-10-21T20:28:57.000Z",
+          "uid": "35240-22aefd8e-f5d8-4bee-addf-0b0a891999be"
+        }
+      ],
+      "id": "aea9b740-bfd6-4cb2-b63b-ee57df19ac59",
+      "createdAt": "2026-10-21T20:28:57.000Z",
+      "updatedAt": "2026-10-21T20:28:57.000Z",
+      "uid": "35240-aea9b740-bfd6-4cb2-b63b-ee57df19ac59"
     }
   ],
-  "auth": {
-    "type": "apikey",
-    "apikey": [
-      {
-        "key": "key",
-        "value": "accessKey"
-      },
-      {
-        "key": "value",
-        "value": "{{apiKey}}"
-      },
-      {
-        "key": "in",
-        "value": "header"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "428ebff6-01c9-4e4e-8f68-b82479827606",
-    "name": "Gainsight CS Bulk Accounts Custom Events API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/v1"
     }
-  }
+  ]
 }

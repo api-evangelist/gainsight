@@ -1,0 +1,1963 @@
+{
+  "info": {
+    "_postman_id": "4b5194da-c44e-4e80-9ddc-a0b5c34c75e5",
+    "name": "Gainsight PX REST Admin API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:30:33.000Z",
+    "updatedAt": "2026-10-21T20:30:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4b5194da-c44e-4e80-9ddc-a0b5c34c75e5"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "admin",
+          "item": [
+            {
+              "name": "model",
+              "item": [
+                {
+                  "name": "{type}",
+                  "item": [
+                    {
+                      "name": "attributes",
+                      "item": [
+                        {
+                          "name": "Get Attributes",
+                          "id": "2fda51af-819c-425b-8a1c-64987304cb1a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/model/:type/attributes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "model",
+                                ":type",
+                                "attributes"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f54d0921-80b5-40c8-b8ab-1eb06301b1fc",
+                                  "key": "type",
+                                  "value": "user",
+                                  "description": "(Required) Type"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves the model attributes for a given type"
+                          },
+                          "response": [
+                            {
+                              "id": "336212c9-268b-4463-82cd-84096c0ba6eb",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/model/:type/attributes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "model",
+                                    ":type",
+                                    "attributes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "type"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"apiName\": \"<string>\",\n    \"createdDate\": \"<long>\",\n    \"id\": \"<string>\",\n    \"internalName\": \"<string>\",\n    \"modifiedDate\": \"<long>\",\n    \"name\": \"<string>\",\n    \"origin\": \"DEFAULT\",\n    \"state\": \"DISABLED\",\n    \"type\": \"NUMBER\",\n    \"description\": \"<string>\",\n    \"defaultValue\": \"<string>\"\n  },\n  {\n    \"apiName\": \"<string>\",\n    \"createdDate\": \"<long>\",\n    \"id\": \"<string>\",\n    \"internalName\": \"<string>\",\n    \"modifiedDate\": \"<long>\",\n    \"name\": \"<string>\",\n    \"origin\": \"CUSTOM\",\n    \"state\": \"DISABLED\",\n    \"type\": \"STRING\",\n    \"description\": \"<string>\",\n    \"defaultValue\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-336212c9-268b-4463-82cd-84096c0ba6eb"
+                            },
+                            {
+                              "id": "f736335f-d9ee-414c-9254-4413dcd66765",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/model/:type/attributes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "model",
+                                    ":type",
+                                    "attributes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "type"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-f736335f-d9ee-414c-9254-4413dcd66765"
+                            },
+                            {
+                              "id": "718ba001-e304-410e-85a0-139e38904291",
+                              "name": "Unauthorized or bad API Key",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/model/:type/attributes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "model",
+                                    ":type",
+                                    "attributes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "type"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-718ba001-e304-410e-85a0-139e38904291"
+                            },
+                            {
+                              "id": "91349d56-ce6a-4135-a926-9ec2b28da470",
+                              "name": "Type not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/model/:type/attributes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "model",
+                                    ":type",
+                                    "attributes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "type"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-91349d56-ce6a-4135-a926-9ec2b28da470"
+                            },
+                            {
+                              "id": "fba3c81c-6666-4c6b-badf-c405fa7a0438",
+                              "name": "Rate limit exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/model/:type/attributes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "model",
+                                    ":type",
+                                    "attributes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "type"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-fba3c81c-6666-4c6b-badf-c405fa7a0438"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-2fda51af-819c-425b-8a1c-64987304cb1a"
+                        }
+                      ],
+                      "id": "ebfa8b4c-2a21-4d7f-851e-9e199676b7cf",
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-ebfa8b4c-2a21-4d7f-851e-9e199676b7cf"
+                    }
+                  ],
+                  "id": "b098655f-b9ce-4bef-b1b5-64b4d4e4d0f1",
+                  "createdAt": "2026-10-21T20:30:33.000Z",
+                  "updatedAt": "2026-10-21T20:30:33.000Z",
+                  "uid": "35240-b098655f-b9ce-4bef-b1b5-64b4d4e4d0f1"
+                }
+              ],
+              "id": "39d7cba1-a562-437c-a456-36eb6b8da7e5",
+              "createdAt": "2026-10-21T20:30:33.000Z",
+              "updatedAt": "2026-10-21T20:30:33.000Z",
+              "uid": "35240-39d7cba1-a562-437c-a456-36eb6b8da7e5"
+            },
+            {
+              "name": "monitoring",
+              "item": [
+                {
+                  "name": "engagement_collisions",
+                  "item": [
+                    {
+                      "name": "Get engagement collisions",
+                      "id": "ccca3a9d-1b59-4617-9b9f-2c71b5f52495",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_collisions?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "monitoring",
+                            "engagement_collisions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Date range end (epoch milliseconds)",
+                              "key": "dateRangeEnd",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Date range start (epoch milliseconds)",
+                              "key": "dateRangeStart",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Page Number (zero based)",
+                              "key": "pageNumber",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Number of records per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Product Key",
+                              "key": "propertyKey",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves engagement collision events. Will return one row for each engagement collision in the given date range. Supports filtering and paging.\n### Filtering\nThe date range must be less than or equal to 180 days\nDates are specified as epoch milliseconds, GMT\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/admin/monitoring/engagement_collisions?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2 | Fetches first page of results |\n| GET /v1/admin/monitoring/engagement_collisions?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2&pageNumber=1&scrollId=abcxyz | Fetches second page of results |"
+                      },
+                      "response": [
+                        {
+                          "id": "761ee1f0-7f5a-48da-9438-fb09e57e4ae0",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_collisions?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_collisions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"engagementCollisions\": [\n    {\n      \"engagementId\": \"<string>\",\n      \"engagementName\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"engagementType\": \"IN_APP_NPS_SURVEY\",\n      \"otherQualifiedEngagementNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"views\": \"<long>\",\n      \"priorityRule\": \"<string>\",\n      \"triggeredDate\": \"<long>\",\n      \"viewedByUser\": \"<string>\"\n    },\n    {\n      \"engagementId\": \"<string>\",\n      \"engagementName\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"engagementType\": \"IN_APP_NPS_SURVEY\",\n      \"otherQualifiedEngagementNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"views\": \"<long>\",\n      \"priorityRule\": \"<string>\",\n      \"triggeredDate\": \"<long>\",\n      \"viewedByUser\": \"<string>\"\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-761ee1f0-7f5a-48da-9438-fb09e57e4ae0"
+                        },
+                        {
+                          "id": "37e5d35e-5a6c-4cb0-a6d4-d11d4fdb87e5",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_collisions?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_collisions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-37e5d35e-5a6c-4cb0-a6d4-d11d4fdb87e5"
+                        },
+                        {
+                          "id": "69ab7e9d-b1f1-4cad-b840-8311a939b950",
+                          "name": "Unauthorized or bad API Key",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_collisions?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_collisions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-69ab7e9d-b1f1-4cad-b840-8311a939b950"
+                        },
+                        {
+                          "id": "aa874044-f746-47d7-a78b-436c16c0b9b7",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_collisions?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_collisions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-aa874044-f746-47d7-a78b-436c16c0b9b7"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-ccca3a9d-1b59-4617-9b9f-2c71b5f52495"
+                    }
+                  ],
+                  "id": "958a6c9e-5781-4b37-8052-e3c5d972cbf7",
+                  "createdAt": "2026-10-21T20:30:33.000Z",
+                  "updatedAt": "2026-10-21T20:30:33.000Z",
+                  "uid": "35240-958a6c9e-5781-4b37-8052-e3c5d972cbf7"
+                },
+                {
+                  "name": "engagement_error_details",
+                  "item": [
+                    {
+                      "name": "{engagementId}",
+                      "item": [
+                        {
+                          "name": "Get engagement error details",
+                          "id": "ee423bf6-58c3-4e3c-b63f-732a6bdf1bc0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_error_details/:engagementId?dateRangeEnd=<long>&dateRangeStart=<long>&groupByBrowser=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_error_details",
+                                ":engagementId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "True to group by browser type, false to group by error",
+                                  "key": "groupByBrowser",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a99ffe5a-dcd3-4c00-9a2f-3d4f89e5ea50",
+                                  "key": "engagementId",
+                                  "value": "<string>",
+                                  "description": "(Required) Engagement id"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves engagement error details. Will return one row for each engagement error.\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/admin/monitoring/engagement_error_details/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&groupByBrowser=true | Error details grouped by browser|\n| GET /v1/admin/monitoring/engagement_error_details/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&groupByBrowser=false | Error details grouped by type|"
+                          },
+                          "response": [
+                            {
+                              "id": "13627627-4cc8-4a3d-88a0-5c5909eb62f6",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_error_details/:engagementId?dateRangeEnd=<long>&dateRangeStart=<long>&groupByBrowser=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "monitoring",
+                                    "engagement_error_details",
+                                    ":engagementId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Date range end (epoch milliseconds)",
+                                      "key": "dateRangeEnd",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Date range start (epoch milliseconds)",
+                                      "key": "dateRangeStart",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "True to group by browser type, false to group by error",
+                                      "key": "groupByBrowser",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "engagementId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"engagementErrorDetails\": [\n    {\n      \"engagementId\": \"<string>\",\n      \"stepName\": \"<string>\",\n      \"stepNumber\": \"<integer>\",\n      \"errorCount\": \"<long>\",\n      \"errorType\": \"<string>\",\n      \"value\": \"<string>\",\n      \"browser\": \"<string>\"\n    },\n    {\n      \"engagementId\": \"<string>\",\n      \"stepName\": \"<string>\",\n      \"stepNumber\": \"<integer>\",\n      \"errorCount\": \"<long>\",\n      \"errorType\": \"<string>\",\n      \"value\": \"<string>\",\n      \"browser\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-13627627-4cc8-4a3d-88a0-5c5909eb62f6"
+                            },
+                            {
+                              "id": "730481d0-5bcd-4c1a-a5b6-824cc3166285",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_error_details/:engagementId?dateRangeEnd=<long>&dateRangeStart=<long>&groupByBrowser=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "monitoring",
+                                    "engagement_error_details",
+                                    ":engagementId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Date range end (epoch milliseconds)",
+                                      "key": "dateRangeEnd",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Date range start (epoch milliseconds)",
+                                      "key": "dateRangeStart",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "True to group by browser type, false to group by error",
+                                      "key": "groupByBrowser",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "engagementId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-730481d0-5bcd-4c1a-a5b6-824cc3166285"
+                            },
+                            {
+                              "id": "db693050-61d8-45c3-bd8d-89d1ef15a3e9",
+                              "name": "Unauthorized or bad API Key",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_error_details/:engagementId?dateRangeEnd=<long>&dateRangeStart=<long>&groupByBrowser=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "monitoring",
+                                    "engagement_error_details",
+                                    ":engagementId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Date range end (epoch milliseconds)",
+                                      "key": "dateRangeEnd",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Date range start (epoch milliseconds)",
+                                      "key": "dateRangeStart",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "True to group by browser type, false to group by error",
+                                      "key": "groupByBrowser",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "engagementId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-db693050-61d8-45c3-bd8d-89d1ef15a3e9"
+                            },
+                            {
+                              "id": "f3ce97a4-a687-4db4-90ca-21971efac9a4",
+                              "name": "Rate limit exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_error_details/:engagementId?dateRangeEnd=<long>&dateRangeStart=<long>&groupByBrowser=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "monitoring",
+                                    "engagement_error_details",
+                                    ":engagementId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Date range end (epoch milliseconds)",
+                                      "key": "dateRangeEnd",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Date range start (epoch milliseconds)",
+                                      "key": "dateRangeStart",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "True to group by browser type, false to group by error",
+                                      "key": "groupByBrowser",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "engagementId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-f3ce97a4-a687-4db4-90ca-21971efac9a4"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-ee423bf6-58c3-4e3c-b63f-732a6bdf1bc0"
+                        }
+                      ],
+                      "id": "77b580ee-0a55-4e72-82ad-75d07851019f",
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-77b580ee-0a55-4e72-82ad-75d07851019f"
+                    }
+                  ],
+                  "id": "9bb0913e-fcc9-417c-98fc-cf2197df0edb",
+                  "createdAt": "2026-10-21T20:30:33.000Z",
+                  "updatedAt": "2026-10-21T20:30:33.000Z",
+                  "uid": "35240-9bb0913e-fcc9-417c-98fc-cf2197df0edb"
+                },
+                {
+                  "name": "engagement_errors",
+                  "item": [
+                    {
+                      "name": "Get engagement errors summary",
+                      "id": "7d006523-d20e-47ce-92f8-ffe141a1ccac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_errors?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "monitoring",
+                            "engagement_errors"
+                          ],
+                          "query": [
+                            {
+                              "description": "Date range end (epoch milliseconds)",
+                              "key": "dateRangeEnd",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Date range start (epoch milliseconds)",
+                              "key": "dateRangeStart",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Page Number (zero based)",
+                              "key": "pageNumber",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Number of records per page",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Product Key",
+                              "key": "propertyKey",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                              "key": "scrollId",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves engagement error summary. Will return one row for each engagement that has errors in the given date range. Supports filtering and paging.\n### Filtering\nThe date range must be less than or equal to 180 days\nDates are specified as epoch milliseconds, GMT\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/admin/monitoring/engagement_errors?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2 | Fetches first page of results |\n| GET /v1/admin/monitoring/engagement_errors?dateRangeStart=1670283822000&dateRangeEnd=1672962222000&propertyKey=AP-XXXXXXXXXXX-2&pageNumber=1&scrollId=abcxyz | Fetches second page of results |"
+                      },
+                      "response": [
+                        {
+                          "id": "58ef51a0-4e93-4fbc-ab4e-b102c18a807e",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_errors?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_errors"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"engagementErrorSummaries\": [\n    {\n      \"engagementId\": \"<string>\",\n      \"engagementName\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"engagementType\": \"IN_APP_CES_SURVEY\",\n      \"firstOccurrenceDate\": \"<long>\",\n      \"lastOccurrenceDate\": \"<long>\",\n      \"views\": \"<long>\",\n      \"ratio\": \"<double>\",\n      \"errorCount\": \"<long>\"\n    },\n    {\n      \"engagementId\": \"<string>\",\n      \"engagementName\": \"<string>\",\n      \"propertyKey\": \"<string>\",\n      \"engagementType\": \"IN_APP_CAROUSEL\",\n      \"firstOccurrenceDate\": \"<long>\",\n      \"lastOccurrenceDate\": \"<long>\",\n      \"views\": \"<long>\",\n      \"ratio\": \"<double>\",\n      \"errorCount\": \"<long>\"\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-58ef51a0-4e93-4fbc-ab4e-b102c18a807e"
+                        },
+                        {
+                          "id": "aa0e8b33-740b-4f81-8cbf-d0bb9b51066a",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_errors?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_errors"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-aa0e8b33-740b-4f81-8cbf-d0bb9b51066a"
+                        },
+                        {
+                          "id": "c88f5b4e-97dc-432a-b014-e841f2045511",
+                          "name": "Unauthorized or bad API Key",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_errors?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_errors"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-c88f5b4e-97dc-432a-b014-e841f2045511"
+                        },
+                        {
+                          "id": "f679268b-a7b8-4869-88f0-8a6b1d1f01d9",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/engagement_errors?dateRangeEnd=<long>&dateRangeStart=<long>&pageNumber=0&pageSize=25&propertyKey=<string>&scrollId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "engagement_errors"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Date range end (epoch milliseconds)",
+                                  "key": "dateRangeEnd",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Date range start (epoch milliseconds)",
+                                  "key": "dateRangeStart",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page Number (zero based)",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of records per page",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Product Key",
+                                  "key": "propertyKey",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId. If null, no additional pages are available",
+                                  "key": "scrollId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-f679268b-a7b8-4869-88f0-8a6b1d1f01d9"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-7d006523-d20e-47ce-92f8-ffe141a1ccac"
+                    }
+                  ],
+                  "id": "bf89e299-31c1-4c02-84cc-01446c49693d",
+                  "createdAt": "2026-10-21T20:30:33.000Z",
+                  "updatedAt": "2026-10-21T20:30:33.000Z",
+                  "uid": "35240-bf89e299-31c1-4c02-84cc-01446c49693d"
+                },
+                {
+                  "name": "integrations",
+                  "item": [
+                    {
+                      "name": "Get integration statuses",
+                      "id": "be1428e1-9b71-4a6a-8528-2dd581471dc2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/monitoring/integrations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "monitoring",
+                            "integrations"
+                          ]
+                        },
+                        "description": "Retrieves the current statuses for the configured integrations. Will return one row for each integration.\nExample:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/admin/monitoring/integrations | Fetches all integration statuses |"
+                      },
+                      "response": [
+                        {
+                          "id": "b23b770c-44a6-4f16-b8aa-00adc4331a1c",
+                          "name": "Success",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/integrations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "integrations"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"integrationStatuses\": [\n    {\n      \"integrationSyncName\": \"<string>\",\n      \"currentStatus\": \"UP\",\n      \"lastSuccessfulDate\": \"<long>\",\n      \"lastError\": \"<string>\",\n      \"numberOfRecordsProcessed\": \"<long>\"\n    },\n    {\n      \"integrationSyncName\": \"<string>\",\n      \"currentStatus\": \"DOWN\",\n      \"lastSuccessfulDate\": \"<long>\",\n      \"lastError\": \"<string>\",\n      \"numberOfRecordsProcessed\": \"<long>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-b23b770c-44a6-4f16-b8aa-00adc4331a1c"
+                        },
+                        {
+                          "id": "9c719b4b-48f4-4bb3-8429-6dbeb899de9e",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/integrations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "integrations"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-9c719b4b-48f4-4bb3-8429-6dbeb899de9e"
+                        },
+                        {
+                          "id": "c06a7805-a282-459a-b280-e795d99ad904",
+                          "name": "Unauthorized or bad API Key",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/integrations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "integrations"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-c06a7805-a282-459a-b280-e795d99ad904"
+                        },
+                        {
+                          "id": "314eecf2-12c1-450b-a79d-e879e4410fad",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/monitoring/integrations",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "monitoring",
+                                "integrations"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-314eecf2-12c1-450b-a79d-e879e4410fad"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-be1428e1-9b71-4a6a-8528-2dd581471dc2"
+                    }
+                  ],
+                  "id": "d315b28c-125e-40f2-b45d-2883d0aaf940",
+                  "createdAt": "2026-10-21T20:30:33.000Z",
+                  "updatedAt": "2026-10-21T20:30:33.000Z",
+                  "uid": "35240-d315b28c-125e-40f2-b45d-2883d0aaf940"
+                }
+              ],
+              "id": "7e5abe4b-9e82-4cbd-98b5-f6213ff1b260",
+              "createdAt": "2026-10-21T20:30:33.000Z",
+              "updatedAt": "2026-10-21T20:30:33.000Z",
+              "uid": "35240-7e5abe4b-9e82-4cbd-98b5-f6213ff1b260"
+            },
+            {
+              "name": "subscription",
+              "item": [
+                {
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "notSeenAfter",
+                      "item": [
+                        {
+                          "name": "Get Subscription users",
+                          "id": "34751665-75c1-48ff-997f-60efb4d506c5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/admin/subscription/users/notSeenAfter?notSeenAfterTimestamp=<long>&pageNumber=0&pageSize=200",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "admin",
+                                "subscription",
+                                "users",
+                                "notSeenAfter"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Not seen after datetime (epoch milliseconds)",
+                                  "key": "notSeenAfterTimestamp",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "Page number",
+                                  "key": "pageNumber",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Number of users per page",
+                                  "key": "pageSize",
+                                  "value": "200"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves Subscription users"
+                          },
+                          "response": [
+                            {
+                              "id": "fd081b79-6285-4a3b-bfd7-2029f22def32",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/subscription/users/notSeenAfter?notSeenAfterTimestamp=<long>&pageNumber=0&pageSize=200",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "subscription",
+                                    "users",
+                                    "notSeenAfter"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Not seen after datetime (epoch milliseconds)",
+                                      "key": "notSeenAfterTimestamp",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Page number",
+                                      "key": "pageNumber",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "description": "Number of users per page",
+                                      "key": "pageSize",
+                                      "value": "200"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"timeZone\": \"<string>\",\n  \"website\": \"<string>\",\n  \"description\": \"<string>\",\n  \"products\": [\n    {\n      \"description\": \"<string>\",\n      \"name\": \"<string>\",\n      \"productKeys\": [\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"description\": \"<string>\",\n      \"name\": \"<string>\",\n      \"productKeys\": [\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-fd081b79-6285-4a3b-bfd7-2029f22def32"
+                            },
+                            {
+                              "id": "d5990c26-272e-41fa-8533-836952f60e00",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/subscription/users/notSeenAfter?notSeenAfterTimestamp=<long>&pageNumber=0&pageSize=200",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "subscription",
+                                    "users",
+                                    "notSeenAfter"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Not seen after datetime (epoch milliseconds)",
+                                      "key": "notSeenAfterTimestamp",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Page number",
+                                      "key": "pageNumber",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "description": "Number of users per page",
+                                      "key": "pageSize",
+                                      "value": "200"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-d5990c26-272e-41fa-8533-836952f60e00"
+                            },
+                            {
+                              "id": "74601733-d55a-47d8-a6a8-2a5056605a98",
+                              "name": "Unauthorized or bad API Key",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/subscription/users/notSeenAfter?notSeenAfterTimestamp=<long>&pageNumber=0&pageSize=200",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "subscription",
+                                    "users",
+                                    "notSeenAfter"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Not seen after datetime (epoch milliseconds)",
+                                      "key": "notSeenAfterTimestamp",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Page number",
+                                      "key": "pageNumber",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "description": "Number of users per page",
+                                      "key": "pageSize",
+                                      "value": "200"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-74601733-d55a-47d8-a6a8-2a5056605a98"
+                            },
+                            {
+                              "id": "cfa75ad9-43d3-4708-90bc-9c13d4037f2d",
+                              "name": "Account not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/subscription/users/notSeenAfter?notSeenAfterTimestamp=<long>&pageNumber=0&pageSize=200",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "subscription",
+                                    "users",
+                                    "notSeenAfter"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Not seen after datetime (epoch milliseconds)",
+                                      "key": "notSeenAfterTimestamp",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Page number",
+                                      "key": "pageNumber",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "description": "Number of users per page",
+                                      "key": "pageSize",
+                                      "value": "200"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-cfa75ad9-43d3-4708-90bc-9c13d4037f2d"
+                            },
+                            {
+                              "id": "4014598d-83eb-453f-ba55-08a8c5e7bcff",
+                              "name": "Rate limit exceeded",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/admin/subscription/users/notSeenAfter?notSeenAfterTimestamp=<long>&pageNumber=0&pageSize=200",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "admin",
+                                    "subscription",
+                                    "users",
+                                    "notSeenAfter"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Not seen after datetime (epoch milliseconds)",
+                                      "key": "notSeenAfterTimestamp",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "Page number",
+                                      "key": "pageNumber",
+                                      "value": "0"
+                                    },
+                                    {
+                                      "description": "Number of users per page",
+                                      "key": "pageSize",
+                                      "value": "200"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:30:33.000Z",
+                              "updatedAt": "2026-10-21T20:30:33.000Z",
+                              "uid": "35240-4014598d-83eb-453f-ba55-08a8c5e7bcff"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:30:33.000Z",
+                          "updatedAt": "2026-10-21T20:30:33.000Z",
+                          "uid": "35240-34751665-75c1-48ff-997f-60efb4d506c5"
+                        }
+                      ],
+                      "id": "208806c4-981b-4c42-a20c-65e158f64782",
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-208806c4-981b-4c42-a20c-65e158f64782"
+                    }
+                  ],
+                  "id": "7599971b-4e28-4386-b64b-830e218d6808",
+                  "createdAt": "2026-10-21T20:30:33.000Z",
+                  "updatedAt": "2026-10-21T20:30:33.000Z",
+                  "uid": "35240-7599971b-4e28-4386-b64b-830e218d6808"
+                },
+                {
+                  "name": "Get Subscription detail",
+                  "id": "fb3ecd89-5189-4da9-930e-c7a288e36ee4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/admin/subscription",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "admin",
+                        "subscription"
+                      ]
+                    },
+                    "description": "Retrieves Subscription detail for the current sub"
+                  },
+                  "response": [
+                    {
+                      "id": "b427c04b-b110-4572-9753-2906a5bea56b",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/subscription",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "subscription"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"iconUrl\": \"<string>\",\n  \"timeZone\": \"<string>\",\n  \"website\": \"<string>\",\n  \"description\": \"<string>\",\n  \"products\": [\n    {\n      \"description\": \"<string>\",\n      \"name\": \"<string>\",\n      \"productKeys\": [\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"description\": \"<string>\",\n      \"name\": \"<string>\",\n      \"productKeys\": [\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"channel\": \"<string>\",\n          \"productKey\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-b427c04b-b110-4572-9753-2906a5bea56b"
+                    },
+                    {
+                      "id": "44dbdfd7-3fcc-418e-9db0-6347a7ebcfc7",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/subscription",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "subscription"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-44dbdfd7-3fcc-418e-9db0-6347a7ebcfc7"
+                    },
+                    {
+                      "id": "c715934a-324c-43c9-abf5-cd95baa64c30",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/subscription",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "subscription"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-c715934a-324c-43c9-abf5-cd95baa64c30"
+                    },
+                    {
+                      "id": "60f6c33a-f079-4d14-8865-29ae3a994469",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/subscription",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "subscription"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-60f6c33a-f079-4d14-8865-29ae3a994469"
+                    },
+                    {
+                      "id": "bc4f2a7a-512a-46b3-b808-250e90c520f5",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/admin/subscription",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "admin",
+                            "subscription"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:30:33.000Z",
+                      "updatedAt": "2026-10-21T20:30:33.000Z",
+                      "uid": "35240-bc4f2a7a-512a-46b3-b808-250e90c520f5"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:30:33.000Z",
+                  "updatedAt": "2026-10-21T20:30:33.000Z",
+                  "uid": "35240-fb3ecd89-5189-4da9-930e-c7a288e36ee4"
+                }
+              ],
+              "id": "997560a1-7bf1-42a7-8637-768ad8109b71",
+              "createdAt": "2026-10-21T20:30:33.000Z",
+              "updatedAt": "2026-10-21T20:30:33.000Z",
+              "uid": "35240-997560a1-7bf1-42a7-8637-768ad8109b71"
+            }
+          ],
+          "id": "0dac2192-8088-4054-98cd-5c1dd9b81f9f",
+          "createdAt": "2026-10-21T20:30:33.000Z",
+          "updatedAt": "2026-10-21T20:30:33.000Z",
+          "uid": "35240-0dac2192-8088-4054-98cd-5c1dd9b81f9f"
+        }
+      ],
+      "id": "3afeea7a-a8f0-42cc-aae8-b539f86c44ac",
+      "createdAt": "2026-10-21T20:30:33.000Z",
+      "updatedAt": "2026-10-21T20:30:33.000Z",
+      "uid": "35240-3afeea7a-a8f0-42cc-aae8-b539f86c44ac"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

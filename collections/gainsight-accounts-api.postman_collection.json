@@ -1,236 +1,847 @@
 {
+  "info": {
+    "_postman_id": "fc000df0-ebb0-436a-a01e-603b14c58787",
+    "name": "Gainsight Accounts API",
+    "description": "Operations tagged Accounts across 2 of this provider's published API definitions: gainsight-px-api-openapi.yml, gainsight-accounts-api-openapi.yml. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:28:08.000Z",
+    "updatedAt": "2026-10-21T20:28:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fc000df0-ebb0-436a-a01e-603b14c58787"
+  },
   "item": [
     {
-      "id": "579e2740-b3fb-4ae0-83ed-fb383ab9e3d8",
-      "name": "Accounts",
-      "description": {
-        "content": "Manage account records and attributes",
-        "type": "text/plain"
-      },
+      "name": "accounts",
       "item": [
         {
-          "id": "17ce1082-beb6-46a6-a4a7-a9bec1b73b73",
-          "name": "Gainsight List accounts",
-          "request": {
-            "name": "Gainsight List accounts",
-            "description": {
-              "content": "Retrieve a paginated list of accounts in Gainsight PX.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "pageSize",
-                  "value": "20",
-                  "description": "Number of results per page"
-                },
-                {
-                  "disabled": false,
-                  "key": "scrollId",
-                  "value": "<string>",
-                  "description": "Scroll ID for cursor-based pagination"
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "Sort field and direction (e.g., lastSeenDate:desc)"
-                },
-                {
-                  "disabled": false,
-                  "key": "filter",
-                  "value": "<string>",
-                  "description": "Filter expression for results"
-                }
-              ],
-              "variable": [
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{accountId}",
+          "item": [
             {
-              "id": "03460d73-c218-4aa0-b08f-b8fd79f23886",
-              "name": "Accounts retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "Gainsight Get an account",
+              "id": "9dc59bf7-cae3-44cf-b7a8-f669d1a5b1f2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
                     {
-                      "key": "pageSize",
-                      "value": "20"
+                      "key": "key",
+                      "value": "X-APTRINSIC-API-KEY",
+                      "type": "string"
                     },
                     {
-                      "key": "scrollId",
-                      "value": "<string>"
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
                     },
                     {
-                      "key": "sort",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "filter",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
                     }
                   ]
                 },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/:accountId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ace247c4-27ac-4431-9dd9-7cf690516318",
+                      "key": "accountId",
+                      "value": "<string>",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific account by ID."
+              },
+              "response": [
+                {
+                  "id": "829fc0e6-ae87-48f4-b789-afea0bd8cea6",
+                  "name": "Account details returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dupisBuyer\": \"<boolean>\",\n  \"numberOfUsers\": \"<integer>\",\n  \"numberOfVisits\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-829fc0e6-ae87-48f4-b789-afea0bd8cea6"
+                },
+                {
+                  "id": "a7f5b845-5a9d-4877-803e-b1d5b27ba104",
+                  "name": "Authentication failed or API key is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-a7f5b845-5a9d-4877-803e-b1d5b27ba104"
+                },
+                {
+                  "id": "e9583f5a-f123-4a99-9609-4dc4eeceb6c4",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-e9583f5a-f123-4a99-9609-4dc4eeceb6c4"
+                }
+              ],
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-9dc59bf7-cae3-44cf-b7a8-f669d1a5b1f2"
+            },
+            {
+              "name": "Gainsight Update an account",
+              "id": "443dd16b-2c5c-492a-a5e7-93f203438726",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-APTRINSIC-API-KEY",
+                      "type": "string"
                     },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/:accountId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2e2d7e68-13af-4ef3-99e6-670bd050efc0",
+                      "key": "accountId",
+                      "value": "<string>",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "description": "Update specific attributes of an account."
+              },
+              "response": [
+                {
+                  "id": "946bcf61-53c9-4f50-baf6-5fb3b2fb3a79",
+                  "name": "Account updated",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dupisBuyer\": \"<boolean>\",\n  \"numberOfUsers\": \"<integer>\",\n  \"numberOfVisits\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-946bcf61-53c9-4f50-baf6-5fb3b2fb3a79"
+                },
+                {
+                  "id": "04cf3e27-fad6-4fcb-addf-966c39353a69",
+                  "name": "Authentication failed or API key is missing",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-04cf3e27-fad6-4fcb-addf-966c39353a69"
+                },
+                {
+                  "id": "f1bfe242-6468-4f16-af2c-9961d278d927",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-f1bfe242-6468-4f16-af2c-9961d278d927"
+                }
+              ],
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-443dd16b-2c5c-492a-a5e7-93f203438726"
+            },
+            {
+              "name": "Gainsight Delete an account",
+              "id": "a4a85b9e-cd42-4aca-a609-14f87bc73992",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-APTRINSIC-API-KEY",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts/:accountId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6e407892-ae76-4c0c-b526-1fc6c5bce352",
+                      "key": "accountId",
+                      "value": "<string>",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "description": "Delete an account from Gainsight PX."
+              },
+              "response": [
+                {
+                  "id": "8621346e-a9d7-49f2-8e5e-d88ecac9295a",
+                  "name": "Account deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-8621346e-a9d7-49f2-8e5e-d88ecac9295a"
+                },
+                {
+                  "id": "7065db65-22e9-4a7c-bf8b-5ff41067bcdf",
+                  "name": "Authentication failed or API key is missing",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-7065db65-22e9-4a7c-bf8b-5ff41067bcdf"
+                },
+                {
+                  "id": "3cc1d58c-e51a-4f8b-8f1c-8a360e18ba21",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-APTRINSIC-API-KEY",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-3cc1d58c-e51a-4f8b-8f1c-8a360e18ba21"
+                }
+              ],
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-a4a85b9e-cd42-4aca-a609-14f87bc73992"
+            }
+          ],
+          "id": "0a7ed687-e0d0-438d-8296-25e6e80c0b15",
+          "createdAt": "2026-10-21T20:28:08.000Z",
+          "updatedAt": "2026-10-21T20:28:08.000Z",
+          "uid": "35240-0a7ed687-e0d0-438d-8296-25e6e80c0b15"
+        },
+        {
+          "name": "Gainsight List accounts",
+          "id": "7f83143c-5dd5-43f2-9545-6cde64303e78",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-APTRINSIC-API-KEY",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/accounts?pageSize=20&scrollId=<string>&sort=<string>&filter=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accounts"
+              ],
+              "query": [
+                {
+                  "description": "Number of results per page",
+                  "key": "pageSize",
+                  "value": "20"
+                },
+                {
+                  "description": "Scroll ID for cursor-based pagination",
+                  "key": "scrollId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Sort field and direction (e.g., lastSeenDate:desc)",
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter expression for results",
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve a paginated list of accounts in Gainsight PX."
+          },
+          "response": [
+            {
+              "id": "48edcbf3-b2c2-429d-84e1-12abe14fe1d9",
+              "name": "Accounts retrieved successfully",
+              "originalRequest": {
                 "method": "GET",
-                "body": {}
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accounts?pageSize=20&scrollId=<string>&sort=<string>&filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of results per page",
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Scroll ID for cursor-based pagination",
+                      "key": "scrollId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort field and direction (e.g., lastSeenDate:desc)",
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter expression for results",
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"trackedSubscriptionId\": \"string\",\n      \"sfdcId\": \"string\",\n      \"lastSeenDate\": 6208,\n      \"dupisBuyer\": false,\n      \"numberOfUsers\": 4770,\n      \"numberOfVisits\": 2865,\n      \"plan\": \"string\",\n      \"customAttributes\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"trackedSubscriptionId\": \"string\",\n      \"sfdcId\": \"string\",\n      \"lastSeenDate\": 9123,\n      \"dupisBuyer\": false,\n      \"numberOfUsers\": 7693,\n      \"numberOfVisits\": 9354,\n      \"plan\": \"string\",\n      \"customAttributes\": {}\n    }\n  ],\n  \"scrollId\": \"string\",\n  \"totalHits\": 7254\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"trackedSubscriptionId\": \"<string>\",\n      \"sfdcId\": \"<string>\",\n      \"lastSeenDate\": \"<long>\",\n      \"dupisBuyer\": \"<boolean>\",\n      \"numberOfUsers\": \"<integer>\",\n      \"numberOfVisits\": \"<integer>\",\n      \"plan\": \"<string>\",\n      \"customAttributes\": {}\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"trackedSubscriptionId\": \"<string>\",\n      \"sfdcId\": \"<string>\",\n      \"lastSeenDate\": \"<long>\",\n      \"dupisBuyer\": \"<boolean>\",\n      \"numberOfUsers\": \"<integer>\",\n      \"numberOfVisits\": \"<integer>\",\n      \"plan\": \"<string>\",\n      \"customAttributes\": {}\n    }\n  ],\n  \"scrollId\": \"<string>\",\n  \"totalHits\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-48edcbf3-b2c2-429d-84e1-12abe14fe1d9"
             },
             {
-              "id": "f6fe8bd1-cf39-4a2e-862f-9f4253011e48",
+              "id": "a44f604f-e1c4-48ec-adea-4a409e93a088",
               "name": "Authentication failed or API key is missing",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "accounts"
-                  ],
+                  "raw": "{{baseUrl}}/accounts?pageSize=20&scrollId=<string>&sort=<string>&filter=<string>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "accounts"
+                  ],
                   "query": [
                     {
+                      "description": "Number of results per page",
                       "key": "pageSize",
                       "value": "20"
                     },
                     {
+                      "description": "Scroll ID for cursor-based pagination",
                       "key": "scrollId",
                       "value": "<string>"
                     },
                     {
+                      "description": "Sort field and direction (e.g., lastSeenDate:desc)",
                       "key": "sort",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter expression for results",
                       "key": "filter",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-a44f604f-e1c4-48ec-adea-4a409e93a088"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:28:08.000Z",
+          "updatedAt": "2026-10-21T20:28:08.000Z",
+          "uid": "35240-7f83143c-5dd5-43f2-9545-6cde64303e78"
         },
         {
-          "id": "e0a48099-c80d-4536-9f30-89a2d68f4711",
           "name": "Gainsight Create or update an account",
+          "id": "89753199-3668-45a9-a76a-ad1a269b45f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Gainsight Create or update an account",
-            "description": {
-              "content": "Create a new account or update an existing account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
+            "auth": {
+              "type": "apikey",
+              "apikey": [
                 {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
+                  "key": "key",
+                  "value": "X-APTRINSIC-API-KEY",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
                 }
               ]
             },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -241,911 +852,1670 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/accounts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accounts"
+              ]
+            },
+            "description": "Create a new account or update an existing account."
           },
           "response": [
             {
-              "id": "55d7addd-f4fd-48dc-80c8-4eb6a8ead7af",
+              "id": "e2db6927-8950-499e-9636-68243d3af338",
               "name": "Account created or updated",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"trackedSubscriptionId\": \"string\",\n  \"sfdcId\": \"string\",\n  \"lastSeenDate\": 935,\n  \"dupisBuyer\": false,\n  \"numberOfUsers\": 7361,\n  \"numberOfVisits\": 2454,\n  \"plan\": \"string\",\n  \"customAttributes\": {}\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dupisBuyer\": \"<boolean>\",\n  \"numberOfUsers\": \"<integer>\",\n  \"numberOfVisits\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-e2db6927-8950-499e-9636-68243d3af338"
             },
             {
-              "id": "4ace3568-c4c0-4245-bb2f-99d557c87570",
+              "id": "5f928c71-37d0-49d3-8380-cd74cab2d9be",
               "name": "Invalid request body or parameters",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-5f928c71-37d0-49d3-8380-cd74cab2d9be"
             },
             {
-              "id": "637db7b7-e564-4a09-9aad-a3863b64c203",
+              "id": "7452adc7-6e19-40bc-8187-79b69a103518",
               "name": "Authentication failed or API key is missing",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-APTRINSIC-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "accounts"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-7452adc7-6e19-40bc-8187-79b69a103518"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "49e4001d-d254-4187-9ad8-240d2d922609",
-          "name": "Gainsight Get an account",
-          "request": {
-            "name": "Gainsight Get an account",
-            "description": {
-              "content": "Retrieve a specific account by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                ":accountId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "accountId",
-                  "description": "(Required) Unique account identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "89f13b47-9836-454d-bec2-8930b298e115",
-              "name": "Account details returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"trackedSubscriptionId\": \"string\",\n  \"sfdcId\": \"string\",\n  \"lastSeenDate\": 935,\n  \"dupisBuyer\": false,\n  \"numberOfUsers\": 7361,\n  \"numberOfVisits\": 2454,\n  \"plan\": \"string\",\n  \"customAttributes\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e5e1bf24-9b49-41c5-b21a-8ea92504cd32",
-              "name": "Authentication failed or API key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a49e2601-7227-45c5-84e1-2a66d8cd11a2",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "39f0664e-222c-4bf7-a958-01b1376a008e",
-          "name": "Gainsight Update an account",
-          "request": {
-            "name": "Gainsight Update an account",
-            "description": {
-              "content": "Update specific attributes of an account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                ":accountId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "accountId",
-                  "description": "(Required) Unique account identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "bfa6394e-02c4-4985-9cd2-6041a3161bad",
-              "name": "Account updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"trackedSubscriptionId\": \"string\",\n  \"sfdcId\": \"string\",\n  \"lastSeenDate\": 935,\n  \"dupisBuyer\": false,\n  \"numberOfUsers\": 7361,\n  \"numberOfVisits\": 2454,\n  \"plan\": \"string\",\n  \"customAttributes\": {}\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "20c76f23-bb92-4156-809a-61bc082f382d",
-              "name": "Authentication failed or API key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "60feefc9-e571-4c74-ab4f-6b53a5b6bbd1",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"customAttributes\": \"<object>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8d3daf8c-198b-4c04-92ff-e59650fd7171",
-          "name": "Gainsight Delete an account",
-          "request": {
-            "name": "Gainsight Delete an account",
-            "description": {
-              "content": "Delete an account from Gainsight PX.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                ":accountId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "accountId",
-                  "description": "(Required) Unique account identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f0e5f76e-b9ec-41d7-bc6c-976ca3f2d3c2",
-              "name": "Account deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "70404869-95ec-4c8d-a139-1f88c5cd13cf",
-              "name": "Authentication failed or API key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "20dccfc8-9697-4888-b640-787923bd88e9",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountId",
-                      "description": "(Required) Unique account identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:28:08.000Z",
+          "updatedAt": "2026-10-21T20:28:08.000Z",
+          "uid": "35240-89753199-3668-45a9-a76a-ad1a269b45f5"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
+      "id": "68afbc08-c120-4fd3-9893-bf4e87419990",
+      "createdAt": "2026-10-21T20:28:08.000Z",
+      "updatedAt": "2026-10-21T20:28:08.000Z",
+      "uid": "35240-68afbc08-c120-4fd3-9893-bf4e87419990"
     },
     {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "name": "v1",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "update",
+              "item": [
+                {
+                  "name": "Update account (accountId passed via request body)",
+                  "id": "9c38987d-f5a4-4ef2-b8b2-4ec53839a09f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts/update",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts",
+                        "update"
+                      ]
+                    },
+                    "description": "Updates an account with accountId specified in the request body.\nThis update method is useful when the account ID contains special characters that make it impossible to use the update method with the accountId in the request path."
+                  },
+                  "response": [
+                    {
+                      "id": "0e422629-fd67-4aa8-9213-878ae4ef10ea",
+                      "name": "Updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            "update"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"422\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-0e422629-fd67-4aa8-9213-878ae4ef10ea"
+                    },
+                    {
+                      "id": "7f04e19c-e610-4939-8156-53bf97ea3f50",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            "update"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-7f04e19c-e610-4939-8156-53bf97ea3f50"
+                    },
+                    {
+                      "id": "962fafdb-c569-4c7e-85fc-3d21ae26f83d",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            "update"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-962fafdb-c569-4c7e-85fc-3d21ae26f83d"
+                    },
+                    {
+                      "id": "6f8e0908-b659-4f82-b01c-043de77045a7",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/update",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            "update"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-6f8e0908-b659-4f82-b01c-043de77045a7"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-9c38987d-f5a4-4ef2-b8b2-4ec53839a09f"
+                }
+              ],
+              "id": "daf6b3c3-5086-45a3-8067-f7c85217e1e0",
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-daf6b3c3-5086-45a3-8067-f7c85217e1e0"
+            },
+            {
+              "name": "{accountId}",
+              "item": [
+                {
+                  "name": "Get account",
+                  "id": "5aebec09-02e7-464b-b6ca-3e2a24f18bda",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "79f8f9fc-03c2-4ae9-a5e4-9a54f8601269",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) Account id"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the account with the given id"
+                  },
+                  "response": [
+                    {
+                      "id": "0ce989f7-baa8-471e-89f5-a0c964042cba",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-0ce989f7-baa8-471e-89f5-a0c964042cba"
+                    },
+                    {
+                      "id": "fe13d0ec-aa11-4a2d-b5a7-17d60a83918e",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-fe13d0ec-aa11-4a2d-b5a7-17d60a83918e"
+                    },
+                    {
+                      "id": "9c1b06ac-d474-463a-a84c-4afb36f1c061",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-9c1b06ac-d474-463a-a84c-4afb36f1c061"
+                    },
+                    {
+                      "id": "fdefa3a9-ebe2-460b-a765-acf57344ad40",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-fdefa3a9-ebe2-460b-a765-acf57344ad40"
+                    },
+                    {
+                      "id": "023cb628-68f7-4ad2-977f-a9990d518846",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-023cb628-68f7-4ad2-977f-a9990d518846"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-5aebec09-02e7-464b-b6ca-3e2a24f18bda"
+                },
+                {
+                  "name": "Update account",
+                  "id": "300e5b3f-59c9-48da-aed8-d45ff7afa3fa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5b6f0811-00b2-4e15-b37f-4b48e3c9ffce",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) Account id"
+                        }
+                      ]
+                    },
+                    "description": "Updates an account with the given data"
+                  },
+                  "response": [
+                    {
+                      "id": "d9611556-5866-4759-8114-fbccc69f90a7",
+                      "name": "Updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"422\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-d9611556-5866-4759-8114-fbccc69f90a7"
+                    },
+                    {
+                      "id": "42e6c052-1e09-45ed-9b1c-a5ada2d75fb1",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-42e6c052-1e09-45ed-9b1c-a5ada2d75fb1"
+                    },
+                    {
+                      "id": "809026a3-2b93-4392-a110-1746f1f74f9a",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-809026a3-2b93-4392-a110-1746f1f74f9a"
+                    },
+                    {
+                      "id": "fa1b7748-5dcf-4932-b885-33d09f8dcf7a",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-fa1b7748-5dcf-4932-b885-33d09f8dcf7a"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-300e5b3f-59c9-48da-aed8-d45ff7afa3fa"
+                },
+                {
+                  "name": "Delete account",
+                  "id": "82a347c3-a8c6-4c5e-8835-e1c43ed4488e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts",
+                        ":accountId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b3b741db-2137-4231-999c-62813356a69d",
+                          "key": "accountId",
+                          "value": "<string>",
+                          "description": "(Required) Account id"
+                        }
+                      ]
+                    },
+                    "description": "Deletes Account\nNote: Performs a cascading delete of all users associated with the account"
+                  },
+                  "response": [
+                    {
+                      "id": "a4aa542c-f387-4975-867f-c5947f6ccd5f",
+                      "name": "Deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"422\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-a4aa542c-f387-4975-867f-c5947f6ccd5f"
+                    },
+                    {
+                      "id": "b9bcac6e-2207-4dff-83fc-b78b8cb20c9b",
+                      "name": "No Content",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"body\": {},\n  \"statusCode\": \"422\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-b9bcac6e-2207-4dff-83fc-b78b8cb20c9b"
+                    },
+                    {
+                      "id": "b23525a4-5967-4f60-aa00-a17471338c85",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-b23525a4-5967-4f60-aa00-a17471338c85"
+                    },
+                    {
+                      "id": "a6c326b5-2c1d-4231-9206-33e185b0f4c7",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-a6c326b5-2c1d-4231-9206-33e185b0f4c7"
+                    },
+                    {
+                      "id": "ff901e02-0d75-4bce-8b8e-0b40cd389f57",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:accountId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":accountId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "accountId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:28:08.000Z",
+                      "updatedAt": "2026-10-21T20:28:08.000Z",
+                      "uid": "35240-ff901e02-0d75-4bce-8b8e-0b40cd389f57"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-82a347c3-a8c6-4c5e-8835-e1c43ed4488e"
+                }
+              ],
+              "id": "66c8839b-e4c1-4c9f-8a38-2d73d3964f60",
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-66c8839b-e4c1-4c9f-8a38-2d73d3964f60"
+            },
+            {
+              "name": "Get accounts",
+              "id": "af719201-ace5-46ac-acea-c9bb917c832b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/accounts?filter=<string>&filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filters",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filters",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of accounts per page",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                      "key": "scrollId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sort",
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves accounts. Supports filtering, sorting and paging.\n### Filtering\nThe filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue}\nFilter terms within a single filter parameter are joined by a logical AND.\nSeparate filter parameters are joined by a logical OR.\n#### Operators\n| Operator | Meaning |\n| ----- | -------- |\n| == | Exact match |\n| != | Not equal |\n| | Greater than |\n| >= | Greater than or equal |\n| ~ | Matches string, supports wildcard characters * and ? |\n| !~ | Not like, supports wildcard characters * and ? |\n\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/accounts?filter=sicCode==64;numberOfEmployees>25 | Accounts with sicCode of 64 and more than 25 employees. |\n| GET /v1/accounts?filter=sicCode==64;numberOfEmployees>25&filter=sicCode==63;numberOfEmployees>3000 | Accounts with: (sicCode of 64 AND more than 25 employees) OR (sicCode of 63 AND more than 3000 employees). |\n| GET /v1/accounts?filter=location.cityName==Portland | Accounts with a city of 'Portland'. |\n| GET /v1/accounts?filter=customAttributes.internalId==12345 | Accounts with a custom attribute of internalId equal to 12345'. |\n\n### Sorting\nThe sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/accounts?sort=name;location.stateCode | Accounts sorted by name and state code in ascending order. |\n| GET /v1/accounts?sort=-createDate | Accounts sorted by createDate in descending order. |"
+              },
+              "response": [
+                {
+                  "id": "1f40e39e-e69b-4eee-8c59-4f90a74e1d23",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of accounts per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accounts\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"propertyKeys\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"trackedSubscriptionId\": \"<string>\",\n      \"sfdcId\": \"<string>\",\n      \"lastSeenDate\": \"<long>\",\n      \"dunsNumber\": \"<string>\",\n      \"industry\": \"<string>\",\n      \"numberOfEmployees\": \"<integer>\",\n      \"sicCode\": \"<string>\",\n      \"website\": \"<string>\",\n      \"naicsCode\": \"<string>\",\n      \"plan\": \"<string>\",\n      \"location\": {\n        \"countryName\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"stateName\": \"<string>\",\n        \"stateCode\": \"<string>\",\n        \"city\": \"<string>\",\n        \"street\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"continent\": \"<string>\",\n        \"regionName\": \"<string>\",\n        \"timeZone\": \"<string>\",\n        \"coordinates\": {\n          \"latitude\": \"<double>\",\n          \"longitude\": \"<double>\"\n        }\n      },\n      \"numberOfUsers\": \"<integer>\",\n      \"createDate\": \"<long>\",\n      \"lastModifiedDate\": \"<long>\",\n      \"customAttributes\": {},\n      \"parentGroupId\": \"<string>\",\n      \"renewalDate\": \"<long>\",\n      \"healthScore\": \"<integer>\",\n      \"gsId\": \"<string>\",\n      \"nps\": \"<float>\",\n      \"csm\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"propertyKeys\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"trackedSubscriptionId\": \"<string>\",\n      \"sfdcId\": \"<string>\",\n      \"lastSeenDate\": \"<long>\",\n      \"dunsNumber\": \"<string>\",\n      \"industry\": \"<string>\",\n      \"numberOfEmployees\": \"<integer>\",\n      \"sicCode\": \"<string>\",\n      \"website\": \"<string>\",\n      \"naicsCode\": \"<string>\",\n      \"plan\": \"<string>\",\n      \"location\": {\n        \"countryName\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"stateName\": \"<string>\",\n        \"stateCode\": \"<string>\",\n        \"city\": \"<string>\",\n        \"street\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"continent\": \"<string>\",\n        \"regionName\": \"<string>\",\n        \"timeZone\": \"<string>\",\n        \"coordinates\": {\n          \"latitude\": \"<double>\",\n          \"longitude\": \"<double>\"\n        }\n      },\n      \"numberOfUsers\": \"<integer>\",\n      \"createDate\": \"<long>\",\n      \"lastModifiedDate\": \"<long>\",\n      \"customAttributes\": {},\n      \"parentGroupId\": \"<string>\",\n      \"renewalDate\": \"<long>\",\n      \"healthScore\": \"<integer>\",\n      \"gsId\": \"<string>\",\n      \"nps\": \"<float>\",\n      \"csm\": \"<string>\"\n    }\n  ],\n  \"totalHits\": \"<long>\",\n  \"scrollId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-1f40e39e-e69b-4eee-8c59-4f90a74e1d23"
+                },
+                {
+                  "id": "27efc774-7039-4297-a50c-58da39e25ce7",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of accounts per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-27efc774-7039-4297-a50c-58da39e25ce7"
+                },
+                {
+                  "id": "3f078f30-082e-4dc7-80a7-b9c902390663",
+                  "name": "Unauthorized or bad API Key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of accounts per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-3f078f30-082e-4dc7-80a7-b9c902390663"
+                },
+                {
+                  "id": "9cdf1744-475e-4d84-97b8-f27c8979c84f",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts?filter=<string>&pageSize=25&scrollId=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filters",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of accounts per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Used for fetching subsequent pages after the first one.  Returned in response.scrollId",
+                          "key": "scrollId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-9cdf1744-475e-4d84-97b8-f27c8979c84f"
+                }
+              ],
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-af719201-ace5-46ac-acea-c9bb917c832b"
+            },
+            {
+              "name": "Create account",
+              "id": "a04fef7c-b4c4-4dda-b4b9-79c86ccc817c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/accounts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "accounts"
+                  ]
+                },
+                "description": "Creates a new account with the given data"
+              },
+              "response": [
+                {
+                  "id": "5a87f666-7e09-45fa-ba57-8f7f564990b2",
+                  "name": "Created Account",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"body\": {},\n  \"statusCode\": \"422\",\n  \"statusCodeValue\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-5a87f666-7e09-45fa-ba57-8f7f564990b2"
+                },
+                {
+                  "id": "7a253fee-e3de-44ff-b8f9-f408ce3b1f60",
+                  "name": "Bad request, possible duplicate",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-7a253fee-e3de-44ff-b8f9-f408ce3b1f60"
+                },
+                {
+                  "id": "10828b1f-0333-4e6e-9b78-60d1e1a11d1e",
+                  "name": "Unauthorized or bad API Key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-10828b1f-0333-4e6e-9b78-60d1e1a11d1e"
+                },
+                {
+                  "id": "7caa5d54-a308-4eb7-af54-babd65f3b02e",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"propertyKeys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"trackedSubscriptionId\": \"<string>\",\n  \"sfdcId\": \"<string>\",\n  \"lastSeenDate\": \"<long>\",\n  \"dunsNumber\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"numberOfEmployees\": \"<integer>\",\n  \"sicCode\": \"<string>\",\n  \"website\": \"<string>\",\n  \"naicsCode\": \"<string>\",\n  \"plan\": \"<string>\",\n  \"location\": {\n    \"countryName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"stateName\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"continent\": \"<string>\",\n    \"regionName\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"coordinates\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\"\n    }\n  },\n  \"numberOfUsers\": \"<integer>\",\n  \"createDate\": \"<long>\",\n  \"lastModifiedDate\": \"<long>\",\n  \"customAttributes\": {},\n  \"parentGroupId\": \"<string>\",\n  \"renewalDate\": \"<long>\",\n  \"healthScore\": \"<integer>\",\n  \"gsId\": \"<string>\",\n  \"nps\": \"<float>\",\n  \"csm\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/accounts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:28:08.000Z",
+                  "updatedAt": "2026-10-21T20:28:08.000Z",
+                  "uid": "35240-7caa5d54-a308-4eb7-af54-babd65f3b02e"
+                }
+              ],
+              "createdAt": "2026-10-21T20:28:08.000Z",
+              "updatedAt": "2026-10-21T20:28:08.000Z",
+              "uid": "35240-a04fef7c-b4c4-4dda-b4b9-79c86ccc817c"
+            }
+          ],
+          "id": "334c584f-e17c-4136-af95-89035a35402d",
+          "createdAt": "2026-10-21T20:28:08.000Z",
+          "updatedAt": "2026-10-21T20:28:08.000Z",
+          "uid": "35240-334c584f-e17c-4136-af95-89035a35402d"
+        }
+      ],
+      "id": "6d183b0d-7abb-48c4-b6d6-2d0a02a99836",
+      "createdAt": "2026-10-21T20:28:08.000Z",
+      "updatedAt": "2026-10-21T20:28:08.000Z",
+      "uid": "35240-6d183b0d-7abb-48c4-b6d6-2d0a02a99836"
     }
   ],
-  "auth": {
-    "type": "apikey",
-    "apikey": [
-      {
-        "key": "key",
-        "value": "accessKey"
-      },
-      {
-        "key": "value",
-        "value": "{{apiKey}}"
-      },
-      {
-        "key": "in",
-        "value": "header"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "137d3c75-b47f-46ef-9168-d8e085edcfc5",
-    "name": "Gainsight CS Bulk Accounts API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/v1"
     }
-  }
+  ]
 }

@@ -1,0 +1,482 @@
+{
+  "info": {
+    "_postman_id": "16b3ddb2-a68c-4019-a11c-49aade654222",
+    "name": "Gainsight PX REST Segment API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:31:23.000Z",
+    "updatedAt": "2026-10-21T20:31:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-16b3ddb2-a68c-4019-a11c-49aade654222"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "segment",
+          "item": [
+            {
+              "name": "{segmentId}",
+              "item": [
+                {
+                  "name": "Get segment",
+                  "id": "44304af2-a93a-4d40-ac4d-e1fbab2f63c8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/segment/:segmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "segment",
+                        ":segmentId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9131f21d-c142-4a78-8f81-973388e83e68",
+                          "key": "segmentId",
+                          "value": "<string>",
+                          "description": "(Required) Segment id"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the segment with the given id"
+                  },
+                  "response": [
+                    {
+                      "id": "02a9945a-0f2d-4742-9a57-f8a06566d312",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/segment/:segmentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "segment",
+                            ":segmentId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "segmentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:31:24.000Z",
+                      "updatedAt": "2026-10-21T20:31:24.000Z",
+                      "uid": "35240-02a9945a-0f2d-4742-9a57-f8a06566d312"
+                    },
+                    {
+                      "id": "6ef370b1-25f3-484c-aef9-60635524c619",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/segment/:segmentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "segment",
+                            ":segmentId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "segmentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:24.000Z",
+                      "updatedAt": "2026-10-21T20:31:24.000Z",
+                      "uid": "35240-6ef370b1-25f3-484c-aef9-60635524c619"
+                    },
+                    {
+                      "id": "1eb67912-c082-4d76-90d0-80f683f60f45",
+                      "name": "Unauthorized or bad API Key",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/segment/:segmentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "segment",
+                            ":segmentId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "segmentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:24.000Z",
+                      "updatedAt": "2026-10-21T20:31:24.000Z",
+                      "uid": "35240-1eb67912-c082-4d76-90d0-80f683f60f45"
+                    },
+                    {
+                      "id": "9d869901-8b49-481a-915a-384b3b81f6bc",
+                      "name": "Account not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/segment/:segmentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "segment",
+                            ":segmentId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "segmentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:24.000Z",
+                      "updatedAt": "2026-10-21T20:31:24.000Z",
+                      "uid": "35240-9d869901-8b49-481a-915a-384b3b81f6bc"
+                    },
+                    {
+                      "id": "b8b3bebc-ca48-4fc6-b022-4353daa4f7ec",
+                      "name": "Rate limit exceeded",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/segment/:segmentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "segment",
+                            ":segmentId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "segmentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:31:24.000Z",
+                      "updatedAt": "2026-10-21T20:31:24.000Z",
+                      "uid": "35240-b8b3bebc-ca48-4fc6-b022-4353daa4f7ec"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:31:24.000Z",
+                  "updatedAt": "2026-10-21T20:31:24.000Z",
+                  "uid": "35240-44304af2-a93a-4d40-ac4d-e1fbab2f63c8"
+                }
+              ],
+              "id": "f019e417-97b9-4846-a2e4-df5b626bec7f",
+              "createdAt": "2026-10-21T20:31:24.000Z",
+              "updatedAt": "2026-10-21T20:31:24.000Z",
+              "uid": "35240-f019e417-97b9-4846-a2e4-df5b626bec7f"
+            },
+            {
+              "name": "Get segments",
+              "id": "f3029eb3-3411-439b-8b50-61b98ca52783",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/segment?pageNumber=0&pageSize=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "segment"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number",
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Number of segments per page",
+                      "key": "pageSize",
+                      "value": "25"
+                    }
+                  ]
+                },
+                "description": "Retrieves segments. Supports paging.\nExamples:\n\n| URI | Results |\n| ----- | -------- |\n| GET /v1/segment?pageSize=100 | Get first 100 segments. |\n| GET /v1/segment?pageSize=100&pageNumber=1 | Get next 100 segments. |"
+              },
+              "response": [
+                {
+                  "id": "13895ba0-8677-4df7-9699-5779a7060c8b",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/segment?pageNumber=0&pageSize=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "segment"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of segments per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"segments\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"pageNumber\": \"<integer>\",\n  \"isLastPage\": \"<boolean>\"\n}",
+                  "createdAt": "2026-10-21T20:31:24.000Z",
+                  "updatedAt": "2026-10-21T20:31:24.000Z",
+                  "uid": "35240-13895ba0-8677-4df7-9699-5779a7060c8b"
+                },
+                {
+                  "id": "94c556b5-397c-475c-8521-519f575bc793",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/segment?pageNumber=0&pageSize=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "segment"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of segments per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:31:24.000Z",
+                  "updatedAt": "2026-10-21T20:31:24.000Z",
+                  "uid": "35240-94c556b5-397c-475c-8521-519f575bc793"
+                },
+                {
+                  "id": "8c8d7069-8046-437a-a769-e87395e7eeec",
+                  "name": "Unauthorized or bad API Key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/segment?pageNumber=0&pageSize=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "segment"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of segments per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:31:24.000Z",
+                  "updatedAt": "2026-10-21T20:31:24.000Z",
+                  "uid": "35240-8c8d7069-8046-437a-a769-e87395e7eeec"
+                },
+                {
+                  "id": "96c36b25-6ac3-4284-bd27-93090ee5f40a",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/segment?pageNumber=0&pageSize=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "segment"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number",
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Number of segments per page",
+                          "key": "pageSize",
+                          "value": "25"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:31:24.000Z",
+                  "updatedAt": "2026-10-21T20:31:24.000Z",
+                  "uid": "35240-96c36b25-6ac3-4284-bd27-93090ee5f40a"
+                }
+              ],
+              "createdAt": "2026-10-21T20:31:24.000Z",
+              "updatedAt": "2026-10-21T20:31:24.000Z",
+              "uid": "35240-f3029eb3-3411-439b-8b50-61b98ca52783"
+            }
+          ],
+          "id": "edad489b-a7b6-4353-936b-c4665488c512",
+          "createdAt": "2026-10-21T20:31:24.000Z",
+          "updatedAt": "2026-10-21T20:31:24.000Z",
+          "uid": "35240-edad489b-a7b6-4353-936b-c4665488c512"
+        }
+      ],
+      "id": "b42cbcf5-e596-4b65-a974-ea370095a90a",
+      "createdAt": "2026-10-21T20:31:24.000Z",
+      "updatedAt": "2026-10-21T20:31:24.000Z",
+      "uid": "35240-b42cbcf5-e596-4b65-a974-ea370095a90a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

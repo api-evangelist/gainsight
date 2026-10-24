@@ -1,0 +1,3559 @@
+{
+  "info": {
+    "_postman_id": "4d6a35a6-d5b6-4e59-8cca-63e49cb8d418",
+    "name": "Gainsight PX REST Localization API",
+    "description": "Gainsight PX API provides a programmatic (server-based) method to access the users, accounts, and events that have been captured by the Gainsight PX subscription.\n\nContact Support:\n Name: Gainsight PX\n Email: pxsupport@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:31:16.000Z",
+    "updatedAt": "2026-10-21T20:31:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4d6a35a6-d5b6-4e59-8cca-63e49cb8d418"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "localization",
+          "item": [
+            {
+              "name": "export",
+              "item": [
+                {
+                  "name": "articles",
+                  "item": [
+                    {
+                      "name": "export XLIFF for articles",
+                      "id": "5f641206-bbbf-468f-846c-f6c67eb348b1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/export/articles?id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "export",
+                            "articles"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) id",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "strategy",
+                              "key": "strategy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "translated",
+                              "key": "translated",
+                              "value": "true"
+                            },
+                            {
+                              "description": "trgLang",
+                              "key": "trgLang",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "version",
+                              "key": "version",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "retrieve the xliff file by filters in zip"
+                      },
+                      "response": [
+                        {
+                          "id": "d7d142d7-1b0b-40b1-8cb4-a2fde64627e2",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/articles?id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "articles"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-d7d142d7-1b0b-40b1-8cb4-a2fde64627e2"
+                        },
+                        {
+                          "id": "8ac6c318-6dca-4bf9-a2e1-c1bf304d9def",
+                          "name": "localization is disabled",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/articles?id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "articles"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-8ac6c318-6dca-4bf9-a2e1-c1bf304d9def"
+                        },
+                        {
+                          "id": "408ac4ad-26a5-4dcb-84c4-2c0406b3f454",
+                          "name": "article not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/articles?id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "articles"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-408ac4ad-26a5-4dcb-84c4-2c0406b3f454"
+                        },
+                        {
+                          "id": "2e831912-68c6-4d03-9f5f-38b90002a2fc",
+                          "name": "article has no content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/articles?id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "articles"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-2e831912-68c6-4d03-9f5f-38b90002a2fc"
+                        },
+                        {
+                          "id": "109fa22a-cc2a-471b-b006-9054f9ee91ca",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/articles?id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "articles"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-109fa22a-cc2a-471b-b006-9054f9ee91ca"
+                        },
+                        {
+                          "id": "5e31d8d5-eaa1-424b-a95a-9fed0c48cdbe",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/articles?id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "articles"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-5e31d8d5-eaa1-424b-a95a-9fed0c48cdbe"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-5f641206-bbbf-468f-846c-f6c67eb348b1"
+                    }
+                  ],
+                  "id": "d622a223-1f57-40a4-8416-515594e732b5",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-d622a223-1f57-40a4-8416-515594e732b5"
+                },
+                {
+                  "name": "content",
+                  "item": [
+                    {
+                      "name": "export XLIFF",
+                      "id": "8c2d0e79-8545-437d-9163-c9a268ab3112",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/export/content?contentId=<string>&strategy=<string>&translated=true&trgLang=<string>&type=RATING_SURVEY&version=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "export",
+                            "content"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) contentId",
+                              "key": "contentId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "strategy",
+                              "key": "strategy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "translated",
+                              "key": "translated",
+                              "value": "true"
+                            },
+                            {
+                              "description": "trgLang",
+                              "key": "trgLang",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) type",
+                              "key": "type",
+                              "value": "RATING_SURVEY"
+                            },
+                            {
+                              "description": "version",
+                              "key": "version",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "retrieve Content Library Entry xliff file by filters in zip"
+                      },
+                      "response": [
+                        {
+                          "id": "eddf1036-29c7-4cb7-9807-b50ac5ebd353",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/content?contentId=<string>&strategy=<string>&translated=true&trgLang=<string>&type=RATING_SURVEY&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) type",
+                                  "key": "type",
+                                  "value": "RATING_SURVEY"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-eddf1036-29c7-4cb7-9807-b50ac5ebd353"
+                        },
+                        {
+                          "id": "9d154017-2174-476e-9346-65b00830c1ea",
+                          "name": "localization is disabled",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/content?contentId=<string>&strategy=<string>&translated=true&trgLang=<string>&type=RATING_SURVEY&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) type",
+                                  "key": "type",
+                                  "value": "RATING_SURVEY"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-9d154017-2174-476e-9346-65b00830c1ea"
+                        },
+                        {
+                          "id": "4cd2bd22-d1cd-45c1-bf19-b22926819a3e",
+                          "name": "Entry not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/content?contentId=<string>&strategy=<string>&translated=true&trgLang=<string>&type=RATING_SURVEY&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) type",
+                                  "key": "type",
+                                  "value": "RATING_SURVEY"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-4cd2bd22-d1cd-45c1-bf19-b22926819a3e"
+                        },
+                        {
+                          "id": "6ce0213d-7398-4ca8-9060-5b1cfaf703b5",
+                          "name": "Entry has no content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/content?contentId=<string>&strategy=<string>&translated=true&trgLang=<string>&type=RATING_SURVEY&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) type",
+                                  "key": "type",
+                                  "value": "RATING_SURVEY"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-6ce0213d-7398-4ca8-9060-5b1cfaf703b5"
+                        },
+                        {
+                          "id": "147d7d25-c7fc-496d-a425-5f00660fa234",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/content?contentId=<string>&strategy=<string>&translated=true&trgLang=<string>&type=RATING_SURVEY&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) type",
+                                  "key": "type",
+                                  "value": "RATING_SURVEY"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-147d7d25-c7fc-496d-a425-5f00660fa234"
+                        },
+                        {
+                          "id": "baedfa79-489c-4990-803e-d131ad685eb1",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/content?contentId=<string>&strategy=<string>&translated=true&trgLang=<string>&type=RATING_SURVEY&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) type",
+                                  "key": "type",
+                                  "value": "RATING_SURVEY"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-baedfa79-489c-4990-803e-d131ad685eb1"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-8c2d0e79-8545-437d-9163-c9a268ab3112"
+                    }
+                  ],
+                  "id": "6a369386-9445-49ce-836c-af71655a401b",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-6a369386-9445-49ce-836c-af71655a401b"
+                },
+                {
+                  "name": "engagement",
+                  "item": [
+                    {
+                      "name": "export XLIFF",
+                      "id": "cefb0f45-9052-45b8-9ba0-825c29633930",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/export/engagement?draft=false&id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "export",
+                            "engagement"
+                          ],
+                          "query": [
+                            {
+                              "description": "draft",
+                              "key": "draft",
+                              "value": "false"
+                            },
+                            {
+                              "description": "(Required) id",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "strategy",
+                              "key": "strategy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "translated",
+                              "key": "translated",
+                              "value": "true"
+                            },
+                            {
+                              "description": "trgLang",
+                              "key": "trgLang",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "version",
+                              "key": "version",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "retrieve the engagement xliff file by filters in zip"
+                      },
+                      "response": [
+                        {
+                          "id": "64f14444-5b3a-433b-a5e4-7d248d559bd8",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/engagement?draft=false&id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "engagement"
+                              ],
+                              "query": [
+                                {
+                                  "description": "draft",
+                                  "key": "draft",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-64f14444-5b3a-433b-a5e4-7d248d559bd8"
+                        },
+                        {
+                          "id": "2641118e-7c88-4fd9-b6de-ad22b640d904",
+                          "name": "localization is disabled",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/engagement?draft=false&id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "engagement"
+                              ],
+                              "query": [
+                                {
+                                  "description": "draft",
+                                  "key": "draft",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-2641118e-7c88-4fd9-b6de-ad22b640d904"
+                        },
+                        {
+                          "id": "40324177-1de5-4d05-ab62-b713e3ef5598",
+                          "name": "engagement not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/engagement?draft=false&id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "engagement"
+                              ],
+                              "query": [
+                                {
+                                  "description": "draft",
+                                  "key": "draft",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-40324177-1de5-4d05-ab62-b713e3ef5598"
+                        },
+                        {
+                          "id": "c2a84eda-e9b1-4e49-80a6-bcb0a44a0e40",
+                          "name": "engagement has no content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/engagement?draft=false&id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "engagement"
+                              ],
+                              "query": [
+                                {
+                                  "description": "draft",
+                                  "key": "draft",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-c2a84eda-e9b1-4e49-80a6-bcb0a44a0e40"
+                        },
+                        {
+                          "id": "3462c325-7575-4e71-a68e-67225ee97d2e",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/engagement?draft=false&id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "engagement"
+                              ],
+                              "query": [
+                                {
+                                  "description": "draft",
+                                  "key": "draft",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-3462c325-7575-4e71-a68e-67225ee97d2e"
+                        },
+                        {
+                          "id": "73a64913-ab71-461b-8a71-60c56e2160b2",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/engagement?draft=false&id=<string>&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "engagement"
+                              ],
+                              "query": [
+                                {
+                                  "description": "draft",
+                                  "key": "draft",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-73a64913-ab71-461b-8a71-60c56e2160b2"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-cefb0f45-9052-45b8-9ba0-825c29633930"
+                    }
+                  ],
+                  "id": "1c591aa0-50fc-4113-a5a8-6d1facac9fca",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-1c591aa0-50fc-4113-a5a8-6d1facac9fca"
+                },
+                {
+                  "name": "kcbot",
+                  "item": [
+                    {
+                      "name": "export XLIFF",
+                      "id": "1ab27ec4-a52a-4ec0-9486-bc1e182d4183",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/export/kcbot?id=<string>&kcVersion=v1&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "export",
+                            "kcbot"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) id",
+                              "key": "id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "kcVersion",
+                              "key": "kcVersion",
+                              "value": "v1"
+                            },
+                            {
+                              "description": "strategy",
+                              "key": "strategy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "translated",
+                              "key": "translated",
+                              "value": "true"
+                            },
+                            {
+                              "description": "trgLang",
+                              "key": "trgLang",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "version",
+                              "key": "version",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "retrieve the kcbot xliff file by filters in zip"
+                      },
+                      "response": [
+                        {
+                          "id": "5fe5bfde-af5b-46b9-8a3c-00254c742808",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/kcbot?id=<string>&kcVersion=v1&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-5fe5bfde-af5b-46b9-8a3c-00254c742808"
+                        },
+                        {
+                          "id": "bd0b268d-6a92-4f18-b221-4543426b7774",
+                          "name": "localization is disabled",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/kcbot?id=<string>&kcVersion=v1&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-bd0b268d-6a92-4f18-b221-4543426b7774"
+                        },
+                        {
+                          "id": "03d9673e-187a-4dcc-8915-5a96471f93fe",
+                          "name": "KCBot not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/kcbot?id=<string>&kcVersion=v1&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-03d9673e-187a-4dcc-8915-5a96471f93fe"
+                        },
+                        {
+                          "id": "cb952e85-9479-44f5-ad62-ce3ab2e60066",
+                          "name": "KCBot has no content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/kcbot?id=<string>&kcVersion=v1&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-cb952e85-9479-44f5-ad62-ce3ab2e60066"
+                        },
+                        {
+                          "id": "17016fe9-a656-4b61-8ad6-941fe205d029",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/kcbot?id=<string>&kcVersion=v1&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-17016fe9-a656-4b61-8ad6-941fe205d029"
+                        },
+                        {
+                          "id": "9d0425ff-6e40-462d-b7e0-b58f646c399a",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/export/kcbot?id=<string>&kcVersion=v1&strategy=<string>&translated=true&trgLang=<string>&version=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "export",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) id",
+                                  "key": "id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                },
+                                {
+                                  "description": "strategy",
+                                  "key": "strategy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "translated",
+                                  "key": "translated",
+                                  "value": "true"
+                                },
+                                {
+                                  "description": "trgLang",
+                                  "key": "trgLang",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "version",
+                                  "key": "version",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-9d0425ff-6e40-462d-b7e0-b58f646c399a"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-1ab27ec4-a52a-4ec0-9486-bc1e182d4183"
+                    }
+                  ],
+                  "id": "4d9c6703-1e6d-462f-9e9b-709d91674f9c",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-4d9c6703-1e6d-462f-9e9b-709d91674f9c"
+                }
+              ],
+              "id": "8e95b901-8e70-4fbf-a009-f48dce1d7067",
+              "createdAt": "2026-10-21T20:31:17.000Z",
+              "updatedAt": "2026-10-21T20:31:17.000Z",
+              "uid": "35240-8e95b901-8e70-4fbf-a009-f48dce1d7067"
+            },
+            {
+              "name": "import",
+              "item": [
+                {
+                  "name": "articles",
+                  "item": [
+                    {
+                      "name": "import XLIFF",
+                      "id": "05410689-2935-4034-bcc4-93e9108f6b22",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) file",
+                              "key": "file",
+                              "type": "file",
+                              "value": null
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/import/articles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "import",
+                            "articles"
+                          ]
+                        },
+                        "description": "import XLIFF content into article translation"
+                      },
+                      "response": [
+                        {
+                          "id": "739279fe-e21b-4fa0-a19d-37417cbda713",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-739279fe-e21b-4fa0-a19d-37417cbda713"
+                        },
+                        {
+                          "id": "9235272d-24a3-4c93-9d79-65771f1a2e9c",
+                          "name": "created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-9235272d-24a3-4c93-9d79-65771f1a2e9c"
+                        },
+                        {
+                          "id": "c51e27f6-8eb7-4273-85e7-6ec8febe6503",
+                          "name": "trgLang equals srcLang",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-c51e27f6-8eb7-4273-85e7-6ec8febe6503"
+                        },
+                        {
+                          "id": "a1b538d4-7e93-4fa0-923c-5ab572198fe5",
+                          "name": "xliff parser error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-a1b538d4-7e93-4fa0-923c-5ab572198fe5"
+                        },
+                        {
+                          "id": "e3d0009c-82af-4925-ad2f-78734a150943",
+                          "name": "article id not found in xliff file",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-e3d0009c-82af-4925-ad2f-78734a150943"
+                        },
+                        {
+                          "id": "8ae6c1c8-e96d-4d79-8371-cad45ac720f0",
+                          "name": "target language is not support by subscription",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-8ae6c1c8-e96d-4d79-8371-cad45ac720f0"
+                        },
+                        {
+                          "id": "e09f7200-a99b-4d22-a8c3-4f57cf8e5d39",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-e09f7200-a99b-4d22-a8c3-4f57cf8e5d39"
+                        },
+                        {
+                          "id": "bb2417a8-a8ef-49bf-8245-f23501c6d06e",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/articles",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "articles"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-bb2417a8-a8ef-49bf-8245-f23501c6d06e"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-05410689-2935-4034-bcc4-93e9108f6b22"
+                    }
+                  ],
+                  "id": "e2716702-1351-4af1-aac9-e98ff826f6b6",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-e2716702-1351-4af1-aac9-e98ff826f6b6"
+                },
+                {
+                  "name": "content",
+                  "item": [
+                    {
+                      "name": "import XLIFF",
+                      "id": "08f6c564-689d-495b-93d6-477b919b2946",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) file",
+                              "key": "file",
+                              "type": "file",
+                              "value": null
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "import",
+                            "content"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) contentId",
+                              "key": "contentId",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "import XLIFF content into Content Library Entry translation"
+                      },
+                      "response": [
+                        {
+                          "id": "60638174-6bec-4736-981e-d6aace337b14",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-60638174-6bec-4736-981e-d6aace337b14"
+                        },
+                        {
+                          "id": "6ad24e09-98a3-4031-bbfa-2e5c4653bc99",
+                          "name": "created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-6ad24e09-98a3-4031-bbfa-2e5c4653bc99"
+                        },
+                        {
+                          "id": "6ee46ee9-e5fa-4a2f-8a9b-516c6386ec5a",
+                          "name": "trgLang equals srcLang",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-6ee46ee9-e5fa-4a2f-8a9b-516c6386ec5a"
+                        },
+                        {
+                          "id": "60a96148-9779-44e5-8406-af76940d280a",
+                          "name": "xliff parser error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-60a96148-9779-44e5-8406-af76940d280a"
+                        },
+                        {
+                          "id": "ff7417bb-18a1-4f49-a556-a334804709da",
+                          "name": "content id not found in xliff file",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-ff7417bb-18a1-4f49-a556-a334804709da"
+                        },
+                        {
+                          "id": "99f9fa85-38c3-4fe4-b116-3312087fbf39",
+                          "name": "target language is not support by subscription",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-99f9fa85-38c3-4fe4-b116-3312087fbf39"
+                        },
+                        {
+                          "id": "fdd599cf-326c-4e78-a01f-8d5ae695fd42",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-fdd599cf-326c-4e78-a01f-8d5ae695fd42"
+                        },
+                        {
+                          "id": "91ccb8aa-360c-4ea1-a39a-b5f493bc4d75",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/content?contentId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) contentId",
+                                  "key": "contentId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-91ccb8aa-360c-4ea1-a39a-b5f493bc4d75"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-08f6c564-689d-495b-93d6-477b919b2946"
+                    }
+                  ],
+                  "id": "ebb153c8-109b-438e-894a-f3775bc409bb",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-ebb153c8-109b-438e-894a-f3775bc409bb"
+                },
+                {
+                  "name": "engagement",
+                  "item": [
+                    {
+                      "name": "import XLIFF",
+                      "id": "b26b88fc-6a71-4a02-9e82-967f981905ac",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) file",
+                              "key": "file",
+                              "type": "file",
+                              "value": null
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "import",
+                            "engagement"
+                          ]
+                        },
+                        "description": "import XLIFF content into engagement translation"
+                      },
+                      "response": [
+                        {
+                          "id": "dd55b6dc-b268-4fa4-81c1-c9f23e38bd97",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-dd55b6dc-b268-4fa4-81c1-c9f23e38bd97"
+                        },
+                        {
+                          "id": "4b83c149-2cde-45e9-91c8-6525ce48b11b",
+                          "name": "created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-4b83c149-2cde-45e9-91c8-6525ce48b11b"
+                        },
+                        {
+                          "id": "a80a520e-a678-4e6d-a3ce-784eca11efa5",
+                          "name": "trgLang is empty",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-a80a520e-a678-4e6d-a3ce-784eca11efa5"
+                        },
+                        {
+                          "id": "192d33d6-9cf7-4541-a032-4f2c7a8e5ec1",
+                          "name": "xliff parser error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-192d33d6-9cf7-4541-a032-4f2c7a8e5ec1"
+                        },
+                        {
+                          "id": "b33e085f-c336-4638-b8ce-f560f0e1b072",
+                          "name": "engagement id not found in xliff file",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-b33e085f-c336-4638-b8ce-f560f0e1b072"
+                        },
+                        {
+                          "id": "9af1baa6-25d9-48b6-8e26-8e6bddec7ae0",
+                          "name": "target language is not support by subscription",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-9af1baa6-25d9-48b6-8e26-8e6bddec7ae0"
+                        },
+                        {
+                          "id": "fc358de1-d462-4156-b1e6-dcece21edfbb",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-fc358de1-d462-4156-b1e6-dcece21edfbb"
+                        },
+                        {
+                          "id": "04cba921-d3f5-4d82-a3ff-a3fe8d1f284e",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/engagement",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "engagement"
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-04cba921-d3f5-4d82-a3ff-a3fe8d1f284e"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-b26b88fc-6a71-4a02-9e82-967f981905ac"
+                    }
+                  ],
+                  "id": "535b296d-7433-49f5-9737-3716e559ad95",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-535b296d-7433-49f5-9737-3716e559ad95"
+                },
+                {
+                  "name": "kcbot",
+                  "item": [
+                    {
+                      "name": "import XLIFF",
+                      "id": "ae054e2e-3c29-40cc-8103-b085838919d7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) file",
+                              "key": "file",
+                              "type": "file",
+                              "value": null
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "localization",
+                            "import",
+                            "kcbot"
+                          ],
+                          "query": [
+                            {
+                              "description": "kcVersion",
+                              "key": "kcVersion",
+                              "value": "v1"
+                            }
+                          ]
+                        },
+                        "description": "import XLIFF content into kc translation"
+                      },
+                      "response": [
+                        {
+                          "id": "7115d438-acaa-4220-854f-22cc7e5f3ad9",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-7115d438-acaa-4220-854f-22cc7e5f3ad9"
+                        },
+                        {
+                          "id": "f0638e30-59e3-4cd8-9902-aa5bbb1f32ff",
+                          "name": "created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-f0638e30-59e3-4cd8-9902-aa5bbb1f32ff"
+                        },
+                        {
+                          "id": "9c3e9b8b-c895-4bb0-8024-a756a0abb766",
+                          "name": "trgLang equals srcLang",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-9c3e9b8b-c895-4bb0-8024-a756a0abb766"
+                        },
+                        {
+                          "id": "14fca361-f9e5-4373-83ec-db47933a07be",
+                          "name": "xliff parser error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-14fca361-f9e5-4373-83ec-db47933a07be"
+                        },
+                        {
+                          "id": "6c5cdbac-d676-45ab-8b46-750f81a4d981",
+                          "name": "kc id not found in xliff file",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-6c5cdbac-d676-45ab-8b46-750f81a4d981"
+                        },
+                        {
+                          "id": "9fdb23e0-55be-493e-b98e-d87da6aa9f6e",
+                          "name": "target language is not support by subscription",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-9fdb23e0-55be-493e-b98e-d87da6aa9f6e"
+                        },
+                        {
+                          "id": "e9e7628f-9efc-46fb-9aeb-d811ffe1969b",
+                          "name": "strategy is not valid",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-e9e7628f-9efc-46fb-9aeb-d811ffe1969b"
+                        },
+                        {
+                          "id": "0393bcab-089b-4d0b-b976-c3d167f359e5",
+                          "name": "xliff version is not supported",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "(Required) file",
+                                  "key": "file",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/localization/import/kcbot?kcVersion=v1",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "localization",
+                                "import",
+                                "kcbot"
+                              ],
+                              "query": [
+                                {
+                                  "description": "kcVersion",
+                                  "key": "kcVersion",
+                                  "value": "v1"
+                                }
+                              ]
+                            }
+                          },
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:31:17.000Z",
+                          "updatedAt": "2026-10-21T20:31:17.000Z",
+                          "uid": "35240-0393bcab-089b-4d0b-b976-c3d167f359e5"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:31:17.000Z",
+                      "updatedAt": "2026-10-21T20:31:17.000Z",
+                      "uid": "35240-ae054e2e-3c29-40cc-8103-b085838919d7"
+                    }
+                  ],
+                  "id": "2d8fea2a-ca93-42d7-bfca-60c8d104f69e",
+                  "createdAt": "2026-10-21T20:31:17.000Z",
+                  "updatedAt": "2026-10-21T20:31:17.000Z",
+                  "uid": "35240-2d8fea2a-ca93-42d7-bfca-60c8d104f69e"
+                }
+              ],
+              "id": "60e7793f-f517-4cb6-8fc5-959217de6958",
+              "createdAt": "2026-10-21T20:31:17.000Z",
+              "updatedAt": "2026-10-21T20:31:17.000Z",
+              "uid": "35240-60e7793f-f517-4cb6-8fc5-959217de6958"
+            }
+          ],
+          "id": "92fd4e24-180c-458c-b9a5-b777e51f08b0",
+          "createdAt": "2026-10-21T20:31:17.000Z",
+          "updatedAt": "2026-10-21T20:31:17.000Z",
+          "uid": "35240-92fd4e24-180c-458c-b9a5-b777e51f08b0"
+        }
+      ],
+      "id": "87699bfa-6f3e-4d2c-965b-348984ecc0c3",
+      "createdAt": "2026-10-21T20:31:17.000Z",
+      "updatedAt": "2026-10-21T20:31:17.000Z",
+      "uid": "35240-87699bfa-6f3e-4d2c-965b-348984ecc0c3"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.aptrinsic.com/"
+    }
+  ]
+}

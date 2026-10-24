@@ -1,509 +1,437 @@
 {
+  "info": {
+    "_postman_id": "cc7900d2-6b36-49c3-ae51-2f23c13a3714",
+    "name": "Gainsight CS Customer Goals Metrics API",
+    "description": "The Customer Goals API enables external systems to create, update, and fetch customer goals programmatically, including template and metrics management for structured goal tracking.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:40.000Z",
+    "updatedAt": "2026-10-21T20:29:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cc7900d2-6b36-49c3-ae51-2f23c13a3714"
+  },
   "item": [
     {
-      "id": "942e7168-4b0d-4791-a953-60dec1835221",
-      "name": "Metrics",
-      "description": {
-        "content": "Manage goal metrics",
-        "type": "text/plain"
-      },
+      "name": "goals",
       "item": [
         {
-          "id": "ba8d5695-f51d-4152-afe8-6feb961eb6f0",
-          "name": "Gainsight List goal metrics",
-          "request": {
-            "name": "Gainsight List goal metrics",
-            "description": {
-              "content": "Retrieve metrics associated with a customer goal.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "goals",
-                ":goalId",
-                "metrics"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "goalId",
-                  "description": "(Required) Customer goal unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{goalId}",
+          "item": [
             {
-              "id": "ef2c6c67-5c98-4f1d-9a97-b53e2b899c41",
-              "name": "Metrics returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+              "name": "metrics",
+              "item": [
+                {
+                  "name": "Gainsight List goal metrics",
+                  "id": "0b77849d-669a-408e-afcf-f611b65b1939",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"GoalId\": \"string\",\n      \"CurrentValue\": 7351.481338020255,\n      \"TargetValue\": 9744.348634217713,\n      \"Unit\": \"string\",\n      \"LastUpdatedDate\": \"1947-05-24T00:01:42.843Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"GoalId\": \"string\",\n      \"CurrentValue\": 6365.4324342320015,\n      \"TargetValue\": 1744.399353690761,\n      \"Unit\": \"string\",\n      \"LastUpdatedDate\": \"1964-10-27T22:36:32.848Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "279491da-9eba-46d9-a970-6171ab0a513a",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId",
+                        "metrics"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c9ed2b0b-4f2c-4481-9315-0359218edd60",
+                          "key": "goalId",
+                          "value": "<string>",
+                          "description": "(Required) Customer goal unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve metrics associated with a customer goal."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
+                      "id": "12a3391d-c94f-4b53-8948-df2d9b97c16a",
+                      "name": "Metrics returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "goals",
+                            ":goalId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "goalId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"GoalId\": \"<string>\",\n      \"CurrentValue\": \"<number>\",\n      \"TargetValue\": \"<number>\",\n      \"Unit\": \"<string>\",\n      \"LastUpdatedDate\": \"<dateTime>\"\n    },\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"GoalId\": \"<string>\",\n      \"CurrentValue\": \"<number>\",\n      \"TargetValue\": \"<number>\",\n      \"Unit\": \"<string>\",\n      \"LastUpdatedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:29:40.000Z",
+                      "updatedAt": "2026-10-21T20:29:40.000Z",
+                      "uid": "35240-12a3391d-c94f-4b53-8948-df2d9b97c16a"
                     },
                     {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
+                      "id": "70bf0f28-4290-43fc-9b39-2b42c6b50b14",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "goals",
+                            ":goalId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "goalId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:40.000Z",
+                      "updatedAt": "2026-10-21T20:29:40.000Z",
+                      "uid": "35240-70bf0f28-4290-43fc-9b39-2b42c6b50b14"
+                    },
+                    {
+                      "id": "f7ec5253-a42c-44f1-8c70-0883118528ef",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "goals",
+                            ":goalId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "goalId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:40.000Z",
+                      "updatedAt": "2026-10-21T20:29:40.000Z",
+                      "uid": "35240-f7ec5253-a42c-44f1-8c70-0883118528ef"
                     }
-                  ]
+                  ],
+                  "createdAt": "2026-10-21T20:29:40.000Z",
+                  "updatedAt": "2026-10-21T20:29:40.000Z",
+                  "uid": "35240-0b77849d-669a-408e-afcf-f611b65b1939"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c2ce0e38-8ae2-49fc-8c24-ba838d183698",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "Gainsight Add a goal metric",
+                  "id": "b97a219c-2da9-4155-9b1c-b0c817f4be67",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "goals",
+                        ":goalId",
+                        "metrics"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2214e7af-aa53-49b3-9844-5e40048d2ed0",
+                          "key": "goalId",
+                          "value": "<string>",
+                          "description": "(Required) Customer goal unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Add a metric to a customer goal."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
+                      "id": "68f1b86e-ec64-435b-afdd-0de34ebce851",
+                      "name": "Metric added",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "goals",
+                            ":goalId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "goalId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"Gsid\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"GoalId\": \"<string>\",\n    \"CurrentValue\": \"<number>\",\n    \"TargetValue\": \"<number>\",\n    \"Unit\": \"<string>\",\n    \"LastUpdatedDate\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:29:40.000Z",
+                      "updatedAt": "2026-10-21T20:29:40.000Z",
+                      "uid": "35240-68f1b86e-ec64-435b-afdd-0de34ebce851"
                     },
                     {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
+                      "id": "7052080a-84be-488f-bc8b-ecac56e76f3f",
+                      "name": "Invalid request body or parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "goals",
+                            ":goalId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "goalId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:40.000Z",
+                      "updatedAt": "2026-10-21T20:29:40.000Z",
+                      "uid": "35240-7052080a-84be-488f-bc8b-ecac56e76f3f"
+                    },
+                    {
+                      "id": "7a7ed925-9192-4001-ac71-415c71359d19",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/goals/:goalId/metrics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "goals",
+                            ":goalId",
+                            "metrics"
+                          ],
+                          "variable": [
+                            {
+                              "key": "goalId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:40.000Z",
+                      "updatedAt": "2026-10-21T20:29:40.000Z",
+                      "uid": "35240-7a7ed925-9192-4001-ac71-415c71359d19"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-21T20:29:40.000Z",
+                  "updatedAt": "2026-10-21T20:29:40.000Z",
+                  "uid": "35240-b97a219c-2da9-4155-9b1c-b0c817f4be67"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "22728421-2df3-4056-b851-6bad06288ebf",
+              "createdAt": "2026-10-21T20:29:40.000Z",
+              "updatedAt": "2026-10-21T20:29:40.000Z",
+              "uid": "35240-22728421-2df3-4056-b851-6bad06288ebf"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d18cd9ca-2327-430b-8780-ebf62800853e",
-          "name": "Gainsight Add a goal metric",
-          "request": {
-            "name": "Gainsight Add a goal metric",
-            "description": {
-              "content": "Add a metric to a customer goal.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "goals",
-                ":goalId",
-                "metrics"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "goalId",
-                  "description": "(Required) Customer goal unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "62cb2500-84e5-40b7-987b-46ab9007e823",
-              "name": "Metric added",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"GoalId\": \"string\",\n    \"CurrentValue\": 678.7624272053428,\n    \"TargetValue\": 1395.2134844682196,\n    \"Unit\": \"string\",\n    \"LastUpdatedDate\": \"1999-08-04T14:17:26.040Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4d97d324-0744-4c8e-b301-8405368103e6",
-              "name": "Invalid request body or parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "878d7562-4597-4ebf-b323-236e1b952a3a",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "goals",
-                    ":goalId",
-                    "metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "goalId",
-                      "description": "(Required) Customer goal unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"TargetValue\": \"<number>\",\n  \"CurrentValue\": \"<number>\",\n  \"Unit\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "19703deb-8a93-4eb0-9e44-ea312ee76ef3",
+          "createdAt": "2026-10-21T20:29:40.000Z",
+          "updatedAt": "2026-10-21T20:29:40.000Z",
+          "uid": "35240-19703deb-8a93-4eb0-9e44-ea312ee76ef3"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "1c2bd1f7-7728-49c9-bdd6-6828488f9d95",
+      "createdAt": "2026-10-21T20:29:40.000Z",
+      "updatedAt": "2026-10-21T20:29:40.000Z",
+      "uid": "35240-1c2bd1f7-7728-49c9-bdd6-6828488f9d95"
     }
   ],
   "auth": {
@@ -511,25 +439,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "9ce852ab-e357-45bc-895d-410e152839ce",
-    "name": "Gainsight CS Bulk Accounts Metrics API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }

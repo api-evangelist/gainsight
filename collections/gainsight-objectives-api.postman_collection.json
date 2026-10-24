@@ -1,509 +1,437 @@
 {
+  "info": {
+    "_postman_id": "34a8e361-6120-461b-b47b-94ccd64b10bd",
+    "name": "Gainsight CS Success Plan Objectives API",
+    "description": "The Success Plan API enables creating, updating, and fetching Success Plans and their configurations, supporting structured goal tracking for customer engagements.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:29:45.000Z",
+    "updatedAt": "2026-10-21T20:29:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-34a8e361-6120-461b-b47b-94ccd64b10bd"
+  },
   "item": [
     {
-      "id": "e7334980-1504-4fbf-8c85-6dce2ace4612",
-      "name": "Objectives",
-      "description": {
-        "content": "Manage success plan objectives",
-        "type": "text/plain"
-      },
+      "name": "successplans",
       "item": [
         {
-          "id": "f4e2d940-1375-4189-8090-dbeca3b37dc6",
-          "name": "Gainsight List objectives",
-          "request": {
-            "name": "Gainsight List objectives",
-            "description": {
-              "content": "Retrieve objectives for a specific success plan.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "successplans",
-                ":planId",
-                "objectives"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "planId",
-                  "description": "(Required) Success plan unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{planId}",
+          "item": [
             {
-              "id": "06825a33-11c1-4691-aa1c-da4ac7d4da9b",
-              "name": "Objectives returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    ":planId",
-                    "objectives"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Success plan unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
+              "name": "objectives",
+              "item": [
+                {
+                  "name": "Gainsight List objectives",
+                  "id": "434477a6-1c76-419a-823c-d07439d539ec",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": [\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"SuccessPlanId\": \"string\",\n      \"Status\": \"Not Started\",\n      \"Priority\": \"string\",\n      \"DueDate\": \"1983-01-04\",\n      \"CompletionPercentage\": 7166.3405378639145,\n      \"CreatedDate\": \"2004-04-02T16:49:09.508Z\",\n      \"ModifiedDate\": \"2012-11-26T19:37:35.309Z\"\n    },\n    {\n      \"Gsid\": \"string\",\n      \"Name\": \"string\",\n      \"Description\": \"string\",\n      \"SuccessPlanId\": \"string\",\n      \"Status\": \"Not Started\",\n      \"Priority\": \"string\",\n      \"DueDate\": \"1969-08-14\",\n      \"CompletionPercentage\": 1323.4851605929255,\n      \"CreatedDate\": \"2016-07-03T05:51:33.669Z\",\n      \"ModifiedDate\": \"2016-04-01T00:16:02.516Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "02e92291-b38d-4393-8e6f-b5939afefe40",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    ":planId",
-                    "objectives"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "successplans",
+                        ":planId",
+                        "objectives"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7e1d9286-3064-4a9e-963e-8bd525258254",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) Success plan unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve objectives for a specific success plan."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Success plan unique identifier"
+                      "id": "b853330d-3153-4fc5-a034-01721f19aed4",
+                      "name": "Objectives returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            ":planId",
+                            "objectives"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": [\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"SuccessPlanId\": \"<string>\",\n      \"Status\": \"Completed\",\n      \"Priority\": \"<string>\",\n      \"DueDate\": \"<date>\",\n      \"CompletionPercentage\": \"<number>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"Gsid\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Description\": \"<string>\",\n      \"SuccessPlanId\": \"<string>\",\n      \"Status\": \"Not Started\",\n      \"Priority\": \"<string>\",\n      \"DueDate\": \"<date>\",\n      \"CompletionPercentage\": \"<number>\",\n      \"CreatedDate\": \"<dateTime>\",\n      \"ModifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:29:45.000Z",
+                      "updatedAt": "2026-10-21T20:29:45.000Z",
+                      "uid": "35240-b853330d-3153-4fc5-a034-01721f19aed4"
                     },
                     {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
+                      "id": "d7dfad27-5cda-42a2-8688-c8b8fd849c49",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            ":planId",
+                            "objectives"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:45.000Z",
+                      "updatedAt": "2026-10-21T20:29:45.000Z",
+                      "uid": "35240-d7dfad27-5cda-42a2-8688-c8b8fd849c49"
+                    },
+                    {
+                      "id": "6ad1ef6d-c410-45e1-8582-bc92a49bb4fd",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            ":planId",
+                            "objectives"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:45.000Z",
+                      "updatedAt": "2026-10-21T20:29:45.000Z",
+                      "uid": "35240-6ad1ef6d-c410-45e1-8582-bc92a49bb4fd"
                     }
-                  ]
+                  ],
+                  "createdAt": "2026-10-21T20:29:45.000Z",
+                  "updatedAt": "2026-10-21T20:29:45.000Z",
+                  "uid": "35240-434477a6-1c76-419a-823c-d07439d539ec"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "83dd0b54-fa2b-4ef8-b8f2-d7d92d470595",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    ":planId",
-                    "objectives"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "Gainsight Create an objective",
+                  "id": "d1f78dda-66de-4f5b-abcc-1a54eb0c5abc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"In Progress\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "successplans",
+                        ":planId",
+                        "objectives"
+                      ],
+                      "variable": [
+                        {
+                          "id": "dc5f6659-0c1b-48a5-a4dc-943df66a783d",
+                          "key": "planId",
+                          "value": "<string>",
+                          "description": "(Required) Success plan unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Add a new objective to a success plan."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Success plan unique identifier"
+                      "id": "4836c493-57d4-4530-bd30-2a8ffc01b175",
+                      "name": "Objective created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"In Progress\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            ":planId",
+                            "objectives"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"result\": \"<boolean>\",\n  \"data\": {\n    \"Gsid\": \"<string>\",\n    \"Name\": \"<string>\",\n    \"Description\": \"<string>\",\n    \"SuccessPlanId\": \"<string>\",\n    \"Status\": \"Completed\",\n    \"Priority\": \"<string>\",\n    \"DueDate\": \"<date>\",\n    \"CompletionPercentage\": \"<number>\",\n    \"CreatedDate\": \"<dateTime>\",\n    \"ModifiedDate\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:29:45.000Z",
+                      "updatedAt": "2026-10-21T20:29:45.000Z",
+                      "uid": "35240-4836c493-57d4-4530-bd30-2a8ffc01b175"
                     },
                     {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
+                      "id": "db2e9a42-9394-4c86-a5d0-54e5cbaaa145",
+                      "name": "Invalid request body or parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"In Progress\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            ":planId",
+                            "objectives"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:45.000Z",
+                      "updatedAt": "2026-10-21T20:29:45.000Z",
+                      "uid": "35240-db2e9a42-9394-4c86-a5d0-54e5cbaaa145"
+                    },
+                    {
+                      "id": "68c69df7-1600-404a-b655-5c587e62461d",
+                      "name": "Authentication failed or access key is missing",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "accessKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"In Progress\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/successplans/:planId/objectives",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "successplans",
+                            ":planId",
+                            "objectives"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:29:45.000Z",
+                      "updatedAt": "2026-10-21T20:29:45.000Z",
+                      "uid": "35240-68c69df7-1600-404a-b655-5c587e62461d"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-21T20:29:45.000Z",
+                  "updatedAt": "2026-10-21T20:29:45.000Z",
+                  "uid": "35240-d1f78dda-66de-4f5b-abcc-1a54eb0c5abc"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "8caaf2bf-3095-4792-8d4b-bd2da6632569",
+              "createdAt": "2026-10-21T20:29:45.000Z",
+              "updatedAt": "2026-10-21T20:29:45.000Z",
+              "uid": "35240-8caaf2bf-3095-4792-8d4b-bd2da6632569"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7c2bac61-0c29-47bb-9b85-3929aa8f3228",
-          "name": "Gainsight Create an objective",
-          "request": {
-            "name": "Gainsight Create an objective",
-            "description": {
-              "content": "Add a new objective to a success plan.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "successplans",
-                ":planId",
-                "objectives"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "planId",
-                  "description": "(Required) Success plan unique identifier"
-                },
-                {
-                  "description": "Customer-specific domain prefix",
-                  "type": "any",
-                  "value": "{{domain}}",
-                  "key": "domain"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "13cbf455-fe97-4a58-b4d1-cdb773b81646",
-              "name": "Objective created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    ":planId",
-                    "objectives"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Success plan unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"result\": true,\n  \"data\": {\n    \"Gsid\": \"string\",\n    \"Name\": \"string\",\n    \"Description\": \"string\",\n    \"SuccessPlanId\": \"string\",\n    \"Status\": \"Not Started\",\n    \"Priority\": \"string\",\n    \"DueDate\": \"2002-01-14\",\n    \"CompletionPercentage\": 2953.164076810879,\n    \"CreatedDate\": \"2005-02-04T06:57:13.933Z\",\n    \"ModifiedDate\": \"1984-06-12T21:48:04.919Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c28073de-c633-4f9c-b756-9d4b3f1e61cf",
-              "name": "Invalid request body or parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    ":planId",
-                    "objectives"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Success plan unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "81cd1211-2cbf-4a7c-b5ef-fe8cfc378d47",
-              "name": "Authentication failed or access key is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "successplans",
-                    ":planId",
-                    "objectives"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "planId",
-                      "description": "(Required) Success plan unique identifier"
-                    },
-                    {
-                      "description": "Customer-specific domain prefix",
-                      "type": "any",
-                      "value": "{{domain}}",
-                      "key": "domain"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "accessKey",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"Name\": \"<string>\",\n  \"Description\": \"<string>\",\n  \"Status\": \"<string>\",\n  \"Priority\": \"<string>\",\n  \"DueDate\": \"<date>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ed398a4e-58f7-464a-8f7a-0992794f5927",
+          "createdAt": "2026-10-21T20:29:45.000Z",
+          "updatedAt": "2026-10-21T20:29:45.000Z",
+          "uid": "35240-ed398a4e-58f7-464a-8f7a-0992794f5927"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Customer-specific domain prefix",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "customer",
-      "key": "domain"
-    },
-    {
-      "type": "string",
-      "value": "https://{{domain}}.gainsightcloud.com/v1",
-      "key": "baseUrl"
+      "id": "5c14dabd-1c70-48fa-98aa-7e239f1d67ad",
+      "createdAt": "2026-10-21T20:29:45.000Z",
+      "updatedAt": "2026-10-21T20:29:45.000Z",
+      "uid": "35240-5c14dabd-1c70-48fa-98aa-7e239f1d67ad"
     }
   ],
   "auth": {
@@ -511,25 +439,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "accessKey"
+        "value": "accessKey",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "df644654-9d51-49f9-acec-1d65bb07d91b",
-    "name": "Gainsight CS Bulk Accounts Objectives API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Gainsight Bulk API is an asynchronous connector that automates insert or update of large data volumes from CSV files into Gainsight standard and custom objects, with rate limits of 10 calls per hour and 100 per day.\n\nContact Support:\n Name: Gainsight Support\n Email: support@gainsight.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "domain",
+      "value": "customer"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{domain}}.gainsightcloud.com/v1"
     }
-  }
+  ]
 }
