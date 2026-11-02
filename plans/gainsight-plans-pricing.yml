@@ -1,0 +1,127 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://www.gainsight.com/pricing/
+sources:
+- https://www.gainsight.com/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T120742
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: negotiated
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+  managed_tier: Essentials
+published: false
+note: No numeric price is published on the pricing page; Pricing page lists tiers and included quotas
+  but no numeric prices; all plans say Request Pricing or Learn More.
+plan_count: 9
+plans:
+- name: Customer Success - Essentials
+  price_text: Request Pricing
+  period: none
+  included_quota: Full Users 10; Included Customers Per User 100; Viewer Licenses Unlimited
+- name: Customer Success - Enterprise
+  price_text: Request Pricing
+  period: none
+  included_quota: Full Users 20; Included Customers Per User 200; Viewer Licenses Unlimited
+- name: Skilljar Essentials
+  price_text: Learn More
+  period: none
+  included_quota: 1 Academy site, Unlimited Seats & Courses, Standard Integrations
+- name: Skilljar Professional
+  price_text: Learn More
+  period: none
+  included_quota: 2 Academy sites, Premium Integrations & Features, SSO for Admins
+- name: Skilljar Enterprise
+  price_text: Learn More
+  period: none
+  included_quota: 3 Academy sites, More Premium Integrations, Sandbox Organization
+- name: Product Experience
+  price_text: Request Pricing
+  period: none
+  included_quota: Product Analytics, In-App Guides & Engagements, In-App Hub, User Surveys & Feedback
+- name: Customer Communities Professional
+  price_text: Learn More
+  period: none
+  included_quota: 3 Admin Seats, Basic Product Suite, Self-Service Support
+- name: Customer Communities Business
+  price_text: Learn More
+  period: none
+  included_quota: 5 Admin Seats, All Customer Communities Products, CSM Support
+- name: Customer Communities Enterprise
+  price_text: Learn More
+  period: none
+  included_quota: 10 Admin Seats, Advanced/Custom Integrations, Enterprise CSM Support
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Customer Success - Essentials
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Customer Success - Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Skilljar Essentials
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Skilljar Professional
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Skilljar Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Product Experience
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Customer Communities Professional
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Customer Communities Business
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Customer Communities Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
